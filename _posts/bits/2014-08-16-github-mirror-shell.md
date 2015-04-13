@@ -3,14 +3,6 @@ layout: bit
 title: "Mirror GitHub repositories in pure shell"
 categories:
   - bits
-tags:
-  - unix
-  - backup
-  - git
-  - github
-  - shell
-  - freebsd
-  - zfs
 ---
 
 As I have [written before][uncloud] I have slowly started to move my data out

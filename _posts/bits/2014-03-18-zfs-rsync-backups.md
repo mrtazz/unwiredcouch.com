@@ -3,13 +3,6 @@ layout: bit
 title: "Backups with rsync and zfs"
 categories:
   - bits
-tags:
-  - freebsd
-  - zfs
-  - encryption
-  - unix
-  - rsync
-  - backup
 ---
 
 As I [mentioned before][uncloud] I'm running my own backup on a server that is

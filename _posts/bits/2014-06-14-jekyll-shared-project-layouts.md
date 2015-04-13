@@ -3,12 +3,6 @@ layout: bit
 title: "Shared layout for project pages in Jekyll"
 categories:
   - bits
-tags:
-  - git
-  - submodules
-  - github
-  - jekyll
-  - documentation
 ---
 
 I use [Jekyll][jekyll] a lot, especially for [my website][unwiredcouch]. And I

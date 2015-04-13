@@ -3,12 +3,6 @@ layout: bit
 title: "Context specific dotfiles"
 categories:
   - bits
-tags:
-  - unix
-  - dotfiles
-  - git
-  - vim
-  - zsh
 ---
 
 I have a [collection][muttfiles] [of][vimfiles] [various][zshfiles]

@@ -3,11 +3,6 @@ layout: bit
 title: "Creating Encrypted Home Directories in FreeBSD"
 categories:
   - bits
-tags:
-  - freebsd
-  - zfs
-  - encryption
-  - unix
 ---
 
 I run FreeBSD with ZFS on all my servers and I generally want to have my home

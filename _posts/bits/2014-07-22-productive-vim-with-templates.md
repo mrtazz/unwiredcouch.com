@@ -3,11 +3,6 @@ layout: bit
 title: "Productive VIM with templates"
 categories:
   - bits
-tags:
-  - unix
-  - vim
-  - productivity
-  - email
 ---
 
 I basically exist inside of vim all day. I write code in there, I write emails
