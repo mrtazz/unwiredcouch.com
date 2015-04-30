@@ -1,5 +1,5 @@
 ---
-layout: bit
+layout: post
 title: "Creating Encrypted Home Directories in FreeBSD"
 categories:
   - bits

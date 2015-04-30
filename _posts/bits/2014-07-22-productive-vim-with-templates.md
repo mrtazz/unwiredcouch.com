@@ -1,5 +1,5 @@
 ---
-layout: bit
+layout: post
 title: "Productive VIM with templates"
 categories:
   - bits

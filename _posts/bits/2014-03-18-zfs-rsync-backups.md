@@ -1,5 +1,5 @@
 ---
-layout: bit
+layout: post
 title: "Backups with rsync and zfs"
 categories:
   - bits

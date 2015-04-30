@@ -1,5 +1,5 @@
 ---
-layout: bit
+layout: post
 title: "Mirror GitHub repositories in pure shell"
 categories:
   - bits

@@ -1,5 +1,5 @@
 ---
-layout: bit
+layout: post
 title: "Shared layout for project pages in Jekyll"
 categories:
   - bits

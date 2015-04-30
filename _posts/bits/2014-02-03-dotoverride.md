@@ -1,5 +1,5 @@
 ---
-layout: bit
+layout: post
 title: "Context specific dotfiles"
 categories:
   - bits
