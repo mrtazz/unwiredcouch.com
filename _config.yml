@@ -1,4 +1,3 @@
-destination: /private/tmp/blog
 lsi:         false
 port:        4000
 highlighter: pygments
