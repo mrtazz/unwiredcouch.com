@@ -16,33 +16,28 @@
         <title>{{page.title}} on unwiredcouch.com</title>
     </head>
     <body>
-        {% unless page.nomenu %}
-        <div class="menu">
-           <a class="hidemobile" href="/">
-             <img src="https://www.gravatar.com/avatar/89e0ad1229121f46047977ac547bd7b4.jpg?s=142"
-                  height="100" width="100" class="avatar" alt="gravatar image" />
-           </a>
-            <ul class="nobullet pagelinks">
-                <li class="menulinks"><a href="/">writing</a></li>
-                <li class="menulinks"><a href="/shorts.html">bits</a></li>
-                <li class="menulinks"><a href="/talks">talks</a></li>
-                <li class="menulinks"><a href="http://code.mrtazz.com">projects</a></li>
-                <li class="menulinks"><a href="/about.html">about</a></li>
-            </ul>
-            <hr class="hidemobile">
-            <ul class="nobullet linkicons">
-              <li><a href="http://www.unwiredcouch.com/atom.xml"><i class="icon-rss"> </i></a></li>
-              <li><a href="https://github.com/mrtazz"><i class="icon-github-sign"> </i></a></li>
-              <li><a href="https://twitter.com/mrtazz"><i class="icon-twitter"> </i></a></li>
-              <li><a href="/publickey.html"><i class="icon-key"> </i></a></li>
-            </ul>
-        </div>
-        {% endunless %}
-        <div id="wrapper">
+          {% unless page.nomenu %}
+          <div id="head">
+            <div class=gravatarbox">
+            <a class="gravatar hidemobile" href="/">
+              <img src="https://www.gravatar.com/avatar/89e0ad1229121f46047977ac547bd7b4.jpg?s=142"
+                    height="100" width="100" class="avatar" alt="gravatar image" />
+            </a>
+            </div>
+              <div id="intro">
+                Hi! I'm <a href="/about.html">Daniel</a></li>
+                </br>
+                I like
+                  <a href="/archive.html">writing</a>,
+                  <a href="https://twitter.com/mrtazz">tweeting</a>,
+                  <a href="/talks">sometimes give talks</a>,
+                  and <a href="http://code.mrtazz.com">occasionally write code</a>.
+              </div>
+          </div>
+          {% endunless %}
             <div id="content">
                 {{ content }}
             </div>
-        </div>
         {% include gauges.html %}
     </body>
 </html>
