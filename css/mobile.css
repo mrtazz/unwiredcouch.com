@@ -40,18 +40,51 @@ ul.linkicons {
   margin-left: 20px;
 }
 
-#content {
-  top: 15%;
-  left: 2%;
-  width: 100%;
+div#head {
+    left: 0px;
+    top:  0px;
+    width: 100%;
+    /* background-color: #184468; */
+    background-color: #840044;
+    color: white;
+    font-size: 20px;
+    font-weight: normal;
 }
 
-.postcontent {
+div#intro {
+    left: 1%;
+    right: 1%;
+    top: 0px;
+    width: 98%;
+}
+
+div#intro p {
+    top: 0px;
+    margin-top: 25px;
+    margin-bottom: 0px;
+    font-size: 14pt;
+    line-height: 22px;
+}
+
+#content {
+  top: 25%;
+  left: 5%;
+  width: 90%;
+  line-height: 20px;
+}
+
+.archive {
   width: 100%;
+  left: 2%;
   font-size: 13pt;
   line-height: 22px;
 }
-.postcontent p{
+
+.archive ul li {
+  padding-bottom: 15px;
+}
+
+.archive p{
   width: 100%;
   line-height: 22px;
 }

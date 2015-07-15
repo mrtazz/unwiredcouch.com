@@ -31,7 +31,7 @@ div#head {
 div#intro {
     position: relative;
     left: 20%;
-    top: -70px;
+    top: -85px;
     width: 60%;
 }
 
@@ -56,7 +56,7 @@ div#intro a:hover {
 
 div#head a.gravatar {
   position: relative;
-  top: 20px;
+  top: 15px;
   left: 40px;
 
 }
