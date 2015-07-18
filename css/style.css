@@ -107,9 +107,14 @@ h4 {
 p, pre{
     margin-bottom: 15px;
 }
+
 pre{
   margin-left: 25px;
+  overflow: auto;
+  word-wrap: normal;
+  white-space: pre;
 }
+
 a:link {
   color: #840044;
   text-decoration: none;
