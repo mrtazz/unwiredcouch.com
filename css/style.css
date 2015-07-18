@@ -11,13 +11,13 @@ body {
 
 #content {
     position: absolute;
-    top: 25%;
+    top: 160px;
     left: 15%;
     width: 75%;
     padding-bottom: 100px;
 }
 
-div#head {
+header {
     position: absolute;
     left: 0px;
     top:  0px;
@@ -54,7 +54,7 @@ div#intro a:hover {
   text-decoration: underline;
 }
 
-div#head a.gravatar {
+a.gravatar {
   position: relative;
   top: 15px;
   left: 40px;
