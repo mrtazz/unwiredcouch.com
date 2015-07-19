@@ -67,25 +67,11 @@ a.posttitle {
     margin-bottom: 15px;
 }
 
-div.menu ul.nobullet {
+ul.nobullet {
   margin-top: 15px;
   text-align: right;
 }
-ul.linkicons {
-  margin-top: 10px;
-  list-style-type: none;
-  text-align: center;
-  color: #000000;
-}
-ul.linkicons li {
-  display: inline
-}
-ul.linkicons a{
-  color: black;
-}
-ul.linkicons i{
-  font-size: 20px;
-}
+
 h1 {
     font-size:34px;
     margin-bottom: 15px;
@@ -93,7 +79,7 @@ h1 {
 h2 {
     color: #184468;
     font-size: 30px;
-    margin-bottom: 22px;
+    margin-bottom: 25px;
 }
 h3 {
     color: #184468;
@@ -172,8 +158,11 @@ div.archive {
   width: 75%;
   font-size: 15pt;
 }
+div.archive h2 {
+  margin-bottom: 10px;
+}
 div.archive ul {
-  margin-top: 15px;
+  margin-bottom: 25px;
   list-style-type: none;
 }
 div.archive ul li{
