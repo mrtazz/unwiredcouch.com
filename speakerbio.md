@@ -10,7 +10,7 @@ title: Speaker Bio
 
 
 
-Daniel is a Senior Software Engineer at Etsy's infrastructure and development
+Daniel is a Staff Software Engineer at Etsy's infrastructure and development
 tools team. He loves automation, monitoring, documentation and simplicity. In
 previous lives he has worked in systems and network administration, on
 connecting chemical plants to IT systems and as an embedded systems networking
