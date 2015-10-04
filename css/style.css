@@ -68,7 +68,7 @@ a.posttitle {
 }
 
 ul.nobullet {
-  margin-top: 15px;
+  margin: 0px;
   text-align: right;
 }
 
@@ -136,7 +136,7 @@ div.menu a.avatar {
   text-rendering: optimizeLegibility;
 }
 
-.post ul{
+ul{
   margin-left: 30px;
   margin-bottom: 15px;
 }
@@ -162,6 +162,7 @@ div.archive h2 {
   margin-bottom: 10px;
 }
 div.archive ul {
+  margin-left: 0px;
   margin-bottom: 25px;
   list-style-type: none;
 }
