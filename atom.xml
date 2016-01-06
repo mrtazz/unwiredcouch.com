@@ -6,9 +6,9 @@ layout: nil
 
   <title>{{ site.domain }}</title>
 	<subtitle>{{ site.headline }}</subtitle>
-	<link href="{{ site.url }}" rel="self" />
+  <link href="{{ site.url }}/atom.xml" rel="self" />
 	<link href="{{ site.url }}/" />
-	<id>{{ site.domain }}</id>
+	<id>{{ site.url }}</id>
 	<updated>{{ site.time | date_to_xmlschema }}</updated>
 	<author>
 		<name>Daniel</name>
