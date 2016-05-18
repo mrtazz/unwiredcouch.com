@@ -87,10 +87,10 @@ json. This means it is source code, which again means we can easily manage it
 with an SCM (I will use git in the examples, but it really applies to your
 favourite SCM, too). So let's start with creating our configuration repository:
 
-{% highlight bash %}
+```bash
     $ mkdir chef-repo ; cd chef-repo
     $ git init .
-{% endhighlight %}
+```
 
 Now that we have our repository set up, we can start to add cookbooks.
 There are in general two ways to get cookbooks into your repository.
@@ -115,14 +115,14 @@ automate are:
 
 So first of all let's create the basic folder structure:
 
-{% highlight bash %}
+```bash
     $ mkdir -p cookbooks/oh-my-zsh/recipes
     $ mkdir -p cookbooks/oh-my-zsh/templates/default
     $ touch cookbooks/oh-my-zsh/recipes/default.rb
     $ touch cookbooks/oh-my-zsh/templates/default/dot.zshrc.erb
     $ touch cookbooks/oh-my-zsh/README.rdoc
     $ touch cookbooks/oh-my-zsh/metadata.rb
-{% endhighlight %}
+```
 
 The rough knife equivalent (which creates all the possible folders for the
 cookbook) would be `knife cookbook create oh-my-zsh -o./cookbooks`. However in
@@ -138,7 +138,7 @@ In order to setup the cookbook, first insert your current `.zshrc` into
 recipes as a template file. Now we want to configure the actual recipe.
 Therefore enter the following into `oh-my-zsh/recipes/default.rb`:
 
-{% highlight ruby %}
+```ruby
     script "oh-my-zsh install from github" do
       interpreter "bash"
       url = https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh
@@ -148,7 +148,7 @@ Therefore enter the following into `oh-my-zsh/recipes/default.rb`:
       EOS
       not_if { File.directory? "#{ENV['HOME']}/.oh-my-zsh" }
     end
-{% endhighlight %}
+```
 
 This just executes the shell script passed to the `code` directive. The used
 interpreter is `bash` and the `not_if` directive secures the idempotency of
@@ -159,7 +159,7 @@ install our own config file but don't want to do it everytime, we use the
 following Chef block (written to `oh-my-zsh/recipes/default.rb` directly after
 the install script):
 
-{% highlight ruby %}
+```ruby
     template "#{ENV['HOME']}/.zshrc" do
       mode   0700
       owner  ENV['USER']
@@ -168,7 +168,7 @@ the install script):
       variables({ :home => ENV['HOME'] })
       not_if { File.exist? "#{ENV['HOME']}/.zshrc" }
     end
-{% endhighlight %}
+```
 
 This creates the file given as the template parameter (our zsh config file)
 with the given properties. It makes sure the file is owned and only readable by
@@ -185,7 +185,7 @@ every shell the activation step is written into `.profile`. Therefore we also
 want to source it in our zsh config. The `not_if` method here also conserves
 the idempotency of the step.
 
-{% highlight ruby %}
+```ruby
     script "source .profile in .zshrc" do
       interpreter "bash"
       code <<-EOS
@@ -193,7 +193,7 @@ the idempotency of the step.
       EOS
       not_if "grep \"source #{ENV['HOME']}/.profile\" #{ENV['HOME']}/.zshrc"
     end
-{% endhighlight %}
+```
 
 ### The server comes into play
 
@@ -206,9 +206,9 @@ can of course choose another directory (just make sure that you also adapt
 subsequent steps in this post accordingly). Now we can upload our cookbook
 with:
 
-{% highlight bash %}
+```bash
     knife cookbook upload oh-my-zsh
-{% endhighlight %}
+```
 
 We have a cookbook on the server now, but no node uses it, yet (we also don't
 have nodes set up at the moment but bear with me here).  In order to match
@@ -220,28 +220,28 @@ attributes and a run list which is mapped to a name. As there may be multiple
 machines we use as workstations we create a role 'workstation' in the roles
 directory of our Chef repository:
 
-{% highlight bash %}
+```bash
     $ mkdir -p roles
     $ touch roles/workstation.rb
-{% endhighlight %}
+```
 
 Again this is just Ruby so we add the following information to
 `workstation.rb`:
 
-{% highlight ruby %}
+```ruby
     name "workstation"
     description "development workstations"
     run_list(
       "recipe[oh-my-zsh]"
     )
-{% endhighlight %}
+```
 
 Now every node which is assigned the 'workstation' role will know that it has
 to install chef `oh-my-zsh` recipe. Let's upload the role to our server:
 
-{% highlight bash %}
+```bash
     $ knife upload role from file workstation.rb
-{% endhighlight %}
+```
 
 In the management web interface (or via `knife`) we can now assign the role
 'workstation' to specific nodes. However we first need a client which is
@@ -269,23 +269,23 @@ your user. But we can also override the paths used in the client config. I also
 keep my paths in `~/.chef` (everything in one place, remember?) so a good
 adaption of your `client.rb` might be:
 
-{% highlight ruby %}
+```ruby
     base_dir = "#{ENV['HOME']}/.chef"
     run_path "#{base_dir}/run"
     checksum_path "#{base_dir}/checksum"
     file_cache_path "#{base_dir}/cache"
     file_backup_path "#{base_dir}/backup"
     cache_options({:path => "#{base_dir}/cache/checksums", :skip_expires => true})
-{% endhighlight %}
+```
 
 This will make sure only subdirectories of `~/.chef` will be used for
 caching, checksums, etc. After these steps there is only one thing to do.
 
 ### Sit back and watch
 
-{% highlight bash %}
+```bash
     $ chef-client -c ~/.chef/client.rb -k ~/.chef/client.pem
-{% endhighlight %}
+```
 
 The above command will run the Chef client with the specified config and client
 certificate. It will then fetch the cookbooks from the server, determine which

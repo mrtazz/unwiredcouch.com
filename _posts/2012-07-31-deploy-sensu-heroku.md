@@ -23,9 +23,9 @@ release][].
 In order to get started and configure your Sensu instance, clone the [example
 repository][] from Github.
 
-{% highlight bash %}
+```bash
     git clone https://github.com/mrtazz/sensu-heroku-example
-{% endhighlight %}
+```
 
 The example includes a basic folder layout for running a server or API instance
 on Heroku. All configuration files can be dropped in the `config/` folder. They
@@ -47,40 +47,47 @@ second instance.
 
 So create the first instance on the cedar stack from within the example repo
 and add the plugins:
-{% highlight bash %}
+
+```bash
     heroku create --stack cedar awesome-sensu-server
     heroku plugins:install redistogo
     heroku plugins:install rabbitmq
     heroku config:add API_PORT=80
-{% endhighlight %}
+```
+
 You have to add the `API_PORT` environment variable to the server instance,
 since otherwise it will assume it's running the API itself and assign the
 instance locale port from the `PORT` environment variable to use as the API
 port. After that is done, push the code to Heroku and scale up a worker
 process:
 
-{% highlight bash %}
+```bash
     git push heroku master
     heroku ps:scale app=1
-{% endhighlight %}
+```
 
 For the API instance create a new branch in the repo or clone the example repo
 into a new location. Then initialize the API:
-{% highlight bash %}
+
+```bash
     heroku create --stack cedar awesome-sensu-api
     heroku config:add REDISTOGO_URL="value from server instance"
     heroku config:add RABBITMQ_URL="value from server instance"
-{% endhighlight %}
+```
+
 Now change the Procfile to start up the API instead of the Sensu server like
 this:
-{% highlight bash %}
+
+```bash
     app: sensu-api -v -c config/config.json -d config/
-{% endhighlight %}
+```
+
 Commit the changes and push it to the Heroku app:
-{% highlight bash %}
+
+```bash
     git push heroku-api master
     heroku ps:scale app=1
-{% endhighlight %}
+```
 
 Now all you have to do is set up clients and voila, you have Heroku hosted
 monitoring. If you're not yet familiar with setting up clients, I highly

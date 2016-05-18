@@ -13,7 +13,7 @@ directory. In order to simplify this, I have a shell script that takes the
 username and size as input and creates keys and all partitions as well as the
 zpool.
 
-{% highlight bash linenos %}
+```bash
 #!/bin/sh
 
 USERHOME=$1
@@ -42,7 +42,7 @@ geli attach -k /encrypted/keys/${USERHOME}/disk1 \
 zpool create ${USERHOME}-home raidz \
 /dev/zvol/tank/encrypted/zvols/${USERHOME}/disk0.eli \
 /dev/zvol/tank/encrypted/zvols/${USERHOME}/disk1.eli
-{% endhighlight %}
+```
 
 I try to keep the script updated on [GitHub][script].
 

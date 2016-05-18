@@ -33,14 +33,14 @@ For the first important step, we need logstash to listen to changes in the
 bouncer's logfiles. This is pretty easy and can be accomplished with the
 following logstash configuration bits:
 
-{% highlight javascript %}
+```javascript
 input {
   file {
     path => "/home/username/.znc/users/zncuser/moddata/log/*"
     type => "znclog"
   }
 }
-{% endhighlight %}
+```
 
 Per default the log module puts all log files under
 `users/youruser/moddata/log/` and creates a logfile per day which is named
@@ -55,7 +55,7 @@ The next step is to remove lines which I'm never interested in for
 notifications, like my own messages and JOIN/QUIT messages for example. For
 this the logstash `grep` filter definitions are very useful:
 
-{% highlight javascript %}
+```javascript
 filter {
   grep {
     type => "znclog"
@@ -68,7 +68,7 @@ filter {
     negate => true
   }
 }
-{% endhighlight %}
+```
 
 The grep filter is also very useful for another criterion on which I want
 notifications, namely for all of my private messages. Since all
@@ -77,7 +77,7 @@ that logfiles without that sign are for private messages. It is important to
 set `drop => false` here since we don't want grep to drop the log line (which
 is default behaviour).
 
-{% highlight javascript %}
+```javascript
 grep {
   type => "znclog"
   match => ["@source", "#"]
@@ -85,7 +85,7 @@ grep {
   negate => true
   drop => false
 }
-{% endhighlight %}
+```
 
 This also needs to be added to the filter section and tags all messages coming
 from logfiles without a `#` in the name with `"pmnotifcation"`. Now let's go to
@@ -93,12 +93,12 @@ the actual parsing of log events. Since there are going to be some repeated
 patterns and I wanted to have an easy way to add new ones, I have a 'pattern
 library file' which is included in the configuration.
 
-{% highlight javascript %}
+```javascript
 NOTIFYME (pizza|cupcakes|fire)
 IRCNOTIFY %{DATA}%{NOTIFYME}%{GREEDYDATA}
 IRCTIME [0-9:]{8}
 IRCCHANNELS (nunagios|chef|food)
-{% endhighlight %}
+```
 
 The terms in capital letters can be used as regex placeholders. The interesting
 ones are `NOTIFYME/IRCNOTIFY` which are used as a collection of regexes on
@@ -106,20 +106,20 @@ which I want to show a notification and `IRCCHANNELS` which are basically the
 channel names for which I want notifications for all messages. In order to get
 those notifications I set up a set of grok filters.
 
-{% highlight javascript %}
+```javascript
 grok {
   match => ["@source", "%{IRCCHANNELS}"]
   add_tag => ["channelnotification"]
   exclude_tags => ["pmnotification"]
   patterns_dir => '/home/username/logstash-patterns'
 }
-{% endhighlight %}
+```
 
 This grok ruleset grabs all events from the channels based on the `IRCCHANNELS`
 match and tags them with the `"channelnotification"` tag. PMs are excluded from
 that match because they have already matched.
 
-{% highlight javascript %}
+```javascript
 grok {
   pattern => "\[%{IRCTIME:irctime}\](.+?)<%{DATA:ircsender}>%{GREEDYDATA:ircmessage}"
   tags => ["channelnotification"]
@@ -130,7 +130,7 @@ grok {
   tags => ["pmnotification"]
   patterns_dir => '/home/username/logstash-patterns'
 }
-{% endhighlight %}
+```
 
 These rulesets extract the timestamp, sender and message data for the
 notifications into separate fields so they are easily accessible later on. I
@@ -139,14 +139,14 @@ didn't find a way to match any tag (the `tags` setting requires an event to
 match all given tags) so I couldn't combine them into one rule. Though this
 seems like something that should be fixable.
 
-{% highlight javascript %}
+```javascript
 grok {
   pattern => "\[%{IRCTIME:irctime}\](.+?)<%{DATA:ircsender}>%{IRCNOTIFY:ircmessage}"
   add_tag => ["notification"]
   exclude_tags => ["pmnotification"]
   patterns_dir => '/home/username/logstash-patterns'
 }
-{% endhighlight %}
+```
 
 And finally the last pattern ruleset matches the regexes that are defined for all
 events and parses them into the fields mentioned before. Notice that all
@@ -160,7 +160,7 @@ notifications when restarting the polling script and wasn't really happy with
 this solution. And since I already had Redis running on that host, I thought
 I'd give that a try.
 
-{% highlight javascript %}
+```javascript
 output {
   redis {
     host => 'localhost'
@@ -184,7 +184,7 @@ output {
     password => 'secret'
   }
 }
-{% endhighlight %}
+```
 
 The output config basically just says the for every type of notification log
 event, append it to a Redis list with the name `'notifications'` on
@@ -195,7 +195,7 @@ The last part now is actually getting the notifications into growl on the OSX
 side of things. For this I have Growl setup to forward everything to
 notification center and run the following script on my Mac:
 
-{% highlight python %}
+```python
 import sys
 import gntp
 import json
@@ -239,7 +239,7 @@ while 1:
 
     message = (log["@fields"]["ircmessage"][0]).encode("utf-8")
     gntp.notifier.mini(message, applicationName=app, title=title)
-{% endhighlight %}
+```
 
 This uses the python gntp library to talk to Growl and the redis client to talk
 to Redis. Specifically for the Redis connection I use `blpop`, which pops an

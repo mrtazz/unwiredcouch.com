@@ -1,7 +1,5 @@
 ---
-layout: post
-title: "My Tmux Setup"
-published: true
+title: My Tmux Setup
 ---
 
 I've been using [tmux][tmux] as my main terminal multiplexer for about 3 years
@@ -17,10 +15,10 @@ Let's start with the basics. By default tmux uses `ctrl-b` as its prefix key
 for commands and escaping. But the years of using screen have ingrained in my
 muscle memory to use `ctrl-a`, so I switched with this simple setting:
 
-{% highlight bro %}
+```bash
 unbind C-b
 set -g prefix C-a
-{% endhighlight %}
+```
 
 I also added a couple of important baseline settings to make tmux in general
 look nice in colored terminals and work with unicode in the display window as
@@ -30,7 +28,7 @@ on the right side of the keyboard and then continue on the left side. And I
 also wanted to have a simple shortcut (`ctrl-a r`) to reload configuration in
 a live tmux session whenever I change something.
 
-{% highlight bro %}
+```
 # force a reload of the config file
 unbind r
 bind r source-file ~/.tmux.conf
@@ -44,7 +42,7 @@ set -g default-terminal "screen-256color"
 # unicode
 setw -g utf8 on
 set -g status-utf8 on
-{% endhighlight %}
+```
 
 The next important change was modifying the status bar. There are a lot of
 crazy things you can do and overload your tmux status bar with more
@@ -64,7 +62,8 @@ the screenshot:
 ![tmux status bar](/images/tmux-status.png)
 
 And the configuration for my status bar looks like this:
-{% highlight bro %}
+
+```
 # status bar config
 set -g status-left "#h:[#S]"
 set -g status-left-length 50
@@ -75,16 +74,16 @@ set-window-option -g automatic-rename off
 
 # listen to alerts from all windows
 set -g bell-action any
-{% endhighlight %}
+```
 
 This is the base configuration I use for basic project sessions with tmux. I
 have two simple shell aliases to make it easier to re-attach to a session and
 create new ones based on the current directory I'm in:
 
-{% highlight bash %}
+```bash
 alias tma='tmux attach -d -t'
 alias git-tmux='tmux new -s $(basename $(pwd))'
-{% endhighlight %}
+```
 
 With those I can ran `tma <tab>` in any shell and get a tab completion list
 for all the current sessions running. Which is handy when logging into a
@@ -100,7 +99,7 @@ cycle through panes (vertical or horizontal splits in a window created with
 `ctrl-a V` and `ctrl-a H`) with `ctrl-a a` and to switch between windows with
 `ctrl-a <tab>`.
 
-{% highlight apache %}
+```
 # rebind pane tiling
 bind V split-window -h
 bind H split-window
@@ -112,20 +111,20 @@ bind ^A select-pane -t :.+
 # screen like window toggling
 bind Tab last-window
 bind Escape copy-mode
-{% endhighlight %}
+```
 
 And last but not least in every basic setup - as an avid vim user - movement
 commands live on the home row of course. And different panes can be selected
 with `ctrl-a` and the corresponding movement command.
 
-{% highlight bro %}
+```
 # vim movement bindings
 set-window-option -g mode-keys vi
 bind h select-pane -L
 bind j select-pane -D
 bind k select-pane -U
 bind l select-pane -R
-{% endhighlight %}
+```
 
 ### Next Level
 I used to use tmux sessions in multiple tabs in iTerm for a long time.
@@ -150,9 +149,9 @@ use it basically like terminal tabs. This is very useful but needs one more
 setting in the configuration to work. Since both nested tmux sessions expect
 the same meta command, I have this stanza in my configuration:
 
-{% highlight bro %}
+```
 bind-key a  send-prefix
-{% endhighlight %}
+```
 
 This sends the command prefix to the inner tmux session when I hit `ctrl-a
 a` thus enabling me to execute commands in nested tmux sessions.
@@ -165,11 +164,11 @@ session. However this means finding the session I want in a list that might
 contain 20 or more sessions. And all I really want is to switch to the
 session named "chef". This is why I added another extremely useful shortcut:
 
-{% highlight bro %}
+```
 # bind fast session switching
 unbind S
 bind S command-prompt "switch -t %1"
-{% endhighlight %}
+```
 
 Now when I hit `ctrl-a S` I get a `(switch)` prompt where I can enter the name
 of the session I want (or just the prefix as long as it is unique) and switch
@@ -185,11 +184,11 @@ open a new tmux window whenever I ssh into a server. However this got very
 confusing after a while and I had no idea what all those windows were. So I
 added this little bit into my `~/.ssh/config`:
 
-{% highlight bash %}
+```bash
 Host *
 PermitLocalCommand yes
 LocalCommand if [[ $TERM == screen* ]]; then printf "\033k%h\033\\"; fi
-{% endhighlight %}
+```
 
 This runs a local command on each ssh login on the server I login in. With the
 effect that it prints the local hostname with an escape sequence that triggers

@@ -1,7 +1,7 @@
 ---
-layout: post
 title: Bash Unit Testing from First Principles
 ---
+
 
 In the last couple of months I've done a foray into unit testing the shell
 scripts I write. This is mostly a conglomerate of things I've learned and a
@@ -64,7 +64,6 @@ Let's say we want a function to output the number of characters in a string.
 It could look something like this:
 
 ```bash
-
 function num_chars {
   echo "${1}" | wc -c
 }

@@ -30,25 +30,25 @@ source those override files at the very end.
 
 So in my regular `.vimrc` I have something like this:
 
-{% highlight vim %}
+```vim
 " source overrides configs
 if filereadable($HOME."/.dotoverrides/vimrc")
   exec ":source ". $HOME . "/.dotoverrides/vimrc"
 endif
-{% endhighlight %}
+```
 
 In my `.zshrc` I have this:
 
-{% highlight bash %}
+```bash
 [ -f  ${HOME}/.dotoverrides/zshrc ] && source ${HOME}/.dotoverrides/zshrc
-{% endhighlight %}
+```
 
 And in git (only works if you have at least v1.7.10) I've added this stanza:
 
-{% highlight linux-config %}
+```config
 [include]
   path = ~/.dotoverrides/gitconfig
-{% endhighlight %}
+```
 
 Now I can easily share and push/pull my regular dotfiles  in public GitHub and
 don't have to pay attention whether or not I'm on the correct branch and if

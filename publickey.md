@@ -2,7 +2,6 @@
 layout: default
 title: PGP Public Key
 ---
-## [PGP Public Key]({{page.title}})
 My ID is 57182B3886AE7F3C and my public key is:
 
 ```

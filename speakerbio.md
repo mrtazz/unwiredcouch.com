@@ -1,14 +1,10 @@
----
-layout: default
-title: Speaker Bio
----
-## [{{page.title}}]({{page.url}})
+## Speaker Bio
 
 <div style="text-align:left" markdown="1">
 <img src="http://www.gravatar.com/avatar/89e0ad1229121f46047977ac547bd7b4.jpg?s=150" />
 </div>
 
-
+</br>
 
 Daniel is a Staff Software Engineer at Etsy's infrastructure and development
 tools team. He loves automation, monitoring, documentation and simplicity. In

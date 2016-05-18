@@ -32,7 +32,7 @@ system for each machine I want to backup. In order to have the ability to go
 back in time I use [zfs snapshots][snapshots]. Every night the following
 script runs on my backup server and creates a snapshot for the day:
 
-{% highlight bash %}
+```bash
 #!/bin/sh
 # simple script to snapshot locations on a ZFS backup pool
 
@@ -41,12 +41,12 @@ for volume in $(ls /backup); do
   echo "Creating snapshot for ${volume} at date ${timestamp}"
   /sbin/zfs snapshot backup/${volume}@${timestamp}
 done
-{% endhighlight %}
+```
 
 And to make sure that I really do have snapshots I have this simple nagios
 script to tell me if the snapshotting worked last night.
 
-{% highlight bash %}
+```bash
 #!/bin/sh
 
 # nagios script to check age of backup snapshots
@@ -68,12 +68,12 @@ fi
 
 exit ${EXITCODE}
 
-{% endhighlight %}
+```
 
 And this check (which runs on all my servers because I have zpools everywhere)
 to tell me about the disk health of the backup zpool:
 
-{% highlight bash %}
+```bash
 #!/bin/sh
 
 # check for zpool health
@@ -92,7 +92,7 @@ if [ $EXITSTATUS == 0 ]; then
 fi
 
 exit $EXITSTATUS
-{% endhighlight %}
+```
 
 With this setup in place I can simply copy files into the file system that
 belongs to that machine and it will get snapshotted every night. And what's an
@@ -100,7 +100,7 @@ awesome tool to copy data? That's right, [rsync][rsync].
 
 My backup script runs once every 15 minutes and looks like this:
 
-{% highlight bash %}
+```bash
 #!/bin/sh
 #
 # Backup script to pull in changes from remote hosts
@@ -112,7 +112,7 @@ for backup in $(ls /backup); do
 --archive --delete --timeout=5 ${backup}:. /backup/${backup}/
   fi
 done
-{% endhighlight %}
+```
 
 This allows me to have machines that I used to backup but are no longer online
 in an excludes list. That way rsync (and ssh) doesn't hang or error for
@@ -131,9 +131,9 @@ Timemachine on my laptop and have it automatically run the backups.
 
 But in the meantime I can add a new backup with this one weird trick:
 
-{% highlight bash %}
+```bash
 zfs create /backup/newhost && chown -R mrtazz:mrtazz /backup/newhost
-{% endhighlight %}
+```
 
 [uncloud]: http://www.unwiredcouch.com/2013/10/30/uncloud-your-life.html
 [snapshots]: http://docs.oracle.com/cd/E19253-01/819-5461/gbcya/index.html

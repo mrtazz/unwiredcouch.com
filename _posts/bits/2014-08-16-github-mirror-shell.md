@@ -27,7 +27,7 @@ First I needed a way to get a list of all my repositories. Thankfully GitHub
 has a [pretty great API][ghapi] so I can just get a list of all my
 repositories and their git clone URLs:
 
-{% highlight bash %}
+```bash
 #!/bin/sh
 
 # Usage:
@@ -67,7 +67,7 @@ while [ ${count} -gt 0 ]; do
   fi
 
 done
-{% endhighlight %}
+```
 
 This script takes a username and an optional access token and retrieves the
 public list of repositories for that user. It then outputs the git clone URLs
@@ -83,7 +83,7 @@ This now gives me a list of all repositories on my account I want to mirror.
 The next step is actually mirroring them. For that I wrote a script that looks
 like this:
 
-{% highlight bash %}
+```bash
 #!/bin/sh
 
 # take a list of git clone urls on STDIN and clone them if they don't exist.
@@ -121,8 +121,7 @@ while read line; do
   fi
 
 done
-
-{% endhighlight %}
+```
 
 This script checks for each entry in a list of git clone URLs passed in via
 STDIN and if the directory already exists it fetches changes and if not clones
@@ -132,10 +131,10 @@ in this [GitHub guide][mirrorgit].
 Now to tie those two together I just set up two cron entries to run those two
 commands:
 
-{% highlight bash %}
+```bash
 0 20 * * * ~/bin/github_repo_list.sh mrtazz 0f6 > /backup/github/github_repo_list.txt
 0 21 * * * ~/bin/github_repo_sync.sh /backup/github < /backup/github/github_repo_list.txt
-{% endhighlight %}
+```
 
 The first cron entry fetches the list of repositories and sticks them into a
 text file. The second one runs an hour later and actually syncs all the

@@ -1,3 +1,5 @@
 _site*
 *.swp
 _drafts
+.allposts.yml
+.allposts.psv

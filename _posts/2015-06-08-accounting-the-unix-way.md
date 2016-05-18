@@ -57,7 +57,7 @@ year since 2013. In those per-year directories I have a file for checking,
 credit card, cash and opening balances. And a top level ledger dat file per
 year that includes the appropriate files.
 
-{% highlight bash %}
+```bash
 cassie:accounting[master]% cat 2015.dat
 include 2015/opening_balances.dat
 include 2015/checking.dat
@@ -69,7 +69,7 @@ cash.dat
 checking.dat
 credit_card.dat
 opening_balances.dat
-{% endhighlight %}
+```
 
 Checking and credit card should be self explanatory as they just hold the
 entries for those accounts. Whenever I withdraw money at an ATM, I book it to
@@ -102,19 +102,19 @@ from which includes all possible accounts. And because I really like
 Makefiles, I have one with a simple task in there to generate a big file which
 contains all of my postings:
 
-{% highlight make %}
+```make
 SOURCES := $(shell find . -iname "*.dat*" -mindepth 2)
 
 corpus.dat: $(SOURCES)
 	cat $(SOURCES) > $@
 
-{% endhighlight %}
+```
 
 Now I run reckon with something like
 
-{% highlight bash %}
+```bash
 reckon -f raw_data/2015/checking05.csv --contains-header -o 201505_checking.dat -l corpus.dat
-{% endhighlight %}
+```
 
 in order to parse the CSV file. Usually when I run this, reckon detects almost
 all of my recurrent transactions like rent, gas, electricity, internet, subway
@@ -133,9 +133,9 @@ explaining all the possibilities. But the simplest way to get started is just
 showing the top level balances which will give you an overview about Income,
 Expenses and Assets (if you have named your accounts like that):
 
-{% highlight bash %}
+```bash
 ledger -f 2015.dat --period-sort "(amount)" balance -M --begin 2015/04/01 --end 2015/05/01 --depth=1
-{% endhighlight %}
+```
 
 ### Verdict
 I'm really happy with this setup so far. It's comparably low tech and low
