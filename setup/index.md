@@ -3,8 +3,6 @@ layout: default
 title: My Setups
 ---
 
-## [My Setups]({{page.permalink}})
-
 I'm a big fan of reading how other people do things and approach problems. I
 love sites like [The Setup](https://usesthis.com/) and look forward to every
 new entry from it in my RSS reader. This is why I decided to also share more
