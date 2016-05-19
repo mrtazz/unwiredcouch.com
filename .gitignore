@@ -3,3 +3,4 @@ _site*
 _drafts
 .allposts.yml
 .allposts.psv
+css/*.min.css
