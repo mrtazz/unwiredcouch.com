@@ -121,4 +121,7 @@ deploy:
 css/style.min.css: css/style.css
 	minify css/style.css css/style.min.css
 
-css: css/style.min.css
+css/mobile.min.css: css/mobile.css
+	minify css/mobile.css css/mobile.min.css
+
+css: css/style.min.css css/mobile.min.css
