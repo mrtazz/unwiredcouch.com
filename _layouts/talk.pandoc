@@ -4,6 +4,7 @@
         <meta charset="utf-8"/>
         <meta http-equiv="cache-control" content="no-cache"/>
         <meta http-equiv="pragma" content="no-cache"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link href="/css/style.min.css" media="screen" rel="stylesheet" type="text/css"/>
         <link href="/css/mobile.min.css" media="handheld, only screen and (max-device-width: 960px)" rel="stylesheet" type="text/css"/>
         <link href="https://unwiredcouch.com/atom.xml" type="application/atom+xml" rel="alternate" title="unwiredcouch.feed" />
@@ -88,4 +89,3 @@
 
     </body>
 </html>
-

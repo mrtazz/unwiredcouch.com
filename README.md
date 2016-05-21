@@ -27,6 +27,15 @@ All code is licensed under the MIT license:
   OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
   WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+## Executing:
+  To make files you will need to install [Pandoc][4], coreutils and
+  [minifier][5].
+
+  Once everything is installed simply run
+  `make all` and subsequently `make serve`
+
 [1]: http://unwiredcouch.com
 [2]: http://creativecommons.org/licenses/by/3.0/
 [3]: https://creativecommons.org/licenses/by-nc-nd/3.0/
+[4]: http://pandoc.org/installing.html
+[5]: https://www.npmjs.com/package/minifier
