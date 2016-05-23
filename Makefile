@@ -13,6 +13,10 @@ INDEX_TPL := _layouts/index.pandoc
 TALK_TPL  := _layouts/talk.pandoc
 TALKS_INDEX_TPL  := _layouts/talkindex.pandoc
 
+STYLE_REV=$(shell git log -n 1 --pretty=format:'%h' css/style.css)
+MOBILE_REV=$(shell git log -n 1 --pretty=format:'%h' css/mobile.css)
+PANDOC_REVS=-M stylerev="$(STYLE_REV)" -M mobilerev="$(MOBILE_REV)"
+
 # mapping function to get the resulting URL directory structure for a passed
 # in source post
 define map_url_to_post
@@ -40,7 +44,7 @@ POSTS := $(call map_post_to_url, $(src_posts))
 all: css static pages posts index talkindex talks feed favicon
 
 serve: $(SITEDIR)
-	cd ${SITEDIR} && php -S localhost:8000
+	cd ${SITEDIR} && php -S 0.0.0.0:8000
 
 $(SITEDIR):
 	mkdir -p ${SITEDIR}
@@ -51,7 +55,7 @@ $(STATIC): $(addprefix ${SITEDIR}/, %) : ${PWD}/% | $(SITEDIR)
 
 $(TALKS): $(addprefix ${SITEDIR}/, %.html) : ${PWD}/%.yml  $(TALK_TPL) | $(SITEDIR)
 	mkdir -p `dirname $@`
-	$(PANDOC) -s -S --template=$(TALK_TPL) -o $@ $<
+	$(PANDOC) $(PANDOC_REVS) -s -S --template=$(TALK_TPL) -o $@ $<
 
 .allposts.psv: $(src_posts)
 	@echo "Generating post index..."
@@ -75,21 +79,21 @@ $(SITEDIR)/atom.xml: .allposts.psv | $(SITEDIR)
 feed: $(SITEDIR)/atom.xml
 
 $(SITEDIR)/index.html: .allposts.yml $(INDEX_TPL) | $(SITEDIR)
-	$(PANDOC) -s --template=$(INDEX_TPL) -o $@ $<
+	$(PANDOC) $(PANDOC_REVS) -s --template=$(INDEX_TPL) -o $@ $<
 
 $(SITEDIR)/talks/index.html: _data/talks.yml $(TALKS_INDEX_TPL) | $(SITEDIR)
 	mkdir -p $(SITEDIR)/talks
-	$(PANDOC) -s --template=$(TALKS_INDEX_TPL) -o $@ $<
+	$(PANDOC) $(PANDOC_REVS) -s --template=$(TALKS_INDEX_TPL) -o $@ $<
 
 $(SITEDIR)/talks.html: _data/talks.yml $(TALKS_INDEX_TPL) | $(SITEDIR)
-	$(PANDOC) -s --template=$(TALKS_INDEX_TPL) -o $@ $<
+	$(PANDOC) $(PANDOC_REVS) -s --template=$(TALKS_INDEX_TPL) -o $@ $<
 
 index: $(SITEDIR)/index.html
 talkindex: $(SITEDIR)/talks/index.html $(SITEDIR)/talks.html
 
 $(PAGES): $(addprefix ${SITEDIR}/, %.html) : ${PWD}/%.md  $(POST_TPL) | $(SITEDIR)
 	mkdir -p `dirname $@`
-	$(PANDOC) $< $(PANDOC_FLAGS) --template $(POST_TPL)  -o $@
+	$(PANDOC) $< $(PANDOC_FLAGS) $(PANDOC_REVS) --template $(POST_TPL)  -o $@
 
 $(POSTDATES): | $(SITEDIR)
 	@mkdir -p $@
@@ -99,7 +103,7 @@ $(SITEDIR)/favicon.ico: favicon.ico | $(SITEDIR)
 
 .SECONDEXPANSION:
 $(POSTS): % : $$(call map_url_to_post, %)  $(POST_TPL) | $(SITEDIR)
-	$(PANDOC) $< $(PANDOC_DATE_SUB) $(PANDOC_FLAGS) --template $(POST_TPL) -o $@
+	$(PANDOC) $< $(PANDOC_DATE_SUB) $(PANDOC_FLAGS) $(PANDOC_REVS) --template $(POST_TPL) -o $@
 
 pages:  $(PAGES)
 posts:  $(POSTDATES) $(POSTS)
