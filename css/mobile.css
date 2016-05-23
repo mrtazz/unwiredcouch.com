@@ -43,7 +43,7 @@ header {
     color: white;
     font-size: 20px;
     font-weight: normal;
-    height: 20%;
+    height: 25%;
 }
 
 div#intro {
@@ -62,7 +62,7 @@ div#intro p {
 }
 
 #content {
-  top: 25%;
+  top: 30%;
   left: 5%;
   width: 90%;
   line-height: 20px;
