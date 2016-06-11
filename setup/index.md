@@ -22,3 +22,4 @@ of my setups and this page holds the index for that.
 ### Computers
 - [Infrastructure](https://unwiredcouch.com/2013/10/30/uncloud-your-life.html)
 - [Backups](https://unwiredcouch.com/bits/2014/03/18/zfs-rsync-backups.html)
+- [vim](https://unwiredcouch.com/setup/vim)
