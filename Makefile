@@ -119,7 +119,7 @@ distclean:
 	@echo "Removing ${SITEDIR}..."
 	@rm -rf ./${SITEDIR}
 
-deploy:
+deploy: all
 	rsync -chavzOP --no-perms --stats _site/ unwiredcouch.com:/usr/local/www/unwiredcouch/
 
 css/style.min.css: css/style.css
