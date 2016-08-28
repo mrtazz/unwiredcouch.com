@@ -27,7 +27,7 @@ define map_post_to_url
 $(patsubst %.md, %.html, $(subst _posts,${SITEDIR}, $(shell echo $1 | sed "s/\([0-9]\{4\}\)-\([0-9]\{2\}\)-\([0-9]\{2\}\)-/\1\/\2\/\3\//g")))
 endef
 
-static    := $(shell find images css fonts -type f)
+static    := $(shell find images css fonts static -type f)
 pages     := $(filter-out README.md,$(shell find . -iname "*.md*" | grep -v _posts | grep -v _drafts | sed 's/\.\///g'))
 src_posts := $(shell find _posts -name "*.md" )
 postdates := $(shell find _posts -name "*.md"  |  grep -o "[a-zA-Z].*\d\{4\}-\d\{2\}-\d\{2\}" | sed "s/posts\///g" | sed "s/-/\//g")
