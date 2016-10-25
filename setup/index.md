@@ -14,7 +14,7 @@ of my setups and this page holds the index for that.
 
 
 ### Productivity
-- [Omnifocus](https://unwiredcouch.com/2014/05/13/omnifocus.html)
+- [Omnifocus](https://unwiredcouch.com/setup/omnifocus)
 - [Email](https://unwiredcouch.com/2014/08/29/email-happiness.html)
 - [Writing](https://unwiredcouch.com/2015/08/31/writing-workflow.html)
 - [vim templates](https://unwiredcouch.com/bits/2014/07/22/productive-vim-with-templates.html)
