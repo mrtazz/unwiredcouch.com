@@ -2,11 +2,12 @@
 layout: default
 title: About
 ---
-I'm a computology practitioner and love working on tools, infrastructure and
-helping people ship code. By day I'm writing tools as part of the DevTools
-team at [Etsy](http://etsy.com). When I'm not writing code, I'm usually having
-breakfast, play basketball or watch TV shows. I also consume coffee and rap
-music in moderate to high volumes every day.
+
+Hi! I'm Daniel!
+
+I'm a Staff Engineer on Etsy's compute team. When I'm not working on Etsy's
+infrastructure, I'm usually having coffee, play basketball or watch TV
+shows.
 
 I write about a lot of things on this blog, but it doesn't and has never
 represented the opinion of any of my employers.
