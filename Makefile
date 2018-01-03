@@ -114,10 +114,14 @@ favicon: $(SITEDIR)/favicon.ico
 clean:
 	@echo "Removing contents in ${SITEDIR}..."
 	@rm -rf ./${SITEDIR}/*
+	@echo "Removing cache files..."
+	@rm -rf ./.allposts*
 
 distclean:
 	@echo "Removing ${SITEDIR}..."
 	@rm -rf ./${SITEDIR}
+	@echo "Removing cache files..."
+	@rm -rf ./.allposts*
 
 deploy: all
 	rsync -chavzOP --no-perms --stats _site/ unwiredcouch.com:/usr/local/www/unwiredcouch/
