@@ -4,3 +4,4 @@ _drafts
 .allposts.yml
 .allposts.psv
 css/*.min.css
+css/*map
