@@ -28,7 +28,7 @@ $(patsubst %.md, %.html, $(subst _posts,${SITEDIR}, $(shell echo $1 | sed "s/\([
 endef
 
 static    := $(shell find images css fonts static -type f)
-pages     := $(filter-out README.md,$(shell find . -iname "*.md*" | grep -v _posts | grep -v _drafts | sed 's/\.\///g'))
+pages     := $(filter-out README.md,$(shell find . -iname "*.md*" | grep -v _posts | grep -v _drafts | grep -v node_modules | sed 's/\.\///g'))
 src_posts := $(shell find _posts -name "*.md" )
 postdates := $(shell find _posts -name "*.md"  |  grep -o "[a-zA-Z].*\d\{4\}-\d\{2\}-\d\{2\}" | sed "s/posts\///g" | sed "s/-/\//g")
 talks     := $(shell find talks -type f )
@@ -45,6 +45,12 @@ all: css static pages posts index talkindex talks feed favicon
 
 serve: $(SITEDIR)
 	cd ${SITEDIR} && php -S 0.0.0.0:8000
+
+.PHONY: deps
+deps: node_modules
+
+node_modules:
+	npm install sass
 
 $(SITEDIR):
 	mkdir -p ${SITEDIR}
@@ -126,10 +132,10 @@ distclean:
 deploy: all
 	rsync -chavzOP --no-perms --stats _site/ unwiredcouch.com:/usr/local/www/unwiredcouch/
 
-css/style.min.css: css/style.css
-	sass --style compressed css/style.css:css/style.min.css
+css/style.min.css: css/style.css deps
+	./node_modules/sass/sass.js --no-source-map --style compressed $< $@
 
-css/mobile.min.css: css/mobile.css
-	sass --style compressed css/mobile.css:css/mobile.min.css
+css/mobile.min.css: css/mobile.css deps
+	./node_modules/sass/sass.js --no-source-map --style compressed $< $@
 
 css: css/style.min.css css/mobile.min.css
