@@ -19,10 +19,11 @@ links:
   - name: Etsy Engineering Talks
     url: http://etsy.com/codeascraft/talks
 
-abstract: "This talk discusses the architectural past of Etsy and how it
-evolved over the years. It also goes into detail about the tooling we wrote
-and leverage for making out continuous deployment culture work. It then goes
-on and describes out culture of blameless postmortems and how we strive to be
-a learning organziation and integrates learning into the process of incident
-response and handling."
+abstract: |
+  This talk discusses the architectural past of Etsy and how it
+  evolved over the years. It also goes into detail about the tooling we wrote
+  and leverage for making out continuous deployment culture work. It then goes
+  on and describes out culture of blameless postmortems and how we strive to be
+  a learning organziation and integrates learning into the process of incident
+  response and handling.
 ---

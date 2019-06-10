@@ -13,6 +13,7 @@ links:
   - url: http://etsy.com/codeascraft/talks
     name: Etsy Engineering Talks
 
-abstract: "I gave a 10 minute overview of how we use Chef at Etsy at the Chef
-NYC meetup."
+abstract: |
+  I gave a 10 minute overview of how we use Chef at Etsy at the Chef
+  NYC meetup.
 ---

@@ -6,7 +6,7 @@
 SITEDIR=_site
 FEEDSIZE=10
 PANDOC=$(shell which pandoc)
-PANDOC_FLAGS=--from=markdown_github-hard_line_breaks+yaml_metadata_block --email-obfuscation=none --to=html
+PANDOC_FLAGS=--standalone --from=markdown-hard_line_breaks+yaml_metadata_block+smart --email-obfuscation=none --to=html
 PANDOC_DATE_SUB=-M postdate="`gdate -d"$(shell echo $< | grep -o "\d\{4\}-\d\{2\}-\d\{2\}" | sed "s/-//g")" +'%b %d, %Y'`"
 POST_TPL  := _layouts/post.pandoc
 INDEX_TPL := _layouts/index.pandoc
@@ -61,7 +61,7 @@ $(STATIC): $(addprefix ${SITEDIR}/, %) : ${PWD}/% | $(SITEDIR)
 
 $(TALKS): $(addprefix ${SITEDIR}/, %.html) : ${PWD}/%.yml  $(TALK_TPL) | $(SITEDIR)
 	mkdir -p `dirname $@`
-	$(PANDOC) $(PANDOC_REVS) -s -S --template=$(TALK_TPL) -o $@ $<
+	$(PANDOC) $(PANDOC_FLAGS) $(PANDOC_REVS) -s --template=$(TALK_TPL) -o $@ $<
 
 .allposts.psv: $(src_posts)
 	@echo "Generating post index..."
@@ -73,7 +73,7 @@ $(TALKS): $(addprefix ${SITEDIR}/, %.html) : ${PWD}/%.yml  $(TALK_TPL) | $(SITED
 		done | sort -r > $@
 
 .allposts.yml: .allposts.psv
-	awk -F'|' 'BEGIN{post_year=0; print "---\nentries:"} \
+	awk -F'|' 'BEGIN{post_year=0; print "---\ntitle: unwiredcouch\nentries:"} \
 		{n=split($$1,thedate," "); if (post_year != thedate[1]) { post_year=thedate[1]; print "-\n\tyear: "post_year"\n\tposts:"}; \
 		printf("\t\t-\n\t\t\tdate: %s\n\t\t\turl: %s\n\t\t\ttitle: \42%s\42\n\t\t\trawpost: \42%s\42\n", strftime("%b %d, %Y",mktime($$1" 00 00 00")), $$2, $$3, $$4) } \
 		END{print "---"}' < $< > $@

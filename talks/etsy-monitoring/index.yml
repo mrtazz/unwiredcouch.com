@@ -20,14 +20,15 @@ links:
   - url: http://codeascraft.com/2014/06/19/opsweekly-measuring-on-call-experience-with-alert-classification/
     name: Introducing Opsweekly
 
-abstract: "It's no secret that at Etsy we are big fans of small, incremental
-and frequent changes and tight feedback loops. This is how we make it possible
-to deploy changes to our main codebase more than 50 times a day and also
-safely apply changes to our infrastructure in a continuous fashion. It enables
-us to rapidly fix bugs and roll out features in our application stack and
-infrastructure. This however would not be possible without a tight feedback
-loop and a myriad of monitoring tools that keep us informed about changes and
-possible problems in every nook and cranny of the Etsy stack, no matter if
-it's a network change event, systems or application level performance or how
-bad the last week of on-call rotation was."
+abstract: |
+  It's no secret that at Etsy we are big fans of small, incremental
+  and frequent changes and tight feedback loops. This is how we make it possible
+  to deploy changes to our main codebase more than 50 times a day and also
+  safely apply changes to our infrastructure in a continuous fashion. It enables
+  us to rapidly fix bugs and roll out features in our application stack and
+  infrastructure. This however would not be possible without a tight feedback
+  loop and a myriad of monitoring tools that keep us informed about changes and
+  possible problems in every nook and cranny of the Etsy stack, no matter if
+  it's a network change event, systems or application level performance or how
+  bad the last week of on-call rotation was.
 ---

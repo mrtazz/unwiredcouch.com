@@ -14,7 +14,8 @@ links:
   - url: http://etsy.com/codeascraft/talks
     name: Etsy Engineering Talks
 
-abstract: "At the inaugural Monitorama conference I gave a workshop that
-introduces StatsD, shows how to use it, how to write different backends for it
-and tips about how we run it in production."
+abstract: |
+  At the inaugural Monitorama conference I gave a workshop that
+  introduces StatsD, shows how to use it, how to write different backends for it
+  and tips about how we run it in production.
 ---

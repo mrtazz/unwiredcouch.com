@@ -21,20 +21,21 @@ links:
   - name: Etsy Engineering Talks
     url: http://etsy.com/codeascraft/talks
 
-abstract: "At Etsy we are continuously deploying software with about 50
-deploys per day on average. We have about 150 engineers that work together to
-add features, improve the site, solve problems, and figure out outages. We are
-constantly working on improving ways to collaborate and have the time to
-invest into research and new projects instead of fire fighting. However this
-hasn't been like this from the beginning. In the Dark Ages of Etsy we had a
-vastly different software architecture, a myriad of silos with a less than
-ideal amount of communication and a not so stable site. So what happened? How
-did we fix this?
+abstract: |
+  At Etsy we are continuously deploying software with about 50
+  deploys per day on average. We have about 150 engineers that work together to
+  add features, improve the site, solve problems, and figure out outages. We are
+  constantly working on improving ways to collaborate and have the time to
+  invest into research and new projects instead of fire fighting. However this
+  hasn't been like this from the beginning. In the Dark Ages of Etsy we had a
+  vastly different software architecture, a myriad of silos with a less than
+  ideal amount of communication and a not so stable site. So what happened? How
+  did we fix this?
 
-We will briefly go over how we changed the architecture and culture to make
-site operations and stability better. After that we will go into detail about
-what it meant for us to maintain that culture of collaboration and trust and
-things we learned from that. And finally take a look at the state of things in
-the present and give a comprehensive picture of how we arrived here and where
-to go from there. "
+  We will briefly go over how we changed the architecture and culture to make
+  site operations and stability better. After that we will go into detail about
+  what it meant for us to maintain that culture of collaboration and trust and
+  things we learned from that. And finally take a look at the state of things in
+  the present and give a comprehensive picture of how we arrived here and where
+  to go from there.
 ---
