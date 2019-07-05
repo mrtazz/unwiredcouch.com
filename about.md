@@ -5,8 +5,8 @@ title: About
 
 Hi! I'm Daniel!
 
-I'm a Staff Engineer on Etsy's compute team. When I'm not working on Etsy's
-infrastructure, I'm usually having coffee, play basketball or watch TV
+I'm an infrastructure engineer at GitHub. When I'm not working on
+infrastructure, I'm usually having coffee, draw, play basketball or watch TV
 shows.
 
 I write about a lot of things on this blog, but it doesn't and has never

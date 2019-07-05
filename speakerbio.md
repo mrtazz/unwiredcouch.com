@@ -6,7 +6,7 @@
 
 </br>
 
-Daniel Schauenberg is a Staff Engineer at Etsy's compute team.  He loves
+Daniel Schauenberg is an infrastructure engineer at GitHub. He loves
 automation, testing, documentation and simplicity. In previous lives he has
 worked in systems and network administration, on connecting chemical plants to
 IT systems and as an embedded systems networking engineer. Things he
