@@ -150,6 +150,16 @@ ul{
 .post img {
   display:block;
   margin:auto;
+  max-width:50%;
+  height:auto;
+}
+
+.post figure {
+  margin: 20px;
+}
+
+.post figure figcaption {
+  text-align: center;
 }
 
 div.archive {
