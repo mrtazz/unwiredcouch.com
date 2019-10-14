@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="cache-control" content="no-cache"/>
+    <meta http-equiv="pragma" content="no-cache"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="/css/style.min.css?v=f21333a" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="/css/mobile.min.css?v=1eac577" media="handheld, only screen and (max-device-width: 960px)" rel="stylesheet" type="text/css"/>
+    <link href="https://unwiredcouch.com/atom.xml" type="application/atom+xml" rel="alternate" title="unwiredcouch.feed" />
+
+    <title>Backups with rsync and zfs on unwiredcouch.com</title>
+  </head>
+  <body>
+
+    <header>
+      <a class="gravatar hidemobile" href="/">
+        <img src="https://www.gravatar.com/avatar/89e0ad1229121f46047977ac547bd7b4.jpg?s=100"
+             height="100" width="100" class="avatar" alt="gravatar image" />
+      </a>
+      <div id="intro">
+        <p>Hi! I'm <a href="/about.html">Daniel</a>.</p>
+        <p>I like
+        <a href="/">writing</a>,
+        <a href="https://www.instagram.com/mrtazz/">drawing</a>,
+        <a href="https://twitter.com/mrtazz">tweeting</a>,
+        <a href="/talks">sometimes give talks</a>,
+        and <a href="http://code.mrtazz.com">occasionally write code</a>.
+        </p>
+      </div>
+    </header>
+
+    <div id="content">
+            <div class="postdateheading"> Mar 18, 2014 </div>
+            <div class="post">
+        <h2> <a href=""> Backups with rsync and zfs </a></h2>
+
+<p>As I <a href="http://www.unwiredcouch.com/2013/10/30/uncloud-your-life.html">mentioned before</a> I’m running my own backup on a server that is running in my apartment. I didn’t really talk a lot about how this works, other than it is running on a HP Microserver with an encrypted ZFS RAID. So I wanted to also quickly jot down how the backup works. This is only set up for a single user right now because I’m the only one using it.</p>
+<p>For me a backup has two important parts:</p>
+<ul>
+<li>Have data in a different location</li>
+<li>Be able to restore data from the past</li>
+</ul>
+<p>The time sensitivity of those two properties are pretty different for me. For example I have chosen for myself that I’m happy with only being able to restore deleted data from the last day. So if I create something and delete it 5 hours later, I’m ok with not being able to recover it. On the other hand I’m very aware of the fact that my mailserver can disappear at any given time:</p>
+<blockquote class="twitter-tweet" lang="en">
+<p>
+that moment when you want to make dinner and your mailserver disappears
+</p>
+— Daniel Schauenberg (<span class="citation" data-cites="mrtazz">@mrtazz</span>) <a href="https://twitter.com/mrtazz/statuses/411689583370592256">December 14, 2013</a>
+</blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>This is why I want to copy data to a remote location as often as possible (which for me means about every 15 minutes). And my setup is heavily based around those ideas. The core of the backup system is ZFS and a separate file system for each machine I want to backup. In order to have the ability to go back in time I use <a href="http://docs.oracle.com/cd/E19253-01/819-5461/gbcya/index.html">zfs snapshots</a>. Every night the following script runs on my backup server and creates a snapshot for the day:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="co">#!/bin/sh</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="co"># simple script to snapshot locations on a ZFS backup pool</span></a>
+<a class="sourceLine" id="cb1-3" title="3"></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="va">timestamp=</span><span class="kw">`</span><span class="fu">date</span> +%Y-%m-%d-%H:%M:%S<span class="kw">`</span></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="kw">for</span> <span class="ex">volume</span> in <span class="va">$(</span><span class="fu">ls</span> /backup<span class="va">)</span><span class="kw">;</span> <span class="kw">do</span></a>
+<a class="sourceLine" id="cb1-6" title="6">  <span class="bu">echo</span> <span class="st">&quot;Creating snapshot for </span><span class="va">${volume}</span><span class="st"> at date </span><span class="va">${timestamp}</span><span class="st">&quot;</span></a>
+<a class="sourceLine" id="cb1-7" title="7">  <span class="ex">/sbin/zfs</span> snapshot backup/<span class="va">${volume}</span>@<span class="va">${timestamp}</span></a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="kw">done</span></a></code></pre></div>
+<p>And to make sure that I really do have snapshots I have this simple nagios script to tell me if the snapshotting worked last night.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="co">#!/bin/sh</span></a>
+<a class="sourceLine" id="cb2-2" title="2"></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="co"># nagios script to check age of backup snapshots</span></a>
+<a class="sourceLine" id="cb2-4" title="4"></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="va">YESTERDAY=</span><span class="kw">`</span><span class="fu">date</span> -v-1d +%Y-%m-%d<span class="kw">`</span></a>
+<a class="sourceLine" id="cb2-6" title="6"><span class="va">EXITCODE=</span>0</a>
+<a class="sourceLine" id="cb2-7" title="7"></a>
+<a class="sourceLine" id="cb2-8" title="8"><span class="kw">for</span> <span class="ex">backup</span> in <span class="va">$(</span><span class="fu">ls</span> /backup<span class="va">)</span><span class="kw">;</span> <span class="kw">do</span></a>
+<a class="sourceLine" id="cb2-9" title="9">  <span class="ex">zfs</span> list -t snapshot <span class="kw">|</span> <span class="fu">grep</span> <span class="va">${backup}</span> <span class="kw">|</span> <span class="fu">grep</span> -q <span class="va">${YESTERDAY}</span></a>
+<a class="sourceLine" id="cb2-10" title="10">  <span class="kw">if</span><span class="bu"> [</span> <span class="va">$?</span> <span class="ot">!=</span> 0<span class="bu"> ]</span>; <span class="kw">then</span></a>
+<a class="sourceLine" id="cb2-11" title="11">    <span class="bu">echo</span> <span class="st">&quot;Snapshot of </span><span class="va">${backup}</span><span class="st"> missing for </span><span class="va">${YESTERDAY}</span><span class="st">.&quot;</span></a>
+<a class="sourceLine" id="cb2-12" title="12">    <span class="va">EXITCODE=</span>2</a>
+<a class="sourceLine" id="cb2-13" title="13">  <span class="kw">fi</span></a>
+<a class="sourceLine" id="cb2-14" title="14"><span class="kw">done</span></a>
+<a class="sourceLine" id="cb2-15" title="15"></a>
+<a class="sourceLine" id="cb2-16" title="16"><span class="kw">if</span><span class="bu"> [</span> <span class="va">${EXITCODE}</span> <span class="ot">==</span> 0<span class="bu"> ]</span>; <span class="kw">then</span></a>
+<a class="sourceLine" id="cb2-17" title="17">  <span class="bu">echo</span> <span class="st">&quot;All backup volumes were snapshotted on </span><span class="va">${YESTERDAY}</span><span class="st">.&quot;</span></a>
+<a class="sourceLine" id="cb2-18" title="18"><span class="kw">fi</span></a>
+<a class="sourceLine" id="cb2-19" title="19"></a>
+<a class="sourceLine" id="cb2-20" title="20"><span class="bu">exit</span> <span class="va">${EXITCODE}</span></a></code></pre></div>
+<p>And this check (which runs on all my servers because I have zpools everywhere) to tell me about the disk health of the backup zpool:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="co">#!/bin/sh</span></a>
+<a class="sourceLine" id="cb3-2" title="2"></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="co"># check for zpool health</span></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="va">ZPOOL=</span><span class="kw">`</span><span class="fu">which</span> zpool<span class="kw">`</span></a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="va">EXITSTATUS=</span>0</a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="va">IFS=</span><span class="st">$&#39;</span><span class="dt">\n</span><span class="st">&#39;</span></a>
+<a class="sourceLine" id="cb3-7" title="7"></a>
+<a class="sourceLine" id="cb3-8" title="8"><span class="kw">for</span> <span class="ex">line</span> in <span class="va">$(${ZPOOL}</span> <span class="ex">list</span> -o name,health <span class="kw">|</span> <span class="fu">grep</span> -v NAME <span class="kw">|</span> <span class="fu">grep</span> -v ONLINE<span class="va">)</span></a>
+<a class="sourceLine" id="cb3-9" title="9"><span class="kw">do</span></a>
+<a class="sourceLine" id="cb3-10" title="10">  <span class="bu">echo</span> <span class="va">$line</span></a>
+<a class="sourceLine" id="cb3-11" title="11">  <span class="va">EXITSTATUS=</span>2</a>
+<a class="sourceLine" id="cb3-12" title="12"><span class="kw">done</span></a>
+<a class="sourceLine" id="cb3-13" title="13"></a>
+<a class="sourceLine" id="cb3-14" title="14"><span class="kw">if</span><span class="bu"> [</span> <span class="va">$EXITSTATUS</span> <span class="ot">==</span> 0<span class="bu"> ]</span>; <span class="kw">then</span></a>
+<a class="sourceLine" id="cb3-15" title="15">  <span class="bu">echo</span> <span class="st">&quot;All pools are healthy.&quot;</span></a>
+<a class="sourceLine" id="cb3-16" title="16"><span class="kw">fi</span></a>
+<a class="sourceLine" id="cb3-17" title="17"></a>
+<a class="sourceLine" id="cb3-18" title="18"><span class="bu">exit</span> <span class="va">$EXITSTATUS</span></a></code></pre></div>
+<p>With this setup in place I can simply copy files into the file system that belongs to that machine and it will get snapshotted every night. And what’s an awesome tool to copy data? That’s right, <a href="http://rsync.samba.org">rsync</a>.</p>
+<p>My backup script runs once every 15 minutes and looks like this:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="co">#!/bin/sh</span></a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="co">#</span></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="co"># Backup script to pull in changes from remote hosts</span></a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="co">#</span></a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="kw">for</span> <span class="ex">backup</span> in <span class="va">$(</span><span class="fu">ls</span> /backup<span class="va">)</span><span class="kw">;</span> <span class="kw">do</span></a>
+<a class="sourceLine" id="cb4-6" title="6">  <span class="fu">grep</span> -q <span class="va">${backup}</span> ~/.backupexcludes</a>
+<a class="sourceLine" id="cb4-7" title="7">  <span class="kw">if</span><span class="bu"> [</span> <span class="va">$?</span> <span class="ot">!=</span> 0<span class="bu"> ]</span>; <span class="kw">then</span></a>
+<a class="sourceLine" id="cb4-8" title="8">    <span class="ex">/usr/local/bin/rsync</span> -e <span class="st">&#39;ssh -o BatchMode=yes -o ConnectTimeout=10&#39;</span> \</a>
+<a class="sourceLine" id="cb4-9" title="9">--archive --delete --timeout=5 <span class="va">${backup}</span>:. /backup/<span class="va">${backup}</span>/</a>
+<a class="sourceLine" id="cb4-10" title="10">  <span class="kw">fi</span></a>
+<a class="sourceLine" id="cb4-11" title="11"><span class="kw">done</span></a></code></pre></div>
+<p>This allows me to have machines that I used to backup but are no longer online in an excludes list. That way rsync (and ssh) doesn’t hang or error for something that doesn’t need to be backed up anymore anyways. And in case a machine is unavailable or disappears the timeout settings in that script make sure it just gets skipped and retried on the next run.</p>
+<p>I’m pretty happy with the setup, my backup server pulls in data from all my servers on the internet and stores it (forever?). It is chef’d for the most part (though there is always more to automate) and is pretty simple in my opinion. The backup situation for my laptop is not ideal yet, as I manually back it up by running rsync. I want to set the backup server up to also serve some of the backup filesystems as Timemachine targets, so I can just use Timemachine on my laptop and have it automatically run the backups.</p>
+<p>But in the meantime I can add a new backup with this one weird trick:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="ex">zfs</span> create /backup/newhost <span class="kw">&amp;&amp;</span> <span class="fu">chown</span> -R mrtazz:mrtazz /backup/newhost</a></code></pre></div>
+
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="cache-control" content="no-cache"/>
+    <meta http-equiv="pragma" content="no-cache"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="/css/style.min.css?v=f21333a" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="/css/mobile.min.css?v=1eac577" media="handheld, only screen and (max-device-width: 960px)" rel="stylesheet" type="text/css"/>
+    <link href="https://unwiredcouch.com/atom.xml" type="application/atom+xml" rel="alternate" title="unwiredcouch.feed" />
+
+    <title>Google Reader to Instapaper bridge on unwiredcouch.com</title>
+  </head>
+  <body>
+
+    <header>
+      <a class="gravatar hidemobile" href="/">
+        <img src="https://www.gravatar.com/avatar/89e0ad1229121f46047977ac547bd7b4.jpg?s=100"
+             height="100" width="100" class="avatar" alt="gravatar image" />
+      </a>
+      <div id="intro">
+        <p>Hi! I'm <a href="/about.html">Daniel</a>.</p>
+        <p>I like
+        <a href="/">writing</a>,
+        <a href="https://www.instagram.com/mrtazz/">drawing</a>,
+        <a href="https://twitter.com/mrtazz">tweeting</a>,
+        <a href="/talks">sometimes give talks</a>,
+        and <a href="http://code.mrtazz.com">occasionally write code</a>.
+        </p>
+      </div>
+    </header>
+
+    <div id="content">
+            <div class="postdateheading"> Sep 19, 2009 </div>
+            <div class="post">
+        <h2> <a href=""> Google Reader to Instapaper bridge </a></h2>
+
+<h3 id="the-dilemma">The dilemma</h3>
+<p>For some years now I am using <a href="http://google.com/reader">Google Reader</a> as my reader of choice for news feeds. I still think it’s the best way to get daily news (for me), although I do recognize that I don’t read every feed as thoroughly as I used to anymore. I always use the starred items section as a sort of “save for later” storage, so I can open all the unread stories in my browser tabs and read them when I have time. This worked out ok, but in the last months I got more and more used to the <a href="http://www.instapaper.com">instapaper</a> service, which provides a simple web frontend to save websites for later and a great <a href="http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=284942713&amp;mt=8">iPhone app</a>. This led to the situation, that I still starred items in Google Reader, but then had to open the pages and manually save them to instapaper.com and unstar them in Google Reader. An alternative is the builtin Google Reader option to share to instapaper, which also needs some manual actions and you still have to unstar the item afterwards.</p>
+<h3 id="the-solution">The solution</h3>
+<p>So I decided to build a script, which would run nightly on a server and pull all starred items out of Google reader and into instapaper. Since I am trying to improve my python knowledge whenever I can, I decided to build a python implementation. Since I also wanted to dig into the (unofficial) Google Reader API, I decided not to use the very good existing <a href="http://code.google.com/p/pyrfeed">python framework</a>, but to utilize the API myself. I had already written a small <a href="http://github.com/mrtazz/InstapaperLibrary">instapaper library</a> before, which I mainly used to save articles for later on the command line.</p>
+<p>So I sat down and started to write <a href="http://github.com/mrtazz/instareader.py">the bridge</a>. All in all it took me a bit more than a month (due to university life, work and exams) to finally get a basic version working, which is able to retrieve starred items, save them to instapaper and then remove the star from instapaper. The script is now run every hour on a server, which is enough for my needs of instapaper being up-to-date. Also I have more choices on iPhone RSS readers with Google Reader syncing now, since Instapaper support is not a requirement for the app anymore. There are still (as always) some things to do, but at least the manual open,save,unstar actions are no more now.</p>
+
+      </div>
+    </div>
+  </body>
+</html>

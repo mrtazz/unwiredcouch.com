@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="cache-control" content="no-cache"/>
+    <meta http-equiv="pragma" content="no-cache"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="/css/style.min.css?v=f21333a" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="/css/mobile.min.css?v=1eac577" media="handheld, only screen and (max-device-width: 960px)" rel="stylesheet" type="text/css"/>
+    <link href="https://unwiredcouch.com/atom.xml" type="application/atom+xml" rel="alternate" title="unwiredcouch.feed" />
+
+    <title>Code Reviews Considered Awesome on unwiredcouch.com</title>
+  </head>
+  <body>
+
+    <header>
+      <a class="gravatar hidemobile" href="/">
+        <img src="https://www.gravatar.com/avatar/89e0ad1229121f46047977ac547bd7b4.jpg?s=100"
+             height="100" width="100" class="avatar" alt="gravatar image" />
+      </a>
+      <div id="intro">
+        <p>Hi! I'm <a href="/about.html">Daniel</a>.</p>
+        <p>I like
+        <a href="/">writing</a>,
+        <a href="https://www.instagram.com/mrtazz/">drawing</a>,
+        <a href="https://twitter.com/mrtazz">tweeting</a>,
+        <a href="/talks">sometimes give talks</a>,
+        and <a href="http://code.mrtazz.com">occasionally write code</a>.
+        </p>
+      </div>
+    </header>
+
+    <div id="content">
+            <div class="postdateheading"> Oct 21, 2014 </div>
+            <div class="post">
+        <h2> <a href=""> Code Reviews Considered Awesome </a></h2>
+
+<p>I think by now it is pretty much accepted that collaboration and working together is a lot better than assigning blame and yelling at each other. In the field of operating web services and infrastructure we have made the shift in the last years to improving techniques and simplifying processes, everybody is modelling infrastructure as code, nobody throws stuff over the wall anymore, developers are on-call and there is rarely any yelling (at least that’s the ideal most companies strive for).</p>
+<p>But I think there is a very undervalued part of that whole situation. A lot of operations engineers (at least in my part of the internet) will happily claim they can’t write code or write shitty code (by the way if you still think you don’t write code as an ops engineer go read <a href="http://cwebber.net/blog/2014/09/26/i-am-not-a-coder/">Christopher Webber’s great blog post</a> about it). When in reality ops engineers write a ton of code and I have seen and reviewed amazing apps and tools being knocked out by people who will happily make excuses for their code whenever you talk about the awesome thing they wrote. The big advantage of working together is exchanging knowledge that was previously in siloed domains. It’s great that developers carry pagers and know about deployment and how to write Chef recipes or Puppet modules. But that also means as an operations engineer you can tap into a giant stream of software engineering knowledge that developers have learned, improved and cared about for years. And one of those is code review.</p>
+<p>Code review is a great way to get free learning and feedback about the things you are working on. It’s a way to get someone with a different context to think about whether your solution to a problem (and that’s what basically all programming, scripting and automation is) makes sense to someone else. It’s also a way to learn about paradigms, conventions and unknown techniques to make things better. I’m a software engineer by trade and whenever I start with something new, work on a new project or try to solve a new problem I try to seek out code review. I recently worked on our Android app. And while I have worked with Java and written Android code before, it’s been years and was in a completely different code base. So while I was writing down the code that would solve the problem I was having, it was very non-idiomatic when it came to our Android coding style. Once I was done I asked my coworker <a href="https://twitter.com/hannahmitt">Hannah</a> if she could take a look at my code. And she was super excited about it and immediately jumped on it. And she gave me <em>tons</em> of feedback. She showed me the app loader structure that would make my code much more <a href="http://en.wikipedia.org/wiki/Don&#39;t_repeat_yourself">DRY</a> and I learned a lot about how we approach Android development. And even though she initially wasn’t completely familiar with the problem I was solving and it definitely took a bit longer for me to actually deploy the code I learned a ton.</p>
+<p>One of the keys here was definitely that she was so excited to review code for me. And this is where the reviewer comes in. Being asked for a code review means the person values your opinion and would love to get your feedback on something that is arguably important to them and trusts you to be able to improve it. It also means you now have to balance the fine line between not actually giving useful feedback and overdoing the code review and effectively blocking their progress. E.g. while it likely doesn’t make sense to suggest an abstract factory pattern for a procedural script of python code, showing where it could greatly benefit from using functions is a simple way to improve things. Fundamentally how to give good code reviews is a complicated topic which I don’t want to get into here. But the important part is that this is something you should be excited about and should let the person asking for the review know that you are.</p>
+<p>Often code reviews are still seen as a slow down, annoying and nothing that really adds value as you already know your code works. However seeing code reviews as an opportunity to learn, get another perspective and ultimatively a way of sharing knowledge is in my opinion way more accurate when done right (<em>right</em> being used lax here as everyone has to define for themselves what that means). It is a great way to learn about different parts of your infrastructure’s code, new programming paradigms and methods, how to communicate more effectively and in the end leads to a more resilient organization and enjoyable work and programming environment.</p>
+
+      </div>
+    </div>
+  </body>
+</html>
