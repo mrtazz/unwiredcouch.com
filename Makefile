@@ -3,7 +3,7 @@
 # will work.
 #
 
-SITEDIR=_site
+SITEDIR ?=_site
 FEEDSIZE=10
 PANDOC=$(shell which pandoc)
 PANDOC_FLAGS=--standalone --from=markdown-hard_line_breaks+yaml_metadata_block+smart --email-obfuscation=none --to=html
