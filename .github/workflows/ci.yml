@@ -1,0 +1,16 @@
+name: CI
+on: [push]
+
+jobs:
+  build:
+    name: site build
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: install dependencies
+      run: sudo apt-get install pandoc coreutils sass
+    - uses: actions/checkout@v1
+    - name: Build the site into the docs/ folder
+      run: |
+        SITEDIR=docs make
