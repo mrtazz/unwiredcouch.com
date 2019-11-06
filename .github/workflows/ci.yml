@@ -9,7 +9,10 @@ jobs:
 
     steps:
     - name: install dependencies
-      run: sudo apt-get install pandoc coreutils sass
+      run: sudo apt-get install pandoc
+    - name: software versions
+      run: |
+        pandoc --version
     - uses: actions/checkout@v1
     - name: Build the site into the docs/ folder
       run: |
