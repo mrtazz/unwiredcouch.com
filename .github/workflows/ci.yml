@@ -9,7 +9,9 @@ jobs:
 
     steps:
     - name: find cabal
-      run: find /opt -name "*cabal*"
+      run: |
+        find /opt -name "*cabal*"
+        find /opt -name "*ghc*"
     - name: install dependencies
       run: |
         /opt/cabal/bin/cabal update
