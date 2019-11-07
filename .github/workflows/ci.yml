@@ -11,7 +11,7 @@ jobs:
     - name: find cabal
       run: find /opt -name "*cabal*"
     - name: install dependencies
-      run: cabal install pandoc
+      run: /opt/cabal/bin/cabal install pandoc
     - name: software versions
       run: |
         pandoc --version
