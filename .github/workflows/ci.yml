@@ -9,7 +9,7 @@ jobs:
 
     steps:
     - name: install dependencies
-      run: sudo apt-get install pandoc
+      run: cabal install pandoc
     - name: software versions
       run: |
         pandoc --version
