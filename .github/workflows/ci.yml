@@ -8,10 +8,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: find cabal
+    - name: find software
       run: |
         find /opt -name "*cabal*"
         find /opt -name "*ghc*"
+    - name: set up haskell path
+      run: echo "::add-path::/opt"
     - name: install dependencies
       run: |
         /opt/cabal/bin/cabal update
