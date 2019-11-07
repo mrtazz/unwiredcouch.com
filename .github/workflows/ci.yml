@@ -8,6 +8,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: find cabal
+      run: find /opt -name "*cabal*"
     - name: install dependencies
       run: cabal install pandoc
     - name: software versions
