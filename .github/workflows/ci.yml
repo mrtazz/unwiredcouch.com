@@ -14,14 +14,16 @@ jobs:
         find /opt -name "*ghc*"
     - name: set up haskell path
       run: echo "::add-path::/opt"
+    - name: dependency versions
+      run: |
+        ghc --version
+        cabal --version
     - name: install dependencies
       run: |
         /opt/cabal/bin/cabal update
         /opt/cabal/bin/cabal install pandoc
     - name: software versions
       run: |
-        ghc --version
-        cabal --version
         pandoc --version
     - uses: actions/checkout@v1
     - name: Build the site into the docs/ folder
