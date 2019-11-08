@@ -8,24 +8,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: find software
-      run: |
-        find /opt -name "*cabal*"
-        find /opt -name "*ghc*"
-    - name: set up haskell path
-      run: |
-        echo "::add-path::/opt/ghc/8.0.2/bin"
-        echo "::add-path::/opt/ghc/bin"
-    - name: env debugging
-      run: |
-        echo $PATH
-        printenv
-        ghc --version
-        cabal --version
     - name: install dependencies
       run: |
-        cabal update
-        cabal install pandoc
+        sudo wget https://github.com/jgm/pandoc/releases/download/2.7.3/pandoc-2.7.3-1-amd64.deb
+        sudo dpkg -i pandoc-2.7.3-1-amd64.deb
     - name: software versions
       run: |
         pandoc --version
