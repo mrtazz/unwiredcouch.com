@@ -1,4 +1,4 @@
-#!/usr/bin/env awk -f
+#!/usr/bin/env awk
 
 BEGIN{ FS="|"; now=gensub(/00$/, ":00", "g",strftime("%Y-%m-%dT%T%z",systime()));
     printf("<?xml version=\"1.0\" encoding=\"utf-8\"?> \n\
