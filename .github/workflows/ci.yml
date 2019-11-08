@@ -20,6 +20,8 @@ jobs:
         /opt/cabal/bin/cabal install pandoc
     - name: software versions
       run: |
+        ghc --version
+        cabal --version
         pandoc --version
     - uses: actions/checkout@v1
     - name: Build the site into the docs/ folder
