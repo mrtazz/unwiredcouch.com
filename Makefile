@@ -80,7 +80,7 @@ $(TALKS): $(addprefix ${SITEDIR}/, %.html) : ${PWD}/%.yml  $(TALK_TPL) | $(SITED
 
 $(SITEDIR)/atom.xml: .allposts.psv | $(SITEDIR)
 	@echo "Processing RSS feed ..."
-	head -n $(FEEDSIZE) $< | awk ./bin/rssfeed.awk > $@
+	head -n $(FEEDSIZE) $< | awk -f ./bin/rssfeed.awk > $@
 
 feed: $(SITEDIR)/atom.xml
 
