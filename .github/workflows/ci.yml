@@ -14,8 +14,10 @@ jobs:
         find /opt -name "*ghc*"
     - name: set up haskell path
       run: echo "::add-path::/opt"
-    - name: dependency versions
+    - name: env debugging
       run: |
+        echo $PATH
+        printenv
         ghc --version
         cabal --version
     - name: install dependencies
