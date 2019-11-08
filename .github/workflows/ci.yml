@@ -13,7 +13,9 @@ jobs:
         find /opt -name "*cabal*"
         find /opt -name "*ghc*"
     - name: set up haskell path
-      run: echo "::add-path::/opt"
+      run: |
+        echo "::add-path::/opt/ghc/8.0.2/bin"
+        echo "::add-path::/opt/ghc/bin"
     - name: env debugging
       run: |
         echo $PATH
@@ -22,8 +24,8 @@ jobs:
         cabal --version
     - name: install dependencies
       run: |
-        /opt/cabal/bin/cabal update
-        /opt/cabal/bin/cabal install pandoc
+        cabal update
+        cabal install pandoc
     - name: software versions
       run: |
         pandoc --version
