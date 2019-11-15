@@ -26,10 +26,14 @@ jobs:
     - name: Build the site into the docs/ folder
       run: |
         SITEDIR=docs make
-    - name: commit and push
+    - name: commit
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add docs/
         git commit -m "update site build"
-        echo ${{ steps.vars.outputs.branch }}
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ steps.vars.outputs.branch }}
