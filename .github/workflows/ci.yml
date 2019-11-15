@@ -11,6 +11,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: set variables
+      shell: bash
+      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+      id: vars
     - name: install dependencies
       run: |
         sudo wget https://github.com/jgm/pandoc/releases/download/2.7.3/pandoc-2.7.3-1-amd64.deb
@@ -22,3 +26,10 @@ jobs:
     - name: Build the site into the docs/ folder
       run: |
         SITEDIR=docs make
+    - name: commit and push
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add docs/
+        git commit -m "update site build"
+        echo ${{ steps.vars.outputs.branch }}
