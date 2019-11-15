@@ -26,6 +26,10 @@ jobs:
     - name: Build the site into the docs/ folder
       run: |
         SITEDIR=docs make
+    - name: check post list
+      run: |
+        cat .allposts.yml
+        cat .allposts.psv
     - name: commit
       run: |
         git config --local user.email "action@github.com"
