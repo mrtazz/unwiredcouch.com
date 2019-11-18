@@ -17,11 +17,13 @@ STYLE_REV=1 #$(shell git log -n 1 --pretty=format:'%h' css/style.css)
 MOBILE_REV=1 #$(shell git log -n 1 --pretty=format:'%h' css/mobile.css)
 PANDOC_REVS=-M stylerev="$(STYLE_REV)" -M mobilerev="$(MOBILE_REV)"
 
-src_markdown := $(shell find src -name "*.md" )
-src_images := $(shell find src/images -type f )
+src_markdown := $(shell find $(SRCDIR) -name "*.md" )
+src_images := $(shell find $(SRCDIR)/images -type f )
+src_css := $(shell find $(SRCDIR)/css -type f | grep -v 'min.css' )
 
 HTML_FILES := $(src_markdown:$(SRCDIR)/%.md=${SITEDIR}/%.html)
 IMAGE_FILES := $(src_images:$(SRCDIR)/%=${SITEDIR}/%)
+CSS_FILES := $(src_css:$(SRCDIR)/%.css=${SITEDIR}/%.min.css)
 
 .PHONY: serve all static pages posts clean distclean deploy css index talkindex talks feed html
 
@@ -29,6 +31,7 @@ all: css images favicon html images
 html: $(HTML_FILES)
 images:$(IMAGE_FILES)
 favicon: $(SITEDIR)/favicon.ico
+css: $(CSS_FILES)
 
 serve: $(SITEDIR)
 	cd ${SITEDIR} && php -S 0.0.0.0:8000
@@ -58,8 +61,8 @@ $(SITEDIR)/%: $(SRCDIR)/% | $(SITEDIR)
 	mkdir -p `dirname $@`
 	cp $< $@
 
-
-$(SRCDIR)/css/%.min.css: css/%.css deps
+$(SRCDIR)/css/%.min.css: $(SRCDIR)/css/%.css deps
 	./node_modules/sass/sass.js --no-source-map --style compressed $< $@
 
-css: $(SITEDIR)/css/style.min.css $(SITEDIR)/css/mobile.min.css
+clean:
+	rm -rf ./$(SITEDIR)/
