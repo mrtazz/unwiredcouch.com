@@ -13,25 +13,19 @@ INDEX_TPL := layouts/index.pandoc
 TALK_TPL  := layouts/talk.pandoc
 TALKS_INDEX_TPL  := layouts/talkindex.pandoc
 
-STYLE_REV=1 #$(shell git log -n 1 --pretty=format:'%h' css/style.css)
-MOBILE_REV=1 #$(shell git log -n 1 --pretty=format:'%h' css/mobile.css)
+STYLE_REV=$(shell git log -n 1 --pretty=format:'%h' $(SRCDIR)/css/style.css)
+MOBILE_REV=$(shell git log -n 1 --pretty=format:'%h' $(SRCDIR)/css/mobile.css)
 PANDOC_REVS=-M stylerev="$(STYLE_REV)" -M mobilerev="$(MOBILE_REV)"
 
-src_markdown := $(shell find $(SRCDIR) -name "*.md" )
-src_images := $(shell find $(SRCDIR)/images -type f )
-src_css := $(shell find $(SRCDIR)/css -type f | grep -v 'min.css' )
+src_files := $(shell find $(SRCDIR) -type f | grep -v 'min.css')
 
-HTML_FILES := $(src_markdown:$(SRCDIR)/%.md=${SITEDIR}/%.html)
-IMAGE_FILES := $(src_images:$(SRCDIR)/%=${SITEDIR}/%)
-CSS_FILES := $(src_css:$(SRCDIR)/%.css=${SITEDIR}/%.min.css)
+SITE_FILES := $(src_files:$(SRCDIR)/%=${SITEDIR}/%)
+SITE_WITH_HTML := $(SITE_FILES:%.md=%.html)
+SITE_WITH_HTML_CSS := $(SITE_WITH_HTML:%.css=%.min.css)
 
-.PHONY: serve all static pages posts clean distclean deploy css index talkindex talks feed html
+.PHONY: serve all static clean css index feed html
 
-all: css images favicon html images
-html: $(HTML_FILES)
-images:$(IMAGE_FILES)
-favicon: $(SITEDIR)/favicon.ico
-css: $(CSS_FILES)
+all: $(SITE_WITH_HTML_CSS)
 
 serve: $(SITEDIR)
 	cd ${SITEDIR} && php -S 0.0.0.0:8000
