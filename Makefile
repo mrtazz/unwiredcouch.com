@@ -21,11 +21,12 @@ src_files := $(shell find $(SRCDIR) -type f | grep -v 'min.css')
 
 SITE_FILES := $(src_files:$(SRCDIR)/%=${SITEDIR}/%)
 SITE_WITH_HTML := $(SITE_FILES:%.md=%.html)
-SITE_WITH_HTML_CSS := $(SITE_WITH_HTML:%.css=%.min.css)
+SITE_WITH_HTML_INDEX := $(SITE_WITH_HTML:%.yml=%.html)
+SITE_WITH_ALL_FILES := $(SITE_WITH_HTML_INDEX:%.css=%.min.css)
 
 .PHONY: serve all static clean css index feed html
 
-all: $(SITE_WITH_HTML_CSS)
+all: $(SITE_WITH_ALL_FILES)
 
 serve: $(SITEDIR)
 	cd ${SITEDIR} && php -S 0.0.0.0:8000
@@ -39,7 +40,20 @@ node_modules:
 $(SITEDIR):
 	mkdir -p ${SITEDIR}
 
-# TODO: index pages
+$(SITEDIR)/index.html: $(SRCDIR)/index.yml $(INDEX_TPL) | $(SITEDIR)
+	$(PANDOC) $(PANDOC_REVS) -s --template=$(INDEX_TPL) -o $@ $<
+
+$(SITEDIR)/talks/index.html: $(SRCDIR)/talks/index.yml $(TALKS_INDEX_TPL) | $(SITEDIR)
+	mkdir -p `dirname $@`
+	$(PANDOC) $(PANDOC_FLAGS) $(PANDOC_REVS) -s --template=$(TALKS_INDEX_TPL) -o $@ $<
+
+$(SITEDIR)/talks/%.html: $(SRCDIR)/talks/%.yml $(TALK_TPL) | $(SITEDIR)
+	mkdir -p `dirname $@`
+	$(PANDOC) $(PANDOC_FLAGS) $(PANDOC_REVS) -s --template=$(TALK_TPL) -o $@ $<
+
+$(SITEDIR)/talks.html: $(SRCDIR)/talks/index.yml $(TALKS_INDEX_TPL) | $(SITEDIR)
+	$(PANDOC) $(PANDOC_REVS) -s --template=$(TALKS_INDEX_TPL) -o $@ $<
+
 
 # TODO: rss feed
 
