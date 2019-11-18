@@ -54,14 +54,7 @@ $(SITEDIR)/%.html: $(SRCDIR)/%.md  $(POST_TPL) | $(SITEDIR)
 	$(PANDOC) $(PANDOC_FLAGS) $(PANDOC_REVS) -s --template=$(POST_TPL) -o $@ $<
 
 # static file rules
-$(SITEDIR)/favicon.ico: $(SRCDIR)/favicon.ico | $(SITEDIR)
-	cp $< $@
-
-$(SITEDIR)/css/%: $(SRCDIR)/css/% | $(SITEDIR)
-	mkdir -p `dirname $@`
-	cp $< $@
-
-$(SITEDIR)/images/%: $(SRCDIR)/images/% | $(SITEDIR)
+$(SITEDIR)/%: $(SRCDIR)/% | $(SITEDIR)
 	mkdir -p `dirname $@`
 	cp $< $@
 
