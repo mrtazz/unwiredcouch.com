@@ -26,7 +26,7 @@ SITE_WITH_ALL_FILES := $(SITE_WITH_HTML_INDEX:%.css=%.min.css)
 
 .PHONY: serve all static clean css index feed html
 
-all: $(SITE_WITH_ALL_FILES)
+all: $(SITE_WITH_ALL_FILES) feed
 
 serve: $(SITEDIR)
 	cd ${SITEDIR} && php -S 0.0.0.0:8000
@@ -56,8 +56,11 @@ $(SITEDIR)/talks.html: $(SRCDIR)/talks/index.yml $(TALKS_INDEX_TPL) | $(SITEDIR)
 
 
 # TODO: rss feed
+$(SITEDIR)/atom.xml: $(SRCDIR)/index.yml | $(SITEDIR)
+	@echo "Processing RSS feed ..."
+	go run bin/rssfeed.go $< $@
 
-
+feed: $(SITEDIR)/atom.xml
 
 # html implict rule
 $(SITEDIR)/%.html: $(SRCDIR)/%.md  $(POST_TPL) | $(SITEDIR)
