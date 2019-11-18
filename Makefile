@@ -20,8 +20,8 @@ PANDOC_REVS=-M stylerev="$(STYLE_REV)" -M mobilerev="$(MOBILE_REV)"
 src_markdown := $(shell find src -name "*.md" )
 src_images := $(shell find src/images -type f )
 
-HTML_FILES := $(patsubst $(SRCDIR)/%.md, ${SITEDIR}/%.html, $(src_markdown))
-IMAGE_FILES := $(patsubst $(SRCDIR)/%, ${SITEDIR}/%, $(src_images))
+HTML_FILES := $(src_markdown:$(SRCDIR)/%.md=${SITEDIR}/%.html)
+IMAGE_FILES := $(src_images:$(SRCDIR)/%=${SITEDIR}/%)
 
 .PHONY: serve all static pages posts clean distclean deploy css index talkindex talks feed html
 
