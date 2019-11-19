@@ -39,7 +39,7 @@ func main() {
 	timeLayout := "Jan 2, 2006"
 	feed := &feeds.Feed{
 		Title:       "unwiredcouch.com",
-		Link:        &feeds.Link{Href: "https://unwiredcouch.com"},
+		Link:        &feeds.Link{Href: "https://unwiredcouch.com/atom.xml", Rel: "self"},
 		Description: "thoughts which have made it into written existence",
 		Author:      &feeds.Author{Name: "Daniel Schauenberg", Email: "d@unwiredcouch.com"},
 		Created:     now,
@@ -50,11 +50,13 @@ func main() {
 		for _, post := range entry.Posts {
 			t, _ := time.Parse(timeLayout, post.Date)
 			markdownSource := fmt.Sprintf("./src/%s", strings.Replace(post.URL, ".html", ".md", 1))
+			htmlContent := runPandoc(markdownSource)
 			feed.Items = append(feed.Items, &feeds.Item{
-				Title:   post.Title,
-				Link:    &feeds.Link{Href: fmt.Sprintf("https://unwiredcouch.com%s", post.URL)},
-				Created: t,
-				Content: html.EscapeString(runPandoc(markdownSource)),
+				Title:       post.Title,
+				Link:        &feeds.Link{Href: fmt.Sprintf("https://unwiredcouch.com%s", post.URL)},
+				Created:     t,
+				Description: html.EscapeString(htmlContent[0:100]),
+				Content:     html.EscapeString(htmlContent),
 			})
 		}
 	}
