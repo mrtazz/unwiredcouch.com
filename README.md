@@ -28,7 +28,7 @@ All code is licensed under the MIT license:
   WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ## Executing:
-  To make files you will need to install [Pandoc][4], coreutils and
+  To make files you will need to install [Pandoc][4], go and
   [sass][5].
 
   Once everything is installed simply run
