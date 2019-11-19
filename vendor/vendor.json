@@ -1,0 +1,19 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "4zMD3yTB3dB3mNu5AGFTbUpT+4U=",
+			"path": "github.com/gorilla/feeds",
+			"revision": "6f6e20dd3953594cd869cf981fb806440685cd21",
+			"revisionTime": "2019-07-26T23:58:42Z"
+		},
+		{
+			"checksumSHA1": "HlmFQMS9Rr2K0RTC+FVBizqY6e0=",
+			"path": "gopkg.in/yaml.v2",
+			"revision": "f90ceb4f409096b60e2e9076b38b304b8246e5fa",
+			"revisionTime": "2019-11-04T18:03:43Z"
+		}
+	],
+	"rootPath": "github.com/mrtazz/unwiredcouch.com"
+}
