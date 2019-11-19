@@ -54,11 +54,12 @@ $(SITEDIR)/talks/%.html: $(SRCDIR)/talks/%.yml $(TALK_TPL) | $(SITEDIR)
 $(SITEDIR)/talks.html: $(SRCDIR)/talks/index.yml $(TALKS_INDEX_TPL) | $(SITEDIR)
 	$(PANDOC) $(PANDOC_REVS) -s --template=$(TALKS_INDEX_TPL) -o $@ $<
 
+./rssfeed: bin/rssfeed.go
+	go build -mod vendor bin/rssfeed.go
 
-# TODO: rss feed
-$(SITEDIR)/atom.xml: $(SRCDIR)/index.yml | $(SITEDIR)
+$(SITEDIR)/atom.xml: $(SRCDIR)/index.yml ./rssfeed | $(SITEDIR)
 	@echo "Processing RSS feed ..."
-	go run bin/rssfeed.go $< $@
+	./rssfeed $< $@
 
 feed: $(SITEDIR)/atom.xml
 
