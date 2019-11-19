@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"github.com/gorilla/feeds"
 	"gopkg.in/yaml.v2"
-	"html"
 	"io/ioutil"
 	"log"
 	"os"
@@ -55,8 +54,8 @@ func main() {
 				Title:       post.Title,
 				Link:        &feeds.Link{Href: fmt.Sprintf("https://unwiredcouch.com%s", post.URL)},
 				Created:     t,
-				Description: html.EscapeString(htmlContent[0:100]),
-				Content:     html.EscapeString(htmlContent),
+				Description: htmlContent[0:100],
+				Content:     htmlContent,
 			})
 		}
 	}
