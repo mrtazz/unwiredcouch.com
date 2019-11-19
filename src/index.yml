@@ -5,6 +5,10 @@ entries:
   year: 2019
   posts:
     -
+      date: Nov 19, 2019
+      url: /2019/11/19/technical-manager.html
+      title: The Fallacy of needing a technical manager
+    -
       date: Jul 05, 2019
       url: /2019/07/05/pen-and-paper.html
       title: "Pen and Paper"
