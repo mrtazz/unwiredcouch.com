@@ -5,8 +5,8 @@
     <meta http-equiv="cache-control" content="no-cache"/>
     <meta http-equiv="pragma" content="no-cache"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link href="/css/style.min.css?v=f21333a" media="screen" rel="stylesheet" type="text/css"/>
-    <link href="/css/mobile.min.css?v=1eac577" media="handheld, only screen and (max-device-width: 960px)" rel="stylesheet" type="text/css"/>
+    <link href="/css/style.min.css?v=e1be0c2" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="/css/mobile.min.css?v=e1be0c2" media="handheld, only screen and (max-device-width: 960px)" rel="stylesheet" type="text/css"/>
     <link href="https://unwiredcouch.com/atom.xml" type="application/atom+xml" rel="alternate" title="unwiredcouch.feed" />
 
     <title>Accounting: The Unix Way on unwiredcouch.com</title>
@@ -31,7 +31,6 @@
     </header>
 
     <div id="content">
-            <div class="postdateheading"> Jun 08, 2015 </div>
             <div class="post">
         <h2> <a href=""> Accounting: The Unix Way </a></h2>
 
@@ -42,17 +41,17 @@
 <p>So I decided to give it a try and take the upcoming tax return I had to file as the motivation to get it done before that. I downloaded CSV data from my bank accounts (and learned that the allowed time to back is 2 years, no data before that), installed ledger via homebrew and the reckon rubygem and started to import data. This was a bit tedious at first, as reckon didn’t support backspacing and thus editing mistyped accounts. I fixed that in the gem and sent a <a href="https://github.com/cantino/reckon/pull/44">pull request</a> like a good open source citizen and <a href="https://twitter.com/mrtazz/statuses/573671503029497856">procrastinating software engineer</a>. And after a couple of hours I had all my data from 2014 and (most of) 2013 in the ledger data format. I played around with the reporting options and really liked it. It was super flexible I could quickly fix and change things by opening the file in vim. So I decided to properly structure it and go full in with ledger.</p>
 <h3 id="all-in">All in</h3>
 <p>I created a git repo with directories for the raw csv files (in case I needed to regenerate any data at some point or look up something else) and for each year since 2013. In those per-year directories I have a file for checking, credit card, cash and opening balances. And a top level ledger dat file per year that includes the appropriate files.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">cassie</span>:accounting[master]% cat 2015.dat</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="ex">include</span> 2015/opening_balances.dat</a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="ex">include</span> 2015/checking.dat</a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="ex">include</span> 2015/credit_card.dat</a>
-<a class="sourceLine" id="cb1-5" title="5"><span class="ex">include</span> 2015/cash.dat</a>
-<a class="sourceLine" id="cb1-6" title="6"></a>
-<a class="sourceLine" id="cb1-7" title="7"><span class="ex">cassie</span>:accounting[master]% ls -1 2015</a>
-<a class="sourceLine" id="cb1-8" title="8"><span class="ex">cash.dat</span></a>
-<a class="sourceLine" id="cb1-9" title="9"><span class="ex">checking.dat</span></a>
-<a class="sourceLine" id="cb1-10" title="10"><span class="ex">credit_card.dat</span></a>
-<a class="sourceLine" id="cb1-11" title="11"><span class="ex">opening_balances.dat</span></a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">cassie</span>:accounting[master]% cat 2015.dat</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="ex">include</span> 2015/opening_balances.dat</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="ex">include</span> 2015/checking.dat</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="ex">include</span> 2015/credit_card.dat</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="ex">include</span> 2015/cash.dat</span>
+<span id="cb1-6"><a href="#cb1-6"></a></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="ex">cassie</span>:accounting[master]% ls -1 2015</span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="ex">cash.dat</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="ex">checking.dat</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="ex">credit_card.dat</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="ex">opening_balances.dat</span></span></code></pre></div>
 <p>Checking and credit card should be self explanatory as they just hold the entries for those accounts. Whenever I withdraw money at an ATM, I book it to an <code>Expenses:Cash</code> account as I expect to spend that money. Otherwise I wouldn’t have withdrawn it. But this also means that I don’t have a ton of visibilty into what I spend cash on. That is why I have a file called <code>cash.dat</code>. When I spend cash on something and remember, I note it down on my phone in a text file which syncs to my computer. And when I’m doing my monthly accounting I can pull up this file and just write proper ledger data entries for the contents of this file. I then note that those expenses come from the account <code>Expenses:Cash</code> to keep everything correct. The next file special file is <code>opening_balances.dat</code>. Because I have a file per year, the data only reflects postings for that year. In order to still get accurate balances, I run the equity command (<code>ledger -f ledger-old.dat equity</code>) on the old year’s data and write that into the opening balances file as coming from the account <code>Equity:OpeningBalances</code>. This is a bit of hack, but it illustrates a major advantage of ledger. It doesn’t care about what the accounts are named. This means you can give them names that mean something to you and ledger won’t have a problem with that. The documentation even gives an example for tracking inventory in the <a href="http://www.ledger-cli.org/3.0/doc/ledger3.html#Accounts-and-Inventories">video game EverQuest</a>.</p>
 <h3 id="monthly-routine">Monthly Routine</h3>
 <p>Now with this setup in place, I have a monthly recurring project in <a href="https://unwiredcouch.com/2014/05/13/omnifocus.html">my OmniFocus</a> to download the CSV for my account and add them to my ledger data. Once I’ve downloaded the file, I run reckon over it to have it properly format the data and suggest accounts to add them to. Since reckon - as I mentioned before - uses Bayesian learning to find out what accounts a posting likely belongs to, it makes sense to have a corpus for it to learn from which includes all possible accounts. And because I really like Makefiles, I have one with a simple task in there to generate a big file which contains all of my postings:</p>
@@ -62,9 +61,9 @@ corpus.dat: $(SOURCES)
     cat $(SOURCES) &gt; $@
 </code></pre>
 <p>Now I run reckon with something like</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="ex">reckon</span> -f raw_data/2015/checking05.csv --contains-header -o 201505_checking.dat -l corpus.dat</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">reckon</span> -f raw_data/2015/checking05.csv --contains-header -o 201505_checking.dat -l corpus.dat</span></code></pre></div>
 <p>in order to parse the CSV file. Usually when I run this, reckon detects almost all of my recurrent transactions like rent, gas, electricity, internet, subway and ferry fare. I just have to confirm the account by hitting enter. With this it takes me about 5-10 minutes to get through a CSV file. After I’m done I might go through the file in vim to make some adaptions. For example I have a very generic account named “Expenses:Amazon” which reckon detects to use for everything coming from Amazon. However since I buy a variety of things (household items, clothes, etc) on Amazon I open my “past orders” page on amazon.com and check my transactions in ledger against it and file them into more specific accounts. When I’m happy with it, I commit my changes to git and have an up to date version of my accounting data. I then can run all the queries on it to give me some overview of what I was spending money on in the last month. Ledger is versatile enough that I could spend a lot of time on explaining all the possibilities. But the simplest way to get started is just showing the top level balances which will give you an overview about Income, Expenses and Assets (if you have named your accounts like that):</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="ex">ledger</span> -f 2015.dat --period-sort <span class="st">&quot;(amount)&quot;</span> balance -M --begin 2015/04/01 --end 2015/05/01 --depth=1</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="ex">ledger</span> -f 2015.dat --period-sort <span class="st">&quot;(amount)&quot;</span> balance -M --begin 2015/04/01 --end 2015/05/01 --depth=1</span></code></pre></div>
 <h3 id="verdict">Verdict</h3>
 <p>I’m really happy with this setup so far. It’s comparably low tech and low investment and I can (for the most part) use the tools I know and I don’t have to store my financial data on someone elses server. Still if I want to do accounting on a different machine, it’s just a matter of cloning the git repo to it and installing ledger. The import process is not too cumbersome, although I have to remember when I pay off my credit card from my checking account for example that I only enter the transaction once as it will show up in both CSV downloads (once as debit and once as credit). This has caused some confusion for me in the past when I forgot but generally isn’t too bad.</p>
 <p>I’m also not doing any super advanced things with it so far. I’ve played with it’s <a href="http://www.ledger-cli.org/3.0/doc/ledger3.html#Visualizing-with-Gnuplot">Gnuplot suppport</a> and ran different queries in different situations to track down where I actually spent more money than the month before. I’m sure there are more use cases that will arise over time and while I’m no accountant (and probably used some words wrong on this post) it has been super interesting to get some more structure and insight into my personal finances.</p>

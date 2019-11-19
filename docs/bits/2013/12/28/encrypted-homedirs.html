@@ -5,8 +5,8 @@
     <meta http-equiv="cache-control" content="no-cache"/>
     <meta http-equiv="pragma" content="no-cache"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link href="/css/style.min.css?v=f21333a" media="screen" rel="stylesheet" type="text/css"/>
-    <link href="/css/mobile.min.css?v=1eac577" media="handheld, only screen and (max-device-width: 960px)" rel="stylesheet" type="text/css"/>
+    <link href="/css/style.min.css?v=e1be0c2" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="/css/mobile.min.css?v=e1be0c2" media="handheld, only screen and (max-device-width: 960px)" rel="stylesheet" type="text/css"/>
     <link href="https://unwiredcouch.com/atom.xml" type="application/atom+xml" rel="alternate" title="unwiredcouch.feed" />
 
     <title>Creating Encrypted Home Directories in FreeBSD on unwiredcouch.com</title>
@@ -31,39 +31,38 @@
     </header>
 
     <div id="content">
-            <div class="postdateheading"> Dec 28, 2013 </div>
             <div class="post">
         <h2> <a href=""> Creating Encrypted Home Directories in FreeBSD </a></h2>
 
 <p>I run FreeBSD with ZFS on all my servers and I generally want to have my home directories encrypted. Since ZFS native encryption is not yet in FreeBSD, I create two ZFS filesystems, which are then encrypted with <a href="http://www.freebsd.org/doc/handbook/disks-encrypting.html">GELI encryption</a> and build a new ZFS pool. This pool is then used as my home directory. In order to simplify this, I have a shell script that takes the username and size as input and creates keys and all partitions as well as the zpool.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="co">#!/bin/sh</span></a>
-<a class="sourceLine" id="cb1-2" title="2"></a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="va">USERHOME=$1</span></a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="va">SIZE=$2</span></a>
-<a class="sourceLine" id="cb1-5" title="5"></a>
-<a class="sourceLine" id="cb1-6" title="6"><span class="ex">zfs</span> create -omountpoint=/encrypted tank/encrypted</a>
-<a class="sourceLine" id="cb1-7" title="7"><span class="ex">zfs</span> create tank/encrypted/keys</a>
-<a class="sourceLine" id="cb1-8" title="8"><span class="ex">zfs</span> create -omountpoint=none tank/encrypted/zvols</a>
-<a class="sourceLine" id="cb1-9" title="9"><span class="ex">zfs</span> create -ocompression=on tank/encrypted/zvols/<span class="va">${USERHOME}</span></a>
-<a class="sourceLine" id="cb1-10" title="10"><span class="ex">zfs</span> create -V <span class="va">${SIZE}</span>G tank/encrypted/zvols/<span class="va">${USERHOME}</span>/disk0</a>
-<a class="sourceLine" id="cb1-11" title="11"><span class="ex">zfs</span> create -V <span class="va">${SIZE}</span>G tank/encrypted/zvols/<span class="va">${USERHOME}</span>/disk1</a>
-<a class="sourceLine" id="cb1-12" title="12"></a>
-<a class="sourceLine" id="cb1-13" title="13"><span class="ex">zfs</span> create tank/encrypted/keys/<span class="va">${USERHOME}</span></a>
-<a class="sourceLine" id="cb1-14" title="14"><span class="fu">dd</span> if=/dev/random of=/encrypted/keys/<span class="va">${USERHOME}</span>/disk0 bs=64 count=1</a>
-<a class="sourceLine" id="cb1-15" title="15"><span class="fu">dd</span> if=/dev/random of=/encrypted/keys/<span class="va">${USERHOME}</span>/disk1 bs=64 count=1</a>
-<a class="sourceLine" id="cb1-16" title="16"><span class="ex">geli</span> init -s 4096 -K /encrypted/keys/<span class="va">${USERHOME}</span>/disk0 \</a>
-<a class="sourceLine" id="cb1-17" title="17">/dev/zvol/tank/encrypted/zvols/<span class="va">${USERHOME}</span>/disk0</a>
-<a class="sourceLine" id="cb1-18" title="18"><span class="ex">geli</span> init -s 4096 -K /encrypted/keys/<span class="va">${USERHOME}</span>/disk1 \</a>
-<a class="sourceLine" id="cb1-19" title="19">/dev/zvol/tank/encrypted/zvols/<span class="va">${USERHOME}</span>/disk1</a>
-<a class="sourceLine" id="cb1-20" title="20"></a>
-<a class="sourceLine" id="cb1-21" title="21"><span class="ex">geli</span> attach -k /encrypted/keys/<span class="va">${USERHOME}</span>/disk0 \</a>
-<a class="sourceLine" id="cb1-22" title="22">/dev/zvol/tank/encrypted/zvols/<span class="va">${USERHOME}</span>/disk0</a>
-<a class="sourceLine" id="cb1-23" title="23"><span class="ex">geli</span> attach -k /encrypted/keys/<span class="va">${USERHOME}</span>/disk1 \</a>
-<a class="sourceLine" id="cb1-24" title="24">/dev/zvol/tank/encrypted/zvols/<span class="va">${USERHOME}</span>/disk1</a>
-<a class="sourceLine" id="cb1-25" title="25"></a>
-<a class="sourceLine" id="cb1-26" title="26"><span class="ex">zpool</span> create <span class="va">${USERHOME}</span>-home raidz \</a>
-<a class="sourceLine" id="cb1-27" title="27">/dev/zvol/tank/encrypted/zvols/<span class="va">${USERHOME}</span>/disk0.eli \</a>
-<a class="sourceLine" id="cb1-28" title="28">/dev/zvol/tank/encrypted/zvols/<span class="va">${USERHOME}</span>/disk1.eli</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">#!/bin/sh</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="va">USERHOME=$1</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="va">SIZE=$2</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="ex">zfs</span> create -omountpoint=/encrypted tank/encrypted</span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="ex">zfs</span> create tank/encrypted/keys</span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="ex">zfs</span> create -omountpoint=none tank/encrypted/zvols</span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="ex">zfs</span> create -ocompression=on tank/encrypted/zvols/<span class="va">${USERHOME}</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="ex">zfs</span> create -V <span class="va">${SIZE}</span>G tank/encrypted/zvols/<span class="va">${USERHOME}</span>/disk0</span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="ex">zfs</span> create -V <span class="va">${SIZE}</span>G tank/encrypted/zvols/<span class="va">${USERHOME}</span>/disk1</span>
+<span id="cb1-12"><a href="#cb1-12"></a></span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="ex">zfs</span> create tank/encrypted/keys/<span class="va">${USERHOME}</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="fu">dd</span> if=/dev/random of=/encrypted/keys/<span class="va">${USERHOME}</span>/disk0 bs=64 count=1</span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="fu">dd</span> if=/dev/random of=/encrypted/keys/<span class="va">${USERHOME}</span>/disk1 bs=64 count=1</span>
+<span id="cb1-16"><a href="#cb1-16"></a><span class="ex">geli</span> init -s 4096 -K /encrypted/keys/<span class="va">${USERHOME}</span>/disk0 \</span>
+<span id="cb1-17"><a href="#cb1-17"></a>/dev/zvol/tank/encrypted/zvols/<span class="va">${USERHOME}</span>/disk0</span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="ex">geli</span> init -s 4096 -K /encrypted/keys/<span class="va">${USERHOME}</span>/disk1 \</span>
+<span id="cb1-19"><a href="#cb1-19"></a>/dev/zvol/tank/encrypted/zvols/<span class="va">${USERHOME}</span>/disk1</span>
+<span id="cb1-20"><a href="#cb1-20"></a></span>
+<span id="cb1-21"><a href="#cb1-21"></a><span class="ex">geli</span> attach -k /encrypted/keys/<span class="va">${USERHOME}</span>/disk0 \</span>
+<span id="cb1-22"><a href="#cb1-22"></a>/dev/zvol/tank/encrypted/zvols/<span class="va">${USERHOME}</span>/disk0</span>
+<span id="cb1-23"><a href="#cb1-23"></a><span class="ex">geli</span> attach -k /encrypted/keys/<span class="va">${USERHOME}</span>/disk1 \</span>
+<span id="cb1-24"><a href="#cb1-24"></a>/dev/zvol/tank/encrypted/zvols/<span class="va">${USERHOME}</span>/disk1</span>
+<span id="cb1-25"><a href="#cb1-25"></a></span>
+<span id="cb1-26"><a href="#cb1-26"></a><span class="ex">zpool</span> create <span class="va">${USERHOME}</span>-home raidz \</span>
+<span id="cb1-27"><a href="#cb1-27"></a>/dev/zvol/tank/encrypted/zvols/<span class="va">${USERHOME}</span>/disk0.eli \</span>
+<span id="cb1-28"><a href="#cb1-28"></a>/dev/zvol/tank/encrypted/zvols/<span class="va">${USERHOME}</span>/disk1.eli</span></code></pre></div>
 <p>I try to keep the script updated on <a href="https://github.com/mrtazz/bin/blob/master/create_encrypted_zfs_home.sh">GitHub</a>.</p>
 
       </div>

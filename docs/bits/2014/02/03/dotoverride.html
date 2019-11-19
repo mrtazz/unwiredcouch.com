@@ -5,8 +5,8 @@
     <meta http-equiv="cache-control" content="no-cache"/>
     <meta http-equiv="pragma" content="no-cache"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link href="/css/style.min.css?v=f21333a" media="screen" rel="stylesheet" type="text/css"/>
-    <link href="/css/mobile.min.css?v=1eac577" media="handheld, only screen and (max-device-width: 960px)" rel="stylesheet" type="text/css"/>
+    <link href="/css/style.min.css?v=e1be0c2" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="/css/mobile.min.css?v=e1be0c2" media="handheld, only screen and (max-device-width: 960px)" rel="stylesheet" type="text/css"/>
     <link href="https://unwiredcouch.com/atom.xml" type="application/atom+xml" rel="alternate" title="unwiredcouch.feed" />
 
     <title>Context specific dotfiles on unwiredcouch.com</title>
@@ -31,7 +31,6 @@
     </header>
 
     <div id="content">
-            <div class="postdateheading"> Feb 03, 2014 </div>
             <div class="post">
         <h2> <a href=""> Context specific dotfiles </a></h2>
 
@@ -43,7 +42,7 @@ if filereadable($HOME.&quot;/.dotoverrides/vimrc&quot;)
   exec &quot;:source &quot;. $HOME . &quot;/.dotoverrides/vimrc&quot;
 endif</code></pre>
 <p>In my <code>.zshrc</code> I have this:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="bu">[</span> <span class="ot">-f</span>  <span class="va">${HOME}</span>/.dotoverrides/zshrc<span class="bu"> ]</span> <span class="kw">&amp;&amp;</span> <span class="bu">source</span> <span class="va">${HOME}</span>/.dotoverrides/zshrc</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="bu">[</span> <span class="ot">-f</span>  <span class="va">${HOME}</span>/.dotoverrides/zshrc<span class="bu"> ]</span> <span class="kw">&amp;&amp;</span> <span class="bu">source</span> <span class="va">${HOME}</span>/.dotoverrides/zshrc</span></code></pre></div>
 <p>And in git (only works if you have at least v1.7.10) I’ve added this stanza:</p>
 <pre class="config"><code>[include]
   path = ~/.dotoverrides/gitconfig</code></pre>
