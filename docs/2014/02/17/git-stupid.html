@@ -5,8 +5,8 @@
     <meta http-equiv="cache-control" content="no-cache"/>
     <meta http-equiv="pragma" content="no-cache"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link href="/css/style.min.css?v=f21333a" media="screen" rel="stylesheet" type="text/css"/>
-    <link href="/css/mobile.min.css?v=1eac577" media="handheld, only screen and (max-device-width: 960px)" rel="stylesheet" type="text/css"/>
+    <link href="/css/style.min.css?v=e1be0c2" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="/css/mobile.min.css?v=e1be0c2" media="handheld, only screen and (max-device-width: 960px)" rel="stylesheet" type="text/css"/>
     <link href="https://unwiredcouch.com/atom.xml" type="application/atom+xml" rel="alternate" title="unwiredcouch.feed" />
 
     <title>Git - Put the stupid back in stupid content tracker on unwiredcouch.com</title>
@@ -31,7 +31,6 @@
     </header>
 
     <div id="content">
-            <div class="postdateheading"> Feb 17, 2014 </div>
             <div class="post">
         <h2> <a href=""> Git - Put the stupid back in stupid content tracker </a></h2>
 
@@ -64,7 +63,7 @@ Before complaining about git please consider answering these 2 questions:
 <p>It doesn’t matter where this is from because I don’t want to disrespect the author or their ability to choose a workflow that works for them. It just is a good example (of which you can find hundreds that are similar on the web) of what a lot of people think a git workflow has to be like and cargo cult it into their setup. After all if you’re not using all features of git you must be missing out on precious productivity right?</p>
 <p>Back to the example. Have you kept track and can remember without looking when to merge, rebase or cherry-pick? You are basically doing the same thing - bringing new commits to your branch - and you have to do 3 different things depending on some circumstances. But this isn’t even the most error prone part. Let’s consider you work on a fairly active project with a lot of people. You are maybe even doing continuous integration and continuous deployment and trunk/master gets commited to all the time. You are working on a feature in a branch (btw while we’re at it read <a href="http://whilefalse.blogspot.de/2013/02/branching-is-easy-so.html">Camille Fourniers’ excellent blog post</a> to find out why you actually shouldn’t do this in a continuous deployment setup) and want to pull in changes from master. So you merge master as per the instructions. You notice someone else has pushed to the feature branch in the meantime. You update the local branch with <code>pull --rebase</code> as per the instructions again and push up your changes. If you ever had to do this you won’t be surprised that your working tree now looks something like this:</p>
 <figure>
-<img src="/images/feature-rebase.png" alt="rebase on the feature branch" /><figcaption>rebase on the feature branch</figcaption>
+<img src="/images/feature-rebase.png" alt="" /><figcaption>rebase on the feature branch</figcaption>
 </figure>
 <p>You now have the same commit with two different SHA IDs on different branches. This might not look like a big problem right now. But I for one don’t like to have multiple IDs for the same thing and also think that having two commits doing the same thing is not an ideal situation.</p>
 <p>But even if you work alone on your feature branch and don’t need to rebase before pushing you will eventually run into a similar situation on your master branch. You have worked on your feature branch for a while. You opened a pull request, incorporated feedback and pushed it back up to the branch. People have linked to your commits in tickets to note that it fixes stuff they’ve been waiting on. Now the big moment has come and you want to integrate with master. You pull in changes from origin, you run <code>git merge --no-ff feature-branch</code> to bring in the changes with a clean merge commit. You run <code>git push</code> but there have been upstream changes. So you bring them in again as always with <code>git pull --rebase</code>. Now you can push and everything’s fine right? Well almost, except that last rebase has rewritten all your commits from your feature branch (if you additionally ran <code>git rebase -i</code> before pushing you are probably very well aware of this). You might think that this is ok or even intended since you wanted to clean up your commits anyways. And that this makes it much cleaner and easier to read. However what you effectively just did was rewrite (git) history and remove public references of changes. Everybody who linked to your commits now has links pointing to a non existing resource (they will still be there until you eventually clean up the remote feature branch but this is just details in my opinion). Pull requests don’t get automatically closed and you sure don’t remember to do it by hand and all references in there are useless anyways. And all just for a little bit of beautification of how you actually did your work.</p>

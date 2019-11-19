@@ -5,8 +5,8 @@
     <meta http-equiv="cache-control" content="no-cache"/>
     <meta http-equiv="pragma" content="no-cache"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link href="/css/style.min.css?v=f21333a" media="screen" rel="stylesheet" type="text/css"/>
-    <link href="/css/mobile.min.css?v=1eac577" media="handheld, only screen and (max-device-width: 960px)" rel="stylesheet" type="text/css"/>
+    <link href="/css/style.min.css?v=e1be0c2" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="/css/mobile.min.css?v=e1be0c2" media="handheld, only screen and (max-device-width: 960px)" rel="stylesheet" type="text/css"/>
     <link href="https://unwiredcouch.com/atom.xml" type="application/atom+xml" rel="alternate" title="unwiredcouch.feed" />
 
     <title>Chef Driven Graphite Dashboards on unwiredcouch.com</title>
@@ -31,7 +31,6 @@
     </header>
 
     <div id="content">
-            <div class="postdateheading"> Dec 17, 2015 </div>
             <div class="post">
         <h2> <a href=""> Chef Driven Graphite Dashboards </a></h2>
 
@@ -40,71 +39,71 @@
 <p>However since I wasn’t using Librato anymore, I now had to find a way to get nice overview dashboards for all of my metrics. And I looked into the usual suspects. But all of them seemed to need a very elaborate setup and running an additional application server besides <code>mod_php</code> which I was already running for Nagios just for some graphs embedded on an HTML page didn’t seem like a thing I wanted to embark on. I always liked the way we approach <a href="https://github.com/etsy/dashboard">dashboards at Etsy</a> a lot. It’s basically a PHP framework that gives you a nice way to create graphs from Graphite or Ganglia and combine them into dashboards. However it was a bit overkill for my use case and I would have to write all the code for a typical collectd host anyways. So I wrote my own little PHP script to generate a list of graphs from a config file. And it was really nice, took me 20 minutes, was a lot of fun, and did everything I wanted it to do. I decided to just use Twitter Bootstrap for the UI, which means it also looks nice on my iPhone and it’s aptly named <a href="http://code.mrtazz.com/yagd/">Yet Another Graphite Dashboard</a>.</p>
 <h2 id="chef-integration-and-additional-metrics">Chef integration and additional metrics</h2>
 <p>Now that I had this nice way of viewing dashboards, I wanted to have more graphs. I have long made a choice to track as much as possible in Chef for my personal infrastructure. And graphing is no exception here. Setting up the initial collectd install is a bit manual as I depend on some options that are available in the ports but not the official package builds (my infrastructure is still all FreeBSD). But the configuration and graphing additions are all fully chef-ed. I took the way we have Ganglia set up at Etsy as the role model. We have a setup chef-ed to every box that runs all scripts prefixed with <code>gmetric-</code> in a certain location on a minutely cron. This means in order to get a new set of metrics, you just have to write a shell script that ends up calling <code>gmetric</code> and put it in Chef. And a couple of minutes later graphs for all boxes will magically appear in Ganglia. I did the same for my collectd setup via <code>collectdctl</code> and it looks a little bit like this:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">*</span> * * * * for SCRIPT in <span class="va">$(</span><span class="fu">ls</span> /usr/local/collectd/collectd-*<span class="va">)</span><span class="kw">;</span> <span class="kw">do</span> <span class="bu">command</span> <span class="va">${SCRIPT}</span><span class="kw">;</span> <span class="kw">done</span></a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">*</span> * * * * for SCRIPT in <span class="va">$(</span><span class="fu">ls</span> /usr/local/collectd/collectd-*<span class="va">)</span><span class="kw">;</span> <span class="kw">do</span> <span class="bu">command</span> <span class="va">${SCRIPT}</span><span class="kw">;</span> <span class="kw">done</span></span></code></pre></div>
 <p>This means I can now easily add new metrics by dropping a script in there that utilizes the collectd CLI tooling. However since collectd has a very specific type setup, each script also needs a corresponding configuration in a custom types db. I also track this in Chef so it’s not too big of a problem. An example script to track disk temperature looks like this:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="co">#!/bin/sh</span></a>
-<a class="sourceLine" id="cb2-2" title="2"></a>
-<a class="sourceLine" id="cb2-3" title="3"><span class="va">PLUGIN_NAME=</span><span class="st">&quot;disktemp&quot;</span></a>
-<a class="sourceLine" id="cb2-4" title="4"><span class="va">HOSTNAME=$(</span><span class="fu">hostname</span> -f<span class="va">)</span></a>
-<a class="sourceLine" id="cb2-5" title="5"><span class="va">SMARTCMD=</span><span class="st">&quot;/usr/local/sbin/smartctl&quot;</span></a>
-<a class="sourceLine" id="cb2-6" title="6"><span class="va">COLLECTD=</span><span class="st">&quot;/usr/local/bin/collectdctl&quot;</span></a>
-<a class="sourceLine" id="cb2-7" title="7"></a>
-<a class="sourceLine" id="cb2-8" title="8"><span class="kw">for</span> <span class="ex">disk</span> in <span class="va">$(</span><span class="fu">ls</span> /dev/ada* <span class="kw">|</span> <span class="fu">grep</span> -o <span class="st">&quot;ada[0-9]$&quot;</span><span class="va">)</span><span class="kw">;</span> <span class="kw">do</span></a>
-<a class="sourceLine" id="cb2-9" title="9">  <span class="va">TEMP=$(${SMARTCMD}</span> <span class="ex">-a</span> /dev/<span class="va">${disk}</span> <span class="kw">|</span> <span class="fu">awk</span> <span class="st">&#39;/194 Temperature_Celsius/ {print $10}&#39;</span><span class="va">)</span></a>
-<a class="sourceLine" id="cb2-10" title="10">  <span class="va">${COLLECTD}</span> <span class="ex">putval</span> <span class="va">${HOSTNAME}</span>/<span class="va">${PLUGIN_NAME}</span>-<span class="va">${disk}</span>/celsius_current interval=60 N:<span class="va">${TEMP}</span></a>
-<a class="sourceLine" id="cb2-11" title="11"></a>
-<a class="sourceLine" id="cb2-12" title="12">  <span class="kw">if</span><span class="bu"> [</span> <span class="va">$?</span> <span class="ot">!=</span> 0<span class="bu"> ]</span>; <span class="kw">then</span></a>
-<a class="sourceLine" id="cb2-13" title="13">    <span class="bu">echo</span> <span class="st">&quot;ERROR </span><span class="va">${0}</span><span class="st">: </span><span class="va">${HOSTNAME}</span><span class="st">/</span><span class="va">${PLUGIN_NAME}</span><span class="st">-</span><span class="va">${disk}</span><span class="st">/celsius_current interval=60 N:</span><span class="va">${TEMP}</span><span class="st">&quot;</span></a>
-<a class="sourceLine" id="cb2-14" title="14">  <span class="kw">fi</span></a>
-<a class="sourceLine" id="cb2-15" title="15"><span class="kw">done</span></a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">#!/bin/sh</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="va">PLUGIN_NAME=</span><span class="st">&quot;disktemp&quot;</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="va">HOSTNAME=$(</span><span class="fu">hostname</span> -f<span class="va">)</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="va">SMARTCMD=</span><span class="st">&quot;/usr/local/sbin/smartctl&quot;</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="va">COLLECTD=</span><span class="st">&quot;/usr/local/bin/collectdctl&quot;</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="kw">for</span> <span class="ex">disk</span> in <span class="va">$(</span><span class="fu">ls</span> /dev/ada* <span class="kw">|</span> <span class="fu">grep</span> -o <span class="st">&quot;ada[0-9]$&quot;</span><span class="va">)</span><span class="kw">;</span> <span class="kw">do</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a>  <span class="va">TEMP=$(${SMARTCMD}</span> <span class="ex">-a</span> /dev/<span class="va">${disk}</span> <span class="kw">|</span> <span class="fu">awk</span> <span class="st">&#39;/194 Temperature_Celsius/ {print $10}&#39;</span><span class="va">)</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a>  <span class="va">${COLLECTD}</span> <span class="ex">putval</span> <span class="va">${HOSTNAME}</span>/<span class="va">${PLUGIN_NAME}</span>-<span class="va">${disk}</span>/celsius_current interval=60 N:<span class="va">${TEMP}</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a></span>
+<span id="cb2-12"><a href="#cb2-12"></a>  <span class="kw">if</span><span class="bu"> [</span> <span class="va">$?</span> <span class="ot">!=</span> 0<span class="bu"> ]</span>; <span class="kw">then</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a>    <span class="bu">echo</span> <span class="st">&quot;ERROR </span><span class="va">${0}</span><span class="st">: </span><span class="va">${HOSTNAME}</span><span class="st">/</span><span class="va">${PLUGIN_NAME}</span><span class="st">-</span><span class="va">${disk}</span><span class="st">/celsius_current interval=60 N:</span><span class="va">${TEMP}</span><span class="st">&quot;</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a>  <span class="kw">fi</span></span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="kw">done</span></span></code></pre></div>
 <p>Another thing that Ganglia gives you for free is a section for additional metrics that just appear as soon as you send them with an optional group name to group them by. In order to emulate that in my setup, the recipes for each collectd script are also defining node attributes with the Graphite graphs they are generating and how they are supposed to be displayed. This made a lot of sense to me as when I’m writing the scripts I have the generated metrics in my head anyways. And it’s easy to just drop them in a node attribute. So for tracking disk temperature for example, the recipe looks a bit like this:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode ruby"><code class="sourceCode ruby"><a class="sourceLine" id="cb3-1" title="1">cookbook_file <span class="st">&quot;/usr/local/collectd/collectd-disk-temp.sh&quot;</span> <span class="kw">do</span></a>
-<a class="sourceLine" id="cb3-2" title="2">  source <span class="st">&quot;collectd-disk-temp.sh&quot;</span></a>
-<a class="sourceLine" id="cb3-3" title="3">  owner <span class="st">&quot;root&quot;</span></a>
-<a class="sourceLine" id="cb3-4" title="4">  group <span class="st">&quot;wheel&quot;</span></a>
-<a class="sourceLine" id="cb3-5" title="5">  mode <span class="bn">0755</span></a>
-<a class="sourceLine" id="cb3-6" title="6"><span class="kw">end</span></a>
-<a class="sourceLine" id="cb3-7" title="7"></a>
-<a class="sourceLine" id="cb3-8" title="8">node.default[<span class="st">:yagd</span>][<span class="st">:additional_metrics</span>][<span class="st">:disk_temperature</span>] = {</a>
-<a class="sourceLine" id="cb3-9" title="9">  <span class="st">&quot;Disk Temperature&quot;</span> =&gt; <span class="st">&quot;collectd.</span><span class="ot">#{</span>node[<span class="st">:fqdn</span>].gsub(<span class="st">&quot;.&quot;</span>,<span class="st">&quot;_&quot;</span>)<span class="ot">}</span><span class="st">.disktemp-ada*.celsius_current&quot;</span></a>
-<a class="sourceLine" id="cb3-10" title="10">}</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode ruby"><code class="sourceCode ruby"><span id="cb3-1"><a href="#cb3-1"></a>cookbook_file <span class="st">&quot;/usr/local/collectd/collectd-disk-temp.sh&quot;</span> <span class="kw">do</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>  source <span class="st">&quot;collectd-disk-temp.sh&quot;</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>  owner <span class="st">&quot;root&quot;</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>  group <span class="st">&quot;wheel&quot;</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>  mode <span class="bn">0755</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="kw">end</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a></span>
+<span id="cb3-8"><a href="#cb3-8"></a>node.default[<span class="st">:yagd</span>][<span class="st">:additional_metrics</span>][<span class="st">:disk_temperature</span>] = {</span>
+<span id="cb3-9"><a href="#cb3-9"></a>  <span class="st">&quot;Disk Temperature&quot;</span> =&gt; <span class="st">&quot;collectd.</span><span class="ot">#{</span>node[<span class="st">:fqdn</span>].gsub(<span class="st">&quot;.&quot;</span>,<span class="st">&quot;_&quot;</span>)<span class="ot">}</span><span class="st">.disktemp-ada*.celsius_current&quot;</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a>}</span></code></pre></div>
 <p>The next step was now to not have to manually edit the config file for my dashboards anymore. I now had all the data I needed in Chef, so all it took was generating the config file there from a Chef search and all graphs were magically appearing as soon as both the node to monitor and the dashboard host had run Chef. This can take up to 20 minutes worst case (I run Chef every 10 minutes) which is really not a big deal for me. The Chef search code that does this for me looks like this:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode ruby"><code class="sourceCode ruby"><a class="sourceLine" id="cb4-1" title="1">hosts = []</a>
-<a class="sourceLine" id="cb4-2" title="2">nodes = search(<span class="st">:node</span>, <span class="st">&quot;domain:*unwiredcouch.com&quot;</span>)</a>
-<a class="sourceLine" id="cb4-3" title="3"></a>
-<a class="sourceLine" id="cb4-4" title="4">nodes.each <span class="kw">do</span> |computer|</a>
-<a class="sourceLine" id="cb4-5" title="5"></a>
-<a class="sourceLine" id="cb4-6" title="6">  this_computer = {}</a>
-<a class="sourceLine" id="cb4-7" title="7"></a>
-<a class="sourceLine" id="cb4-8" title="8">  this_computer[<span class="st">:name</span>] = computer[<span class="st">:fqdn</span>]</a>
-<a class="sourceLine" id="cb4-9" title="9">  this_computer[<span class="st">:cpus</span>] = computer[<span class="st">:cpu</span>].nil? ? <span class="dv">0</span> : computer[<span class="st">:cpu</span>][<span class="st">:total</span>]</a>
-<a class="sourceLine" id="cb4-10" title="10">  this_computer[<span class="st">:apache</span>] = computer.recipes.include?(<span class="st">&quot;apache&quot;</span>)</a>
-<a class="sourceLine" id="cb4-11" title="11">  this_computer[<span class="st">:interfaces</span>] = computer.network.interfaces.keys.select {|k| !k.to_s.start_with?<span class="st">&quot;lo&quot;</span> }</a>
-<a class="sourceLine" id="cb4-12" title="12">  this_computer[<span class="st">:filesystems</span>] = []</a>
-<a class="sourceLine" id="cb4-13" title="13">  computer.filesystem.each <span class="kw">do</span> |k,v|</a>
-<a class="sourceLine" id="cb4-14" title="14">    name = v[<span class="st">:mount</span>] == <span class="st">&quot;/&quot;</span> ? <span class="st">&quot;/root&quot;</span> : v[<span class="st">:mount</span>]</a>
-<a class="sourceLine" id="cb4-15" title="15">    <span class="co"># cut out leading &#39;/&#39;</span></a>
-<a class="sourceLine" id="cb4-16" title="16">    name[<span class="dv">0</span>] = <span class="st">&#39;&#39;</span></a>
-<a class="sourceLine" id="cb4-17" title="17">    <span class="co"># substitute &#39;/&#39; with &#39;-&#39;</span></a>
-<a class="sourceLine" id="cb4-18" title="18">    name.gsub!(<span class="st">&quot;/&quot;</span>, <span class="st">&quot;-&quot;</span>)</a>
-<a class="sourceLine" id="cb4-19" title="19">    <span class="co"># substitute &#39;.&#39; with &#39;_&#39;</span></a>
-<a class="sourceLine" id="cb4-20" title="20">    name.gsub!(<span class="st">&quot;.&quot;</span>, <span class="st">&quot;_&quot;</span>)</a>
-<a class="sourceLine" id="cb4-21" title="21">    <span class="co"># and add to array</span></a>
-<a class="sourceLine" id="cb4-22" title="22">    this_computer[<span class="st">:filesystems</span>] &lt;&lt; name</a>
-<a class="sourceLine" id="cb4-23" title="23">  <span class="kw">end</span></a>
-<a class="sourceLine" id="cb4-24" title="24">  this_computer[<span class="st">:additional_metrics</span>] = computer[<span class="st">:yagd</span>][<span class="st">:additional_metrics</span>] <span class="kw">unless</span> computer[<span class="st">:yagd</span>].nil?</a>
-<a class="sourceLine" id="cb4-25" title="25"></a>
-<a class="sourceLine" id="cb4-26" title="26">  hosts &lt;&lt; this_computer</a>
-<a class="sourceLine" id="cb4-27" title="27"></a>
-<a class="sourceLine" id="cb4-28" title="28"><span class="kw">end</span></a>
-<a class="sourceLine" id="cb4-29" title="29"></a>
-<a class="sourceLine" id="cb4-30" title="30">template <span class="st">&quot;</span><span class="ot">#{</span>dashboards_dir<span class="ot">}</span><span class="st">/config.php&quot;</span> <span class="kw">do</span></a>
-<a class="sourceLine" id="cb4-31" title="31">  source <span class="st">&quot;yagd.config.php.erb&quot;</span></a>
-<a class="sourceLine" id="cb4-32" title="32">  owner <span class="st">&quot;www&quot;</span></a>
-<a class="sourceLine" id="cb4-33" title="33">  group <span class="st">&quot;wheel&quot;</span></a>
-<a class="sourceLine" id="cb4-34" title="34">  mode <span class="bn">0775</span></a>
-<a class="sourceLine" id="cb4-35" title="35">  variables( <span class="st">:hosts</span> =&gt; hosts )</a>
-<a class="sourceLine" id="cb4-36" title="36"><span class="kw">end</span></a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode ruby"><code class="sourceCode ruby"><span id="cb4-1"><a href="#cb4-1"></a>hosts = []</span>
+<span id="cb4-2"><a href="#cb4-2"></a>nodes = search(<span class="st">:node</span>, <span class="st">&quot;domain:*unwiredcouch.com&quot;</span>)</span>
+<span id="cb4-3"><a href="#cb4-3"></a></span>
+<span id="cb4-4"><a href="#cb4-4"></a>nodes.each <span class="kw">do</span> |computer|</span>
+<span id="cb4-5"><a href="#cb4-5"></a></span>
+<span id="cb4-6"><a href="#cb4-6"></a>  this_computer = {}</span>
+<span id="cb4-7"><a href="#cb4-7"></a></span>
+<span id="cb4-8"><a href="#cb4-8"></a>  this_computer[<span class="st">:name</span>] = computer[<span class="st">:fqdn</span>]</span>
+<span id="cb4-9"><a href="#cb4-9"></a>  this_computer[<span class="st">:cpus</span>] = computer[<span class="st">:cpu</span>].nil? ? <span class="dv">0</span> : computer[<span class="st">:cpu</span>][<span class="st">:total</span>]</span>
+<span id="cb4-10"><a href="#cb4-10"></a>  this_computer[<span class="st">:apache</span>] = computer.recipes.include?(<span class="st">&quot;apache&quot;</span>)</span>
+<span id="cb4-11"><a href="#cb4-11"></a>  this_computer[<span class="st">:interfaces</span>] = computer.network.interfaces.keys.select {|k| !k.to_s.start_with?<span class="st">&quot;lo&quot;</span> }</span>
+<span id="cb4-12"><a href="#cb4-12"></a>  this_computer[<span class="st">:filesystems</span>] = []</span>
+<span id="cb4-13"><a href="#cb4-13"></a>  computer.filesystem.each <span class="kw">do</span> |k,v|</span>
+<span id="cb4-14"><a href="#cb4-14"></a>    name = v[<span class="st">:mount</span>] == <span class="st">&quot;/&quot;</span> ? <span class="st">&quot;/root&quot;</span> : v[<span class="st">:mount</span>]</span>
+<span id="cb4-15"><a href="#cb4-15"></a>    <span class="co"># cut out leading &#39;/&#39;</span></span>
+<span id="cb4-16"><a href="#cb4-16"></a>    name[<span class="dv">0</span>] = <span class="st">&#39;&#39;</span></span>
+<span id="cb4-17"><a href="#cb4-17"></a>    <span class="co"># substitute &#39;/&#39; with &#39;-&#39;</span></span>
+<span id="cb4-18"><a href="#cb4-18"></a>    name.gsub!(<span class="st">&quot;/&quot;</span>, <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb4-19"><a href="#cb4-19"></a>    <span class="co"># substitute &#39;.&#39; with &#39;_&#39;</span></span>
+<span id="cb4-20"><a href="#cb4-20"></a>    name.gsub!(<span class="st">&quot;.&quot;</span>, <span class="st">&quot;_&quot;</span>)</span>
+<span id="cb4-21"><a href="#cb4-21"></a>    <span class="co"># and add to array</span></span>
+<span id="cb4-22"><a href="#cb4-22"></a>    this_computer[<span class="st">:filesystems</span>] &lt;&lt; name</span>
+<span id="cb4-23"><a href="#cb4-23"></a>  <span class="kw">end</span></span>
+<span id="cb4-24"><a href="#cb4-24"></a>  this_computer[<span class="st">:additional_metrics</span>] = computer[<span class="st">:yagd</span>][<span class="st">:additional_metrics</span>] <span class="kw">unless</span> computer[<span class="st">:yagd</span>].nil?</span>
+<span id="cb4-25"><a href="#cb4-25"></a></span>
+<span id="cb4-26"><a href="#cb4-26"></a>  hosts &lt;&lt; this_computer</span>
+<span id="cb4-27"><a href="#cb4-27"></a></span>
+<span id="cb4-28"><a href="#cb4-28"></a><span class="kw">end</span></span>
+<span id="cb4-29"><a href="#cb4-29"></a></span>
+<span id="cb4-30"><a href="#cb4-30"></a>template <span class="st">&quot;</span><span class="ot">#{</span>dashboards_dir<span class="ot">}</span><span class="st">/config.php&quot;</span> <span class="kw">do</span></span>
+<span id="cb4-31"><a href="#cb4-31"></a>  source <span class="st">&quot;yagd.config.php.erb&quot;</span></span>
+<span id="cb4-32"><a href="#cb4-32"></a>  owner <span class="st">&quot;www&quot;</span></span>
+<span id="cb4-33"><a href="#cb4-33"></a>  group <span class="st">&quot;wheel&quot;</span></span>
+<span id="cb4-34"><a href="#cb4-34"></a>  mode <span class="bn">0775</span></span>
+<span id="cb4-35"><a href="#cb4-35"></a>  variables( <span class="st">:hosts</span> =&gt; hosts )</span>
+<span id="cb4-36"><a href="#cb4-36"></a><span class="kw">end</span></span></code></pre></div>
 <p>And this is the accompanying erb template that gets rendered into a PHP file to serve as the configuration for my dashboards instance.</p>
 <pre class="erb"><code>&lt;?php
 
@@ -142,31 +141,31 @@ $CONFIG = array(
 <h2 id="the-cleanup">The Cleanup</h2>
 <p>After all of this configuration, my dashboard setup was working beautifully and I added more and more graphs I was interested in. But it was still more or less the 20 minute PHP code I had initially thrown together. This was technically fine and I didn’t mind it too much. But at the same time I thought it might be nice to bring it in a state where it’s usable for others. So I decided to take some time to clean it up and make it more generically usable. So I refactored the code, added unit tests to run on <a href="https://travis-ci.org/mrtazz/yagd">Travis CI</a> and hooked it up to <a href="https://codeclimate.com/github/mrtazz/yagd/">Code Climate</a> so I could have a computer tell me how I can improve the code quality.</p>
 <p>With this refactor in place it’s now fairly easy to get a dashboard page that shows the status of all hosts:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode php"><code class="sourceCode php"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">&lt;?php</span></a>
-<a class="sourceLine" id="cb6-2" title="2"></a>
-<a class="sourceLine" id="cb6-3" title="3"><span class="kw">require</span> <span class="kw">__DIR__</span> . <span class="st">&#39;/../vendor/autoload.php&#39;</span><span class="ot">;</span></a>
-<a class="sourceLine" id="cb6-4" title="4"></a>
-<a class="sourceLine" id="cb6-5" title="5"><span class="kw">include_once</span><span class="ot">(</span><span class="st">&quot;../config.php&quot;</span><span class="ot">);</span></a>
-<a class="sourceLine" id="cb6-6" title="6"></a>
-<a class="sourceLine" id="cb6-7" title="7"><span class="kw">use</span> Yagd\CollectdHost<span class="ot">;</span></a>
-<a class="sourceLine" id="cb6-8" title="8"><span class="kw">use</span> Yagd\Page<span class="ot">;</span></a>
-<a class="sourceLine" id="cb6-9" title="9"></a>
-<a class="sourceLine" id="cb6-10" title="10"><span class="kw">$page</span> = <span class="kw">new</span> Page<span class="ot">(</span><span class="kw">$CONFIG</span><span class="ot">);</span></a>
-<a class="sourceLine" id="cb6-11" title="11"><span class="kw">echo</span> <span class="kw">$page</span>-&gt;getHeader<span class="ot">(</span><span class="kw">$CONFIG</span><span class="ot">[</span><span class="st">&quot;title&quot;</span><span class="ot">],</span></a>
-<a class="sourceLine" id="cb6-12" title="12">    <span class="kw">$CONFIG</span><span class="ot">[</span><span class="st">&quot;navitems&quot;</span><span class="ot">]);</span></a>
-<a class="sourceLine" id="cb6-13" title="13"></a>
-<a class="sourceLine" id="cb6-14" title="14"><span class="kw">foreach</span><span class="ot">(</span><span class="kw">$CONFIG</span><span class="ot">[</span><span class="st">&quot;hosts&quot;</span><span class="ot">]</span> <span class="kw">as</span> <span class="kw">$host</span> =&gt; <span class="kw">$data</span><span class="ot">)</span> {</a>
-<a class="sourceLine" id="cb6-15" title="15"></a>
-<a class="sourceLine" id="cb6-16" title="16">    <span class="kw">$fss</span> = <span class="kw">empty</span><span class="ot">(</span><span class="kw">$data</span><span class="ot">[</span><span class="st">&quot;filesystems&quot;</span><span class="ot">])</span> <span class="ot">?</span> <span class="ot">[]</span> <span class="ot">:</span> <span class="kw">$data</span><span class="ot">[</span><span class="st">&quot;filesystems&quot;</span><span class="ot">];</span></a>
-<a class="sourceLine" id="cb6-17" title="17"></a>
-<a class="sourceLine" id="cb6-18" title="18">    <span class="kw">$server</span> = <span class="kw">new</span> CollectdHost<span class="ot">(</span><span class="kw">$host</span><span class="ot">,</span> <span class="kw">$data</span><span class="ot">[</span><span class="st">&quot;cpus&quot;</span><span class="ot">],</span> <span class="kw">$fss</span><span class="ot">,</span></a>
-<a class="sourceLine" id="cb6-19" title="19">                               <span class="kw">$data</span><span class="ot">[</span><span class="st">&quot;interfaces&quot;</span><span class="ot">]);</span></a>
-<a class="sourceLine" id="cb6-20" title="20">    <span class="kw">$server</span>-&gt;setGraphiteConfiguration<span class="ot">(</span><span class="kw">$CONFIG</span><span class="ot">[</span><span class="st">&quot;graphite&quot;</span><span class="ot">][</span><span class="st">&quot;host&quot;</span><span class="ot">]);</span></a>
-<a class="sourceLine" id="cb6-21" title="21">    <span class="kw">echo</span> <span class="st">&quot;&lt;h2&gt; </span><span class="kw">{$host}</span><span class="st"> &lt;/h2&gt;&quot;</span><span class="ot">;</span></a>
-<a class="sourceLine" id="cb6-22" title="22">    <span class="kw">$server</span>-&gt;render<span class="ot">();</span></a>
-<a class="sourceLine" id="cb6-23" title="23">}</a>
-<a class="sourceLine" id="cb6-24" title="24"></a>
-<a class="sourceLine" id="cb6-25" title="25"><span class="kw">echo</span> <span class="kw">$page</span>-&gt;getFooter<span class="ot">();</span></a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode php"><code class="sourceCode php"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">&lt;?php</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="kw">require</span> <span class="kw">__DIR__</span> . <span class="st">&#39;/../vendor/autoload.php&#39;</span><span class="ot">;</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="kw">include_once</span><span class="ot">(</span><span class="st">&quot;../config.php&quot;</span><span class="ot">);</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="kw">use</span> Yagd\CollectdHost<span class="ot">;</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="kw">use</span> Yagd\Page<span class="ot">;</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a></span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="kw">$page</span> = <span class="kw">new</span> Page<span class="ot">(</span><span class="kw">$CONFIG</span><span class="ot">);</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a><span class="kw">echo</span> <span class="kw">$page</span>-&gt;getHeader<span class="ot">(</span><span class="kw">$CONFIG</span><span class="ot">[</span><span class="st">&quot;title&quot;</span><span class="ot">],</span></span>
+<span id="cb6-12"><a href="#cb6-12"></a>    <span class="kw">$CONFIG</span><span class="ot">[</span><span class="st">&quot;navitems&quot;</span><span class="ot">]);</span></span>
+<span id="cb6-13"><a href="#cb6-13"></a></span>
+<span id="cb6-14"><a href="#cb6-14"></a><span class="kw">foreach</span><span class="ot">(</span><span class="kw">$CONFIG</span><span class="ot">[</span><span class="st">&quot;hosts&quot;</span><span class="ot">]</span> <span class="kw">as</span> <span class="kw">$host</span> =&gt; <span class="kw">$data</span><span class="ot">)</span> {</span>
+<span id="cb6-15"><a href="#cb6-15"></a></span>
+<span id="cb6-16"><a href="#cb6-16"></a>    <span class="kw">$fss</span> = <span class="kw">empty</span><span class="ot">(</span><span class="kw">$data</span><span class="ot">[</span><span class="st">&quot;filesystems&quot;</span><span class="ot">])</span> <span class="ot">?</span> <span class="ot">[]</span> <span class="ot">:</span> <span class="kw">$data</span><span class="ot">[</span><span class="st">&quot;filesystems&quot;</span><span class="ot">];</span></span>
+<span id="cb6-17"><a href="#cb6-17"></a></span>
+<span id="cb6-18"><a href="#cb6-18"></a>    <span class="kw">$server</span> = <span class="kw">new</span> CollectdHost<span class="ot">(</span><span class="kw">$host</span><span class="ot">,</span> <span class="kw">$data</span><span class="ot">[</span><span class="st">&quot;cpus&quot;</span><span class="ot">],</span> <span class="kw">$fss</span><span class="ot">,</span></span>
+<span id="cb6-19"><a href="#cb6-19"></a>                               <span class="kw">$data</span><span class="ot">[</span><span class="st">&quot;interfaces&quot;</span><span class="ot">]);</span></span>
+<span id="cb6-20"><a href="#cb6-20"></a>    <span class="kw">$server</span>-&gt;setGraphiteConfiguration<span class="ot">(</span><span class="kw">$CONFIG</span><span class="ot">[</span><span class="st">&quot;graphite&quot;</span><span class="ot">][</span><span class="st">&quot;host&quot;</span><span class="ot">]);</span></span>
+<span id="cb6-21"><a href="#cb6-21"></a>    <span class="kw">echo</span> <span class="st">&quot;&lt;h2&gt; </span><span class="kw">{$host}</span><span class="st"> &lt;/h2&gt;&quot;</span><span class="ot">;</span></span>
+<span id="cb6-22"><a href="#cb6-22"></a>    <span class="kw">$server</span>-&gt;render<span class="ot">();</span></span>
+<span id="cb6-23"><a href="#cb6-23"></a>}</span>
+<span id="cb6-24"><a href="#cb6-24"></a></span>
+<span id="cb6-25"><a href="#cb6-25"></a><span class="kw">echo</span> <span class="kw">$page</span>-&gt;getFooter<span class="ot">();</span></span></code></pre></div>
 <p>You can also <a href="https://github.com/mrtazz/yagd#inject-a-select-box-into-the-navbar">inject a selectbox</a> into the header to have it be possible to just select a single server instead of always displaying all of them. This makes it really nice to be able to just browse to something like <code>https://yagd.example.com/hosts.php?hostname=foo.example.com</code> and get a quick overview of how that that host is doing. Plus it gives you a URL you can link to from anywhere else.</p>
 <p>Also since this is just plain PHP, entirely driven by the config file, it’s possible to have a per cluster view by passing a URL parameter like <code>?cluster=name</code> and then changing the <code>include_once()</code> code in that example to include a different config file based on that. And since Chef already knows or can know all that data (maybe each cluster is its own role? ), it’s just a matter of writing some ruby to generate different sets of config files for the dashboards.</p>
 <h2 id="summary">Summary</h2>

@@ -5,8 +5,8 @@
     <meta http-equiv="cache-control" content="no-cache"/>
     <meta http-equiv="pragma" content="no-cache"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link href="/css/style.min.css?v=f21333a" media="screen" rel="stylesheet" type="text/css"/>
-    <link href="/css/mobile.min.css?v=1eac577" media="handheld, only screen and (max-device-width: 960px)" rel="stylesheet" type="text/css"/>
+    <link href="/css/style.min.css?v=e1be0c2" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="/css/mobile.min.css?v=e1be0c2" media="handheld, only screen and (max-device-width: 960px)" rel="stylesheet" type="text/css"/>
     <link href="https://unwiredcouch.com/atom.xml" type="application/atom+xml" rel="alternate" title="unwiredcouch.feed" />
 
     <title>Take Pride in Your Code on unwiredcouch.com</title>
@@ -31,7 +31,6 @@
     </header>
 
     <div id="content">
-            <div class="postdateheading"> Jan 12, 2016 </div>
             <div class="post">
         <h2> <a href=""> Take Pride in Your Code </a></h2>
 
@@ -50,51 +49,51 @@
 <p><a href="http://codeclimate.com">Codeclimate</a> is a wonderful service I use to do this. It has static analysis plugins for a lot of languages and is super easy to set up. It integrates with the Github status API and shows changes for every commit and pull request. That way you can have a computer enforce things like indents, formatting, and problems that a static analyzer can find and you can concentrate on the logic and spirit of the change.</p>
 <h3 id="packaging-and-deployment">Packaging and Deployment</h3>
 <p>These are topics very dear to my heart. A good packaging and deployment setup makes the user experience of software so much better. Not having to think about where to copy that one file, no need to curlbash some weird script, having things come from the package manager you already use. All those things make it a wonderful experience to get started on a piece of software. And the state of things there also only has gotten better over the years. A lot of the language specific package managers now have nice tooling around creating and uploading install packages for their platform. Some like <a href="https://packagist.org/">packagist</a> even go so far as to just fetch things for you from GitHub and create releases on tags automatically. There is literally no reason to not have your PHP project on there. But even ruby gems and Python modules you can upload easily in an automatic way from your CI system. Travis CI has a whole section on deployments and integrations with most of the popular services. So do other CI platforms. <a href="https://github.com/jordansissel/fpm">fpm</a> has made it ridiculously easy to build packages for Linux. And with <a href="https://packagecloud.io/">packagecloud</a> you can host them in an amazingly accessible and user friendly way. You can even have your packages built and uploaded from your CI system as well with something like this:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="va">NAME=</span>restclient-cpp</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="ex">VERSION</span> = <span class="va">$(</span><span class="ex">shell</span> git describe --tags --always --dirty<span class="va">)</span></a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="ex">BUILDER</span> = <span class="va">$(</span><span class="ex">shell</span> echo <span class="st">&quot;</span><span class="kw">`</span><span class="fu">git</span> config user.name<span class="kw">`</span><span class="st"> &lt;</span><span class="kw">`</span><span class="fu">git</span> config user.email<span class="kw">`</span><span class="st">&gt;&quot;</span><span class="va">)</span></a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="ex">PKG_RELEASE</span> ?= 1</a>
-<a class="sourceLine" id="cb1-5" title="5"><span class="va">PROJECT_URL=</span><span class="st">&quot;https://github.com/mrtazz/</span><span class="va">$(</span><span class="ex">NAME</span><span class="va">)</span><span class="st">&quot;</span></a>
-<a class="sourceLine" id="cb1-6" title="6"><span class="va">FPM_FLAGS=</span> <span class="ex">--name</span> <span class="va">$(</span><span class="ex">NAME</span><span class="va">)</span> --version <span class="va">$(</span><span class="ex">VERSION</span><span class="va">)</span> --iteration <span class="va">$(</span><span class="ex">PKG_RELEASE</span><span class="va">)</span> \</a>
-<a class="sourceLine" id="cb1-7" title="7">           --epoch 1 --license MIT --maintainer <span class="st">&quot;</span><span class="va">$(</span><span class="ex">BUILDER</span><span class="va">)</span><span class="st">&quot;</span></a>
-<a class="sourceLine" id="cb1-8" title="8">           <span class="ex">--url</span> <span class="va">$(</span><span class="ex">PROJECT_URL</span><span class="va">)</span> --vendor mrtazz \</a>
-<a class="sourceLine" id="cb1-9" title="9">           --description <span class="st">&quot;C++ client for making HTTP/REST requests&quot;</span></a>
-<a class="sourceLine" id="cb1-10" title="10">           <span class="ex">--depends</span> curl usr</a>
-<a class="sourceLine" id="cb1-11" title="11"></a>
-<a class="sourceLine" id="cb1-12" title="12"><span class="co"># build rpm and deb</span></a>
-<a class="sourceLine" id="cb1-13" title="13"><span class="ex">fpm</span> -t rpm -s dir <span class="va">$(</span><span class="ex">FPM_FLAGS</span><span class="va">)</span></a>
-<a class="sourceLine" id="cb1-14" title="14"><span class="ex">fpm</span> -t deb -s dir <span class="va">$(</span><span class="ex">FPM_FLAGS</span><span class="va">)</span></a>
-<a class="sourceLine" id="cb1-15" title="15"></a>
-<a class="sourceLine" id="cb1-16" title="16"><span class="co"># deploy to package cloud</span></a>
-<a class="sourceLine" id="cb1-17" title="17"><span class="ex">package_cloud</span> push mrtazz/<span class="va">$(</span><span class="ex">NAME</span><span class="va">)</span>/el/7 *.rpm</a>
-<a class="sourceLine" id="cb1-18" title="18"><span class="ex">package_cloud</span> push mrtazz/<span class="va">$(</span><span class="ex">NAME</span><span class="va">)</span>/debian/wheezy *.deb</a>
-<a class="sourceLine" id="cb1-19" title="19"><span class="ex">package_cloud</span> push mrtazz/<span class="va">$(</span><span class="ex">NAME</span><span class="va">)</span>/ubuntu/trusty *.deb</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="va">NAME=</span>restclient-cpp</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="ex">VERSION</span> = <span class="va">$(</span><span class="ex">shell</span> git describe --tags --always --dirty<span class="va">)</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="ex">BUILDER</span> = <span class="va">$(</span><span class="ex">shell</span> echo <span class="st">&quot;</span><span class="kw">`</span><span class="fu">git</span> config user.name<span class="kw">`</span><span class="st"> &lt;</span><span class="kw">`</span><span class="fu">git</span> config user.email<span class="kw">`</span><span class="st">&gt;&quot;</span><span class="va">)</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="ex">PKG_RELEASE</span> ?= 1</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="va">PROJECT_URL=</span><span class="st">&quot;https://github.com/mrtazz/</span><span class="va">$(</span><span class="ex">NAME</span><span class="va">)</span><span class="st">&quot;</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="va">FPM_FLAGS=</span> <span class="ex">--name</span> <span class="va">$(</span><span class="ex">NAME</span><span class="va">)</span> --version <span class="va">$(</span><span class="ex">VERSION</span><span class="va">)</span> --iteration <span class="va">$(</span><span class="ex">PKG_RELEASE</span><span class="va">)</span> \</span>
+<span id="cb1-7"><a href="#cb1-7"></a>           --epoch 1 --license MIT --maintainer <span class="st">&quot;</span><span class="va">$(</span><span class="ex">BUILDER</span><span class="va">)</span><span class="st">&quot;</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a>           <span class="ex">--url</span> <span class="va">$(</span><span class="ex">PROJECT_URL</span><span class="va">)</span> --vendor mrtazz \</span>
+<span id="cb1-9"><a href="#cb1-9"></a>           --description <span class="st">&quot;C++ client for making HTTP/REST requests&quot;</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a>           <span class="ex">--depends</span> curl usr</span>
+<span id="cb1-11"><a href="#cb1-11"></a></span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="co"># build rpm and deb</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="ex">fpm</span> -t rpm -s dir <span class="va">$(</span><span class="ex">FPM_FLAGS</span><span class="va">)</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="ex">fpm</span> -t deb -s dir <span class="va">$(</span><span class="ex">FPM_FLAGS</span><span class="va">)</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a></span>
+<span id="cb1-16"><a href="#cb1-16"></a><span class="co"># deploy to package cloud</span></span>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="ex">package_cloud</span> push mrtazz/<span class="va">$(</span><span class="ex">NAME</span><span class="va">)</span>/el/7 *.rpm</span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="ex">package_cloud</span> push mrtazz/<span class="va">$(</span><span class="ex">NAME</span><span class="va">)</span>/debian/wheezy *.deb</span>
+<span id="cb1-19"><a href="#cb1-19"></a><span class="ex">package_cloud</span> push mrtazz/<span class="va">$(</span><span class="ex">NAME</span><span class="va">)</span>/ubuntu/trusty *.deb</span></code></pre></div>
 <p>Or use their integrated <a href="https://docs.travis-ci.com/user/deployment/packagecloud">deployment provider</a> which his even less setup work.</p>
 <h3 id="documentation-deploy">Documentation Deploy</h3>
 <p>And speaking of automatic build and deploy. The same goes for documentation. One of the most genius features of GitHub in my mind is the fact that every repository can have a <code>gh-pages</code> branch whose contents are getting published as a website under <code>http://username.github.io/reponame</code>. This makes it extremely easy to host a documentation page for your project. And with GitHub’s CNAME support you can even have a custom domain for your project point to it. The fact that it’s just another branch in your repository means that you can easily automate the deployment of docs alongside your code for example from (you probably guessed it by now ) your CI system. Thanks to GitHub pages this is as easy as:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="co"># generate docs</span></a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="fu">install</span> -d docs</a>
-<a class="sourceLine" id="cb2-3" title="3"><span class="bu">echo</span> <span class="st">&quot;projecturl: </span><span class="va">$(</span><span class="ex">PROJECT_URL</span><span class="va">)</span><span class="st">&quot;</span> <span class="op">&gt;&gt;</span> docs/_config.yml</a>
-<a class="sourceLine" id="cb2-4" title="4"><span class="bu">echo</span> <span class="st">&quot;basesite: http://www.unwiredcouch.com&quot;</span> <span class="op">&gt;&gt;</span> docs/_config.yml</a>
-<a class="sourceLine" id="cb2-5" title="5"><span class="bu">echo</span> <span class="st">&quot;markdown: redcarpet&quot;</span> <span class="op">&gt;&gt;</span> docs/_config.yml</a>
-<a class="sourceLine" id="cb2-6" title="6"><span class="bu">echo</span> <span class="st">&quot;---&quot;</span> <span class="op">&gt;</span> docs/index.md</a>
-<a class="sourceLine" id="cb2-7" title="7"><span class="bu">echo</span> <span class="st">&quot;layout: project&quot;</span> <span class="op">&gt;&gt;</span> docs/index.md</a>
-<a class="sourceLine" id="cb2-8" title="8"><span class="bu">echo</span> <span class="st">&quot;title: </span><span class="va">$(</span><span class="ex">NAME</span><span class="va">)</span><span class="st">&quot;</span> <span class="op">&gt;&gt;</span> docs/index.md</a>
-<a class="sourceLine" id="cb2-9" title="9"><span class="bu">echo</span> <span class="st">&quot;---&quot;</span> <span class="op">&gt;&gt;</span> docs/index.md</a>
-<a class="sourceLine" id="cb2-10" title="10"><span class="fu">cat</span> README.md <span class="op">&gt;&gt;</span> docs/index.md</a>
-<a class="sourceLine" id="cb2-11" title="11"></a>
-<a class="sourceLine" id="cb2-12" title="12"><span class="co"># deploy to github</span></a>
-<a class="sourceLine" id="cb2-13" title="13"><span class="bu">cd</span> docs</a>
-<a class="sourceLine" id="cb2-14" title="14"><span class="fu">git</span> init</a>
-<a class="sourceLine" id="cb2-15" title="15"><span class="fu">git</span> remote add upstream <span class="st">&quot;https://</span><span class="va">${GH_TOKEN}</span><span class="st">@github.com/mrtazz/</span><span class="va">$(</span><span class="ex">NAME</span><span class="va">)</span><span class="st">.git&quot;</span></a>
-<a class="sourceLine" id="cb2-16" title="16"><span class="fu">git</span> submodule add https://github.com/mrtazz/jekyll-layouts.git ./_layouts</a>
-<a class="sourceLine" id="cb2-17" title="17"><span class="fu">git</span> submodule update --init</a>
-<a class="sourceLine" id="cb2-18" title="18"><span class="fu">git</span> fetch upstream <span class="kw">&amp;&amp;</span> <span class="fu">git</span> reset upstream/gh-pages</a>
-<a class="sourceLine" id="cb2-19" title="19"><span class="fu">git</span> config user.name <span class="st">&#39;Daniel Schauenberg&#39;</span></a>
-<a class="sourceLine" id="cb2-20" title="20"><span class="fu">git</span> config user.email d@unwiredcouch.com</a>
-<a class="sourceLine" id="cb2-21" title="21"><span class="fu">touch</span> . <span class="kw">&amp;&amp;</span> <span class="fu">git</span> add -A .</a>
-<a class="sourceLine" id="cb2-22" title="22"><span class="fu">git</span> commit -m <span class="st">&quot;rebuild pages at </span><span class="va">$(</span><span class="ex">VERSION</span><span class="va">)</span><span class="st">&quot;</span></a>
-<a class="sourceLine" id="cb2-23" title="23"><span class="fu">git</span> push -q upstream HEAD:gh-pages</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># generate docs</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">install</span> -d docs</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="bu">echo</span> <span class="st">&quot;projecturl: </span><span class="va">$(</span><span class="ex">PROJECT_URL</span><span class="va">)</span><span class="st">&quot;</span> <span class="op">&gt;&gt;</span> docs/_config.yml</span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="bu">echo</span> <span class="st">&quot;basesite: http://www.unwiredcouch.com&quot;</span> <span class="op">&gt;&gt;</span> docs/_config.yml</span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="bu">echo</span> <span class="st">&quot;markdown: redcarpet&quot;</span> <span class="op">&gt;&gt;</span> docs/_config.yml</span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="bu">echo</span> <span class="st">&quot;---&quot;</span> <span class="op">&gt;</span> docs/index.md</span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="bu">echo</span> <span class="st">&quot;layout: project&quot;</span> <span class="op">&gt;&gt;</span> docs/index.md</span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="bu">echo</span> <span class="st">&quot;title: </span><span class="va">$(</span><span class="ex">NAME</span><span class="va">)</span><span class="st">&quot;</span> <span class="op">&gt;&gt;</span> docs/index.md</span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="bu">echo</span> <span class="st">&quot;---&quot;</span> <span class="op">&gt;&gt;</span> docs/index.md</span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="fu">cat</span> README.md <span class="op">&gt;&gt;</span> docs/index.md</span>
+<span id="cb2-11"><a href="#cb2-11"></a></span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="co"># deploy to github</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="bu">cd</span> docs</span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="fu">git</span> init</span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="fu">git</span> remote add upstream <span class="st">&quot;https://</span><span class="va">${GH_TOKEN}</span><span class="st">@github.com/mrtazz/</span><span class="va">$(</span><span class="ex">NAME</span><span class="va">)</span><span class="st">.git&quot;</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="fu">git</span> submodule add https://github.com/mrtazz/jekyll-layouts.git ./_layouts</span>
+<span id="cb2-17"><a href="#cb2-17"></a><span class="fu">git</span> submodule update --init</span>
+<span id="cb2-18"><a href="#cb2-18"></a><span class="fu">git</span> fetch upstream <span class="kw">&amp;&amp;</span> <span class="fu">git</span> reset upstream/gh-pages</span>
+<span id="cb2-19"><a href="#cb2-19"></a><span class="fu">git</span> config user.name <span class="st">&#39;Daniel Schauenberg&#39;</span></span>
+<span id="cb2-20"><a href="#cb2-20"></a><span class="fu">git</span> config user.email d@unwiredcouch.com</span>
+<span id="cb2-21"><a href="#cb2-21"></a><span class="fu">touch</span> . <span class="kw">&amp;&amp;</span> <span class="fu">git</span> add -A .</span>
+<span id="cb2-22"><a href="#cb2-22"></a><span class="fu">git</span> commit -m <span class="st">&quot;rebuild pages at </span><span class="va">$(</span><span class="ex">VERSION</span><span class="va">)</span><span class="st">&quot;</span></span>
+<span id="cb2-23"><a href="#cb2-23"></a><span class="fu">git</span> push -q upstream HEAD:gh-pages</span></code></pre></div>
 <p>If you run this from Travis CI with an encrypted GH_TOKEN environment variable, make sure to suppress command echo-ing for the <code>git remote add</code> command as it will otherwise write your token to the log in plain text.</p>
 <p>And even if you just start with publishing your README, you have a nice website in place already to build upon. Maybe add doxygen or other reference generation to it. Add a better getting started guide. Maybe someone else contributes their notes. It’s more likely the easier it is to do. And it makes documentation contributions look more like the first class contribution they are. And less like a nice side addition. Which is something almost every project can benefit from.</p>
 <h3 id="build-and-automation">Build and Automation</h3>
