@@ -2,7 +2,7 @@
 title: The Fallacy of needing a technical manager
 ---
 
-One of the things I’ve come across most in my career in technology (and one that still persists) is the belief that as an engineer, your manager (or coach) needs to be fairly technical as well. Or at least it being a huge advantage if they are. And even though this might seem like a logical thing initially, most of the times I’ve seen that being actually the case were edge cases. In most other cases it’s been not particularly helpful or even harmful.
+One of the things I’ve come across most in my career in technology (and one that still persists) is the belief that as an engineer, your manager (or coach) needs to be fairly technical as well. Or at least it being a huge advantage if they are. And even though this might seem like a logical thing initially, most of the times I’ve seen that being actually the case were edge cases. In most other cases it’s been not particularly helpful or even harmful. As a sidenote, I'm using the term "non-technical manager" here because it's the common way of talking about the topic. However I think this term makes as much sense as "non-managing engineers".
 
 First let's get this part out of the way: here are the scenarios where I’ve seen having a technical manager being a big advantage:
 
