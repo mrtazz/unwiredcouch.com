@@ -31,6 +31,10 @@ jobs:
     - name: Build site into the docs/ folder
       run: |
         SITEDIR=docs make all
+    - name: validate feed
+      run: |
+        npm install feed-validator
+        ./node_modules/feed-validator/cli/run.js docs/atom.xml --no-showfeed
     - name: commit
       run: |
         git config --local user.email "action@github.com"
