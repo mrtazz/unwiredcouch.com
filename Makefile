@@ -6,8 +6,10 @@
 SITEDIR ?=_site
 SRCDIR = src
 FEEDSIZE=10
+# this exists so the prefix can be passed on PR builds so that pages preview deployments work
+URL_PREFIX ?= ""
 PANDOC=$(shell which pandoc)
-PANDOC_FLAGS=--standalone --from=markdown-hard_line_breaks+yaml_metadata_block+smart --email-obfuscation=none --to=html
+PANDOC_FLAGS=--standalone --from=markdown-hard_line_breaks+yaml_metadata_block+smart --email-obfuscation=none --to=html -M url_prefix="$(URL_PREFIX)"
 POST_TPL  := layouts/post.pandoc
 INDEX_TPL := layouts/index.pandoc
 TALK_TPL  := layouts/talk.pandoc
