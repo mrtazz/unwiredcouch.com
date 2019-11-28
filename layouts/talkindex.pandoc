@@ -5,8 +5,8 @@
     <meta http-equiv="cache-control" content="no-cache"/>
     <meta http-equiv="pragma" content="no-cache"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link href="/css/style.min.css?v=$stylerev$" media="screen" rel="stylesheet" type="text/css"/>
-    <link href="/css/mobile.min.css?v=$mobilerev$" media="handheld, only screen and (max-device-width: 960px)" rel="stylesheet" type="text/css"/>
+    <link href="../css/style.min.css?v=$stylerev$" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="../css/mobile.min.css?v=$mobilerev$" media="handheld, only screen and (max-device-width: 960px)" rel="stylesheet" type="text/css"/>
     <link href="https://unwiredcouch.com/atom.xml" type="application/atom+xml" rel="alternate" title="unwiredcouch.feed" />
 
     <title>talks on unwiredcouch.com</title>
@@ -19,12 +19,12 @@
              height="100" width="100" class="avatar" alt="gravatar image" />
       </a>
       <div id="intro">
-        <p>Hi! I'm <a href="/about.html">Daniel</a>.</p>
+        <p>Hi! I'm <a href="../about.html">Daniel</a>.</p>
         <p>I like
-        <a href="/">writing</a>,
+        <a href="../">writing</a>,
         <a href="https://www.instagram.com/mrtazz/">drawing</a>,
         <a href="https://twitter.com/mrtazz">tweeting</a>,
-        <a href="/talks">sometimes give talks</a>,
+        <a href="../talks">sometimes give talks</a>,
         and <a href="http://code.mrtazz.com">occasionally write code</a>.
         </p>
       </div>
@@ -38,7 +38,7 @@
   <ul>
   $for(talks)$
     <li>
-      <a href="/talks/$talks.url$">$talks.title$</a> </br> $talks.conference$
+      <a href="./$talks.url$">$talks.title$</a> </br> $talks.conference$
       <span class="archivedate">$talks.date$</span>
     </li>
   $endfor$
