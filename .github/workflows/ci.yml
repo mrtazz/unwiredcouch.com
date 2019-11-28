@@ -18,7 +18,7 @@ jobs:
       
     - name: set URL prefix variable
       shell: bash
-      run: echo "##[::set-env name=URL_PREFIX::/unwiredcouch.com]"
+      run: echo "::set-env name=URL_PREFIX::/unwiredcouch.com"
       id: envvars
       if: github.ref != 'refs/heads/master'
       
