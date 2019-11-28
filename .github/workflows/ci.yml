@@ -15,6 +15,13 @@ jobs:
       shell: bash
       run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
       id: vars
+      
+    - name: set URL prefix variable
+      shell: bash
+      run: echo "##[::set-env name=URL_PREFIX::/unwiredcouch.com]"
+      id: envvars
+      if: github.ref != 'refs/heads/master'
+      
     - name: install dependencies
       run: |
         sudo wget https://github.com/jgm/pandoc/releases/download/2.7.3/pandoc-2.7.3-1-amd64.deb
