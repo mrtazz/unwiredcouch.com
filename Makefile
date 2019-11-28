@@ -43,7 +43,7 @@ $(SITEDIR):
 	mkdir -p ${SITEDIR}
 
 $(SITEDIR)/index.html: $(SRCDIR)/index.yml $(INDEX_TPL) | $(SITEDIR)
-	$(PANDOC) $(PANDOC_REVS) -s --template=$(INDEX_TPL) -o $@ $<
+	$(PANDOC) $(PANDOC_REVS) -M url_prefix="$(URL_PREFIX)" -s --template=$(INDEX_TPL) -o $@ $<
 
 $(SITEDIR)/talks/index.html: $(SRCDIR)/talks/index.yml $(TALKS_INDEX_TPL) | $(SITEDIR)
 	mkdir -p `dirname $@`
