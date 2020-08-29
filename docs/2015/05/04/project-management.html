@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="cache-control" content="no-cache"/>
+    <meta http-equiv="pragma" content="no-cache"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    
+
+
+
+<link   rel="stylesheet"
+        href="https://unwiredcouch.com/css/style.min.6a124098693b614f4a9257648d94532473f0c2cc07949606817981999522b2a9.css"
+        integrity="sha256-ahJAmGk7YU9KkldkjZRTJHPwwswHlJYGgXmBmZUisqk="
+        type="text/css"
+        media="screen">
+
+<link   rel="stylesheet"
+        href="https://unwiredcouch.com/css/mobile.min.61224258b356807fea4fba3d47bfa9b900189e33d17678f5eba2ea860e517051.css"
+        integrity="sha256-YSJCWLNWgH/qT7o9R7&#43;puQAYnjPRdnj166Lqhg5RcFE="
+        type="text/css"
+        media="handheld, only screen and (max-device-width: 960px)">
+
+    <link href="https://unwiredcouch.com/atom.xml" type="application/atom+xml" rel="alternate" title="unwiredcouch.feed" />
+
+    <title>writing on unwiredcouch.com</title>
+  </head>
+  <body>
+
+    <header>
+  <div id="intro">
+    <ul>
+      <li><a href="/">Writing</a></li>
+      <li><a href="https://www.instagram.com/mrtazz/">Drawing</a></li>
+      <li><a href="https://twitter.com/mrtazz">Tweets</a></li>
+      <li><a href="/talks">Talks</a></li>
+      <li><a href="http://code.mrtazz.com">Code</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/imprint.html">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+
+    <main>
+    
+
+<div class="postdateheading"> May 4, 2015 </div>
+
+      <div class="post">
+        <h2> <a href=""> There&#39;s No Such Thing as No Project Management </a></h2>
+
+        <p>Project management. Every engineer seems to loathe the term and also what it
+describes. It has that word <em>management</em> in there. It&rsquo;s different than code.
+It&rsquo;s not code. So naturally whenever this comes up, all the engineers make a
+joke, shrug and go hide behind their editors. I&rsquo;ve been there, I&rsquo;ve done that.
+However over the years I have realized that this is not just stupid but
+actively working against making software projects successful. I mostly had an
+aversion against the overloaded, overused and useless definition of project
+management glorifying charts and plans and deadlines over actually
+organizing and making sense of the work and the processes to get it done.
+Because the truth is you are already doing project management. Yes you! The
+software engineer!</p>
+<h3 id="you-had-the-project-management-all-along">You had the project management all along</h3>
+<p>Every time you start to write code, even for some fun side project, you start
+to think about the different components that will make up the whole thing. You
+start to form a mental model of all the high level parts that comprise the
+finished application. You plan out some rough course of action for yourself.
+Which parts you want to tackle first. Which things to stub out and which
+things to punt on for later. You just (most of the time) don&rsquo;t write them
+down. But as you go on, you think about what the first workable version will
+be able to do. Then you think about the next one, maybe refactor some things
+to accomodate new features. Maybe you write down some notes for you or add
+some <code>//TODO:</code> lines in the code so you know what to do when you come back to
+it.  But the important part here is, that you&rsquo;re planning the application.
+You&rsquo;re basically already doing 85% of what project management for a small to
+medium software project is all about.</p>
+<p>So what&rsquo;s the difference? Well really mostly thinking about the structure of
+your project on a higher level and writing things down. To be clear: It&rsquo;s ok
+if you only want to write code. And you can be or get really good at it.
+However only wanting to write code is like saying you only want to hammer wood
+together.  Sure there is beauty in how you do it. There are good carpenters
+out there who are able to do woodwork like nobody else. And everybody wants to
+have such a craftsperson on their team when it comes down to doing the work.
+However this will only be useful up to a certain level.  And that&rsquo;s absolutely
+ok. But if you want to level up as a carpenter you will need to understand
+what it is that you&rsquo;re actually building.</p>
+<p>And that is very much the same for a software engineer. In my mind <a href="http://www.kitchensoap.com/2012/10/25/on-being-a-senior-engineer/">being a
+senior engineer</a> also means that you understand the problems
+you are solving past the perfect implementation of a binary sort. That you
+understand that writing code is a means to an end and not the ultimate
+purpose. That you understand what problem you are solving and the environment
+it will exist in so you <a href="https://www.unwiredcouch.com/2015/01/28/building-a-plant.html">plan for it</a> accordingly. This means
+a good chunk of &ldquo;non-coding time&rdquo;. It means that you understand how to break
+the problem apart and how it would speed up the implementation if you suddenly
+got 2 or 3 more engineers on the project. Or if it wouldn&rsquo;t help at all. It
+means that you understand how the project could continue if you suddenly
+<a href="https://twitter.com/mrtazz/status/593835726858518528">decided to go on vacation</a> because you know you don&rsquo;t want
+to <a href="https://twitter.com/mrtazz/statuses/557697168010924033">be a spof</a>. It means that you have things planned out so someone
+else could <a href="https://twitter.com/mrtazz/status/590506541436039169">take it over</a> or even make the whole project happen
+without you. It means understanding what existing or future work would be
+great for a more junior engineer on the team to level up on and plan work so
+it&rsquo;s possible for them to do it. And it means writing things down and
+communicating them.</p>
+<p>This can be as easy as creating a project in your JIRA instance and adding a
+bunch of subtasks. It can be Gantt charts if you are so inclined and want to
+show dependencies better. It can be a markdown document laying out all the
+bits and pieces you have thought about so far.</p>
+<h3 id="you-are-not-your-project">You are not your project</h3>
+<p>All of these things might feel weird at the beginning. All you want to do is
+write code, find the perfect abstraction, make it beautiful. You will suck at
+this at first because you are not used to it. But at the same time you will
+suddenly see others implementing things you want to exist, doing work for you
+and learning while they do it. And maybe even take a whole project over from
+you and finish it. And it will feel weird again. You will have this feeling of
+not having finished something. Of only going 80% there. Of only having done
+the &ldquo;soft&rdquo; parts. But in reality you just transferred a ton of knowledge. You
+made it possible for someone else to work on something that previously only
+existed in your head. <a href="http://en.wikipedia.org/wiki/Egoless_programming">You are not your projects</a>. I&rsquo;ve <a href="https://twitter.com/mrtazz/statuses/467769106780127232">said
+before</a> that you need to capture ideas for others to work on.
+It&rsquo;s the only way to scale yourself. And it frees up your time to work on
+other things. And even if you end up working on the project all by yourself
+(which is less and less likely as your organization grows), there will be a
+plan for others who are interested to follow along with what&rsquo;s going on. There
+is clear communication of what&rsquo;s in progress and what the current state of
+things is. And other engineers can learn from your example. Because suddenly
+you&rsquo;re doing project management. And it&rsquo;s not even that weird. You have been
+doing it on some level all along. And you should, it&rsquo;s part of your job. As an
+engineer you understand best how work gets done. So you are in the perfect
+position to plan out the structure of your projects. And there is no such
+thing as &ldquo;no project management&rdquo; anyways. You can only decide to do it badly
+or try to do it well. And seeing all the benefits of doing it well come to
+life is so much more fun.</p>
+
+
+      </div>
+
+
+    </main>
+
+  </body>
+</html>
