@@ -1,6 +1,6 @@
 ---
 title: My Coffee Setup
-type: standalonepage
+type: page
 url: /setup/coffee/
 ---
 

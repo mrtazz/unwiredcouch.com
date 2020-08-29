@@ -1,5 +1,6 @@
 ---
 title: My Omnifocus Setup
+type: standalonepage
 ---
 
 At this point it's pretty fair to say that [OmniFocus][of] rules my life. I've

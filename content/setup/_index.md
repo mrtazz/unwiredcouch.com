@@ -2,6 +2,7 @@
 title: My Setups
 type: standalonepage
 url: /setup/
+layout: single
 ---
 
 I'm a big fan of reading how other people do things and approach problems. I
