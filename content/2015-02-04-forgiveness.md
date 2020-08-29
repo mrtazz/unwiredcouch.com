@@ -3,6 +3,7 @@ date: 2015-02-04
 layout: post
 published: true
 title: You Shouldn't Have To Ask For Forgiveness
+url: /2015/02/04/forgiveness.html
 ---
 
 A couple of days ago I was part of a private email thread about the popular

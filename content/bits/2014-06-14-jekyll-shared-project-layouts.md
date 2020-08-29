@@ -4,6 +4,7 @@ layout: post
 title: "Shared layout for project pages in Jekyll"
 categories:
   - bits
+url: /bits/2014/06/14/jekyll-shared-project-layouts.html
 ---
 
 I use [Jekyll][jekyll] a lot, especially for [my website][unwiredcouch]. And I

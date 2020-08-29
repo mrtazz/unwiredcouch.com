@@ -3,6 +3,7 @@ date: 2011-01-03
 layout: post
 title: "gtd-couch - GTD as a couchapp"
 published: true
+url: /2011/01/03/gtd-couch—gtd-as-a-couchapp.html
 ---
 
 ### Why another GTD app?

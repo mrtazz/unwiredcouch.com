@@ -4,6 +4,7 @@ layout: post
 title: "Mirror GitHub repositories in pure shell"
 categories:
   - bits
+url: /bits/2014/08/16/github-mirror-shell.html
 ---
 
 As I have [written before][uncloud] I have slowly started to move my data out

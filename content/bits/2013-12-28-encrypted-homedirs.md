@@ -4,6 +4,7 @@ layout: post
 title: "Creating Encrypted Home Directories in FreeBSD"
 categories:
   - bits
+url: /bits/2013/12/28/encrypted-homedirs.html
 ---
 
 I run FreeBSD with ZFS on all my servers and I generally want to have my home

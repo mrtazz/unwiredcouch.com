@@ -3,6 +3,7 @@ date: 2015-08-31
 layout: post
 published: true
 title: My Writing Workflow
+url: /2015/08/31/writing-workflow.html
 ---
 
 I love writing. A lot. It's one of the things that helps me the most with

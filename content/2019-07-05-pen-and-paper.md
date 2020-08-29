@@ -1,6 +1,7 @@
 ---
 date: 2019-07-05
 title: Pen and Paper
+url: /2019/07/05/pen-and-paper.html
 ---
 
 A couple of years ago I went from working in an office to working remote mostly

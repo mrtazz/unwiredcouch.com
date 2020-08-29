@@ -2,6 +2,7 @@
 date: 2014-08-29
 layout: post
 title: My Rules for E-Mail Happiness
+url: /2014/08/29/email-happiness.html
 ---
 
 Over the last couple of days and maybe weeks a lot of my friends, coworkers

@@ -1,6 +1,7 @@
 ---
 date: 2016-04-13
 title: Bash Unit Testing from First Principles
+url: /2016/04/13/bash-unit-testing-101.html
 ---
 
 

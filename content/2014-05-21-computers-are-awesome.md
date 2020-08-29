@@ -3,6 +3,7 @@ date: 2014-05-21
 layout: post
 published: true
 title: Computer Positivity
+url: /2014/05/21/computers-are-awesome.html
 ---
 
 Let's face it, we've all been there, your database just decided to split

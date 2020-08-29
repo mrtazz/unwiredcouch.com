@@ -3,6 +3,7 @@ date: 2015-06-08
 layout: post
 title: "Accounting: The Unix Way"
 published: true
+url: /2015/06/08/accounting-the-unix-way.html
 ---
 
 I'm a big fan of simple tools and building blocks. A function of writing code

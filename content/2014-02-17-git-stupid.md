@@ -2,6 +2,7 @@
 date: 2014-02-17
 layout: post
 title: Git - Put the stupid back in stupid content tracker
+url: /2014/02/17/git-stupid.html
 ---
 
 Git describes itself as a [stupid content tracker][git-stupid-man]. While this

@@ -2,6 +2,7 @@
 date: 2016-03-18
 layout: post
 title: I don't like Breaking Things
+url: /2016/03/18/breaking-things.html
 ---
 
 I don't like breaking things. I never have. I hate it. When I was a kid and we

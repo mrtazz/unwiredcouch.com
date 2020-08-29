@@ -1,6 +1,7 @@
 ---
 date: 2018-01-03
 title: Learning to have an engineering vision
+url: /2018/01/03/engineering-vision.html
 ---
 
 Saying that the last 18 months or so were stressful and full of changes would

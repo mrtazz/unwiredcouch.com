@@ -2,6 +2,7 @@
 date: 2016-01-12
 layout: post
 title: Take Pride in Your Code
+url: /2016/01/12/coding-pride.html
 ---
 
 If you're working as a software engineer, you have very likely already heard

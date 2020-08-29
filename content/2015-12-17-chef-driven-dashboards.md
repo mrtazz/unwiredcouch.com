@@ -2,6 +2,7 @@
 date: 2015-12-17
 layout: post
 title: Chef Driven Graphite Dashboards
+url: /2015/12/17/chef-driven-dashboards.html
 ---
 
 Some years ago [I wrote about][monitoring_gs] how to use Heroku and a set of

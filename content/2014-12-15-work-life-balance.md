@@ -3,6 +3,7 @@ date: 2014-12-15
 layout: post
 title: 3 Simple Things that improved my Work-Life Balance
 published: true
+url: /2014/12/15/work-life-balance.html
 ---
 
 These days productivity and work life balance are two parts of the holy grail

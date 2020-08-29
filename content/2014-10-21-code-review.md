@@ -3,6 +3,7 @@ date: 2014-10-21
 layout: post
 published: true
 title: Code Reviews Considered Awesome
+url: /2014/10/21/code-review.html
 ---
 
 I think by now it is pretty much accepted that collaboration and working

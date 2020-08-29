@@ -3,6 +3,7 @@ date: 2010-05-31
 layout: post
 title: Where's ma ketchup?
 published: true
+url: /2010/05/31/ketchupstatus.html
 ---
 
 At our office mondays are special. This is the one day Bobby drives his

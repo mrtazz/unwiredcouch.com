@@ -2,6 +2,7 @@
 date: 2014-08-04
 layout: post
 title: "Human Error and Getting off the Hook"
+url: /2014/08/04/human-error-getting-off-the-hook.html
 ---
 
 I've been interested in the field of human error and system safety for a while

@@ -3,6 +3,7 @@ date: 2012-09-15
 layout: post
 title: "Getting started with monitoring on the cheap and easy"
 published: true
+url: /2012/09/15/getting-started-with-monitoring.html
 ---
 
 This post started out as a writeup of tools and services I use to monitor my

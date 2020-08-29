@@ -2,6 +2,7 @@
 date: 2016-05-02
 layout: post
 title: Optimize for Mutability and the Present
+url: /2016/05/02/mutability-present.html
 ---
 
 I recently read [John Vincent's][lusis] very interesting and honest blog post

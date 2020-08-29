@@ -2,6 +2,7 @@
 date: 2015-12-31
 layout: post
 title: My 2015 Reading List
+url: /2015/12/31/reading-list.html
 ---
 
 This year has been really good for reading for me. Starting off from [last year's list][2014list] and the 5-ish books I read in 2014, I made it to 16

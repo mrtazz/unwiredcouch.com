@@ -3,6 +3,7 @@ date: 2015-01-06
 layout: post
 published: true
 title: Learning to be On-Call
+url: /2015/01/06/learning-on-call.html
 ---
 
 I stumbled upon this great [blog post about on-call][on-call-post] the other

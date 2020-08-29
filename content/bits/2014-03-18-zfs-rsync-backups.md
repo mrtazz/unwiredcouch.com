@@ -4,6 +4,7 @@ layout: post
 title: "Backups with rsync and zfs"
 categories:
   - bits
+url: /bits/2014/03/18/zfs-rsync-backups.html
 ---
 
 As I [mentioned before][uncloud] I'm running my own backup on a server that is

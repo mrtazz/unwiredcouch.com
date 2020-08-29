@@ -1,6 +1,7 @@
 ---
 date: 2019-04-02
 title: Factors of Confidence
+url: /2019/04/02/factors-of-confidence.html
 ---
 
 I've been having a lot of discussions about delivery of software lately and

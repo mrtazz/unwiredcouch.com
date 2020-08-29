@@ -1,6 +1,7 @@
 ---
 date: 2013-11-15
 title: My Tmux Setup
+url: /2013/11/15/my-tmux-setup.html
 ---
 
 I've been using [tmux][tmux] as my main terminal multiplexer for about 3 years

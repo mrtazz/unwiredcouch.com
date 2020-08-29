@@ -3,6 +3,7 @@ date: 2013-10-30
 layout: post
 title: "Uncloud your Life"
 published: true
+url: /2013/10/30/uncloud-your-life.html
 ---
 
 There has been a lot of talk lately about privacy in the cloud and owning

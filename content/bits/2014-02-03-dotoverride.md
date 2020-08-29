@@ -4,6 +4,7 @@ layout: post
 title: "Context specific dotfiles"
 categories:
   - bits
+url: /bits/2014/02/03/dotoverride.html
 ---
 
 I have a [collection][muttfiles] [of][vimfiles] [various][zshfiles]

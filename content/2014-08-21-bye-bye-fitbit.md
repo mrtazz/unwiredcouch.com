@@ -3,6 +3,7 @@ date: 2014-08-21
 layout: post
 published: true
 title: Bye Bye Fitbit
+url: /2014/08/21/bye-bye-fitbit.html
 ---
 
 About a year ago I decided that I had to do something about my fitness. Since

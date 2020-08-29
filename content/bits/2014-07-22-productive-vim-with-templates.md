@@ -4,6 +4,7 @@ layout: post
 title: "Productive VIM with templates"
 categories:
   - bits
+url: /bits/2014/07/22/productive-vim-with-templates.html
 ---
 
 I basically exist inside of vim all day. I write code in there, I write emails

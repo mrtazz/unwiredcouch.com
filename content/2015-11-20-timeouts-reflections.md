@@ -3,6 +3,7 @@ date: 2015-11-20
 layout: post
 published: true
 title: Timeouts And Reflections
+url: /2015/11/20/timeouts-reflections.html
 ---
 
 I love [coffee][]. I really do. And yet I haven't had any for 4 days now. The

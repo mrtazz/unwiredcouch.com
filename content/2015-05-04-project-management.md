@@ -3,6 +3,7 @@ date: 2015-05-04
 layout: post
 title: There's No Such Thing as No Project Management
 published: true
+url: /2015/05/04/project-management.html
 ---
 
 Project management. Every engineer seems to loathe the term and also what it

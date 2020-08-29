@@ -2,6 +2,7 @@
 date: 2014-03-28
 layout: post
 title: My 5 years of GitHub
+url: /2014/03/28/5-years-github.html
 ---
 
 In early 2009 I was very much not the typical programmer. I had just spent 3

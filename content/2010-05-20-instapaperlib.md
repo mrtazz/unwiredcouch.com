@@ -3,6 +3,7 @@ date: 2010-05-20
 layout: post
 title: instapaperlib
 published: true
+url: /2010/05/20/instapaperlib.html
 ---
 
 For some time now [instapaper.com][instapaper] is one of the web services I use most.

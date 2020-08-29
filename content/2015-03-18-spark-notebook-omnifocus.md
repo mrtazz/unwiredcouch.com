@@ -3,6 +3,7 @@ date: 2015-03-18
 layout: post
 published: true
 title: First month with the Spark Notebook
+url: /2015/03/18/spark-notebook-omnifocus.html
 ---
 
 When the [Spark Notebook][spark_notebook] got announced on Kickstarter I was

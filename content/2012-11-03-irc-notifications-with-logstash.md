@@ -3,6 +3,7 @@ date: 2012-11-03
 layout: post
 title: "IRC notifications with logstash"
 published: true
+url: /2012/11/03/irc-notifications-with-logstash.html
 ---
 
 I have spent some time in the last weeks to learn more about

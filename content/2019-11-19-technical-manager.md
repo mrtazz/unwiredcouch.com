@@ -1,6 +1,7 @@
 ---
 date: 2019-11-19
 title: The Fallacy of needing a technical manager
+url: /2019/11/19/technical-manager.html
 ---
 
 One of the things I’ve come across most in my career in technology (and one that still persists) is the belief that as an engineer, your manager (or coach) needs to be fairly technical as well. Or at least it being a huge advantage if they are. And even though this might seem like a logical thing initially, most of the times I’ve seen that being actually the case were edge cases. In most other cases it’s been not particularly helpful or even harmful.
