@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="cache-control" content="no-cache"/>
+    <meta http-equiv="pragma" content="no-cache"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    
+
+
+
+<link   rel="stylesheet"
+        href="https://unwiredcouch.com/css/style.min.6a124098693b614f4a9257648d94532473f0c2cc07949606817981999522b2a9.css"
+        integrity="sha256-ahJAmGk7YU9KkldkjZRTJHPwwswHlJYGgXmBmZUisqk="
+        type="text/css"
+        media="screen">
+
+<link   rel="stylesheet"
+        href="https://unwiredcouch.com/css/mobile.min.61224258b356807fea4fba3d47bfa9b900189e33d17678f5eba2ea860e517051.css"
+        integrity="sha256-YSJCWLNWgH/qT7o9R7&#43;puQAYnjPRdnj166Lqhg5RcFE="
+        type="text/css"
+        media="handheld, only screen and (max-device-width: 960px)">
+
+    <link href="https://unwiredcouch.com/atom.xml" type="application/atom+xml" rel="alternate" title="unwiredcouch.feed" />
+
+    <title>writing on unwiredcouch.com</title>
+  </head>
+  <body>
+
+    <header>
+  <div id="intro">
+    <ul>
+      <li><a href="/">Writing</a></li>
+      <li><a href="https://www.instagram.com/mrtazz/">Drawing</a></li>
+      <li><a href="https://twitter.com/mrtazz">Tweets</a></li>
+      <li><a href="/talks">Talks</a></li>
+      <li><a href="http://code.mrtazz.com">Code</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/imprint.html">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+
+    <main>
+    
+
+<div class="postdateheading"> Jan 12, 2016 </div>
+
+      <div class="post">
+        <h2> <a href=""> Take Pride in Your Code </a></h2>
+
+        <p>If you&rsquo;re working as a software engineer, you have very likely already heard
+about <a href="https://en.wikipedia.org/wiki/Egoless_programming">&lsquo;egoless programming&rsquo;</a>. The notion that you should detach your
+code from your ego. That criticizing your code is not a personal attack and
+that at some point your code is going to get deleted. Maybe you have even gone
+as far as seeing a lot of your work as &ldquo;throw away code&rdquo;, because most things
+are supposed to help you in the moment and not last forever. And these are all
+good things to learn and internalize. And definitely traits every programmer
+should have. However as I <a href="https://twitter.com/mrtazz/status/674229082389938176">tweeted some weeks ago</a>, I&rsquo;m
+convinced the biggest trick the devil ever pulled there is convincing everyone
+you shouldn&rsquo;t take pride in your code. Which so often leads to half finished
+proof of concepts stuffed into a git repo. Repositories whose README might as
+well just say &ldquo;works for me&rdquo;. And of course most of the time there aren&rsquo;t any
+tests, so when you want to make things better, you have no idea where to
+start. And often enough the justification is just something like &ldquo;I needed
+this code and maybe it&rsquo;s useful to someone else&rdquo; or &ldquo;it&rsquo;s pretty simple, it
+would have taken me longer to write tests than the actual code&rdquo;.</p>
+<p>And I think this doesn&rsquo;t have to be. All of this talk about egoless
+programming and throwaway code doesn&rsquo;t mean you can&rsquo;t take pride in what you
+create. As a programmer (and that includes ops people, security engineers,
+designers, etc - if you commit to a repo, you&rsquo;re a programmer; don&rsquo;t let
+anyone take this away from you) you now have access to a myriad of wonderful
+tools and services that make it <a href="https://twitter.com/mrtazz/status/673585181001928704">so much fun to write and use
+software</a>.</p>
+<h3 id="the-readme">The README</h3>
+<p>I almost feel like this goes without saying, but you should take some time to
+write a proper README. It might take 15 or 30 minutes for you to write it. But
+if 2 other people don&rsquo;t have to spend 10-20 minutes figuring out how your
+project is supposed to be used or if it even solves their problem, it has
+already saved time. The usual things like usage examples and installation
+instructions should go in there. Plus as you probably know, GitHub shows
+READMEs very prominently in a nicely rendered way. So your project already
+feels a lot nicer to use.</p>
+<p>And while you&rsquo;re there, also create a <code>CONTRIBUTING.md</code>. GitHub will show it
+whenever someone is creating a pull request. So you can put some information
+in there how you would like to receive contributions which can act as some
+helpful guidelines and make it a lot less scary and awkward to contribute.</p>
+<h3 id="unit-tests-and-code-coverage">Unit Tests and Code Coverage</h3>
+<p>It&rsquo;s <a href="https://twitter.com/mrtazz/statuses/665167264971415552">no</a> <a href="https://twitter.com/mrtazz/statuses/667097579465875456">secret</a> that I&rsquo;m a fan of writing tests. And
+it has really become more fun over the last years as frameworks and best
+practices have improved. In basically all languages there exists now at least
+one unit testing framework that is easy to use. Some languages even come with
+one in their standard library. So there is no real reason to not write tests.
+After all you are already testing your changes manually. Why not have the
+computer do the tedious work? If you&rsquo;re looking for some introductory material
+on testing, we have open sourced our <a href="https://codeascraft.com/2014/08/20/teaching-testing-our-testing-101-materials/">Testing 101</a> material we
+use at Etsy to teach testing. The point here is not that you will never have
+bugs in your code because you write tests. You are gonna reduce the number of
+bugs for sure. But more importantly it provides <em>some</em> confidence factors for
+contribution and sets a visible expectation of what things are being
+automatically tested. Beyond that it provides example code for how to use your
+code and codifies the intent you had while writing the original functions. It
+also automatically serves as a first client for your API outside of the
+intended use case the code was written for. Thus often uncovering a good chunk
+of design problems.</p>
+<p>And while you&rsquo;re at it, add code coverage as well. Coverage is one of those
+tools that most people either love or hate. But the main point for me is that
+it sets expectations for which parts of your code are regularly exercised
+through tests. Not more not less. It&rsquo;s also not a simple way to make sure you
+never have bugs. It can&rsquo;t, as it&rsquo;s a tool that is concerned with syntax and
+not semantics of your code. But what it can do is make you think about code
+paths more explicitly. And through that make you think more about how to test
+things. And also add instructions about how to run the tests into the
+<code>CONTRIBUTING.md</code> file so prospective contributors don&rsquo;t have to guess or
+search.</p>
+<h3 id="continuous-integration">Continuous Integration</h3>
+<p>Once you have tests, the next logical step is to run them on a continuous
+integration service. I love <a href="https://travis-ci.org">Travis CI</a> for this but there are many
+others out there. Most services now support GitHub pull request status updates
+which makes it so much less work to maintain external contributions to your
+project as you&rsquo;ll immediately see whether or not the pull request passes
+tests. But the most important bit about hooking up a CI system to run your
+tests are the fact that you&rsquo;ll know it works somewhere else besides your
+laptop. Plus it gives you a platform to trigger many other useful things
+(which I will talk about in a bit) after your tests have successfully run. And
+for that you can even just use the Jenkins setup you probably already have at work or any other CI setup really.</p>
+<h3 id="code-style-and-static-analysis">Code style and Static Analysis</h3>
+<p>Another thing I really enjoy is the renewed rise of static code analysis
+tools. And I&rsquo;ll just throw code style checkers in that same bucket. I&rsquo;ve
+met quite a lot of people who hate coding style checkers. The arguments
+usually go like this: &ldquo;if you can&rsquo;t read an if statement with a missing space
+before the curly brace I don&rsquo;t want you to write production code anyways&rdquo;.
+It&rsquo;s amazing how many people have strong opinions on things they claim to not
+matter. The point here is not so much the correct way of writing code but
+rather a consistent way. Chances are your code is being read by a good number
+of people, depending on how important/popular it is. Having a consistent style
+makes it easier to read. Code without style guidelines can be like reading a
+book where every page was printed in a different font. It doesn&rsquo;t matter for
+functionality but it would be a lot more annoying to read. Plus there is
+literally almost no overhead. Most languages have editor plugins now that will
+format text for you, some languages even come with tooling. But what it shows
+is that you care about this code to be readable and accessible. And that you
+have an easy way of making these coding styles visible and applicable. Static
+analysis is usually a less contestant topic. There are usually a lot of things
+that aren&rsquo;t immediate problems but are helpful fixes. And it&rsquo;s as well a sign
+of you caring about the quality of your code.</p>
+<p><a href="http://codeclimate.com">Codeclimate</a> is a wonderful service I use to do this. It has static
+analysis plugins for a lot of languages and is super easy to set up. It
+integrates with the Github status API and shows changes for every commit and
+pull request. That way you can have a computer enforce things like indents,
+formatting, and problems that a static analyzer can find and you can
+concentrate on the logic and spirit of the change.</p>
+<h3 id="packaging-and-deployment">Packaging and Deployment</h3>
+<p>These are topics very dear to my heart. A good packaging and deployment setup
+makes the user experience of software so much better. Not having to think
+about where to copy that one file, no need to curlbash some weird script,
+having things come from the package manager you already use. All those things
+make it a wonderful experience to get started on a piece of software. And the
+state of things there also only has gotten better over the years. A lot of the
+language specific package managers now have nice tooling around creating and
+uploading install packages for their platform. Some like <a href="https://packagist.org/">packagist</a> even go
+so far as to just fetch things for you from GitHub and create releases on tags
+automatically. There is literally no reason to not have your PHP project on
+there. But even ruby gems and Python modules you can upload easily in an
+automatic way from your CI system. Travis CI has a whole section on
+deployments and integrations with most of the popular services. So do other CI
+platforms. <a href="https://github.com/jordansissel/fpm">fpm</a> has made it ridiculously easy to build packages for Linux.
+And with <a href="https://packagecloud.io/">packagecloud</a> you can host them in an amazingly accessible and
+user friendly way. You can even have your packages built and uploaded from
+your CI system as well with something like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">NAME<span style="color:#f92672">=</span>restclient-cpp
+VERSION <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</span>shell git describe --tags --always --dirty<span style="color:#66d9ef">)</span>
+BUILDER <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</span>shell echo <span style="color:#e6db74">&#34;`git config user.name` &lt;`git config user.email`&gt;&#34;</span><span style="color:#66d9ef">)</span>
+PKG_RELEASE ?<span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+PROJECT_URL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://github.com/mrtazz/</span><span style="color:#66d9ef">$(</span>NAME<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+FPM_FLAGS<span style="color:#f92672">=</span> --name <span style="color:#66d9ef">$(</span>NAME<span style="color:#66d9ef">)</span> --version <span style="color:#66d9ef">$(</span>VERSION<span style="color:#66d9ef">)</span> --iteration <span style="color:#66d9ef">$(</span>PKG_RELEASE<span style="color:#66d9ef">)</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>           --epoch <span style="color:#ae81ff">1</span> --license MIT --maintainer <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>BUILDER<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+           --url <span style="color:#66d9ef">$(</span>PROJECT_URL<span style="color:#66d9ef">)</span> --vendor mrtazz <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>           --description <span style="color:#e6db74">&#34;C++ client for making HTTP/REST requests&#34;</span>
+           --depends curl usr
+
+<span style="color:#75715e"># build rpm and deb</span>
+fpm -t rpm -s dir <span style="color:#66d9ef">$(</span>FPM_FLAGS<span style="color:#66d9ef">)</span>
+fpm -t deb -s dir <span style="color:#66d9ef">$(</span>FPM_FLAGS<span style="color:#66d9ef">)</span>
+
+<span style="color:#75715e"># deploy to package cloud</span>
+package_cloud push mrtazz/<span style="color:#66d9ef">$(</span>NAME<span style="color:#66d9ef">)</span>/el/7 *.rpm
+package_cloud push mrtazz/<span style="color:#66d9ef">$(</span>NAME<span style="color:#66d9ef">)</span>/debian/wheezy *.deb
+package_cloud push mrtazz/<span style="color:#66d9ef">$(</span>NAME<span style="color:#66d9ef">)</span>/ubuntu/trusty *.deb
+</code></pre></div><p>Or use their integrated <a href="https://docs.travis-ci.com/user/deployment/packagecloud">deployment provider</a> which his
+even less setup work.</p>
+<h3 id="documentation-deploy">Documentation Deploy</h3>
+<p>And speaking of automatic build and deploy. The same goes for documentation.
+One of the most genius features of GitHub in my mind is the fact that every
+repository can have a <code>gh-pages</code> branch whose contents are getting published
+as a website under <code>http://username.github.io/reponame</code>. This makes it
+extremely easy to host a documentation page for your project. And with
+GitHub&rsquo;s CNAME support you can even have a custom domain for your project
+point to it. The fact that it&rsquo;s just another branch in your repository means
+that you can easily automate the deployment of docs alongside your code for
+example from (you probably guessed it by now ) your CI system. Thanks to
+GitHub pages this is as easy as:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># generate docs</span>
+install -d docs
+echo <span style="color:#e6db74">&#34;projecturl: </span><span style="color:#66d9ef">$(</span>PROJECT_URL<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> &gt;&gt; docs/_config.yml
+echo <span style="color:#e6db74">&#34;basesite: http://www.unwiredcouch.com&#34;</span> &gt;&gt; docs/_config.yml
+echo <span style="color:#e6db74">&#34;markdown: redcarpet&#34;</span> &gt;&gt; docs/_config.yml
+echo <span style="color:#e6db74">&#34;---&#34;</span> &gt; docs/index.md
+echo <span style="color:#e6db74">&#34;layout: project&#34;</span> &gt;&gt; docs/index.md
+echo <span style="color:#e6db74">&#34;title: </span><span style="color:#66d9ef">$(</span>NAME<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> &gt;&gt; docs/index.md
+echo <span style="color:#e6db74">&#34;---&#34;</span> &gt;&gt; docs/index.md
+cat README.md &gt;&gt; docs/index.md
+
+<span style="color:#75715e"># deploy to github</span>
+cd docs
+git init
+git remote add upstream <span style="color:#e6db74">&#34;https://</span><span style="color:#e6db74">${</span>GH_TOKEN<span style="color:#e6db74">}</span><span style="color:#e6db74">@github.com/mrtazz/</span><span style="color:#66d9ef">$(</span>NAME<span style="color:#66d9ef">)</span><span style="color:#e6db74">.git&#34;</span>
+git submodule add https://github.com/mrtazz/jekyll-layouts.git ./_layouts
+git submodule update --init
+git fetch upstream <span style="color:#f92672">&amp;&amp;</span> git reset upstream/gh-pages
+git config user.name <span style="color:#e6db74">&#39;Daniel Schauenberg&#39;</span>
+git config user.email d@unwiredcouch.com
+touch . <span style="color:#f92672">&amp;&amp;</span> git add -A .
+git commit -m <span style="color:#e6db74">&#34;rebuild pages at </span><span style="color:#66d9ef">$(</span>VERSION<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+git push -q upstream HEAD:gh-pages
+</code></pre></div><p>If you run this from Travis CI with an encrypted GH_TOKEN environment
+variable, make sure to suppress command echo-ing for the <code>git remote add</code>
+command as it will otherwise write your token to the log in plain text.</p>
+<p>And even if you just start with publishing your README, you have a nice
+website in place already to build upon. Maybe add doxygen or other reference
+generation to it.  Add a better getting started guide. Maybe someone else
+contributes their notes. It&rsquo;s more likely the easier it is to do. And it makes
+documentation contributions look more like the first class contribution they
+are. And less like a nice side addition. Which is something almost every
+project can benefit from.</p>
+<h3 id="build-and-automation">Build and Automation</h3>
+<p>With all those wonderful things in place and hooked up, you also want to
+optimize for the common part of contributing. The local feedback loop. So
+while it is awesome to have all those services hooked up, it should also be
+obvious how to run and test them while working on something. This is where
+build automation via a tool like <code>make</code> comes into play. If you don&rsquo;t have to
+look at your Travis config how to run tests but instead can just run <code>make test</code> or <code>make coverage</code> to get coverage information or even <code>make packages</code>
+to have debs and rpms build locally it&rsquo;s a lot more fun to contribute. And
+it&rsquo;s not that much more work. When you hook up those things anyways, you can
+then just run the make commands from your CI system as well. Which also makes
+it a lot easier to debug if it goes wrong.</p>
+<h3 id="show-it-off">Show it off</h3>
+<p>And finally please let everyone know that you have all those things in place
+for your project. Most CI systems and other services now support an HTML
+embedded badge that shows the build status, code coverage percentage or static
+analysis results in a little image. It is green when things are ok and red or
+yellow otherwise. Which lets everyone know the current status of your project
+immediately when loading the README on GitHub or the website of your project.
+For everything else there is <a href="http://shields.io/">shields.io</a> which lets you create custom
+badges via a simple URL structure so you can have the license you use, the
+location of the packages and other things that are not red/green right up
+there.</p>
+<p><img src="/images/coding-pride/yagd_badges.png" alt="yagd badges">
+<img src="/images/coding-pride/pocketcleaner_badges.png" alt="pocketcleaner badges"></p>
+<h3 id="do-i-really-have-to-do-all-of-this">Do I really have to do all of this?</h3>
+<p>I&rsquo;ve given a lot of examples for things you can or should do to make your
+project nicer to use. And there are a myriad more, Heroku deploy buttons, npm
+dependency checkers, slack links, etc. I&rsquo;ve mostly focused on a very specific
+set of things I use regularly for my projects. And it&rsquo;s also very much focused
+on open source repositories or at least repositories hosted on Github.</p>
+<p>I&rsquo;m very aware that not all of these things always apply to or make sense for
+a project.  Some languages don&rsquo;t have the support of your coverage platform.
+You want to use another CI service. Your code is hosted in your corporate
+network and you don&rsquo;t think you have the time to set all of these things up.</p>
+<p>The real answer here is to always try to strive for this. A lot of setups can
+literally be copy and pasted once you&rsquo;ve done it for one project. And again
+while all the services mentioned are public ones, there are a lot of
+integrations you can emulate in house with your existing CI and deployment
+system and some HTML. If you only do a third of the things I described here
+your project will already be in much better shape. And people will be more
+happy to (have to) use your code. Which in my mind is something to be proud
+of.</p>
+
+
+      </div>
+
+
+    </main>
+
+  </body>
+</html>

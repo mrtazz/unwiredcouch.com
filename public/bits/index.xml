@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bits on unwiredcouch.com</title>
+    <link>https://unwiredcouch.com/bits.html</link>
+    <description>Recent content in Bits on unwiredcouch.com</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 16 Aug 2014 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://unwiredcouch.com/bits/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mirror GitHub repositories in pure shell</title>
+      <link>https://unwiredcouch.com/bits/2014-08-16-github-mirror-shell.html</link>
+      <pubDate>Sat, 16 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://unwiredcouch.com/bits/2014-08-16-github-mirror-shell.html</guid>
+      <description>As I have written before I have slowly started to move my data out of cloud services where applicable.</description>
+    </item>
+    
+    <item>
+      <title>Productive VIM with templates</title>
+      <link>https://unwiredcouch.com/bits/2014-07-22-productive-vim-with-templates.html</link>
+      <pubDate>Tue, 22 Jul 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://unwiredcouch.com/bits/2014-07-22-productive-vim-with-templates.html</guid>
+      <description>I basically exist inside of vim all day. I write code in there, I write emails in VIM via mutt, I take notes with it and I write all my blog posts in VIM.</description>
+    </item>
+    
+    <item>
+      <title>Shared layout for project pages in Jekyll</title>
+      <link>https://unwiredcouch.com/bits/2014-06-14-jekyll-shared-project-layouts.html</link>
+      <pubDate>Sat, 14 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://unwiredcouch.com/bits/2014-06-14-jekyll-shared-project-layouts.html</guid>
+      <description>I use Jekyll a lot, especially for my website. And I quite like it a lot.</description>
+    </item>
+    
+    <item>
+      <title>Backups with rsync and zfs</title>
+      <link>https://unwiredcouch.com/bits/2014-03-18-zfs-rsync-backups.html</link>
+      <pubDate>Tue, 18 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://unwiredcouch.com/bits/2014-03-18-zfs-rsync-backups.html</guid>
+      <description>As I mentioned before I&amp;rsquo;m running my own backup on a server that is running in my apartment.</description>
+    </item>
+    
+    <item>
+      <title>Context specific dotfiles</title>
+      <link>https://unwiredcouch.com/bits/2014-02-03-dotoverride.html</link>
+      <pubDate>Mon, 03 Feb 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://unwiredcouch.com/bits/2014-02-03-dotoverride.html</guid>
+      <description>I have a collection of various dotfiles which I use to configure the most important tools I use everyday.</description>
+    </item>
+    
+    <item>
+      <title>Creating Encrypted Home Directories in FreeBSD</title>
+      <link>https://unwiredcouch.com/bits/2013-12-28-encrypted-homedirs.html</link>
+      <pubDate>Sat, 28 Dec 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://unwiredcouch.com/bits/2013-12-28-encrypted-homedirs.html</guid>
+      <description>I run FreeBSD with ZFS on all my servers and I generally want to have my home directories encrypted.</description>
+    </item>
+    
+  </channel>
+</rss>
