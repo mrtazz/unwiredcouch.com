@@ -5,48 +5,128 @@
     <meta http-equiv="cache-control" content="no-cache"/>
     <meta http-equiv="pragma" content="no-cache"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link href="/css/style.min.css?v=e1be0c2" media="screen" rel="stylesheet" type="text/css"/>
-    <link href="/css/mobile.min.css?v=e1be0c2" media="handheld, only screen and (max-device-width: 960px)" rel="stylesheet" type="text/css"/>
+    
+
+
+
+<link   rel="stylesheet"
+        href="https://unwiredcouch.com/css/style.min.6a124098693b614f4a9257648d94532473f0c2cc07949606817981999522b2a9.css"
+        integrity="sha256-ahJAmGk7YU9KkldkjZRTJHPwwswHlJYGgXmBmZUisqk="
+        type="text/css"
+        media="screen">
+
+<link   rel="stylesheet"
+        href="https://unwiredcouch.com/css/mobile.min.61224258b356807fea4fba3d47bfa9b900189e33d17678f5eba2ea860e517051.css"
+        integrity="sha256-YSJCWLNWgH/qT7o9R7&#43;puQAYnjPRdnj166Lqhg5RcFE="
+        type="text/css"
+        media="handheld, only screen and (max-device-width: 960px)">
+
     <link href="https://unwiredcouch.com/atom.xml" type="application/atom+xml" rel="alternate" title="unwiredcouch.feed" />
 
-    <title>Computer Positivity on unwiredcouch.com</title>
+    <title>writing on unwiredcouch.com</title>
   </head>
   <body>
 
     <header>
-      <a class="gravatar hidemobile" href="/">
-        <img src="https://www.gravatar.com/avatar/89e0ad1229121f46047977ac547bd7b4.jpg?s=100"
-             height="100" width="100" class="avatar" alt="gravatar image" />
-      </a>
-      <div id="intro">
-        <p>Hi! I'm <a href="/about.html">Daniel</a>.</p>
-        <p>I like
-        <a href="/">writing</a>,
-        <a href="https://www.instagram.com/mrtazz/">drawing</a>,
-        <a href="https://twitter.com/mrtazz">tweeting</a>,
-        <a href="/talks">sometimes give talks</a>,
-        and <a href="http://code.mrtazz.com">occasionally write code</a>.
-        </p>
-      </div>
-    </header>
+  <div id="intro">
+    <ul>
+      <li><a href="/">Writing</a></li>
+      <li><a href="https://www.instagram.com/mrtazz/">Drawing</a></li>
+      <li><a href="https://twitter.com/mrtazz">Tweets</a></li>
+      <li><a href="/talks">Talks</a></li>
+      <li><a href="http://code.mrtazz.com">Code</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/imprint.html">Contact</a></li>
+    </ul>
+  </div>
+</header>
 
-    <div id="content">
-            <div class="post">
+
+    <main>
+    
+
+<div class="postdateheading"> May 21, 2014 </div>
+
+      <div class="post">
         <h2> <a href=""> Computer Positivity </a></h2>
 
-<p>Let’s face it, we’ve all been there, your database just decided to split brains, Linux just killed Apache on your web servers because another process was using a bit more memory, your app is broken because the type system of the language you wrote it in has interesting assumptions about what object you just passed to a function and your laptop keeps disconnecting from the Wi-Fi. It’s fair to say computers are horrible right? And with all that certainty in mind, we reach for the small phone in our pocket, open an app, type into a text field and hit “Tweet”, so that the little message gets send off to thousands of servers, which process it, find and extract data and then make our proclamation available to millions of people all over the world within a second:</p>
+        <p>Let&rsquo;s face it, we&rsquo;ve all been there, your database just decided to split
+brains, Linux just killed Apache on your web servers because another process
+was using a bit more memory, your app is broken because the type system of the
+language you wrote it in has interesting assumptions about what object you
+just passed to a function and your laptop keeps disconnecting from the Wi-Fi.
+It&rsquo;s fair to say computers are horrible right? And with all that certainty in
+mind, we reach for the small phone in our pocket, open an app, type into a
+text field and hit &ldquo;Tweet&rdquo;, so that the little message gets send off to
+thousands of servers, which process it, find and extract data and then make
+our proclamation available to millions of people all over the world within a
+second:</p>
 <blockquote>
 <p>Computers are terrible. Nothing works.</p>
 </blockquote>
-<p>We all love to share our opinion and give talks about all the things that are wrong with computing. JavaScript is a popular topic, so is PHP, Redis, nodejs, Scala, Rails, Nagios, MongoDB and almost any other technology on different occasions. You can not spend a week (or sometimes even a day) without a new blog post about how some technology or piece of software (or better yet: everything) is broken lacking any positive take away.</p>
-<p>I was at Monitorama at the beginning of May which is always amazing and great to meet and talk with friends and other people who work in infrastructure and operations in the vastest sense. And it’s easily one of my favorite conferences. I <a href="https://vimeo.com/95247023">got to give a talk</a> there and close to the end before introducing how our Nagios setup works I asked the audience to raise their hand if they have strong feelings about Nagios. From what I could see almost everybody raised their hand. Then I asked them to raise the other hand if those feelings were love. Almost nobody did.</p>
-<p>We have arrived at a point where a piece of software (granted with some fixable inconveniences) monitors a complex system of computers, lets us know when something is broken and arguably enables a ton of businesses. And yet almost nobody has to say anything good about it. Everybody will tell you how terrible it is.</p>
-<p>This isn’t about Nagios though. This is about general attitude. We work in a field where you can (compared to other professions) make a lot of money, usually don’t have to be too concerned about unemployment (it’s even kind of a sport already to complain and make fun of all the recruiter requests we get and be upset they are not perfectly tailored to what we want to work on) and generally get paid to solve problems. And then we start to complain about the fact that we can’t always choose the problems we have to solve. We build complex systems with a myriad of interactions and components and then have the hubris to say we should understand them in their entirety and whoever doesn’t is plain stupid.</p>
-<p>Let’s be clear here. I don’t think you can never complain about things. I don’t think everything is unicorns and rainbows. And I don’t think you are not allowed to say something when things are horrible. But as a profession I get the feeling we have started to basically take negativity for granted. And with that we set an awful example for peers and especially (young) people coming to our industry. We say “computers are terrible” when it really just means “the computer does a thing that is really inconvenient for me right now”. We have a machine in front of us that let’s us boot other computers all around the world, talk to our families face-to-face wherever they might be and access any information known to mankind in an instant. Yet what we say is “look at all the crap we have to put up with everyday, recognize our prowess”. We could invent teleportation and enable everybody to be anywhere they want in an instant. As long as it sometimes puts us inconveniently a couple of meters away from our desired destination we would be tweeting that “this is horrible and everything is broken”.</p>
-<p>Technology has made a lot of things possible for me. I would have never thought that I would live in what might be the best city on earth, love every day I go to work and am able to work on things I’m interested in, and have the opportunity to travel to conferences to have people listen to what I say about computers. Am I stressed, annoyed or even mad sometimes about yum resolving dependencies wrong, having to use a different way of comparing variables in PHP or the fact that my laptop goes to a blank screen again 20 seconds after I unlocked it? Yup. Does that make everything terrible? Nope.</p>
-<p>I’m sure as hell happy and thankful I can work with computers every day, do interesting things and contribute to a platform where people create businesses and make a living on. Because computers are pretty amazing and I get to learn something new every day. And sometimes even feel almost <a href="https://twitter.com/mrtazz/statuses/460423094054973440">like a wizard</a>.</p>
+<p>We all love to share our opinion and give talks about all the things that are
+wrong with computing. JavaScript is a popular topic, so is PHP, Redis, nodejs,
+Scala, Rails, Nagios, MongoDB and almost any other technology on different
+occasions. You can not spend a week (or sometimes even a day) without a new
+blog post about how some technology or piece of software (or better yet:
+everything) is broken lacking any positive take away.</p>
+<p>I was at Monitorama at the beginning of May which is always amazing and great
+to meet and talk with friends and other people who work in infrastructure and
+operations in the vastest sense. And it&rsquo;s easily one of my favorite
+conferences. I <a href="https://vimeo.com/95247023">got to give a talk</a> there and close to the end
+before introducing how our Nagios setup works I asked the audience to raise
+their hand if they have strong feelings about Nagios. From what I could see
+almost everybody raised their hand. Then I asked them to raise the other hand
+if those feelings were love. Almost nobody did.</p>
+<p>We have arrived at a point where a piece of software (granted with some
+fixable inconveniences) monitors a complex system of computers, lets us know
+when something is broken and arguably enables a ton of businesses. And yet
+almost nobody has to say anything good about it. Everybody will tell you how
+terrible it is.</p>
+<p>This isn&rsquo;t about Nagios though. This is about general attitude. We work in a
+field where you can (compared to other professions) make a lot of money,
+usually don&rsquo;t have to be too concerned about unemployment (it&rsquo;s even kind of a
+sport already to complain and make fun of all the recruiter requests we get
+and be upset they are not perfectly tailored to what we want to work on) and
+generally get paid to solve problems. And then we start to complain about the
+fact that we can&rsquo;t always choose the problems we have to solve. We build
+complex systems with a myriad of interactions and components and then have the
+hubris to say we should understand them in their entirety and whoever doesn&rsquo;t
+is plain stupid.</p>
+<p>Let&rsquo;s be clear here. I don&rsquo;t think you can never complain about things. I
+don&rsquo;t think everything is unicorns and rainbows. And I don&rsquo;t think you are not
+allowed to say something when things are horrible. But as a profession I get
+the feeling we have started to basically take negativity for granted. And with
+that we set an awful example for peers and especially (young) people coming to
+our industry. We say &ldquo;computers are terrible&rdquo; when it really just means &ldquo;the
+computer does a thing that is really inconvenient for me right now&rdquo;.  We have
+a machine in front of us that let&rsquo;s us boot other computers all around the
+world, talk to our families face-to-face wherever they might be and access any
+information known to mankind in an instant. Yet what we say is &ldquo;look at all
+the crap we have to put up with everyday, recognize our prowess&rdquo;.  We could
+invent teleportation and enable everybody to be anywhere they want in an
+instant. As long as it sometimes puts us inconveniently a couple of meters
+away from our desired destination we would be tweeting that &ldquo;this is horrible
+and everything is broken&rdquo;.</p>
+<p>Technology has made a lot of things possible for me. I would have never
+thought that I would live in what might be the best city on earth, love every
+day I go to work and am able to work on things I&rsquo;m interested in, and have the
+opportunity to travel to conferences to have people listen to what I say about
+computers. Am I stressed, annoyed or even mad sometimes about yum resolving
+dependencies wrong, having to use a different way of comparing variables in
+PHP or the fact that my laptop goes to a blank screen again 20 seconds after I
+unlocked it? Yup. Does that make everything terrible? Nope.</p>
+<p>I&rsquo;m sure as hell happy and thankful I can work with computers every day, do
+interesting things and contribute to a platform where people create businesses
+and make a living on. Because computers are pretty amazing and I get to learn
+something new every day. And sometimes even feel almost
+<a href="https://twitter.com/mrtazz/statuses/460423094054973440">like a wizard</a>.</p>
+
 
       </div>
-    </div>
+
+
+    </main>
+
   </body>
 </html>
