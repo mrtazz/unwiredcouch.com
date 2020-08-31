@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="cache-control" content="no-cache"/>
+    <meta http-equiv="pragma" content="no-cache"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    
+
+
+
+<link   rel="stylesheet"
+        href="https://unwiredcouch.com/css/style.min.a36a596da336f86da7ec14f8df9f311a84d46f0fb1d10526869f8e1c5cf7f795.css"
+        integrity="sha256-o2pZbaM2&#43;G2n7BT4358xGoTUbw&#43;x0QUmhp&#43;OHFz395U="
+        type="text/css"
+        media="screen">
+
+<link   rel="stylesheet"
+        href="https://unwiredcouch.com/css/mobile.min.61224258b356807fea4fba3d47bfa9b900189e33d17678f5eba2ea860e517051.css"
+        integrity="sha256-YSJCWLNWgH/qT7o9R7&#43;puQAYnjPRdnj166Lqhg5RcFE="
+        type="text/css"
+        media="handheld, only screen and (max-device-width: 960px)">
+
+    <link href="https://unwiredcouch.com/atom.xml" type="application/atom+xml" rel="alternate" title="unwiredcouch.feed" />
+
+    <title>writing on unwiredcouch.com</title>
+  </head>
+  <body>
+
+    <header>
+  <div id="intro">
+    <ul>
+      <li><a href="/">Writing</a></li>
+      <li><a href="https://www.instagram.com/mrtazz/">Drawing</a></li>
+      <li><a href="https://twitter.com/mrtazz">Tweets</a></li>
+      <li><a href="/talks">Talks</a></li>
+      <li><a href="http://code.mrtazz.com">Code</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/imprint.html">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+
+    <main>
+    
+<div class="post talk">
+  <h2> Feature Flagging your Infrastructure for Fun and Profit </br>
+    <span class="talkbyline"> presented at <a href="http://www.lopsa-nyc.org/content/feature-flag">
+        NYC LOPSA Meetup </a> on Sep 10, 2013 </span> </h2>
+  <div class="abstract talksection">
+    <h3> Abstract </h3>
+    <p>
+    At Etsy we run our production stack exclusively on physical
+hardware and have (including developer and CI VMs) about 1000 nodes managed
+with a single Chef server running the same cookbooks across development and
+production nodes. We have built the knife-spork plugin to support our workflow
+and have 30 engineers making changes about 20 times a day. While this setup
+keeps configuration changes and package installations consistent across our
+network, it makes it harder to gradually roll out and test changes on a per
+node or role basis. In the talk our general workflow will be introduced and
+explained and how we enable engineers to frequently roll out small changes.
+Following the general introduction, our workflow for testing changes will be
+discussed and the library we wrote to enable config flags and gradual roll
+outs for our infrastructure within our chef recipes.
+
+    </p>
+  </div>
+  
+  <div class="slides talksection">
+    <h3> Slides </h3>
+    <div class="center">
+      <script async class="speakerdeck-embed"
+      data-id="7a7a4b00fd220130f86e4e717998ee35"
+      
+      data-ratio="1.57055214723926"
+      
+      src="//speakerdeck.com/assets/embed.js"></script>
+    </div>
+  </div>
+  
+  
+  
+  
+  <div class="links talksection">
+    <h3> Links </h3>
+    <ul class="talklinks">
+    
+    <li><a href="http://codeascraft.com">Etsy Engineering Blog</a></li>
+    
+    <li><a href="http://etsy.com/codeascraft/talks">Etsy Engineering Talks</a></li>
+    
+    <li><a href="http://codeascraft.com/2013/08/02/infrastructure-upgrades-with-chef/">Blog post about infrastructure upgrades with Chef at Etsy</a></li>
+    
+  </ul>
+  </div>
+</div>
+
+    </main>
+
+  </body>
+</html>

@@ -6,7 +6,7 @@
     <description>Recent content on unwiredcouch.com</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 16 Aug 2014 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 14 Jan 2015 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://unwiredcouch.com/index.xml" rel="self" type="application/rss+xml" />
     
@@ -228,6 +228,15 @@
     </item>
     
     <item>
+      <title>The Road to Success is paved with Small Improvements</title>
+      <link>https://unwiredcouch.com/talks/uspto2015/</link>
+      <pubDate>Wed, 14 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://unwiredcouch.com/talks/uspto2015/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Learning to be On-Call</title>
       <link>https://unwiredcouch.com/2015/01/06/learning-on-call.html</link>
       <pubDate>Tue, 06 Jan 2015 00:00:00 +0000</pubDate>
@@ -255,12 +264,57 @@
     </item>
     
     <item>
+      <title>Human Factors and PostMortems</title>
+      <link>https://unwiredcouch.com/talks/human-factors-postmortems/</link>
+      <pubDate>Tue, 11 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://unwiredcouch.com/talks/human-factors-postmortems/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Culture: the invisible ingredient</title>
+      <link>https://unwiredcouch.com/talks/culture-panel/</link>
+      <pubDate>Mon, 10 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://unwiredcouch.com/talks/culture-panel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Deploy, Collaborate and Listen</title>
+      <link>https://unwiredcouch.com/talks/deploy-collaborate-listen/</link>
+      <pubDate>Thu, 06 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://unwiredcouch.com/talks/deploy-collaborate-listen/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>DevOps - Jetzt aber richtig</title>
+      <link>https://unwiredcouch.com/talks/wjax2014-panel/</link>
+      <pubDate>Wed, 05 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://unwiredcouch.com/talks/wjax2014-panel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Code Reviews Considered Awesome</title>
       <link>https://unwiredcouch.com/2014/10/21/code-review.html</link>
       <pubDate>Tue, 21 Oct 2014 00:00:00 +0000</pubDate>
       
       <guid>https://unwiredcouch.com/2014/10/21/code-review.html</guid>
       <description>I think by now it is pretty much accepted that collaboration and working together is a lot better than assigning blame and yelling at each other.</description>
+    </item>
+    
+    <item>
+      <title>Data Driven Monitoring</title>
+      <link>https://unwiredcouch.com/talks/data-driven-monitoring/</link>
+      <pubDate>Thu, 09 Oct 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://unwiredcouch.com/talks/data-driven-monitoring/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -309,12 +363,39 @@
     </item>
     
     <item>
+      <title>Development, Deployment &amp; Collaboration at Etsy</title>
+      <link>https://unwiredcouch.com/talks/collaboration-amsterdam/</link>
+      <pubDate>Thu, 19 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://unwiredcouch.com/talks/collaboration-amsterdam/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mobile CI at Etsy</title>
+      <link>https://unwiredcouch.com/talks/mobile-ci-amsterdam/</link>
+      <pubDate>Thu, 19 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://unwiredcouch.com/talks/mobile-ci-amsterdam/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Shared layout for project pages in Jekyll</title>
       <link>https://unwiredcouch.com/bits/2014/06/14/jekyll-shared-project-layouts.html</link>
       <pubDate>Sat, 14 Jun 2014 00:00:00 +0000</pubDate>
       
       <guid>https://unwiredcouch.com/bits/2014/06/14/jekyll-shared-project-layouts.html</guid>
       <description>I use Jekyll a lot, especially for my website. And I quite like it a lot.</description>
+    </item>
+    
+    <item>
+      <title>Releasing at Scale</title>
+      <link>https://unwiredcouch.com/talks/releasing-at-scale/</link>
+      <pubDate>Fri, 30 May 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://unwiredcouch.com/talks/releasing-at-scale/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -336,6 +417,15 @@
     </item>
     
     <item>
+      <title>A Whirlwind Tour of the Etsy Monitoring Stack</title>
+      <link>https://unwiredcouch.com/talks/etsy-monitoring/</link>
+      <pubDate>Tue, 06 May 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://unwiredcouch.com/talks/etsy-monitoring/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>My 5 years of GitHub</title>
       <link>https://unwiredcouch.com/2014/03/28/5-years-github.html</link>
       <pubDate>Fri, 28 Mar 2014 00:00:00 +0000</pubDate>
@@ -351,6 +441,24 @@
       
       <guid>https://unwiredcouch.com/bits/2014/03/18/zfs-rsync-backups.html</guid>
       <description>As I mentioned before I&amp;rsquo;m running my own backup on a server that is running in my apartment.</description>
+    </item>
+    
+    <item>
+      <title>Co-Workers as Customers</title>
+      <link>https://unwiredcouch.com/talks/coworkers-as-customers/</link>
+      <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://unwiredcouch.com/talks/coworkers-as-customers/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Development, Deployment &amp; Collaboration at Etsy</title>
+      <link>https://unwiredcouch.com/talks/collaboration-london/</link>
+      <pubDate>Wed, 05 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://unwiredcouch.com/talks/collaboration-london/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -399,12 +507,66 @@
     </item>
     
     <item>
+      <title>Scaling Deployments at Etsy</title>
+      <link>https://unwiredcouch.com/talks/scaling-deployments-cdnyc/</link>
+      <pubDate>Wed, 09 Oct 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://unwiredcouch.com/talks/scaling-deployments-cdnyc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Feature Flagging your Infrastructure for Fun and Profit</title>
+      <link>https://unwiredcouch.com/talks/infrastructure-feature-flags/</link>
+      <pubDate>Tue, 10 Sep 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://unwiredcouch.com/talks/infrastructure-feature-flags/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Infrastructure upgrades with Chef</title>
       <link>https://unwiredcouch.com/2013/08/02/infrastructure-upgrades-with-chef.html</link>
       <pubDate>Fri, 02 Aug 2013 00:00:00 +0000</pubDate>
       
       <guid>https://unwiredcouch.com/2013/08/02/infrastructure-upgrades-with-chef.html</guid>
       <description>I wrote about how we roll out infrastructure upgrades with Chef on Etsy&amp;rsquo;s engineering blog.</description>
+    </item>
+    
+    <item>
+      <title>Devtools at Etsy</title>
+      <link>https://unwiredcouch.com/talks/devtools-at-etsy/</link>
+      <pubDate>Mon, 27 May 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://unwiredcouch.com/talks/devtools-at-etsy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Scaling Deployments at Etsy</title>
+      <link>https://unwiredcouch.com/talks/scaling-deployments-scaleconf/</link>
+      <pubDate>Thu, 18 Apr 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://unwiredcouch.com/talks/scaling-deployments-scaleconf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>StatsD Workshop</title>
+      <link>https://unwiredcouch.com/talks/statsd-workshop/</link>
+      <pubDate>Fri, 29 Mar 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://unwiredcouch.com/talks/statsd-workshop/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Chef Workflow at Etsy</title>
+      <link>https://unwiredcouch.com/talks/chef-workflow/</link>
+      <pubDate>Tue, 29 Jan 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://unwiredcouch.com/talks/chef-workflow/</guid>
+      <description></description>
     </item>
     
     <item>

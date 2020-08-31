@@ -123,6 +123,21 @@
   </url>
   
   <url>
+    <loc>https://unwiredcouch.com/talks/</loc>
+    <lastmod>2015-01-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://unwiredcouch.com/talks/uspto2015/</loc>
+    <lastmod>2015-01-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://unwiredcouch.com/</loc>
+    <lastmod>2015-01-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://unwiredcouch.com/2015/01/06/learning-on-call.html</loc>
     <lastmod>2015-01-06T00:00:00+00:00</lastmod>
   </url>
@@ -138,8 +153,33 @@
   </url>
   
   <url>
+    <loc>https://unwiredcouch.com/talks/human-factors-postmortems/</loc>
+    <lastmod>2014-11-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://unwiredcouch.com/talks/culture-panel/</loc>
+    <lastmod>2014-11-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://unwiredcouch.com/talks/deploy-collaborate-listen/</loc>
+    <lastmod>2014-11-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://unwiredcouch.com/talks/wjax2014-panel/</loc>
+    <lastmod>2014-11-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://unwiredcouch.com/2014/10/21/code-review.html</loc>
     <lastmod>2014-10-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://unwiredcouch.com/talks/data-driven-monitoring/</loc>
+    <lastmod>2014-10-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -173,11 +213,6 @@
   </url>
   
   <url>
-    <loc>https://unwiredcouch.com/</loc>
-    <lastmod>2014-08-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://unwiredcouch.com/2014/08/04/human-error-getting-off-the-hook.html</loc>
     <lastmod>2014-08-04T00:00:00+00:00</lastmod>
   </url>
@@ -188,8 +223,23 @@
   </url>
   
   <url>
+    <loc>https://unwiredcouch.com/talks/collaboration-amsterdam/</loc>
+    <lastmod>2014-06-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://unwiredcouch.com/talks/mobile-ci-amsterdam/</loc>
+    <lastmod>2014-06-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://unwiredcouch.com/bits/2014/06/14/jekyll-shared-project-layouts.html</loc>
     <lastmod>2014-06-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://unwiredcouch.com/talks/releasing-at-scale/</loc>
+    <lastmod>2014-05-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -203,6 +253,11 @@
   </url>
   
   <url>
+    <loc>https://unwiredcouch.com/talks/etsy-monitoring/</loc>
+    <lastmod>2014-05-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://unwiredcouch.com/2014/03/28/5-years-github.html</loc>
     <lastmod>2014-03-28T00:00:00+00:00</lastmod>
   </url>
@@ -210,6 +265,16 @@
   <url>
     <loc>https://unwiredcouch.com/bits/2014/03/18/zfs-rsync-backups.html</loc>
     <lastmod>2014-03-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://unwiredcouch.com/talks/coworkers-as-customers/</loc>
+    <lastmod>2014-03-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://unwiredcouch.com/talks/collaboration-london/</loc>
+    <lastmod>2014-03-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -238,8 +303,38 @@
   </url>
   
   <url>
+    <loc>https://unwiredcouch.com/talks/scaling-deployments-cdnyc/</loc>
+    <lastmod>2013-10-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://unwiredcouch.com/talks/infrastructure-feature-flags/</loc>
+    <lastmod>2013-09-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://unwiredcouch.com/2013/08/02/infrastructure-upgrades-with-chef.html</loc>
     <lastmod>2013-08-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://unwiredcouch.com/talks/devtools-at-etsy/</loc>
+    <lastmod>2013-05-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://unwiredcouch.com/talks/scaling-deployments-scaleconf/</loc>
+    <lastmod>2013-04-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://unwiredcouch.com/talks/statsd-workshop/</loc>
+    <lastmod>2013-03-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://unwiredcouch.com/talks/chef-workflow/</loc>
+    <lastmod>2013-01-29T00:00:00+00:00</lastmod>
   </url>
   
   <url>
