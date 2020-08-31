@@ -5,45 +5,90 @@
     <meta http-equiv="cache-control" content="no-cache"/>
     <meta http-equiv="pragma" content="no-cache"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link href="/css/style.min.css?v=e1be0c2" media="screen" rel="stylesheet" type="text/css"/>
-    <link href="/css/mobile.min.css?v=e1be0c2" media="handheld, only screen and (max-device-width: 960px)" rel="stylesheet" type="text/css"/>
+    
+
+
+
+<link   rel="stylesheet"
+        href="https://unwiredcouch.com/css/style.min.a36a596da336f86da7ec14f8df9f311a84d46f0fb1d10526869f8e1c5cf7f795.css"
+        integrity="sha256-o2pZbaM2&#43;G2n7BT4358xGoTUbw&#43;x0QUmhp&#43;OHFz395U="
+        type="text/css"
+        media="screen">
+
+<link   rel="stylesheet"
+        href="https://unwiredcouch.com/css/mobile.min.61224258b356807fea4fba3d47bfa9b900189e33d17678f5eba2ea860e517051.css"
+        integrity="sha256-YSJCWLNWgH/qT7o9R7&#43;puQAYnjPRdnj166Lqhg5RcFE="
+        type="text/css"
+        media="handheld, only screen and (max-device-width: 960px)">
+
     <link href="https://unwiredcouch.com/atom.xml" type="application/atom+xml" rel="alternate" title="unwiredcouch.feed" />
 
-    <title>Productive VIM with templates on unwiredcouch.com</title>
+    <title>writing on unwiredcouch.com</title>
   </head>
   <body>
 
     <header>
-      <a class="gravatar hidemobile" href="/">
-        <img src="https://www.gravatar.com/avatar/89e0ad1229121f46047977ac547bd7b4.jpg?s=100"
-             height="100" width="100" class="avatar" alt="gravatar image" />
-      </a>
-      <div id="intro">
-        <p>Hi! I'm <a href="/about.html">Daniel</a>.</p>
-        <p>I like
-        <a href="/">writing</a>,
-        <a href="https://www.instagram.com/mrtazz/">drawing</a>,
-        <a href="https://twitter.com/mrtazz">tweeting</a>,
-        <a href="/talks">sometimes give talks</a>,
-        and <a href="http://code.mrtazz.com">occasionally write code</a>.
-        </p>
-      </div>
-    </header>
+  <div id="intro">
+    <ul>
+      <li><a href="../../../../">Writing</a></li>
+      <li><a href="https://www.instagram.com/mrtazz/">Drawing</a></li>
+      <li><a href="https://twitter.com/mrtazz">Tweets</a></li>
+      <li><a href="../../../../talks">Talks</a></li>
+      <li><a href="http://code.mrtazz.com">Code</a></li>
+      <li><a href="../../../../about.html">About</a></li>
+      <li><a href="../../../../imprint.html">Contact</a></li>
+    </ul>
+  </div>
+</header>
 
-    <div id="content">
-            <div class="post">
+
+    <main>
+    
+
+<div class="postdateheading"> Jul 22, 2014 </div>
+
+      <div class="post">
         <h2> <a href=""> Productive VIM with templates </a></h2>
 
-<p>I basically exist inside of vim all day. I write code in there, I write emails in VIM via <a href="http://www.mutt.org">mutt</a>, I take notes with it and I write all my blog posts in VIM. I think it’s clear that improving the way I work with VIM helps in a variety of scenarios. Over time I also noticed that I often start out with the same basic file structure and then fill it with content. For example jekyll blog posts always have the same header, meeting notes always have the same structure and I use a template to reply to recruiter emails in times where I’m not looking for a job (a trick I learned from <a href="https://twitter.com/katemats">Kate Matsudaira</a> in one of her <a href="http://katemats.com/people-are-lazy/">great blog posts</a> about productivity).</p>
-<p>In the coding world VIM provides a great built-in functionality for that which is called <a href="http://vimdoc.sourceforge.net/htmldoc/autocmd.html#skeleton">"skeleton files’</a>. This is a great way to always have a good to go version of C source or header files, Makefiles or RPM spec files. However this is all based on filetypes (or rather file endings) and since I write most of my notes and all my blog posts in <a href="http://daringfireball.net/projects/markdown/">Markdown</a> for example and they all have the same file ending this doesn’t help me much for having different templates. So I started to look around for VIM functionality or plugins that would just let me load templates from a specific location and maybe expand some variables (as I for example like to have the date auto inserted into meeting notes). I didn’t want a full fledged templating engine, although I could certainly have installed and wrapped the <a href="https://github.com/tobyS/vmustache">Mustache implementation written in VimL</a> to do that for me. But I wanted to keep it simple and apparently that solution didn’t exist yet.</p>
-<p>This is why I wrote a VIM plugin called <a href="https://github.com/mrtazz/vim-stencil">vim-stencil</a>. It’s a handful of lines of VimL and it does exactly 2 things:</p>
+        <p>I basically exist inside of vim all day. I write code in there, I write emails
+in VIM via <a href="http://www.mutt.org">mutt</a>, I take notes with it and I write all my blog posts in
+VIM. I think it&rsquo;s clear that improving the way I work with VIM helps in a
+variety of scenarios. Over time I also noticed that I often start out with the
+same basic file structure and then fill it with content. For example jekyll
+blog posts always have the same header, meeting notes always have the same
+structure and I use a template to reply to recruiter emails in times where I&rsquo;m
+not looking for a job (a trick I learned from <a href="https://twitter.com/katemats">Kate Matsudaira</a> in
+one of her <a href="http://katemats.com/people-are-lazy/">great blog posts</a> about productivity).</p>
+<p>In the coding world VIM provides a great built-in functionality for that which
+is called <a href="http://vimdoc.sourceforge.net/htmldoc/autocmd.html#skeleton">&ldquo;skeleton files&rsquo;</a>. This is a great way to always have a
+good to go version of C source or header files, Makefiles or RPM spec files.
+However this is all based on filetypes (or rather file endings) and since I
+write most of my notes and all my blog posts in <a href="http://daringfireball.net/projects/markdown/">Markdown</a> for
+example and they all have the same file ending this doesn&rsquo;t help me much for
+having different templates. So I started to look around for VIM functionality
+or plugins that would just let me load templates from a specific location and
+maybe expand some variables (as I for example like to have the date auto
+inserted into meeting notes). I didn&rsquo;t want a full fledged templating engine,
+although I could certainly have installed and wrapped the <a href="https://github.com/tobyS/vmustache">Mustache
+implementation written in VimL</a> to do that for me. But I wanted to
+keep it simple and apparently that solution didn&rsquo;t exist yet.</p>
+<p>This is why I wrote a VIM plugin called <a href="https://github.com/mrtazz/vim-stencil">vim-stencil</a>. It&rsquo;s a
+handful of lines of VimL and it does exactly 2 things:</p>
 <ul>
 <li>Load a template from a specified location</li>
 <li>Expand some variables (currently even only one: the date)</li>
 </ul>
-<p>So now with a simple call to <code>:Stencil</code> in VIM I can choose a template for the type of file I’m editing (yes it supports tab completion) and load that into my buffer. I even get the current date for free in templates where I choose to have it. No fuzz, no complicated setup. But a small thing that increases my productivity a lot.</p>
+<p>So now with a simple call to <code>:Stencil</code> in VIM I can choose a template for the
+type of file I&rsquo;m editing (yes it supports tab completion) and load that into
+my buffer. I even get the current date for free in templates where I choose to
+have it. No fuzz, no complicated setup. But a small thing that increases my
+productivity a lot.</p>
+
 
       </div>
-    </div>
+
+
+    </main>
+
   </body>
 </html>

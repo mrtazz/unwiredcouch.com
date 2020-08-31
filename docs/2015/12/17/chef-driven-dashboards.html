@@ -5,120 +5,191 @@
     <meta http-equiv="cache-control" content="no-cache"/>
     <meta http-equiv="pragma" content="no-cache"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link href="/css/style.min.css?v=e1be0c2" media="screen" rel="stylesheet" type="text/css"/>
-    <link href="/css/mobile.min.css?v=e1be0c2" media="handheld, only screen and (max-device-width: 960px)" rel="stylesheet" type="text/css"/>
+    
+
+
+
+<link   rel="stylesheet"
+        href="https://unwiredcouch.com/css/style.min.a36a596da336f86da7ec14f8df9f311a84d46f0fb1d10526869f8e1c5cf7f795.css"
+        integrity="sha256-o2pZbaM2&#43;G2n7BT4358xGoTUbw&#43;x0QUmhp&#43;OHFz395U="
+        type="text/css"
+        media="screen">
+
+<link   rel="stylesheet"
+        href="https://unwiredcouch.com/css/mobile.min.61224258b356807fea4fba3d47bfa9b900189e33d17678f5eba2ea860e517051.css"
+        integrity="sha256-YSJCWLNWgH/qT7o9R7&#43;puQAYnjPRdnj166Lqhg5RcFE="
+        type="text/css"
+        media="handheld, only screen and (max-device-width: 960px)">
+
     <link href="https://unwiredcouch.com/atom.xml" type="application/atom+xml" rel="alternate" title="unwiredcouch.feed" />
 
-    <title>Chef Driven Graphite Dashboards on unwiredcouch.com</title>
+    <title>writing on unwiredcouch.com</title>
   </head>
   <body>
 
     <header>
-      <a class="gravatar hidemobile" href="/">
-        <img src="https://www.gravatar.com/avatar/89e0ad1229121f46047977ac547bd7b4.jpg?s=100"
-             height="100" width="100" class="avatar" alt="gravatar image" />
-      </a>
-      <div id="intro">
-        <p>Hi! I'm <a href="/about.html">Daniel</a>.</p>
-        <p>I like
-        <a href="/">writing</a>,
-        <a href="https://www.instagram.com/mrtazz/">drawing</a>,
-        <a href="https://twitter.com/mrtazz">tweeting</a>,
-        <a href="/talks">sometimes give talks</a>,
-        and <a href="http://code.mrtazz.com">occasionally write code</a>.
-        </p>
-      </div>
-    </header>
+  <div id="intro">
+    <ul>
+      <li><a href="../../../">Writing</a></li>
+      <li><a href="https://www.instagram.com/mrtazz/">Drawing</a></li>
+      <li><a href="https://twitter.com/mrtazz">Tweets</a></li>
+      <li><a href="../../../talks">Talks</a></li>
+      <li><a href="http://code.mrtazz.com">Code</a></li>
+      <li><a href="../../../about.html">About</a></li>
+      <li><a href="../../../imprint.html">Contact</a></li>
+    </ul>
+  </div>
+</header>
 
-    <div id="content">
-            <div class="post">
+
+    <main>
+    
+
+<div class="postdateheading"> Dec 17, 2015 </div>
+
+      <div class="post">
         <h2> <a href=""> Chef Driven Graphite Dashboards </a></h2>
 
-<p>Some years ago <a href="https://unwiredcouch.com/2012/09/15/getting-started-with-monitoring.html">I wrote about</a> how to use Heroku and a set of hosted solutions for getting started with monitoring for your personal infrastructure. I used this set up for quite a while and I learned a ton setting it up. But after a while things were chugging along and I was paying for things I wasn’t using. So I decided to self host my monitoring on the infrastructure I was already running anyways. The big switches were using Nagios instead of Sensu (as I was familiar with it and it has less moving parts), dropping chat integration and log aggregation as I was barely using it and switching to Graphite for graphs. Interestingly enough this switch made me improve my graphing setup a lot. I’m still using collectd and I’ve extended it a lot more with custom scripts to track various things.</p>
+        <p>Some years ago <a href="https://unwiredcouch.com/2012/09/15/getting-started-with-monitoring.html">I wrote about</a> how to use Heroku and a set of
+hosted solutions for getting started with monitoring for your personal
+infrastructure. I used this set up for quite a while and I learned a ton
+setting it up. But after a while things were chugging along and I was paying
+for things I wasn&rsquo;t using. So I decided to self host my monitoring on the
+infrastructure I was already running anyways. The big switches were using
+Nagios instead of Sensu (as I was familiar with it and it has less moving
+parts), dropping chat integration and log aggregation as I was barely using it
+and switching to Graphite for graphs. Interestingly enough this switch made me
+improve my graphing setup a lot. I&rsquo;m still using collectd and I&rsquo;ve extended it
+a lot more with custom scripts to track various things.</p>
 <h2 id="yet-another-graphite-dashboard">Yet Another Graphite Dashboard</h2>
-<p>However since I wasn’t using Librato anymore, I now had to find a way to get nice overview dashboards for all of my metrics. And I looked into the usual suspects. But all of them seemed to need a very elaborate setup and running an additional application server besides <code>mod_php</code> which I was already running for Nagios just for some graphs embedded on an HTML page didn’t seem like a thing I wanted to embark on. I always liked the way we approach <a href="https://github.com/etsy/dashboard">dashboards at Etsy</a> a lot. It’s basically a PHP framework that gives you a nice way to create graphs from Graphite or Ganglia and combine them into dashboards. However it was a bit overkill for my use case and I would have to write all the code for a typical collectd host anyways. So I wrote my own little PHP script to generate a list of graphs from a config file. And it was really nice, took me 20 minutes, was a lot of fun, and did everything I wanted it to do. I decided to just use Twitter Bootstrap for the UI, which means it also looks nice on my iPhone and it’s aptly named <a href="http://code.mrtazz.com/yagd/">Yet Another Graphite Dashboard</a>.</p>
+<p>However since I wasn&rsquo;t using Librato anymore, I now had to find a way to get
+nice overview dashboards for all of my metrics. And I looked into the usual
+suspects. But all of them seemed to need a very elaborate setup and running an
+additional application server besides <code>mod_php</code> which I was already running
+for Nagios just for some graphs embedded on an HTML page didn&rsquo;t seem like a
+thing I wanted to embark on. I always liked the way we approach <a href="https://github.com/etsy/dashboard">dashboards at
+Etsy</a> a lot. It&rsquo;s basically a PHP framework that gives you a
+nice way to create graphs from Graphite or Ganglia and combine them into
+dashboards. However it was a bit overkill for my use case and I would have to
+write all the code for a typical collectd host anyways. So I wrote my own
+little PHP script to generate a list of graphs from a config file. And it was
+really nice, took me 20 minutes, was a lot of fun, and did everything I wanted
+it to do. I decided to just use Twitter Bootstrap for the UI, which means it
+also looks nice on my iPhone and it&rsquo;s aptly named <a href="http://code.mrtazz.com/yagd/">Yet Another Graphite
+Dashboard</a>.</p>
 <h2 id="chef-integration-and-additional-metrics">Chef integration and additional metrics</h2>
-<p>Now that I had this nice way of viewing dashboards, I wanted to have more graphs. I have long made a choice to track as much as possible in Chef for my personal infrastructure. And graphing is no exception here. Setting up the initial collectd install is a bit manual as I depend on some options that are available in the ports but not the official package builds (my infrastructure is still all FreeBSD). But the configuration and graphing additions are all fully chef-ed. I took the way we have Ganglia set up at Etsy as the role model. We have a setup chef-ed to every box that runs all scripts prefixed with <code>gmetric-</code> in a certain location on a minutely cron. This means in order to get a new set of metrics, you just have to write a shell script that ends up calling <code>gmetric</code> and put it in Chef. And a couple of minutes later graphs for all boxes will magically appear in Ganglia. I did the same for my collectd setup via <code>collectdctl</code> and it looks a little bit like this:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">*</span> * * * * for SCRIPT in <span class="va">$(</span><span class="fu">ls</span> /usr/local/collectd/collectd-*<span class="va">)</span><span class="kw">;</span> <span class="kw">do</span> <span class="bu">command</span> <span class="va">${SCRIPT}</span><span class="kw">;</span> <span class="kw">done</span></span></code></pre></div>
-<p>This means I can now easily add new metrics by dropping a script in there that utilizes the collectd CLI tooling. However since collectd has a very specific type setup, each script also needs a corresponding configuration in a custom types db. I also track this in Chef so it’s not too big of a problem. An example script to track disk temperature looks like this:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">#!/bin/sh</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a></span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="va">PLUGIN_NAME=</span><span class="st">&quot;disktemp&quot;</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="va">HOSTNAME=$(</span><span class="fu">hostname</span> -f<span class="va">)</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a><span class="va">SMARTCMD=</span><span class="st">&quot;/usr/local/sbin/smartctl&quot;</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a><span class="va">COLLECTD=</span><span class="st">&quot;/usr/local/bin/collectdctl&quot;</span></span>
-<span id="cb2-7"><a href="#cb2-7"></a></span>
-<span id="cb2-8"><a href="#cb2-8"></a><span class="kw">for</span> <span class="ex">disk</span> in <span class="va">$(</span><span class="fu">ls</span> /dev/ada* <span class="kw">|</span> <span class="fu">grep</span> -o <span class="st">&quot;ada[0-9]$&quot;</span><span class="va">)</span><span class="kw">;</span> <span class="kw">do</span></span>
-<span id="cb2-9"><a href="#cb2-9"></a>  <span class="va">TEMP=$(${SMARTCMD}</span> <span class="ex">-a</span> /dev/<span class="va">${disk}</span> <span class="kw">|</span> <span class="fu">awk</span> <span class="st">&#39;/194 Temperature_Celsius/ {print $10}&#39;</span><span class="va">)</span></span>
-<span id="cb2-10"><a href="#cb2-10"></a>  <span class="va">${COLLECTD}</span> <span class="ex">putval</span> <span class="va">${HOSTNAME}</span>/<span class="va">${PLUGIN_NAME}</span>-<span class="va">${disk}</span>/celsius_current interval=60 N:<span class="va">${TEMP}</span></span>
-<span id="cb2-11"><a href="#cb2-11"></a></span>
-<span id="cb2-12"><a href="#cb2-12"></a>  <span class="kw">if</span><span class="bu"> [</span> <span class="va">$?</span> <span class="ot">!=</span> 0<span class="bu"> ]</span>; <span class="kw">then</span></span>
-<span id="cb2-13"><a href="#cb2-13"></a>    <span class="bu">echo</span> <span class="st">&quot;ERROR </span><span class="va">${0}</span><span class="st">: </span><span class="va">${HOSTNAME}</span><span class="st">/</span><span class="va">${PLUGIN_NAME}</span><span class="st">-</span><span class="va">${disk}</span><span class="st">/celsius_current interval=60 N:</span><span class="va">${TEMP}</span><span class="st">&quot;</span></span>
-<span id="cb2-14"><a href="#cb2-14"></a>  <span class="kw">fi</span></span>
-<span id="cb2-15"><a href="#cb2-15"></a><span class="kw">done</span></span></code></pre></div>
-<p>Another thing that Ganglia gives you for free is a section for additional metrics that just appear as soon as you send them with an optional group name to group them by. In order to emulate that in my setup, the recipes for each collectd script are also defining node attributes with the Graphite graphs they are generating and how they are supposed to be displayed. This made a lot of sense to me as when I’m writing the scripts I have the generated metrics in my head anyways. And it’s easy to just drop them in a node attribute. So for tracking disk temperature for example, the recipe looks a bit like this:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode ruby"><code class="sourceCode ruby"><span id="cb3-1"><a href="#cb3-1"></a>cookbook_file <span class="st">&quot;/usr/local/collectd/collectd-disk-temp.sh&quot;</span> <span class="kw">do</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>  source <span class="st">&quot;collectd-disk-temp.sh&quot;</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a>  owner <span class="st">&quot;root&quot;</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a>  group <span class="st">&quot;wheel&quot;</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a>  mode <span class="bn">0755</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a><span class="kw">end</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a></span>
-<span id="cb3-8"><a href="#cb3-8"></a>node.default[<span class="st">:yagd</span>][<span class="st">:additional_metrics</span>][<span class="st">:disk_temperature</span>] = {</span>
-<span id="cb3-9"><a href="#cb3-9"></a>  <span class="st">&quot;Disk Temperature&quot;</span> =&gt; <span class="st">&quot;collectd.</span><span class="ot">#{</span>node[<span class="st">:fqdn</span>].gsub(<span class="st">&quot;.&quot;</span>,<span class="st">&quot;_&quot;</span>)<span class="ot">}</span><span class="st">.disktemp-ada*.celsius_current&quot;</span></span>
-<span id="cb3-10"><a href="#cb3-10"></a>}</span></code></pre></div>
-<p>The next step was now to not have to manually edit the config file for my dashboards anymore. I now had all the data I needed in Chef, so all it took was generating the config file there from a Chef search and all graphs were magically appearing as soon as both the node to monitor and the dashboard host had run Chef. This can take up to 20 minutes worst case (I run Chef every 10 minutes) which is really not a big deal for me. The Chef search code that does this for me looks like this:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode ruby"><code class="sourceCode ruby"><span id="cb4-1"><a href="#cb4-1"></a>hosts = []</span>
-<span id="cb4-2"><a href="#cb4-2"></a>nodes = search(<span class="st">:node</span>, <span class="st">&quot;domain:*unwiredcouch.com&quot;</span>)</span>
-<span id="cb4-3"><a href="#cb4-3"></a></span>
-<span id="cb4-4"><a href="#cb4-4"></a>nodes.each <span class="kw">do</span> |computer|</span>
-<span id="cb4-5"><a href="#cb4-5"></a></span>
-<span id="cb4-6"><a href="#cb4-6"></a>  this_computer = {}</span>
-<span id="cb4-7"><a href="#cb4-7"></a></span>
-<span id="cb4-8"><a href="#cb4-8"></a>  this_computer[<span class="st">:name</span>] = computer[<span class="st">:fqdn</span>]</span>
-<span id="cb4-9"><a href="#cb4-9"></a>  this_computer[<span class="st">:cpus</span>] = computer[<span class="st">:cpu</span>].nil? ? <span class="dv">0</span> : computer[<span class="st">:cpu</span>][<span class="st">:total</span>]</span>
-<span id="cb4-10"><a href="#cb4-10"></a>  this_computer[<span class="st">:apache</span>] = computer.recipes.include?(<span class="st">&quot;apache&quot;</span>)</span>
-<span id="cb4-11"><a href="#cb4-11"></a>  this_computer[<span class="st">:interfaces</span>] = computer.network.interfaces.keys.select {|k| !k.to_s.start_with?<span class="st">&quot;lo&quot;</span> }</span>
-<span id="cb4-12"><a href="#cb4-12"></a>  this_computer[<span class="st">:filesystems</span>] = []</span>
-<span id="cb4-13"><a href="#cb4-13"></a>  computer.filesystem.each <span class="kw">do</span> |k,v|</span>
-<span id="cb4-14"><a href="#cb4-14"></a>    name = v[<span class="st">:mount</span>] == <span class="st">&quot;/&quot;</span> ? <span class="st">&quot;/root&quot;</span> : v[<span class="st">:mount</span>]</span>
-<span id="cb4-15"><a href="#cb4-15"></a>    <span class="co"># cut out leading &#39;/&#39;</span></span>
-<span id="cb4-16"><a href="#cb4-16"></a>    name[<span class="dv">0</span>] = <span class="st">&#39;&#39;</span></span>
-<span id="cb4-17"><a href="#cb4-17"></a>    <span class="co"># substitute &#39;/&#39; with &#39;-&#39;</span></span>
-<span id="cb4-18"><a href="#cb4-18"></a>    name.gsub!(<span class="st">&quot;/&quot;</span>, <span class="st">&quot;-&quot;</span>)</span>
-<span id="cb4-19"><a href="#cb4-19"></a>    <span class="co"># substitute &#39;.&#39; with &#39;_&#39;</span></span>
-<span id="cb4-20"><a href="#cb4-20"></a>    name.gsub!(<span class="st">&quot;.&quot;</span>, <span class="st">&quot;_&quot;</span>)</span>
-<span id="cb4-21"><a href="#cb4-21"></a>    <span class="co"># and add to array</span></span>
-<span id="cb4-22"><a href="#cb4-22"></a>    this_computer[<span class="st">:filesystems</span>] &lt;&lt; name</span>
-<span id="cb4-23"><a href="#cb4-23"></a>  <span class="kw">end</span></span>
-<span id="cb4-24"><a href="#cb4-24"></a>  this_computer[<span class="st">:additional_metrics</span>] = computer[<span class="st">:yagd</span>][<span class="st">:additional_metrics</span>] <span class="kw">unless</span> computer[<span class="st">:yagd</span>].nil?</span>
-<span id="cb4-25"><a href="#cb4-25"></a></span>
-<span id="cb4-26"><a href="#cb4-26"></a>  hosts &lt;&lt; this_computer</span>
-<span id="cb4-27"><a href="#cb4-27"></a></span>
-<span id="cb4-28"><a href="#cb4-28"></a><span class="kw">end</span></span>
-<span id="cb4-29"><a href="#cb4-29"></a></span>
-<span id="cb4-30"><a href="#cb4-30"></a>template <span class="st">&quot;</span><span class="ot">#{</span>dashboards_dir<span class="ot">}</span><span class="st">/config.php&quot;</span> <span class="kw">do</span></span>
-<span id="cb4-31"><a href="#cb4-31"></a>  source <span class="st">&quot;yagd.config.php.erb&quot;</span></span>
-<span id="cb4-32"><a href="#cb4-32"></a>  owner <span class="st">&quot;www&quot;</span></span>
-<span id="cb4-33"><a href="#cb4-33"></a>  group <span class="st">&quot;wheel&quot;</span></span>
-<span id="cb4-34"><a href="#cb4-34"></a>  mode <span class="bn">0775</span></span>
-<span id="cb4-35"><a href="#cb4-35"></a>  variables( <span class="st">:hosts</span> =&gt; hosts )</span>
-<span id="cb4-36"><a href="#cb4-36"></a><span class="kw">end</span></span></code></pre></div>
-<p>And this is the accompanying erb template that gets rendered into a PHP file to serve as the configuration for my dashboards instance.</p>
-<pre class="erb"><code>&lt;?php
+<p>Now that I had this nice way of viewing dashboards, I wanted to have more
+graphs. I have long made a choice to track as much as possible in Chef for my
+personal infrastructure. And graphing is no exception here. Setting up the
+initial collectd install is a bit manual as I depend on some options that are
+available in the ports but not the official package builds (my infrastructure
+is still all FreeBSD). But the configuration and graphing additions are all
+fully chef-ed. I took the way we have Ganglia set up at Etsy as the role
+model. We have a setup chef-ed to every box that runs all scripts prefixed
+with <code>gmetric-</code> in a certain location on a minutely cron. This means in order
+to get a new set of metrics, you just have to write a shell script that ends
+up calling <code>gmetric</code> and put it in Chef.  And a couple of minutes later graphs
+for all boxes will magically appear in Ganglia. I did the same for my collectd
+setup via <code>collectdctl</code> and it looks a little bit like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">* * * * * <span style="color:#66d9ef">for</span> SCRIPT in <span style="color:#66d9ef">$(</span>ls /usr/local/collectd/collectd-*<span style="color:#66d9ef">)</span>; <span style="color:#66d9ef">do</span> command <span style="color:#e6db74">${</span>SCRIPT<span style="color:#e6db74">}</span>; <span style="color:#66d9ef">done</span>
+</code></pre></div><p>This means I can now easily add new metrics by dropping a script in there that
+utilizes the collectd CLI tooling. However since collectd has a very specific
+type setup, each script also needs a corresponding configuration in a custom
+types db. I also track this in Chef so it&rsquo;s not too big of a problem. An
+example script to track disk temperature looks like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/sh
+</span><span style="color:#75715e"></span>
+PLUGIN_NAME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;disktemp&#34;</span>
+HOSTNAME<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>hostname -f<span style="color:#66d9ef">)</span>
+SMARTCMD<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/usr/local/sbin/smartctl&#34;</span>
+COLLECTD<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/usr/local/bin/collectdctl&#34;</span>
+
+<span style="color:#66d9ef">for</span> disk in <span style="color:#66d9ef">$(</span>ls /dev/ada* | grep -o <span style="color:#e6db74">&#34;ada[0-9]</span>$<span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">)</span>; <span style="color:#66d9ef">do</span>
+  TEMP<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span><span style="color:#e6db74">${</span>SMARTCMD<span style="color:#e6db74">}</span> -a /dev/<span style="color:#e6db74">${</span>disk<span style="color:#e6db74">}</span> | awk <span style="color:#e6db74">&#39;/194 Temperature_Celsius/ {print $10}&#39;</span><span style="color:#66d9ef">)</span>
+  <span style="color:#e6db74">${</span>COLLECTD<span style="color:#e6db74">}</span> putval <span style="color:#e6db74">${</span>HOSTNAME<span style="color:#e6db74">}</span>/<span style="color:#e6db74">${</span>PLUGIN_NAME<span style="color:#e6db74">}</span>-<span style="color:#e6db74">${</span>disk<span style="color:#e6db74">}</span>/celsius_current interval<span style="color:#f92672">=</span><span style="color:#ae81ff">60</span> N:<span style="color:#e6db74">${</span>TEMP<span style="color:#e6db74">}</span>
+
+  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $? !<span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+    echo <span style="color:#e6db74">&#34;ERROR </span><span style="color:#e6db74">${</span>0<span style="color:#e6db74">}</span><span style="color:#e6db74">: </span><span style="color:#e6db74">${</span>HOSTNAME<span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">${</span>PLUGIN_NAME<span style="color:#e6db74">}</span><span style="color:#e6db74">-</span><span style="color:#e6db74">${</span>disk<span style="color:#e6db74">}</span><span style="color:#e6db74">/celsius_current interval=60 N:</span><span style="color:#e6db74">${</span>TEMP<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+  <span style="color:#66d9ef">fi</span>
+<span style="color:#66d9ef">done</span>
+</code></pre></div><p>Another thing that Ganglia gives you for free is a section for additional
+metrics that just appear as soon as you send them with an optional group name
+to group them by. In order to emulate that in my setup, the recipes for each
+collectd script are also defining node attributes with the Graphite graphs
+they are generating and how they are supposed to be displayed. This made a lot
+of sense to me as when I&rsquo;m writing the scripts I have the generated metrics in
+my head anyways. And it&rsquo;s easy to just drop them in a node attribute. So for
+tracking disk temperature for example, the recipe looks a bit like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">cookbook_file <span style="color:#e6db74">&#34;/usr/local/collectd/collectd-disk-temp.sh&#34;</span> <span style="color:#66d9ef">do</span>
+  source <span style="color:#e6db74">&#34;collectd-disk-temp.sh&#34;</span>
+  owner <span style="color:#e6db74">&#34;root&#34;</span>
+  group <span style="color:#e6db74">&#34;wheel&#34;</span>
+  mode <span style="color:#ae81ff">0755</span>
+<span style="color:#66d9ef">end</span>
+
+node<span style="color:#f92672">.</span>default<span style="color:#f92672">[</span><span style="color:#e6db74">:yagd</span><span style="color:#f92672">][</span><span style="color:#e6db74">:additional_metrics</span><span style="color:#f92672">][</span><span style="color:#e6db74">:disk_temperature</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> {
+  <span style="color:#e6db74">&#34;Disk Temperature&#34;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;collectd.</span><span style="color:#e6db74">#{</span>node<span style="color:#f92672">[</span><span style="color:#e6db74">:fqdn</span><span style="color:#f92672">].</span>gsub(<span style="color:#e6db74">&#34;.&#34;</span>,<span style="color:#e6db74">&#34;_&#34;</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">.disktemp-ada*.celsius_current&#34;</span>
+}
+</code></pre></div><p>The next step was now to not have to manually edit the config file for my
+dashboards anymore. I now had all the data I needed in Chef, so all it took
+was generating the config file there from a Chef search and all graphs were
+magically appearing as soon as both the node to monitor and the dashboard host
+had run Chef. This can take up to 20 minutes worst case (I run Chef every 10
+minutes) which is really not a big deal for me. The Chef search code that does
+this for me looks like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">hosts <span style="color:#f92672">=</span> <span style="color:#f92672">[]</span>
+nodes <span style="color:#f92672">=</span> search(<span style="color:#e6db74">:node</span>, <span style="color:#e6db74">&#34;domain:*unwiredcouch.com&#34;</span>)
+
+nodes<span style="color:#f92672">.</span>each <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>computer<span style="color:#f92672">|</span>
+
+  this_computer <span style="color:#f92672">=</span> {}
+
+  this_computer<span style="color:#f92672">[</span><span style="color:#e6db74">:name</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> computer<span style="color:#f92672">[</span><span style="color:#e6db74">:fqdn</span><span style="color:#f92672">]</span>
+  this_computer<span style="color:#f92672">[</span><span style="color:#e6db74">:cpus</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> computer<span style="color:#f92672">[</span><span style="color:#e6db74">:cpu</span><span style="color:#f92672">].</span>nil? ? <span style="color:#ae81ff">0</span> : computer<span style="color:#f92672">[</span><span style="color:#e6db74">:cpu</span><span style="color:#f92672">][</span><span style="color:#e6db74">:total</span><span style="color:#f92672">]</span>
+  this_computer<span style="color:#f92672">[</span><span style="color:#e6db74">:apache</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> computer<span style="color:#f92672">.</span>recipes<span style="color:#f92672">.</span>include?(<span style="color:#e6db74">&#34;apache&#34;</span>)
+  this_computer<span style="color:#f92672">[</span><span style="color:#e6db74">:interfaces</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> computer<span style="color:#f92672">.</span>network<span style="color:#f92672">.</span>interfaces<span style="color:#f92672">.</span>keys<span style="color:#f92672">.</span>select {<span style="color:#f92672">|</span>k<span style="color:#f92672">|</span> <span style="color:#f92672">!</span>k<span style="color:#f92672">.</span>to_s<span style="color:#f92672">.</span>start_with?<span style="color:#e6db74">&#34;lo&#34;</span> }
+  this_computer<span style="color:#f92672">[</span><span style="color:#e6db74">:filesystems</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">[]</span>
+  computer<span style="color:#f92672">.</span>filesystem<span style="color:#f92672">.</span>each <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>k,v<span style="color:#f92672">|</span>
+    name <span style="color:#f92672">=</span> v<span style="color:#f92672">[</span><span style="color:#e6db74">:mount</span><span style="color:#f92672">]</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;/&#34;</span> ? <span style="color:#e6db74">&#34;/root&#34;</span> : v<span style="color:#f92672">[</span><span style="color:#e6db74">:mount</span><span style="color:#f92672">]</span>
+    <span style="color:#75715e"># cut out leading &#39;/&#39;</span>
+    name<span style="color:#f92672">[</span><span style="color:#ae81ff">0</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+    <span style="color:#75715e"># substitute &#39;/&#39; with &#39;-&#39;</span>
+    name<span style="color:#f92672">.</span>gsub!(<span style="color:#e6db74">&#34;/&#34;</span>, <span style="color:#e6db74">&#34;-&#34;</span>)
+    <span style="color:#75715e"># substitute &#39;.&#39; with &#39;_&#39;</span>
+    name<span style="color:#f92672">.</span>gsub!(<span style="color:#e6db74">&#34;.&#34;</span>, <span style="color:#e6db74">&#34;_&#34;</span>)
+    <span style="color:#75715e"># and add to array</span>
+    this_computer<span style="color:#f92672">[</span><span style="color:#e6db74">:filesystems</span><span style="color:#f92672">]</span> <span style="color:#f92672">&lt;&lt;</span> name
+  <span style="color:#66d9ef">end</span>
+  this_computer<span style="color:#f92672">[</span><span style="color:#e6db74">:additional_metrics</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> computer<span style="color:#f92672">[</span><span style="color:#e6db74">:yagd</span><span style="color:#f92672">][</span><span style="color:#e6db74">:additional_metrics</span><span style="color:#f92672">]</span> <span style="color:#66d9ef">unless</span> computer<span style="color:#f92672">[</span><span style="color:#e6db74">:yagd</span><span style="color:#f92672">].</span>nil?
+
+  hosts <span style="color:#f92672">&lt;&lt;</span> this_computer
+
+<span style="color:#66d9ef">end</span>
+
+template <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#{</span>dashboards_dir<span style="color:#e6db74">}</span><span style="color:#e6db74">/config.php&#34;</span> <span style="color:#66d9ef">do</span>
+  source <span style="color:#e6db74">&#34;yagd.config.php.erb&#34;</span>
+  owner <span style="color:#e6db74">&#34;www&#34;</span>
+  group <span style="color:#e6db74">&#34;wheel&#34;</span>
+  mode <span style="color:#ae81ff">0775</span>
+  variables( <span style="color:#e6db74">:hosts</span> <span style="color:#f92672">=&gt;</span> hosts )
+<span style="color:#66d9ef">end</span>
+
+</code></pre></div><p>And this is the accompanying erb template that gets rendered into a PHP file
+to serve as the configuration for my dashboards instance.</p>
+<pre><code class="language-erb" data-lang="erb">&lt;?php
 
 $CONFIG = array(
-    &#39;title&#39; =&gt; &quot;dashboards&quot;,
-    &#39;navitems&#39; =&gt; [
-        &#39;Hosts&#39; =&gt; &#39;/hosts.php&#39;,
-        &#39;Graphite&#39; =&gt; &#39;/graphite.php&#39;,
-        &#39;Twitter&#39; =&gt; &#39;/tweets.php&#39;
+    'title' =&gt; &quot;dashboards&quot;,
+    'navitems' =&gt; [
+        'Hosts' =&gt; '/hosts.php',
+        'Graphite' =&gt; '/graphite.php',
+        'Twitter' =&gt; '/tweets.php'
     ],
-    &#39;graphite&#39; =&gt; [
-      &#39;host&#39; =&gt; &quot;https://graphite.example.com&quot;,
-      &#39;hidelegend&#39; =&gt; false
+    'graphite' =&gt; [
+      'host' =&gt; &quot;https://graphite.example.com&quot;,
+      'hidelegend' =&gt; false
     ],
-    &#39;hosts&#39; =&gt; array(
+    'hosts' =&gt; array(
       &lt;% @hosts.each do |host| %&gt;
        &quot;&lt;%= host[:name] %&gt;&quot; =&gt; array(
          &quot;cpus&quot; =&gt; &lt;%= host[:cpus] %&gt;,
@@ -137,44 +208,91 @@ $CONFIG = array(
        ),
     &lt;% end %&gt;
     )
-);</code></pre>
-<h2 id="the-cleanup">The Cleanup</h2>
-<p>After all of this configuration, my dashboard setup was working beautifully and I added more and more graphs I was interested in. But it was still more or less the 20 minute PHP code I had initially thrown together. This was technically fine and I didn’t mind it too much. But at the same time I thought it might be nice to bring it in a state where it’s usable for others. So I decided to take some time to clean it up and make it more generically usable. So I refactored the code, added unit tests to run on <a href="https://travis-ci.org/mrtazz/yagd">Travis CI</a> and hooked it up to <a href="https://codeclimate.com/github/mrtazz/yagd/">Code Climate</a> so I could have a computer tell me how I can improve the code quality.</p>
-<p>With this refactor in place it’s now fairly easy to get a dashboard page that shows the status of all hosts:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode php"><code class="sourceCode php"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">&lt;?php</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a></span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="kw">require</span> <span class="kw">__DIR__</span> . <span class="st">&#39;/../vendor/autoload.php&#39;</span><span class="ot">;</span></span>
-<span id="cb6-4"><a href="#cb6-4"></a></span>
-<span id="cb6-5"><a href="#cb6-5"></a><span class="kw">include_once</span><span class="ot">(</span><span class="st">&quot;../config.php&quot;</span><span class="ot">);</span></span>
-<span id="cb6-6"><a href="#cb6-6"></a></span>
-<span id="cb6-7"><a href="#cb6-7"></a><span class="kw">use</span> Yagd\CollectdHost<span class="ot">;</span></span>
-<span id="cb6-8"><a href="#cb6-8"></a><span class="kw">use</span> Yagd\Page<span class="ot">;</span></span>
-<span id="cb6-9"><a href="#cb6-9"></a></span>
-<span id="cb6-10"><a href="#cb6-10"></a><span class="kw">$page</span> = <span class="kw">new</span> Page<span class="ot">(</span><span class="kw">$CONFIG</span><span class="ot">);</span></span>
-<span id="cb6-11"><a href="#cb6-11"></a><span class="kw">echo</span> <span class="kw">$page</span>-&gt;getHeader<span class="ot">(</span><span class="kw">$CONFIG</span><span class="ot">[</span><span class="st">&quot;title&quot;</span><span class="ot">],</span></span>
-<span id="cb6-12"><a href="#cb6-12"></a>    <span class="kw">$CONFIG</span><span class="ot">[</span><span class="st">&quot;navitems&quot;</span><span class="ot">]);</span></span>
-<span id="cb6-13"><a href="#cb6-13"></a></span>
-<span id="cb6-14"><a href="#cb6-14"></a><span class="kw">foreach</span><span class="ot">(</span><span class="kw">$CONFIG</span><span class="ot">[</span><span class="st">&quot;hosts&quot;</span><span class="ot">]</span> <span class="kw">as</span> <span class="kw">$host</span> =&gt; <span class="kw">$data</span><span class="ot">)</span> {</span>
-<span id="cb6-15"><a href="#cb6-15"></a></span>
-<span id="cb6-16"><a href="#cb6-16"></a>    <span class="kw">$fss</span> = <span class="kw">empty</span><span class="ot">(</span><span class="kw">$data</span><span class="ot">[</span><span class="st">&quot;filesystems&quot;</span><span class="ot">])</span> <span class="ot">?</span> <span class="ot">[]</span> <span class="ot">:</span> <span class="kw">$data</span><span class="ot">[</span><span class="st">&quot;filesystems&quot;</span><span class="ot">];</span></span>
-<span id="cb6-17"><a href="#cb6-17"></a></span>
-<span id="cb6-18"><a href="#cb6-18"></a>    <span class="kw">$server</span> = <span class="kw">new</span> CollectdHost<span class="ot">(</span><span class="kw">$host</span><span class="ot">,</span> <span class="kw">$data</span><span class="ot">[</span><span class="st">&quot;cpus&quot;</span><span class="ot">],</span> <span class="kw">$fss</span><span class="ot">,</span></span>
-<span id="cb6-19"><a href="#cb6-19"></a>                               <span class="kw">$data</span><span class="ot">[</span><span class="st">&quot;interfaces&quot;</span><span class="ot">]);</span></span>
-<span id="cb6-20"><a href="#cb6-20"></a>    <span class="kw">$server</span>-&gt;setGraphiteConfiguration<span class="ot">(</span><span class="kw">$CONFIG</span><span class="ot">[</span><span class="st">&quot;graphite&quot;</span><span class="ot">][</span><span class="st">&quot;host&quot;</span><span class="ot">]);</span></span>
-<span id="cb6-21"><a href="#cb6-21"></a>    <span class="kw">echo</span> <span class="st">&quot;&lt;h2&gt; </span><span class="kw">{$host}</span><span class="st"> &lt;/h2&gt;&quot;</span><span class="ot">;</span></span>
-<span id="cb6-22"><a href="#cb6-22"></a>    <span class="kw">$server</span>-&gt;render<span class="ot">();</span></span>
-<span id="cb6-23"><a href="#cb6-23"></a>}</span>
-<span id="cb6-24"><a href="#cb6-24"></a></span>
-<span id="cb6-25"><a href="#cb6-25"></a><span class="kw">echo</span> <span class="kw">$page</span>-&gt;getFooter<span class="ot">();</span></span></code></pre></div>
-<p>You can also <a href="https://github.com/mrtazz/yagd#inject-a-select-box-into-the-navbar">inject a selectbox</a> into the header to have it be possible to just select a single server instead of always displaying all of them. This makes it really nice to be able to just browse to something like <code>https://yagd.example.com/hosts.php?hostname=foo.example.com</code> and get a quick overview of how that that host is doing. Plus it gives you a URL you can link to from anywhere else.</p>
-<p>Also since this is just plain PHP, entirely driven by the config file, it’s possible to have a per cluster view by passing a URL parameter like <code>?cluster=name</code> and then changing the <code>include_once()</code> code in that example to include a different config file based on that. And since Chef already knows or can know all that data (maybe each cluster is its own role? ), it’s just a matter of writing some ruby to generate different sets of config files for the dashboards.</p>
+);
+</code></pre><h2 id="the-cleanup">The Cleanup</h2>
+<p>After all of this configuration, my dashboard setup was working beautifully
+and I added more and more graphs I was interested in. But it was still more or
+less the 20 minute PHP code I had initially thrown together.  This was
+technically fine and I didn&rsquo;t mind it too much. But at the same time I thought
+it might be nice to bring it in a state where it&rsquo;s usable for others.  So I
+decided to take some time to clean it up and make it more generically usable.
+So I refactored the code, added unit tests to run on <a href="https://travis-ci.org/mrtazz/yagd">Travis CI</a>
+and hooked it up to <a href="https://codeclimate.com/github/mrtazz/yagd/">Code Climate</a> so I could have a computer tell me
+how I can improve the code quality.</p>
+<p>With this refactor in place it&rsquo;s now fairly easy to get a dashboard page that
+shows the status of all hosts:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+
+<span style="color:#66d9ef">require</span> <span style="color:#66d9ef">__DIR__</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;/../vendor/autoload.php&#39;</span>;
+
+<span style="color:#66d9ef">include_once</span>(<span style="color:#e6db74">&#34;../config.php&#34;</span>);
+
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Yagd\CollectdHost</span>;
+<span style="color:#66d9ef">use</span> <span style="color:#a6e22e">Yagd\Page</span>;
+
+$page <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Page</span>($CONFIG);
+<span style="color:#66d9ef">echo</span> $page<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">getHeader</span>($CONFIG[<span style="color:#e6db74">&#34;title&#34;</span>],
+    $CONFIG[<span style="color:#e6db74">&#34;navitems&#34;</span>]);
+
+<span style="color:#66d9ef">foreach</span>($CONFIG[<span style="color:#e6db74">&#34;hosts&#34;</span>] <span style="color:#66d9ef">as</span> $host <span style="color:#f92672">=&gt;</span> $data) {
+
+    $fss <span style="color:#f92672">=</span> <span style="color:#66d9ef">empty</span>($data[<span style="color:#e6db74">&#34;filesystems&#34;</span>]) <span style="color:#f92672">?</span> [] <span style="color:#f92672">:</span> $data[<span style="color:#e6db74">&#34;filesystems&#34;</span>];
+
+    $server <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">CollectdHost</span>($host, $data[<span style="color:#e6db74">&#34;cpus&#34;</span>], $fss,
+                               $data[<span style="color:#e6db74">&#34;interfaces&#34;</span>]);
+    $server<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">setGraphiteConfiguration</span>($CONFIG[<span style="color:#e6db74">&#34;graphite&#34;</span>][<span style="color:#e6db74">&#34;host&#34;</span>]);
+    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;&lt;h2&gt; </span><span style="color:#e6db74">{</span>$host<span style="color:#e6db74">}</span><span style="color:#e6db74"> &lt;/h2&gt;&#34;</span>;
+    $server<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">render</span>();
+}
+
+<span style="color:#66d9ef">echo</span> $page<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">getFooter</span>();
+</code></pre></div><p>You can also <a href="https://github.com/mrtazz/yagd#inject-a-select-box-into-the-navbar">inject a selectbox</a> into the header to have it be
+possible to just select a single server instead of always displaying all of
+them. This makes it really nice to be able to just browse to something like
+<code>https://yagd.example.com/hosts.php?hostname=foo.example.com</code> and get a quick
+overview of how that that host is doing. Plus it gives you a URL you can link
+to from anywhere else.</p>
+<p>Also since this is just plain PHP, entirely driven by the config file,  it&rsquo;s
+possible to have a per cluster view by passing a URL parameter like
+<code>?cluster=name</code> and then changing the <code>include_once()</code> code in that example to
+include a different config file based on that. And since Chef already knows or
+can know all that data (maybe each cluster is its own role? ), it&rsquo;s just a
+matter of writing some ruby to generate different sets of config files for the
+dashboards.</p>
 <h2 id="summary">Summary</h2>
-<p>Writing yagd has been a lot of fun. The initial version took - as I already said - about 20 minutes to write and I learned a ton of things while refactoring it into a usable PHP module. You can install it via composer <a href="https://packagist.org/packages/mrtazz/yagd">from packagist</a> if you want to try it out and use it for your own dasboards.</p>
-<p>However the point of this is not so much that I wrote yet another dashboard framework, but rather how easy it was to get this going. Sure it’s not super trivial to get your infrastructure into Chef if it’s not. And it also takes some time to install Graphite if you aren’t familiar with it. But with those things in place, you have all the building blocks to quickly whip up a nice dashboarding solution with some simple PHP.</p>
-<p>As much as I love how many frameworks and libraries there are to already solve those problems for us, I think it’s a good practice to occasionally go back to the basics and think about what the simplest solution is I actually need. In my case this was showing graphs on an HTML page in a somewhat structured way. I didn’t need anything more fancy. And there was no reason to try and find the dashboard solution that would do that, preferably in PHP so I don’t have to set up yet another application server, which most likely solved way more problems that I actually had.</p>
-<p>If you want to give <a href="http://code.mrtazz.com/yagd/">yagd</a> a try, I would love to hear what you think. I currently track 4 servers and 2 jails with it, but for this and other reasons it won’t be the solution to all dashboarding problems. Nor should it. The way more important thing in my mind is that it’s solving a very specific problem I had, in a pretty simple way. And in addition served as a side project for me to learn a lot of things about writing PHP, setting up phpunit, using codeclimate, and creating a reusable package on Packagist I didn’t know before.</p>
+<p>Writing yagd has been a lot of fun. The initial version took - as I already
+said - about 20 minutes to write and I learned a ton of things while
+refactoring it into a usable PHP module. You can install it via composer <a href="https://packagist.org/packages/mrtazz/yagd">from
+packagist</a> if you want to try it out and use it for your own
+dasboards.</p>
+<p>However the point of this is not so much that I wrote yet another dashboard
+framework, but rather how easy it was to get this going. Sure it&rsquo;s not super
+trivial to get your infrastructure into Chef if it&rsquo;s not. And it also takes
+some time to install Graphite if you aren&rsquo;t familiar with it. But with those
+things in place, you have all the building blocks to quickly whip up a nice
+dashboarding solution with some simple PHP.</p>
+<p>As much as I love how many frameworks and libraries there are to
+already solve those problems for us, I think it&rsquo;s a good practice to
+occasionally go back to the basics and think about what the simplest solution
+is I actually need. In my case this was showing graphs on an HTML page in a
+somewhat structured way. I didn&rsquo;t need anything more fancy. And there was no
+reason to try and find the dashboard solution that would do that, preferably
+in PHP so I don&rsquo;t have to set up yet another application server, which most
+likely solved way more problems that I actually had.</p>
+<p>If you want to give <a href="http://code.mrtazz.com/yagd/">yagd</a> a try, I would love to hear what you think.
+I currently track 4 servers and 2 jails with it, but for this and other
+reasons it won&rsquo;t be the solution to all dashboarding problems. Nor should it.
+The way more important thing in my mind is that it&rsquo;s solving a very specific
+problem I had, in a pretty simple way. And in addition served as a side
+project for me to learn a lot of things about writing PHP, setting up phpunit,
+using codeclimate, and creating a reusable package on Packagist I didn&rsquo;t know
+before.</p>
+
 
       </div>
-    </div>
+
+
+    </main>
+
   </body>
 </html>
