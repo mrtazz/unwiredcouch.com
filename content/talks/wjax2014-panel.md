@@ -1,5 +1,6 @@
 ---
 title: DevOps - Jetzt aber richtig
+date: 2014-11-05
 conf:
   location: W-Jax 2014
   url: https://jax.de/wjax2014/sessions/panel-devops-jetzt-aber-richtig

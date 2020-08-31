@@ -1,6 +1,7 @@
 ---
 layout: talk
 title: Mobile CI at Etsy
+date: 2014-06-19
 conf:
   location: GOTO Amsterdam 2014
   url: http://gotocon.com/amsterdam-2014

@@ -1,6 +1,7 @@
 ---
 layout: talk
 title: "Culture: the invisible ingredient"
+date: 2014-11-10
 conf:
   location: Continuous Lifecycle 2014
   url: http://www.continuouslifecycle.de/panel.php?id=4615

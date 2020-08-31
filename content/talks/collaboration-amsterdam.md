@@ -1,13 +1,13 @@
 ---
 layout: talk
+date: 2014-06-19
 title: "Development, Deployment & Collaboration at Etsy"
 conf:
-  location: QCon London 2014
+  location: GOTO Amsterdam 2014
   url: http://gotocon.com/amsterdam-2014
-  date: Mar 5, 2014
-dataid: 8ec31850868e0131d4a552c71406249c
+  date: Jun 19, 2014
+dataid: 86050150d9e60131691f5a747fc36681
 dataratio: 1.3333333333333
-infoq: http://www.infoq.com/presentations/development-deployment-collaboration-etsy
 links:
   - url: http://codeascraft.com
     name: Etsy Engineering Blog

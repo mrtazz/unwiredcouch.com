@@ -1,6 +1,7 @@
 ---
 layout: talk
 title: Scaling Deployments at Etsy
+date: 2013-04-18
 conf:
   location: ScaleConf 2013, Cape Town
   url: http://scaleconf.org

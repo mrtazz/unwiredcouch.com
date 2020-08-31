@@ -1,6 +1,7 @@
 ---
 layout: talk
 title: Data Driven Monitoring
+date: 2014-10-09
 conf:
   location: FutureStack 2014, San Francisco
   url: http://futurestack.io

@@ -81,9 +81,9 @@ a.posttitle {
     margin-bottom: 15px;
 }
 
-ul.nobullet {
+.talklinks {
   margin: 0px;
-  text-align: right;
+  list-style: none
 }
 
 h1 {
@@ -192,7 +192,12 @@ div.archive ul {
 div.archive ul li{
   margin-bottom: 10px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+}
+
+div.archive ul li a {
+  width: 100%;
 }
 
 span.archivedate {

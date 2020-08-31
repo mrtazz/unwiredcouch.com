@@ -1,6 +1,7 @@
 ---
 layout: talk
 title: A Whirlwind Tour of the Etsy Monitoring Stack
+date: 2014-05-06
 conf:
   location: Monitorama Portland 2014
   url: http://monitorama.com

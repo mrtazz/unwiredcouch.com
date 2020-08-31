@@ -1,6 +1,7 @@
 ---
 layout: talk
 title: Co-Workers as Customers
+date: 2014-03-10
 conf:
   location: SXSW 2014
   url: http://gotocon.com/amsterdam-2014

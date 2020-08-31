@@ -1,6 +1,7 @@
 ---
 layout: talk
 title: Devtools at Etsy
+date: 2013-05-27
 conf:
   location: DevOpsDays Berlin 2013
   url: http://devopsdays.org/events/2013-berlin/

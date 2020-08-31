@@ -1,6 +1,7 @@
 ---
 layout: talk
 title: Feature Flagging your Infrastructure for Fun and Profit
+date: 2013-09-10
 conf:
   location: NYC LOPSA Meetup
   url: http://www.lopsa-nyc.org/content/feature-flag

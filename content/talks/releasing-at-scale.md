@@ -1,6 +1,7 @@
 ---
 layout: talk
 title: Releasing at Scale
+date: 2014-05-30
 conf:
   location: Usenix SRECon 2014
   url: https://www.usenix.org/conference/srecon14/technical-sessions/presentation/releasing-scale

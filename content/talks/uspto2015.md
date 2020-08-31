@@ -1,6 +1,7 @@
 ---
 layout: talk
 title: "The Road to Success is paved with Small Improvements"
+date: 2015-01-14
 conf:
   location: USPTO Industry Day 2015, Alexandria, VA
   url: http://www.eventbrite.com/e/uspto-devops-meetup-2015-tickets-13874680543

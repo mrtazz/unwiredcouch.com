@@ -1,6 +1,7 @@
 ---
 layout: talk
 title: "Deploy, Collaborate and Listen"
+date: 2014-11-06
 conf:
   location: W-Jax 2014, Munich
   url: https://jax.de/wjax2014/keynotes

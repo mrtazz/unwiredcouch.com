@@ -1,6 +1,7 @@
 ---
 layout: talk
 title: Scaling Deployments at Etsy
+date: 2013-10-09
 conf:
   location: NYC Continuous Delivery Meetup
   url: http://www.meetup.com/ContinuousDeliveryNYC/

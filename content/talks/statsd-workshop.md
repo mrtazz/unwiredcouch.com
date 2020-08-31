@@ -1,6 +1,7 @@
 ---
 layout: talk
 title: StatsD Workshop
+date: 2013-03-29
 conf:
   location: Monitorama Boston 2013
   url: http://monitorama.com/2013/boston.html

@@ -1,6 +1,7 @@
 ---
 layout: talk
 title: Chef Workflow at Etsy
+date: 2013-01-29
 conf:
   location: Chef NYC Meetup January 2013
   url: http://www.meetup.com/Chef-NYC/events/98893762/
