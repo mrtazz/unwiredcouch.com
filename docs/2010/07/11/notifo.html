@@ -5,40 +5,83 @@
     <meta http-equiv="cache-control" content="no-cache"/>
     <meta http-equiv="pragma" content="no-cache"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link href="/css/style.min.css?v=e1be0c2" media="screen" rel="stylesheet" type="text/css"/>
-    <link href="/css/mobile.min.css?v=e1be0c2" media="handheld, only screen and (max-device-width: 960px)" rel="stylesheet" type="text/css"/>
+    
+
+
+
+<link   rel="stylesheet"
+        href="https://unwiredcouch.com/css/style.min.a36a596da336f86da7ec14f8df9f311a84d46f0fb1d10526869f8e1c5cf7f795.css"
+        integrity="sha256-o2pZbaM2&#43;G2n7BT4358xGoTUbw&#43;x0QUmhp&#43;OHFz395U="
+        type="text/css"
+        media="screen">
+
+<link   rel="stylesheet"
+        href="https://unwiredcouch.com/css/mobile.min.61224258b356807fea4fba3d47bfa9b900189e33d17678f5eba2ea860e517051.css"
+        integrity="sha256-YSJCWLNWgH/qT7o9R7&#43;puQAYnjPRdnj166Lqhg5RcFE="
+        type="text/css"
+        media="handheld, only screen and (max-device-width: 960px)">
+
     <link href="https://unwiredcouch.com/atom.xml" type="application/atom+xml" rel="alternate" title="unwiredcouch.feed" />
 
-    <title>Notifo on unwiredcouch.com</title>
+    <title>writing on unwiredcouch.com</title>
   </head>
   <body>
 
     <header>
-      <a class="gravatar hidemobile" href="/">
-        <img src="https://www.gravatar.com/avatar/89e0ad1229121f46047977ac547bd7b4.jpg?s=100"
-             height="100" width="100" class="avatar" alt="gravatar image" />
-      </a>
-      <div id="intro">
-        <p>Hi! I'm <a href="/about.html">Daniel</a>.</p>
-        <p>I like
-        <a href="/">writing</a>,
-        <a href="https://www.instagram.com/mrtazz/">drawing</a>,
-        <a href="https://twitter.com/mrtazz">tweeting</a>,
-        <a href="/talks">sometimes give talks</a>,
-        and <a href="http://code.mrtazz.com">occasionally write code</a>.
-        </p>
-      </div>
-    </header>
+  <div id="intro">
+    <ul>
+      <li><a href="/">Writing</a></li>
+      <li><a href="https://www.instagram.com/mrtazz/">Drawing</a></li>
+      <li><a href="https://twitter.com/mrtazz">Tweets</a></li>
+      <li><a href="/talks">Talks</a></li>
+      <li><a href="http://code.mrtazz.com">Code</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/imprint.html">Contact</a></li>
+    </ul>
+  </div>
+</header>
 
-    <div id="content">
-            <div class="post">
+
+    <main>
+    
+
+<div class="postdateheading"> Jul 11, 2010 </div>
+
+      <div class="post">
         <h2> <a href=""> Notifo </a></h2>
 
-<p><a href="http://notifo.com">Notifo.com</a> is a web service which enables you to send push notifications to your mobile device (at the moment there is only support for the iPhone). This <a href="http://paulstamatiou.com/notifo-yc-w2010-gets-a-co-founder-me">blog post</a> first called my attention to the service. I have used <a href="http://prowl.weks.net/">prowl</a> (a similar service based on <a href="http://growl.info/">growl</a>) before and I was instantly interested in this somewhat more versatile notifo.</p>
-<p>On the same evening I decided to build a <a href="http://github.com/mrtazz/notifo.py">python library</a>, to be able to easily notify users from python applications. I also thought it would be cool to get push notifications from your CI server about your builds. So I implemented an <a href="http://integrityapp.com/">integrity</a> notifier which is now available in the main line.</p>
-<p>At the moment I personally use notifo to get notified about twitter mentions via <a href="http://push.ly">push.ly</a>, website changes via <a href="http://femtoo.com">femtoo</a> and commits to some of my github projects via a <a href="http://github.com/github/github-services">service hook</a>. Once I have found suitable hosting for integrity for my projects, I will also use the integrity notifier. And I am very excited to see what else will be build upon this service.</p>
+        <p>[Notifo.com][notifo] is a web service which enables you to send push
+notifications to your mobile device (at the moment there is only support
+for the iPhone). This [blog post][notifo_announce] first called my attention
+to the service. I have used [prowl][prowl_url] (a similar service based
+on [growl][growl_url]) before and I was instantly interested in this
+somewhat more versatile notifo.</p>
+<p>On the same evening I decided to build a [python library][github_notifo-py],
+to be able to easily notify users from python applications. I also thought it
+would be cool to get push notifications from your CI server about your builds.
+So I implemented an [integrity][integrity_url] notifier which is now available
+in the main line.</p>
+<p>At the moment I personally use notifo to get notified about twitter mentions
+via [push.ly][pushly_url], website changes via [femtoo][femtoo_url] and commits to some of my
+github projects via a [service hook][notifo_hook]. Once I have found suitable
+hosting for integrity for my projects, I will also use the integrity notifier.
+And I am very excited to see what else will be build upon this service.</p>
+<p>[notifo_post]: {{ page.url }}
+[notifo]: <a href="http://notifo.com">http://notifo.com</a>
+[notifo_announce]: <a href="http://paulstamatiou.com/notifo-yc-w2010-gets-a-co-founder-me">http://paulstamatiou.com/notifo-yc-w2010-gets-a-co-founder-me</a>
+[prowl_url]: <a href="http://prowl.weks.net/">http://prowl.weks.net/</a>
+[growl_url]: <a href="http://growl.info/">http://growl.info/</a>
+[github_notifo-py]: <a href="http://github.com/mrtazz/notifo.py">http://github.com/mrtazz/notifo.py</a>
+[integrity_url]: <a href="http://integrityapp.com/">http://integrityapp.com/</a>
+[pushly_url]: <a href="http://push.ly">http://push.ly</a>
+[femtoo_url]: <a href="http://femtoo.com">http://femtoo.com</a>
+[notifo_hook]: <a href="http://github.com/github/github-services">http://github.com/github/github-services</a></p>
+
 
       </div>
-    </div>
+
+
+    </main>
+
   </body>
 </html>

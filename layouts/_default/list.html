@@ -1,0 +1,17 @@
+{{ define "main" }}
+<div class="archive">
+  {{ range .Pages.GroupByPublishDate "2006" }}
+  <h2 class="hidemobile">{{ .Key }}</h2>
+    <ul>
+    {{ range .Pages }}
+      {{ if ne .Type "standalonepage" }}
+      <li>
+        <a href="{{ .Permalink }}"> {{ .Title }}</a>
+        <span class="archivedate hidemobile">{{ .PublishDate.Format "Jan 2, 2006" }} </span>
+      </li>
+      {{ end }}
+    {{ end }}
+    </ul>
+  {{ end }}
+</div>
+{{ end }}
