@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>unwiredcouch.com</title>
-    <link>https://unwiredcouch.com/</link>
-    <description>Recent content on unwiredcouch.com</description>
+    <title>Posts on unwiredcouch.com</title>
+    <link>https://unwiredcouch.com/posts/</link>
+    <description>Recent content in Posts on unwiredcouch.com</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Tue, 19 Nov 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://unwiredcouch.com/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://unwiredcouch.com/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -228,15 +228,6 @@
     </item>
     
     <item>
-      <title>The Road to Success is paved with Small Improvements</title>
-      <link>https://unwiredcouch.com/talks/uspto2015/</link>
-      <pubDate>Wed, 14 Jan 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://unwiredcouch.com/talks/uspto2015/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Learning to be On-Call</title>
       <link>https://unwiredcouch.com/2015/01/06/learning-on-call.html</link>
       <pubDate>Tue, 06 Jan 2015 00:00:00 +0000</pubDate>
@@ -264,57 +255,12 @@
     </item>
     
     <item>
-      <title>Human Factors and PostMortems</title>
-      <link>https://unwiredcouch.com/talks/human-factors-postmortems/</link>
-      <pubDate>Tue, 11 Nov 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://unwiredcouch.com/talks/human-factors-postmortems/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Culture: the invisible ingredient</title>
-      <link>https://unwiredcouch.com/talks/culture-panel/</link>
-      <pubDate>Mon, 10 Nov 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://unwiredcouch.com/talks/culture-panel/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Deploy, Collaborate and Listen</title>
-      <link>https://unwiredcouch.com/talks/deploy-collaborate-listen/</link>
-      <pubDate>Thu, 06 Nov 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://unwiredcouch.com/talks/deploy-collaborate-listen/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>DevOps - Jetzt aber richtig</title>
-      <link>https://unwiredcouch.com/talks/wjax2014-panel/</link>
-      <pubDate>Wed, 05 Nov 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://unwiredcouch.com/talks/wjax2014-panel/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Code Reviews Considered Awesome</title>
       <link>https://unwiredcouch.com/2014/10/21/code-review.html</link>
       <pubDate>Tue, 21 Oct 2014 00:00:00 +0000</pubDate>
       
       <guid>https://unwiredcouch.com/2014/10/21/code-review.html</guid>
       <description>I think by now it is pretty much accepted that collaboration and working together is a lot better than assigning blame and yelling at each other.</description>
-    </item>
-    
-    <item>
-      <title>Data Driven Monitoring</title>
-      <link>https://unwiredcouch.com/talks/data-driven-monitoring/</link>
-      <pubDate>Thu, 09 Oct 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://unwiredcouch.com/talks/data-driven-monitoring/</guid>
-      <description></description>
     </item>
     
     <item>
@@ -336,66 +282,12 @@
     </item>
     
     <item>
-      <title>Mirror GitHub repositories in pure shell</title>
-      <link>https://unwiredcouch.com/bits/2014/08/16/github-mirror-shell.html</link>
-      <pubDate>Sat, 16 Aug 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://unwiredcouch.com/bits/2014/08/16/github-mirror-shell.html</guid>
-      <description>As I have written before I have slowly started to move my data out of cloud services where applicable.</description>
-    </item>
-    
-    <item>
       <title>Human Error and Getting off the Hook</title>
       <link>https://unwiredcouch.com/2014/08/04/human-error-getting-off-the-hook.html</link>
       <pubDate>Mon, 04 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>https://unwiredcouch.com/2014/08/04/human-error-getting-off-the-hook.html</guid>
       <description>I&amp;rsquo;ve been interested in the field of human error and system safety for a while now.</description>
-    </item>
-    
-    <item>
-      <title>Productive VIM with templates</title>
-      <link>https://unwiredcouch.com/bits/2014/07/22/productive-vim-with-templates.html</link>
-      <pubDate>Tue, 22 Jul 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://unwiredcouch.com/bits/2014/07/22/productive-vim-with-templates.html</guid>
-      <description>I basically exist inside of vim all day. I write code in there, I write emails in VIM via mutt, I take notes with it and I write all my blog posts in VIM.</description>
-    </item>
-    
-    <item>
-      <title>Development, Deployment &amp; Collaboration at Etsy</title>
-      <link>https://unwiredcouch.com/talks/collaboration-amsterdam/</link>
-      <pubDate>Thu, 19 Jun 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://unwiredcouch.com/talks/collaboration-amsterdam/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Mobile CI at Etsy</title>
-      <link>https://unwiredcouch.com/talks/mobile-ci-amsterdam/</link>
-      <pubDate>Thu, 19 Jun 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://unwiredcouch.com/talks/mobile-ci-amsterdam/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Shared layout for project pages in Jekyll</title>
-      <link>https://unwiredcouch.com/bits/2014/06/14/jekyll-shared-project-layouts.html</link>
-      <pubDate>Sat, 14 Jun 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://unwiredcouch.com/bits/2014/06/14/jekyll-shared-project-layouts.html</guid>
-      <description>I use Jekyll a lot, especially for my website. And I quite like it a lot.</description>
-    </item>
-    
-    <item>
-      <title>Releasing at Scale</title>
-      <link>https://unwiredcouch.com/talks/releasing-at-scale/</link>
-      <pubDate>Fri, 30 May 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://unwiredcouch.com/talks/releasing-at-scale/</guid>
-      <description></description>
     </item>
     
     <item>
@@ -417,15 +309,6 @@
     </item>
     
     <item>
-      <title>A Whirlwind Tour of the Etsy Monitoring Stack</title>
-      <link>https://unwiredcouch.com/talks/etsy-monitoring/</link>
-      <pubDate>Tue, 06 May 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://unwiredcouch.com/talks/etsy-monitoring/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>My 5 years of GitHub</title>
       <link>https://unwiredcouch.com/2014/03/28/5-years-github.html</link>
       <pubDate>Fri, 28 Mar 2014 00:00:00 +0000</pubDate>
@@ -435,57 +318,12 @@
     </item>
     
     <item>
-      <title>Backups with rsync and zfs</title>
-      <link>https://unwiredcouch.com/bits/2014/03/18/zfs-rsync-backups.html</link>
-      <pubDate>Tue, 18 Mar 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://unwiredcouch.com/bits/2014/03/18/zfs-rsync-backups.html</guid>
-      <description>As I mentioned before I&amp;rsquo;m running my own backup on a server that is running in my apartment.</description>
-    </item>
-    
-    <item>
-      <title>Co-Workers as Customers</title>
-      <link>https://unwiredcouch.com/talks/coworkers-as-customers/</link>
-      <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://unwiredcouch.com/talks/coworkers-as-customers/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Development, Deployment &amp; Collaboration at Etsy</title>
-      <link>https://unwiredcouch.com/talks/collaboration-london/</link>
-      <pubDate>Wed, 05 Mar 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://unwiredcouch.com/talks/collaboration-london/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Git - Put the stupid back in stupid content tracker</title>
       <link>https://unwiredcouch.com/2014/02/17/git-stupid.html</link>
       <pubDate>Mon, 17 Feb 2014 00:00:00 +0000</pubDate>
       
       <guid>https://unwiredcouch.com/2014/02/17/git-stupid.html</guid>
       <description>Git describes itself as a stupid content tracker. While this was surely meant as a clever pun and an understatement, there is some truth to it.</description>
-    </item>
-    
-    <item>
-      <title>Context specific dotfiles</title>
-      <link>https://unwiredcouch.com/bits/2014/02/03/dotoverride.html</link>
-      <pubDate>Mon, 03 Feb 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://unwiredcouch.com/bits/2014/02/03/dotoverride.html</guid>
-      <description>I have a collection of various dotfiles which I use to configure the most important tools I use everyday.</description>
-    </item>
-    
-    <item>
-      <title>Creating Encrypted Home Directories in FreeBSD</title>
-      <link>https://unwiredcouch.com/bits/2013/12/28/encrypted-homedirs.html</link>
-      <pubDate>Sat, 28 Dec 2013 00:00:00 +0000</pubDate>
-      
-      <guid>https://unwiredcouch.com/bits/2013/12/28/encrypted-homedirs.html</guid>
-      <description>I run FreeBSD with ZFS on all my servers and I generally want to have my home directories encrypted.</description>
     </item>
     
     <item>
@@ -507,66 +345,12 @@
     </item>
     
     <item>
-      <title>Scaling Deployments at Etsy</title>
-      <link>https://unwiredcouch.com/talks/scaling-deployments-cdnyc/</link>
-      <pubDate>Wed, 09 Oct 2013 00:00:00 +0000</pubDate>
-      
-      <guid>https://unwiredcouch.com/talks/scaling-deployments-cdnyc/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Feature Flagging your Infrastructure for Fun and Profit</title>
-      <link>https://unwiredcouch.com/talks/infrastructure-feature-flags/</link>
-      <pubDate>Tue, 10 Sep 2013 00:00:00 +0000</pubDate>
-      
-      <guid>https://unwiredcouch.com/talks/infrastructure-feature-flags/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Infrastructure upgrades with Chef</title>
       <link>https://unwiredcouch.com/2013/08/02/infrastructure-upgrades-with-chef.html</link>
       <pubDate>Fri, 02 Aug 2013 00:00:00 +0000</pubDate>
       
       <guid>https://unwiredcouch.com/2013/08/02/infrastructure-upgrades-with-chef.html</guid>
       <description>I wrote about how we roll out infrastructure upgrades with Chef on Etsy&amp;rsquo;s engineering blog.</description>
-    </item>
-    
-    <item>
-      <title>Devtools at Etsy</title>
-      <link>https://unwiredcouch.com/talks/devtools-at-etsy/</link>
-      <pubDate>Mon, 27 May 2013 00:00:00 +0000</pubDate>
-      
-      <guid>https://unwiredcouch.com/talks/devtools-at-etsy/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Scaling Deployments at Etsy</title>
-      <link>https://unwiredcouch.com/talks/scaling-deployments-scaleconf/</link>
-      <pubDate>Thu, 18 Apr 2013 00:00:00 +0000</pubDate>
-      
-      <guid>https://unwiredcouch.com/talks/scaling-deployments-scaleconf/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>StatsD Workshop</title>
-      <link>https://unwiredcouch.com/talks/statsd-workshop/</link>
-      <pubDate>Fri, 29 Mar 2013 00:00:00 +0000</pubDate>
-      
-      <guid>https://unwiredcouch.com/talks/statsd-workshop/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Chef Workflow at Etsy</title>
-      <link>https://unwiredcouch.com/talks/chef-workflow/</link>
-      <pubDate>Tue, 29 Jan 2013 00:00:00 +0000</pubDate>
-      
-      <guid>https://unwiredcouch.com/talks/chef-workflow/</guid>
-      <description></description>
     </item>
     
     <item>
@@ -702,71 +486,6 @@
       
       <guid>https://unwiredcouch.com/2009/09/19/google-reader-instapaper.html</guid>
       <description>The dilemma For some years now I am using Google Reader as my reader of choice for news feeds.</description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>https://unwiredcouch.com/about.html</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://unwiredcouch.com/about.html</guid>
-      <description>Hi! I&amp;rsquo;m Daniel!
-I&amp;rsquo;m an infrastructure engineer at GitHub. When I&amp;rsquo;m not working on infrastructure, I&amp;rsquo;m usually having coffee, draw, read, play videogames or watch TV shows.</description>
-    </item>
-    
-    <item>
-      <title>How I vim</title>
-      <link>https://unwiredcouch.com/setup/vim/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://unwiredcouch.com/setup/vim/</guid>
-      <description>This is an interview I did for &amp;ldquo;How I vim&amp;rdquo; and was originally published here.</description>
-    </item>
-    
-    <item>
-      <title>Imprint</title>
-      <link>https://unwiredcouch.com/imprint.html</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://unwiredcouch.com/imprint.html</guid>
-      <description>unwiredcouch.com ist die Website von Daniel Schauenberg Gubener Strasse 25 10243 Berlin Email: impressum@unwiredcouch.</description>
-    </item>
-    
-    <item>
-      <title>My Coffee Setup</title>
-      <link>https://unwiredcouch.com/setup/coffee/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://unwiredcouch.com/setup/coffee/</guid>
-      <description>In early 2011 I had finished university (again) and decided that I didn&amp;rsquo;t want to drink bad coffee anymore.</description>
-    </item>
-    
-    <item>
-      <title>My Omnifocus Setup</title>
-      <link>https://unwiredcouch.com/setup/omnifocus/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://unwiredcouch.com/setup/omnifocus/</guid>
-      <description>At this point it&amp;rsquo;s pretty fair to say that OmniFocus rules my life.</description>
-    </item>
-    
-    <item>
-      <title>PGP Public Key</title>
-      <link>https://unwiredcouch.com/publickey/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://unwiredcouch.com/publickey/</guid>
-      <description>My ID is 57182B3886AE7F3C and my public key is:
------BEGIN PGP PUBLIC KEY BLOCK----- Version: GnuPG/MacGPG2 v2.</description>
-    </item>
-    
-    <item>
-      <title>Speaker Bio</title>
-      <link>https://unwiredcouch.com/speakerbio/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://unwiredcouch.com/speakerbio/</guid>
-      <description>Speaker Bio   Daniel Schauenberg is an infrastructure engineer at GitHub.</description>
     </item>
     
   </channel>
