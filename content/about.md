@@ -8,8 +8,8 @@ url: /about.html
 Hi! I'm Daniel!
 
 I'm an infrastructure engineer at GitHub. When I'm not working on
-infrastructure, I'm usually having coffee, draw, play basketball or watch TV
-shows.
+infrastructure, I'm usually having coffee, draw, read, play videogames or
+watch TV shows.
 
 I write about a lot of things on this blog, but it doesn't and has never
 represented the opinion of any of my employers.

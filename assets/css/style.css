@@ -18,7 +18,7 @@ main {
 header {
     background-color: #840044;
     color: white;
-    height: 60px;
+    height: 80px;
 }
 
 footer {
@@ -29,7 +29,8 @@ footer {
 
 div#intro {
     position: relative;
-    left: auto;
+    left: 110px;
+    top: -50px;
     width: 60%;
 }
 
@@ -84,6 +85,37 @@ a.posttitle {
 .talklinks {
   margin: 0px;
   list-style: none
+}
+
+.tiles-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tile {
+  margin: 10px;
+  width: calc(50% - 20px);
+}
+
+.homepage-postlist {
+ list-style: none;
+}
+
+.homepage-postlist__item {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.homepage-posttitle {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.homepage-postdate {
+	flex-shrink: 0;
+	margin-left: 20px;
 }
 
 h1 {
@@ -196,11 +228,12 @@ div.archive ul li{
   justify-content: space-between;
 }
 
-div.archive ul li a {
-  width: 100%;
+.nobullet {
+  list-style-type: none;
 }
 
-span.archivedate {
+div.talks ul li a {
+  width: 100%;
 }
 
 blockquote {
