@@ -5,51 +5,147 @@
     <meta http-equiv="cache-control" content="no-cache"/>
     <meta http-equiv="pragma" content="no-cache"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link href="/css/style.min.css?v=e1be0c2" media="screen" rel="stylesheet" type="text/css"/>
-    <link href="/css/mobile.min.css?v=e1be0c2" media="handheld, only screen and (max-device-width: 960px)" rel="stylesheet" type="text/css"/>
+    
+
+
+
+<link   rel="stylesheet"
+        href="https://unwiredcouch.com/css/style.min.a36a596da336f86da7ec14f8df9f311a84d46f0fb1d10526869f8e1c5cf7f795.css"
+        integrity="sha256-o2pZbaM2&#43;G2n7BT4358xGoTUbw&#43;x0QUmhp&#43;OHFz395U="
+        type="text/css"
+        media="screen">
+
+<link   rel="stylesheet"
+        href="https://unwiredcouch.com/css/mobile.min.61224258b356807fea4fba3d47bfa9b900189e33d17678f5eba2ea860e517051.css"
+        integrity="sha256-YSJCWLNWgH/qT7o9R7&#43;puQAYnjPRdnj166Lqhg5RcFE="
+        type="text/css"
+        media="handheld, only screen and (max-device-width: 960px)">
+
     <link href="https://unwiredcouch.com/atom.xml" type="application/atom+xml" rel="alternate" title="unwiredcouch.feed" />
 
-    <title>Getting started with monitoring on the cheap and easy on unwiredcouch.com</title>
+    <title>writing on unwiredcouch.com</title>
   </head>
   <body>
 
     <header>
-      <a class="gravatar hidemobile" href="/">
-        <img src="https://www.gravatar.com/avatar/89e0ad1229121f46047977ac547bd7b4.jpg?s=100"
-             height="100" width="100" class="avatar" alt="gravatar image" />
-      </a>
-      <div id="intro">
-        <p>Hi! I'm <a href="/about.html">Daniel</a>.</p>
-        <p>I like
-        <a href="/">writing</a>,
-        <a href="https://www.instagram.com/mrtazz/">drawing</a>,
-        <a href="https://twitter.com/mrtazz">tweeting</a>,
-        <a href="/talks">sometimes give talks</a>,
-        and <a href="http://code.mrtazz.com">occasionally write code</a>.
-        </p>
-      </div>
-    </header>
+  <div id="intro">
+    <ul>
+      <li><a href="/">Writing</a></li>
+      <li><a href="https://www.instagram.com/mrtazz/">Drawing</a></li>
+      <li><a href="https://twitter.com/mrtazz">Tweets</a></li>
+      <li><a href="/talks">Talks</a></li>
+      <li><a href="http://code.mrtazz.com">Code</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/imprint.html">Contact</a></li>
+    </ul>
+  </div>
+</header>
 
-    <div id="content">
-            <div class="post">
+
+    <main>
+    
+
+<div class="postdateheading"> Sep 15, 2012 </div>
+
+      <div class="post">
         <h2> <a href=""> Getting started with monitoring on the cheap and easy </a></h2>
 
-<p>This post started out as a writeup of tools and services I use to monitor my small (currently 3) set of personal servers. However thinking about it, it made more sense to me to structure it as a small guide on how to get started with monitoring without having to invest too much time, effort and money. Since I don’t use that at the moment, I won’t cover instrumentation and monitoring of application metrics but go more into general service availabilty and machine level metrics. The prices I mention are (to my best knowledge) up to date for the current time, but are of course subject to change.</p>
+        <p>This post started out as a writeup of tools and services I use to monitor my
+small (currently 3) set of personal servers. However thinking about it, it made
+more sense to me to structure it as a small guide on how to get started with
+monitoring without having to invest too much time, effort and money. Since I
+don&rsquo;t use that at the moment, I won&rsquo;t cover instrumentation and monitoring of
+application metrics but go more into general service availabilty and machine
+level metrics. The prices I mention are (to my best knowledge) up to date for
+the current time, but are of course subject to change.</p>
 <h3 id="my-setup">My setup</h3>
-<p>I have a small set of servers which I’m using for basic services. These include mail server, IMAP, backup MX, <a href="http://wiki.znc.in/ZNC">IRC bouncer</a> and general remote shell for running <a href="http://www.mutt.org/">mutt</a>, <a href="http://www.weechat.org/">weechat</a>, <a href="http://www.newsbeuter.org/">newsbeuter</a> and other terminal based applications. I recently got around to more or less properly create <a href="https://github.com/mrtazz/cookbooks">cookbooks</a> for this as I am running <a href="http://opscode.com">chef</a> for configuration management. This also prompted me to finally set up monitoring and alerting for the services I care about.</p>
+<p>I have a small set of servers which I&rsquo;m using for basic services. These include
+mail server, IMAP, backup MX, <a href="http://wiki.znc.in/ZNC">IRC bouncer</a> and general
+remote shell for running <a href="http://www.mutt.org/">mutt</a>,
+<a href="http://www.weechat.org/">weechat</a>, <a href="http://www.newsbeuter.org/">newsbeuter</a>
+and other terminal based applications.  I recently got around to more or less
+properly create <a href="https://github.com/mrtazz/cookbooks">cookbooks</a> for this as I
+am running <a href="http://opscode.com">chef</a> for configuration management. This also
+prompted me to finally set up monitoring and alerting for the services I care
+about.</p>
 <h3 id="external-service-monitoring">External service monitoring</h3>
-<p>Servers are not very useful when their services are not accessible from the outside world. So you want to monitor this from an external source which usually tries to establish a connection to specified TCP ports. The general first service to use is <a href="http://pingdom.com">pingdom</a>. They provide a great service with great statistics. However since I want to monitor more than the free plan offers (and possibly more than the cheapest paid plan also), I was looking into an alternative. Since I already have an account at <a href="http://zerigo.com">zerigo</a> for some DNS services, I decided to give their <a href="http://zerigo.com/watchdog">Watchdog service</a> a try. It’s $15 per 3 months and allows 50 service checks for 10 hosts with checking time down to every 5 minutes. This is more than enough for my needs and comes down to $5 a month. The only drawback is that they only provide email notifications (which can be somewhat mitigated with <a href="http://ifttt.com">ifttt</a> or the mail to text gateway of your mobile provider) to one user and a not really great statistics overview. Otherwise it works pretty great.</p>
+<p>Servers are not very useful when their services are not accessible from the
+outside world. So you want to monitor this from an external source which
+usually tries to establish a connection to specified TCP ports. The general
+first service to use is <a href="http://pingdom.com">pingdom</a>. They provide a great
+service with great statistics. However since I want to monitor more than the
+free plan offers (and possibly more than the cheapest paid plan also), I was
+looking into an alternative. Since I already have an account at
+<a href="http://zerigo.com">zerigo</a> for some DNS services, I decided to give their
+<a href="http://zerigo.com/watchdog">Watchdog service</a> a try. It&rsquo;s $15 per 3 months and
+allows 50 service checks for 10 hosts with checking time down to every 5
+minutes. This is more than enough for my needs and comes down to $5 a month.
+The only drawback is that they only provide email notifications (which can be
+somewhat mitigated with <a href="http://ifttt.com">ifttt</a> or the mail to text gateway
+of your mobile provider) to one user and a not really great statistics
+overview. Otherwise it works pretty great.</p>
 <h3 id="process-monitoring">Process monitoring</h3>
-<p>The next step is to monitor the processes which are actually providing those services. For this I’m running a <a href="https://github.com/sensu">Sensu</a> instance on <a href="http://heroku.com">Heroku</a> in the setup I <a href="http://unwiredcouch.com/2012/07/31/deploy-sensu-heroku.html">described before</a>. Sensu is an awesome monitoring framework which provides a lot of flexibility, so it’s definitely worth checking out. Since it runs on two small Heroku instances I can host the server and API for free which works pretty well. As basic checks I test for running sendmail, cron and dovecot processes. If the checks fail the given threshold, an alert is pushed to an IRC channel on my <a href="http://grove.io">grove.io</a> organization. Admittingly this is a little bit overkill since the basic plans for grove.io start at $10, but I like to play and experiment with chat based interfaces to infrastructure automation and monitoring. An alternative would be to use <a href="http://campfirenow.com">Campfire</a> which is free for a small amount of users. I am also playing with the idea of having a <a href="http://boxcar.io">Boxcar</a> handler either for Sensu itself or alerting to Boxcar from IRC. Boxcar is a pretty sweet service which handles push notifications to mobile phones and I’m already using it for notifications from my IRC bouncer and <a href="http://ifttt.com">ifttt.com</a>. And since I’m also running an instance of <a href="http://github.com/github/hubot">Hubot</a> (also on a free Heroku instance) it should be rather trivial to have the bot listen for patterns and send Boxcar notifications upon match.</p>
+<p>The next step is to monitor the processes which are actually providing those
+services. For this I&rsquo;m running a <a href="https://github.com/sensu">Sensu</a> instance on
+<a href="http://heroku.com">Heroku</a> in the setup I <a href="http://unwiredcouch.com/2012/07/31/deploy-sensu-heroku.html">described
+before</a>. Sensu is
+an awesome monitoring framework which provides a lot of flexibility, so it&rsquo;s
+definitely worth checking out. Since it runs on two small Heroku instances I
+can host the server and API for free which works pretty well. As basic checks
+I test for running sendmail, cron and dovecot processes. If the checks fail the
+given threshold, an alert is pushed to an IRC channel on my
+<a href="http://grove.io">grove.io</a> organization. Admittingly this is a little bit
+overkill since the basic plans for grove.io start at $10, but I like to play
+and experiment with chat based interfaces to infrastructure automation and
+monitoring. An alternative would be to use <a href="http://campfirenow.com">Campfire</a>
+which is free for a small amount of users. I am also playing with the idea of
+having a <a href="http://boxcar.io">Boxcar</a> handler either for Sensu itself or alerting
+to Boxcar from IRC. Boxcar is a pretty sweet service which handles push
+notifications to mobile phones and I&rsquo;m already using it for notifications from
+my IRC bouncer and <a href="http://ifttt.com">ifttt.com</a>. And since I&rsquo;m also running an
+instance of <a href="http://github.com/github/hubot">Hubot</a> (also on a free Heroku
+instance) it should be rather trivial to have the bot listen for patterns and
+send Boxcar notifications upon match.</p>
 <h3 id="log-processing">Log processing</h3>
-<p>Since I don’t want to log into several servers to quickly check different logfiles, I’m sending all of my log data to <a href="http://papertrailapp.com">Papertrail</a>. They provide an easy endpoint to send log lines from various systems such as syslog, rsyslog or directly from an application with an rsyslog handler. Their basic free plan allows for 100MB of log data per month with a searchable archive of 1 week. This amount should be enough for a small set of systems with average log data. After that you get 1GB of log lines in the first stage of paid plans for $7, which is still a decent trade. The big advantage is that I can now log into a web interface and see specific log information (for example about chef runs) across all of my servers.</p>
+<p>Since I don&rsquo;t want to log into several servers to quickly check different
+logfiles, I&rsquo;m sending all of my log data to
+<a href="http://papertrailapp.com">Papertrail</a>. They provide an easy endpoint to send
+log lines from various systems such as syslog, rsyslog or directly from an
+application with an rsyslog handler. Their basic free plan allows for 100MB of
+log data per month with a searchable archive of 1 week. This amount should be
+enough for a small set of systems with average log data. After that you get 1GB
+of log lines in the first stage of paid plans for $7, which is still a decent
+trade. The big advantage is that I can now log into a web interface and see
+specific log information (for example about chef runs) across all of my
+servers.</p>
 <h3 id="machine-level-metrics">Machine level metrics</h3>
-<p>Additionally I also gather machine level metrics for all of my servers. These include basic information about CPU and memory usage, disk space and uptime. All of these metrics are gathered by <a href="http://collectd.org">collectd</a> and its various plugins and are sent to <a href="http://metrics.librato.com">Librato Metrics</a> for graphing. This is a lot easier and less hassle than managing your own <a href="http://graphite.wikidot.com/">Graphite</a> instance. And you only pay for the metrics you actually send. The data I currently send there are basic metrics from 2 servers and the number of Sensu check occurrences and it adds up to something around $5 a month.</p>
+<p>Additionally I also gather machine level metrics for all of my servers. These
+include basic information about CPU and memory usage, disk space and uptime.
+All of these metrics are gathered by <a href="http://collectd.org">collectd</a> and its
+various plugins and are sent to <a href="http://metrics.librato.com">Librato Metrics</a>
+for graphing. This is a lot easier and less hassle than managing your own
+<a href="http://graphite.wikidot.com/">Graphite</a> instance. And you only pay for the
+metrics you actually send. The data I currently send there are basic metrics
+from 2 servers and the number of Sensu check occurrences and it adds up to
+something around $5 a month.</p>
 <h3 id="verdict">Verdict</h3>
-<p>This setup gives me (in my opinion) a pretty good monitoring solution for my personal infrastructure. Since I don’t consume a lot of resources for the services I depend on, I can usually use the free or cheapest plan available. With the cheapest options it’s around $10 a month and even adding grove.io and paid Papretrail into the mix only brings you to a bit more than $25 a month. Of course depending heavily on 3rd party services opens a whole new discussion about <a href="http://whoownsmyavailability.com">availability</a> which you should be aware of.</p>
-<p>For configuration examples for the services mentioned above, you can check out my <a href="https://github.com/mrtazz/cookbooks">chef cookbooks</a>. They are mostly run on FreeBSD but should be somewhat easy to adapt to a different environment.</p>
+<p>This setup gives me (in my opinion) a pretty good monitoring solution for my
+personal infrastructure. Since I don&rsquo;t consume a lot of resources for the
+services I depend on, I can usually use the free or cheapest plan available.
+With the cheapest options it&rsquo;s around $10 a month and even adding grove.io and
+paid Papretrail into the mix only brings you to a bit more than $25 a month.
+Of course depending heavily on 3rd party services opens a whole new discussion
+about <a href="http://whoownsmyavailability.com">availability</a> which you should be
+aware of.</p>
+<p>For configuration examples for the services mentioned above, you can check out
+my <a href="https://github.com/mrtazz/cookbooks">chef cookbooks</a>. They are mostly run
+on FreeBSD but should be somewhat easy to adapt to a different environment.</p>
+
 
       </div>
-    </div>
+
+
+    </main>
+
   </body>
 </html>

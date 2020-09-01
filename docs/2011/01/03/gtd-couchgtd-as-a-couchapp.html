@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="cache-control" content="no-cache"/>
+    <meta http-equiv="pragma" content="no-cache"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    
+
+
+
+<link   rel="stylesheet"
+        href="https://unwiredcouch.com/css/style.min.a36a596da336f86da7ec14f8df9f311a84d46f0fb1d10526869f8e1c5cf7f795.css"
+        integrity="sha256-o2pZbaM2&#43;G2n7BT4358xGoTUbw&#43;x0QUmhp&#43;OHFz395U="
+        type="text/css"
+        media="screen">
+
+<link   rel="stylesheet"
+        href="https://unwiredcouch.com/css/mobile.min.61224258b356807fea4fba3d47bfa9b900189e33d17678f5eba2ea860e517051.css"
+        integrity="sha256-YSJCWLNWgH/qT7o9R7&#43;puQAYnjPRdnj166Lqhg5RcFE="
+        type="text/css"
+        media="handheld, only screen and (max-device-width: 960px)">
+
+    <link href="https://unwiredcouch.com/atom.xml" type="application/atom+xml" rel="alternate" title="unwiredcouch.feed" />
+
+    <title>writing on unwiredcouch.com</title>
+  </head>
+  <body>
+
+    <header>
+  <div id="intro">
+    <ul>
+      <li><a href="/">Writing</a></li>
+      <li><a href="https://www.instagram.com/mrtazz/">Drawing</a></li>
+      <li><a href="https://twitter.com/mrtazz">Tweets</a></li>
+      <li><a href="/talks">Talks</a></li>
+      <li><a href="http://code.mrtazz.com">Code</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/imprint.html">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+
+    <main>
+    
+
+<div class="postdateheading"> Jan 3, 2011 </div>
+
+      <div class="post">
+        <h2> <a href=""> gtd-couch - GTD as a couchapp </a></h2>
+
+        <h3 id="why-another-gtd-app">Why another GTD app?</h3>
+<p>Over the last years I have tried a lot of task management applications. I was
+always trying to improve the status quo, where I forgot some things I wanted to
+do and didn&rsquo;t have a possibility to jot things down when I should have. For the
+last 2 years [Things][2] was my task manager of choice. With the iPhone
+companion app I could add tasks on the go and sync them to the Things database
+on my MacBook. The fact that it was only possible in the local network was
+acceptable, since cloud sync was [announced with priority][3].</p>
+<p>Over time I added an [iMac][4] and an [iPad][5] to my setup. This made
+t(T)hings a bit more complicated. Syncing between the iMac and MacBook is much
+more complicated. I chose to sync my Things database file via my [DropBox][6]
+account to all my computers. But this means that only one instance of Things
+can be running at a time. If I forget to close the app on one machine, the data
+will probably not be up to date or even overwritten.  The iPad can sync natively with
+the Mac application. But then again only via the local network. I also didn&rsquo;t
+want to pay half of the price of the desktop application for a solution I&rsquo;m not
+satisfied with. And I didn&rsquo;t want to setup some VPN/Wide Area Bonjour solution
+just to sync my tasks. And there is still no over-the-air sync solution in
+sight.</p>
+<p>The main problem is apparently that this syncing and scaling stuff is [really
+hard][7]. Which is also the reason why systems like [CouchDB][8] don&rsquo;t exist. Don&rsquo;t
+get me wrong, I don&rsquo;t think you can solve this (in a satisfying way for
+developers and customers) by just throwing a piece of technology at it. But I
+also don&rsquo;t think this is we-have-to-think-about-it-for-2-years hard. Needless
+to say I am a bit disappointed how this turned out. And due to this I also used
+Things less and less, which didn&rsquo;t really improve the situation.</p>
+<h3 id="the-alternatives">The alternatives</h3>
+<p>So I started to try out other task management solutions. The obvious choice was
+[OmniFocus][9]. It has great syncing support and device integration. However I
+just want a simple solution and OmniFocus can do pretty much everything ever
+imagined regarding task management. So it is a bit bloated to use. Other
+notable choices are [Todo for iPad][10]/[iPhone][11] in combination with the
+[online syncing service][12]. There is no Desktop app however and I have the
+feeling, that the data is rather closed in.</p>
+<p>One really good looking alternative is [wunderlist][13] by the Berlin based
+company [6 Wunderkinder][14]. There is a Desktop and iPhone app and there is
+also online syncing built in. This is really a promising todo manager with a
+clean interface. But I also wanted the possibility to have my data in my own
+personal cloud.</p>
+<h3 id="couchdb-to-the-rescue">CouchDB to the rescue</h3>
+<p>As I had started to work a lot more with CouchDB lately, I decided to built a
+GTD manager as a couchapp. This meant I get replication, simple storage and the
+REST API (almost) for free. Additionally it supports a completely decoupled
+approach to interface with the data. The first step is of course to write a
+couchapp to be served directly from CouchDB. This can then be used to access
+the data from everywhere. And can also be replicated together with the data to
+any device supporting CouchDB.</p>
+<p>For the next steps the CouchDB HTTP/JSON API also enables the easy creation of
+clients for the data in almost any language or technology. Therefore a console,
+native OSX or iPhone client or even a much better web client can be created
+rather easily. And all this while your data remains under your control. Just
+[get][15] a CouchDB and get started.</p>
+<h3 id="use-this-now">Use this now?</h3>
+<p>That being said, [gtd-couch][16] - the couchapp mentioned before - has just
+reached version v0.1.0. It already features basic functionality and is pretty
+usable.  Try it out if you&rsquo;re interested, I use it as my task manager already.
+There are also some outstanding issues and new features which will be
+implemented as time allows.</p>
+<p>This does not mean that I won&rsquo;t try out the Things cloud sync solution, when
+(if) it finally comes out. I still think it has really great design and a
+simple interface. But for now I&rsquo;ll enjoy being able to interface with my data
+as I want to and host it where I want to.</p>
+<p>[1]: {{ page.url }}
+[2]: <a href="http://culturedcode.com/">http://culturedcode.com/</a>
+[3]: <a href="http://culturedcode.com/things/blog/2009/08/this-is-not-a-roadmap.html">http://culturedcode.com/things/blog/2009/08/this-is-not-a-roadmap.html</a>
+[4]: <a href="http://unwiredcouch.com/2009/12/24/first-weekend-with-endless-screen-real-estate.html">http://unwiredcouch.com/2009/12/24/first-weekend-with-endless-screen-real-estate.html</a>
+[5]: <a href="http://twitter.com/mrtazz/status/24500270704">http://twitter.com/mrtazz/status/24500270704</a>
+[6]: <a href="http://db.tt/IizMFIF">http://db.tt/IizMFIF</a>
+[7]: <a href="http://culturedcode.com/things/blog/2010/12/state-of-sync-part-1.html">http://culturedcode.com/things/blog/2010/12/state-of-sync-part-1.html</a>
+[8]: <a href="http://couchdb.apache.org/">http://couchdb.apache.org/</a>
+[9]: <a href="http://www.omnigroup.com/products/omnifocus/">http://www.omnigroup.com/products/omnifocus/</a>
+[10]: <a href="http://www.appigo.com/todo/ipad">http://www.appigo.com/todo/ipad</a>
+[11]: <a href="http://www.appigo.com/todo">http://www.appigo.com/todo</a>
+[12]: <a href="https://appigotodo.appspot.com/">https://appigotodo.appspot.com/</a>
+[13]: <a href="http://www.6wunderkinder.com/wunderlist/">http://www.6wunderkinder.com/wunderlist/</a>
+[14]: <a href="http://www.6wunderkinder.com/">http://www.6wunderkinder.com/</a>
+[15]: <a href="http://www.couchone.com/get">http://www.couchone.com/get</a>
+[16]: <a href="https://github.com/mrtazz/gtd-couch">https://github.com/mrtazz/gtd-couch</a></p>
+
+
+      </div>
+
+
+    </main>
+
+  </body>
+</html>

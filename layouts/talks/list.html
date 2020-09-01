@@ -1,0 +1,13 @@
+{{ define "main" }}
+<h2> <a href="/talks">Talks</a></h2>
+<div class="archive talks">
+    <ul>
+    {{ range (.Pages.ByDate).Reverse }}
+      <li>
+        <a href="{{ .Permalink }}"> {{ .Title }}</a> {{ .Params.conf.location }}
+        <span class="archivedate hidemobile">{{ .PublishDate.Format "Jan 2, 2006" }} </span>
+      </li>
+    {{ end }}
+    </ul>
+</div>
+{{ end }}

@@ -1,20 +1,49 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-    <head>
-        <meta charset="utf-8"/>
-        <meta http-equiv="cache-control" content="no-cache"/>
-        <meta http-equiv="pragma" content="no-cache"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <link href="/css/style.min.css?v=e1be0c2" media="screen" rel="stylesheet" type="text/css"/>
-        <link href="/css/mobile.min.css?v=e1be0c2" media="handheld, only screen and (max-device-width: 960px)" rel="stylesheet" type="text/css"/>
-        <link href="https://unwiredcouch.com/atom.xml" type="application/atom+xml" rel="alternate" title="unwiredcouch.feed" />
-        <title>A Whirlwind Tour of the Etsy Monitoring Stack on unwiredcouch.com</title>
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="cache-control" content="no-cache"/>
+    <meta http-equiv="pragma" content="no-cache"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    
 
-    </head>
 
-    <body>
-            <div id="content">
 
+<link   rel="stylesheet"
+        href="https://unwiredcouch.com/css/style.min.a36a596da336f86da7ec14f8df9f311a84d46f0fb1d10526869f8e1c5cf7f795.css"
+        integrity="sha256-o2pZbaM2&#43;G2n7BT4358xGoTUbw&#43;x0QUmhp&#43;OHFz395U="
+        type="text/css"
+        media="screen">
+
+<link   rel="stylesheet"
+        href="https://unwiredcouch.com/css/mobile.min.61224258b356807fea4fba3d47bfa9b900189e33d17678f5eba2ea860e517051.css"
+        integrity="sha256-YSJCWLNWgH/qT7o9R7&#43;puQAYnjPRdnj166Lqhg5RcFE="
+        type="text/css"
+        media="handheld, only screen and (max-device-width: 960px)">
+
+    <link href="https://unwiredcouch.com/atom.xml" type="application/atom+xml" rel="alternate" title="unwiredcouch.feed" />
+
+    <title>writing on unwiredcouch.com</title>
+  </head>
+  <body>
+
+    <header>
+  <div id="intro">
+    <ul>
+      <li><a href="/">Writing</a></li>
+      <li><a href="https://www.instagram.com/mrtazz/">Drawing</a></li>
+      <li><a href="https://twitter.com/mrtazz">Tweets</a></li>
+      <li><a href="/talks">Talks</a></li>
+      <li><a href="http://code.mrtazz.com">Code</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/imprint.html">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+
+    <main>
+    
 <div class="post talk">
   <h2> A Whirlwind Tour of the Etsy Monitoring Stack </br>
     <span class="talkbyline"> presented at <a href="http://monitorama.com">
@@ -22,36 +51,61 @@
   <div class="abstract talksection">
     <h3> Abstract </h3>
     <p>
-    <p>It’s no secret that at Etsy we are big fans of small, incremental and frequent changes and tight feedback loops. This is how we make it possible to deploy changes to our main codebase more than 50 times a day and also safely apply changes to our infrastructure in a continuous fashion. It enables us to rapidly fix bugs and roll out features in our application stack and infrastructure. This however would not be possible without a tight feedback loop and a myriad of monitoring tools that keep us informed about changes and possible problems in every nook and cranny of the Etsy stack, no matter if it’s a network change event, systems or application level performance or how bad the last week of on-call rotation was.</p>
+    It&#39;s no secret that at Etsy we are big fans of small, incremental
+and frequent changes and tight feedback loops. This is how we make it possible
+to deploy changes to our main codebase more than 50 times a day and also
+safely apply changes to our infrastructure in a continuous fashion. It enables
+us to rapidly fix bugs and roll out features in our application stack and
+infrastructure. This however would not be possible without a tight feedback
+loop and a myriad of monitoring tools that keep us informed about changes and
+possible problems in every nook and cranny of the Etsy stack, no matter if
+it&#39;s a network change event, systems or application level performance or how
+bad the last week of on-call rotation was.
+
     </p>
   </div>
-    <div class="slides talksection">
+  
+  <div class="slides talksection">
     <h3> Slides </h3>
     <div class="center">
       <script async class="speakerdeck-embed"
       data-id="cf6a89c0b79c01312dc72252d3db84f0"
-            data-ratio="1.3333333333333"
-            src="//speakerdeck.com/assets/embed.js"></script>
+      
+      data-ratio="1.3333333333333"
+      
+      src="//speakerdeck.com/assets/embed.js"></script>
     </div>
   </div>
-        <div class="video talksection">
+  
+  
+  
+  <div class="video talksection">
     <h3> Video </h3>
     <div class="center">
       <iframe src="//player.vimeo.com/video/95247023?portrait=0" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
     </div>
   </div>
-      <div class="links talksection">
+  
+  
+  <div class="links talksection">
     <h3> Links </h3>
-    <ul class="nobullet">
-        <li><a href="http://codeascraft.com"> Etsy Engineering Blog </a></li>
-        <li><a href="http://etsy.com/codeascraft/talks"> Etsy Engineering Talks </a></li>
-        <li><a href="http://codeascraft.com/2014/06/06/introducing-nagios-herald/"> Introducing Nagios Herald </a></li>
-        <li><a href="http://codeascraft.com/2012/08/13/performance-tuning-syslog-ng/"> Performance tuning syslog-ng </a></li>
-        <li><a href="http://codeascraft.com/2014/06/19/opsweekly-measuring-on-call-experience-with-alert-classification/"> Introducing Opsweekly </a></li>
-      </ul>
+    <ul class="talklinks">
+    
+    <li><a href="http://codeascraft.com">Etsy Engineering Blog</a></li>
+    
+    <li><a href="http://etsy.com/codeascraft/talks">Etsy Engineering Talks</a></li>
+    
+    <li><a href="http://codeascraft.com/2014/06/06/introducing-nagios-herald/">Introducing Nagios Herald</a></li>
+    
+    <li><a href="http://codeascraft.com/2012/08/13/performance-tuning-syslog-ng/">Performance tuning syslog-ng</a></li>
+    
+    <li><a href="http://codeascraft.com/2014/06/19/opsweekly-measuring-on-call-experience-with-alert-classification/">Introducing Opsweekly</a></li>
+    
+  </ul>
   </div>
 </div>
 
-            </div>
-    </body>
+    </main>
+
+  </body>
 </html>
