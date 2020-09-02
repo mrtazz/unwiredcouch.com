@@ -6,7 +6,7 @@
     {{ range .Pages }}
       {{ if ne .Type "standalonepage" }}
       <li>
-        <a href="{{ .Permalink }}"> {{ .Title }}</a>
+        <a href="{{ .RelPermalink }}"> {{ .Title }}</a>
         <span class="archivedate hidemobile">{{ .PublishDate.Format "Jan 2, 2006" }} </span>
       </li>
       {{ end }}

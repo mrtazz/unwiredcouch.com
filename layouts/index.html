@@ -13,7 +13,7 @@ related to technology.
 {{$posts := ($.Site.GetPage "section" "posts").Pages.ByPublishDate.Reverse}}
 {{ range first 5 $posts }}
       <li class="homepage-postlist__item">
-        <a class="homepage-posttitle" href="{{ .Permalink }}"> {{ .Title }}</a>
+        <a class="homepage-posttitle" href="{{ .RelPermalink }}"> {{ .Title }}</a>
         <span class="homepage-postdate hidemobile">{{ .PublishDate.Format "Jan 2, 2006" }} </span>
       </li>
 {{ end }}
@@ -33,7 +33,7 @@ or hacks.
 {{$bits := ($.Site.GetPage "section" "bits").Pages.ByPublishDate.Reverse}}
 {{ range first 5 $bits }}
       <li class="homepage-postlist__item">
-        <a class="homepage-posttitle" href="{{ .Permalink }}"> {{ .Title }}</a>
+        <a class="homepage-posttitle" href="{{ .RelPermalink }}"> {{ .Title }}</a>
         <span class="homepage-postdate hidemobile">{{ .PublishDate.Format "Jan 2, 2006" }} </span>
       </li>
 {{ end }}
@@ -51,7 +51,7 @@ for posterity.
 {{$bits := ($.Site.GetPage "section" "talks").Pages.ByPublishDate.Reverse}}
 {{ range first 5 $bits }}
       <li class="homepage-postlist__item">
-        <a class="homepage-posttitle"  href="{{ .Permalink }}"> {{ .Title }}</a>
+        <a class="homepage-posttitle"  href="{{ .RelPermalink }}"> {{ .Title }}</a>
         <span class="homepage-postdate hidemobile">{{ .PublishDate.Format "Jan 2, 2006" }} </span>
       </li>
 {{ end }}

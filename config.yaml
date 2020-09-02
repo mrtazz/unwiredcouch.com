@@ -9,3 +9,4 @@ markup:
   goldmark:
     renderer:
       unsafe: true
+relativeURLs: true

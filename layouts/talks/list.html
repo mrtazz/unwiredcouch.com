@@ -4,7 +4,7 @@
     <ul>
     {{ range (.Pages.ByDate).Reverse }}
       <li>
-        <a href="{{ .Permalink }}"> {{ .Title }}</a> {{ .Params.conf.location }}
+        <a href="{{ .RelPermalink }}"> {{ .Title }}</a> {{ .Params.conf.location }}
         <span class="archivedate hidemobile">{{ .PublishDate.Format "Jan 2, 2006" }} </span>
       </li>
     {{ end }}
