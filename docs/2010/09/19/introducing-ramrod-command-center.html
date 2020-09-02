@@ -5,42 +5,96 @@
     <meta http-equiv="cache-control" content="no-cache"/>
     <meta http-equiv="pragma" content="no-cache"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link href="/css/style.min.css?v=e1be0c2" media="screen" rel="stylesheet" type="text/css"/>
-    <link href="/css/mobile.min.css?v=e1be0c2" media="handheld, only screen and (max-device-width: 960px)" rel="stylesheet" type="text/css"/>
+    
+
+
+
+<link   rel="stylesheet"
+        href="../../../css/style.min.3509c9f0b39a60e84f85797f0a1b9edf3262ac31f178df54cce2ab569dd456a1.css"
+        integrity="sha256-NQnJ8LOaYOhPhXl/Chue3zJirDHxeN9UzOKrVp3UVqE="
+        type="text/css"
+        media="screen">
+
+<link   rel="stylesheet"
+        href="../../../css/mobile.min.61224258b356807fea4fba3d47bfa9b900189e33d17678f5eba2ea860e517051.css"
+        integrity="sha256-YSJCWLNWgH/qT7o9R7&#43;puQAYnjPRdnj166Lqhg5RcFE="
+        type="text/css"
+        media="handheld, only screen and (max-device-width: 960px)">
+
     <link href="https://unwiredcouch.com/atom.xml" type="application/atom+xml" rel="alternate" title="unwiredcouch.feed" />
 
-    <title>Introducing Ramrod Command Center on unwiredcouch.com</title>
+    <title>writing on unwiredcouch.com</title>
   </head>
   <body>
 
     <header>
-      <a class="gravatar hidemobile" href="/">
-        <img src="https://www.gravatar.com/avatar/89e0ad1229121f46047977ac547bd7b4.jpg?s=100"
-             height="100" width="100" class="avatar" alt="gravatar image" />
-      </a>
-      <div id="intro">
-        <p>Hi! I'm <a href="/about.html">Daniel</a>.</p>
-        <p>I like
-        <a href="/">writing</a>,
-        <a href="https://www.instagram.com/mrtazz/">drawing</a>,
-        <a href="https://twitter.com/mrtazz">tweeting</a>,
-        <a href="/talks">sometimes give talks</a>,
-        and <a href="http://code.mrtazz.com">occasionally write code</a>.
-        </p>
-      </div>
-    </header>
+  <a class="gravatar hidemobile" href="../../../">
+    <img
+      src="https://www.gravatar.com/avatar/89e0ad1229121f46047977ac547bd7b4.jpg?s=100"
+      height="50" width="50" class="avatar" alt="gravatar image" />
+  </a>
+  <div id="intro">
+    <ul>
+      <li><a href="../../../posts">Writing</a></li>
+      <li><a href="https://www.instagram.com/mrtazz/">Drawing</a></li>
+      <li><a href="../../../talks">Talks</a></li>
+      <li><a href="https://github.com/mrtazz">Code</a></li>
+      <li><a href="../../../setup/">Setup</a></li>
+      <li><a href="../../../about.html">About</a></li>
+      <li><a href="../../../imprint.html">Contact</a></li>
+    </ul>
+  </div>
+</header>
 
-    <div id="content">
-            <div class="post">
+
+    <main>
+    
+
+<div class="postdateheading"> Sep 19, 2010 </div>
+
+      <div class="post">
         <h2> <a href=""> Introducing Ramrod Command Center </a></h2>
 
-<p>I have <a href="http://twitter.com/mrtazz/status/24040433982">finally</a> registered my Master’s thesis. This means in 6 month my university life is over and the hard and cruel reality begins. I am writing my thesis at the <a href="http://cone.informatik.uni-freiburg.de">Chair of Computer Networks</a> about localization of nodes without external positioning information. I am going to port the existing algorithms to Unix platforms and create a server environment to be able to use the localization also in networks without direct communication.</p>
-<p>The resulting (localization) software has to run on different platforms such as Windows, Unix and the iPhone. This is why I wanted a build system with continuous integration, where the software is built and tested on these platforms. For continuous integration I normally use <a href="http://integrityapp.com">integrity</a> or <a href="http://github.com/defunkt/cijoe">cijoe</a>, which are simple but therefore don’t support notifying builds for several platforms. <a href="http://hudson-ci.org">Hudson</a> has support for agents, but as far as I found out, they have to be hudson agents. For my Master’s project I wanted to be able to use integrity as well as cijoe as agents and have a simple central command instance, which notifies them.</p>
+        <p>I have [finally][2] registered my Master&rsquo;s thesis. This means in 6 month
+my university life is over and the hard and cruel reality begins. I am writing
+my thesis at the [Chair of Computer Networks][3] about localization of nodes
+without external positioning information. I am going to port the existing
+algorithms to Unix platforms and create a server environment to be able to use
+the localization also in networks without direct communication.</p>
+<p>The resulting (localization) software has to run on different platforms such as
+Windows, Unix and the iPhone. This is why I wanted a build system with
+continuous integration, where the software is built and tested on these
+platforms. For continuous integration I normally use [integrity][4] or
+[cijoe][5], which are simple but therefore don&rsquo;t support notifying builds for
+several platforms. [Hudson][6] has support for agents, but as far as I found
+out, they have to be hudson agents. For my Master&rsquo;s project I wanted to be able
+to use integrity as well as cijoe as agents and have a simple central command
+instance, which notifies them.</p>
 <h3 id="ramrod">Ramrod</h3>
-<p>This is why I built <a href="http://github.com/mrtazz/ramrod">ramrod</a>. It is a small sinatra application, which acts as a sort of CI control center. Ramrod can be notified to build a project via simple HTTP POST. All registered agents are then notified subsequently. The agents have to be configured to notify the result back to ramrod, where all the results are then displayed. This can be easily done with cijoe and integrity. Ramrod itself has a simple structure and can be deployed to any ruby hosting platform.</p>
-<p>The project is still in a very early stage and there are a lot of things which have to be improved (or even implemented), such as a notification system, authentication and of course a much better design. But I think the initial release v0.1.0 is already quite helpful and usable.</p>
+<p>This is why I built [ramrod][7]. It is a small sinatra application, which acts
+as a sort of CI control center. Ramrod can be notified to build a project via
+simple HTTP POST. All registered agents are then notified subsequently. The
+agents have to be configured to notify the result back to ramrod, where all the
+results are then displayed. This can be easily done with cijoe and integrity.
+Ramrod itself has a simple structure and can be deployed to any ruby
+hosting platform.</p>
+<p>The project is still in a very early stage and there are a lot of things which
+have to be improved (or even implemented), such as a notification system,
+authentication and of course a much better design. But I think the initial
+release v0.1.0 is already quite helpful and usable.</p>
+<p>[1]: {{ page.url }}
+[2]: <a href="http://twitter.com/mrtazz/status/24040433982">http://twitter.com/mrtazz/status/24040433982</a>
+[3]: <a href="http://cone.informatik.uni-freiburg.de">http://cone.informatik.uni-freiburg.de</a>
+[4]: <a href="http://integrityapp.com">http://integrityapp.com</a>
+[5]: <a href="http://github.com/defunkt/cijoe">http://github.com/defunkt/cijoe</a>
+[6]: <a href="http://hudson-ci.org">http://hudson-ci.org</a>
+[7]: <a href="http://github.com/mrtazz/ramrod">http://github.com/mrtazz/ramrod</a></p>
+
 
       </div>
-    </div>
+
+
+    </main>
+
   </body>
 </html>
