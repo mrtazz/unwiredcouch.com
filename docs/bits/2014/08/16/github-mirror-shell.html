@@ -5,124 +5,189 @@
     <meta http-equiv="cache-control" content="no-cache"/>
     <meta http-equiv="pragma" content="no-cache"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link href="/css/style.min.css?v=e1be0c2" media="screen" rel="stylesheet" type="text/css"/>
-    <link href="/css/mobile.min.css?v=e1be0c2" media="handheld, only screen and (max-device-width: 960px)" rel="stylesheet" type="text/css"/>
+    
+
+
+
+<link   rel="stylesheet"
+        href="https://unwiredcouch.com/css/style.min.3509c9f0b39a60e84f85797f0a1b9edf3262ac31f178df54cce2ab569dd456a1.css"
+        integrity="sha256-NQnJ8LOaYOhPhXl/Chue3zJirDHxeN9UzOKrVp3UVqE="
+        type="text/css"
+        media="screen">
+
+<link   rel="stylesheet"
+        href="https://unwiredcouch.com/css/mobile.min.61224258b356807fea4fba3d47bfa9b900189e33d17678f5eba2ea860e517051.css"
+        integrity="sha256-YSJCWLNWgH/qT7o9R7&#43;puQAYnjPRdnj166Lqhg5RcFE="
+        type="text/css"
+        media="handheld, only screen and (max-device-width: 960px)">
+
     <link href="https://unwiredcouch.com/atom.xml" type="application/atom+xml" rel="alternate" title="unwiredcouch.feed" />
 
-    <title>Mirror GitHub repositories in pure shell on unwiredcouch.com</title>
+    <title>writing on unwiredcouch.com</title>
   </head>
   <body>
 
     <header>
-      <a class="gravatar hidemobile" href="/">
-        <img src="https://www.gravatar.com/avatar/89e0ad1229121f46047977ac547bd7b4.jpg?s=100"
-             height="100" width="100" class="avatar" alt="gravatar image" />
-      </a>
-      <div id="intro">
-        <p>Hi! I'm <a href="/about.html">Daniel</a>.</p>
-        <p>I like
-        <a href="/">writing</a>,
-        <a href="https://www.instagram.com/mrtazz/">drawing</a>,
-        <a href="https://twitter.com/mrtazz">tweeting</a>,
-        <a href="/talks">sometimes give talks</a>,
-        and <a href="http://code.mrtazz.com">occasionally write code</a>.
-        </p>
-      </div>
-    </header>
+  <a class="gravatar hidemobile" href="/">
+    <img
+      src="https://www.gravatar.com/avatar/89e0ad1229121f46047977ac547bd7b4.jpg?s=100"
+      height="50" width="50" class="avatar" alt="gravatar image" />
+  </a>
+  <div id="intro">
+    <ul>
+      <li><a href="/posts">Writing</a></li>
+      <li><a href="https://www.instagram.com/mrtazz/">Drawing</a></li>
+      <li><a href="/talks">Talks</a></li>
+      <li><a href="https://github.com/mrtazz">Code</a></li>
+      <li><a href="/setup/">Setup</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/imprint.html">Contact</a></li>
+    </ul>
+  </div>
+</header>
 
-    <div id="content">
-            <div class="post">
+
+    <main>
+    
+
+<div class="postdateheading"> Aug 16, 2014 </div>
+
+      <div class="post">
         <h2> <a href=""> Mirror GitHub repositories in pure shell </a></h2>
 
-<p>As I have <a href="http://www.unwiredcouch.com/2013/10/30/uncloud-your-life.html">written before</a> I have slowly started to move my data out of cloud services where applicable. One part of that was setting up my own backup server at home based on <a href="http://www.unwiredcouch.com/bits/2014/03/18/zfs-rsync-backups.html">FreeBSD, zfs and rsync</a>. One part I consider important data but didn’t have on there was my (Open Source) code I host on GitHub. This also wasn’t ever a priority as the code is public anyways so it wasn’t a privacy issue for me, and I also trust GitHub to run backups so I wasn’t overly concerned about my data vanishing. Still I wanted to have my own backup of things.</p>
-<p>So I started to look into how people mirror their repositories for backups, speed, availability and other things. There exist quite a lot of solutions out there which are mostly written in Ruby or Python. While this is fine and I would encourage you to look into those, I didn’t want to deal with installing pip to install some Python script or installing yet another gem just for something that can be accomplished with a couple of lines of shell. So I wrote my own set of scripts in Bourne shell (one of the default installed shells in FreeBSD) so I could just cron them up on my backup box.</p>
-<p>First I needed a way to get a list of all my repositories. Thankfully GitHub has a <a href="https://developer.github.com/v3/">pretty great API</a> so I can just get a list of all my repositories and their git clone URLs:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">#!/bin/sh</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="co"># Usage:</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="co"># github_repo_list.sh mrtazz [34345k34j3k4b2jk3]</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="co">#</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="co"># get a list of all public repos for a user</span></span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="kw">if</span><span class="bu"> [</span> <span class="ot">-z</span> <span class="va">$1</span><span class="bu"> ]</span>; <span class="kw">then</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a>  <span class="bu">echo</span> <span class="st">&quot;Usage:&quot;</span></span>
-<span id="cb1-9"><a href="#cb1-9"></a>  <span class="bu">echo</span> <span class="st">&quot;github_repo_list.sh USERNAME [TOKEN]&quot;</span></span>
-<span id="cb1-10"><a href="#cb1-10"></a>  <span class="bu">exit</span> 1</span>
-<span id="cb1-11"><a href="#cb1-11"></a><span class="kw">fi</span></span>
-<span id="cb1-12"><a href="#cb1-12"></a></span>
-<span id="cb1-13"><a href="#cb1-13"></a><span class="kw">if</span><span class="bu"> [</span> <span class="ot">!</span> <span class="ot">-z</span> <span class="va">$2</span><span class="bu"> ]</span>; <span class="kw">then</span></span>
-<span id="cb1-14"><a href="#cb1-14"></a>  <span class="va">TOKEN=</span><span class="st">&quot;&amp;access_token=</span><span class="va">${2}</span><span class="st">&quot;</span></span>
-<span id="cb1-15"><a href="#cb1-15"></a><span class="kw">fi</span></span>
-<span id="cb1-16"><a href="#cb1-16"></a></span>
-<span id="cb1-17"><a href="#cb1-17"></a><span class="va">CURL=$(</span><span class="fu">which</span> curl<span class="va">)</span></span>
-<span id="cb1-18"><a href="#cb1-18"></a><span class="kw">if</span><span class="bu"> [</span> <span class="ot">-z</span> <span class="va">${CURL}</span><span class="bu"> ]</span>; <span class="kw">then</span></span>
-<span id="cb1-19"><a href="#cb1-19"></a>  <span class="co"># fall back to /usr/local/bin/curl</span></span>
-<span id="cb1-20"><a href="#cb1-20"></a>  <span class="va">CURL=</span><span class="st">&quot;/usr/local/bin/curl&quot;</span></span>
-<span id="cb1-21"><a href="#cb1-21"></a><span class="kw">fi</span></span>
-<span id="cb1-22"><a href="#cb1-22"></a></span>
-<span id="cb1-23"><a href="#cb1-23"></a><span class="va">BASEURL=</span><span class="st">&quot;https://api.github.com/users/</span><span class="va">${1}</span><span class="st">/repos?type=owner</span><span class="va">${TOKEN}</span><span class="st">&quot;</span></span>
-<span id="cb1-24"><a href="#cb1-24"></a><span class="va">count=</span>1</span>
-<span id="cb1-25"><a href="#cb1-25"></a></span>
-<span id="cb1-26"><a href="#cb1-26"></a><span class="kw">while</span><span class="bu"> [</span> <span class="va">${count}</span> <span class="ot">-gt</span> 0<span class="bu"> ]</span>; <span class="kw">do</span></span>
-<span id="cb1-27"><a href="#cb1-27"></a></span>
-<span id="cb1-28"><a href="#cb1-28"></a>  <span class="va">lines=$(${CURL}</span> <span class="st">&quot;</span><span class="va">${BASEURL}</span><span class="st">&amp;page=</span><span class="va">${count}</span><span class="st">&quot;</span> <span class="ex">-s</span> <span class="kw">|</span> <span class="fu">grep</span> git_url <span class="kw">|</span> <span class="fu">cut</span> -d<span class="st">&quot; &quot;</span> -f6 <span class="kw">|</span> <span class="fu">sed</span> -e <span class="st">&quot;s/[</span><span class="dt">\&quot;</span><span class="st">,]//g&quot;</span><span class="va">)</span></span>
-<span id="cb1-29"><a href="#cb1-29"></a></span>
-<span id="cb1-30"><a href="#cb1-30"></a>  <span class="co"># stop if we don&#39;t get any more content. A bit hacky but I don&#39;t want to</span></span>
-<span id="cb1-31"><a href="#cb1-31"></a>  <span class="co"># parse HTTP header data to figure out the last page</span></span>
-<span id="cb1-32"><a href="#cb1-32"></a>  <span class="kw">if</span><span class="bu"> [</span> <span class="st">&quot;</span><span class="va">${lines}</span><span class="st">&quot;</span> <span class="ot">==</span> <span class="st">&quot;&quot;</span><span class="bu"> ]</span>; <span class="kw">then</span></span>
-<span id="cb1-33"><a href="#cb1-33"></a>    <span class="va">count=</span>0</span>
-<span id="cb1-34"><a href="#cb1-34"></a>  <span class="kw">else</span></span>
-<span id="cb1-35"><a href="#cb1-35"></a>    <span class="kw">for</span> <span class="ex">line</span> in <span class="va">${lines}</span><span class="kw">;</span> <span class="kw">do</span> <span class="bu">echo</span> <span class="va">${line}</span> <span class="kw">;</span> <span class="kw">done</span></span>
-<span id="cb1-36"><a href="#cb1-36"></a>    <span class="va">count=</span><span class="kw">`</span><span class="fu">expr</span> <span class="va">$count</span> + 1<span class="kw">`</span></span>
-<span id="cb1-37"><a href="#cb1-37"></a>  <span class="kw">fi</span></span>
-<span id="cb1-38"><a href="#cb1-38"></a></span>
-<span id="cb1-39"><a href="#cb1-39"></a><span class="kw">done</span></span></code></pre></div>
-<p>This script takes a username and an optional access token and retrieves the public list of repositories for that user. It then outputs the git clone URLs one per line so it’s easily stored in a text file or fed into other scripts. There are some minor inefficiencies and missing features in there as it curls one more time than needed to the GitHub API to figure out if there are more results and it also only supports public repositories as I don’t have private ones at the moment. However changing the URL to call if I ever want to mirror private repositories is relatively easy and I don’t care that much about the extra curl as this script is not gonna be run very frequently.</p>
-<p>This now gives me a list of all repositories on my account I want to mirror. The next step is actually mirroring them. For that I wrote a script that looks like this:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">#!/bin/sh</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a></span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="co"># take a list of git clone urls on STDIN and clone them if they don&#39;t exist.</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a></span>
-<span id="cb2-5"><a href="#cb2-5"></a><span class="kw">if</span><span class="bu"> [</span> <span class="ot">-z</span> <span class="va">$1</span><span class="bu"> ]</span>; <span class="kw">then</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a>  <span class="bu">echo</span> <span class="st">&quot;Usage:&quot;</span></span>
-<span id="cb2-7"><a href="#cb2-7"></a>  <span class="bu">echo</span> <span class="st">&quot;github_repo_sync.sh directory&quot;</span></span>
-<span id="cb2-8"><a href="#cb2-8"></a>  <span class="bu">exit</span> 1</span>
-<span id="cb2-9"><a href="#cb2-9"></a><span class="kw">fi</span></span>
-<span id="cb2-10"><a href="#cb2-10"></a></span>
-<span id="cb2-11"><a href="#cb2-11"></a><span class="va">GIT=$(</span><span class="fu">which</span> git<span class="va">)</span></span>
-<span id="cb2-12"><a href="#cb2-12"></a></span>
-<span id="cb2-13"><a href="#cb2-13"></a><span class="kw">if</span><span class="bu"> [</span> <span class="ot">-z</span> <span class="va">${GIT}</span><span class="bu"> ]</span>; <span class="kw">then</span></span>
-<span id="cb2-14"><a href="#cb2-14"></a>  <span class="co"># if git is not in path fall back to /usr/local</span></span>
-<span id="cb2-15"><a href="#cb2-15"></a>  <span class="kw">if</span><span class="bu"> [</span> <span class="ot">-f</span> /usr/local/bin/git<span class="bu"> ]</span>; <span class="kw">then</span></span>
-<span id="cb2-16"><a href="#cb2-16"></a>    <span class="va">GIT=</span><span class="st">&quot;/usr/local/bin/git&quot;</span></span>
-<span id="cb2-17"><a href="#cb2-17"></a>  <span class="kw">else</span></span>
-<span id="cb2-18"><a href="#cb2-18"></a>    <span class="bu">echo</span> <span class="st">&quot;You need to have git installed.&quot;</span></span>
-<span id="cb2-19"><a href="#cb2-19"></a>    <span class="bu">exit</span> 1</span>
-<span id="cb2-20"><a href="#cb2-20"></a>  <span class="kw">fi</span></span>
-<span id="cb2-21"><a href="#cb2-21"></a><span class="kw">fi</span></span>
-<span id="cb2-22"><a href="#cb2-22"></a></span>
-<span id="cb2-23"><a href="#cb2-23"></a><span class="co"># switch to archive directory</span></span>
-<span id="cb2-24"><a href="#cb2-24"></a><span class="bu">cd</span> <span class="va">$1</span></span>
-<span id="cb2-25"><a href="#cb2-25"></a></span>
-<span id="cb2-26"><a href="#cb2-26"></a><span class="kw">while</span> <span class="bu">read</span> <span class="va">line</span>; <span class="kw">do</span></span>
-<span id="cb2-27"><a href="#cb2-27"></a>  <span class="va">directory=$(</span><span class="bu">echo</span> <span class="st">&quot;</span><span class="va">${line}</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">cut</span> -d <span class="st">&quot;/&quot;</span> -f 5<span class="va">)</span></span>
-<span id="cb2-28"><a href="#cb2-28"></a></span>
-<span id="cb2-29"><a href="#cb2-29"></a>  <span class="kw">if</span><span class="bu"> [</span> <span class="ot">!</span> <span class="ot">-d</span> <span class="va">${directory}</span><span class="bu"> ]</span>; <span class="kw">then</span></span>
-<span id="cb2-30"><a href="#cb2-30"></a>    <span class="va">${GIT}</span> <span class="ex">clone</span> --mirror <span class="va">${line}</span></span>
-<span id="cb2-31"><a href="#cb2-31"></a>  <span class="kw">else</span></span>
-<span id="cb2-32"><a href="#cb2-32"></a>    <span class="bu">cd</span> <span class="va">${directory}</span></span>
-<span id="cb2-33"><a href="#cb2-33"></a>    <span class="va">${GIT}</span> <span class="ex">fetch</span> -p origin</span>
-<span id="cb2-34"><a href="#cb2-34"></a>    <span class="bu">cd</span> ..</span>
-<span id="cb2-35"><a href="#cb2-35"></a>  <span class="kw">fi</span></span>
-<span id="cb2-36"><a href="#cb2-36"></a></span>
-<span id="cb2-37"><a href="#cb2-37"></a><span class="kw">done</span></span></code></pre></div>
-<p>This script checks for each entry in a list of git clone URLs passed in via STDIN and if the directory already exists it fetches changes and if not clones it into the given directory. The mirroring commands reflect the instructions in this <a href="https://help.github.com/articles/duplicating-a-repository">GitHub guide</a>.</p>
-<p>Now to tie those two together I just set up two cron entries to run those two commands:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">0</span> 20 * * * ~/bin/github_repo_list.sh mrtazz 0f6 <span class="op">&gt;</span> /backup/github/github_repo_list.txt</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="ex">0</span> 21 * * * ~/bin/github_repo_sync.sh /backup/github <span class="op">&lt;</span> /backup/github/github_repo_list.txt</span></code></pre></div>
-<p>The first cron entry fetches the list of repositories and sticks them into a text file. The second one runs an hour later and actually syncs all the changes. I set it up to sync into the zfs pool that gets snapshotted every night anyways (as described <a href="http://www.unwiredcouch.com/bits/2014/03/18/zfs-rsync-backups.html">here</a>) so I get that for free. I’m not super happy with running this on a cron as there could be a smarter solution that checks for changes via the API and marks repositories as dirty, but this is the simplest thing that could work and way less work than interacting more with the API. In addition I would love to exclude forks from the backup since I don’t really care about backing those up. But I’ll leave this for iteration 2.</p>
-<p>I track changes to the script in my <a href="https://github.com/mrtazz/bin">bin folder repository on GitHub</a>, so if you’re interested in tracking changes to this setup, follow it there.</p>
+        <p>As I have <a href="http://www.unwiredcouch.com/2013/10/30/uncloud-your-life.html">written before</a> I have slowly started to move my data out
+of cloud services where applicable. One part of that was setting up my own
+backup server at home based on <a href="http://www.unwiredcouch.com/bits/2014/03/18/zfs-rsync-backups.html">FreeBSD, zfs and rsync</a>. One part I
+consider important data but didn&rsquo;t have on there was my (Open Source) code I
+host on GitHub. This also wasn&rsquo;t ever a priority as the code is public anyways
+so it wasn&rsquo;t a privacy issue for me, and I also trust GitHub to run backups so
+I wasn&rsquo;t overly concerned about my data vanishing. Still I wanted to have my
+own backup of things.</p>
+<p>So I started to look into how people mirror their repositories for backups,
+speed, availability and other things. There exist quite a lot of solutions out
+there which are mostly written in Ruby or Python. While this is fine and I
+would encourage you to look into those, I didn&rsquo;t want to deal with installing
+pip to install some Python script or installing yet another gem just for
+something that can be accomplished with a couple of lines of shell. So I wrote
+my own set of scripts in Bourne shell (one of the default installed shells in
+FreeBSD) so I could just cron them up on my backup box.</p>
+<p>First I needed a way to get a list of all my repositories. Thankfully GitHub
+has a <a href="https://developer.github.com/v3/">pretty great API</a> so I can just get a list of all my
+repositories and their git clone URLs:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/sh
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e"># Usage:</span>
+<span style="color:#75715e"># github_repo_list.sh mrtazz [34345k34j3k4b2jk3]</span>
+#
+<span style="color:#75715e"># get a list of all public repos for a user</span>
+<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -z $1 <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+  echo <span style="color:#e6db74">&#34;Usage:&#34;</span>
+  echo <span style="color:#e6db74">&#34;github_repo_list.sh USERNAME [TOKEN]&#34;</span>
+  exit <span style="color:#ae81ff">1</span>
+<span style="color:#66d9ef">fi</span>
+
+<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> ! -z $2 <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+  TOKEN<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&amp;access_token=</span><span style="color:#e6db74">${</span>2<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#66d9ef">fi</span>
+
+CURL<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>which curl<span style="color:#66d9ef">)</span>
+<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -z <span style="color:#e6db74">${</span>CURL<span style="color:#e6db74">}</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+  <span style="color:#75715e"># fall back to /usr/local/bin/curl</span>
+  CURL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/usr/local/bin/curl&#34;</span>
+<span style="color:#66d9ef">fi</span>
+
+BASEURL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://api.github.com/users/</span><span style="color:#e6db74">${</span>1<span style="color:#e6db74">}</span><span style="color:#e6db74">/repos?type=owner</span><span style="color:#e6db74">${</span>TOKEN<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+count<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+
+<span style="color:#66d9ef">while</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">${</span>count<span style="color:#e6db74">}</span> -gt <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">do</span>
+
+  lines<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span><span style="color:#e6db74">${</span>CURL<span style="color:#e6db74">}</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>BASEURL<span style="color:#e6db74">}</span><span style="color:#e6db74">&amp;page=</span><span style="color:#e6db74">${</span>count<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> -s | grep git_url | cut -d<span style="color:#e6db74">&#34; &#34;</span> -f6 | sed -e <span style="color:#e6db74">&#34;s/[\&#34;,]//g&#34;</span><span style="color:#66d9ef">)</span>
+
+  <span style="color:#75715e"># stop if we don&#39;t get any more content. A bit hacky but I don&#39;t want to</span>
+  <span style="color:#75715e"># parse HTTP header data to figure out the last page</span>
+  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>lines<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+    count<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+  <span style="color:#66d9ef">else</span>
+    <span style="color:#66d9ef">for</span> line in <span style="color:#e6db74">${</span>lines<span style="color:#e6db74">}</span>; <span style="color:#66d9ef">do</span> echo <span style="color:#e6db74">${</span>line<span style="color:#e6db74">}</span> ; <span style="color:#66d9ef">done</span>
+    count<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>expr $count + 1<span style="color:#e6db74">`</span>
+  <span style="color:#66d9ef">fi</span>
+
+<span style="color:#66d9ef">done</span>
+</code></pre></div><p>This script takes a username and an optional access token and retrieves the
+public list of repositories for that user. It then outputs the git clone URLs
+one per line so it&rsquo;s easily stored in a text file or fed into other scripts.
+There are some minor inefficiencies and missing features in there as it curls
+one more time than needed to the GitHub API to figure out if there are more
+results and it also only supports public repositories as I don&rsquo;t have private
+ones at the moment. However changing the URL to call if I ever want to mirror
+private repositories is relatively easy and I don&rsquo;t care that much about the
+extra curl as this script is not gonna be run very frequently.</p>
+<p>This now gives me a list of all repositories on my account I want to mirror.
+The next step is actually mirroring them. For that I wrote a script that looks
+like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/sh
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e"># take a list of git clone urls on STDIN and clone them if they don&#39;t exist.</span>
+
+<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -z $1 <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+  echo <span style="color:#e6db74">&#34;Usage:&#34;</span>
+  echo <span style="color:#e6db74">&#34;github_repo_sync.sh directory&#34;</span>
+  exit <span style="color:#ae81ff">1</span>
+<span style="color:#66d9ef">fi</span>
+
+GIT<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>which git<span style="color:#66d9ef">)</span>
+
+<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -z <span style="color:#e6db74">${</span>GIT<span style="color:#e6db74">}</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+  <span style="color:#75715e"># if git is not in path fall back to /usr/local</span>
+  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -f /usr/local/bin/git <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+    GIT<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/usr/local/bin/git&#34;</span>
+  <span style="color:#66d9ef">else</span>
+    echo <span style="color:#e6db74">&#34;You need to have git installed.&#34;</span>
+    exit <span style="color:#ae81ff">1</span>
+  <span style="color:#66d9ef">fi</span>
+<span style="color:#66d9ef">fi</span>
+
+<span style="color:#75715e"># switch to archive directory</span>
+cd $1
+
+<span style="color:#66d9ef">while</span> read line; <span style="color:#66d9ef">do</span>
+  directory<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>line<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> | cut -d <span style="color:#e6db74">&#34;/&#34;</span> -f 5<span style="color:#66d9ef">)</span>
+
+  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> ! -d <span style="color:#e6db74">${</span>directory<span style="color:#e6db74">}</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+    <span style="color:#e6db74">${</span>GIT<span style="color:#e6db74">}</span> clone --mirror <span style="color:#e6db74">${</span>line<span style="color:#e6db74">}</span>
+  <span style="color:#66d9ef">else</span>
+    cd <span style="color:#e6db74">${</span>directory<span style="color:#e6db74">}</span>
+    <span style="color:#e6db74">${</span>GIT<span style="color:#e6db74">}</span> fetch -p origin
+    cd ..
+  <span style="color:#66d9ef">fi</span>
+
+<span style="color:#66d9ef">done</span>
+</code></pre></div><p>This script checks for each entry in a list of git clone URLs passed in via
+STDIN and if the directory already exists it fetches changes and if not clones
+it into the given directory. The mirroring commands reflect the instructions
+in this <a href="https://help.github.com/articles/duplicating-a-repository">GitHub guide</a>.</p>
+<p>Now to tie those two together I just set up two cron entries to run those two
+commands:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#ae81ff">0</span> <span style="color:#ae81ff">20</span> * * * ~/bin/github_repo_list.sh mrtazz 0f6 &gt; /backup/github/github_repo_list.txt
+<span style="color:#ae81ff">0</span> <span style="color:#ae81ff">21</span> * * * ~/bin/github_repo_sync.sh /backup/github &lt; /backup/github/github_repo_list.txt
+</code></pre></div><p>The first cron entry fetches the list of repositories and sticks them into a
+text file. The second one runs an hour later and actually syncs all the
+changes. I set it up to sync into the zfs pool that gets snapshotted every
+night anyways (as described <a href="http://www.unwiredcouch.com/bits/2014/03/18/zfs-rsync-backups.html">here</a>) so I get that for free. I&rsquo;m not
+super happy with running this on a cron as there could be a smarter solution
+that checks for changes via the API and marks repositories as dirty, but this
+is the simplest thing that could work and way less work than interacting more
+with the API. In addition I would love to exclude forks from the backup since
+I don&rsquo;t really care about backing those up. But I&rsquo;ll leave this for iteration
+2.</p>
+<p>I track changes to the script in my <a href="https://github.com/mrtazz/bin">bin folder repository on GitHub</a>, so
+if you&rsquo;re interested in tracking changes to this setup, follow it there.</p>
+
 
       </div>
-    </div>
+
+
+    </main>
+
   </body>
 </html>

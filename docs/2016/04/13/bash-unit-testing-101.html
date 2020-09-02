@@ -5,115 +5,220 @@
     <meta http-equiv="cache-control" content="no-cache"/>
     <meta http-equiv="pragma" content="no-cache"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link href="/css/style.min.css?v=e1be0c2" media="screen" rel="stylesheet" type="text/css"/>
-    <link href="/css/mobile.min.css?v=e1be0c2" media="handheld, only screen and (max-device-width: 960px)" rel="stylesheet" type="text/css"/>
+    
+
+
+
+<link   rel="stylesheet"
+        href="https://unwiredcouch.com/css/style.min.3509c9f0b39a60e84f85797f0a1b9edf3262ac31f178df54cce2ab569dd456a1.css"
+        integrity="sha256-NQnJ8LOaYOhPhXl/Chue3zJirDHxeN9UzOKrVp3UVqE="
+        type="text/css"
+        media="screen">
+
+<link   rel="stylesheet"
+        href="https://unwiredcouch.com/css/mobile.min.61224258b356807fea4fba3d47bfa9b900189e33d17678f5eba2ea860e517051.css"
+        integrity="sha256-YSJCWLNWgH/qT7o9R7&#43;puQAYnjPRdnj166Lqhg5RcFE="
+        type="text/css"
+        media="handheld, only screen and (max-device-width: 960px)">
+
     <link href="https://unwiredcouch.com/atom.xml" type="application/atom+xml" rel="alternate" title="unwiredcouch.feed" />
 
-    <title>Bash Unit Testing from First Principles on unwiredcouch.com</title>
+    <title>writing on unwiredcouch.com</title>
   </head>
   <body>
 
     <header>
-      <a class="gravatar hidemobile" href="/">
-        <img src="https://www.gravatar.com/avatar/89e0ad1229121f46047977ac547bd7b4.jpg?s=100"
-             height="100" width="100" class="avatar" alt="gravatar image" />
-      </a>
-      <div id="intro">
-        <p>Hi! I'm <a href="/about.html">Daniel</a>.</p>
-        <p>I like
-        <a href="/">writing</a>,
-        <a href="https://www.instagram.com/mrtazz/">drawing</a>,
-        <a href="https://twitter.com/mrtazz">tweeting</a>,
-        <a href="/talks">sometimes give talks</a>,
-        and <a href="http://code.mrtazz.com">occasionally write code</a>.
-        </p>
-      </div>
-    </header>
+  <a class="gravatar hidemobile" href="/">
+    <img
+      src="https://www.gravatar.com/avatar/89e0ad1229121f46047977ac547bd7b4.jpg?s=100"
+      height="50" width="50" class="avatar" alt="gravatar image" />
+  </a>
+  <div id="intro">
+    <ul>
+      <li><a href="/posts">Writing</a></li>
+      <li><a href="https://www.instagram.com/mrtazz/">Drawing</a></li>
+      <li><a href="/talks">Talks</a></li>
+      <li><a href="https://github.com/mrtazz">Code</a></li>
+      <li><a href="/setup/">Setup</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/imprint.html">Contact</a></li>
+    </ul>
+  </div>
+</header>
 
-    <div id="content">
-            <div class="post">
+
+    <main>
+    
+
+<div class="postdateheading"> Apr 13, 2016 </div>
+
+      <div class="post">
         <h2> <a href=""> Bash Unit Testing from First Principles </a></h2>
 
-<p>In the last couple of months I’ve done a foray into unit testing the shell scripts I write. This is mostly a conglomerate of things I’ve learned and a talk I’ve given to our ops team about unit testing 101 for infrastructure tools last year.</p>
-<p>In August last year I decided to finally scratch an itch I had for quite a while. The details aren’t super important here, just that it’s a shell script and that there was no sort of of pressure around it which made me take the time to write unit tests for it. That meant for me researching what existed in terms of frameworks and how people are generally approaching this. And unsurprisingly I found a number of ready to use unit testing frameworks, most of them modeled after the familiar patterns you can find in test frameworks for other languages. However I was also curious what a minimal testing framework for bash would look like. After all, all my script would be doing is create some files and directories on disk with some specific content. So I could verify it all with <code>grep</code> and <code>test</code>. So I decided to also use this side project to try and write my own minimal bash unit test setup. And while I mostly ended up doing integration testing for the script, it still made me think quite a bit about the basics of unit testing.</p>
+        <p>In the last couple of months I&rsquo;ve done a foray into unit testing the shell
+scripts I write. This is mostly a conglomerate of things I&rsquo;ve learned and a
+talk I&rsquo;ve given to our ops team about unit testing 101 for infrastructure
+tools last year.</p>
+<p>In August last year I decided to finally scratch an itch I had for quite a
+while. The details aren&rsquo;t super important here, just that it&rsquo;s a shell script
+and that there was no sort of of pressure around it which made me take the
+time to write unit tests for it. That meant for me researching what existed in
+terms of frameworks and how people are generally approaching this. And
+unsurprisingly I found a number of ready to use unit testing frameworks, most
+of them modeled after the familiar patterns you can find in test frameworks
+for other languages. However I was also curious what a minimal testing
+framework for bash would look like. After all, all my script would be doing is
+create some files and directories on disk with some specific content. So I
+could verify it all with <code>grep</code> and <code>test</code>.  So I decided to also use this
+side project to try and write my own minimal bash unit test setup.  And while
+I mostly ended up doing integration testing for the script, it still made me
+think quite a bit about the basics of unit testing.</p>
 <h3 id="unit-testing-101">Unit Testing 101</h3>
-<p>One of the first questions I always get when someone hasn’t really come across a lot of <a href="https://en.wikipedia.org/wiki/Unit_testing">unit testing</a> is “what is a unit?”. And while technically you can probably argue for a unit being a lot of things, the most helpful one I’ve always found to be:</p>
+<p>One of the first questions I always get when someone hasn&rsquo;t really come across
+a lot of <a href="https://en.wikipedia.org/wiki/Unit_testing">unit testing</a> is &ldquo;what is a unit?&rdquo;. And while
+technically you can probably argue for a unit being a lot of things, the most
+helpful one I&rsquo;ve always found to be:</p>
 <blockquote>
 <p>a unit is a function</p>
 </blockquote>
-<p>This simultaneously gives a very concrete answer and also a starting point of what to do. When writing unit tests, start testing functions. This of course occasionally leads to the next question “what is a function?” and more often to the debate of how to make a function testable. For the first question I’ve again found this very reductionist answer to be the most helpful:</p>
+<p>This simultaneously gives a very concrete answer and also a starting point of
+what to do. When writing unit tests, start testing functions. This of course
+occasionally leads to the next question &ldquo;what is a function?&rdquo; and more often
+to the debate of how to make a function testable. For the first question I&rsquo;ve
+again found this very reductionist answer to be the most helpful:</p>
 <blockquote>
 <p>a function is a reusable piece of code that turns defined input into defined output</p>
 </blockquote>
-<p>This is somewhat close to what you learn in school about functions in math and has helped me a lot with how I think about writing code.</p>
+<p>This is somewhat close to what you learn in school about functions in math and
+has helped me a lot with how I think about writing code.</p>
 <h3 id="writing-our-first-tested-bash-code">Writing our first tested Bash code</h3>
-<p>Now with those definitions out of the way, there’s a plan on how to make a shell script unit testable:</p>
-<ol type="1">
+<p>Now with those definitions out of the way, there&rsquo;s a plan on how to make a
+shell script unit testable:</p>
+<ol>
 <li>Refactor your code into functions</li>
 <li>Write tests for those functions</li>
 </ol>
-<p>There’s a bit of a lesson to learn about <a href="https://en.wikipedia.org/wiki/Side_effect_(computer_science)">side effect free functions</a> but we can short circuit that by saying the only things your functions should rely on are variables passed into it. And it should always echo its results to STDOUT. This heavily reduces the possibility for side effects in bash functions but also limits the functions that absolutely have to do something other than just taking input and printing results to an absolute minimum. Your logic can live in the other functions most of the time. And those are the ones you can unit test. So now let’s write some functions and tests for them.</p>
-<p>Let’s say we want a function to output the number of characters in a string. It could look something like this:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">function</span><span class="fu"> num_chars</span> <span class="kw">{</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>  <span class="bu">echo</span> <span class="st">&quot;</span><span class="va">${1}</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">wc</span> -c</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">}</span></span></code></pre></div>
-<p>It’s a very contrived example and you’re basically testing that <code>wc</code> works correctly. But it’s a useful example here to show some things. Notice how the function only acts on variables passed into it and prints the result to STDOUT.</p>
-<p>Now let’s write a unit test for it.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">function</span><span class="fu"> test_num_chars</span> <span class="kw">{</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>  <span class="bu">local</span> <span class="va">res=$(</span><span class="ex">num_chars</span> <span class="st">&quot;foo&quot;</span><span class="va">)</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a>  <span class="kw">if</span><span class="bu"> [</span> <span class="va">${res}</span> <span class="ot">-ne</span> 3<span class="bu"> ]</span>; <span class="kw">then</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a>    <span class="bu">echo</span> <span class="st">&quot;failed to assert that </span><span class="va">${res}</span><span class="st"> is 3&quot;</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a>  <span class="kw">fi</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a><span class="kw">}</span></span></code></pre></div>
-<p>And that’s it. That’s all you really need to do to write a simple unit test in bash.</p>
-<p>Of course adding more tests now generates a lot of repetitive work. So we can write a helper function to do the assertion part of the test.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">function</span><span class="fu"> assert</span> <span class="kw">{</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a> <span class="bu">eval</span> <span class="st">&quot;</span><span class="va">${1}</span><span class="st">&quot;</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a> <span class="kw">if [[</span> <span class="va">$?</span> <span class="ot">-ne</span> 0<span class="kw"> ]]</span>; <span class="kw">then</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a>   <span class="bu">echo</span> <span class="st">&quot;</span><span class="va">${FUNCNAME[1]}</span><span class="st">: failed&quot;</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a> <span class="kw">else</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a>   <span class="bu">echo</span> <span class="st">&quot;</span><span class="va">${FUNCNAME[1]}</span><span class="st">: passed&quot;</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a> <span class="kw">fi</span></span>
-<span id="cb3-8"><a href="#cb3-8"></a><span class="kw">}</span></span></code></pre></div>
-<p>This helper function takes an argument which is a statement to evaluate. And depending on whether the eval exits with 0 or not, the test is regarded as passing or failing. It then prints out the result accordingly. <code>FUNCNAME</code> in bash is an array that holds the current execution call stack. And thus the first entry in it is the current function and the next one is the calling function. This gives us a nice way to determine which test is being executed and make it part of the output message.</p>
+<p>There&rsquo;s a bit of a lesson to learn about <a href="https://en.wikipedia.org/wiki/Side_effect_(computer_science)">side effect free
+functions</a> but we can short circuit that by saying the only
+things your functions should rely on are variables passed into it. And it
+should always echo its results to STDOUT.  This heavily reduces the
+possibility for side effects in bash functions but also limits the functions
+that absolutely have to do something other than just taking input and printing
+results to an absolute minimum. Your logic can live in the other functions
+most of the time. And those are the ones you can unit test. So now let&rsquo;s
+write some functions and tests for them.</p>
+<p>Let&rsquo;s say we want a function to output the number of characters in a string.
+It could look something like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">function</span> num_chars <span style="color:#f92672">{</span>
+  echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>1<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> | wc -c
+<span style="color:#f92672">}</span>
+</code></pre></div><p>It&rsquo;s a very contrived example and you&rsquo;re basically testing that <code>wc</code> works
+correctly. But it&rsquo;s a useful example here to show some things. Notice how the
+function only acts on variables passed into it and prints the result to
+STDOUT.</p>
+<p>Now let&rsquo;s write a unit test for it.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">function</span> test_num_chars <span style="color:#f92672">{</span>
+  local res<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>num_chars <span style="color:#e6db74">&#34;foo&#34;</span><span style="color:#66d9ef">)</span>
+  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">${</span>res<span style="color:#e6db74">}</span> -ne <span style="color:#ae81ff">3</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+    echo <span style="color:#e6db74">&#34;failed to assert that </span><span style="color:#e6db74">${</span>res<span style="color:#e6db74">}</span><span style="color:#e6db74"> is 3&#34;</span>
+  <span style="color:#66d9ef">fi</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>And that&rsquo;s it. That&rsquo;s all you really need to do to write a simple unit test in bash.</p>
+<p>Of course adding more tests now generates a lot of repetitive work. So we can
+write a helper function to do the assertion part of the test.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">function</span> assert <span style="color:#f92672">{</span>
+ eval <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>1<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+ <span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> $? -ne <span style="color:#ae81ff">0</span> <span style="color:#f92672">]]</span>; <span style="color:#66d9ef">then</span>
+   echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>FUNCNAME[1]<span style="color:#e6db74">}</span><span style="color:#e6db74">: failed&#34;</span>
+ <span style="color:#66d9ef">else</span>
+   echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>FUNCNAME[1]<span style="color:#e6db74">}</span><span style="color:#e6db74">: passed&#34;</span>
+ <span style="color:#66d9ef">fi</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>This helper function takes an argument which is a statement to evaluate. And
+depending on whether the eval exits with 0 or not, the test is regarded as
+passing or failing. It then prints out the result accordingly. <code>FUNCNAME</code> in
+bash is an array that holds the current execution call stack. And thus the
+first entry in it is the current function and the next one is the calling
+function. This gives us a nice way to determine which test is being executed
+and make it part of the output message.</p>
 <p>And with this helper function in place, our test now looks like this.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">function</span><span class="fu"> test_num_chars</span> <span class="kw">{</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a>  <span class="bu">local</span> <span class="va">res=$(</span><span class="ex">num_chars</span> <span class="st">&quot;foo&quot;</span><span class="va">)</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a>  <span class="ex">assert</span> <span class="st">&quot;[ </span><span class="va">${res}</span><span class="st"> -ne 3 ]&quot;</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="kw">}</span></span></code></pre></div>
-<p>Now we can already define a couple of tests and run them by calling the functions we defined. However that also gets very repetitive fast and you always have to remember to actually call the function when you define a new test. So let’s also write a helper function to do this for us.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">function</span><span class="fu"> run_test_suite</span> <span class="kw">{</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>  <span class="kw">for</span> <span class="ex">testcase</span> in <span class="va">$(</span><span class="bu">declare</span> -f <span class="kw">|</span> <span class="fu">grep</span> -o <span class="st">&quot;^test[a-zA-Z_]*&quot;</span><span class="va">)</span> <span class="kw">;</span> <span class="kw">do</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a>    <span class="va">${testcase}</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a>  <span class="kw">done</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a><span class="kw">}</span></span></code></pre></div>
-<p>This helper gets all the currently declared functions (via <code>declare -f</code>), looks for the ones starting with “test”, and then simply executes them.</p>
-<p>Now all you have to do is call <code>run_test_suite</code> at the end of your file and all new test functions are automatically picked up as long as they start with “test”.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">function</span> test_num_chars <span style="color:#f92672">{</span>
+  local res<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>num_chars <span style="color:#e6db74">&#34;foo&#34;</span><span style="color:#66d9ef">)</span>
+  assert <span style="color:#e6db74">&#34;[ </span><span style="color:#e6db74">${</span>res<span style="color:#e6db74">}</span><span style="color:#e6db74"> -ne 3 ]&#34;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Now we can already define a couple of tests and run them by calling the
+functions we defined. However that also gets very repetitive fast and you
+always have to remember to actually call the function when you define a new
+test. So let&rsquo;s also write a helper function to do this for us.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">function</span> run_test_suite <span style="color:#f92672">{</span>
+  <span style="color:#66d9ef">for</span> testcase in <span style="color:#66d9ef">$(</span>declare -f | grep -o <span style="color:#e6db74">&#34;^test[a-zA-Z_]*&#34;</span><span style="color:#66d9ef">)</span> ; <span style="color:#66d9ef">do</span>
+    <span style="color:#e6db74">${</span>testcase<span style="color:#e6db74">}</span>
+  <span style="color:#66d9ef">done</span>
+<span style="color:#f92672">}</span>
+
+</code></pre></div><p>This helper gets all the currently declared functions (via <code>declare -f</code>),
+looks for the ones starting with &ldquo;test&rdquo;, and then simply executes them.</p>
+<p>Now all you have to do is call <code>run_test_suite</code> at the end of your file and
+all new test functions are automatically picked up as long as they start with
+&ldquo;test&rdquo;.</p>
 <h3 id="fixtures-for-tests">Fixtures for Tests</h3>
-<p>Now a lot of times in shell scripts you actually want to interact with files on the file system. And it’s not really feasible to always have everything just be variables to be passed in. In this case you can adapt your script by setting the base of where the files are you want to interact with. Something like this:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a><span class="va">FILEBASE=${FILEBASE:-</span>/usr/local/foo<span class="va">}</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a></span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="kw">function</span><span class="fu"> list_files_with_a</span> <span class="kw">{</span></span>
-<span id="cb6-4"><a href="#cb6-4"></a>  <span class="fu">ls</span> <span class="st">&quot;</span><span class="va">${FILEBASE}</span><span class="st">/a*&quot;</span></span>
-<span id="cb6-5"><a href="#cb6-5"></a><span class="kw">}</span></span></code></pre></div>
-<p>Now you can set the variable in your test suite before you source your shell script with the functions to test. That way <code>FILEBASE</code> will already be set and the functions use it as their base. If you know create a directory for those fixtures in your tests directory, you can easily mock out file system details in a controlled way and test for them.</p>
+<p>Now a lot of times in shell scripts you actually want to interact with files
+on the file system. And it&rsquo;s not really feasible to always have everything
+just be variables to be passed in. In this case you can adapt your script by
+setting the base of where the files are you want to interact with. Something
+like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">FILEBASE<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>FILEBASE<span style="color:#66d9ef">:-</span>/usr/local/foo<span style="color:#e6db74">}</span>
+
+<span style="color:#66d9ef">function</span> list_files_with_a <span style="color:#f92672">{</span>
+  ls <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>FILEBASE<span style="color:#e6db74">}</span><span style="color:#e6db74">/a*&#34;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Now you can set the variable in your test suite before you source your shell
+script with the functions to test. That way <code>FILEBASE</code> will already be set and
+the functions use it as their base. If you know create a directory for those
+fixtures in your tests directory, you can easily mock out file system details
+in a controlled way and test for them.</p>
 <h3 id="dependency-injection-in-bash">Dependency Injection in Bash</h3>
-<p>One of the most important things for me to get better at unit testing in general was understanding <a href="https://en.wikipedia.org/wiki/Dependency_injection">dependency injection</a>. Writing code in a at that would let me completely drive function behavior based solely on what I’m passing in. And if I have to call an external resource make it so I can pass in the expected return value and only if it’s not set, call the external resource. A simple example could look like this:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">function</span><span class="fu"> get_url</span> <span class="kw">{</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a>  <span class="bu">local</span> <span class="va">url=</span><span class="st">&quot;</span><span class="va">${1}</span><span class="st">&quot;</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a>  <span class="bu">local</span> <span class="va">res=</span><span class="st">&quot;</span><span class="va">${2}</span><span class="st">&quot;</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a></span>
-<span id="cb7-5"><a href="#cb7-5"></a>  <span class="kw">if</span><span class="bu"> [</span> <span class="ot">-z</span> <span class="st">&quot;</span><span class="va">${res}</span><span class="st">&quot;</span>]; then</span>
-<span id="cb7-6"><a href="#cb7-6"></a>    res=<span class="va">$(</span><span class="ex">curl</span> -s <span class="st">&quot;</span><span class="va">${url}</span><span class="st">&quot;</span><span class="va">)</span></span>
-<span id="cb7-7"><a href="#cb7-7"></a>  fi</span>
-<span id="cb7-8"><a href="#cb7-8"></a>}</span></code></pre></div>
-<p>Now you can use this function as you would normally do with <code>'get_url "https://unwiredcouch.com"</code>. However in tests you can also pass in a second argument which will be used as a locked out response instead of actually curl-ing the URL.</p>
+<p>One of the most important things for me to get better at unit testing in
+general was understanding <a href="https://en.wikipedia.org/wiki/Dependency_injection">dependency injection</a>. Writing code
+in a at that would let me completely drive function behavior based solely on
+what I&rsquo;m passing in. And if I have to call an external resource make it so I
+can pass in the expected return value and only if it&rsquo;s not set, call the
+external resource. A simple example could look like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">function</span> get_url <span style="color:#f92672">{</span>
+  local url<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>1<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+  local res<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>2<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+
+  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -z <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>res<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+    res<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>curl -s <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>url<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">)</span>
+  <span style="color:#66d9ef">fi</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Now you can use this function as you would normally do with <code>'get_url &quot;https://unwiredcouch.com&quot;</code>. However in tests you can also pass in a second
+argument which will be used as a locked out response instead of actually
+curl-ing the URL.</p>
 <h3 id="wrapping-up">Wrapping up</h3>
-<p>In this short set of examples I hope it got somewhat clear that it can be straightforward to write a quick unit testing setup for shell scripts from built in functionality and start writing tests. I’ve also shown some techniques to write more testable bash to begin with. If you’re interested in reusing the code if pushed the (slightly more improved) version of this I use to <a href="https://github.com/mrtazz/minibashtest">GitHub</a>. It provides nicer output, more details and properly returns a non-zero exit code if something failed, so you can run it on CI. If you want more functionality or more advanced testing support, I’ve listed some alternatives in the <a href="https://github.com/mrtazz/minibashtest#advanced-testing">README</a>.</p>
-<p>And on a slightly related note, you should start using <a href="http://www.shellcheck.net/">shellcheck</a> when writing bash. It’s such an awesome way to get feedback about how to write better shell scripts and I’ve learned tons already just from the errors, warnings, and suggestions popping up in my VIM quickfix list.</p>
-<p>But the most important part is that testing isn’t magic and doesn’t have to be complicated. You can get started immediately with just the basics of any language. And especially starting to write tests for shell scripts is lots of fun.</p>
+<p>In this short set of examples I hope it got somewhat clear that it can be
+straightforward to write a quick unit testing setup for shell scripts from
+built in functionality and start writing tests. I&rsquo;ve also shown some
+techniques to write more testable bash to begin with. If you&rsquo;re interested in
+reusing the code if pushed the (slightly more improved) version of this I use
+to <a href="https://github.com/mrtazz/minibashtest">GitHub</a>. It provides nicer output, more details and properly
+returns a non-zero exit code if something failed, so you can run it on CI.  If
+you want more functionality or more advanced testing support, I&rsquo;ve listed some
+alternatives in the <a href="https://github.com/mrtazz/minibashtest#advanced-testing">README</a>.</p>
+<p>And on a slightly related note, you should start using <a href="http://www.shellcheck.net/">shellcheck</a> when
+writing bash. It&rsquo;s such an awesome way to get feedback about how to write
+better shell scripts and I&rsquo;ve learned tons already just from the errors,
+warnings, and suggestions popping up in my VIM quickfix list.</p>
+<p>But the most important part is that testing isn&rsquo;t magic and doesn&rsquo;t have to be
+complicated. You can get started immediately with just the basics of any
+language. And especially starting to write tests for shell scripts is lots of
+fun.</p>
+
 
       </div>
-    </div>
+
+
+    </main>
+
   </body>
 </html>

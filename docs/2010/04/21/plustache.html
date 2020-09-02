@@ -5,40 +5,91 @@
     <meta http-equiv="cache-control" content="no-cache"/>
     <meta http-equiv="pragma" content="no-cache"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link href="/css/style.min.css?v=e1be0c2" media="screen" rel="stylesheet" type="text/css"/>
-    <link href="/css/mobile.min.css?v=e1be0c2" media="handheld, only screen and (max-device-width: 960px)" rel="stylesheet" type="text/css"/>
+    
+
+
+
+<link   rel="stylesheet"
+        href="https://unwiredcouch.com/css/style.min.3509c9f0b39a60e84f85797f0a1b9edf3262ac31f178df54cce2ab569dd456a1.css"
+        integrity="sha256-NQnJ8LOaYOhPhXl/Chue3zJirDHxeN9UzOKrVp3UVqE="
+        type="text/css"
+        media="screen">
+
+<link   rel="stylesheet"
+        href="https://unwiredcouch.com/css/mobile.min.61224258b356807fea4fba3d47bfa9b900189e33d17678f5eba2ea860e517051.css"
+        integrity="sha256-YSJCWLNWgH/qT7o9R7&#43;puQAYnjPRdnj166Lqhg5RcFE="
+        type="text/css"
+        media="handheld, only screen and (max-device-width: 960px)">
+
     <link href="https://unwiredcouch.com/atom.xml" type="application/atom+xml" rel="alternate" title="unwiredcouch.feed" />
 
-    <title>plustache on unwiredcouch.com</title>
+    <title>writing on unwiredcouch.com</title>
   </head>
   <body>
 
     <header>
-      <a class="gravatar hidemobile" href="/">
-        <img src="https://www.gravatar.com/avatar/89e0ad1229121f46047977ac547bd7b4.jpg?s=100"
-             height="100" width="100" class="avatar" alt="gravatar image" />
-      </a>
-      <div id="intro">
-        <p>Hi! I'm <a href="/about.html">Daniel</a>.</p>
-        <p>I like
-        <a href="/">writing</a>,
-        <a href="https://www.instagram.com/mrtazz/">drawing</a>,
-        <a href="https://twitter.com/mrtazz">tweeting</a>,
-        <a href="/talks">sometimes give talks</a>,
-        and <a href="http://code.mrtazz.com">occasionally write code</a>.
-        </p>
-      </div>
-    </header>
+  <a class="gravatar hidemobile" href="/">
+    <img
+      src="https://www.gravatar.com/avatar/89e0ad1229121f46047977ac547bd7b4.jpg?s=100"
+      height="50" width="50" class="avatar" alt="gravatar image" />
+  </a>
+  <div id="intro">
+    <ul>
+      <li><a href="/posts">Writing</a></li>
+      <li><a href="https://www.instagram.com/mrtazz/">Drawing</a></li>
+      <li><a href="/talks">Talks</a></li>
+      <li><a href="https://github.com/mrtazz">Code</a></li>
+      <li><a href="/setup/">Setup</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/imprint.html">Contact</a></li>
+    </ul>
+  </div>
+</header>
 
-    <div id="content">
-            <div class="post">
+
+    <main>
+    
+
+<div class="postdateheading"> Apr 21, 2010 </div>
+
+      <div class="post">
         <h2> <a href=""> plustache </a></h2>
 
-<p>Some time ago I discovered <span class="citation" data-cites="defunkt">[@defunkt's]</span><span class="citation" data-cites="defunkt">[@defunkt]</span> logic less ruby templating system [mustache][mustache]. I instantly liked it because of its simplicity, independence from any frameworks and admittingly also because of the name. After having seen many implementations in [python][pystache], [JavaScript][mustache.js] and even [Erlang][mustache.erl] and [node.js][mustache.node] I decided to also port it to a new language. Since I am doing some C++ at work at the moment and I wanted to deepen my knowledge in some non-work related projects anyway, the decision was practically made. So I fired up my trusty [text editor][macvim] and hacked away. After some weeks of creating the build system, deciding how to do regular expressions and unit tests, basic mustache tags, true/false and inverted sections are working, as well as basic HTML esacping.</p>
-<p>The results can be seen on [github][plustache] and at the moment I am working on getting to a point where I am satisfied enough with the code to tag it v0.1.0. I am excited to port mustache to a more static language and challenge the difficulties of still keeping it simple. And I am even more excited about how this mustache thing will evolve.</p>
-<p><span class="citation" data-cites="defunkt">[@defunkt]</span>: http://twitter.com/defunkt [mustache]: http://mustache.github.com [pystache]: http://github.com/defunkt/pystache [mustache.js]: http://github.com/janl/mustache.js [mustache.erl]: http://github.com/mojombo/mustache.erl [mustache.node]: http://github.com/raycmorgan/Mu [macvim]: http://code.google.com/p/macvim/ [plustache]: http://github.com/mrtazz/plustache</p>
+        <p>Some time ago I discovered [@defunkt&rsquo;s][@defunkt] logic less
+ruby templating system [mustache][mustache]. I instantly
+liked it because of its simplicity, independence from any frameworks
+and admittingly also because of the name. After having seen many
+implementations in [python][pystache],
+[JavaScript][mustache.js] and even [Erlang][mustache.erl] and
+[node.js][mustache.node] I decided to also port it to a new language.
+Since I am doing some C++ at work at the moment and I wanted to deepen
+my knowledge in some non-work related projects anyway, the decision was
+practically made. So I fired up my trusty
+[text editor][macvim] and hacked away.
+After some weeks of creating the build system, deciding how to do regular
+expressions and unit tests, basic mustache tags, true/false and inverted sections
+are working, as well as basic HTML esacping.</p>
+<p>The results can be seen on
+[github][plustache] and at the moment I am working on
+getting to a point where I am satisfied enough with the code to tag it v0.1.0.
+I am excited to port mustache to a more static language and challenge the
+difficulties of still keeping it simple. And I am even more excited about how this
+mustache thing will evolve.</p>
+<p>[plustache_post]: {{ page.url }}
+[@defunkt]: <a href="http://twitter.com/defunkt">http://twitter.com/defunkt</a>
+[mustache]: <a href="http://mustache.github.com">http://mustache.github.com</a>
+[pystache]: <a href="http://github.com/defunkt/pystache">http://github.com/defunkt/pystache</a>
+[mustache.js]: <a href="http://github.com/janl/mustache.js">http://github.com/janl/mustache.js</a>
+[mustache.erl]: <a href="http://github.com/mojombo/mustache.erl">http://github.com/mojombo/mustache.erl</a>
+[mustache.node]: <a href="http://github.com/raycmorgan/Mu">http://github.com/raycmorgan/Mu</a>
+[macvim]: <a href="http://code.google.com/p/macvim/">http://code.google.com/p/macvim/</a>
+[plustache]: <a href="http://github.com/mrtazz/plustache">http://github.com/mrtazz/plustache</a></p>
+
 
       </div>
-    </div>
+
+
+    </main>
+
   </body>
 </html>

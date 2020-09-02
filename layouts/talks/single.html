@@ -1,0 +1,58 @@
+{{ define "main" }}
+<div class="post talk">
+  <h2> {{ .Title }} </br>
+    <span class="talkbyline"> presented at <a href="{{ .Params.conf.url }}">
+        {{ .Params.conf.location }} </a> on {{ .Params.conf.date }} </span> </h2>
+  <div class="abstract talksection">
+    <h3> Abstract </h3>
+    <p>
+    {{ .Params.abstract }}
+    </p>
+  </div>
+  {{ if .Params.dataid }}
+  <div class="slides talksection">
+    <h3> Slides </h3>
+    <div class="center">
+      <script async class="speakerdeck-embed"
+      data-id="{{ .Params.dataid }}"
+      {{ if .Params.dataratio }}
+      data-ratio="{{ .Params.dataratio }}"
+      {{ else }}
+      data-ratio="1.3333333333333333333333"
+      {{ end }}
+      src="//speakerdeck.com/assets/embed.js"></script>
+    </div>
+  </div>
+  {{ end }}
+  {{ if .Params.youtube }}
+  <div class="video talksection">
+    <h3> Video </h3>
+    <div class="center">
+      <iframe  width="560" height="315" src="//www.youtube.com/embed/{{ .Params.youtube }}"
+        frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+  {{ end }}
+  {{ if .Params.vimeo }}
+  <div class="video talksection">
+    <h3> Video </h3>
+    <div class="center">
+      <iframe src="//player.vimeo.com/video/{{ .Params.vimeo }}?portrait=0" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
+  </div>
+  {{ end }}
+  {{ if .Params.infoq }}
+  <div class="video talksection">
+    <h3> <a href="{{ .Params.infoq }}"> Link to video</a> </h3>
+  </div>
+  {{ end }}
+  <div class="links talksection">
+    <h3> Links </h3>
+    <ul class="talklinks">
+    {{ range .Params.links }}
+    <li><a href="{{ .url }}">{{ .name }}</a></li>
+    {{ end }}
+  </ul>
+  </div>
+</div>
+{{ end }}

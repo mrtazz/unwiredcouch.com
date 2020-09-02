@@ -1,20 +1,54 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-    <head>
-        <meta charset="utf-8"/>
-        <meta http-equiv="cache-control" content="no-cache"/>
-        <meta http-equiv="pragma" content="no-cache"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <link href="/css/style.min.css?v=e1be0c2" media="screen" rel="stylesheet" type="text/css"/>
-        <link href="/css/mobile.min.css?v=e1be0c2" media="handheld, only screen and (max-device-width: 960px)" rel="stylesheet" type="text/css"/>
-        <link href="https://unwiredcouch.com/atom.xml" type="application/atom+xml" rel="alternate" title="unwiredcouch.feed" />
-        <title>Human Factors and PostMortems on unwiredcouch.com</title>
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="cache-control" content="no-cache"/>
+    <meta http-equiv="pragma" content="no-cache"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    
 
-    </head>
 
-    <body>
-            <div id="content">
 
+<link   rel="stylesheet"
+        href="https://unwiredcouch.com/css/style.min.3509c9f0b39a60e84f85797f0a1b9edf3262ac31f178df54cce2ab569dd456a1.css"
+        integrity="sha256-NQnJ8LOaYOhPhXl/Chue3zJirDHxeN9UzOKrVp3UVqE="
+        type="text/css"
+        media="screen">
+
+<link   rel="stylesheet"
+        href="https://unwiredcouch.com/css/mobile.min.61224258b356807fea4fba3d47bfa9b900189e33d17678f5eba2ea860e517051.css"
+        integrity="sha256-YSJCWLNWgH/qT7o9R7&#43;puQAYnjPRdnj166Lqhg5RcFE="
+        type="text/css"
+        media="handheld, only screen and (max-device-width: 960px)">
+
+    <link href="https://unwiredcouch.com/atom.xml" type="application/atom+xml" rel="alternate" title="unwiredcouch.feed" />
+
+    <title>writing on unwiredcouch.com</title>
+  </head>
+  <body>
+
+    <header>
+  <a class="gravatar hidemobile" href="/">
+    <img
+      src="https://www.gravatar.com/avatar/89e0ad1229121f46047977ac547bd7b4.jpg?s=100"
+      height="50" width="50" class="avatar" alt="gravatar image" />
+  </a>
+  <div id="intro">
+    <ul>
+      <li><a href="/posts">Writing</a></li>
+      <li><a href="https://www.instagram.com/mrtazz/">Drawing</a></li>
+      <li><a href="/talks">Talks</a></li>
+      <li><a href="https://github.com/mrtazz">Code</a></li>
+      <li><a href="/setup/">Setup</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/imprint.html">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+
+    <main>
+    
 <div class="post talk">
   <h2> Human Factors and PostMortems </br>
     <span class="talkbyline"> presented at <a href="http://www.continuouslifecycle.de">
@@ -22,32 +56,58 @@
   <div class="abstract talksection">
     <h3> Abstract </h3>
     <p>
-    <p>Our daily work takes place in a myriad of systems. They are comprised of software, hardware and humans. And everybody who has worked with complex systems at any scale knows: Failure is not an option, it’s inevitable.</p>
-    <p>At Etsy we are embracing the fact that failures happen and that the only way to understand how the accident happened is to investigate it without blaming the humans involved. This is why we have a blameless postmortem for every outage that occurs. It is an open meeting and everybody is invited to join and find out what happened and how we can make the system safer.</p>
-    <p>This talk will explain how postmortems at Etsy are conducted and how we maintain and scale the process as the team grows and new people start. It will go over the tools we built and utilize to make postmortems efficient and also share the learnings from each one with all the people in the company.</p>
+    Our daily work takes place in a myriad of systems. They are
+comprised of software, hardware and humans. And everybody who has worked with
+complex systems at any scale knows: Failure is not an option, it&#39;s inevitable.
+
+At Etsy we are embracing the fact that failures happen and that the only way
+to understand how the accident happened is to investigate it without blaming
+the humans involved. This is why we have a blameless postmortem for every
+outage that occurs. It is an open meeting and everybody is invited to join and
+find out what happened and how we can make the system safer.
+
+This talk will explain how postmortems at Etsy are conducted and how we
+maintain and scale the process as the team grows and new people start. It will
+go over the tools we built and utilize to make postmortems efficient and also
+share the learnings from each one with all the people in the company.
+
     </p>
   </div>
-    <div class="slides talksection">
+  
+  <div class="slides talksection">
     <h3> Slides </h3>
     <div class="center">
       <script async class="speakerdeck-embed"
       data-id="f56ea7204bc40132e12d4643cc84daf4"
-            data-ratio="1.77777777777778"
-            src="//speakerdeck.com/assets/embed.js"></script>
+      
+      data-ratio="1.77777777777778"
+      
+      src="//speakerdeck.com/assets/embed.js"></script>
     </div>
   </div>
-          <div class="links talksection">
+  
+  
+  
+  
+  <div class="links talksection">
     <h3> Links </h3>
-    <ul class="nobullet">
-        <li><a href="https://codeascraft.com/2012/05/22/blameless-postmortems/"> Blameless PostMortems and a Just Culture </a></li>
-        <li><a href="http://vimeo.com/77206751"> Morgue: Helping Better Understand Events by Building a Post Mortem Tool (video) </a></li>
-        <li><a href="http://www.slideshare.net/devopsdays/morgue-helping-better-understand-events-by-building-a-post-mortem-tool-bethany-macri"> Morgue: Helping Better Understand Events by Building a Post Mortem Tool </a></li>
-        <li><a href="http://codeascraft.com"> Etsy Engineering Blog </a></li>
-        <li><a href="http://etsy.com/codeascraft/talks"> Etsy Engineering Talks </a></li>
-      </ul>
+    <ul class="talklinks">
+    
+    <li><a href="https://codeascraft.com/2012/05/22/blameless-postmortems/">Blameless PostMortems and a Just Culture</a></li>
+    
+    <li><a href="http://vimeo.com/77206751">Morgue: Helping Better Understand Events by Building a Post Mortem Tool (video)</a></li>
+    
+    <li><a href="http://www.slideshare.net/devopsdays/morgue-helping-better-understand-events-by-building-a-post-mortem-tool-bethany-macri">Morgue: Helping Better Understand Events by Building a Post Mortem Tool</a></li>
+    
+    <li><a href="http://codeascraft.com">Etsy Engineering Blog</a></li>
+    
+    <li><a href="http://etsy.com/codeascraft/talks">Etsy Engineering Talks</a></li>
+    
+  </ul>
   </div>
 </div>
 
-            </div>
-    </body>
+    </main>
+
+  </body>
 </html>

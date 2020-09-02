@@ -5,44 +5,105 @@
     <meta http-equiv="cache-control" content="no-cache"/>
     <meta http-equiv="pragma" content="no-cache"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link href="/css/style.min.css?v=e1be0c2" media="screen" rel="stylesheet" type="text/css"/>
-    <link href="/css/mobile.min.css?v=e1be0c2" media="handheld, only screen and (max-device-width: 960px)" rel="stylesheet" type="text/css"/>
+    
+
+
+
+<link   rel="stylesheet"
+        href="https://unwiredcouch.com/css/style.min.3509c9f0b39a60e84f85797f0a1b9edf3262ac31f178df54cce2ab569dd456a1.css"
+        integrity="sha256-NQnJ8LOaYOhPhXl/Chue3zJirDHxeN9UzOKrVp3UVqE="
+        type="text/css"
+        media="screen">
+
+<link   rel="stylesheet"
+        href="https://unwiredcouch.com/css/mobile.min.61224258b356807fea4fba3d47bfa9b900189e33d17678f5eba2ea860e517051.css"
+        integrity="sha256-YSJCWLNWgH/qT7o9R7&#43;puQAYnjPRdnj166Lqhg5RcFE="
+        type="text/css"
+        media="handheld, only screen and (max-device-width: 960px)">
+
     <link href="https://unwiredcouch.com/atom.xml" type="application/atom+xml" rel="alternate" title="unwiredcouch.feed" />
 
-    <title>Testing couchapps with cucumber on unwiredcouch.com</title>
+    <title>writing on unwiredcouch.com</title>
   </head>
   <body>
 
     <header>
-      <a class="gravatar hidemobile" href="/">
-        <img src="https://www.gravatar.com/avatar/89e0ad1229121f46047977ac547bd7b4.jpg?s=100"
-             height="100" width="100" class="avatar" alt="gravatar image" />
-      </a>
-      <div id="intro">
-        <p>Hi! I'm <a href="/about.html">Daniel</a>.</p>
-        <p>I like
-        <a href="/">writing</a>,
-        <a href="https://www.instagram.com/mrtazz/">drawing</a>,
-        <a href="https://twitter.com/mrtazz">tweeting</a>,
-        <a href="/talks">sometimes give talks</a>,
-        and <a href="http://code.mrtazz.com">occasionally write code</a>.
-        </p>
-      </div>
-    </header>
+  <a class="gravatar hidemobile" href="/">
+    <img
+      src="https://www.gravatar.com/avatar/89e0ad1229121f46047977ac547bd7b4.jpg?s=100"
+      height="50" width="50" class="avatar" alt="gravatar image" />
+  </a>
+  <div id="intro">
+    <ul>
+      <li><a href="/posts">Writing</a></li>
+      <li><a href="https://www.instagram.com/mrtazz/">Drawing</a></li>
+      <li><a href="/talks">Talks</a></li>
+      <li><a href="https://github.com/mrtazz">Code</a></li>
+      <li><a href="/setup/">Setup</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/imprint.html">Contact</a></li>
+    </ul>
+  </div>
+</header>
 
-    <div id="content">
-            <div class="post">
+
+    <main>
+    
+
+<div class="postdateheading"> Dec 30, 2010 </div>
+
+      <div class="post">
         <h2> <a href=""> Testing couchapps with cucumber </a></h2>
 
-<h3 id="couchapps-overview">Couchapps overview</h3>
-<p><a href="http://couchapp.org">Couchapps</a> are a great way to build web apps hosted directly on a CouchDB. This is due to the integrated HTTP server, so if you can fit your application into the constraints of HTML/CSS/JavaScript, you get the storage (almost) for free. The heart of couchapps is <a href="http://couchapp.org/page/evently">evently</a>, a JavaScript framework simplifying the development of event based web applications. The development process is accompanied by the <a href="https://github.com/couchapp/couchapp">couchapp python script</a>, which maps a certain directory structure to the evently application layout. This makes it easy to develop the source code, which is normally stored as attachments in the design document, in your favourite editor. However this difference in how the application is developed and how it is deployed, makes it a bit more difficult to automatically test the application.</p>
+        <h3 id="couchapps-overview">Couchapps overview</h3>
+<p>[Couchapps][2] are a great way to build web apps hosted directly on a
+CouchDB. This is due to the integrated HTTP server, so if you can
+fit your application into the constraints of HTML/CSS/JavaScript, you
+get the storage (almost) for free. The heart of couchapps is [evently][3],
+a JavaScript framework simplifying the development of event based web
+applications. The development process is accompanied by the
+[couchapp python script][4], which maps a certain directory structure
+to the evently application layout. This makes it easy to develop the source
+code, which is normally stored as attachments in the design document, in your
+favourite editor.  However this difference in how the application is developed
+and how it is deployed, makes it a bit more difficult to automatically test the
+application.</p>
 <h3 id="enter-cucumber">Enter cucumber</h3>
-<p>Fortunately the ruby world has provided us with a great tool for acceptance testing web applications: <a href="http://cukes.info">Cucumber</a>. Cucumber is a testing framework, which encourages <a href="http://en.wikipedia.org/wiki/Behavior_Driven_Development">BDD</a> style development. It features different drivers for (headless) browser testing and supports an easy, natural language like, syntax for creating tests (scenarios as they are called in BDD world). If you don’t use it already, give it a try, it is really great. However to fully embrace an automated testing approach we need some helpers to do additional work, for example create and destroy the testing environments.</p>
+<p>Fortunately the ruby world has provided us with a great tool for
+acceptance testing web applications: [Cucumber][5]. Cucumber is a
+testing framework, which encourages [BDD][6] style development. It
+features different drivers for (headless) browser testing and supports
+an easy, natural language like, syntax for creating tests (scenarios as they
+are called in BDD world). If you don&rsquo;t use it already, give it a try, it is
+really great. However to fully embrace an automated testing approach we need
+some helpers to do additional work, for example create and destroy the
+testing environments.</p>
 <h3 id="we-have-the-technology-we-can-make-him-stronger">We have the technology, we can make him stronger</h3>
-<p>The first problem was the CouchDB native authentication db used by couchapps to profit from the already existing user management. Fortunately there is <a href="http://lenaherrmann.net/2010/04/29/security-in-couchdb-changing-the-authentication-db">a way</a> to change the db used for authentication to an arbitrary one. The next nice-to-have is an easy setup for choosing databases for different environments like tests. Fortunately rails already provides a clean setup for this, which we can copy. Now we only have to bundle a <a href="https://gist.github.com/738128">simple CouchDB library</a> and some helper methods and we are ready to go. This is what <a href="https://github.com/mrtazz/couchapp-cucumber">couchapp-cucumber</a> is about. I bundled all these steps as a simple cucumber drop-in. I’m sure it can be improved in a lot of ways.</p>
-<h3 id="so-fork-it.-hack-away.-and-happy-testing.">So fork it. Hack away. And happy testing.</h3>
+<p>The first problem was the CouchDB native authentication db used by couchapps to
+profit from the already existing user management. Fortunately there is [a
+way][7] to change the db used for authentication to an arbitrary one. The next
+nice-to-have is an easy setup for choosing databases for different environments
+like tests. Fortunately rails already provides a clean setup for this, which we
+can copy. Now we only have to bundle a [simple CouchDB library][8] and some
+helper methods and we are ready to go.  This is what [couchapp-cucumber][9] is
+about. I bundled all these steps as a simple cucumber drop-in. I&rsquo;m sure it can
+be improved in a lot of ways.</p>
+<h3 id="so-fork-it-hack-away-and-happy-testing">So fork it. Hack away. And happy testing.</h3>
+<p>[1]: {{ page.url }}
+[2]: <a href="http://couchapp.org">http://couchapp.org</a>
+[3]: <a href="http://couchapp.org/page/evently">http://couchapp.org/page/evently</a>
+[4]: <a href="https://github.com/couchapp/couchapp">https://github.com/couchapp/couchapp</a>
+[5]: <a href="http://cukes.info">http://cukes.info</a>
+[6]: <a href="http://en.wikipedia.org/wiki/Behavior_Driven_Development">http://en.wikipedia.org/wiki/Behavior_Driven_Development</a>
+[7]: <a href="http://lenaherrmann.net/2010/04/29/security-in-couchdb-changing-the-authentication-db">http://lenaherrmann.net/2010/04/29/security-in-couchdb-changing-the-authentication-db</a>
+[8]: <a href="https://gist.github.com/738128">https://gist.github.com/738128</a>
+[9]: <a href="https://github.com/mrtazz/couchapp-cucumber">https://github.com/mrtazz/couchapp-cucumber</a></p>
+
 
       </div>
-    </div>
+
+
+    </main>
+
   </body>
 </html>

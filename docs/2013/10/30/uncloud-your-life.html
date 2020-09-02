@@ -5,60 +5,215 @@
     <meta http-equiv="cache-control" content="no-cache"/>
     <meta http-equiv="pragma" content="no-cache"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link href="/css/style.min.css?v=e1be0c2" media="screen" rel="stylesheet" type="text/css"/>
-    <link href="/css/mobile.min.css?v=e1be0c2" media="handheld, only screen and (max-device-width: 960px)" rel="stylesheet" type="text/css"/>
+    
+
+
+
+<link   rel="stylesheet"
+        href="https://unwiredcouch.com/css/style.min.3509c9f0b39a60e84f85797f0a1b9edf3262ac31f178df54cce2ab569dd456a1.css"
+        integrity="sha256-NQnJ8LOaYOhPhXl/Chue3zJirDHxeN9UzOKrVp3UVqE="
+        type="text/css"
+        media="screen">
+
+<link   rel="stylesheet"
+        href="https://unwiredcouch.com/css/mobile.min.61224258b356807fea4fba3d47bfa9b900189e33d17678f5eba2ea860e517051.css"
+        integrity="sha256-YSJCWLNWgH/qT7o9R7&#43;puQAYnjPRdnj166Lqhg5RcFE="
+        type="text/css"
+        media="handheld, only screen and (max-device-width: 960px)">
+
     <link href="https://unwiredcouch.com/atom.xml" type="application/atom+xml" rel="alternate" title="unwiredcouch.feed" />
 
-    <title>Uncloud your Life on unwiredcouch.com</title>
+    <title>writing on unwiredcouch.com</title>
   </head>
   <body>
 
     <header>
-      <a class="gravatar hidemobile" href="/">
-        <img src="https://www.gravatar.com/avatar/89e0ad1229121f46047977ac547bd7b4.jpg?s=100"
-             height="100" width="100" class="avatar" alt="gravatar image" />
-      </a>
-      <div id="intro">
-        <p>Hi! I'm <a href="/about.html">Daniel</a>.</p>
-        <p>I like
-        <a href="/">writing</a>,
-        <a href="https://www.instagram.com/mrtazz/">drawing</a>,
-        <a href="https://twitter.com/mrtazz">tweeting</a>,
-        <a href="/talks">sometimes give talks</a>,
-        and <a href="http://code.mrtazz.com">occasionally write code</a>.
-        </p>
-      </div>
-    </header>
+  <a class="gravatar hidemobile" href="/">
+    <img
+      src="https://www.gravatar.com/avatar/89e0ad1229121f46047977ac547bd7b4.jpg?s=100"
+      height="50" width="50" class="avatar" alt="gravatar image" />
+  </a>
+  <div id="intro">
+    <ul>
+      <li><a href="/posts">Writing</a></li>
+      <li><a href="https://www.instagram.com/mrtazz/">Drawing</a></li>
+      <li><a href="/talks">Talks</a></li>
+      <li><a href="https://github.com/mrtazz">Code</a></li>
+      <li><a href="/setup/">Setup</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/imprint.html">Contact</a></li>
+    </ul>
+  </div>
+</header>
 
-    <div id="content">
-            <div class="post">
+
+    <main>
+    
+
+<div class="postdateheading"> Oct 30, 2013 </div>
+
+      <div class="post">
         <h2> <a href=""> Uncloud your Life </a></h2>
 
-<p>There has been a lot of talk lately about privacy in the cloud and owning your own data. I’m not linking any articles here, since there are so many and I don’t think anyone has missed it. However it spurred a new and awesome debate about hosting your own applications and thinking about where your data is stored and who manages it. I have thought about writing this for a while and always felt there wasn’t enough to write about. But in the spirit of sharing and getting back into writing I decided to do it nonetheless.</p>
-<p>The setup I’m describing has grown pretty organically and is heavily based on what I use and how I work everyday. This is also probably a bit too technical to be considered a general purpose manual. But that will have to do for now. I am also a heavy FreeBSD user, as it makes a lot of things easier and more enjoyable for me. So my setup is also very biased towards that.</p>
+        <p>There has been a lot of talk lately about privacy in the cloud and owning
+your own data. I&rsquo;m not linking any articles here, since there are so many
+and I don&rsquo;t think anyone has missed it. However it spurred a new and awesome
+debate about hosting your own applications and thinking about where your data
+is stored and who manages it. I have thought about writing this for a while
+and always felt there wasn&rsquo;t enough to write about. But in the spirit of
+sharing and getting back into writing I decided to do it nonetheless.</p>
+<p>The setup I&rsquo;m describing has grown pretty organically and is heavily based on
+what I use and how I work everyday. This is also probably a bit too technical
+to be considered a general purpose manual. But that will have to do for now. I
+am also a heavy FreeBSD user, as it makes a lot of things easier and more
+enjoyable for me. So my setup is also very biased towards that.</p>
 <h3 id="email">Email</h3>
-<p>Maybe one of the most important parts is email. I switched from hosted email providers to self hosted (first on a friend’s server) in 2005, when the 12MB Inbox I had wasn’t big enough anymore and before GMail was widely available in Germany (at least I only knew one person with a GMail account back then). So nothing has changed for me there. I also think email is considered to be one of the more painful things to self host although I don’t think this is true. I run a setup based on <a href="http://www.freebsd.org">FreeBSD</a>, <a href="http://www.sendmail.com/sm/open_source/">sendmail</a> and the <a href="http://www.dovecot.org">Dovecot IMAP server</a> which is not very complicated to set up. Especially the FreeBSD/sendmail part literally takes 10 minutes. I don’t really run spam filtering since it hasn’t been a problem (I do filter some known spam addresses in my procmail rules though). I read my email in <a href="http://www.mutt.org">mutt</a> on the laptop where it is synced with <a href="http://offlineimap.org">offlineimap</a> and also run mutt in a tmux session on my mailserver to access it from anywhere. On iOS devices I use the built-in Mail application and have come to love <a href="http://www.triage.cc">Triage</a> for quickly going through email when I have a minute.</p>
+<p>Maybe one of the most important parts is email. I switched from hosted email
+providers to self hosted (first on a friend&rsquo;s server) in 2005, when the 12MB
+Inbox I had wasn&rsquo;t big enough anymore and before GMail was widely available in
+Germany (at least I only knew one person with a GMail account back then). So
+nothing has changed for me there. I also think email is considered to be one
+of the more painful things to self host although I don&rsquo;t think this is true. I
+run a setup based on <a href="http://www.freebsd.org">FreeBSD</a>, <a href="http://www.sendmail.com/sm/open_source/">sendmail</a> and the <a href="http://www.dovecot.org">Dovecot
+IMAP server</a> which is not very complicated to set up. Especially the
+FreeBSD/sendmail part literally takes 10 minutes. I don&rsquo;t really run spam
+filtering since it hasn&rsquo;t been a problem (I do filter some known spam
+addresses in my procmail rules though). I read my email in <a href="http://www.mutt.org">mutt</a> on the
+laptop where it is synced with <a href="http://offlineimap.org">offlineimap</a> and also run mutt in
+a tmux session on my mailserver to access it from anywhere. On iOS devices I
+use the built-in Mail application and have come to love <a href="http://www.triage.cc">Triage</a> for
+quickly going through email when I have a minute.</p>
 <h3 id="calendars-and-contacts">Calendars and Contacts</h3>
-<p>Another very important aspect of my daily synced data are calendars and contacts. Especially with the iPhone and iPad being in constant use, I want that data to be synced everywhere. I used to use iCloud for that and it works beautifully and I wanted something which works equally flawless. After some trial and error I found <a href="http://owncloud.org">ownCloud</a> which provides CalDav and CardDav services as well as general WebDAV. The setup guides are really good and include most of the common clients. I nevertheless ran into some problems with the initial setup on iOS and OSX clients because of when and where they expect slashes or protocol headers. However this is a configuration/documentation issue, which is annoying but can be solved.</p>
+<p>Another very important aspect of my daily synced data are calendars and
+contacts. Especially with the iPhone and iPad being in constant use, I want
+that data to be synced everywhere. I used to use iCloud for that and it works
+beautifully and I wanted something which works equally flawless. After some
+trial and error I found <a href="http://owncloud.org">ownCloud</a> which provides CalDav and CardDav
+services as well as general WebDAV. The setup guides are really good and
+include most of the common clients. I nevertheless ran into some problems
+with the initial setup on iOS and OSX clients because of when and where they
+expect slashes or protocol headers. However this is a
+configuration/documentation issue, which is annoying but can be solved.</p>
 <h3 id="file-sync">File sync</h3>
-<p>I used to use <a href="http://dropbox.com">Dropbox</a> a lot. I loved the simplicity and being able to have files in sync everywhere. I even put my git repos in there at some point so I could continue working from every computer I used. With time I used it less and less as I simplified my workflows a lot but it was still important to have a proper file sync solution, mostly for convenince options like syncing <a href="http://www.alfredapp.com">Alfred</a> preferences. But I wanted to get all my documents out of a location that somebody else had under control. Thankfully ownCloud also comes with a client to sync the WebDAV directory between computers. So I basically set that up and copied everything over from Dropbox. It has been working really well so far, though I don’t have heavy requirements for syncing and files in there don’t change that often.</p>
+<p>I used to use <a href="http://dropbox.com">Dropbox</a> a lot. I loved the simplicity and being able
+to have files in sync everywhere. I even put my git repos in there at some
+point so I could continue working from every computer I used. With time I used
+it less and less as I simplified my workflows a lot but it was still important
+to have a proper file sync solution, mostly for convenince options like
+syncing <a href="http://www.alfredapp.com">Alfred</a> preferences. But I wanted to get all my documents out
+of a location that somebody else had under control. Thankfully ownCloud also
+comes with a client to sync the WebDAV directory between computers. So I
+basically set that up and copied everything over from Dropbox. It has been
+working really well so far, though I don&rsquo;t have heavy requirements for syncing
+and files in there don&rsquo;t change that often.</p>
 <h3 id="gtdtodo-tracking">GTD/Todo tracking</h3>
-<p>I track everything in <a href="http://www.omnigroup.com/omnifocus">OmniFocus</a>. Literally. Work stuff, personal stuff, movies I want to watch, books I want to read, it pulls in GitHub issues and Jira tickets that are assigned to me, I plan blog posts I want to write and talks I want to give in there. I extensively use custom perspectives to get data out. It’s safe to say that it’s an important piece of software for me. Luckily Omni products support syncing via WebDAV and have been for a while. Thus it was very easy to switch from the hosted Omni Sync Server, which works flawlessly, to just use WebDAV endpoint of ownCloud. I have since also looked around to find out if there are alternatives to OmniFocus if I ever wanted to switch away from OSX. Sadly it seems to be that self hosting is rarely an option for any app and I have only found a handful that even provided a synchronisation mechanism that does not involve DropBox, Apple or their own cloud sync solution.</p>
+<p>I track everything in <a href="http://www.omnigroup.com/omnifocus">OmniFocus</a>. Literally. Work stuff, personal
+stuff, movies I want to watch, books I want to read, it pulls in GitHub issues
+and Jira tickets that are assigned to me, I plan blog posts I want to write
+and talks I want to give in there. I extensively use custom perspectives to
+get data out. It&rsquo;s safe to say that it&rsquo;s an important piece of software for
+me. Luckily Omni products support syncing via WebDAV and have been for a
+while. Thus it was very easy to switch from the hosted Omni Sync Server, which
+works flawlessly, to just use WebDAV endpoint of ownCloud. I have since also
+looked around to find out if there are alternatives to OmniFocus if I ever
+wanted to switch away from OSX. Sadly it seems to be that self hosting is
+rarely an option for any app and I have only found a handful that even
+provided a synchronisation mechanism that does not involve DropBox, Apple or
+their own cloud sync solution.</p>
 <h3 id="note-taking">Note taking</h3>
-<p>Note taking was also an important part that had to continue to work for me. I don’t take a lot of notes all the time. But when I need to jot something down, it must not matter whether I’m on my phone or in VIM on my laptop. I was a very happy <a href="http://simplenote.com">Simplenote</a> customer and still think it’s the best cloud based note taking platform there is. I even wrote a <a href="https://github.com/mrtazz/simplenote.vim">VIM plugin</a> for it so I’d never have to leave my trusty editor. This also meant a solution that would replace it needed a decent iOS client, notes I can access from VIM, support for Markdown and a syncing engine that is ideally based on WebDAV, since I was already running that. And after some searching I actually found this unicorn of note taking solutions. It’s simply called <a href="http://www.notebooksapp.com">Notebooks</a> and it’s a simple app that displays the folders and files in a WebDav directory, let’s you edit text files and view them in Markdown mode. And even take and attach pictures. It comes as a Universal App for iPhone and iPad and has an OSX client in a beta version, which I don’t use because I can just edit all the files in VIM. Which makes me very happy.</p>
+<p>Note taking was also an important part that had to continue to work for me. I
+don&rsquo;t take a lot of notes all the time. But when I need to jot something down,
+it must not matter whether I&rsquo;m on my phone or in VIM on my laptop. I was a
+very happy <a href="http://simplenote.com">Simplenote</a> customer and still think it&rsquo;s the best
+cloud based note taking platform there is. I even wrote a <a href="https://github.com/mrtazz/simplenote.vim">VIM
+plugin</a> for it so I&rsquo;d never have to leave my trusty editor.
+This also meant a solution that would replace it needed a decent iOS client,
+notes I can access from VIM, support for Markdown and a syncing engine that is
+ideally based on WebDAV, since I was already running that. And after some
+searching I actually found this unicorn of note taking solutions. It&rsquo;s simply
+called <a href="http://www.notebooksapp.com">Notebooks</a> and it&rsquo;s a simple app that displays the folders
+and files in a WebDav directory, let&rsquo;s you edit text files and view them in
+Markdown mode. And even take and attach pictures. It comes as a Universal App
+for iPhone and iPad and has an OSX client in a beta version, which I don&rsquo;t use
+because I can just edit all the files in VIM. Which makes me very happy.</p>
 <h3 id="password-syncing">Password syncing</h3>
-<p>The only application I haven’t found a satisfying self hosted solution yet is password syncing. I use <a href="https://agilebits.com/onepassword">1Password</a> and am very happy with it. However the only non-LAN solutions for syncing that it provides are Dropbox and iCloud. So I switched to Wi-fi sync for my passwords. It’s not ideal and there will come a point where I am on my iPad and don’t have a password there and am too lazy to open the laptop to sync. However since all passwords for my crucial services are already synced this won’t be the end of the world and can very likely wait until I am on a nother device or have both the laptop and the iPad open. So I’m not 100% happy with it but it is one of those “good enough” solutions.</p>
+<p>The only application I haven&rsquo;t found a satisfying self hosted solution yet is
+password syncing. I use <a href="https://agilebits.com/onepassword">1Password</a> and am very happy with it.
+However the only non-LAN solutions for syncing that it provides are Dropbox
+and iCloud. So I switched to Wi-fi sync for my passwords. It&rsquo;s not ideal and
+there will come a point where I am on my iPad and don&rsquo;t have a password there
+and am too lazy to open the laptop to sync. However since all passwords for
+my crucial services are already synced this won&rsquo;t be the end of the world and
+can very likely wait until I am on a nother device or have both the laptop and
+the iPad open. So I&rsquo;m not 100% happy with it but it is one of those &ldquo;good
+enough&rdquo; solutions.</p>
 <h3 id="irc-and-instant-messaging">IRC and Instant Messaging</h3>
-<p>Being able to idle on IRC and have a proper chat client at hand everywhere has always been important to me and for that I have run terminal based clients in a screen or tmux session for years now. Since I (similarly to email) never used any of the cloud based solutions, I was already running <a href="http://wiki.znc.in/ZNC">ZNC</a> and <a href="http://www.bitlbee.org/main.php/news.r.html">Bitlbee</a>. And since the changes in GTalk earlier this year which broke a lot of stuff for me, I also already had a <a href="http://web.jabber.ccc.de">Jabber account</a> which I was using for chat and OTR.</p>
+<p>Being able to idle on IRC and have a proper chat client at hand everywhere has
+always been important to me and for that I have run terminal based clients in
+a screen or tmux session for years now. Since I (similarly to email) never
+used any of the cloud based solutions, I was already running <a href="http://wiki.znc.in/ZNC">ZNC</a> and
+<a href="http://www.bitlbee.org/main.php/news.r.html">Bitlbee</a>. And since the changes in GTalk earlier this year which
+broke a lot of stuff for me, I also already had a <a href="http://web.jabber.ccc.de">Jabber account</a>
+which I was using for chat and OTR.</p>
 <h3 id="backup">Backup</h3>
-<p>How to handle backups was one of the bigger concerns I had. Now that I would be hosting all my data I needed a proper plan so when one of my servers dies I’m not losing everything that was on there. Like probably almost every Mac user, I used to use <a href="http://www.haystacksoftware.com/arq/">Arq</a> to backup my laptop to an encrypted S3 bucket. However that was only ever the client side. And I was happy with it because it included my mail folder and thus I had a backup of my email. And when I stopped using that to not push all my date to S3 I also didn’t backup my email anymore. After some thought it was clear to me that I wanted to have a backup in a location with as much control as possible. I decided to buy an <a href="http://www8.hp.com/us/en/products/proliant-servers/product-detail.html?oid=5336619#!tab=features">HP Microserver</a> and put it in my apartment. It runs FreeBSD (surprise!) and has a 2x2TB encrypted ZFS RAID. The backup location for each of my machines on that RAID is an independent filesystem so I can snapshot it regularly and go back in time if I have to. The server pulls in data from my servers via rsync and that’s how I do backups. It’s less automated than I want it to be right now and I still have to configure it to server as a TimeMachine destination for my laptop. But this is already a pretty good solution for me.</p>
+<p>How to handle backups was one of the bigger concerns I had. Now that I would
+be hosting all my data I needed a proper plan so when one of my servers dies
+I&rsquo;m not losing everything that was on there. Like probably almost every Mac
+user, I used to use <a href="http://www.haystacksoftware.com/arq/">Arq</a> to backup my laptop to an encrypted S3 bucket.
+However that was only ever the client side. And I was happy with it because
+it included my mail folder and thus I had a backup of my email. And when I
+stopped using that to not push all my date to S3 I also didn&rsquo;t backup my email
+anymore. After some thought it was clear to me that I wanted to have a backup
+in a location with as much control as possible. I decided to buy an <a href="http://www8.hp.com/us/en/products/proliant-servers/product-detail.html?oid=5336619#!tab=features">HP
+Microserver</a> and put it in my apartment. It runs FreeBSD
+(surprise!) and has a 2x2TB encrypted ZFS RAID. The backup location for each
+of my machines on that RAID is an independent filesystem so I can snapshot it
+regularly and go back in time if I have to. The server pulls in data from my
+servers via rsync and that&rsquo;s how I do backups. It&rsquo;s less automated than I want
+it to be right now and I still have to configure it to server as a TimeMachine
+destination for my laptop. But this is already a pretty good solution for me.</p>
 <h3 id="where-i-still-use-the-cloud">Where I still use the cloud</h3>
-<p>I’ve extensively talked about how I moved my data into self hosted applications and what I use for those use cases. However that doesn’t mean that I’m completely free of cloud based applications. Obviously there are a variety of applications that don’t support this yet or where it’s not even something that would work without changing the product a lot. That means I still use Dropbox to sync <a href="http://www.papersapp.com">Papers</a> or automatically pull in pictures from Instagram. Since Google Reader died I switched to <a href="https://feedbin.me">Feedbin</a> and have no intention to stop using it, I have my Kindle books at Amazon, my music in the iTunes Cloud, I use a variety of infrastructure software as a service to <a href="http://www.unwiredcouch.com/2012/09/15/getting-started-with-monitoring.html">monitor my servers</a> and I run my <a href="https://github.com/roidrage/s3itch">public image sharing</a> and <a href="https://github.com/mrtazz/katana">custom URL shortener</a> on S3 and Heroku and this blog on GitHub Pages. The difference for me is, that most of this data I don’t necessarily regard as private as the ones I pulled into my own hosting. I will probably experiment with how I can do some of this on my own in the future, but it is less important to me right now.</p>
+<p>I&rsquo;ve extensively talked about how I moved my data into self hosted
+applications and what I use for those use cases. However that doesn&rsquo;t mean
+that I&rsquo;m completely free of cloud based applications. Obviously there are a
+variety of applications that don&rsquo;t support this yet or where it&rsquo;s not even
+something that would work without changing the product a lot. That means I
+still use Dropbox to sync <a href="http://www.papersapp.com">Papers</a> or automatically pull in pictures
+from Instagram. Since Google Reader died I switched to <a href="https://feedbin.me">Feedbin</a> and
+have no intention to stop using it, I have my Kindle books at Amazon, my music
+in the iTunes Cloud, I use a variety of infrastructure software as a service
+to <a href="http://www.unwiredcouch.com/2012/09/15/getting-started-with-monitoring.html">monitor my servers</a> and I run my <a href="https://github.com/roidrage/s3itch">public image
+sharing</a> and <a href="https://github.com/mrtazz/katana">custom URL shortener</a> on S3 and Heroku and
+this blog on GitHub Pages. The difference for me is, that most of this data I
+don&rsquo;t necessarily regard as private as the ones I pulled into my own hosting.
+I will probably experiment with how I can do some of this on my own in the
+future, but it is less important to me right now.</p>
 <h3 id="why-are-you-telling-me-all-this">Why are you telling me all this?</h3>
-<p>As I said in the first section, this is not considered a manual of how to host your own data. While I try to keep my <a href="https://github.com/mrtazz/cookbooks">Chef cookbooks</a> for this stuff up to date, they are very custom tailored and probably not of great use for everybody. If you want to get started and host your own data, I highly recommend checking out <a href="https://github.com/al3x/sovereign">Alex Payne’s Sovereign Project</a>. It’s an Ansible project which installs a lot of the things I’ve been talking about here and is definitely much easier to get started with. I do hope though I was able to share some ideas and make hosting your own data sound a little less scary.</p>
-<p>I also realize that even with an easy to get started guide and a collection of Chef recipes this is not something every person can run and you need some understanding of (and tolerance for) running your own services. There has been some work going on for some time to make it easier to host your own services and even have decentralized applications. The newest one I am aware of is called <a href="http://decentralize.it">Grand Decentral Station</a> and looks very promising. I would love to see some of these ideas flourish and be pushed forward. And maybe have a future in which we can not only pay people to run services for us, but also to develop services we can run ourselves as easy as it is to set up a TV or a Roomba today.</p>
+<p>As I said in the first section, this is not considered a manual of how to host
+your own data. While I try to keep my <a href="https://github.com/mrtazz/cookbooks">Chef cookbooks</a> for this
+stuff up to date, they are very custom tailored and probably not of great use
+for everybody. If you want to get started and host your own data, I highly
+recommend checking out <a href="https://github.com/al3x/sovereign">Alex Payne&rsquo;s Sovereign Project</a>. It&rsquo;s an
+Ansible project which installs a lot of the things I&rsquo;ve been talking about
+here and is definitely much easier to get started with. I do hope though I was
+able to share some ideas and make hosting your own data sound a little less
+scary.</p>
+<p>I also realize that even with an easy to get started guide and a collection of
+Chef recipes this is not something every person can run and you need some
+understanding of (and tolerance for) running your own services. There has been
+some work going on for some time to make it easier to host your own services
+and even have decentralized applications. The newest one I am aware of is
+called <a href="http://decentralize.it">Grand Decentral Station</a> and looks very promising. I
+would love to see some of these ideas flourish and be pushed forward. And
+maybe have a future in which we can not only pay people to run services for
+us, but also to develop services we can run ourselves as easy as it is to set
+up a TV or a Roomba today.</p>
+
 
       </div>
-    </div>
+
+
+    </main>
+
   </body>
 </html>
