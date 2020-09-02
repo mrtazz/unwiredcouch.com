@@ -6,6 +6,8 @@
     <description>Recent content in My Setups on unwiredcouch.com</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
+    <managingEditor>d@unwiredcouch.com (Daniel Schauenberg)</managingEditor>
+    <webMaster>d@unwiredcouch.com (Daniel Schauenberg)</webMaster>
     
 	<atom:link href="https://unwiredcouch.com/setup/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +16,7 @@
       <title>How I vim</title>
       <link>https://unwiredcouch.com/setup/vim/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
       <guid>https://unwiredcouch.com/setup/vim/</guid>
       <description>This is an interview I did for &amp;ldquo;How I vim&amp;rdquo; and was originally published here.</description>
     </item>
@@ -23,7 +25,7 @@
       <title>My Coffee Setup</title>
       <link>https://unwiredcouch.com/setup/coffee/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
       <guid>https://unwiredcouch.com/setup/coffee/</guid>
       <description>In early 2011 I had finished university (again) and decided that I didn&amp;rsquo;t want to drink bad coffee anymore.</description>
     </item>
@@ -32,7 +34,7 @@
       <title>My Omnifocus Setup</title>
       <link>https://unwiredcouch.com/setup/omnifocus/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
       <guid>https://unwiredcouch.com/setup/omnifocus/</guid>
       <description>At this point it&amp;rsquo;s pretty fair to say that OmniFocus rules my life.</description>
     </item>
