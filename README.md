@@ -6,7 +6,7 @@ NonCommercial NoDerivs license][3].
 
 All code is licensed under the MIT license:
 
-  Copyright (c) 2014 Daniel Schauenberg
+  Copyright (c) 2020 Daniel Schauenberg
 
   Permission is hereby granted, free of charge, to any person obtaining
   a copy of this software and associated documentation files (the
@@ -28,14 +28,12 @@ All code is licensed under the MIT license:
   WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ## Executing:
-  To make files you will need to install [Pandoc][4], go and
-  [sass][5].
+  To make files you will need to install [hugo][4].
 
   Once everything is installed simply run
-  `make all` and subsequently `make serve`
+  `make build` and subsequently `make serve`
 
 [1]: http://unwiredcouch.com
 [2]: http://creativecommons.org/licenses/by/3.0/
 [3]: https://creativecommons.org/licenses/by-nc-nd/3.0/
-[4]: http://pandoc.org/installing.html
-[5]: https://sass-lang.com
+[4]: https://gohugo.io/

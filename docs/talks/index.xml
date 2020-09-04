@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Talks on unwiredcouch.com</title>
+    <link>https://unwiredcouch.com/talks/</link>
+    <description>Recent content in Talks on unwiredcouch.com</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>d@unwiredcouch.com (Daniel Schauenberg)</managingEditor>
+    <webMaster>d@unwiredcouch.com (Daniel Schauenberg)</webMaster>
+    <lastBuildDate>Wed, 14 Jan 2015 00:00:00 +0000</lastBuildDate><atom:link href="https://unwiredcouch.com/talks/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Road to Success is paved with Small Improvements</title>
+      <link>https://unwiredcouch.com/talks/uspto2015/</link>
+      <pubDate>Wed, 14 Jan 2015 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/talks/uspto2015/</guid>
+      <description></description>
+    <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Human Factors and PostMortems</title>
+      <link>https://unwiredcouch.com/talks/human-factors-postmortems/</link>
+      <pubDate>Tue, 11 Nov 2014 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/talks/human-factors-postmortems/</guid>
+      <description></description>
+    <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Culture: the invisible ingredient</title>
+      <link>https://unwiredcouch.com/talks/culture-panel/</link>
+      <pubDate>Mon, 10 Nov 2014 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/talks/culture-panel/</guid>
+      <description></description>
+    <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Deploy, Collaborate and Listen</title>
+      <link>https://unwiredcouch.com/talks/deploy-collaborate-listen/</link>
+      <pubDate>Thu, 06 Nov 2014 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/talks/deploy-collaborate-listen/</guid>
+      <description></description>
+    <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>DevOps - Jetzt aber richtig</title>
+      <link>https://unwiredcouch.com/talks/wjax2014-panel/</link>
+      <pubDate>Wed, 05 Nov 2014 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/talks/wjax2014-panel/</guid>
+      <description></description>
+    <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Data Driven Monitoring</title>
+      <link>https://unwiredcouch.com/talks/data-driven-monitoring/</link>
+      <pubDate>Thu, 09 Oct 2014 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/talks/data-driven-monitoring/</guid>
+      <description></description>
+    <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Development, Deployment &amp; Collaboration at Etsy</title>
+      <link>https://unwiredcouch.com/talks/collaboration-amsterdam/</link>
+      <pubDate>Thu, 19 Jun 2014 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/talks/collaboration-amsterdam/</guid>
+      <description></description>
+    <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Mobile CI at Etsy</title>
+      <link>https://unwiredcouch.com/talks/mobile-ci-amsterdam/</link>
+      <pubDate>Thu, 19 Jun 2014 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/talks/mobile-ci-amsterdam/</guid>
+      <description></description>
+    <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Releasing at Scale</title>
+      <link>https://unwiredcouch.com/talks/releasing-at-scale/</link>
+      <pubDate>Fri, 30 May 2014 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/talks/releasing-at-scale/</guid>
+      <description></description>
+    <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>A Whirlwind Tour of the Etsy Monitoring Stack</title>
+      <link>https://unwiredcouch.com/talks/etsy-monitoring/</link>
+      <pubDate>Tue, 06 May 2014 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/talks/etsy-monitoring/</guid>
+      <description></description>
+    <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Co-Workers as Customers</title>
+      <link>https://unwiredcouch.com/talks/coworkers-as-customers/</link>
+      <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/talks/coworkers-as-customers/</guid>
+      <description></description>
+    <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Development, Deployment &amp; Collaboration at Etsy</title>
+      <link>https://unwiredcouch.com/talks/collaboration-london/</link>
+      <pubDate>Wed, 05 Mar 2014 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/talks/collaboration-london/</guid>
+      <description></description>
+    <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Scaling Deployments at Etsy</title>
+      <link>https://unwiredcouch.com/talks/scaling-deployments-cdnyc/</link>
+      <pubDate>Wed, 09 Oct 2013 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/talks/scaling-deployments-cdnyc/</guid>
+      <description></description>
+    <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Feature Flagging your Infrastructure for Fun and Profit</title>
+      <link>https://unwiredcouch.com/talks/infrastructure-feature-flags/</link>
+      <pubDate>Tue, 10 Sep 2013 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/talks/infrastructure-feature-flags/</guid>
+      <description></description>
+    <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Devtools at Etsy</title>
+      <link>https://unwiredcouch.com/talks/devtools-at-etsy/</link>
+      <pubDate>Mon, 27 May 2013 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/talks/devtools-at-etsy/</guid>
+      <description></description>
+    <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Scaling Deployments at Etsy</title>
+      <link>https://unwiredcouch.com/talks/scaling-deployments-scaleconf/</link>
+      <pubDate>Thu, 18 Apr 2013 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/talks/scaling-deployments-scaleconf/</guid>
+      <description></description>
+    <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>StatsD Workshop</title>
+      <link>https://unwiredcouch.com/talks/statsd-workshop/</link>
+      <pubDate>Fri, 29 Mar 2013 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/talks/statsd-workshop/</guid>
+      <description></description>
+    <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Chef Workflow at Etsy</title>
+      <link>https://unwiredcouch.com/talks/chef-workflow/</link>
+      <pubDate>Tue, 29 Jan 2013 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/talks/chef-workflow/</guid>
+      <description></description>
+    <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+    
+  </channel>
+</rss>
