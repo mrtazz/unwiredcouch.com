@@ -11,9 +11,9 @@
   
 	<entry>
     <title type="html"><![CDATA[The Fallacy of needing a technical manager]]></title>
-    <published>2019-11-19T00:00:00+0000</published>
-    <updated>2019-11-19T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2019/11/19/technical-manager.html</id>
+    <published>2019-11-19T00:00:00Z</published>
+    <updated>2019-11-19T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2019/11/19/technical-manager.html</id>
     <content type="html"><![CDATA[<p>One of the things I’ve come across most in my career in technology (and one that still persists) is the belief that as an engineer, your manager (or coach) needs to be fairly technical as well. Or at least it being a huge advantage if they are. And even though this might seem like a logical thing initially, most of the times I’ve seen that being actually the case were edge cases. In most other cases it’s been not particularly helpful or even harmful.</p>
 <p>First let&rsquo;s get this part out of the way: here are the scenarios where I’ve seen having a technical manager being a big advantage:</p>
 <ol>
@@ -34,9 +34,9 @@
   
 	<entry>
     <title type="html"><![CDATA[Pen and Paper]]></title>
-    <published>2019-07-05T00:00:00+0000</published>
-    <updated>2019-07-05T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2019/07/05/pen-and-paper.html</id>
+    <published>2019-07-05T00:00:00Z</published>
+    <updated>2019-07-05T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2019/07/05/pen-and-paper.html</id>
     <content type="html"><![CDATA[<p>A couple of years ago I went from working in an office to working remote mostly
 from home. A couple of months in I realized how my productivity had dropped
 significantly. For years everything I had to do and most of the planning around
@@ -174,9 +174,9 @@ joy for me.</p>
   
 	<entry>
     <title type="html"><![CDATA[Factors of Confidence]]></title>
-    <published>2019-04-02T00:00:00+0000</published>
-    <updated>2019-04-02T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2019/04/02/factors-of-confidence.html</id>
+    <published>2019-04-02T00:00:00Z</published>
+    <updated>2019-04-02T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2019/04/02/factors-of-confidence.html</id>
     <content type="html"><![CDATA[<p>I&rsquo;ve been having a lot of discussions about delivery of software lately and
 especially about the deployment part of it. This made me think about the last
 couple of years of working on deployment and development tooling and the
@@ -250,9 +250,9 @@ really enjoyed our chat.</p>
   
 	<entry>
     <title type="html"><![CDATA[Capacity planning for Etsy’s web and API clusters]]></title>
-    <published>2018-10-23T00:00:00+0000</published>
-    <updated>2018-10-23T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2018/10/23/capacity-planning-etsy.html</id>
+    <published>2018-10-23T00:00:00Z</published>
+    <updated>2018-10-23T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2018/10/23/capacity-planning-etsy.html</id>
     <content type="html"><![CDATA[<p>I wrote about how we do capacity planning for our web and API clusters on
 Etsy&rsquo;s <a href="https://codeascraft.com">engineering blog</a>. You can find the post <a href="https://codeascraft.com/2018/10/23/capacity-planning-for-etsys-web-and-api-tiers/">here</a>.</p>
 ]]></content>
@@ -261,9 +261,9 @@ Etsy&rsquo;s <a href="https://codeascraft.com">engineering blog</a>. You can fin
   
 	<entry>
     <title type="html"><![CDATA[Learning to have an engineering vision]]></title>
-    <published>2018-01-03T00:00:00+0000</published>
-    <updated>2018-01-03T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2018/01/03/engineering-vision.html</id>
+    <published>2018-01-03T00:00:00Z</published>
+    <updated>2018-01-03T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2018/01/03/engineering-vision.html</id>
     <content type="html"><![CDATA[<p>Saying that the last 18 months or so were stressful and full of changes would
 be a colossal understatement. Work wise I switched to a new team after over 4
 years on the same team, which was then dismantled as part of a big structural
@@ -393,9 +393,9 @@ nice to do.</p>
   
 	<entry>
     <title type="html"><![CDATA[Make and Go for Fun and Profit]]></title>
-    <published>2016-05-31T00:00:00+0000</published>
-    <updated>2016-05-31T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2016/05/31/go-make.html</id>
+    <published>2016-05-31T00:00:00Z</published>
+    <updated>2016-05-31T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2016/05/31/go-make.html</id>
     <content type="html"><![CDATA[<p>I&rsquo;ve been somewhat interested in Go for quite a while now. It&rsquo;s gotten to the
 point where it has replaced Ruby for me in those places where I write command
 line utilities which are too involved for them to make sense to be a shell
@@ -618,9 +618,9 @@ super nice to use structure :)</p>
   
 	<entry>
     <title type="html"><![CDATA[Optimize for Mutability and the Present]]></title>
-    <published>2016-05-02T00:00:00+0000</published>
-    <updated>2016-05-02T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2016/05/02/mutability-present.html</id>
+    <published>2016-05-02T00:00:00Z</published>
+    <updated>2016-05-02T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2016/05/02/mutability-present.html</id>
     <content type="html"><![CDATA[<p>I recently read <a href="https://twitter.com/lusis">John Vincent&rsquo;s</a> very interesting and honest blog post
 about <a href="http://blog.lusis.org/blog/2016/04/28/the-flaw-in-all-things/">being paralyzed because of seeing all the flaws in
 systems</a>. At first I decided to just put it away as it&rsquo;s not
@@ -714,9 +714,9 @@ when it feels most like a flaw.</p>
   
 	<entry>
     <title type="html"><![CDATA[Bash Unit Testing from First Principles]]></title>
-    <published>2016-04-13T00:00:00+0000</published>
-    <updated>2016-04-13T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2016/04/13/bash-unit-testing-101.html</id>
+    <published>2016-04-13T00:00:00Z</published>
+    <updated>2016-04-13T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2016/04/13/bash-unit-testing-101.html</id>
     <content type="html"><![CDATA[<p>In the last couple of months I&rsquo;ve done a foray into unit testing the shell
 scripts I write. This is mostly a conglomerate of things I&rsquo;ve learned and a
 talk I&rsquo;ve given to our ops team about unit testing 101 for infrastructure
@@ -881,9 +881,9 @@ fun.</p>
   
 	<entry>
     <title type="html"><![CDATA[I don&#39;t like Breaking Things]]></title>
-    <published>2016-03-18T00:00:00+0000</published>
-    <updated>2016-03-18T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2016/03/18/breaking-things.html</id>
+    <published>2016-03-18T00:00:00Z</published>
+    <updated>2016-03-18T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2016/03/18/breaking-things.html</id>
     <content type="html"><![CDATA[<p>I don&rsquo;t like breaking things. I never have. I hate it. When I was a kid and we
 got our first computer I was completely <a href="https://twitter.com/mrtazz/statuses/611190610964430848">afraid of breaking
 it</a>. It was a super expensive item at the time and I had no
@@ -963,9 +963,9 @@ be proud of.</p>
   
 	<entry>
     <title type="html"><![CDATA[Take Pride in Your Code]]></title>
-    <published>2016-01-12T00:00:00+0000</published>
-    <updated>2016-01-12T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2016/01/12/coding-pride.html</id>
+    <published>2016-01-12T00:00:00Z</published>
+    <updated>2016-01-12T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2016/01/12/coding-pride.html</id>
     <content type="html"><![CDATA[<p>If you&rsquo;re working as a software engineer, you have very likely already heard
 about <a href="https://en.wikipedia.org/wiki/Egoless_programming">&lsquo;egoless programming&rsquo;</a>. The notion that you should detach your
 code from your ego. That criticizing your code is not a personal attack and
@@ -1198,9 +1198,9 @@ of.</p>
   
 	<entry>
     <title type="html"><![CDATA[My 2015 Reading List]]></title>
-    <published>2015-12-31T00:00:00+0000</published>
-    <updated>2015-12-31T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2015/12/31/reading-list.html</id>
+    <published>2015-12-31T00:00:00Z</published>
+    <updated>2015-12-31T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2015/12/31/reading-list.html</id>
     <content type="html"><![CDATA[<p>This year has been really good for reading for me. Starting off from <a href="https://unwiredcouch.com/2014/12/31/reading-list.html">last year&rsquo;s list</a> and the 5-ish books I read in 2014, I made it to 16
 this year. Some of them were very short but nonetheless an improvement. One of my goals for 2015 was to read more and I definitely managed to accomplish
 that. My goal for 2016 is to read more than 20 books. If you&rsquo;re interested in
@@ -1416,9 +1416,9 @@ the internet.</p>
   
 	<entry>
     <title type="html"><![CDATA[Chef Driven Graphite Dashboards]]></title>
-    <published>2015-12-17T00:00:00+0000</published>
-    <updated>2015-12-17T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2015/12/17/chef-driven-dashboards.html</id>
+    <published>2015-12-17T00:00:00Z</published>
+    <updated>2015-12-17T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2015/12/17/chef-driven-dashboards.html</id>
     <content type="html"><![CDATA[<p>Some years ago <a href="https://unwiredcouch.com/2012/09/15/getting-started-with-monitoring.html">I wrote about</a> how to use Heroku and a set of
 hosted solutions for getting started with monitoring for your personal
 infrastructure. I used this set up for quite a while and I learned a ton
@@ -1662,9 +1662,9 @@ before.</p>
   
 	<entry>
     <title type="html"><![CDATA[Timeouts And Reflections]]></title>
-    <published>2015-11-20T00:00:00+0000</published>
-    <updated>2015-11-20T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2015/11/20/timeouts-reflections.html</id>
+    <published>2015-11-20T00:00:00Z</published>
+    <updated>2015-11-20T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2015/11/20/timeouts-reflections.html</id>
     <content type="html"><![CDATA[<p>I love <a href="https://unwiredcouch.com/setup/coffee/">coffee</a>. I really do. And yet I haven&rsquo;t had any for 4 days now. The
 first day was rough, I got the headaches that everybody will tell you about
 when it comes to the topic of caffeine withdrawal symptoms. The second day was
@@ -1752,9 +1752,9 @@ drink it.</p>
   
 	<entry>
     <title type="html"><![CDATA[How I prepare for and give conference talks]]></title>
-    <published>2015-09-25T00:00:00+0000</published>
-    <updated>2015-09-25T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2015/09/25/talk-prep.html</id>
+    <published>2015-09-25T00:00:00Z</published>
+    <updated>2015-09-25T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2015/09/25/talk-prep.html</id>
     <content type="html"><![CDATA[<p>I thoroughly enjoy reading about how other people do their work, tackle
 problems, find productivity, and prepare for talks. So this is my contribution
 to this. Before I start however I want to acknowledge that this post is
@@ -2067,9 +2067,9 @@ of this and giving feedback</em></p>
   
 	<entry>
     <title type="html"><![CDATA[My Writing Workflow]]></title>
-    <published>2015-08-31T00:00:00+0000</published>
-    <updated>2015-08-31T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2015/08/31/writing-workflow.html</id>
+    <published>2015-08-31T00:00:00Z</published>
+    <updated>2015-08-31T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2015/08/31/writing-workflow.html</id>
     <content type="html"><![CDATA[<p>I love writing. A lot. It&rsquo;s one of the things that helps me the most with
 structuring thoughts and opinions I have. It&rsquo;s also invaluable for me to just
 brain dump things and see how I feel about them later. I&rsquo;ve come to really
@@ -2213,9 +2213,9 @@ it&rsquo;s one of the things I really really enjoy.</p>
   
 	<entry>
     <title type="html"><![CDATA[Practical Postmortems at Etsy]]></title>
-    <published>2015-08-22T00:00:00+0000</published>
-    <updated>2015-08-22T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2015/08/22/practical-postmortems-at-etsy.html</id>
+    <published>2015-08-22T00:00:00Z</published>
+    <updated>2015-08-22T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2015/08/22/practical-postmortems-at-etsy.html</id>
     <content type="html"><![CDATA[<p>I wrote an article on InfoQ about the way we conduct <a href="https://codeascraft.com/2012/05/22/blameless-postmortems/">Blameless
 Postmortems</a> at Etsy. You can check it out <a href="http://www.infoq.com/articles/postmortems-etsy">here</a>.</p>
 ]]></content>
@@ -2224,9 +2224,9 @@ Postmortems</a> at Etsy. You can check it out <a href="http://www.infoq.com/arti
   
 	<entry>
     <title type="html"><![CDATA[Adventures in Frontend Performance]]></title>
-    <published>2015-07-24T00:00:00+0000</published>
-    <updated>2015-07-24T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2015/07/24/frontend-performance.html</id>
+    <published>2015-07-24T00:00:00Z</published>
+    <updated>2015-07-24T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2015/07/24/frontend-performance.html</id>
     <content type="html"><![CDATA[<p>In my daily job I am far removed from being a frontend engineer. In a previous
 job I had spent months to optimize JavaScript to be small enough to be served
 by an <a href="http://dl.acm.org/citation.cfm?id=1582405">embedded microcontroller</a> (there&rsquo;s a certain irony in the
@@ -2327,9 +2327,9 @@ engineering.</p>
   
 	<entry>
     <title type="html"><![CDATA[Open Source Spring Cleaning]]></title>
-    <published>2015-07-09T00:00:00+0000</published>
-    <updated>2015-07-09T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2015/07/09/oss-spring-cleaning.html</id>
+    <published>2015-07-09T00:00:00Z</published>
+    <updated>2015-07-09T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2015/07/09/oss-spring-cleaning.html</id>
     <content type="html"><![CDATA[<p>I wrote about our plans to clean up our open source repositories and be good
 maintainers on Etsy&rsquo;s <a href="https://codeascraft.com">engineering blog</a>. You can find the post <a href="https://codeascraft.com/2015/07/09/open-source-spring-cleaning/">here</a>.</p>
 ]]></content>
@@ -2338,9 +2338,9 @@ maintainers on Etsy&rsquo;s <a href="https://codeascraft.com">engineering blog</
   
 	<entry>
     <title type="html"><![CDATA[Accounting: The Unix Way]]></title>
-    <published>2015-06-08T00:00:00+0000</published>
-    <updated>2015-06-08T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2015/06/08/accounting-the-unix-way.html</id>
+    <published>2015-06-08T00:00:00Z</published>
+    <updated>2015-06-08T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2015/06/08/accounting-the-unix-way.html</id>
     <content type="html"><![CDATA[<p>I&rsquo;m a big fan of simple tools and building blocks. A function of writing code
 every day for the last 10 years has been that I feel really comfortable with
 plain text files, vim and git. So whenever I can, I try to see if I can base
@@ -2476,9 +2476,9 @@ finances.</p>
   
 	<entry>
     <title type="html"><![CDATA[There&#39;s No Such Thing as No Project Management]]></title>
-    <published>2015-05-04T00:00:00+0000</published>
-    <updated>2015-05-04T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2015/05/04/project-management.html</id>
+    <published>2015-05-04T00:00:00Z</published>
+    <updated>2015-05-04T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2015/05/04/project-management.html</id>
     <content type="html"><![CDATA[<p>Project management. Every engineer seems to loathe the term and also what it
 describes. It has that word <em>management</em> in there. It&rsquo;s different than code.
 It&rsquo;s not code. So naturally whenever this comes up, all the engineers make a
@@ -2566,9 +2566,9 @@ life is so much more fun.</p>
   
 	<entry>
     <title type="html"><![CDATA[First month with the Spark Notebook]]></title>
-    <published>2015-03-18T00:00:00+0000</published>
-    <updated>2015-03-18T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2015/03/18/spark-notebook-omnifocus.html</id>
+    <published>2015-03-18T00:00:00Z</published>
+    <updated>2015-03-18T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2015/03/18/spark-notebook-omnifocus.html</id>
     <content type="html"><![CDATA[<p>When the <a href="http://www.thesparknotebook.com/">Spark Notebook</a> got announced on Kickstarter I was
 first a bit hesitant as I have struggled before balancing digital and paper
 notes. But nonetheless I still always felt something was missing from the way
@@ -2717,9 +2717,9 @@ definitely become <a href="https://twitter.com/mrtazz/status/577961903995113472"
   
 	<entry>
     <title type="html"><![CDATA[Deployment is Unix]]></title>
-    <published>2015-02-23T00:00:00+0000</published>
-    <updated>2015-02-23T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2015/02/23/deployment-is-unix.html</id>
+    <published>2015-02-23T00:00:00Z</published>
+    <updated>2015-02-23T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2015/02/23/deployment-is-unix.html</id>
     <content type="html"><![CDATA[<p>Over the last 3 years I&rsquo;ve worked a lot on <a href="https://github.com/etsy/deployinator">Etsy&rsquo;s deployment
 system</a> (we&rsquo;ve recently <a href="https://codeascraft.com/2015/02/20/re-introducing-deployinator-now-as-a-gem/">brought the Open Source version back
 into sync with our internal changes</a> and are running on the
@@ -2792,9 +2792,9 @@ putting them on a computer. Deployment is still UNIX.</p>
   
 	<entry>
     <title type="html"><![CDATA[You Shouldn&#39;t Have To Ask For Forgiveness]]></title>
-    <published>2015-02-04T00:00:00+0000</published>
-    <updated>2015-02-04T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2015/02/04/forgiveness.html</id>
+    <published>2015-02-04T00:00:00Z</published>
+    <updated>2015-02-04T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2015/02/04/forgiveness.html</id>
     <content type="html"><![CDATA[<p>A couple of days ago I was part of a private email thread about the popular
 Grace Hopper quote <a href="http://en.wikiquote.org/wiki/Grace_Hopper">&ldquo;It&rsquo;s easier to ask forgiveness than it is to get
 permission.&quot;</a> and the somewhat related <a href="https://medium.com/@katelosse/the-unbearable-whiteness-of-breaking-things-521cb394fda2">blog post</a> by <a href="https://twitter.com/katelosse">Kate
@@ -2864,9 +2864,9 @@ very likely a pretty narrow view on things.</p>
   
 	<entry>
     <title type="html"><![CDATA[You&#39;re building a Plant]]></title>
-    <published>2015-01-28T00:00:00+0000</published>
-    <updated>2015-01-28T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2015/01/28/building-a-plant.html</id>
+    <published>2015-01-28T00:00:00Z</published>
+    <updated>2015-01-28T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2015/01/28/building-a-plant.html</id>
     <content type="html"><![CDATA[<p>As an infrastructure engineer you&rsquo;re building a plant. Not literally of course
 but it&rsquo;s also not too far off. There are actually a lot of parallels to
 building a chemical plant. I used to work for a chemical company a couple of
@@ -2999,9 +2999,9 @@ being generally rad.</em></p>
   
 	<entry>
     <title type="html"><![CDATA[Learning to be On-Call]]></title>
-    <published>2015-01-06T00:00:00+0000</published>
-    <updated>2015-01-06T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2015/01/06/learning-on-call.html</id>
+    <published>2015-01-06T00:00:00Z</published>
+    <updated>2015-01-06T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2015/01/06/learning-on-call.html</id>
     <content type="html"><![CDATA[<p>I stumbled upon this great <a href="https://medium.com/@thematthewgreen/on-call-dont-be-scared-4eef4ff2928f">blog post about on-call</a> the other
 day. It&rsquo;s a great article and you should definitely go read it first. It
 prompted me to think about my own experience with being on-call and while I
@@ -3128,9 +3128,9 @@ which we grow.</p>
   
 	<entry>
     <title type="html"><![CDATA[2014 Reading List]]></title>
-    <published>2014-12-31T00:00:00+0000</published>
-    <updated>2014-12-31T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2014/12/31/reading-list.html</id>
+    <published>2014-12-31T00:00:00Z</published>
+    <updated>2014-12-31T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2014/12/31/reading-list.html</id>
     <content type="html"><![CDATA[<p>This year I tried again to keep up the flow of reading books. I&rsquo;m an awfully
 slow reader when it comes to books in general (not so much for blog posts
 interestingly) but I managed to read a handful of books and I wanted to share
@@ -3204,9 +3204,9 @@ next year. If not, it sure isn&rsquo;t because of a small Kindle backlog.</p>
   
 	<entry>
     <title type="html"><![CDATA[3 Simple Things that improved my Work-Life Balance]]></title>
-    <published>2014-12-15T00:00:00+0000</published>
-    <updated>2014-12-15T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2014/12/15/work-life-balance.html</id>
+    <published>2014-12-15T00:00:00Z</published>
+    <updated>2014-12-15T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2014/12/15/work-life-balance.html</id>
     <content type="html"><![CDATA[<p>These days productivity and work life balance are two parts of the holy grail
 of modern life for a lot of people. We have an abundance of projects, things
 to work on, things that interest us and distractions to keep us from doing all
@@ -3333,9 +3333,9 @@ about it!</p>
   
 	<entry>
     <title type="html"><![CDATA[Code Reviews Considered Awesome]]></title>
-    <published>2014-10-21T00:00:00+0000</published>
-    <updated>2014-10-21T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2014/10/21/code-review.html</id>
+    <published>2014-10-21T00:00:00Z</published>
+    <updated>2014-10-21T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2014/10/21/code-review.html</id>
     <content type="html"><![CDATA[<p>I think by now it is pretty much accepted that collaboration and working
 together is a lot better than assigning blame and yelling at each other. In
 the field of operating web services and infrastructure we have made the shift
@@ -3404,9 +3404,9 @@ organization and enjoyable work and programming environment.</p>
   
 	<entry>
     <title type="html"><![CDATA[My Rules for E-Mail Happiness]]></title>
-    <published>2014-08-29T00:00:00+0000</published>
-    <updated>2014-08-29T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2014/08/29/email-happiness.html</id>
+    <published>2014-08-29T00:00:00Z</published>
+    <updated>2014-08-29T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2014/08/29/email-happiness.html</id>
     <content type="html"><![CDATA[<p>Over the last couple of days and maybe weeks a lot of my friends, coworkers
 and most of all people I follow on twitter have been overly excited about the
 beta availability of <a href="http://www.mailboxapp.com">an e-mail client</a>. At first I was being
@@ -3508,9 +3508,9 @@ and they can be solved.</p>
   
 	<entry>
     <title type="html"><![CDATA[Bye Bye Fitbit]]></title>
-    <published>2014-08-21T00:00:00+0000</published>
-    <updated>2014-08-21T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2014/08/21/bye-bye-fitbit.html</id>
+    <published>2014-08-21T00:00:00Z</published>
+    <updated>2014-08-21T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2014/08/21/bye-bye-fitbit.html</id>
     <content type="html"><![CDATA[<p>About a year ago I decided that I had to do something about my fitness. Since
 moving to NYC about 1.5 years prior I went from having basketball training two
 to three times a week and a game on the weekend to basically not doing any
@@ -3585,9 +3585,9 @@ I can install on my own servers I would happily try it again. But for now it&rsq
   
 	<entry>
     <title type="html"><![CDATA[Human Error and Getting off the Hook]]></title>
-    <published>2014-08-04T00:00:00+0000</published>
-    <updated>2014-08-04T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2014/08/04/human-error-getting-off-the-hook.html</id>
+    <published>2014-08-04T00:00:00Z</published>
+    <updated>2014-08-04T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2014/08/04/human-error-getting-off-the-hook.html</id>
     <content type="html"><![CDATA[<p>I&rsquo;ve been interested in the field of human error and system safety for a while
 now. My original interest in it got sparked by talking to <a href="http://www.kitchensoap.com/">John
 Allspaw</a> and ultimately reading Sidney Dekker&rsquo;s <a href="http://amzn.com/0754648265">The Field Guide to
@@ -3732,9 +3732,9 @@ and Just Culture.</p>
   
 	<entry>
     <title type="html"><![CDATA[Computer Positivity]]></title>
-    <published>2014-05-21T00:00:00+0000</published>
-    <updated>2014-05-21T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2014/05/21/computers-are-awesome.html</id>
+    <published>2014-05-21T00:00:00Z</published>
+    <updated>2014-05-21T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2014/05/21/computers-are-awesome.html</id>
     <content type="html"><![CDATA[<p>Let&rsquo;s face it, we&rsquo;ve all been there, your database just decided to split
 brains, Linux just killed Apache on your web servers because another process
 was using a bit more memory, your app is broken because the type system of the
@@ -3812,9 +3812,9 @@ something new every day. And sometimes even feel almost
   
 	<entry>
     <title type="html"><![CDATA[How OmniFocus controls my life]]></title>
-    <published>2014-05-13T00:00:00+0000</published>
-    <updated>2014-05-13T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2014/05/13/omnifocus.html</id>
+    <published>2014-05-13T00:00:00Z</published>
+    <updated>2014-05-13T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2014/05/13/omnifocus.html</id>
     <content type="html"><![CDATA[<p>At this point it&rsquo;s pretty fair to say that <a href="http://www.omnigroup.com/omnifocus">OmniFocus</a> rules my life. I&rsquo;ve
 started to really take GTD seriously about 2 years ago. I had tried a lot of
 different task managers before of course. I loved <a href="https://culturedcode.com/things/">Things</a> when it
@@ -3988,9 +3988,9 @@ getting things done.</p>
   
 	<entry>
     <title type="html"><![CDATA[My 5 years of GitHub]]></title>
-    <published>2014-03-28T00:00:00+0000</published>
-    <updated>2014-03-28T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2014/03/28/5-years-github.html</id>
+    <published>2014-03-28T00:00:00Z</published>
+    <updated>2014-03-28T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2014/03/28/5-years-github.html</id>
     <content type="html"><![CDATA[<p>In early 2009 I was very much not the typical programmer. I had just spent 3
 years part time in what was basically systems administration during my
 undergrad and 1 year of <a href="http://en.wikipedia.org/wiki/Manufacturing_execution_system">trying to connect chemical production plants to
@@ -4083,9 +4083,9 @@ And I probably wouldn&rsquo;t be where I am now without it.</p>
   
 	<entry>
     <title type="html"><![CDATA[Git - Put the stupid back in stupid content tracker]]></title>
-    <published>2014-02-17T00:00:00+0000</published>
-    <updated>2014-02-17T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2014/02/17/git-stupid.html</id>
+    <published>2014-02-17T00:00:00Z</published>
+    <updated>2014-02-17T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2014/02/17/git-stupid.html</id>
     <content type="html"><![CDATA[<p>Git describes itself as a <a href="https://www.kernel.org/pub/software/scm/git/docs/">stupid content tracker</a>. While this
 was surely meant as a clever pun and an understatement, there is some truth to
 it. When you go to seek out workflows with git and try to understand how
@@ -4203,9 +4203,9 @@ simple.</p>
   
 	<entry>
     <title type="html"><![CDATA[My Tmux Setup]]></title>
-    <published>2013-11-15T00:00:00+0000</published>
-    <updated>2013-11-15T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2013/11/15/my-tmux-setup.html</id>
+    <published>2013-11-15T00:00:00Z</published>
+    <updated>2013-11-15T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2013/11/15/my-tmux-setup.html</id>
     <content type="html"><![CDATA[<p>I&rsquo;ve been using <a href="http://tmux.sourceforge.net">tmux</a> as my main terminal multiplexer for about 3 years
 now and have refined my configuration over time to fit my daily workflow.
 Which is usually a mix of writing code, chef recipes, remote login into
@@ -4368,9 +4368,9 @@ deep into terminal multiplexers and it still works like a charm.</p>
   
 	<entry>
     <title type="html"><![CDATA[Uncloud your Life]]></title>
-    <published>2013-10-30T00:00:00+0000</published>
-    <updated>2013-10-30T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2013/10/30/uncloud-your-life.html</id>
+    <published>2013-10-30T00:00:00Z</published>
+    <updated>2013-10-30T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2013/10/30/uncloud-your-life.html</id>
     <content type="html"><![CDATA[<p>There has been a lot of talk lately about privacy in the cloud and owning
 your own data. I&rsquo;m not linking any articles here, since there are so many
 and I don&rsquo;t think anyone has missed it. However it spurred a new and awesome
@@ -4530,9 +4530,9 @@ up a TV or a Roomba today.</p>
   
 	<entry>
     <title type="html"><![CDATA[Infrastructure upgrades with Chef]]></title>
-    <published>2013-08-02T00:00:00+0000</published>
-    <updated>2013-08-02T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2013/08/02/infrastructure-upgrades-with-chef.html</id>
+    <published>2013-08-02T00:00:00Z</published>
+    <updated>2013-08-02T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2013/08/02/infrastructure-upgrades-with-chef.html</id>
     <content type="html"><![CDATA[<p>I wrote about how we roll out infrastructure upgrades with Chef on Etsy&rsquo;s
 <a href="https://codeascraft.com">engineering blog</a>. You can find the post <a href="https://codeascraft.com/2013/08/02/infrastructure-upgrades-with-chef/">here</a>.</p>
 ]]></content>
@@ -4541,9 +4541,9 @@ up a TV or a Roomba today.</p>
   
 	<entry>
     <title type="html"><![CDATA[IRC notifications with logstash]]></title>
-    <published>2012-11-03T00:00:00+0000</published>
-    <updated>2012-11-03T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2012/11/03/irc-notifications-with-logstash.html</id>
+    <published>2012-11-03T00:00:00Z</published>
+    <updated>2012-11-03T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2012/11/03/irc-notifications-with-logstash.html</id>
     <content type="html"><![CDATA[<p>I have spent some time in the last weeks to learn more about
 <a href="http://logstash.net/">logstash</a> and used the kind of bad state of my IRC
 notifications as the fun side project to get into it. I now have a pretty
@@ -4768,9 +4768,9 @@ and not touch the config itself.</p>
   
 	<entry>
     <title type="html"><![CDATA[Getting started with monitoring on the cheap and easy]]></title>
-    <published>2012-09-15T00:00:00+0000</published>
-    <updated>2012-09-15T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2012/09/15/getting-started-with-monitoring.html</id>
+    <published>2012-09-15T00:00:00Z</published>
+    <updated>2012-09-15T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2012/09/15/getting-started-with-monitoring.html</id>
     <content type="html"><![CDATA[<p>This post started out as a writeup of tools and services I use to monitor my
 small (currently 3) set of personal servers. However thinking about it, it made
 more sense to me to structure it as a small guide on how to get started with
@@ -4867,9 +4867,9 @@ on FreeBSD but should be somewhat easy to adapt to a different environment.</p>
   
 	<entry>
     <title type="html"><![CDATA[Deploying Sensu monitoring on Heroku]]></title>
-    <published>2012-07-31T00:00:00+0000</published>
-    <updated>2012-07-31T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2012/07/31/deploy-sensu-heroku.html</id>
+    <published>2012-07-31T00:00:00Z</published>
+    <updated>2012-07-31T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2012/07/31/deploy-sensu-heroku.html</id>
     <content type="html"><![CDATA[<h3 id="sensu---trying-to-unsuck-monitoring">Sensu - trying to unsuck monitoring</h3>
 <p>Some months ago I wanted to set up monitoring for a handful of servers I use
 for personal stuff. As a first solution <a href="http://nagios.org">Nagios</a> came to mind. However for
@@ -4947,9 +4947,9 @@ it works pretty great so far.</p>
   
 	<entry>
     <title type="html"><![CDATA[Setting up workstations with Chef (Newbie Edition)]]></title>
-    <published>2011-08-25T00:00:00+0000</published>
-    <updated>2011-08-25T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2011/08/25/setting-up-workstations-with-chef-newbie-edition.html</id>
+    <published>2011-08-25T00:00:00Z</published>
+    <updated>2011-08-25T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2011/08/25/setting-up-workstations-with-chef-newbie-edition.html</id>
     <content type="html"><![CDATA[<p>I have wanted to reinstall and cleanly set up my iMac at home for some time
 now. And since there was a new release of Mac OS X around the corner, it seemed
 like the perfect opportunity to do so. All my past setups and reinstalls were
@@ -5201,9 +5201,9 @@ possibilities.</p>
   
 	<entry>
     <title type="html"><![CDATA[gtd-couch - GTD as a couchapp]]></title>
-    <published>2011-01-03T00:00:00+0000</published>
-    <updated>2011-01-03T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2011/01/03/gtd-couchgtd-as-a-couchapp.html</id>
+    <published>2011-01-03T00:00:00Z</published>
+    <updated>2011-01-03T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2011/01/03/gtd-couchgtd-as-a-couchapp.html</id>
     <content type="html"><![CDATA[<h3 id="why-another-gtd-app">Why another GTD app?</h3>
 <p>Over the last years I have tried a lot of task management applications. I was
 always trying to improve the status quo, where I forgot some things I wanted to
@@ -5288,9 +5288,9 @@ as I want to and host it where I want to.</p>
   
 	<entry>
     <title type="html"><![CDATA[Testing couchapps with cucumber]]></title>
-    <published>2010-12-30T00:00:00+0000</published>
-    <updated>2010-12-30T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2010/12/30/testing-couchapps-with-cucumber.html</id>
+    <published>2010-12-30T00:00:00Z</published>
+    <updated>2010-12-30T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2010/12/30/testing-couchapps-with-cucumber.html</id>
     <content type="html"><![CDATA[<h3 id="couchapps-overview">Couchapps overview</h3>
 <p>[Couchapps][2] are a great way to build web apps hosted directly on a
 CouchDB. This is due to the integrated HTTP server, so if you can
@@ -5340,9 +5340,9 @@ be improved in a lot of ways.</p>
   
 	<entry>
     <title type="html"><![CDATA[Introducing Ramrod Command Center]]></title>
-    <published>2010-09-19T00:00:00+0000</published>
-    <updated>2010-09-19T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2010/09/19/introducing-ramrod-command-center.html</id>
+    <published>2010-09-19T00:00:00Z</published>
+    <updated>2010-09-19T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2010/09/19/introducing-ramrod-command-center.html</id>
     <content type="html"><![CDATA[<p>I have [finally][2] registered my Master&rsquo;s thesis. This means in 6 month
 my university life is over and the hard and cruel reality begins. I am writing
 my thesis at the [Chair of Computer Networks][3] about localization of nodes
@@ -5383,9 +5383,9 @@ release v0.1.0 is already quite helpful and usable.</p>
   
 	<entry>
     <title type="html"><![CDATA[Chipping in on Textmate to Vim switching]]></title>
-    <published>2010-08-09T00:00:00+0000</published>
-    <updated>2010-08-09T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2010/08/09/vim.html</id>
+    <published>2010-08-09T00:00:00Z</published>
+    <updated>2010-08-09T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2010/08/09/vim.html</id>
     <content type="html"><![CDATA[<p>There was some buzz lately about people considering [Vim][2] as their main
 editor and especially going from [Textmate][3] to Vim. I&rsquo;ve tried several times to
 go the other way and leave vim as my editor of choice in favour of Textmate. It
@@ -5444,9 +5444,9 @@ learned.</p>
   
 	<entry>
     <title type="html"><![CDATA[Notifo]]></title>
-    <published>2010-07-11T00:00:00+0000</published>
-    <updated>2010-07-11T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2010/07/11/notifo.html</id>
+    <published>2010-07-11T00:00:00Z</published>
+    <updated>2010-07-11T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2010/07/11/notifo.html</id>
     <content type="html"><![CDATA[<p>[Notifo.com][notifo] is a web service which enables you to send push
 notifications to your mobile device (at the moment there is only support
 for the iPhone). This [blog post][notifo_announce] first called my attention
@@ -5479,9 +5479,9 @@ And I am very excited to see what else will be build upon this service.</p>
   
 	<entry>
     <title type="html"><![CDATA[Thunk.us Python wrapper]]></title>
-    <published>2010-06-04T00:00:00+0000</published>
-    <updated>2010-06-04T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2010/06/04/thunk-us.html</id>
+    <published>2010-06-04T00:00:00Z</published>
+    <updated>2010-06-04T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2010/06/04/thunk-us.html</id>
     <content type="html"><![CDATA[<p>Lately I have become more and more interested in APIs (especially on the web).
 As a first manifestation of this interest I converted the simple python script
 to add articles to [instapaper][instapaper] I wrote some time ago into a usable
@@ -5511,9 +5511,9 @@ and if you dislike something about it: [Fork me!][thunkus_github]</p>
   
 	<entry>
     <title type="html"><![CDATA[Where&#39;s ma ketchup?]]></title>
-    <published>2010-05-31T00:00:00+0000</published>
-    <updated>2010-05-31T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2010/05/31/ketchupstatus.html</id>
+    <published>2010-05-31T00:00:00Z</published>
+    <updated>2010-05-31T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2010/05/31/ketchupstatus.html</id>
     <content type="html"><![CDATA[<p>At our office mondays are special. This is the one day Bobby drives his
 good old trailer to the parking lot of the supermarket next to the office and sells
 chicken and fries.
@@ -5538,9 +5538,9 @@ on [heroku][ketchup_heroku] if you want to check it out. But you can also fork i
   
 	<entry>
     <title type="html"><![CDATA[instapaperlib]]></title>
-    <published>2010-05-20T00:00:00+0000</published>
-    <updated>2010-05-20T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2010/05/20/instapaperlib.html</id>
+    <published>2010-05-20T00:00:00Z</published>
+    <updated>2010-05-20T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2010/05/20/instapaperlib.html</id>
     <content type="html"><![CDATA[<p>For some time now <a href="http://instapaper.com">instapaper.com</a> is one of the web services I use most.
 Together with the iPhone application it is the perfect storage place for articles and
 blog posts you get via RSS, twitter or from anywhere else. Whenever I don&rsquo;t have time
@@ -5558,9 +5558,9 @@ install use <a href="http://pypi.python.org/pypi/instapaperlib/0.2.0">PyPi</a>.<
   
 	<entry>
     <title type="html"><![CDATA[plustache]]></title>
-    <published>2010-04-21T00:00:00+0000</published>
-    <updated>2010-04-21T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2010/04/21/plustache.html</id>
+    <published>2010-04-21T00:00:00Z</published>
+    <updated>2010-04-21T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2010/04/21/plustache.html</id>
     <content type="html"><![CDATA[<p>Some time ago I discovered [@defunkt&rsquo;s][@defunkt] logic less
 ruby templating system [mustache][mustache]. I instantly
 liked it because of its simplicity, independence from any frameworks
@@ -5596,9 +5596,9 @@ mustache thing will evolve.</p>
   
 	<entry>
     <title type="html"><![CDATA[Almost Endless Screen Real Estate]]></title>
-    <published>2009-12-24T00:00:00+0000</published>
-    <updated>2009-12-24T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2009/12/24/first-weekend-with-endless-screen-real-estate.html</id>
+    <published>2009-12-24T00:00:00Z</published>
+    <updated>2009-12-24T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2009/12/24/first-weekend-with-endless-screen-real-estate.html</id>
     <content type="html"><![CDATA[<h3 id="ye-olde-setup">Ye olde setup</h3>
 <p>Some months ago I realized that my Mac mini, used as a media server in my
 livingroom, has been getting a bit long in the tooth. The 1,8 GHz Core (no 2)
@@ -5681,9 +5681,9 @@ best Mac I have worked on so far.</p>
   
 	<entry>
     <title type="html"><![CDATA[Google Reader to Instapaper bridge]]></title>
-    <published>2009-09-19T00:00:00+0000</published>
-    <updated>2009-09-19T00:00:00+0000</updated>
-    <id> https://unwiredcouch.com/2009/09/19/google-reader-instapaper.html</id>
+    <published>2009-09-19T00:00:00Z</published>
+    <updated>2009-09-19T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2009/09/19/google-reader-instapaper.html</id>
     <content type="html"><![CDATA[<h3 id="the-dilemma">The dilemma</h3>
 <p>For some years now I am using <a href="http://google.com/reader">Google Reader</a> as my
 reader of choice for news feeds. I still think it&rsquo;s the best way to get daily
