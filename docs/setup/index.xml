@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>My Setups on unwiredcouch.com</title>
+    <link>https://unwiredcouch.com/setup/</link>
+    <description>Recent content in My Setups on unwiredcouch.com</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>d@unwiredcouch.com (Daniel Schauenberg)</managingEditor>
+    <webMaster>d@unwiredcouch.com (Daniel Schauenberg)</webMaster><atom:link href="https://unwiredcouch.com/setup/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How I vim</title>
+      <link>https://unwiredcouch.com/setup/vim/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/setup/vim/</guid>
+      <description>This is an interview I did for &ldquo;How I vim&rdquo; and was originally published here.</description>
+    <content:encoded><![CDATA[<p>This is an interview I did for &ldquo;How I vim&rdquo; and was originally published
+<a href="http://howivim.com/2016/daniel-schauenberg/">here</a>.</p>
+<h3 id="who-are-you-and-what-do-you-use-vim-for">Who are you and what do you use Vim for?</h3>
+<p>My name is Daniel and I&rsquo;m a staff engineer at Etsy on the DevTools team. We
+are an infrastructure team that handles things like maintaining the deployment
+system and the development environment, the application level metrics stack,
+and dev data access. My daily work is a very fun mix of software engineering
+and operations type work.</p>
+<p>Due to the nature of that I write a lot of Chef, shell scripts, ruby, and PHP.
+Outside of work I also write the occasional Go or C++ for some of my open
+source projects. For all of this I always use vim, 99% of the time running
+inside a tmux session.</p>
+<p>I got introduced to vim in 2004 by a friend who showed me around Linux and
+UNIX when we were both first semester university students. Back then I didn&rsquo;t
+have a preferred editor and as I learned more about Linux I just used vim as
+it already was installed on most systems. I very quickly switched from Linux
+to FreeBSD and with that from vim to vi (or nvi rather) as the default
+installed editor. At that point I hadn&rsquo;t really started using any plugins, so
+going from vanilla vim to vi wasn&rsquo;t really a big deal for me. I used it long
+enough in that setup that when I got my first Mac and started using editors
+like SubEthaEdit, Textmate, and Smultron because I liked their native look and
+feel, I had already built up the vim muscle memory. And as I was using gVim on
+the Windows machines at work, I kept the muscle memory although I wasn&rsquo;t using
+vim on my personal machines. When I went back to grad school I eventually
+switched to MacVim. Mostly because Textmate and all the other OS X editors
+seemed like abandon ware at the time. And I wanted something I was familiar
+with and I knew would stick around. So I decided to go back to vim and go full
+in with customizing it to my needs. And now roughly 7 years later vim is
+basically the only way I edit text files on a computer. I use it for code,
+blogging, journaling, meeting notes, emails (via mutt), and <a href="https://unwiredcouch.com/2015/06/08/accounting-the-unix-way.html">accounting (via
+ledger)</a>. I try to use as much of vanilla vim as possible as my job
+includes working on a bunch of different servers and I don&rsquo;t want to be slowed
+down too much when I don&rsquo;t have my vim config ready. I also try to only use
+plugins that are purely written in VimL. That way I don&rsquo;t have to deal with
+how to build the right vim on the different platforms (OS X, Linux, FreeBSD)
+I&rsquo;m most likely to use it on.</p>
+<p>Sadly on the iPhone vim is not a super great choice so I use Editorial there,
+mostly for writing blog posts when I don&rsquo;t want to have a laptop open.</p>
+<h3 id="introduce-us-to-your-vim-config">Introduce us to your Vim config.</h3>
+<p>When I went back to vim I also started using plugins for real. While writing
+my undergrad thesis (with vim and latex) I had already started with a super
+simple vimrc file I found somewhere and that is still the base of the setup I
+use today - 9 years later. When I started adding plugins to my vim setup, some
+of the first ones I added were pathogen and fugitive. I also was used to
+having tab complete things so I installed supertab. From there I constantly
+added and removed some plugins and over the years I&rsquo;ve converged to a dozen or
+so plugins that I have installed. I keep them together with my vimrc in a git
+repo <a href="https://github.com/mrtazz/vimfiles">on GitHub</a> and I wrote a Makefile that handles installing the
+configuration via symlinks and updating and adding plugins via a vim-bundle
+script I found somewhere and have downloaded into my ~/bin. The plugins I use
+most are the ones that are just enabled in the background and do their thing,
+like syntastic, supertab, tabline, or syntax highlighters. I do have some
+others to add functionality, like ctrl-p, nerdtree, or VoOM. I do use them
+occasionally, but most of the time forget about them. A plugin that falls into
+that category but that I use a lot is vim-zenroom2. It creates a writeroom
+style focus in vim and I love it for writing. I use it a lot for blog posts,
+journaling, meeting notes, or documentation writing.</p>
+<p>Another plugin I wrote and use a lot is <a href="https://github.com/mrtazz/vim-stencil">vim-stencil</a>. It provides a
+simple way to have templates for vim that you can load into a buffer. It&rsquo;s
+inspired by the vim skeleton files and I use it a ton for meeting note
+templates, journaling scaffold and weekly planning notes. A nice side effect
+of writing emails in mutt is that I can also use it for canned responses. Plus
+I can keep all of my templates in git together with my vim config. The plugin
+also provides a very basic set of variable expansions for common things like
+date or weekday.</p>
+<p>I use solarized light as my theme although I wasn&rsquo;t a big fan when it came
+out. I used a slightly patched version of molokai for many years. But one day
+I realized that I was really annoyed by the different applications I use a lot
+in the terminal (regular terminal colors, vim, mut, weechat) all look
+different. And I wanted consistency and at the same time switch to a light
+theme as it was easier on my eyes. And solarized light was the only one people
+had already ported to most applications. So I gave it a real shot and now I
+really enjoy it.</p>
+<p>Some of the maybe more interesting things in my vimrc is that I have line
+numbers turned off. I used them for a long time, then played with relative
+line numbers for a bit and then decided that I don&rsquo;t really care about it most
+of the time, so I just turned it off. When I really want the current line
+number I just look in the statusline. I also have a lot of one off settings
+and inline functions in my vimrc. I have a <code>Today()</code> function that inserts the
+current date in a specific format and is mapped to <code>,d</code> (, is my leader key).
+I use it a ton when writing my work journal or taking notes in meetings. I&rsquo;ve
+also inlined the <code>GoFormat</code> function from the deprecated official plugin. They
+made <code>vim-go</code> the new official one and it did way too many things for my taste
+as I only really wanted automatic formatting for my Go code.</p>
+<p>I also activate spelling for a certain set of file types. Funnily I still have
+it enabled for <code>.tex</code> files from my university days. But these days the
+setting to enable it for markdown and mail (as I use mutt) is what I really
+use. As those types of things are mostly read by others (email and
+documentation) and written in English which isn&rsquo;t my first language.</p>
+<p>Speaking of <a href="https://unwiredcouch.com/2015/08/31/writing-workflow.html">writing in vim</a>. I use it a ton for non programming as
+well. And as mentioned I use vim-zenroom for focused writing which depends on
+Goyo. In order to make the experience better there I have some Goyo hooks in
+my vimrc to close the buffer if it&rsquo;s the last one in Goyo mode and also run a
+command to disable the tmux status bar for complete focus.</p>
+<p>I also have the arrow keys disabled to force me to use hjkl for navigation. I
+did that when I started at Etsy and knew I would be working in vim a lot more
+so I decided to train that muscle memory. A side effect of that is that I
+enable hjkl navigation support wherever possible in other apps.</p>
+<h3 id="what-have-been-the-most-useful-resources-for-you-to-learn-vim">What have been the most useful resources for you to learn Vim?</h3>
+<p>I think the most helpful resources have been the vim wikia and random blog
+posts when I was researching some specific things like setups for writing or
+programming in specific languages.</p>
+<p>When it comes to writing plugins, I think I learned the most from reading
+<a href="https://github.com/tpope">@tpope&rsquo;s</a> and <a href="https://github.com/mattn">@mattn&rsquo;s</a> code on GitHub.</p>
+<h3 id="whats-the-most-recent-thing-youve-learned-about-vim">What&rsquo;s the most recent thing you&rsquo;ve learned about Vim?</h3>
+<p>I can&rsquo;t remember what the most recent thing is, but something I want to learn
+is how to better navigate within text. I do use G, ctrl-d, and ctrl-u a lot
+for longer jumps. And I use O/o and A/a and those commands a lot when I know I
+want to insert things. However within textblocks or when in visual mode I
+still hold down hjkl until the cursor is where I want it to be. I would love
+to have a more ingrained understanding of how to jump more efficiently in vim.</p>
+<h3 id="how-did-you-get-started-writing-vim-plugins">How did you get started writing Vim plugins?</h3>
+<p>I think my first steps in plugin writing must have been around 2010 when I was
+trying to add mustache support to the zencoding vim plugin. I was just
+learning about the current state of web development and tried out a lot of
+things. I was really into mustache and the idea of writing HTML faster with
+zencoding intrigued me. I think I never actually got it working or I sent a
+pull request and it didn&rsquo;t get merged and I failed to follow up. But it was
+super fun and I learned a lot.</p>
+<h3 id="tell-us-about-your-plugin-simplenotevim">Tell us about your plugin simplenote.vim.</h3>
+<p><a href="https://github.com/mrtazz/simplenote.vim">simplenote.vim</a> is a plugin that lets you edit and manage
+your simplenote notes right from vim. It really grew out of the situation that
+I was a big fan of simplenote and it was the only application I used for
+writing outside of vim.  So I wanted to see if I couldn&rsquo;t get it working as a
+vim plugin and not have to got the route via Dropbox syncing. It was really
+mostly a curiosity thing and something I thought would be cool to exist. My
+initial plan was to write it completely in vim script. As I me tokens before I
+really like having a vim setup that doesn&rsquo;t need any special things compiled
+in. And I had a rough version working that used curl for talking to the API
+and presented JSON to edit. However when it came to JSON parsing all the
+existing solutions were not super intuitive and I needed to somehow make it
+easy to install the dependencies for the plugin as I wanted it to be really
+easy to use. And then I would still have to write all the API wrapper methods
+for the actual API. So I decided to just write a <a href="https://github.com/mrtazz/simplenote.py">python
+module</a> for the simplenote API and publish that as well. And
+make a strict separation between data access and storage which would be Python
+and vim interfacing which would be vim script. I chose Python at the time
+because I was already familiar with it and had written a bunch of API wrappers
+for different things in it already.</p>
+<p>The first version was super barebones and pretty rough, but it was incredibly
+fun to write it. The hardest part was probably testing it as I had no idea how
+to write unit tests for the vim script part of the plugin. So it was a lot of
+editing, putting in echo statements, and opening another vim session to try it
+out. I learned a ton about vim&rsquo;s buffer and window model, how to run
+concurrent Python inside my editor and how to manage a somewhat popular open
+source project.</p>
+<p>After a couple of years of using it I stopped as I didn&rsquo;t want to host my (at
+times pretty personal) notes on someone else&rsquo;s computer. And as I couldn&rsquo;t
+give the project the attention it deserved while not actively using it I
+reached out to @atomicules who had been the most active outside contributor at
+that point and asked him if he wanted to take over maintenance of the vim
+plugin and the Python module. Fortunately he was up for it and so for the last
+3 years he has been doing a fantastic job of maintaining and pushing the
+project forward.</p>
+<h3 id="are-you-involved-in-a-local-vim-community">Are you involved in a local Vim community?</h3>
+<p>I&rsquo;m not. For some reason that has never occurred to me.</p>
+<h3 id="share-a-snippet-of-vim-script-youve-written-and-talk-about-what-it-does">Share a snippet of Vim script you&rsquo;ve written and talk about what it does.</h3>
+<pre><code>function! Today()
+  let today = strftime(&quot;%A %m\/%d\/%Y&quot;)
+  exe &quot;normal a&quot;. today
+endfunction
+command! Today :call Today()
+</code></pre><p>This is the snippet I talked about earlier that inserts the current date after
+the cursor position. It&rsquo;s pretty simple and yet incredibly useful for me. It
+creates a string from the current date formatted as &ldquo;weekday day/month/year&rdquo;
+and appends it at the current position. The function is then mapped to a
+command with the same name so I can call it as <code>:Today</code> and also map that
+command to a leader key combo.</p>
+<h3 id="what-have-you-been-working-on-recently-in-vim">What have you been working on recently in Vim?</h3>
+<p>I&rsquo;m currently working on a bunch of infrastructure projects at work that
+mostly involve writing chef recipes or PHP. I also constantly use vim to
+update documentation and write emails.</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>My Coffee Setup</title>
+      <link>https://unwiredcouch.com/setup/coffee/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/setup/coffee/</guid>
+      <description>In early 2011 I had finished university (again) and decided that I didn&rsquo;t want to drink bad coffee anymore.</description>
+    <content:encoded><![CDATA[<p>In early 2011 I had finished university (again) and decided that I didn&rsquo;t want
+to drink bad coffee anymore. So I started to look into the basics of how to
+make good coffee. I started with a <a href="http://www.amazon.com/Hario-Ceramic-Skerton-Storage-Capacity/dp/B001802PIQ">hand grinder</a> and a <a href="https://en.wikipedia.org/wiki/French_press">French
+Press</a>. I quickly realized that I don&rsquo;t like the oily taste and
+got an <a href="http://www.aeropress.com/">Aeropress</a>. By the time I had moved to NYC with only my
+Aeropress and grinder, my friend [Mathias][roidrage] had published his <a href="http://holgarific.net/2011/12/05/the-beginners-shopping-guide-to-filter-coffee-gear/">&ldquo;The
+Beginner’s Shopping Guide to Filter Coffee Gear&rdquo;</a> which I used to
+restock my kitchen. Since then I&rsquo;ve switched out some things and settled on
+some others and this page is the place where I write down my current setup.</p>
+<h3 id="at-home">At Home</h3>
+<h4 id="grinder">Grinder</h4>
+<p>I used to use a hand grinder at home to make my coffee. As I was mostly making
+coffee for one person anyways, it wasn&rsquo;t such a big deal. But especially for
+<a href="https://github.com/roidrage/coffee/pull/2">cold brew</a> it got really annoying. So I bought an electric grinder
+and settled for the <a href="http://www.amazon.com/Baratza-Encore-Conical-Coffee-Grinder/dp/B00LW8122Y">Baratza Encore</a> there. It&rsquo;s a good tradeoff
+between quality, usability and price. The most important point for me there
+was that it has a burr grinder, thus resulting in a more consistent grind.</p>
+<h4 id="brew-tools">Brew tools</h4>
+<p>90% of the time I make coffee with the <a href="http://www.chemexcoffeemaker.com/">Chemex</a> at home. It&rsquo;s overall
+my favourite way of brewing coffee as it is pretty easy and doesn&rsquo;t take
+overly long. For the Chemex I usually go with a 7gr coffee/100ml water ratio.
+I use that as the base from which I calculate how much coffee grounds I need
+for the amount of coffee I want. I usually make either 300, 400 or 700ml of
+coffee depending on the number of people participating. My brewing process is
+based on the <a href="http://www.intelligentsiacoffee.com/content/iphone-app">Intelligentsia</a> one, so I let it bloom at 50-100ml
+of water for about a minute and then slowly pour in the rest. I have the 8-cup
+Chemex at home but would probably get the 6-cup one if I had to buy a new one.
+I also have a 3-cup one which I keep at the office for when I want to make
+coffee for just myself and don&rsquo;t want to pour it all into the cup at once. I
+also have a <a href="http://www.amazon.com/Hario-VDC-02W-Ceramic-Coffee-Dripper/dp/B000P4D5HG">Hario v60</a> and a <a href="http://www.amazon.com/HIC-Filter-Porcelain-Number-12-Cups/dp/B001W6Q53C">HIC cone</a> at home which I don&rsquo;t
+use extremely often because I prefer the Chemex. But every now and then I make
+a pour over with them and am really happy I have those.</p>
+<p><a href="https://instagram.com/p/20oH2Itpx3/"><img src="/images/coffee/chemex.jpg" alt=""></a>
+<a href="https://instagram.com/p/u0hOn3tp3d/"><img src="/images/coffee/3cupchemex.jpg" alt=""></a></p>
+<p>And there is also the Aeropress at home still. And I mostly use it for when I
+want to make a makeshift cappuccino or an <a href="https://instagram.com/p/5pQa5ONp22/">Iced Aeropress</a>
+when it&rsquo;s hot, which is a nice way to have a cool drink without having to go
+all the way of making <a href="https://github.com/roidrage/coffee/pull/2">cold brew</a>. For both I use the same ratio,
+which is 17gr per 2 Aeropress chambers.</p>
+<p>I also have the <a href="http://www.amazon.com/Hario-Buono-Coffee-Drip-Kettle/dp/B000IGOXLS">Hario Buono kettle</a> at home which is great because it
+has the swan neck which makes it great for a controlled pour. I also have <a href="http://www.amazon.com/gp/product/B002UG4UM6">a
+scale</a> which I can&rsquo;t say too much about. It&rsquo;s mostly a regular kitchen
+scale and it works. If I had to get a new one, I would try to get one with a
+longer/adjustable timeout. Often enough it times out while I have the Chemex
+on there to measure the water I pour in and then have to remember where I&rsquo;ve
+been and how much I still need to pour.</p>
+<h3 id="travel">Travel</h3>
+<h4 id="grinder-1">Grinder</h4>
+<p>When I&rsquo;m traveling (which I try to keep carry-on only) I have the <a href="http://www.amazon.com/Porlex-Mini-Stainless-Coffee-Grinder/dp/B0044ZA066">Porlex
+mini</a> grinder with me. It has a big enough chamber for one person and
+it fits into the Aeropress so it takes up even less space. I used to travel
+with the <a href="http://www.amazon.com/Hario-Ceramic-Skerton-Storage-Capacity/dp/B001802PIQ">Hario Skerton</a> and the <a href="http://www.amazon.com/Hario-Coffee-Mill-Slim-Grinder/dp/B001804CLY">Hario mini mill</a>. They
+are both great grinders. However the skerton doesn&rsquo;t have a cover so the beans
+constantly spill out while grinding and the mini mill is slightly bigger than
+the Porlex so it doesn&rsquo;t fit into the travel gear as nicely and also is made
+of mostly plastic which has broken for me before.</p>
+<h4 id="brew-tool">Brew Tool</h4>
+<p>For brewing coffee while traveling I exclusively use the Aeropress. It doesn&rsquo;t
+take up a lot of space and makes great coffee. I bring the lid, the stirrer,
+and the scoop with me but often I leave the funnel at home. I also always
+bring the <a href="http://www.kaffeologie.com/shop/s-filter-for-aeropress-coffee-makers">Kaffeologie S Filter</a> with me in addition to some paper
+filters. I prefer the taste with the paper filters, but I don&rsquo;t want to have
+to deal with running out of filters in a foreign city. I don&rsquo;t bring a scale
+and I use the kettle you have or can get in most hotels. If there isn&rsquo;t one,
+most hotels now have a Keurig machine in the rooms, which makes perfectly fine
+hot water if you leave the capsule out. I let it flow into one of the hotel
+provided cups and brew the coffee in the other one (thankfully there are
+almost always 2).</p>
+<p><a href="https://instagram.com/p/lIK8wstp-_/"><img src="/images/coffee/travel.jpg" alt=""></a></p>
+<h3 id="beans">Beans</h3>
+<p>Bean supply is a highly subjective topic and it&rsquo;s where opinions differ the
+most. I usually always have a subscription and get some beans in addition from
+roasters and coffee shops in my neighborhood. Right now I have a
+<a href="http://www.heartroasters.com/">Heart</a> subscription which is wonderful and I used to have a
+<a href="http://shop.squaremilecoffee.com/">Squaremile</a> one which was also great. For the additional coffee I
+either go with <a href="http://www.tobysestate.com/">Toby&rsquo;s Estate</a>, <a href="http://www.sweetleaflic.com/">Sweet Leaf</a>, or <a href="https://counterculturecoffee.com/">Counter
+Culture</a>.</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>My Omnifocus Setup</title>
+      <link>https://unwiredcouch.com/setup/omnifocus/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/setup/omnifocus/</guid>
+      <description>At this point it&rsquo;s pretty fair to say that OmniFocus rules my life.</description>
+    <content:encoded><![CDATA[<p>At this point it&rsquo;s pretty fair to say that <a href="http://www.omnigroup.com/omnifocus">OmniFocus</a> rules my life. I&rsquo;ve
+started to really take GTD seriously around 2012. I had tried a lot of
+different task managers before of course. I loved <a href="https://culturedcode.com/things/">Things</a> when it
+originally came out as a beta and of course I had started to write <a href="https://github.com/mrtazz/gtd-couch">my own
+todo tracker</a> like everybody else. But I had never actually read
+<a href="http://www.amazon.com/Getting-Things-Done-Stress-Free-Productivity/dp/0142000280">the book</a> before because I thought I didn&rsquo;t need such a
+sophisticated todo tracker. That changed when I started a new job and moved to
+a different country. Suddenly there were so much more things to keep track of
+and do. So I read the book, pulled out Things again and tried to implement my
+version of GTD. However it became apparent to me very quickly that the way I
+want to use it (collect everything and have a lot of different ways to
+retrieve/view data) wouldn&rsquo;t work with Things. So I shelled out a lot of money
+and bought OmniFocus. And I have tried a couple of times to use a different
+tool again but nothing worked for me as good as OF does. Mainly because I have
+arrived at a setup that is very well integrated with my daily workflow.</p>
+<h3 id="the-basics">The Basics</h3>
+<p>I have OmniFocus running on my personal and work laptop as well as on the
+iPhone and iPad (although I hardly ever use it on there). They are all synced
+through webdav and owncloud on my personal servers. I mainly use it on the
+laptop and the iPhone client serves mostly for quickly inputting data or
+pulling up a list when I&rsquo;m on the go.</p>
+<h3 id="collecting-all-the-things">Collecting all the things</h3>
+<p>As every GTD guide ever will tell you, the system only works if it is your one
+and only system that contains everything. And thus you have to add all your
+todos and ideas in there.  I try to heavily follow this approach as I found it
+to be very true for me that I lose confidence in the tool as soon as it
+doesn&rsquo;t contain my whole world. Paramount to this is the ability to enter new
+items from basically everywhere and support every way that could generate
+things for you to do. Luckily for me this means only a handful of things:</p>
+<ul>
+<li>Random things that I come up with</li>
+<li>Email</li>
+<li>GitHub issues</li>
+<li>Jira</li>
+</ul>
+<p>This basically covers all variations of how I have new things landing on my
+plate. And thus I have made sure all those things find an easy way into my
+inbox.</p>
+<h4 id="random-things">Random things</h4>
+<p>I use <a href="http://www.alfredapp.com/">Alfred 2</a> heavily on the desktop to quickly switch to or open
+apps, convert units, lookup people, and a myriad of other things. Naturally
+that means this is also the place where I should be inputting all new todos as
+they come to mind. For that I&rsquo;m using an <a href="http://www.alfredforum.com/topic/1041-create-new-task-in-omnifocus-inbox">awesome workflow</a>
+that I found somewhere on the internet. It allows me to fire up the Alfred
+prompt and simply enter <code>todo do awesome thing @context</code> and on hitting enter
+the new item is in my inbox with the correct context. This allows me literally
+add new things in a matter of seconds and bother later with filtering,
+remembering and doing them.</p>
+<h4 id="email">Email</h4>
+<p>Email is a little bit trickier. There are awesome plugins for Mail.app to work
+with Omnifocus and I hear they make it a breeze to get things done. However my
+email client of choice is <a href="http://www.mutt.org/">mutt</a>. Which means there is a bit more
+hacking to do (as usual). However I found a great <a href="https://github.com/mrtazz/bin/blob/master/mutt-to-omnifocus.py">Python script</a>
+that parses emails and adds them to Omnifocus. I also added this keybinding to
+my mutt configuration:</p>
+<pre><code>macro index,pager \Ca &quot;&lt;enter-command&gt;unset
+wait_key&lt;enter&gt;&lt;pipe-message&gt;mutt-to-omnifocus.py
+&lt;enter&gt;&lt;save-message&gt;=gtd-needs-reply/&lt;enter&gt;&lt;sync-mailbox&gt;&quot;
+</code></pre><p>Now all I have to do when reading an Email or browsing through the list is hit
+<code>Ctrl-a</code> and mutt automatically creates a task in my Omnifocus inbox and moves
+the email out of my inbox into a folder I creatively called <em>gtd-needs-reply</em>
+(I also have one called <em>gtd-to-read</em> which I use for emails that I still have
+to read). This keeps my Email inbox clean and has the benefit since it adds an
+Omnifocus entry with the context &ldquo;Email&rdquo; that I can easily find all the emails
+I have to write with a custom perspective (more on that later).</p>
+<h4 id="github-issues">GitHub Issues</h4>
+<p>A decent amount of things to do for me are also generated via GitHub Issues.
+This can either be issues on one of the public GitHub projects I maintain or
+more often a code review <a href="https://www.etsy.com">at work</a>. We use Pull Requests on GitHub
+Enterprise for code reviews at Etsy and if someone wants you to review code,
+they assign the pull request to you. Since there is no need for me to go
+through my Email for notifications about code I have to review, I wrote a
+simple script that runs every 10 minutes and checks whether I have issues
+assigned that are not yet in my Omnifcous. <a href="https://github.com/mrtazz/bin/blob/master/ghfocus.rb">This script</a> reads a
+configuration file which can have an arbitrary number of GitHub (Enterprise)
+instances and asks for all issues assigned to a user owning the OAuth token.
+It then generates a ticket title based on the repo URL and issue number and
+adds a configurable context (Github or EtsyGithub for me) to it. It then
+creates an Omnifocus inbox tasks based on that data, again easily findable by
+context in Omnifocus.</p>
+<h4 id="jira">Jira</h4>
+<p>We use Jira at Etsy to manage tickets and workload and thus the majority of my
+work is captured in there. Since I don&rsquo;t want to have two places to look for
+things, I&rsquo;m also pulling all my Jira tickets into Omnifocus. This is done with
+basically the same script as the GitHub sync but uses <a href="https://github.com/codehaus/jira4r">jira4r</a> as the
+input source. It then drops a todo item with the Jira project key and ticket
+number into my inbox with the context <em>Etsy:Jira</em>. This makes it super easy to
+organize all the work I am assigned in Omnifocus. The only downside to that is
+that it&rsquo;s not a 2-way sync. Right now I clean up and close tasks in Omnifocus
+(and Jira) when I actually finish them or during the weekly review. I also
+only create tickets for myself in Jira and don&rsquo;t add tickets from Omnifocus
+when I create new todos with the <em>Etsy:Jira</em> context. This wouldn&rsquo;t be very
+hard to do but I haven&rsquo;t found it to be super painful to do it manually.</p>
+<h3 id="basic-structure">Basic Structure</h3>
+<p>So now that I have an easy way to enter all the incoming work into Omnifcous,
+the next step is organizing all the things. For that I use folders heavily for
+the basic structure and something close to the Areas of Responsibility in the
+<a href="http://www.amazon.com/Getting-Things-Done-Stress-Free-Productivity/dp/0142000280">GTD book</a>. I have top level folders for <em>Etsy</em>, <em>Personal</em>,
+<em>Talks</em> and <em>Open Source</em>. And under those another layer of folders which
+reflect finer grained areas of responsibility. You see the structure here:</p>
+<p><img src="/images/of_structure.png" alt="of structure"></p>
+<p>Within those areas a have the actual projects I work on and usually a single
+action list project for miscellaneous things. I organize active and someday
+projects in there by putting someday projects in <em>On Hold</em> status. This makes
+it easy to find projects I&rsquo;m working on by filtering for active ones in a
+perspective. The project view is the most important one for finding and
+organizing my work. I never fully got into using contexts for things other
+than automated tools that pull in data. I rarely find myself in actually
+different contexts where it makes sense to pull up a specific list and all my
+tries to get that working ended in confusion for me (ymmv).</p>
+<h3 id="perspectives-all-the-way-down">Perspectives all the way down</h3>
+<p>Based on that structure I have created a handful of custom perspectives to
+quickly find things I need. You can see the overview of my perspectives in the
+screenshot below.</p>
+<p><img src="/images/of_perspectives.png" alt="of perspectives"></p>
+<p>The most important one is the <em>Today</em> perspective. It holds all items that are
+due, overdue or flagged. This is my daily todo list with things I wanna get
+done today. The next ones are Etsy active projects, next actions and weekly
+summary. Those I pull up for planning daily tasks and writing my weekly
+summary. I also have a perspective for Personal active projects which I don&rsquo;t
+use that much but still pull up often enough to be valuable. The only crux
+with those perspectives is that they are mostly project and not context based.
+That means most of the perspectives don&rsquo;t sync to the iPhone. For now that is
+ok for me because I mostly use the iPhone to add stuff to the inbox and to
+check my daily todo list which I made a context based perspective. And <a href="https://twitter.com/kcase/status/465904405141671938">I&rsquo;ve
+also heard</a> that project based perspectives will be syncing to
+the iPhone in the future. So that will help a lot.</p>
+<h3 id="review-review-review">Review, Review, Review</h3>
+<p>As every person that is trying to do their version of GTD will tell you,
+consistent reviews are the heart of a working system. And that is no different
+for me. I try to really be disciplined about my weekly reviews and try to do
+daily reviews but often only end up actually doing them 3 times a week or so.
+Which is not too bad as long as the weekly review is consistent.</p>
+<h4 id="daily">Daily</h4>
+<p>My daily review routine is pretty straight forward. I pull up the today list
+and mark everything as done I completed but haven&rsquo;t checked off yet. Then I
+pull up my active perspectives and flag stuff I wanna work on today. That&rsquo;s
+it, simple and easy.</p>
+<h4 id="weekly">Weekly</h4>
+<p>My weekly review is a bit more complex. I actually have a recurring project
+that becomes available every Friday and is due on Sunday and looks like this:</p>
+<p><img src="/images/of_weekly_review.png" alt="of weekly review"></p>
+<p>This is my checklist to do my weekly review. So every weekend I will clear out
+and archive all email and filter unprocessed email into <em>gtd-to-read</em> or
+<em>gtd-needs-reply</em>. This is mostly mailing list stuff since I try to stay on
+Inbox Zero during the week. I then put every thing I can think of that has to
+be done into the inbox. I check my calendar from last week if there is
+anything left to be done from meetings and check next weeks calendar for stuff
+I have to prepare. I then hit the <em>Review</em> button in Omnifocus and start
+reviewing all my projects. That usually starts with sorting all the inbox
+items into the folder structure and then going through all the other projects
+to mark things as completed and add new actions. This usually takes a bit
+longer for active projects, whereas on hold projects I can go over quickly
+because they don&rsquo;t usually have a lot of activity. I have set my default
+review cycle to 5 days in general. That means projects become available for
+review again after 5 days, so when I don&rsquo;t get to it on the Weekend and do my
+review on Monday morning, I still have the projects ready for review on
+Friday.</p>
+<h3 id="verdict">Verdict</h3>
+<p>For now I think I have found a good balance of using a lot of features of
+Omnifocus while still keeping it somewhat simple and not going overboard with
+the setup. Automating a lot of things - especially for inputting data - has
+made a big difference in trusting the system to be my only source of truth for
+work that needs to be done. My biggest problems are still making sure to take
+enough time for the reviews, keep adding todos and paying attention to my
+daily list even if I&rsquo;m stressed and some days also &hellip; you know &hellip; actually
+getting things done.</p>
+]]></content:encoded>
+    </item>
+    
+  </channel>
+</rss>
