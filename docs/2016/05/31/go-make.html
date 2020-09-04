@@ -5,159 +5,278 @@
     <meta http-equiv="cache-control" content="no-cache"/>
     <meta http-equiv="pragma" content="no-cache"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link href="/css/style.min.css?v=e1be0c2" media="screen" rel="stylesheet" type="text/css"/>
-    <link href="/css/mobile.min.css?v=e1be0c2" media="handheld, only screen and (max-device-width: 960px)" rel="stylesheet" type="text/css"/>
+    
+
+
+
+<link   rel="stylesheet"
+        href="../../../css/style.min.3509c9f0b39a60e84f85797f0a1b9edf3262ac31f178df54cce2ab569dd456a1.css"
+        integrity="sha256-NQnJ8LOaYOhPhXl/Chue3zJirDHxeN9UzOKrVp3UVqE="
+        type="text/css"
+        media="screen">
+
+<link   rel="stylesheet"
+        href="../../../css/mobile.min.61224258b356807fea4fba3d47bfa9b900189e33d17678f5eba2ea860e517051.css"
+        integrity="sha256-YSJCWLNWgH/qT7o9R7&#43;puQAYnjPRdnj166Lqhg5RcFE="
+        type="text/css"
+        media="handheld, only screen and (max-device-width: 960px)">
+
     <link href="https://unwiredcouch.com/atom.xml" type="application/atom+xml" rel="alternate" title="unwiredcouch.feed" />
 
-    <title>Make and Go for Fun and Profit on unwiredcouch.com</title>
+    <title>writing on unwiredcouch.com</title>
   </head>
   <body>
 
     <header>
-      <a class="gravatar hidemobile" href="/">
-        <img src="https://www.gravatar.com/avatar/89e0ad1229121f46047977ac547bd7b4.jpg?s=100"
-             height="100" width="100" class="avatar" alt="gravatar image" />
-      </a>
-      <div id="intro">
-        <p>Hi! I'm <a href="/about.html">Daniel</a>.</p>
-        <p>I like
-        <a href="/">writing</a>,
-        <a href="https://www.instagram.com/mrtazz/">drawing</a>,
-        <a href="https://twitter.com/mrtazz">tweeting</a>,
-        <a href="/talks">sometimes give talks</a>,
-        and <a href="http://code.mrtazz.com">occasionally write code</a>.
-        </p>
-      </div>
-    </header>
+  <a class="gravatar hidemobile" href="../../../">
+    <img
+      src="https://www.gravatar.com/avatar/89e0ad1229121f46047977ac547bd7b4.jpg?s=100"
+      height="50" width="50" class="avatar" alt="gravatar image" />
+  </a>
+  <div id="intro">
+    <ul>
+      <li><a href="../../../posts">Writing</a></li>
+      <li><a href="https://www.instagram.com/mrtazz/">Drawing</a></li>
+      <li><a href="../../../talks">Talks</a></li>
+      <li><a href="https://github.com/mrtazz">Code</a></li>
+      <li><a href="../../../setup/">Setup</a></li>
+      <li><a href="../../../about.html">About</a></li>
+      <li><a href="../../../imprint.html">Contact</a></li>
+    </ul>
+  </div>
+</header>
 
-    <div id="content">
-            <div class="post">
+
+    <main>
+    
+
+<div class="postdateheading"> May 31, 2016 </div>
+
+      <div class="post">
         <h2> <a href=""> Make and Go for Fun and Profit </a></h2>
 
-<p>I’ve been somewhat interested in Go for quite a while now. It’s gotten to the point where it has replaced Ruby for me in those places where I write command line utilities which are too involved for them to make sense to be a shell script. I don’t have too many opinions about the language itself, but I like the static type system and that it’s a compiled language. And to be honest, the build system and how to utilize it have been the most interesting bits for me so far. One thing I especially like is the fact that go provides a bunch of tooling to do different things but how you tie them together is up to you. So this gives rise to some fun use cases for a nice Makefile.</p>
+        <p>I&rsquo;ve been somewhat interested in Go for quite a while now. It&rsquo;s gotten to the
+point where it has replaced Ruby for me in those places where I write command
+line utilities which are too involved for them to make sense to be a shell
+script. I don&rsquo;t have too many opinions about the language itself, but I like
+the static type system and that it&rsquo;s a compiled language. And to be honest,
+the build system and how to utilize it have been the most interesting bits for
+me so far. One thing I especially like is the fact that go provides a bunch of
+tooling to do different things but how you tie them together is up to you. So
+this gives rise to some fun use cases for a nice Makefile.</p>
 <h3 id="the-basics">The Basics</h3>
-<p>Every project I start gets this Makefile with some basic setups and variable definitions that I always want.</p>
-<pre class="make"><code>export GO15VENDOREXPERIMENT = 1
+<p>Every project I start gets this Makefile with some basic setups and variable
+definitions that I always want.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make"><span style="color:#66d9ef">export </span>GO15VENDOREXPERIMENT <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
 
-# variable definitions
-NAME := coolthings
-DESC := a nice toolkit of helpful things
-PREFIX ?= usr/local
-VERSION := $(shell git describe --tags --always --dirty)
-GOVERSION := $(shell go version)
-BUILDTIME := $(shell date -u +&quot;%Y-%m-%dT%H:%M:%SZ&quot;)
-BUILDDATE := $(shell date -u +&quot;%B %d, %Y&quot;)
-BUILDER := $(shell echo &quot;`git config user.name` &lt;`git config user.email`&gt;&quot;)
-PKG_RELEASE ?= 1
-PROJECT_URL := &quot;https://github.com/mrtazz/$(NAME)&quot;
-LDFLAGS := -X &#39;main.version=$(VERSION)&#39; \
-           -X &#39;main.buildTime=$(BUILDTIME)&#39; \
-           -X &#39;main.builder=$(BUILDER)&#39; \
-           -X &#39;main.goversion=$(GOVERSION)&#39;
-</code></pre>
-<p>For the most part this just defines a whole bunch of meta data that gets compiled into the binaries via linker flags. This is a pattern I have seen in a lot of Go projects and I really like that this is somewhat of a standard thing to do. Especially with the static nature of Go binaries, the more helpful information you can compile into the binary the better it is when you have to figure out where a binary comes from.</p>
-<p>I also always have a handful of tasks defined that are helpful for running tests and such, especially to have a uniform and documented way how they are run locally and on CI.</p>
-<pre class="make"><code># development tasks
-test:
-    go test $$(go list ./... | grep -v /vendor/ | grep -v /cmd/)
+<span style="color:#75715e"># variable definitions
+</span><span style="color:#75715e"></span>NAME <span style="color:#f92672">:=</span> coolthings
+DESC <span style="color:#f92672">:=</span> a nice toolkit of helpful things
+PREFIX <span style="color:#f92672">?=</span> usr/local
+VERSION <span style="color:#f92672">:=</span> <span style="color:#66d9ef">$(</span>shell git describe --tags --always --dirty<span style="color:#66d9ef">)</span>
+GOVERSION <span style="color:#f92672">:=</span> <span style="color:#66d9ef">$(</span>shell go version<span style="color:#66d9ef">)</span>
+BUILDTIME <span style="color:#f92672">:=</span> <span style="color:#66d9ef">$(</span>shell date -u +<span style="color:#e6db74">&#34;%Y-%m-%dT%H:%M:%SZ&#34;</span><span style="color:#66d9ef">)</span>
+BUILDDATE <span style="color:#f92672">:=</span> <span style="color:#66d9ef">$(</span>shell date -u +<span style="color:#e6db74">&#34;%B %d, %Y&#34;</span><span style="color:#66d9ef">)</span>
+BUILDER <span style="color:#f92672">:=</span> <span style="color:#66d9ef">$(</span>shell echo <span style="color:#e6db74">&#34;`git config user.name` &lt;`git config user.email`&gt;&#34;</span><span style="color:#66d9ef">)</span>
+PKG_RELEASE <span style="color:#f92672">?=</span> <span style="color:#ae81ff">1</span>
+PROJECT_URL <span style="color:#f92672">:=</span> <span style="color:#e6db74">&#34;https://github.com/mrtazz/</span><span style="color:#66d9ef">$(</span>NAME<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+LDFLAGS <span style="color:#f92672">:=</span> -X <span style="color:#e6db74">&#39;main.version=$(VERSION)&#39;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>           -X <span style="color:#e6db74">&#39;main.buildTime=$(BUILDTIME)&#39;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>           -X <span style="color:#e6db74">&#39;main.builder=$(BUILDER)&#39;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>           -X <span style="color:#e6db74">&#39;main.goversion=$(GOVERSION)&#39;</span>
 
-PACKAGES := $(shell find ./* -type d | grep -v vendor)
+</code></pre></div><p>For the most part this just defines a whole bunch of meta data that gets
+compiled into the binaries via linker flags. This is a pattern I have seen in
+a lot of Go projects and I really like that this is somewhat of a standard
+thing to do. Especially with the static nature of Go binaries, the more
+helpful information you can compile into the binary the better it is when you
+have to figure out where a binary comes from.</p>
+<p>I also always have a handful of tasks defined that are helpful for running
+tests and such, especially to have a uniform and documented way how they are
+run locally and on CI.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make"><span style="color:#75715e"># development tasks
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">test</span><span style="color:#f92672">:</span>
+	go test $$<span style="color:#f92672">(</span>go list ./... | grep -v /vendor/ | grep -v /cmd/<span style="color:#f92672">)</span>
 
-coverage:
-    @echo &quot;mode: set&quot; &gt; cover.out
-    @for package in $(PACKAGES); do \
-        if ls $${package}/*.go &amp;&gt; /dev/null; then  \
-        go test -coverprofile=$${package}/profile.out $${package}; fi; \
-        if test -f $${package}/profile.out; then \
-        cat $${package}/profile.out | grep -v &quot;mode: set&quot; &gt;&gt; cover.out; fi; \
-    done
-    @-go tool cover -html=cover.out -o cover.html
+PACKAGES <span style="color:#f92672">:=</span> <span style="color:#66d9ef">$(</span>shell find ./* -type d | grep -v vendor<span style="color:#66d9ef">)</span>
 
-benchmark:
-    @echo &quot;Running tests...&quot;
-    @go test -bench=. $$(go list ./... | grep -v /vendor/ | grep -v /cmd/)</code></pre>
-<p>These make heavy use of <code>go list</code> to determine existing packages to run tests for. The rules also exclude the vendor folder as I don’t want to run those tests and the cmd folder which I will describe more in the next section.</p>
+<span style="color:#a6e22e">coverage</span><span style="color:#f92672">:</span>
+	@echo <span style="color:#e6db74">&#34;mode: set&#34;</span> &gt; cover.out
+	@for package in <span style="color:#66d9ef">$(</span>PACKAGES<span style="color:#66d9ef">)</span>; <span style="color:#66d9ef">do</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>		<span style="color:#66d9ef">if</span> ls $$<span style="color:#f92672">{</span>package<span style="color:#f92672">}</span>/*.go &amp;&gt; /dev/null; <span style="color:#66d9ef">then</span>  <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>		go test -coverprofile<span style="color:#f92672">=</span>$$<span style="color:#f92672">{</span>package<span style="color:#f92672">}</span>/profile.out $$<span style="color:#f92672">{</span>package<span style="color:#f92672">}</span>; <span style="color:#66d9ef">fi</span>; <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>		<span style="color:#66d9ef">if</span> test -f $$<span style="color:#f92672">{</span>package<span style="color:#f92672">}</span>/profile.out; <span style="color:#66d9ef">then</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>		cat $$<span style="color:#f92672">{</span>package<span style="color:#f92672">}</span>/profile.out | grep -v <span style="color:#e6db74">&#34;mode: set&#34;</span> &gt;&gt; cover.out; <span style="color:#66d9ef">fi</span>; <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>	<span style="color:#66d9ef">done</span>
+	@-go tool cover -html<span style="color:#f92672">=</span>cover.out -o cover.html
+
+<span style="color:#a6e22e">benchmark</span><span style="color:#f92672">:</span>
+	@echo <span style="color:#e6db74">&#34;Running tests...&#34;</span>
+	@go test -bench<span style="color:#f92672">=</span>. $$<span style="color:#f92672">(</span>go list ./... | grep -v /vendor/ | grep -v /cmd/<span style="color:#f92672">)</span>
+</code></pre></div><p>These make heavy use of <code>go list</code> to determine existing packages to run tests
+for. The rules also exclude the vendor folder as I don&rsquo;t want to run those
+tests and the cmd folder which I will describe more in the next section.</p>
 <h3 id="structure-for-multiple-binaries">Structure for multiple binaries</h3>
-<p>Go has this defacto standard of how to structure code if your build produces multiple executables. Since your main entry point in the app is always the main package and there can only be one per directory (which is also true for any other package btw) you need to separate different executables by directory. The pattern here is basically to have a <code>cmd</code> folder that contains subfolders for each executable which in turn just contain a <code>main.go</code> file. This is a pretty nice pattern, once you get used to it and is a convention that lets you easily create make rules for building those executables via the make wildcarding support.</p>
-<pre class="make"><code>CMD_SOURCES := $(shell find cmd -name main.go)
-TARGETS := $(patsubst cmd/%/main.go,%,$(CMD_SOURCES))
+<p>Go has this defacto standard of how to structure code if your build produces
+multiple executables. Since your main entry point in the app is always the
+main package and there can only be one per directory (which is also true for
+any other package btw) you need to separate different executables by
+directory. The pattern here is basically to have a <code>cmd</code> folder that contains
+subfolders for each executable which in turn just contain a <code>main.go</code> file.
+This is a pretty nice pattern, once you get used to it and is a convention
+that lets you easily create make rules for building those executables via the
+make wildcarding support.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make">CMD_SOURCES <span style="color:#f92672">:=</span> <span style="color:#66d9ef">$(</span>shell find cmd -name main.go<span style="color:#66d9ef">)</span>
+TARGETS <span style="color:#f92672">:=</span> <span style="color:#66d9ef">$(</span>patsubst cmd/%/main.go,%,<span style="color:#66d9ef">$(</span>CMD_SOURCES<span style="color:#66d9ef">))</span>
 
-%: cmd/%/main.go
-    go build -ldflags &quot;$(LDFLAGS)&quot; -o $@ $&lt;
-</code></pre>
-<p>This piece just finds all <code>main.go</code> files under the cmd folder and creates targets from them located at the top level of the repo. Then there is a rule to build those targets via a rule that ties them back to the source file via wildcarding again and runs <code>go build</code> with the linker flags from before.</p>
-<p>Of course it’s good habit to provide man pages for your tools. So we can rig up a similar set of rules for building man pages for each executable:</p>
-<pre class="make"><code>MAN_SOURCES := $(shell find man -name &quot;*.md&quot;)
-MAN_TARGETS := $(patsubst man/man1/%.md,%,$(MAN_SOURCES))
+<span style="color:#a6e22e">%</span><span style="color:#f92672">:</span> cmd/%/main.go
+	go build -ldflags <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>LDFLAGS<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> -o $@ $&lt;
 
-%.1: man/man1/%.1.md
-    sed &quot;s/REPLACE_DATE/$(BUILDDATE)/&quot; $&lt; | pandoc -s -t man -o $@
+</code></pre></div><p>This piece just finds all <code>main.go</code> files under the cmd folder and creates
+targets from them located at the top level of the repo. Then there is a rule
+to build those targets via a rule that ties them back to the source file via
+wildcarding again and runs <code>go build</code> with the linker flags from before.</p>
+<p>Of course it&rsquo;s good habit to provide man pages for your tools. So we can rig
+up a similar set of rules for building man pages for each executable:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make">MAN_SOURCES <span style="color:#f92672">:=</span> <span style="color:#66d9ef">$(</span>shell find man -name <span style="color:#e6db74">&#34;*.md&#34;</span><span style="color:#66d9ef">)</span>
+MAN_TARGETS <span style="color:#f92672">:=</span> <span style="color:#66d9ef">$(</span>patsubst man/man1/%.md,%,<span style="color:#66d9ef">$(</span>MAN_SOURCES<span style="color:#66d9ef">))</span>
 
-all: $(TARGETS) $(MAN_TARGETS)
-.DEFAULT_GOAL:=all
-</code></pre>
-<p>This lets us write man pages in markdown under the <code>man/man1/</code>folder named as <code>${cmd}.1.md</code> and again uses wildcards in make to generate them top level via an implicit rule. I also added an <code>all</code> target there which is the default and builds all binaries and man pages.</p>
-<p>Over time I’ve come to the conclusion that it’s really a good practice to have your <code>main.go</code> files be as slim as possible. Ideally all they should be concerned with is flag parsing, calling a method from your library packages, and formatting and printing the output to the terminal. Any actual logic should live in library modules somewhere else in your repo. This maintains a good code layout to extend, makes sure code is reusable, and provides good conventions for testing.</p>
+<span style="color:#a6e22e">%.1</span><span style="color:#f92672">:</span> man/man1/%.1.md
+	sed <span style="color:#e6db74">&#34;s/REPLACE_DATE/</span><span style="color:#66d9ef">$(</span>BUILDDATE<span style="color:#66d9ef">)</span><span style="color:#e6db74">/&#34;</span> $&lt; | pandoc -s -t man -o $@
+
+<span style="color:#a6e22e">all</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">$(</span>TARGETS<span style="color:#66d9ef">)</span> <span style="color:#66d9ef">$(</span>MAN_TARGETS<span style="color:#66d9ef">)</span>
+.DEFAULT_GOAL<span style="color:#f92672">:=</span>all
+
+</code></pre></div><p>This lets us write man pages in markdown under the <code>man/man1/</code>folder named as
+<code>${cmd}.1.md</code> and again uses wildcards in make to generate them top level via
+an implicit rule. I also added an <code>all</code> target there which is the default and
+builds all binaries and man pages.</p>
+<p>Over time I&rsquo;ve come to the conclusion that it&rsquo;s really a good practice to have
+your <code>main.go</code> files be as slim as possible. Ideally all they should be
+concerned with is flag parsing, calling a method from your library packages,
+and formatting and printing the output to the terminal. Any actual logic
+should live in library modules somewhere else in your repo. This maintains a
+good code layout to extend, makes sure code is reusable, and provides good
+conventions for testing.</p>
 <h3 id="installation">Installation</h3>
-<p>So now that we have rules to build the binaries, we also want to be able to install them to the <code>PREFIX</code> we have defined at the top. Go comes with an install command already (<code>go install</code>) which will put binaries in your <code>$GOPATH/bin</code> but there is no need to have to rely on that. Plus on a multi user system you want to provide tools for everyone anyways. Also let’s be real, <code>go install</code> is not a replacement for a real package manager. Just because go builds are fast and produce a static binary doesn’t mean it’s not a good idea to be able to build packages. Plus you want your man pages to be installed with your software as well of course. So let’s write some generic install commands:</p>
-<pre class="make"><code>INSTALLED_TARGETS = $(addprefix $(PREFIX)/bin/, $(TARGETS))
-INSTALLED_MAN_TARGETS = $(addprefix $(PREFIX)/share/man/man1/, $(MAN_TARGETS))
+<p>So now that we have rules to build the binaries, we also want to be able to
+install them to the <code>PREFIX</code> we have defined at the top. Go comes with an
+install command already (<code>go install</code>) which will put binaries in your
+<code>$GOPATH/bin</code> but there is no need to have to rely on that. Plus on a multi
+user system you want to provide tools for everyone anyways. Also let&rsquo;s be
+real, <code>go install</code> is not a replacement for a real package manager. Just
+because go builds are fast and produce a static binary doesn&rsquo;t mean it&rsquo;s not a
+good idea to be able to build packages. Plus you want your man pages to be
+installed with your software as well of course.  So let&rsquo;s write some generic
+install commands:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make">INSTALLED_TARGETS <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</span>addprefix <span style="color:#66d9ef">$(</span>PREFIX<span style="color:#66d9ef">)</span>/bin/, <span style="color:#66d9ef">$(</span>TARGETS<span style="color:#66d9ef">))</span>
+INSTALLED_MAN_TARGETS <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</span>addprefix <span style="color:#66d9ef">$(</span>PREFIX<span style="color:#66d9ef">)</span>/share/man/man1/, <span style="color:#66d9ef">$(</span>MAN_TARGETS<span style="color:#66d9ef">))</span>
 
-# install tasks
-$(PREFIX)/bin/%: %
-    install -d $$(dirname $@)
-    install -m 755 $&lt; $@
+<span style="color:#75715e"># install tasks
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">$(PREFIX)/bin/%</span><span style="color:#f92672">:</span> %
+	install -d $$<span style="color:#f92672">(</span>dirname $@<span style="color:#f92672">)</span>
+	install -m <span style="color:#ae81ff">755</span> $&lt; $@
 
-$(PREFIX)/share/man/man1/%: %
-    install -d $$(dirname $@)
-    install -m 644 $&lt; $@
+<span style="color:#a6e22e">$(PREFIX)/share/man/man1/%</span><span style="color:#f92672">:</span> %
+	install -d $$<span style="color:#f92672">(</span>dirname $@<span style="color:#f92672">)</span>
+	install -m <span style="color:#ae81ff">644</span> $&lt; $@
 
-install: $(INSTALLED_TARGETS) $(INSTALLED_MAN_TARGETS)
+<span style="color:#a6e22e">install</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">$(</span>INSTALLED_TARGETS<span style="color:#66d9ef">)</span> <span style="color:#66d9ef">$(</span>INSTALLED_MAN_TARGETS<span style="color:#66d9ef">)</span>
 
-local-install:
-    $(MAKE) install PREFIX=usr/local
-</code></pre>
-<p>We’re adding the <code>PREFIX</code> to all targets and man targets here to generate the paths to install. Then we write another implicit wildcarding rule that has the original targets as dependencies and performs install commands to put them into the prefix. This is a quick and easy way to have a generic <code>make install</code> target and also lets us easily add a local install target that we can use as a dependency for building packages later on.</p>
+<span style="color:#a6e22e">local-install</span><span style="color:#f92672">:</span>
+	<span style="color:#66d9ef">$(</span>MAKE<span style="color:#66d9ef">)</span> install PREFIX<span style="color:#f92672">=</span>usr/local
+
+</code></pre></div><p>We&rsquo;re adding the <code>PREFIX</code> to all targets and man targets here to generate the
+paths to install. Then we write another implicit wildcarding rule that has the
+original targets as dependencies and performs install commands to put them
+into the prefix. This is a quick and easy way to have a generic <code>make install</code>
+target and also lets us easily add a local install target that we can use as a
+dependency for building packages later on.</p>
 <h3 id="dependencies-oh-my">Dependencies, Oh My!</h3>
-<p>If you’ve spent time with Go and make before, you will maybe have noticed a flaw in the building step of the Makefile so far. To revisit, we are building binaries from the source in the cmd folder with this implicit rule.</p>
-<pre class="make"><code>%: cmd/%/main.go
-    go build -ldflags &quot;$(LDFLAGS)&quot; -o $@ $&lt;</code></pre>
-<p>However this only tells make about the first level of direct dependencies for the binary to the cmd source. Chances are you are using library and vendored code in those. This means while <code>go build</code> technically knows about all dependencies, make doesn’t. And it will refuse to rebuild the binaries if something other than the cmd source changes. This is annoying but fortunately also fixable. A simple fix would be to just not have dependencies in make for the executables and mark them as <code>.PHONY</code> so that they are always regarded out of date. This pushes all dependency resolution back to the go tool chain which is nice, but kinda defeats half of the purpose of a Makefile as it will just run all the commands all the time. To be clear, in practice this is a fine solution and the downsides are mostly academic with the speed of a usual go build.</p>
-<p>However it’s fun to figure out how to make things work and while we’re here already, lets utilize make to its full extent and make it aware of all dependencies. The details for the make side of things I got from <a href="http://make.mad-scientist.net/papers/advanced-auto-dependency-generation/">this awesome blogpost</a> which gives a great overview over automatic dependency management in makefiles. So now all we need is a way to get a list of all dependencies for a go source file. And of course, <code>go files</code> to the rescue again! As it not only lets us print packages for passing to the test runner, but also can print out all dependencies of a file. And with its <code>-f</code> parameter it also supports basic templating for printing out the results. Utilizing that we only need to do a small amount of post processing to print it in make dependency format and we are good to go.</p>
-<pre class="make"><code># source, dependency and build definitions
-DEPDIR = .d
-$(shell install -d $(DEPDIR))
-MAKEDEPEND = echo &quot;$@: $$(go list -f &#39;{{ join .Deps &quot;\n&quot; }}&#39; $&lt; | awk &#39;/github/ { gsub(/^github.com\/[a-z]*\/[a-z]*\//, &quot;&quot;); printf $$0&quot;/*.go &quot; }&#39;)&quot; &gt; $(DEPDIR)/$@.d
+<p>If you&rsquo;ve spent time with Go and make before, you will maybe have noticed a
+flaw in the building step of the Makefile so far. To revisit, we are building
+binaries from the source in the cmd folder with this implicit rule.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make"><span style="color:#a6e22e">%</span><span style="color:#f92672">:</span> cmd/%/main.go
+	go build -ldflags <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>LDFLAGS<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> -o $@ $&lt;
+</code></pre></div><p>However this only tells make about the first level of direct dependencies for
+the binary to the cmd source. Chances are you are using library and vendored
+code in those. This means while <code>go build</code> technically knows about all
+dependencies, make doesn&rsquo;t. And it will refuse to rebuild the binaries if
+something other than the cmd source changes. This is annoying but fortunately
+also fixable. A simple fix would be to just not have dependencies in make for
+the executables and mark them as <code>.PHONY</code> so that they are always regarded out
+of date. This pushes all dependency resolution back to the go tool chain which
+is nice, but kinda defeats half of the purpose of a Makefile as it will just
+run all the commands all the time. To be clear, in practice this is a fine
+solution and the downsides are mostly academic with the speed of a usual go
+build.</p>
+<p>However it&rsquo;s fun to figure out how to make things work and while we&rsquo;re here
+already, lets utilize make to its full extent and make it aware of all
+dependencies. The details for the make side of things I got from <a href="http://make.mad-scientist.net/papers/advanced-auto-dependency-generation/">this awesome
+blogpost</a> which gives a great overview over automatic dependency
+management in makefiles. So now all we need is a way to get a list of all
+dependencies for a go source file. And of course, <code>go files</code> to the rescue
+again! As it not only lets us print packages for passing to the test runner,
+but also can print out all dependencies of a file. And with its <code>-f</code> parameter
+it also supports basic templating for printing out the results. Utilizing that
+we only need to do a small amount of post processing to print it in make
+dependency format and we are good to go.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make"><span style="color:#75715e"># source, dependency and build definitions
+</span><span style="color:#75715e"></span>DEPDIR <span style="color:#f92672">=</span> .d
+<span style="color:#66d9ef">$(</span>shell install -d <span style="color:#66d9ef">$(</span>DEPDIR<span style="color:#66d9ef">))</span>
+MAKEDEPEND <span style="color:#f92672">=</span> echo <span style="color:#e6db74">&#34;</span>$@<span style="color:#e6db74">: </span>$$<span style="color:#e6db74">(go list -f &#39;{{ join .Deps &#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34; }}&#39; </span>$<span style="color:#e6db74">&lt; | awk &#39;/github/ { gsub(/^github.com\/[a-z]*\/[a-z]*\//, &#34;&#34;); printf </span>$$<span style="color:#e6db74">0&#34;</span>/*.go <span style="color:#e6db74">&#34; }&#39;)&#34;</span> &gt; <span style="color:#66d9ef">$(</span>DEPDIR<span style="color:#66d9ef">)</span>/$@.d
 
-$(DEPDIR)/%.d: ;
-.PRECIOUS: $(DEPDIR)/%.d
+<span style="color:#a6e22e">$(DEPDIR)/%.d</span><span style="color:#f92672">:</span> ;
+<span style="color:#a6e22e">.PRECIOUS</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">$(</span>DEPDIR<span style="color:#66d9ef">)</span>/%.d
 
--include $(patsubst %,$(DEPDIR)/%.d,$(TARGETS))
+<span style="color:#960050;background-color:#1e0010">-include</span> <span style="color:#66d9ef">$(</span>patsubst %,<span style="color:#66d9ef">$(</span>DEPDIR<span style="color:#66d9ef">)</span>/%.d,<span style="color:#66d9ef">$(</span>TARGETS<span style="color:#66d9ef">))</span>
 
-%: cmd/%/main.go $(DEPDIR)/%.d
-    $(MAKEDEPEND)
-    go build -ldflags &quot;$(LDFLAGS)&quot; -o $@ $&lt;</code></pre>
-<p>The makedepend command here grabs all dependencies that come from github (which was a good enough approximation for me to filter out the std lib), cuts off the project prefix and appends <code>/*.go</code> to each dependency. With the go rules of having a package per folder, this also is pretty accurate most of the time and only occasionally serves false positives to result in a rebuild. We then adapt the implicit build rule to require the dependency file as well but also rebuild it on each build. And BOOM our Makefile knows almost perfectly a out all source dependencies.</p>
+<span style="color:#a6e22e">%</span><span style="color:#f92672">:</span> cmd/%/main.go <span style="color:#66d9ef">$(</span>DEPDIR<span style="color:#66d9ef">)</span>/%.d
+	<span style="color:#66d9ef">$(</span>MAKEDEPEND<span style="color:#66d9ef">)</span>
+	go build -ldflags <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>LDFLAGS<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> -o $@ $&lt;
+</code></pre></div><p>The makedepend command here grabs all dependencies that come from github
+(which was a good enough approximation for me to filter out the std lib), cuts
+off the project prefix and appends <code>/*.go</code> to each dependency. With the go
+rules of having a package per folder, this also is pretty accurate most of the
+time and only occasionally serves false positives to result in a rebuild. We
+then adapt the implicit build rule to require the dependency file as well but
+also rebuild it on each build. And BOOM our Makefile knows almost perfectly a
+out all source dependencies.</p>
 <h3 id="packaging-and-documentation">Packaging and Documentation</h3>
-<p>I always aim for providing packages and good documentation for my Go projects. But I’ve already written about those things more generally <a href="https://unwiredcouch.com/2016/01/12/coding-pride.html">here</a>, so if you’re interested in the details of it, give that blog post a read. The important part is that the Makefile also holds the logic for building docs and packages, so they can be easily triggered from CI.</p>
+<p>I always aim for providing packages and good documentation for my Go projects.
+But I&rsquo;ve already written about those things more generally
+<a href="https://unwiredcouch.com/2016/01/12/coding-pride.html">here</a>, so if you&rsquo;re interested in the details of it, give that
+blog post a read. The important part is that the Makefile also holds the logic
+for building docs and packages, so they can be easily triggered from CI.</p>
 <h3 id="cleanup">Cleanup</h3>
-<p>Since it’s also always good to make it easy to clean up artifacts and generated intermediate and output files, all makefiles also get some clean up tasks.</p>
-<pre class="make"><code># clean up tasks
-clean-docs:
-    rm -rf ./docs
+<p>Since it&rsquo;s also always good to make it easy to clean up artifacts and
+generated intermediate and output files, all makefiles also get some clean up
+tasks.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make"><span style="color:#75715e"># clean up tasks
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">clean-docs</span><span style="color:#f92672">:</span>
+	rm -rf ./docs
 
-clean-deps:
-    rm -rf $(DEPDIR)
+<span style="color:#a6e22e">clean-deps</span><span style="color:#f92672">:</span>
+	rm -rf <span style="color:#66d9ef">$(</span>DEPDIR<span style="color:#66d9ef">)</span>
 
-clean: clean-docs clean-deps
-    rm -rf ./usr
-    rm $(TARGETS)
-    rm $(MAN_TARGETS)
+<span style="color:#a6e22e">clean</span><span style="color:#f92672">:</span> clean-docs clean-deps
+	rm -rf ./usr
+	rm <span style="color:#66d9ef">$(</span>TARGETS<span style="color:#66d9ef">)</span>
+	rm <span style="color:#66d9ef">$(</span>MAN_TARGETS<span style="color:#66d9ef">)</span>
 
-.PHONY: all test rpm deb install local-install packages govendor coverage docs jekyll deploy-docs clean-docs clean-deps clean</code></pre>
-<p>Equipped with those Make tricks I’ve been having tons of fun building Go code. Some of that is surely more involved than it has to be and especially the dependency resolution stuff is very bonus round. But it’s been super interesting to rig it up and I learned a lot of things about Make. And in the end that’s what it’s all about for me. (Besides having projects with a super nice to use structure :)</p>
+<span style="color:#a6e22e">.PHONY</span><span style="color:#f92672">:</span> all test rpm deb install local-install packages govendor coverage docs jekyll deploy-docs clean-docs clean-deps clean
+</code></pre></div><p>Equipped with those Make tricks I&rsquo;ve been having tons of fun building Go code.
+Some of that is surely more involved than it has to be and especially the
+dependency resolution stuff is very bonus round. But it&rsquo;s been super
+interesting to rig it up and I learned a lot of things about Make. And in
+the end that&rsquo;s what it&rsquo;s all about for me. (Besides having projects with a
+super nice to use structure :)</p>
+
 
       </div>
-    </div>
+
+
+    </main>
+
   </body>
 </html>
