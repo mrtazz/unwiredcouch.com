@@ -31,19 +31,16 @@ header {
     /* background-color: #184468; */
     background-color: #840044;
     color: white;
-    font-size: 20px;
-    font-weight: normal;
-    height: 25%;
 }
 
-div#intro {
+.menu {
     left: 1%;
     right: 1%;
     top: 0px;
     width: 98%;
 }
 
-div#intro p {
+.menu p {
     top: 0px;
     margin-top: 25px;
     margin-bottom: 0px;

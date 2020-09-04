@@ -15,10 +15,15 @@ main {
     padding-bottom: 100px;
 }
 
-header {
+.header {
     background-color: #840044;
     color: white;
-    height: 80px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+    padding: 5px 10px;
 }
 
 footer {
@@ -27,40 +32,36 @@ footer {
     height: 75px;
 }
 
-div#intro {
-    position: relative;
-    left: 110px;
-    top: -50px;
-    width: 60%;
+.menu {
 }
 
-div#intro a {
+.menu a {
   text-decoration: underline;
 }
 
-div#intro a:link {
+.menu a:link {
   color: white;
   text-decoration: underline;
 }
 
-div#intro a:visited {
+.menu a:visited {
   color: white;
   text-decoration: underline;
 }
 
-div#intro a:hover {
+.menu a:hover {
   color: white;
   text-decoration: underline;
 }
 
-div#intro ul {
+.menu ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
 }
 
-div#intro ul li {
+.menu ul li {
   float: left;
   display: block;
   color: white;
@@ -69,11 +70,9 @@ div#intro ul li {
   text-decoration: none;
 }
 
-a.gravatar {
-  position: relative;
-  top: 15px;
-  left: 40px;
-
+.gravatar {
+  display: flex;
+  align-items: center;
 }
 
 a.posttitle {
@@ -97,8 +96,18 @@ a.posttitle {
   width: calc(50% - 20px);
 }
 
+@media only screen and (max-width: 640px) {
+  .tile {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+
+
 .homepage-postlist {
  list-style: none;
+ margin-left: 0px;
 }
 
 .homepage-postlist__item {
@@ -284,13 +293,13 @@ span.talkbyline {
     width: 100%;
   }
 
-  div#intro p {
+  .menu p {
       margin-top: 25px;
       font-size: 14pt;
       line-height: 22px;
   }
 
-  div#intro p:first-of-type {
+  .menu p:first-of-type {
       margin-top: 0;
   }
 }
