@@ -16,7 +16,7 @@
       <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
       <guid>https://unwiredcouch.com/bits/2014/08/16/github-mirror-shell.html</guid>
       <description>As I have written before I have slowly started to move my data out of cloud services where applicable.</description>
-    <content:encoded type="html"><![CDATA[<p>As I have <a href="http://www.unwiredcouch.com/2013/10/30/uncloud-your-life.html">written before</a> I have slowly started to move my data out
+    <content:encoded><![CDATA[<p>As I have <a href="http://www.unwiredcouch.com/2013/10/30/uncloud-your-life.html">written before</a> I have slowly started to move my data out
 of cloud services where applicable. One part of that was setting up my own
 backup server at home based on <a href="http://www.unwiredcouch.com/bits/2014/03/18/zfs-rsync-backups.html">FreeBSD, zfs and rsync</a>. One part I
 consider important data but didn&rsquo;t have on there was my (Open Source) code I
@@ -153,7 +153,7 @@ if you&rsquo;re interested in tracking changes to this setup, follow it there.</
       <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
       <guid>https://unwiredcouch.com/bits/2014/07/22/productive-vim-with-templates.html</guid>
       <description>I basically exist inside of vim all day. I write code in there, I write emails in VIM via mutt, I take notes with it and I write all my blog posts in VIM.</description>
-    <content:encoded type="html"><![CDATA[<p>I basically exist inside of vim all day. I write code in there, I write emails
+    <content:encoded><![CDATA[<p>I basically exist inside of vim all day. I write code in there, I write emails
 in VIM via <a href="http://www.mutt.org">mutt</a>, I take notes with it and I write all my blog posts in
 VIM. I think it&rsquo;s clear that improving the way I work with VIM helps in a
 variety of scenarios. Over time I also noticed that I often start out with the
@@ -196,7 +196,7 @@ productivity a lot.</p>
       <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
       <guid>https://unwiredcouch.com/bits/2014/06/14/jekyll-shared-project-layouts.html</guid>
       <description>I use Jekyll a lot, especially for my website. And I quite like it a lot.</description>
-    <content:encoded type="html"><![CDATA[<p>I use <a href="http://jekyllrb.com/">Jekyll</a> a lot, especially for <a href="http://unwiredcouch.com">my website</a>. And I
+    <content:encoded><![CDATA[<p>I use <a href="http://jekyllrb.com/">Jekyll</a> a lot, especially for <a href="http://unwiredcouch.com">my website</a>. And I
 quite like it a lot. I also write and open source the occasional software
 every now and then, which usually happens on <a href="https://github.com/mrtazz">my GitHub profile</a>. And
 thankfully GitHub makes it <a href="https://pages.github.com/">dead easy</a> to generate a nice looking page
@@ -250,8 +250,8 @@ committing them to each repository.</p>
       <pubDate>Tue, 18 Mar 2014 00:00:00 +0000</pubDate>
       <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
       <guid>https://unwiredcouch.com/bits/2014/03/18/zfs-rsync-backups.html</guid>
-      <description>As I mentioned before I&amp;rsquo;m running my own backup on a server that is running in my apartment.</description>
-    <content:encoded type="html"><![CDATA[<p>As I <a href="http://www.unwiredcouch.com/2013/10/30/uncloud-your-life.html">mentioned before</a> I&rsquo;m running my own backup on a server that is
+      <description>As I mentioned before I&rsquo;m running my own backup on a server that is running in my apartment.</description>
+    <content:encoded><![CDATA[<p>As I <a href="http://www.unwiredcouch.com/2013/10/30/uncloud-your-life.html">mentioned before</a> I&rsquo;m running my own backup on a server that is
 running in my apartment. I didn&rsquo;t really talk a lot about how this works,
 other than it is running on a HP Microserver with an encrypted ZFS RAID. So I
 wanted to also quickly jot down how the backup works. This is only set up for
@@ -364,7 +364,7 @@ Timemachine on my laptop and have it automatically run the backups.</p>
       <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
       <guid>https://unwiredcouch.com/bits/2014/02/03/dotoverride.html</guid>
       <description>I have a collection of various dotfiles which I use to configure the most important tools I use everyday.</description>
-    <content:encoded type="html"><![CDATA[<p>I have a <a href="https://github.com/mrtazz/muttfiles">collection</a> <a href="https://github.com/mrtazz/vimfiles">of</a> <a href="https://github.com/mrtazz/zshfiles">various</a>
+    <content:encoded><![CDATA[<p>I have a <a href="https://github.com/mrtazz/muttfiles">collection</a> <a href="https://github.com/mrtazz/vimfiles">of</a> <a href="https://github.com/mrtazz/zshfiles">various</a>
 <a href="https://github.com/mrtazz/dotfiles">dotfiles</a> which I use to configure the most important tools I use
 everyday. Naturally all those are kept in git and shared between all the
 machines I work on. The problem is that there might be things I don&rsquo;t want to
@@ -412,7 +412,7 @@ command or open vim again.</p>
       <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
       <guid>https://unwiredcouch.com/bits/2013/12/28/encrypted-homedirs.html</guid>
       <description>I run FreeBSD with ZFS on all my servers and I generally want to have my home directories encrypted.</description>
-    <content:encoded type="html"><![CDATA[<p>I run FreeBSD with ZFS on all my servers and I generally want to have my home
+    <content:encoded><![CDATA[<p>I run FreeBSD with ZFS on all my servers and I generally want to have my home
 directories encrypted. Since ZFS native encryption is not yet in FreeBSD, I
 create two ZFS filesystems, which are then encrypted with <a href="http://www.freebsd.org/doc/handbook/disks-encrypting.html">GELI
 encryption</a> and build a new ZFS pool. This pool is then used as my home
