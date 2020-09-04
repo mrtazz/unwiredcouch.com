@@ -250,7 +250,7 @@ committing them to each repository.</p>
       <pubDate>Tue, 18 Mar 2014 00:00:00 +0000</pubDate>
       <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
       <guid>https://unwiredcouch.com/bits/2014/03/18/zfs-rsync-backups.html</guid>
-      <description>As I mentioned before I&rsquo;m running my own backup on a server that is running in my apartment.</description>
+      <description>As I mentioned before I&amp;rsquo;m running my own backup on a server that is running in my apartment.</description>
     <content:encoded><![CDATA[<p>As I <a href="http://www.unwiredcouch.com/2013/10/30/uncloud-your-life.html">mentioned before</a> I&rsquo;m running my own backup on a server that is
 running in my apartment. I didn&rsquo;t really talk a lot about how this works,
 other than it is running on a HP Microserver with an encrypted ZFS RAID. So I

@@ -14,7 +14,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
       <guid>https://unwiredcouch.com/setup/vim/</guid>
-      <description>This is an interview I did for &ldquo;How I vim&rdquo; and was originally published here.</description>
+      <description>This is an interview I did for &amp;ldquo;How I vim&amp;rdquo; and was originally published here.</description>
     <content:encoded><![CDATA[<p>This is an interview I did for &ldquo;How I vim&rdquo; and was originally published
 <a href="http://howivim.com/2016/daniel-schauenberg/">here</a>.</p>
 <h3 id="who-are-you-and-what-do-you-use-vim-for">Who are you and what do you use Vim for?</h3>
@@ -196,7 +196,7 @@ update documentation and write emails.</p>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
       <guid>https://unwiredcouch.com/setup/coffee/</guid>
-      <description>In early 2011 I had finished university (again) and decided that I didn&rsquo;t want to drink bad coffee anymore.</description>
+      <description>In early 2011 I had finished university (again) and decided that I didn&amp;rsquo;t want to drink bad coffee anymore.</description>
     <content:encoded><![CDATA[<p>In early 2011 I had finished university (again) and decided that I didn&rsquo;t want
 to drink bad coffee anymore. So I started to look into the basics of how to
 make good coffee. I started with a <a href="http://www.amazon.com/Hario-Ceramic-Skerton-Storage-Capacity/dp/B001802PIQ">hand grinder</a> and a <a href="https://en.wikipedia.org/wiki/French_press">French
@@ -283,7 +283,7 @@ Culture</a>.</p>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
       <guid>https://unwiredcouch.com/setup/omnifocus/</guid>
-      <description>At this point it&rsquo;s pretty fair to say that OmniFocus rules my life.</description>
+      <description>At this point it&amp;rsquo;s pretty fair to say that OmniFocus rules my life.</description>
     <content:encoded><![CDATA[<p>At this point it&rsquo;s pretty fair to say that <a href="http://www.omnigroup.com/omnifocus">OmniFocus</a> rules my life. I&rsquo;ve
 started to really take GTD seriously around 2012. I had tried a lot of
 different task managers before of course. I loved <a href="https://culturedcode.com/things/">Things</a> when it
