@@ -1,0 +1,15 @@
+{{ $maincss := resources.Get "css/style.css" | minify | fingerprint  }}
+
+{{ $mobilecss := resources.Get "css/mobile.css" | minify | fingerprint }}
+
+<link   rel="stylesheet"
+        href="{{ $maincss.RelPermalink }}"
+        integrity="{{ $maincss.Data.Integrity }}"
+        type="text/css"
+        media="screen">
+
+<link   rel="stylesheet"
+        href="{{ $mobilecss.RelPermalink }}"
+        integrity="{{ $mobilecss.Data.Integrity }}"
+        type="text/css"
+        media="handheld, only screen and (max-device-width: 960px)">

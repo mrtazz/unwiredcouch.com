@@ -1,0 +1,64 @@
+{{ define "main" }}
+
+<div class="tiles-wrapper">
+
+  <div class="tile">
+    <h3> Writing </h3>
+<p class="hidemobile">
+Longer form writing. These don't follow any pattern and are usually related to
+whatever I'm thinking about during that time. But most of it is in some way
+related to technology.
+</p>
+<ul class="homepage-postlist">
+{{$posts := ($.Site.GetPage "section" "posts").Pages.ByPublishDate.Reverse}}
+{{ range first 5 $posts }}
+      <li class="homepage-postlist__item">
+        <a class="homepage-posttitle" href="{{ .RelPermalink }}"> {{ .Title }}</a>
+        <span class="homepage-postdate hidemobile">{{ .PublishDate.Format "Jan 2, 2006" }} </span>
+      </li>
+{{ end }}
+<li> <a href="/posts"> More ... </a> </li>
+</ul>
+
+
+  </div>
+  <div class="tile">
+    <h3> Bits </h3>
+<p class="hidemobile">
+Occasionally I'll stumble upon something that is interesting but not worth
+a full written post. These short bits are often about quick technology fixes
+or hacks.
+</p>
+<ul class="homepage-postlist">
+{{$bits := ($.Site.GetPage "section" "bits").Pages.ByPublishDate.Reverse}}
+{{ range first 5 $bits }}
+      <li class="homepage-postlist__item">
+        <a class="homepage-posttitle" href="{{ .RelPermalink }}"> {{ .Title }}</a>
+        <span class="homepage-postdate hidemobile">{{ .PublishDate.Format "Jan 2, 2006" }} </span>
+      </li>
+{{ end }}
+<li> <a href="/bits"> More ... </a> </li>
+</ul>
+  </div>
+  <div class="tile">
+    <h3> Talks </h3>
+<p class="hidemobile">
+I used to give conference talks on a fairly regular cadence. Even though I
+haven't done this in a while, the talks I have given are still collected here
+for posterity.
+</p>
+<ul class="homepage-postlist">
+{{$bits := ($.Site.GetPage "section" "talks").Pages.ByPublishDate.Reverse}}
+{{ range first 5 $bits }}
+      <li class="homepage-postlist__item">
+        <a class="homepage-posttitle"  href="{{ .RelPermalink }}"> {{ .Title }}</a>
+        <span class="homepage-postdate hidemobile">{{ .PublishDate.Format "Jan 2, 2006" }} </span>
+      </li>
+{{ end }}
+<li> <a href="/talks"> More ... </a> </li>
+</ul>
+  </div>
+
+
+</div>
+{{ end }}
