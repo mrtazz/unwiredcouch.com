@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tags on unwiredcouch.com</title>
     <link>https://unwiredcouch.com/tags/</link>
@@ -7,10 +7,6 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <managingEditor>d@unwiredcouch.com (Daniel Schauenberg)</managingEditor>
-    <webMaster>d@unwiredcouch.com (Daniel Schauenberg)</webMaster>
-    
-	<atom:link href="https://unwiredcouch.com/tags/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <webMaster>d@unwiredcouch.com (Daniel Schauenberg)</webMaster><atom:link href="https://unwiredcouch.com/tags/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
