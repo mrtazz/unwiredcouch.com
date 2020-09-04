@@ -1,0 +1,775 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>unwiredcouch.com</title>
+    <link>https://unwiredcouch.com/</link>
+    <description>Recent content on unwiredcouch.com</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>d@unwiredcouch.com (Daniel Schauenberg)</managingEditor>
+    <webMaster>d@unwiredcouch.com (Daniel Schauenberg)</webMaster>
+    <lastBuildDate>Tue, 19 Nov 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://unwiredcouch.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>The Fallacy of needing a technical manager</title>
+      <link>https://unwiredcouch.com/2019/11/19/technical-manager.html</link>
+      <pubDate>Tue, 19 Nov 2019 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2019/11/19/technical-manager.html</guid>
+      <description>One of the things I’ve come across most in my career in technology (and one that still persists) is the belief that as an engineer, your manager (or coach) needs to be fairly technical as well.</description>
+    </item>
+    
+    <item>
+      <title>Pen and Paper</title>
+      <link>https://unwiredcouch.com/2019/07/05/pen-and-paper.html</link>
+      <pubDate>Fri, 05 Jul 2019 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2019/07/05/pen-and-paper.html</guid>
+      <description>A couple of years ago I went from working in an office to working remote mostly from home.</description>
+    </item>
+    
+    <item>
+      <title>Factors of Confidence</title>
+      <link>https://unwiredcouch.com/2019/04/02/factors-of-confidence.html</link>
+      <pubDate>Tue, 02 Apr 2019 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2019/04/02/factors-of-confidence.html</guid>
+      <description>I&amp;rsquo;ve been having a lot of discussions about delivery of software lately and especially about the deployment part of it.</description>
+    </item>
+    
+    <item>
+      <title>Capacity planning for Etsy’s web and API clusters</title>
+      <link>https://unwiredcouch.com/2018/10/23/capacity-planning-etsy.html</link>
+      <pubDate>Tue, 23 Oct 2018 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2018/10/23/capacity-planning-etsy.html</guid>
+      <description>I wrote about how we do capacity planning for our web and API clusters on Etsy&amp;rsquo;s engineering blog.</description>
+    </item>
+    
+    <item>
+      <title>Learning to have an engineering vision</title>
+      <link>https://unwiredcouch.com/2018/01/03/engineering-vision.html</link>
+      <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2018/01/03/engineering-vision.html</guid>
+      <description>Saying that the last 18 months or so were stressful and full of changes would be a colossal understatement.</description>
+    </item>
+    
+    <item>
+      <title>Make and Go for Fun and Profit</title>
+      <link>https://unwiredcouch.com/2016/05/31/go-make.html</link>
+      <pubDate>Tue, 31 May 2016 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2016/05/31/go-make.html</guid>
+      <description>I&amp;rsquo;ve been somewhat interested in Go for quite a while now.</description>
+    </item>
+    
+    <item>
+      <title>Optimize for Mutability and the Present</title>
+      <link>https://unwiredcouch.com/2016/05/02/mutability-present.html</link>
+      <pubDate>Mon, 02 May 2016 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2016/05/02/mutability-present.html</guid>
+      <description>I recently read John Vincent&amp;rsquo;s very interesting and honest blog post about being paralyzed because of seeing all the flaws in systems.</description>
+    </item>
+    
+    <item>
+      <title>Bash Unit Testing from First Principles</title>
+      <link>https://unwiredcouch.com/2016/04/13/bash-unit-testing-101.html</link>
+      <pubDate>Wed, 13 Apr 2016 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2016/04/13/bash-unit-testing-101.html</guid>
+      <description>In the last couple of months I&amp;rsquo;ve done a foray into unit testing the shell scripts I write.</description>
+    </item>
+    
+    <item>
+      <title>I don&#39;t like Breaking Things</title>
+      <link>https://unwiredcouch.com/2016/03/18/breaking-things.html</link>
+      <pubDate>Fri, 18 Mar 2016 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2016/03/18/breaking-things.html</guid>
+      <description>I don&amp;rsquo;t like breaking things. I never have. I hate it.</description>
+    </item>
+    
+    <item>
+      <title>Take Pride in Your Code</title>
+      <link>https://unwiredcouch.com/2016/01/12/coding-pride.html</link>
+      <pubDate>Tue, 12 Jan 2016 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2016/01/12/coding-pride.html</guid>
+      <description>If you&amp;rsquo;re working as a software engineer, you have very likely already heard about &amp;lsquo;egoless programming&amp;rsquo;.</description>
+    </item>
+    
+    <item>
+      <title>My 2015 Reading List</title>
+      <link>https://unwiredcouch.com/2015/12/31/reading-list.html</link>
+      <pubDate>Thu, 31 Dec 2015 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2015/12/31/reading-list.html</guid>
+      <description>This year has been really good for reading for me. Starting off from last year&amp;rsquo;s list and the 5-ish books I read in 2014, I made it to 16 this year.</description>
+    </item>
+    
+    <item>
+      <title>Chef Driven Graphite Dashboards</title>
+      <link>https://unwiredcouch.com/2015/12/17/chef-driven-dashboards.html</link>
+      <pubDate>Thu, 17 Dec 2015 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2015/12/17/chef-driven-dashboards.html</guid>
+      <description>Some years ago I wrote about how to use Heroku and a set of hosted solutions for getting started with monitoring for your personal infrastructure.</description>
+    </item>
+    
+    <item>
+      <title>Timeouts And Reflections</title>
+      <link>https://unwiredcouch.com/2015/11/20/timeouts-reflections.html</link>
+      <pubDate>Fri, 20 Nov 2015 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2015/11/20/timeouts-reflections.html</guid>
+      <description>I love coffee. I really do. And yet I haven&amp;rsquo;t had any for 4 days now.</description>
+    </item>
+    
+    <item>
+      <title>How I prepare for and give conference talks</title>
+      <link>https://unwiredcouch.com/2015/09/25/talk-prep.html</link>
+      <pubDate>Fri, 25 Sep 2015 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2015/09/25/talk-prep.html</guid>
+      <description>I thoroughly enjoy reading about how other people do their work, tackle problems, find productivity, and prepare for talks.</description>
+    </item>
+    
+    <item>
+      <title>My Writing Workflow</title>
+      <link>https://unwiredcouch.com/2015/08/31/writing-workflow.html</link>
+      <pubDate>Mon, 31 Aug 2015 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2015/08/31/writing-workflow.html</guid>
+      <description>I love writing. A lot. It&amp;rsquo;s one of the things that helps me the most with structuring thoughts and opinions I have.</description>
+    </item>
+    
+    <item>
+      <title>Practical Postmortems at Etsy</title>
+      <link>https://unwiredcouch.com/2015/08/22/practical-postmortems-at-etsy.html</link>
+      <pubDate>Sat, 22 Aug 2015 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2015/08/22/practical-postmortems-at-etsy.html</guid>
+      <description>I wrote an article on InfoQ about the way we conduct Blameless Postmortems at Etsy.</description>
+    </item>
+    
+    <item>
+      <title>Adventures in Frontend Performance</title>
+      <link>https://unwiredcouch.com/2015/07/24/frontend-performance.html</link>
+      <pubDate>Fri, 24 Jul 2015 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2015/07/24/frontend-performance.html</guid>
+      <description>In my daily job I am far removed from being a frontend engineer.</description>
+    </item>
+    
+    <item>
+      <title>Open Source Spring Cleaning</title>
+      <link>https://unwiredcouch.com/2015/07/09/oss-spring-cleaning.html</link>
+      <pubDate>Thu, 09 Jul 2015 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2015/07/09/oss-spring-cleaning.html</guid>
+      <description>I wrote about our plans to clean up our open source repositories and be good maintainers on Etsy&amp;rsquo;s engineering blog.</description>
+    </item>
+    
+    <item>
+      <title>Accounting: The Unix Way</title>
+      <link>https://unwiredcouch.com/2015/06/08/accounting-the-unix-way.html</link>
+      <pubDate>Mon, 08 Jun 2015 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2015/06/08/accounting-the-unix-way.html</guid>
+      <description>I&amp;rsquo;m a big fan of simple tools and building blocks. A function of writing code every day for the last 10 years has been that I feel really comfortable with plain text files, vim and git.</description>
+    </item>
+    
+    <item>
+      <title>There&#39;s No Such Thing as No Project Management</title>
+      <link>https://unwiredcouch.com/2015/05/04/project-management.html</link>
+      <pubDate>Mon, 04 May 2015 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2015/05/04/project-management.html</guid>
+      <description>Project management. Every engineer seems to loathe the term and also what it describes.</description>
+    </item>
+    
+    <item>
+      <title>First month with the Spark Notebook</title>
+      <link>https://unwiredcouch.com/2015/03/18/spark-notebook-omnifocus.html</link>
+      <pubDate>Wed, 18 Mar 2015 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2015/03/18/spark-notebook-omnifocus.html</guid>
+      <description>When the Spark Notebook got announced on Kickstarter I was first a bit hesitant as I have struggled before balancing digital and paper notes.</description>
+    </item>
+    
+    <item>
+      <title>Deployment is Unix</title>
+      <link>https://unwiredcouch.com/2015/02/23/deployment-is-unix.html</link>
+      <pubDate>Mon, 23 Feb 2015 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2015/02/23/deployment-is-unix.html</guid>
+      <description>Over the last 3 years I&amp;rsquo;ve worked a lot on Etsy&amp;rsquo;s deployment system (we&amp;rsquo;ve recently brought the Open Source version back into sync with our internal changes and are running on the public version now as well).</description>
+    </item>
+    
+    <item>
+      <title>You Shouldn&#39;t Have To Ask For Forgiveness</title>
+      <link>https://unwiredcouch.com/2015/02/04/forgiveness.html</link>
+      <pubDate>Wed, 04 Feb 2015 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2015/02/04/forgiveness.html</guid>
+      <description>A couple of days ago I was part of a private email thread about the popular Grace Hopper quote &amp;ldquo;It&amp;rsquo;s easier to ask forgiveness than it is to get permission.</description>
+    </item>
+    
+    <item>
+      <title>You&#39;re building a Plant</title>
+      <link>https://unwiredcouch.com/2015/01/28/building-a-plant.html</link>
+      <pubDate>Wed, 28 Jan 2015 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2015/01/28/building-a-plant.html</guid>
+      <description>As an infrastructure engineer you&amp;rsquo;re building a plant. Not literally of course but it&amp;rsquo;s also not too far off.</description>
+    </item>
+    
+    <item>
+      <title>The Road to Success is paved with Small Improvements</title>
+      <link>https://unwiredcouch.com/talks/uspto2015/</link>
+      <pubDate>Wed, 14 Jan 2015 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/talks/uspto2015/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Learning to be On-Call</title>
+      <link>https://unwiredcouch.com/2015/01/06/learning-on-call.html</link>
+      <pubDate>Tue, 06 Jan 2015 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2015/01/06/learning-on-call.html</guid>
+      <description>I stumbled upon this great blog post about on-call the other day.</description>
+    </item>
+    
+    <item>
+      <title>2014 Reading List</title>
+      <link>https://unwiredcouch.com/2014/12/31/reading-list.html</link>
+      <pubDate>Wed, 31 Dec 2014 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2014/12/31/reading-list.html</guid>
+      <description>This year I tried again to keep up the flow of reading books.</description>
+    </item>
+    
+    <item>
+      <title>3 Simple Things that improved my Work-Life Balance</title>
+      <link>https://unwiredcouch.com/2014/12/15/work-life-balance.html</link>
+      <pubDate>Mon, 15 Dec 2014 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2014/12/15/work-life-balance.html</guid>
+      <description>These days productivity and work life balance are two parts of the holy grail of modern life for a lot of people.</description>
+    </item>
+    
+    <item>
+      <title>Human Factors and PostMortems</title>
+      <link>https://unwiredcouch.com/talks/human-factors-postmortems/</link>
+      <pubDate>Tue, 11 Nov 2014 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/talks/human-factors-postmortems/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Culture: the invisible ingredient</title>
+      <link>https://unwiredcouch.com/talks/culture-panel/</link>
+      <pubDate>Mon, 10 Nov 2014 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/talks/culture-panel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Deploy, Collaborate and Listen</title>
+      <link>https://unwiredcouch.com/talks/deploy-collaborate-listen/</link>
+      <pubDate>Thu, 06 Nov 2014 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/talks/deploy-collaborate-listen/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>DevOps - Jetzt aber richtig</title>
+      <link>https://unwiredcouch.com/talks/wjax2014-panel/</link>
+      <pubDate>Wed, 05 Nov 2014 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/talks/wjax2014-panel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Code Reviews Considered Awesome</title>
+      <link>https://unwiredcouch.com/2014/10/21/code-review.html</link>
+      <pubDate>Tue, 21 Oct 2014 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2014/10/21/code-review.html</guid>
+      <description>I think by now it is pretty much accepted that collaboration and working together is a lot better than assigning blame and yelling at each other.</description>
+    </item>
+    
+    <item>
+      <title>Data Driven Monitoring</title>
+      <link>https://unwiredcouch.com/talks/data-driven-monitoring/</link>
+      <pubDate>Thu, 09 Oct 2014 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/talks/data-driven-monitoring/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>My Rules for E-Mail Happiness</title>
+      <link>https://unwiredcouch.com/2014/08/29/email-happiness.html</link>
+      <pubDate>Fri, 29 Aug 2014 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2014/08/29/email-happiness.html</guid>
+      <description>Over the last couple of days and maybe weeks a lot of my friends, coworkers and most of all people I follow on twitter have been overly excited about the beta availability of an e-mail client.</description>
+    </item>
+    
+    <item>
+      <title>Bye Bye Fitbit</title>
+      <link>https://unwiredcouch.com/2014/08/21/bye-bye-fitbit.html</link>
+      <pubDate>Thu, 21 Aug 2014 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2014/08/21/bye-bye-fitbit.html</guid>
+      <description>About a year ago I decided that I had to do something about my fitness.</description>
+    </item>
+    
+    <item>
+      <title>Mirror GitHub repositories in pure shell</title>
+      <link>https://unwiredcouch.com/bits/2014/08/16/github-mirror-shell.html</link>
+      <pubDate>Sat, 16 Aug 2014 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/bits/2014/08/16/github-mirror-shell.html</guid>
+      <description>As I have written before I have slowly started to move my data out of cloud services where applicable.</description>
+    </item>
+    
+    <item>
+      <title>Human Error and Getting off the Hook</title>
+      <link>https://unwiredcouch.com/2014/08/04/human-error-getting-off-the-hook.html</link>
+      <pubDate>Mon, 04 Aug 2014 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2014/08/04/human-error-getting-off-the-hook.html</guid>
+      <description>I&amp;rsquo;ve been interested in the field of human error and system safety for a while now.</description>
+    </item>
+    
+    <item>
+      <title>Productive VIM with templates</title>
+      <link>https://unwiredcouch.com/bits/2014/07/22/productive-vim-with-templates.html</link>
+      <pubDate>Tue, 22 Jul 2014 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/bits/2014/07/22/productive-vim-with-templates.html</guid>
+      <description>I basically exist inside of vim all day. I write code in there, I write emails in VIM via mutt, I take notes with it and I write all my blog posts in VIM.</description>
+    </item>
+    
+    <item>
+      <title>Development, Deployment &amp; Collaboration at Etsy</title>
+      <link>https://unwiredcouch.com/talks/collaboration-amsterdam/</link>
+      <pubDate>Thu, 19 Jun 2014 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/talks/collaboration-amsterdam/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mobile CI at Etsy</title>
+      <link>https://unwiredcouch.com/talks/mobile-ci-amsterdam/</link>
+      <pubDate>Thu, 19 Jun 2014 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/talks/mobile-ci-amsterdam/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Shared layout for project pages in Jekyll</title>
+      <link>https://unwiredcouch.com/bits/2014/06/14/jekyll-shared-project-layouts.html</link>
+      <pubDate>Sat, 14 Jun 2014 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/bits/2014/06/14/jekyll-shared-project-layouts.html</guid>
+      <description>I use Jekyll a lot, especially for my website. And I quite like it a lot.</description>
+    </item>
+    
+    <item>
+      <title>Releasing at Scale</title>
+      <link>https://unwiredcouch.com/talks/releasing-at-scale/</link>
+      <pubDate>Fri, 30 May 2014 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/talks/releasing-at-scale/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Computer Positivity</title>
+      <link>https://unwiredcouch.com/2014/05/21/computers-are-awesome.html</link>
+      <pubDate>Wed, 21 May 2014 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2014/05/21/computers-are-awesome.html</guid>
+      <description>Let&amp;rsquo;s face it, we&amp;rsquo;ve all been there, your database just decided to split brains, Linux just killed Apache on your web servers because another process was using a bit more memory, your app is broken because the type system of the language you wrote it in has interesting assumptions about what object you just passed to a function and your laptop keeps disconnecting from the Wi-Fi.</description>
+    </item>
+    
+    <item>
+      <title>How OmniFocus controls my life</title>
+      <link>https://unwiredcouch.com/2014/05/13/omnifocus.html</link>
+      <pubDate>Tue, 13 May 2014 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2014/05/13/omnifocus.html</guid>
+      <description>At this point it&amp;rsquo;s pretty fair to say that OmniFocus rules my life.</description>
+    </item>
+    
+    <item>
+      <title>A Whirlwind Tour of the Etsy Monitoring Stack</title>
+      <link>https://unwiredcouch.com/talks/etsy-monitoring/</link>
+      <pubDate>Tue, 06 May 2014 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/talks/etsy-monitoring/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>My 5 years of GitHub</title>
+      <link>https://unwiredcouch.com/2014/03/28/5-years-github.html</link>
+      <pubDate>Fri, 28 Mar 2014 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2014/03/28/5-years-github.html</guid>
+      <description>In early 2009 I was very much not the typical programmer.</description>
+    </item>
+    
+    <item>
+      <title>Backups with rsync and zfs</title>
+      <link>https://unwiredcouch.com/bits/2014/03/18/zfs-rsync-backups.html</link>
+      <pubDate>Tue, 18 Mar 2014 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/bits/2014/03/18/zfs-rsync-backups.html</guid>
+      <description>As I mentioned before I&amp;rsquo;m running my own backup on a server that is running in my apartment.</description>
+    </item>
+    
+    <item>
+      <title>Co-Workers as Customers</title>
+      <link>https://unwiredcouch.com/talks/coworkers-as-customers/</link>
+      <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/talks/coworkers-as-customers/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Development, Deployment &amp; Collaboration at Etsy</title>
+      <link>https://unwiredcouch.com/talks/collaboration-london/</link>
+      <pubDate>Wed, 05 Mar 2014 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/talks/collaboration-london/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Git - Put the stupid back in stupid content tracker</title>
+      <link>https://unwiredcouch.com/2014/02/17/git-stupid.html</link>
+      <pubDate>Mon, 17 Feb 2014 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2014/02/17/git-stupid.html</guid>
+      <description>Git describes itself as a stupid content tracker. While this was surely meant as a clever pun and an understatement, there is some truth to it.</description>
+    </item>
+    
+    <item>
+      <title>Context specific dotfiles</title>
+      <link>https://unwiredcouch.com/bits/2014/02/03/dotoverride.html</link>
+      <pubDate>Mon, 03 Feb 2014 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/bits/2014/02/03/dotoverride.html</guid>
+      <description>I have a collection of various dotfiles which I use to configure the most important tools I use everyday.</description>
+    </item>
+    
+    <item>
+      <title>Creating Encrypted Home Directories in FreeBSD</title>
+      <link>https://unwiredcouch.com/bits/2013/12/28/encrypted-homedirs.html</link>
+      <pubDate>Sat, 28 Dec 2013 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/bits/2013/12/28/encrypted-homedirs.html</guid>
+      <description>I run FreeBSD with ZFS on all my servers and I generally want to have my home directories encrypted.</description>
+    </item>
+    
+    <item>
+      <title>My Tmux Setup</title>
+      <link>https://unwiredcouch.com/2013/11/15/my-tmux-setup.html</link>
+      <pubDate>Fri, 15 Nov 2013 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2013/11/15/my-tmux-setup.html</guid>
+      <description>I&amp;rsquo;ve been using tmux as my main terminal multiplexer for about 3 years now and have refined my configuration over time to fit my daily workflow.</description>
+    </item>
+    
+    <item>
+      <title>Uncloud your Life</title>
+      <link>https://unwiredcouch.com/2013/10/30/uncloud-your-life.html</link>
+      <pubDate>Wed, 30 Oct 2013 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2013/10/30/uncloud-your-life.html</guid>
+      <description>There has been a lot of talk lately about privacy in the cloud and owning your own data.</description>
+    </item>
+    
+    <item>
+      <title>Scaling Deployments at Etsy</title>
+      <link>https://unwiredcouch.com/talks/scaling-deployments-cdnyc/</link>
+      <pubDate>Wed, 09 Oct 2013 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/talks/scaling-deployments-cdnyc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Feature Flagging your Infrastructure for Fun and Profit</title>
+      <link>https://unwiredcouch.com/talks/infrastructure-feature-flags/</link>
+      <pubDate>Tue, 10 Sep 2013 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/talks/infrastructure-feature-flags/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Infrastructure upgrades with Chef</title>
+      <link>https://unwiredcouch.com/2013/08/02/infrastructure-upgrades-with-chef.html</link>
+      <pubDate>Fri, 02 Aug 2013 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2013/08/02/infrastructure-upgrades-with-chef.html</guid>
+      <description>I wrote about how we roll out infrastructure upgrades with Chef on Etsy&amp;rsquo;s engineering blog.</description>
+    </item>
+    
+    <item>
+      <title>Devtools at Etsy</title>
+      <link>https://unwiredcouch.com/talks/devtools-at-etsy/</link>
+      <pubDate>Mon, 27 May 2013 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/talks/devtools-at-etsy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Scaling Deployments at Etsy</title>
+      <link>https://unwiredcouch.com/talks/scaling-deployments-scaleconf/</link>
+      <pubDate>Thu, 18 Apr 2013 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/talks/scaling-deployments-scaleconf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>StatsD Workshop</title>
+      <link>https://unwiredcouch.com/talks/statsd-workshop/</link>
+      <pubDate>Fri, 29 Mar 2013 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/talks/statsd-workshop/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Chef Workflow at Etsy</title>
+      <link>https://unwiredcouch.com/talks/chef-workflow/</link>
+      <pubDate>Tue, 29 Jan 2013 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/talks/chef-workflow/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>IRC notifications with logstash</title>
+      <link>https://unwiredcouch.com/2012/11/03/irc-notifications-with-logstash.html</link>
+      <pubDate>Sat, 03 Nov 2012 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2012/11/03/irc-notifications-with-logstash.html</guid>
+      <description>I have spent some time in the last weeks to learn more about logstash and used the kind of bad state of my IRC notifications as the fun side project to get into it.</description>
+    </item>
+    
+    <item>
+      <title>Getting started with monitoring on the cheap and easy</title>
+      <link>https://unwiredcouch.com/2012/09/15/getting-started-with-monitoring.html</link>
+      <pubDate>Sat, 15 Sep 2012 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2012/09/15/getting-started-with-monitoring.html</guid>
+      <description>This post started out as a writeup of tools and services I use to monitor my small (currently 3) set of personal servers.</description>
+    </item>
+    
+    <item>
+      <title>Deploying Sensu monitoring on Heroku</title>
+      <link>https://unwiredcouch.com/2012/07/31/deploy-sensu-heroku.html</link>
+      <pubDate>Tue, 31 Jul 2012 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2012/07/31/deploy-sensu-heroku.html</guid>
+      <description>Sensu - trying to unsuck monitoring Some months ago I wanted to set up monitoring for a handful of servers I use for personal stuff.</description>
+    </item>
+    
+    <item>
+      <title>Setting up workstations with Chef (Newbie Edition)</title>
+      <link>https://unwiredcouch.com/2011/08/25/setting-up-workstations-with-chef-newbie-edition.html</link>
+      <pubDate>Thu, 25 Aug 2011 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2011/08/25/setting-up-workstations-with-chef-newbie-edition.html</guid>
+      <description>I have wanted to reinstall and cleanly set up my iMac at home for some time now.</description>
+    </item>
+    
+    <item>
+      <title>gtd-couch - GTD as a couchapp</title>
+      <link>https://unwiredcouch.com/2011/01/03/gtd-couchgtd-as-a-couchapp.html</link>
+      <pubDate>Mon, 03 Jan 2011 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2011/01/03/gtd-couchgtd-as-a-couchapp.html</guid>
+      <description>Why another GTD app? Over the last years I have tried a lot of task management applications.</description>
+    </item>
+    
+    <item>
+      <title>Testing couchapps with cucumber</title>
+      <link>https://unwiredcouch.com/2010/12/30/testing-couchapps-with-cucumber.html</link>
+      <pubDate>Thu, 30 Dec 2010 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2010/12/30/testing-couchapps-with-cucumber.html</guid>
+      <description>Couchapps overview [Couchapps][2] are a great way to build web apps hosted directly on a CouchDB.</description>
+    </item>
+    
+    <item>
+      <title>Introducing Ramrod Command Center</title>
+      <link>https://unwiredcouch.com/2010/09/19/introducing-ramrod-command-center.html</link>
+      <pubDate>Sun, 19 Sep 2010 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2010/09/19/introducing-ramrod-command-center.html</guid>
+      <description>I have [finally][2] registered my Master&amp;rsquo;s thesis. This means in 6 month my university life is over and the hard and cruel reality begins.</description>
+    </item>
+    
+    <item>
+      <title>Chipping in on Textmate to Vim switching</title>
+      <link>https://unwiredcouch.com/2010/08/09/vim.html</link>
+      <pubDate>Mon, 09 Aug 2010 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2010/08/09/vim.html</guid>
+      <description>There was some buzz lately about people considering [Vim][2] as their main editor and especially going from [Textmate][3] to Vim.</description>
+    </item>
+    
+    <item>
+      <title>Notifo</title>
+      <link>https://unwiredcouch.com/2010/07/11/notifo.html</link>
+      <pubDate>Sun, 11 Jul 2010 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2010/07/11/notifo.html</guid>
+      <description>[Notifo.com][notifo] is a web service which enables you to send push notifications to your mobile device (at the moment there is only support for the iPhone).</description>
+    </item>
+    
+    <item>
+      <title>Thunk.us Python wrapper</title>
+      <link>https://unwiredcouch.com/2010/06/04/thunk-us.html</link>
+      <pubDate>Fri, 04 Jun 2010 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2010/06/04/thunk-us.html</guid>
+      <description>Lately I have become more and more interested in APIs (especially on the web).</description>
+    </item>
+    
+    <item>
+      <title>Where&#39;s ma ketchup?</title>
+      <link>https://unwiredcouch.com/2010/05/31/ketchupstatus.html</link>
+      <pubDate>Mon, 31 May 2010 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2010/05/31/ketchupstatus.html</guid>
+      <description>At our office mondays are special. This is the one day Bobby drives his good old trailer to the parking lot of the supermarket next to the office and sells chicken and fries.</description>
+    </item>
+    
+    <item>
+      <title>instapaperlib</title>
+      <link>https://unwiredcouch.com/2010/05/20/instapaperlib.html</link>
+      <pubDate>Thu, 20 May 2010 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2010/05/20/instapaperlib.html</guid>
+      <description>For some time now instapaper.com is one of the web services I use most.</description>
+    </item>
+    
+    <item>
+      <title>plustache</title>
+      <link>https://unwiredcouch.com/2010/04/21/plustache.html</link>
+      <pubDate>Wed, 21 Apr 2010 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2010/04/21/plustache.html</guid>
+      <description>Some time ago I discovered [@defunkt&amp;rsquo;s][@defunkt] logic less ruby templating system [mustache][mustache].</description>
+    </item>
+    
+    <item>
+      <title>Almost Endless Screen Real Estate</title>
+      <link>https://unwiredcouch.com/2009/12/24/first-weekend-with-endless-screen-real-estate.html</link>
+      <pubDate>Thu, 24 Dec 2009 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2009/12/24/first-weekend-with-endless-screen-real-estate.html</guid>
+      <description>Ye olde setup Some months ago I realized that my Mac mini, used as a media server in my livingroom, has been getting a bit long in the tooth.</description>
+    </item>
+    
+    <item>
+      <title>Google Reader to Instapaper bridge</title>
+      <link>https://unwiredcouch.com/2009/09/19/google-reader-instapaper.html</link>
+      <pubDate>Sat, 19 Sep 2009 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2009/09/19/google-reader-instapaper.html</guid>
+      <description>The dilemma For some years now I am using Google Reader as my reader of choice for news feeds.</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://unwiredcouch.com/about.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/about.html</guid>
+      <description>Hi! I&amp;rsquo;m Daniel!
+I&amp;rsquo;m an infrastructure engineer at GitHub. When I&amp;rsquo;m not working on infrastructure, I&amp;rsquo;m usually having coffee, draw, read, play videogames or watch TV shows.</description>
+    </item>
+    
+    <item>
+      <title>How I vim</title>
+      <link>https://unwiredcouch.com/setup/vim/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/setup/vim/</guid>
+      <description>This is an interview I did for &amp;ldquo;How I vim&amp;rdquo; and was originally published here.</description>
+    </item>
+    
+    <item>
+      <title>Imprint</title>
+      <link>https://unwiredcouch.com/imprint.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/imprint.html</guid>
+      <description>unwiredcouch.com ist die Website von Daniel Schauenberg Gubener Strasse 25 10243 Berlin Email: impressum@unwiredcouch.</description>
+    </item>
+    
+    <item>
+      <title>My Coffee Setup</title>
+      <link>https://unwiredcouch.com/setup/coffee/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/setup/coffee/</guid>
+      <description>In early 2011 I had finished university (again) and decided that I didn&amp;rsquo;t want to drink bad coffee anymore.</description>
+    </item>
+    
+    <item>
+      <title>My Omnifocus Setup</title>
+      <link>https://unwiredcouch.com/setup/omnifocus/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/setup/omnifocus/</guid>
+      <description>At this point it&amp;rsquo;s pretty fair to say that OmniFocus rules my life.</description>
+    </item>
+    
+    <item>
+      <title>PGP Public Key</title>
+      <link>https://unwiredcouch.com/publickey/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/publickey/</guid>
+      <description>My ID is 57182B3886AE7F3C and my public key is:
+-----BEGIN PGP PUBLIC KEY BLOCK----- Version: GnuPG/MacGPG2 v2.</description>
+    </item>
+    
+    <item>
+      <title>Speaker Bio</title>
+      <link>https://unwiredcouch.com/speakerbio/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/speakerbio/</guid>
+      <description>Speaker Bio   Daniel Schauenberg is an infrastructure engineer at GitHub.</description>
+    </item>
+    
+  </channel>
+</rss>

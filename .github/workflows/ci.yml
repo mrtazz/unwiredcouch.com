@@ -1,8 +1,10 @@
 name: CI
+
 on:
-  push:
+  pull_request:
     paths-ignore:
-    - 'docs/**'
+      - 'docs/**'
+    types: [opened, synchronize, labeled]
 
 jobs:
   build:
@@ -11,26 +13,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: set variables
-      shell: bash
-      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-      id: vars
     - name: install dependencies
       run: |
-        sudo wget https://github.com/jgm/pandoc/releases/download/2.7.3/pandoc-2.7.3-1-amd64.deb
-        sudo dpkg -i pandoc-2.7.3-1-amd64.deb
+        sudo wget https://github.com/gohugoio/hugo/releases/download/v0.74.3/hugo_0.74.3_Linux-64bit.deb
+        sudo dpkg -i hugo_0.74.3_Linux-64bit.deb
     - name: software versions
       run: |
-        pandoc --version
-    - name: Set up Go 1.13
-      uses: actions/setup-go@v1
-      with:
-        go-version: 1.13
-        id: go
+        hugo version
     - uses: actions/checkout@v1
     - name: Build site into the docs/ folder
       run: |
-        SITEDIR=docs make all
+        hugo --destination docs
     - name: commit
       run: |
         git config --local user.email "action@github.com"
@@ -41,4 +34,4 @@ jobs:
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: ${{ steps.vars.outputs.branch }}
+        branch: ${{ github.event.pull_request.head.ref }}

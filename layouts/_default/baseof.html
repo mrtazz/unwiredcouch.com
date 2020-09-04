@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="cache-control" content="no-cache"/>
+    <meta http-equiv="pragma" content="no-cache"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    {{ partial "styles" . }}
+    <link href="https://unwiredcouch.com/atom.xml" type="application/atom+xml" rel="alternate" title="unwiredcouch.feed" />
+
+    <title>writing on unwiredcouch.com</title>
+  </head>
+  <body>
+
+    {{ partial "header" . }}
+
+    <main>
+    {{ block "main" . }}
+          <!-- The part of the page that begins to differ between templates
+          -->
+    {{ end }}
+    </main>
+
+  </body>
+</html>
