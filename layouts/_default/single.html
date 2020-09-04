@@ -1,0 +1,12 @@
+{{ define "main" }}
+{{ if ne .Type "standalonepage" }}
+<div class="postdateheading"> {{ .PublishDate.Format "Jan 2, 2006" }} </div>
+{{ end }}
+      <div class="post">
+        <h2> <a href=""> {{ .Title }} </a></h2>
+
+        {{ .Content }}
+
+      </div>
+
+{{ end }}
