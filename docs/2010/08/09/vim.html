@@ -5,47 +5,118 @@
     <meta http-equiv="cache-control" content="no-cache"/>
     <meta http-equiv="pragma" content="no-cache"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link href="/css/style.min.css?v=e1be0c2" media="screen" rel="stylesheet" type="text/css"/>
-    <link href="/css/mobile.min.css?v=e1be0c2" media="handheld, only screen and (max-device-width: 960px)" rel="stylesheet" type="text/css"/>
+    
+
+
+
+<link   rel="stylesheet"
+        href="../../../css/style.min.eb49c4fec823654761fff6e8513c2ece7d284005a0a006cee23d2623093024be.css"
+        integrity="sha256-60nE/sgjZUdh//boUTwuzn0oQAWgoAbO4j0mIwkwJL4="
+        type="text/css"
+        media="screen">
+
+<link   rel="stylesheet"
+        href="../../../css/mobile.min.abf90630fb44ad55f2030f0c0cd280cd0f230bdb829012c68535509a114b4b4d.css"
+        integrity="sha256-q/kGMPtErVXyAw8MDNKAzQ8jC9uCkBLGhTVQmhFLS00="
+        type="text/css"
+        media="handheld, only screen and (max-device-width: 960px)">
+
     <link href="https://unwiredcouch.com/atom.xml" type="application/atom+xml" rel="alternate" title="unwiredcouch.feed" />
 
-    <title>Chipping in on Textmate to Vim switching on unwiredcouch.com</title>
+    <title>writing on unwiredcouch.com</title>
   </head>
   <body>
 
-    <header>
-      <a class="gravatar hidemobile" href="/">
-        <img src="https://www.gravatar.com/avatar/89e0ad1229121f46047977ac547bd7b4.jpg?s=100"
-             height="100" width="100" class="avatar" alt="gravatar image" />
-      </a>
-      <div id="intro">
-        <p>Hi! I'm <a href="/about.html">Daniel</a>.</p>
-        <p>I like
-        <a href="/">writing</a>,
-        <a href="https://www.instagram.com/mrtazz/">drawing</a>,
-        <a href="https://twitter.com/mrtazz">tweeting</a>,
-        <a href="/talks">sometimes give talks</a>,
-        and <a href="http://code.mrtazz.com">occasionally write code</a>.
-        </p>
-      </div>
-    </header>
+    <header class="header">
+  <a class="gravatar hidemobile" href="../../../">
+    <img
+      src="https://www.gravatar.com/avatar/89e0ad1229121f46047977ac547bd7b4.jpg?s=100"
+      height="50" width="50" class="avatar" alt="gravatar image" />
+  </a>
+  <div class="menu">
+    <ul>
+      <li><a href="../../../posts">Writing</a></li>
+      <li><a href="https://instagram.com/mrtazz">Drawing</a></li>
+      <li><a href="../../../setup">Setup</a></li>
+      <li><a href="../../../about.html">About</a></li>
+    </ul>
+  </div>
+</header>
 
-    <div id="content">
-            <div class="post">
+
+    <main>
+    
+
+<div class="postdateheading"> Aug 9, 2010 </div>
+
+      <div class="post">
         <h2> <a href=""> Chipping in on Textmate to Vim switching </a></h2>
 
-<p>There was some buzz lately about people considering <a href="http://www.vim.org">Vim</a> as their main editor and especially going from <a href="http://macromates.com">Textmate</a> to Vim. I’ve tried several times to go the other way and leave vim as my editor of choice in favour of Textmate. It never worked.</p>
+        <p>There was some buzz lately about people considering [Vim][2] as their main
+editor and especially going from [Textmate][3] to Vim. I&rsquo;ve tried several times to
+go the other way and leave vim as my editor of choice in favour of Textmate. It
+never worked.</p>
 <h3 id="magic-does-not-come-easy">Magic does not come easy</h3>
-<p>I think there is one big mistake a lot of people do when switching. They expect to start vim and instantly have their fingers dance over the keyboard and coworkers being stunned by the awesome magic. But as with everything you learn, this is not the case. It is a long (think years long and not weeks long) way to even come close to this dance. I started fighting with vim in 2004 and think I have mastered the first 10% now. In my opinion Yehuda Katz was right when he <a href="http://yehudakatz.com/2010/07/29/everyone-who-tried-to-convince-me-to-use-vim-was-wrong/">said</a> that you should really start in insert mode. It turns out, that you can really use Vim (especially <a href="http://code.google.com/p/macvim/">MacVim</a>) like any other editor. From there on, if you force yourself to learn and use a new command everyday, you will see significant speed (and magic) improvements quite fast.</p>
+<p>I think there is one big mistake a lot of people do when switching. They expect to start
+vim and instantly have their fingers dance over the keyboard and coworkers
+being stunned by the awesome magic. But as with everything you learn, this is
+not the case. It is a long (think years long and not weeks long) way to even
+come close to this dance. I started fighting with vim in 2004 and think I have
+mastered the first 10% now. In my opinion Yehuda Katz was right when he [said][4]
+that you should really start in insert mode. It turns out, that you can really
+use Vim (especially [MacVim][5]) like any other editor. From there on, if you
+force yourself to learn and use a new command everyday, you will see
+significant speed (and magic) improvements quite fast.</p>
 <h3 id="bundle-configuration-with-pathogen">Bundle configuration with pathogen</h3>
-<p>Another topic which is very important (and powerful) is bundle support. Textmate’s bundles are split into different type in Vim. There are plugins, compiler, syntax and some more folders which can be used for configuration. If you do it the old way, it is really cumbersome. You have to copy new scripts into the according folders in your <code>~/.vim</code> folder. You have to check that nothing gets overwritten, and after some time you will lose track of what plugins you have installed.</p>
-<p>Fortunately, Tim Pope wrote the great <a href="http://github.com/tpope/vim-pathogen">pathogen plugin</a>. You only have to put it into a folder called autoload and enter 3 lines into your <code>~/.vimrc</code> and your done. Now you can create a new folder under <code>~/.vim/bundle</code> for each plugin you want to install. Pathogen will automatically load the plugin for you. You can even go further and put your configuration into <a href="http://git-scm.com">git</a>. If you add all of your plugins as git submodule, you can easily update them and have your configuration in sync on all your machines. It’s that easy.</p>
+<p>Another topic which is very important (and powerful) is bundle support.
+Textmate&rsquo;s bundles are split into different type in Vim. There are plugins,
+compiler, syntax and some more folders which can be used for configuration. If
+you do it the old way, it is really cumbersome. You have to copy new scripts
+into the according folders in your <code>~/.vim</code> folder. You have to check that
+nothing gets overwritten, and after some time you will lose track of what
+plugins you have installed.</p>
+<p>Fortunately, Tim Pope wrote the great [pathogen plugin][6]. You only have to
+put it into a folder called autoload and enter 3 lines into your <code>~/.vimrc</code> and
+your done. Now you can create a new folder under <code>~/.vim/bundle</code> for each
+plugin you want to install. Pathogen will automatically load the plugin for
+you. You can even go further and put your configuration into [git][7].
+If you add all of your plugins as git submodule, you can easily update them and
+have your configuration in sync on all your machines. It&rsquo;s that easy.</p>
 <h3 id="you-mentioned-textmate">You mentioned Textmate?</h3>
-<p>Right. I mentioned that I tried several times to switch to Textmate, as all the smart OSX users seem to use it. And if all the smart people use it, it must be awesome right?</p>
-<p>After using Textmate for some time, I suffered the same symptoms all the Vim switchers were talking about. Coding was slow, I had to think how I do this and that much to often, shortcuts are way to complicated and I tried to find a Vim mode for Textmate, that worked for me. I was trying to instantly unleash the magic. And that just doesn’t work. While I think Textmate is (one of) the best pure OSX editors and I hope that there will be a version 2 someday, I am still incredibly more productive with Vim. So Textmate is more of a fun to use tool, which I use when I am in the mood.</p>
-<p>But there is still this emacs thing out there, I hear. And it also wants to be learned.</p>
+<p>Right. I mentioned that I tried several times to switch to Textmate, as all the
+smart OSX users seem to use it. And if all the smart people use it, it must be
+awesome right?</p>
+<p>After using Textmate for some time, I suffered the same symptoms all the Vim
+switchers were talking about. Coding was slow, I had to think how I do this and
+that much to often, shortcuts are way to complicated and I tried to find a Vim
+mode for Textmate, that worked for me. I was trying to instantly unleash the
+magic. And that just doesn&rsquo;t work.
+While I think Textmate is (one of) the best pure OSX editors and I hope that
+there will be a version 2 someday, I am still incredibly more productive with
+Vim. So Textmate is more of a fun to use tool, which I use when I am in the
+mood.</p>
+<p>But there is still this emacs thing out there, I hear. And it also wants to be
+learned.</p>
+<p>[1]: {{ page.url }}
+[2]: <a href="http://www.vim.org">http://www.vim.org</a>
+[3]: <a href="http://macromates.com">http://macromates.com</a>
+[4]: <a href="http://yehudakatz.com/2010/07/29/everyone-who-tried-to-convince-me-to-use-vim-was-wrong/">http://yehudakatz.com/2010/07/29/everyone-who-tried-to-convince-me-to-use-vim-was-wrong/</a>
+[5]: <a href="http://code.google.com/p/macvim/">http://code.google.com/p/macvim/</a>
+[6]: <a href="http://github.com/tpope/vim-pathogen">http://github.com/tpope/vim-pathogen</a>
+[7]: <a href="http://git-scm.com">http://git-scm.com</a></p>
+
 
       </div>
-    </div>
+
+
+    </main>
+
+    <footer class="footer">
+    <ul class="menu-footer">
+      <li><a href="../../../imprint.html">Imprint</a></li>
+    </ul>
+</footer>
+
+
   </body>
 </html>
