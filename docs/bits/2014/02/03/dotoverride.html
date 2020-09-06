@@ -5,51 +5,100 @@
     <meta http-equiv="cache-control" content="no-cache"/>
     <meta http-equiv="pragma" content="no-cache"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link href="/css/style.min.css?v=e1be0c2" media="screen" rel="stylesheet" type="text/css"/>
-    <link href="/css/mobile.min.css?v=e1be0c2" media="handheld, only screen and (max-device-width: 960px)" rel="stylesheet" type="text/css"/>
+    
+
+
+
+<link   rel="stylesheet"
+        href="../../../../css/style.min.452c15f9a7d8d0f82214a1af62ff7a63af4f834c870dedde1e049381c0004dc7.css"
+        integrity="sha256-RSwV&#43;afY0PgiFKGvYv96Y69Pg0yHDe3eHgSTgcAATcc="
+        type="text/css"
+        media="screen">
+
+<link   rel="stylesheet"
+        href="../../../../css/mobile.min.abf90630fb44ad55f2030f0c0cd280cd0f230bdb829012c68535509a114b4b4d.css"
+        integrity="sha256-q/kGMPtErVXyAw8MDNKAzQ8jC9uCkBLGhTVQmhFLS00="
+        type="text/css"
+        media="handheld, only screen and (max-device-width: 960px)">
+
     <link href="https://unwiredcouch.com/atom.xml" type="application/atom+xml" rel="alternate" title="unwiredcouch.feed" />
 
-    <title>Context specific dotfiles on unwiredcouch.com</title>
+    <title>writing on unwiredcouch.com</title>
   </head>
   <body>
 
-    <header>
-      <a class="gravatar hidemobile" href="/">
-        <img src="https://www.gravatar.com/avatar/89e0ad1229121f46047977ac547bd7b4.jpg?s=100"
-             height="100" width="100" class="avatar" alt="gravatar image" />
-      </a>
-      <div id="intro">
-        <p>Hi! I'm <a href="/about.html">Daniel</a>.</p>
-        <p>I like
-        <a href="/">writing</a>,
-        <a href="https://www.instagram.com/mrtazz/">drawing</a>,
-        <a href="https://twitter.com/mrtazz">tweeting</a>,
-        <a href="/talks">sometimes give talks</a>,
-        and <a href="http://code.mrtazz.com">occasionally write code</a>.
-        </p>
-      </div>
-    </header>
+    <header class="header">
+  <a class="gravatar hidemobile" href="../../../../">
+    <img
+      src="https://www.gravatar.com/avatar/89e0ad1229121f46047977ac547bd7b4.jpg?s=100"
+      height="50" width="50" class="avatar" alt="gravatar image" />
+  </a>
+  <div class="menu">
+    <ul>
+      <li><a href="../../../../posts">Writing</a></li>
+      <li><a href="https://www.instagram.com/mrtazz/">Drawing</a></li>
+      <li><a href="../../../../talks">Talks</a></li>
+      <li><a href="https://github.com/mrtazz">Code</a></li>
+      <li><a href="../../../../setup/">Setup</a></li>
+      <li><a href="../../../../about.html">About</a></li>
+      <li><a href="../../../../imprint.html">Contact</a></li>
+    </ul>
+  </div>
+</header>
 
-    <div id="content">
-            <div class="post">
+
+    <main>
+    
+
+<div class="postdateheading"> Feb 3, 2014 </div>
+
+      <div class="post">
         <h2> <a href=""> Context specific dotfiles </a></h2>
 
-<p>I have a <a href="https://github.com/mrtazz/muttfiles">collection</a> <a href="https://github.com/mrtazz/vimfiles">of</a> <a href="https://github.com/mrtazz/zshfiles">various</a> <a href="https://github.com/mrtazz/dotfiles">dotfiles</a> which I use to configure the most important tools I use everyday. Naturally all those are kept in git and shared between all the machines I work on. The problem is that there might be things I don’t want to store publicly. This might include shell aliases to hostnames, git user emails I only use at work, etc. I used to manage this by having a different branch checked out on machines at work and would just merge in master whenever something changes. However this was super tedious as I had to remember to switch to the right branch depending on whether I wanted to make public or private changes. And after changing something I had to remember to switch back to the correct branch and not accidentally push the private branch to public GitHub. What it effectively ended up being was a whole bunch of dirty repos on different machines that were never in sync and partly had duplicate changes and partly only worked on that box anyways. And whenever I wanted to bring them back in sync it was a huge pain. So I decided to adopt a new strategy for managing context specific dotfiles.</p>
-<p>I added a git repo <code>~/.dotoverrides</code> to all the machines I work on (or at least most of them) which contains a <code>vimrc</code>, a <code>zshrc</code> and so on. On my work machines this is pushed to a repo on our internal GitHub Enterprise instance so I can easily share it between machines. And all my regular dotfiles now source those override files at the very end.</p>
+        <p>I have a <a href="https://github.com/mrtazz/muttfiles">collection</a> <a href="https://github.com/mrtazz/vimfiles">of</a> <a href="https://github.com/mrtazz/zshfiles">various</a>
+<a href="https://github.com/mrtazz/dotfiles">dotfiles</a> which I use to configure the most important tools I use
+everyday. Naturally all those are kept in git and shared between all the
+machines I work on. The problem is that there might be things I don&rsquo;t want to
+store publicly. This might include shell aliases to hostnames, git user emails
+I only use at work, etc. I used to manage this by having a different branch
+checked out on machines at work and would just merge in master whenever
+something changes. However this was super tedious as I had to remember to
+switch to the right branch depending on whether I wanted to make public or
+private changes. And after changing something I had to remember to switch back
+to the correct branch and not accidentally push the private branch to public
+GitHub. What it effectively ended up being was a whole bunch of dirty repos on
+different machines that were never in sync and partly had duplicate changes
+and partly only worked on that box anyways. And whenever I wanted to bring
+them back in sync it was a huge pain.  So I decided to adopt a new strategy
+for managing context specific dotfiles.</p>
+<p>I added a git repo <code>~/.dotoverrides</code> to all the machines I work on (or at
+least most of them) which contains a <code>vimrc</code>, a <code>zshrc</code> and so on.  On my work
+machines this is pushed to a repo on our internal GitHub Enterprise instance
+so I can easily share it between machines. And all my regular dotfiles now
+source those override files at the very end.</p>
 <p>So in my regular <code>.vimrc</code> I have something like this:</p>
-<pre class="vim"><code>&quot; source overrides configs
-if filereadable($HOME.&quot;/.dotoverrides/vimrc&quot;)
-  exec &quot;:source &quot;. $HOME . &quot;/.dotoverrides/vimrc&quot;
-endif</code></pre>
-<p>In my <code>.zshrc</code> I have this:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="bu">[</span> <span class="ot">-f</span>  <span class="va">${HOME}</span>/.dotoverrides/zshrc<span class="bu"> ]</span> <span class="kw">&amp;&amp;</span> <span class="bu">source</span> <span class="va">${HOME}</span>/.dotoverrides/zshrc</span></code></pre></div>
-<p>And in git (only works if you have at least v1.7.10) I’ve added this stanza:</p>
-<pre class="config"><code>[include]
-  path = ~/.dotoverrides/gitconfig</code></pre>
-<p>Now I can easily share and push/pull my regular dotfiles in public GitHub and don’t have to pay attention whether or not I’m on the correct branch and if I’m not accidentally pushing to the wrong remote. Whenever I need to use different settings on a work machine I just make sure to add it to the overrides file and have it ready as soon as I open a new shell, run a git command or open vim again.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#75715e">&#34; source overrides configs</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">if</span> <span style="color:#a6e22e">filereadable</span>($<span style="color:#a6e22e">HOME</span>.<span style="color:#e6db74">&#34;/.dotoverrides/vimrc&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>  <span style="color:#a6e22e">exec</span> <span style="color:#e6db74">&#34;:source &#34;</span>. $<span style="color:#a6e22e">HOME</span> . <span style="color:#e6db74">&#34;/.dotoverrides/vimrc&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">endif</span><span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>In my <code>.zshrc</code> I have this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span> -f  <span style="color:#e6db74">${</span>HOME<span style="color:#e6db74">}</span>/.dotoverrides/zshrc <span style="color:#f92672">]</span> <span style="color:#f92672">&amp;&amp;</span> source <span style="color:#e6db74">${</span>HOME<span style="color:#e6db74">}</span>/.dotoverrides/zshrc
+</code></pre></div><p>And in git (only works if you have at least v1.7.10) I&rsquo;ve added this stanza:</p>
+<pre><code class="language-config" data-lang="config">[include]
+  path = ~/.dotoverrides/gitconfig
+</code></pre><p>Now I can easily share and push/pull my regular dotfiles  in public GitHub and
+don&rsquo;t have to pay attention whether or not I&rsquo;m on the correct branch and if
+I&rsquo;m not accidentally pushing to the wrong remote. Whenever I need to use
+different settings on a work machine I just make sure to add it to the
+overrides file and have it ready as soon as I open a new shell, run a git
+command or open vim again.</p>
 <p>So much easier!</p>
 
+
       </div>
-    </div>
+
+
+    </main>
+
   </body>
 </html>

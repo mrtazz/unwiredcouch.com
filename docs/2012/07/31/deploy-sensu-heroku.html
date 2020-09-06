@@ -5,66 +5,133 @@
     <meta http-equiv="cache-control" content="no-cache"/>
     <meta http-equiv="pragma" content="no-cache"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link href="/css/style.min.css?v=e1be0c2" media="screen" rel="stylesheet" type="text/css"/>
-    <link href="/css/mobile.min.css?v=e1be0c2" media="handheld, only screen and (max-device-width: 960px)" rel="stylesheet" type="text/css"/>
+    
+
+
+
+<link   rel="stylesheet"
+        href="../../../css/style.min.452c15f9a7d8d0f82214a1af62ff7a63af4f834c870dedde1e049381c0004dc7.css"
+        integrity="sha256-RSwV&#43;afY0PgiFKGvYv96Y69Pg0yHDe3eHgSTgcAATcc="
+        type="text/css"
+        media="screen">
+
+<link   rel="stylesheet"
+        href="../../../css/mobile.min.abf90630fb44ad55f2030f0c0cd280cd0f230bdb829012c68535509a114b4b4d.css"
+        integrity="sha256-q/kGMPtErVXyAw8MDNKAzQ8jC9uCkBLGhTVQmhFLS00="
+        type="text/css"
+        media="handheld, only screen and (max-device-width: 960px)">
+
     <link href="https://unwiredcouch.com/atom.xml" type="application/atom+xml" rel="alternate" title="unwiredcouch.feed" />
 
-    <title>Deploying Sensu monitoring on Heroku on unwiredcouch.com</title>
+    <title>writing on unwiredcouch.com</title>
   </head>
   <body>
 
-    <header>
-      <a class="gravatar hidemobile" href="/">
-        <img src="https://www.gravatar.com/avatar/89e0ad1229121f46047977ac547bd7b4.jpg?s=100"
-             height="100" width="100" class="avatar" alt="gravatar image" />
-      </a>
-      <div id="intro">
-        <p>Hi! I'm <a href="/about.html">Daniel</a>.</p>
-        <p>I like
-        <a href="/">writing</a>,
-        <a href="https://www.instagram.com/mrtazz/">drawing</a>,
-        <a href="https://twitter.com/mrtazz">tweeting</a>,
-        <a href="/talks">sometimes give talks</a>,
-        and <a href="http://code.mrtazz.com">occasionally write code</a>.
-        </p>
-      </div>
-    </header>
+    <header class="header">
+  <a class="gravatar hidemobile" href="../../../">
+    <img
+      src="https://www.gravatar.com/avatar/89e0ad1229121f46047977ac547bd7b4.jpg?s=100"
+      height="50" width="50" class="avatar" alt="gravatar image" />
+  </a>
+  <div class="menu">
+    <ul>
+      <li><a href="../../../posts">Writing</a></li>
+      <li><a href="https://www.instagram.com/mrtazz/">Drawing</a></li>
+      <li><a href="../../../talks">Talks</a></li>
+      <li><a href="https://github.com/mrtazz">Code</a></li>
+      <li><a href="../../../setup/">Setup</a></li>
+      <li><a href="../../../about.html">About</a></li>
+      <li><a href="../../../imprint.html">Contact</a></li>
+    </ul>
+  </div>
+</header>
 
-    <div id="content">
-            <div class="post">
+
+    <main>
+    
+
+<div class="postdateheading"> Jul 31, 2012 </div>
+
+      <div class="post">
         <h2> <a href=""> Deploying Sensu monitoring on Heroku </a></h2>
 
-<h3 id="sensu---trying-to-unsuck-monitoring">Sensu - trying to unsuck monitoring</h3>
-<p>Some months ago I wanted to set up monitoring for a handful of servers I use for personal stuff. As a first solution <a href="http://nagios.org">Nagios</a> came to mind. However for several reasons I didn’t want to set it up and configure it. And I really didn’t want to dedicate an existing server to do monitoring or get a new one just for that purpose. Around that time I also read about <a href="https://github.com/sensu/sensu">Sensu</a>, a new approach to monitoring, which is a result of Nagios not being a good fit for the monitoring needs at <a href="http://www.sonian.com/">Sonian</a>. Its technology stack is Ruby, Redis and AMQP. I immediately thought it should be possible to put this on the <a href="https://devcenter.heroku.com/articles/cedar/">Heroku Cedar stack</a> and run it on an instance there, which would make a nice solution for monitoring a small number of systems. So I hacked away and with a lot of help (and patience) from <a href="https://twitter.com/portertech">Sean Porter</a>, the adaptions to make the server and API part of Sensu deployable on Heroku are in the new <a href="https://github.com/sensu/sensu/tree/v0.9.6">0.9.6 release</a>.</p>
+        <h3 id="sensu---trying-to-unsuck-monitoring">Sensu - trying to unsuck monitoring</h3>
+<p>Some months ago I wanted to set up monitoring for a handful of servers I use
+for personal stuff. As a first solution <a href="http://nagios.org">Nagios</a> came to mind. However for
+several reasons I didn&rsquo;t want to set it up and configure it. And I really
+didn&rsquo;t want to dedicate an existing server to do monitoring or get a new one
+just for that purpose. Around that time I also read about <a href="https://github.com/sensu/sensu">Sensu</a>, a new
+approach to monitoring, which is a result of Nagios not being a good fit for
+the monitoring needs at <a href="http://www.sonian.com/">Sonian</a>. Its technology stack is Ruby, Redis and
+AMQP. I immediately thought it should be possible to put this on the <a href="https://devcenter.heroku.com/articles/cedar/">Heroku
+Cedar stack</a> and run it on an instance there, which would make a nice
+solution for monitoring a small number of systems. So I hacked away and with a
+lot of help (and patience) from <a href="https://twitter.com/portertech">Sean Porter</a>, the adaptions to make the
+server and API part of Sensu deployable on Heroku are in the new <a href="https://github.com/sensu/sensu/tree/v0.9.6">0.9.6
+release</a>.</p>
 <h3 id="setting-up-the-sensu-repository">Setting up the Sensu repository</h3>
-<p>In order to get started and configure your Sensu instance, clone the <a href="https://github.com/mrtazz/sensu-heroku-app">example repository</a> from Github.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a>    <span class="fu">git</span> clone https://github.com/mrtazz/sensu-heroku-example</span></code></pre></div>
-<p>The example includes a basic folder layout for running a server or API instance on Heroku. All configuration files can be dropped in the <code>config/</code> folder. They will be picked up by the process when Sensu starts. The example repo also includes a basic handler (<code>bin/showme.rb</code>), which prints event data to STDOUT. There are a lot more handlers in the Sensu <a href="https://github.com/sensu/sensu-community-plugins">community plugins</a> repository on Github. Since handlers are just ruby scripts, you can download the handlers you want and also put it in the <code>bin/</code> directory. Don’t forget to add the correct configuration file for the handler in the <code>config/</code> directory also. A great overview how to configure Sensu can be found on Joe Miller’s <a href="http://joemiller.me">blog</a> and there is also an official <a href="https://github.com/sensu/sensu/wiki/Install-Guide">install guide</a>.</p>
+<p>In order to get started and configure your Sensu instance, clone the <a href="https://github.com/mrtazz/sensu-heroku-app">example
+repository</a> from Github.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    git clone https://github.com/mrtazz/sensu-heroku-example
+</code></pre></div><p>The example includes a basic folder layout for running a server or API instance
+on Heroku. All configuration files can be dropped in the <code>config/</code> folder. They
+will be picked up by the process when Sensu starts. The example repo also
+includes a basic handler (<code>bin/showme.rb</code>), which prints event data to STDOUT.
+There are a lot more handlers in the Sensu <a href="https://github.com/sensu/sensu-community-plugins">community plugins</a> repository on
+Github. Since handlers are just ruby scripts, you can download the handlers you
+want and also put it in the <code>bin/</code> directory. Don&rsquo;t forget to add the correct
+configuration file for the handler in the <code>config/</code> directory also. A great
+overview how to configure Sensu can be found on Joe Miller&rsquo;s <a href="http://joemiller.me">blog</a> and there
+is also an official <a href="https://github.com/sensu/sensu/wiki/Install-Guide">install guide</a>.</p>
 <h3 id="deployment">Deployment</h3>
-<p>In order to deploy Sensu to Heroku, you need to create two apps. One will be the Sensu API instance and the other one the Sensu server. It doesn’t really matter, which one you start with. The important thing is, that you only need to add the RabbitMQ and Redis plugins once and can then reuse the settings on the second instance.</p>
-<p>So create the first instance on the cedar stack from within the example repo and add the plugins:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a>    <span class="ex">heroku</span> create --stack cedar awesome-sensu-server</span>
-<span id="cb2-2"><a href="#cb2-2"></a>    <span class="ex">heroku</span> plugins:install redistogo</span>
-<span id="cb2-3"><a href="#cb2-3"></a>    <span class="ex">heroku</span> plugins:install rabbitmq</span>
-<span id="cb2-4"><a href="#cb2-4"></a>    <span class="ex">heroku</span> config:add API_PORT=80</span></code></pre></div>
-<p>You have to add the <code>API_PORT</code> environment variable to the server instance, since otherwise it will assume it’s running the API itself and assign the instance locale port from the <code>PORT</code> environment variable to use as the API port. After that is done, push the code to Heroku and scale up a worker process:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a>    <span class="fu">git</span> push heroku master</span>
-<span id="cb3-2"><a href="#cb3-2"></a>    <span class="ex">heroku</span> ps:scale app=1</span></code></pre></div>
-<p>For the API instance create a new branch in the repo or clone the example repo into a new location. Then initialize the API:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a>    <span class="ex">heroku</span> create --stack cedar awesome-sensu-api</span>
-<span id="cb4-2"><a href="#cb4-2"></a>    <span class="ex">heroku</span> config:add REDISTOGO_URL=<span class="st">&quot;value from server instance&quot;</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a>    <span class="ex">heroku</span> config:add RABBITMQ_URL=<span class="st">&quot;value from server instance&quot;</span></span></code></pre></div>
-<p>Now change the Procfile to start up the API instead of the Sensu server like this:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a>    <span class="ex">app</span>: sensu-api -v -c config/config.json -d config/</span></code></pre></div>
-<p>Commit the changes and push it to the Heroku app:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a>    <span class="fu">git</span> push heroku-api master</span>
-<span id="cb6-2"><a href="#cb6-2"></a>    <span class="ex">heroku</span> ps:scale app=1</span></code></pre></div>
-<p>Now all you have to do is set up clients and voila, you have Heroku hosted monitoring. If you’re not yet familiar with setting up clients, I highly recommend Joe Miller’s <a href="http://joemiller.me">blog</a> again. He’s a strong contributor to Sensu and has written an abundance of blog posts and tutorials about it. And of course there is also the <a href="https://github.com/sensu/sensu/wiki/">sensu wiki</a>.</p>
+<p>In order to deploy Sensu to Heroku, you need to create two apps. One will be
+the Sensu API instance and the other one the Sensu server. It doesn&rsquo;t really
+matter, which one you start with. The important thing is, that you only need to
+add the RabbitMQ and Redis plugins once and can then reuse the settings on the
+second instance.</p>
+<p>So create the first instance on the cedar stack from within the example repo
+and add the plugins:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    heroku create --stack cedar awesome-sensu-server
+    heroku plugins:install redistogo
+    heroku plugins:install rabbitmq
+    heroku config:add API_PORT<span style="color:#f92672">=</span><span style="color:#ae81ff">80</span>
+</code></pre></div><p>You have to add the <code>API_PORT</code> environment variable to the server instance,
+since otherwise it will assume it&rsquo;s running the API itself and assign the
+instance locale port from the <code>PORT</code> environment variable to use as the API
+port. After that is done, push the code to Heroku and scale up a worker
+process:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    git push heroku master
+    heroku ps:scale app<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</code></pre></div><p>For the API instance create a new branch in the repo or clone the example repo
+into a new location. Then initialize the API:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    heroku create --stack cedar awesome-sensu-api
+    heroku config:add REDISTOGO_URL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;value from server instance&#34;</span>
+    heroku config:add RABBITMQ_URL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;value from server instance&#34;</span>
+</code></pre></div><p>Now change the Procfile to start up the API instead of the Sensu server like
+this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    app: sensu-api -v -c config/config.json -d config/
+</code></pre></div><p>Commit the changes and push it to the Heroku app:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    git push heroku-api master
+    heroku ps:scale app<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</code></pre></div><p>Now all you have to do is set up clients and voila, you have Heroku hosted
+monitoring. If you&rsquo;re not yet familiar with setting up clients, I highly
+recommend Joe Miller&rsquo;s <a href="http://joemiller.me">blog</a> again. He&rsquo;s a strong contributor to Sensu and
+has written an abundance of blog posts and tutorials about it. And of course
+there is also the <a href="https://github.com/sensu/sensu/wiki/">sensu wiki</a>.</p>
 <h3 id="further-improvements">Further improvements</h3>
-<p>A definite improvement for plugins and handlers would be to be able to also read configuration from environment variables. At the moment the way to go is to add a configuration JSON file in the config folder. This is fine except for the fact that you’d also have API keys commited to the repo.</p>
-<p>And obviously more bugs will probably come up, once more people run Sensu on Heroku. I’ve been running a low volume instance for a couple of weeks now and it works pretty great so far.</p>
+<p>A definite improvement for plugins and handlers would be to be able to also
+read configuration from environment variables. At the moment the way to go is
+to add a configuration JSON file in the config folder. This is fine except for
+the fact that you&rsquo;d also have API keys commited to the repo.</p>
+<p>And obviously more bugs will probably come up, once more people run Sensu on
+Heroku. I&rsquo;ve been running a low volume instance for a couple of weeks now and
+it works pretty great so far.</p>
+
 
       </div>
-    </div>
+
+
+    </main>
+
   </body>
 </html>

@@ -5,60 +5,107 @@
     <meta http-equiv="cache-control" content="no-cache"/>
     <meta http-equiv="pragma" content="no-cache"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link href="/css/style.min.css?v=e1be0c2" media="screen" rel="stylesheet" type="text/css"/>
-    <link href="/css/mobile.min.css?v=e1be0c2" media="handheld, only screen and (max-device-width: 960px)" rel="stylesheet" type="text/css"/>
+    
+
+
+
+<link   rel="stylesheet"
+        href="../../../../css/style.min.452c15f9a7d8d0f82214a1af62ff7a63af4f834c870dedde1e049381c0004dc7.css"
+        integrity="sha256-RSwV&#43;afY0PgiFKGvYv96Y69Pg0yHDe3eHgSTgcAATcc="
+        type="text/css"
+        media="screen">
+
+<link   rel="stylesheet"
+        href="../../../../css/mobile.min.abf90630fb44ad55f2030f0c0cd280cd0f230bdb829012c68535509a114b4b4d.css"
+        integrity="sha256-q/kGMPtErVXyAw8MDNKAzQ8jC9uCkBLGhTVQmhFLS00="
+        type="text/css"
+        media="handheld, only screen and (max-device-width: 960px)">
+
     <link href="https://unwiredcouch.com/atom.xml" type="application/atom+xml" rel="alternate" title="unwiredcouch.feed" />
 
-    <title>Shared layout for project pages in Jekyll on unwiredcouch.com</title>
+    <title>writing on unwiredcouch.com</title>
   </head>
   <body>
 
-    <header>
-      <a class="gravatar hidemobile" href="/">
-        <img src="https://www.gravatar.com/avatar/89e0ad1229121f46047977ac547bd7b4.jpg?s=100"
-             height="100" width="100" class="avatar" alt="gravatar image" />
-      </a>
-      <div id="intro">
-        <p>Hi! I'm <a href="/about.html">Daniel</a>.</p>
-        <p>I like
-        <a href="/">writing</a>,
-        <a href="https://www.instagram.com/mrtazz/">drawing</a>,
-        <a href="https://twitter.com/mrtazz">tweeting</a>,
-        <a href="/talks">sometimes give talks</a>,
-        and <a href="http://code.mrtazz.com">occasionally write code</a>.
-        </p>
-      </div>
-    </header>
+    <header class="header">
+  <a class="gravatar hidemobile" href="../../../../">
+    <img
+      src="https://www.gravatar.com/avatar/89e0ad1229121f46047977ac547bd7b4.jpg?s=100"
+      height="50" width="50" class="avatar" alt="gravatar image" />
+  </a>
+  <div class="menu">
+    <ul>
+      <li><a href="../../../../posts">Writing</a></li>
+      <li><a href="https://www.instagram.com/mrtazz/">Drawing</a></li>
+      <li><a href="../../../../talks">Talks</a></li>
+      <li><a href="https://github.com/mrtazz">Code</a></li>
+      <li><a href="../../../../setup/">Setup</a></li>
+      <li><a href="../../../../about.html">About</a></li>
+      <li><a href="../../../../imprint.html">Contact</a></li>
+    </ul>
+  </div>
+</header>
 
-    <div id="content">
-            <div class="post">
+
+    <main>
+    
+
+<div class="postdateheading"> Jun 14, 2014 </div>
+
+      <div class="post">
         <h2> <a href=""> Shared layout for project pages in Jekyll </a></h2>
 
-<p>I use <a href="http://jekyllrb.com/">Jekyll</a> a lot, especially for <a href="http://unwiredcouch.com">my website</a>. And I quite like it a lot. I also write and open source the occasional software every now and then, which usually happens on <a href="https://github.com/mrtazz">my GitHub profile</a>. And thankfully GitHub makes it <a href="https://pages.github.com/">dead easy</a> to generate a nice looking page for your project. I’ve used this feature for a long time now and have used a bunch of their awesome provided themes. However since I also host my site on GitHub Pages and thus all my projects are automatically available under a sub path there named after the project name.</p>
-<p>However last week I decided that I wanted to have them all be in a layout similar to my website so the whole page doesn’t change just because you click on a link on my <a href="http://www.unwiredcouch.com/projects.html">projects page</a>. But I also wanted to keep the code for the pages in the respective repo so it’s all in one place while at the same time I didn’t want to copy the layout into each repository.</p>
-<p>Thankfully there is trick you can use with GitHub Pages. If you add git submodules to your repository they are gettiing <a href="https://help.github.com/articles/using-submodules-with-pages">pulled in</a> automatically on page build. So I created a <a href="https://github.com/mrtazz/jekyll-layouts">shared repository</a> to hold the template I wanted for my projects. And now all I have to do to get a project page with the correct layout is:</p>
+        <p>I use <a href="http://jekyllrb.com/">Jekyll</a> a lot, especially for <a href="http://unwiredcouch.com">my website</a>. And I
+quite like it a lot. I also write and open source the occasional software
+every now and then, which usually happens on <a href="https://github.com/mrtazz">my GitHub profile</a>. And
+thankfully GitHub makes it <a href="https://pages.github.com/">dead easy</a> to generate a nice looking page
+for your project. I&rsquo;ve used this feature for a long time now and have used a
+bunch of their awesome provided themes. However since I also host my site on
+GitHub Pages and thus all my projects are automatically available under a sub
+path there named after the project name.</p>
+<p>However last week I decided that I wanted to have them all be in a layout
+similar to my website so the whole page doesn&rsquo;t change just because you click
+on a link on my <a href="http://www.unwiredcouch.com/projects.html">projects page</a>. But I also wanted to keep the code
+for the pages in the respective repo so it&rsquo;s all in one place while at the
+same time I didn&rsquo;t want to copy the layout into each repository.</p>
+<p>Thankfully there is trick you can use with GitHub Pages. If you add git
+submodules to your repository they are gettiing <a href="https://help.github.com/articles/using-submodules-with-pages">pulled in</a>
+automatically on page build. So I created a <a href="https://github.com/mrtazz/jekyll-layouts">shared repository</a> to
+hold the template I wanted for my projects. And now all I have to do to get a
+project page with the correct layout is:</p>
 <ul>
 <li><code>git checkout gh-pages</code></li>
 <li><code>git submodule add https://github.com/mrtazz/jekyll-layouts.git _layouts</code></li>
-<li>copy the <code>README.md</code> of my project to <code>index.md</code> and add the jekyll frontmatter:</li>
+<li>copy the <code>README.md</code> of my project to <code>index.md</code> and add the jekyll
+frontmatter:</li>
 </ul>
 <pre><code>---
 layout: project
 title: project name
----</code></pre>
-<ul>
+---
+</code></pre><ul>
 <li>add a <code>_config.yml</code> and fill out the following values:</li>
 </ul>
 <pre><code>gaugesid: tracking code for the gaug.es gauge
 projecturl: github url for the ribbon in the upper right corner
 basesite: base URL to get the CSS from
-markdown: kramdown</code></pre>
-<ul>
+markdown: kramdown
+</code></pre><ul>
 <li><code>git push</code></li>
 </ul>
-<p>The only dependency now is that the CSS comes from my main website. Which I’m fine with and is actually a feature because if I ever change something there I want the project pages to reflect that change also. The other downside is that if I change the project layout repository I will have to update the reference in all the project repositories. Which should be fairly straightforward with some automation and is at least better than copying files around and committing them to each repository.</p>
+<p>The only dependency now is that the CSS comes from my main website. Which I&rsquo;m
+fine with and is actually a feature because if I ever change something there I
+want the project pages to reflect that change also. The other downside is that
+if I change the project layout repository I will have to update the reference
+in all the project repositories. Which should be fairly straightforward with
+some automation and is at least better than copying files around and
+committing them to each repository.</p>
+
 
       </div>
-    </div>
+
+
+    </main>
+
   </body>
 </html>
