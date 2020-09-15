@@ -1,0 +1,23 @@
+{{ define "main" }}
+
+{{ $coverurl := printf "/images/%s/%s/cover.jpg" .Section .File.BaseFileName }}
+{{ $coverStaticLocation := printf "static/%s" $coverurl }}
+
+{{ if ne .Type "standalonepage" }}
+<div class="postdateheading"> {{ .PublishDate.Format "Jan 2, 2006" }} </div>
+{{ end }}
+      <div class="reading-single">
+        <h2> <a href=""> {{ .Title }} </a></h2>
+        <h3> by {{ .Params.Author }} </h3>
+
+        {{ if (fileExists $coverStaticLocation) -}}
+        <img class="coverimage"
+             src="{{ $coverurl }}"
+             alt="{{ .Title }} book cover">
+        {{- end }}
+
+        {{ .Content }}
+
+      </div>
+
+{{ end }}

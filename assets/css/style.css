@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -15,6 +16,11 @@ main {
     padding-bottom: 100px;
 }
 
+.mainwrapper {
+  min-height: 100vh;
+  position: relative;
+}
+
 .header {
     background-color: #840044;
     color: white;
@@ -27,14 +33,18 @@ main {
 }
 
 footer {
-    background-color: #840044;
-    color: white;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    padding: 2px;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  background-color: #840044;
+  color: white;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  padding: 2px;
 }
 
 .menu-footer,
@@ -205,6 +215,8 @@ div.menu a.avatar {
    text-align: right;
    margin-bottom: 10px;
 }
+
+.reading-single,
 .post p{
   line-height: 1.6;
   text-rendering: optimizeLegibility;
@@ -253,6 +265,62 @@ div.archive ul li{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+
+.reading-page {
+  width: 75%;
+  font-size: 15pt;
+  margin: 0 auto;
+}
+
+.reading-list {
+  margin-left: 0px;
+  margin-bottom: 25px;
+  list-style-type: none;
+}
+
+.reading-list-year {
+  margin-bottom: 10px;
+}
+
+.reading-entry {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+}
+
+.reading-entry-container {
+  margin-right: 20px;
+  overflow: hidden;
+  flex: 1 1 auto;
+}
+
+.reading-entry-title {
+  display: block;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.reading-entry-author {
+  display: block;
+}
+
+.reading-entry-date {
+  flex: 1 0 auto;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.coverimage {
+  margin: auto;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  display:block;
+  max-width:50%;
+  height:auto;
 }
 
 .nobullet {
