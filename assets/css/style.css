@@ -232,6 +232,7 @@ ul{
   margin-bottom: 15px;
 }
 
+
 .post img {
   display:block;
   margin:auto;
@@ -314,12 +315,19 @@ div.archive ul li{
   text-align: right;
 }
 
+.reading-single p img {
+  display:block;
+  margin:auto;
+  max-width:25%;
+  height:auto;
+}
+
 .coverimage {
   margin: auto;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
   margin-top: 30px;
   display:block;
-  max-width:50%;
+  max-width:25%;
   height:auto;
 }
 
