@@ -1949,7 +1949,7 @@ do work and what things could be attempted. It&rsquo;s a very sobering look at t
       <guid>https://unwiredcouch.com/reading/dont-make-me-think/</guid>
       <description>I&amp;rsquo;m one of those engineers who used to happily claim to not have any frontend skills and just not be good at design.</description>
     <content:encoded><![CDATA[<p>I&rsquo;m one of those engineers who used to happily claim to not have any frontend skills and just not be good at design. I came to loathe this thinking over the years and decided that if I can&rsquo;t do something I want to learn at least the basics. This is one of the reasons why I read &ldquo;Designing for Performance&rdquo; as mentioned above. Thankfully I also work with a ton of talented designers
-and one of them is <a href="">Jessica Harllee</a><a href="">harllee</a>. I talked to her about suggestions to get started with learning about design. And she said I should read &ldquo;Don&rsquo;t make me think&rdquo;. And she wasn&rsquo;t wrong. The book is a wonderful introduction into usability and design. The beauty of it is that while reading it, all of the things mentioned are total no-brainers. But you have to remember it while designing things. The other interesting thing for me was
+and one of them is <a href="https://twitter.com/harllee">Jessica Harllee</a>. I talked to her about suggestions to get started with learning about design. And she said I should read &ldquo;Don&rsquo;t make me think&rdquo;. And she wasn&rsquo;t wrong. The book is a wonderful introduction into usability and design. The beauty of it is that while reading it, all of the things mentioned are total no-brainers. But you have to remember it while designing things. The other interesting thing for me was
 that while all of the examples in the book are web based (with some brief stints into mobile) I could totally think of CLI apps I&rsquo;ve written in the past that totally do the wrong thing design-wise. Definitely a recommended read.</p>
 ]]></content:encoded>
     </item>
@@ -2393,8 +2393,8 @@ of this and giving feedback</em></p>
       <pubDate>Wed, 16 Sep 2015 00:00:00 +0000</pubDate>
       <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
       <guid>https://unwiredcouch.com/reading/the-boy-kings/</guid>
-      <description>The biography of Kate Losse about her time at (earl stage) Facebook is in my mind a must read for any software engineer and especially if you&amp;rsquo;re a man.</description>
-    <content:encoded><![CDATA[<p>The biography of Kate Losse about her time at (earl stage) Facebook is in my mind a must read for any software engineer and especially if you&rsquo;re a man. It gives an extremely good insight view into what happens when young men are suddenly in charge of a ton of money. But more importantly it talks very bluntly about how engineers are treated differently from most other employees
+      <description>The biography of Kate Losse about her time at (early stage) Facebook is in my mind a must read for any software engineer and especially if you&amp;rsquo;re a man.</description>
+    <content:encoded><![CDATA[<p>The biography of Kate Losse about her time at (early stage) Facebook is in my mind a must read for any software engineer and especially if you&rsquo;re a man. It gives an extremely good insight view into what happens when young men are suddenly in charge of a ton of money. But more importantly it talks very bluntly about how engineers are treated differently from most other employees
 for our supposed gift to turn any idea into gold with code.</p>
 <blockquote>
 <p>Technology carries with it all the biases of the people who make it, so simply making the world more technical was not going to save us.</p>
@@ -2436,8 +2436,8 @@ communicate and what I&rsquo;m saying versus what I want to say. I have also app
       <pubDate>Mon, 07 Sep 2015 00:00:00 +0000</pubDate>
       <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
       <guid>https://unwiredcouch.com/reading/you-had-me-at-hello-world/</guid>
-      <description>I found this book through Camilletweeting about the fact that she was also interviewed for it.</description>
-    <content:encoded><![CDATA[<p>I found this book through <a href="https://twitter.com/skamille" title="@skamille on Twitter">Camille</a>tweeting about the fact that she was also interviewed for it. &ldquo;You had me at &lsquo;Hellow  World&rsquo;&rdquo; is a collection of interviews with industry leaders from successful companies about the many aspects of leadership and mentoring. It&rsquo;s a pretty lightweight read and a great resource to get some insight how successful people talk about those
+      <description>I found this book through Camille tweeting about the fact that she was also interviewed for it.</description>
+    <content:encoded><![CDATA[<p>I found this book through <a href="https://twitter.com/skamille" title="@skamille on Twitter">Camille</a> tweeting about the fact that she was also interviewed for it. &ldquo;You had me at &lsquo;Hellow  World&rsquo;&rdquo; is a collection of interviews with industry leaders from successful companies about the many aspects of leadership and mentoring. It&rsquo;s a pretty lightweight read and a great resource to get some insight how successful people talk about those
 topics. It does a great job in conveying how important skills outside of writing code are. And it provides good examples of how to use those for your advantage.</p>
 ]]></content:encoded>
     </item>
@@ -2769,7 +2769,16 @@ engineering.</p>
       <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
       <guid>https://unwiredcouch.com/reading/designing-for-performance/</guid>
       <description>My coworker Laralara wrote this book last year and it was a lot of fun watching her process and how she knocked out that book.</description>
-    <content:encoded><![CDATA[<p>My coworker <a href="">Lara</a><a href="">lara</a> wrote this book last year and it was a lot of fun watching her process and how she knocked out that book. Since then it was on my list of books to read. Especially since I tend to shy away from frontend things in my day job and want to get better at not doing that. The book is a wonderful introduction into web performance especially from a design view. It gives very solid technical details on a lot of things like browser rendering and image formats that I only had very superficial knowledge of before. I really enjoyed it and the book lead me to <a href="">reduce the page weight of this blog by 92%</a><a href="">unwiredcouch_perf</a> which was tons of fun to do as well.</p>
+    <content:encoded><![CDATA[<p>My coworker <a href="">Lara</a><a href="">lara</a> wrote this book last year and it was a lot of fun
+watching her process and how she knocked out that book. Since then it was on
+my list of books to read. Especially since I tend to shy away from frontend
+things in my day job and want to get better at not doing that. The book is a
+wonderful introduction into web performance especially from a design view. It
+gives very solid technical details on a lot of things like browser rendering
+and image formats that I only had very superficial knowledge of before. I
+really enjoyed it and the book lead me to <a href="https://unwiredcouch.com/2015/07/24/frontend-performance.html">reduce the page weight of this blog
+by 92%</a> which
+was tons of fun to do as well.</p>
 <blockquote>
 <p>The largest hurdle to creating and maintaining stellar site performance is
 the culture of your organization.</p>
@@ -5764,8 +5773,10 @@ up a TV or a Roomba today.</p>
       <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
       <guid>https://unwiredcouch.com/reading/the-riak-handbook/</guid>
       <description>I read this book some time in early 2012 shortly after moving to New York City.</description>
-    <content:encoded><![CDATA[<p>I read this book some time in early 2012 shortly after moving to New York City. It was a staple on my Kindle while exploring the subway system, parks, and coffee shops in a new city.
-<img src="" alt=""></p>
+    <content:encoded><![CDATA[<p>I read this book some time in early 2012 shortly after moving to New York
+City. It was a staple on my Kindle while exploring the subway system, parks,
+and coffee shops in a new city.</p>
+<p><img src="/images/reading/the-riak-handbook/east-river.jpeg" alt=""></p>
 <p>The Riak handbook is a great overview over one of the most popular and sophisticated NoSQL databases during the early 2010s. The book guides you through a number of easy to follow examples to learn all the basic properties of Riak. It uses JavaScript as an easy accessible language to understand the examples. It shows that Mathias has done deep research into the database and has put a lot of effort into creating an accessible resource to learn Riak.</p>
 ]]></content:encoded>
     </item>
