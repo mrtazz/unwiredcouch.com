@@ -12,21 +12,24 @@
 {{ $coverurl = $coverurl_png }}
 {{ end }}
 
-{{ if ne .Type "standalonepage" }}
-<div class="postdateheading"> {{ .PublishDate.Format "Jan 2, 2006" }} </div>
-{{ end }}
-      <div class="reading-single">
-        <h2> <a href=""> {{ .Title }} </a></h2>
-        <h3> by {{ .Params.Author }} </h3>
+<div class="reading-single">
+  <div class="reading-header">
+    <div class="reading-header-text">
+      <ul class="reading-header-text-list">
+        <li class="reading-header-text-list-item reading-single-book-title"> {{ .Title }} </li>
+        <li class="reading-header-text-list-item"> by
+          <span class="reading-single-book-author"> {{ .Params.Author }}
+          </span> </li>
+        <li class="reading-header-text-list-item reading-single-book-date"> Read: {{ .PublishDate.Format "Jan 2, 2006" }} </li>
+    </div>
 
-        {{ if $coverurl -}}
-        <img class="coverimage"
-             src="{{ $coverurl }}"
-             alt="{{ .Title }} book cover">
-        {{- end }}
+    {{ if $coverurl -}}
+    <img src="{{ $coverurl }}" alt="{{ .Title }} book cover">
+    {{- end }}
+  </div>
 
-        {{ .Content }}
+  {{ .Content }}
 
-      </div>
+</div>
 
 {{ end }}

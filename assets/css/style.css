@@ -322,6 +322,56 @@ div.archive ul li{
   height:auto;
 }
 
+.reading-header {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0 -10px;
+  justify-content: space-around;
+  align-items: flex-start;
+  margin-bottom: 30px;
+  padding-right: 30px;
+}
+
+.reading-header-text {
+  margin: 0 10px;
+  flex: 3 3 300px;
+}
+
+.reading-header-text-list {
+  list-style-type: none;
+}
+
+.reading-single-book-title {
+    color: #184468;
+    font-size: 30px;
+    margin-bottom: 15px;
+    line-height: normal;
+}
+
+.reading-single-book-author {
+    color: #840044;
+    font-size:24px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.reading-single-book-date {
+    font-size:20px;
+    margin-bottom: 10px;
+}
+
+.reading-header img {
+  width: 150px;
+  height: auto;
+}
+
+@media screen and (max-width: 734px) {
+  .reading-header img {
+    display: none;
+  }
+
+}
+
 .coverimage {
   margin: auto;
   margin-bottom: 50px;
