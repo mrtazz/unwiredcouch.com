@@ -344,20 +344,19 @@ div.archive ul li{
 .reading-single-book-title {
     color: #184468;
     font-size: 30px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     line-height: normal;
 }
 
 .reading-single-book-author {
-    color: #840044;
+    color: #184468;
     font-size:24px;
-    margin-left: 10px;
-    margin-bottom: 10px;
+    margin-left: 3px;
+    margin-bottom: 20px;
 }
 
 .reading-single-book-date {
-    font-size:20px;
-    margin-bottom: 10px;
+    font-size:18px;
 }
 
 .reading-header img {
