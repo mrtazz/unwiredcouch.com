@@ -1,13 +1,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>unwiredcouch.com on unwiredcouch.com</title>
   <id>https://unwiredcouch.com/atom.xml</id>
-  <updated>2020-08-31T00:00:00Z</updated>
+  <updated>2020-09-13T00:00:00Z</updated>
 	<subtitle>thoughts which have made it into written existence</subtitle>
 	<link rel="self" href="https://unwiredcouch.com/atom.xml"/>
 	<author>
     <name>Daniel Schauenberg</name>
 		<email>d@unwiredcouch.com</email>
 	</author>
+  
+	<entry>
+    <title type="html"><![CDATA[1919]]></title>
+    <published>2020-09-13T00:00:00Z</published>
+    <updated>2020-09-13T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/reading/1919/</id>
+    <content type="html"><![CDATA[<p>I was interested in Eve Ewing’s writing ever since I read her run on Marvel’s Ironheart. So I got her other books a couple of months ago as well. I started with &ldquo;1919&rdquo; and it was definitely an interesting albeit completely new experience for me. I&rsquo;ve not really read poetry since school where I wasn&rsquo;t a big fan because it always felt forced. But while reading &ldquo;1919&rdquo; I definitely regretted not paying more attention in school to be able to pick up on the stylistic and technique choices in the book. &ldquo;1919&rdquo; is a collection of poems with the background of an official report about the 1919 race riots in Chicago which I had never heard of until I read the book. It was absolutely educational to read the various passages from the report that were the basis for the poem. And then get an emotional and very personal feeling poem about the passage right after. Given my own lack of knowledge about poetry I constantly felt like I was missing some fascinating nuances about the writing. And I&rsquo;ve started learning more about poetry and creative writing to rectify that. And I definitely plan to re-read &ldquo;1919&rdquo; once I&rsquo;m more knowledgeable about poetry.</p>
+]]></content>
+    <link href="https://unwiredcouch.com/reading/1919/" rel="alternate"/>
+	</entry>
   
 	<entry>
     <title type="html"><![CDATA[Dark Matter and the Dinosaurs: The Astounding Interconnectedness of the Universe]]></title>
