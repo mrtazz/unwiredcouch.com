@@ -4,5 +4,6 @@ author: Simone Grünewald
 date: 2019-10-17
 ---
 
-I absolutely loved this book. It’s more a flip through and read individual chapters than reading it in one go. It gives a great overview over all the different stages of drawing and illustrating.
+I absolutely loved this book. It was more of a flip through and reading individual chapters for me than a book I read front to back. The chapters cover the author’s creative journey, some general advice for artists, art fundamentals, character design, and even a chapter on managing a family life while also making time and space for art. Every chapter and its sub sections contain a ton of very helpful examples. All drawn in Simone Grünewald’s well known style. So it’s easy to see how to approach faces, noses, hair, old and young people. And even flora and fauna. 
 
+The whole book is absolutely fun to read and I can highly recommend it for learning and inspiration.
