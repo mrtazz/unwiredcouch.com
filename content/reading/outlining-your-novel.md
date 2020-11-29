@@ -1,5 +1,5 @@
 ---
-title: Outlining your Novel: Map Your Way to Success
+title: "Outlining your Novel: Map Your Way to Success"
 author: K. M. Weiland
 date: 2020-10-13
 ---
