@@ -1,5 +1,5 @@
 ---
-title: Draw People Every Day: Short Lessons in Portrait and Figure Drawing Using Ink and Color
+title: "Draw People Every Day: Short Lessons in Portrait and Figure Drawing Using Ink and Color"
 Author: Kagan McLeod
 date: 2020-09-09
 ---
