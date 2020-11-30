@@ -1,5 +1,5 @@
 ---
-title: “The Organized Mind: Thinking Straight in the Age of Information Overload”
+title: "The Organized Mind: Thinking Straight in the Age of Information Overload"
 author: Daniel J. Levitin
 date: 2019-08-09
 ---

@@ -1,5 +1,5 @@
 ---
-title: “The Bullet Journal Method: Track the Past, Order the Present, Design the Future”
+title: "The Bullet Journal Method: Track the Past, Order the Present, Design the Future"
 author: Ryder Carroll
 date: 2019-01-19
 ---

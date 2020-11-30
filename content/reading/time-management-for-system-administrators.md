@@ -1,5 +1,5 @@
 ---
-title: “Time Management for System Administrators: Stop Working Late and Start Working Smart”
+title: "Time Management for System Administrators: Stop Working Late and Start Working Smart"
 author: Thomas A. Limoncelli
 date: 2013-01-12
 ---

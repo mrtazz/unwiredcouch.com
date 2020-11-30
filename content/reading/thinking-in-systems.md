@@ -1,5 +1,5 @@
 ---
-title: “Thinking in Systems: A Primer”
+title: "Thinking in Systems: A Primer"
 author: Donella H. Meadows
 date: 2016-01-03
 ---

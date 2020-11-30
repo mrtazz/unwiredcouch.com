@@ -1,5 +1,5 @@
 ---
-title: “The Sketchnote Workbook: Advanced Techniques for Taking Visual Notes You Can Use Anywhere”
+title: "The Sketchnote Workbook: Advanced Techniques for Taking Visual Notes You Can Use Anywhere"
 author: Mike Rohde
 date: 2014-
 ---
