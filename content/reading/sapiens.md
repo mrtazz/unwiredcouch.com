@@ -1,5 +1,5 @@
 ---
-title: Sapiens: A Brief History of Humankind
+title: "Sapiens: A Brief History of Humankind"
 author: Yuval Noah Harari
 date: 2020-03-08
 ---
