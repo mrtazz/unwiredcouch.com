@@ -8,7 +8,18 @@
     <language>en</language>
     <managingEditor>d@unwiredcouch.com (Daniel Schauenberg)</managingEditor>
     <webMaster>d@unwiredcouch.com (Daniel Schauenberg)</webMaster>
-    <lastBuildDate>Tue, 13 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://unwiredcouch.com/reading/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 24 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://unwiredcouch.com/reading/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Born a Crime</title>
+      <link>https://unwiredcouch.com/reading/born-a-crime/</link>
+      <pubDate>Sat, 24 Oct 2020 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/reading/born-a-crime/</guid>
+      <description>I bought this book never really having watched any of Trevor Noah’s comedy or The Daily Show with him.</description>
+    <content:encoded><![CDATA[<p>I bought this book never really having watched any of Trevor Noah’s comedy or The Daily Show with him. But the book sounded really intriguing to me and I was curious about his life and background. And the book was absolutely fantastic. It’s one of the few books I’ve read where I literally laughed out lout while also being struck and deeply emotional reading through other parts. I&rsquo;ve only been to South Africa for a couple of days and only really been to Cape Town. So I’ve had (and still have) very limited knowledge of the history of the country. And the book taught me a ton about what it was like growing up during and after Apartheid and how kids can perceive very extreme and cruel situations. This is definitely one of the best books I’ve read and I can wholeheartedly recommend picking it up.</p>
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>Outlining your Novel: Map Your Way to Success</title>
       <link>https://unwiredcouch.com/reading/outlining-your-novel/</link>
@@ -64,7 +75,7 @@ definitely inspired me to do more quick sketching and drawing from life.</p>
       <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
       <guid>https://unwiredcouch.com/reading/dark-matter-and-the-dinosaurs/</guid>
       <description>I had heard about this book on several occasions and when we went to the natural history museum here in Berlin I found it in the shop and decided to finally buy it.</description>
-    <content:encoded><![CDATA[<p>I had heard about this book on several occasions and when we went to the natural history museum here in Berlin I found it in the shop and decided to finally buy it. I didn’t really know what to expect but having recently read a couple of popular science books (TODO: link to other reviews here) about physics I was very intrigued. And the book did definitely deliver, albeit in a very different way than I thought. I went into reading it with the expectation that the majority of the book would be about dark matter and its details. This however is really only a small part of the whole book. Throughout the book there are detailed explanations about the (presumed) origins of life, the makeup of the cosmos, mass extinctions, determining the age of rocks, history of scientific discoveries and methods, dinosaurs, impact crater anatomy, why Pluto isn’t a planet anymore, why meteroids as we call them often aren’t really meteroids, and much more. At the end of the book the author then circles back to dark matter and some of the recent theories and discoveries, tying all of the chapters together.</p>
+    <content:encoded><![CDATA[<p>I had heard about this book on several occasions and when we went to the natural history museum here in Berlin I found it in the shop and decided to finally buy it. I didn’t really know what to expect but having recently read a couple of popular science books about physics I was very intrigued. And the book did definitely deliver, albeit in a very different way than I thought. I went into reading it with the expectation that the majority of the book would be about dark matter and its details. This however is really only a small part of the whole book. Throughout the book there are detailed explanations about the (presumed) origins of life, the makeup of the cosmos, mass extinctions, determining the age of rocks, history of scientific discoveries and methods, dinosaurs, impact crater anatomy, why Pluto isn’t a planet anymore, why meteroids as we call them often aren’t really meteroids, and much more. At the end of the book the author then circles back to dark matter and some of the recent theories and discoveries, tying all of the chapters together.</p>
 <p>I have to admit that occasionally while reading the book I was fascinated by the things I was learning while at the same time not really knowing what it has to do with dark matter. Nevertheless I extremely enjoyed this book and the things I learned reading it.</p>
 ]]></content:encoded>
     </item>
@@ -75,8 +86,17 @@ definitely inspired me to do more quick sketching and drawing from life.</p>
       <pubDate>Mon, 23 Mar 2020 00:00:00 +0000</pubDate>
       <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
       <guid>https://unwiredcouch.com/reading/accelerate/</guid>
-      <description>This has come up in various discussions again and again so I finally decided to read it.</description>
-    <content:encoded><![CDATA[<p>This has come up in various discussions again and again so I finally decided to read it. I didn’t really enjoy reading it much. It’s a good book and has a lot of good points. But also a couple I disagree with. But having worked so much in DevOps context, the book didn’t offer me anything new. More so some of it actually is opposite to my experience. Which made it even harder to continue reading it.</p>
+      <description>This book has come up in various discussions again and again since its release so I finally decided to read it.</description>
+    <content:encoded><![CDATA[<p>This book has come up in various discussions again and again since its release so I finally decided to read it. I wasn’t sure what to think of it going in, having worked a lot in &ldquo;DevOps settings&rdquo; before.</p>
+<p>There is a ton of really good stuff in this book. If you’re looking for an introduction into how to build a high performance engineering culture, and which things to focus on, then this is definitely a book that will help you and guide you in the right direction. And the big take away from the book is that there are 4 software delivery performance measures to focus on:</p>
+<ul>
+<li>Lead Time</li>
+<li>Deployment Frequency</li>
+<li>Mean Time to Restore (MTTR)</li>
+<li>Change Fail Percentage</li>
+</ul>
+<p>Unfortunately not a lot of what is in the book was new to me. Which is why it felt like a bit of a drag to me to get through it. And I personally also had some problems with the very prescriptive style of the findings. The longer I work in technology the more I tend to gravitate towards &ldquo;it depends&rdquo; on most things. Like deployment frequency is so highly correlated to the development process and whether or not there are actually features to be written that it’s really hard to just say more deployments always means better.</p>
+<p>I really appreciated the inclusion of the research methodology in such detail in the book. That was the part where a ton was new to me and I really learned a couple of things about how to extract data from surveys.</p>
 ]]></content:encoded>
     </item>
     
@@ -177,7 +197,7 @@ enjoyed reading and learned a bunch of things from.</p>
       <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
       <guid>https://unwiredcouch.com/reading/physics-and-philosophy/</guid>
       <description>This book was just plain amazing. I didn’t know what to expect when I found this at the book store and I was reading books about (quantum) physics at the time, so I was curious to see that Heisenberg had written a book.</description>
-    <content:encoded><![CDATA[<p>This book was just plain amazing. I didn’t know what to expect when I found this at the book store and I was reading books about (quantum) physics at the time, so I was curious to see that Heisenberg had written a book. A lot of the (quantum) physics details went over my head. But I loved the discussion of its implications on “reality” and the philosophy of being. It’s an extremely dense read but I got so much out of it.</p>
+    <content:encoded><![CDATA[<p>This book was just plain amazing. I didn’t know what to expect when I found this at the book store and I was reading books about (quantum) physics at the time, so I was curious to see that Heisenberg had written a book. A lot of the (quantum) physics details went over my head. But I loved the discussion of its implications on &ldquo;reality&rdquo; and the philosophy of being. It’s an extremely dense read but I got so much out of it.</p>
 ]]></content:encoded>
     </item>
     
@@ -210,9 +230,9 @@ enjoyed reading and learned a bunch of things from.</p>
       <pubDate>Wed, 22 Jan 2020 00:00:00 +0000</pubDate>
       <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
       <guid>https://unwiredcouch.com/reading/a-field-guide-to-getting-lost/</guid>
-      <description>This was another purchase while rummaging at the book store. I&amp;rsquo;ve read Solnit‘s „Men explain things to me“ a couple of years ago.</description>
-    <content:encoded><![CDATA[<p>This was another purchase while rummaging at the book  store. I&rsquo;ve read Solnit‘s „Men explain things to me“ a couple of years ago. And since I really enjoyed that one, I wanted to read another one of her works. I&rsquo;m not usually one for essays so it was definitely a different experience from reading more science related books.</p>
-<p>I thoroughly enjoyed reading „A Field Guide to Getting Lost“ even though (or maybe because of?) I often found myself getting lost myself in an essay and wondering what&rsquo;s the point she&rsquo;s trying to be bring across. It was also at times deeply emotional to read for me as I was reminded of personal loss (or the fear of it) with many of her essays.</p>
+      <description>This was another purchase while rummaging at the book store. I&amp;rsquo;ve read Solnit‘s „Men explain things to me&amp;rdquo; a couple of years ago.</description>
+    <content:encoded><![CDATA[<p>This was another purchase while rummaging at the book  store. I&rsquo;ve read Solnit‘s „Men explain things to me&rdquo; a couple of years ago. And since I really enjoyed that one, I wanted to read another one of her works. I&rsquo;m not usually one for essays so it was definitely a different experience from reading more science related books.</p>
+<p>I thoroughly enjoyed reading „A Field Guide to Getting Lost&rdquo; even though (or maybe because of?) I often found myself getting lost myself in an essay and wondering what&rsquo;s the point she&rsquo;s trying to bring across. It was also at times deeply emotional to read for me as I was reminded of personal loss (or the fear of it) with many of her essays.</p>
 ]]></content:encoded>
     </item>
     
@@ -259,8 +279,8 @@ enjoyed reading and learned a bunch of things from.</p>
       <pubDate>Mon, 11 Nov 2019 00:00:00 +0000</pubDate>
       <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
       <guid>https://unwiredcouch.com/reading/a-briefer-history-of-time/</guid>
-      <description>I decided to read this new edition of “A Brief History of Time”, which I had started but never finished.</description>
-    <content:encoded><![CDATA[<p>I decided to read this new edition of “A Brief History of Time”, which I had started but never finished. I really enjoyed it even though most of it went totally over my head. I read this book on the Kindle and mostly before going to sleep. Which is not a good combination for reading a book with such an intense topic.</p>
+      <description>I decided to read this new edition of &amp;ldquo;A Brief History of Time&amp;rdquo;, which I had started but never finished.</description>
+    <content:encoded><![CDATA[<p>I decided to read this new edition of &ldquo;A Brief History of Time&rdquo;, which I had started but never finished. I really enjoyed it even though most of it went totally over my head. I read this book on the Kindle and mostly before going to sleep. Which is not a good combination for reading a book with such an intense topic. I bought it a second time as a paperback and will probably reread it on paper some time soon.</p>
 ]]></content:encoded>
     </item>
     
@@ -273,17 +293,6 @@ enjoyed reading and learned a bunch of things from.</p>
       <description>I absolutely loved this book. It was more of a flip through and reading individual chapters for me than a book I read front to back.</description>
     <content:encoded><![CDATA[<p>I absolutely loved this book. It was more of a flip through and reading individual chapters for me than a book I read front to back. The chapters cover the author’s creative journey, some general advice for artists, art fundamentals, character design, and even a chapter on managing a family life while also making time and space for art. Every chapter and its sub sections contain a ton of very helpful examples. All drawn in Simone Grünewald’s well known style. So it’s easy to see how to approach faces, noses, hair, old and young people. And even flora and fauna.</p>
 <p>The whole book is absolutely fun to read and I can highly recommend it for learning and inspiration.</p>
-]]></content:encoded>
-    </item>
-    
-    <item>
-      <title>Coffee Nerd: How to Have Your Coffee and Drink It Too</title>
-      <link>https://unwiredcouch.com/reading/coffee-nerd/</link>
-      <pubDate>Mon, 23 Sep 2019 00:00:00 +0000</pubDate>
-      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
-      <guid>https://unwiredcouch.com/reading/coffee-nerd/</guid>
-      <description>Really enjoyed the book. I’ve been nerding out on coffee for a couple of years now and I’ve definitely learned a bunch of new things through the book.</description>
-    <content:encoded><![CDATA[<p>Really enjoyed the book. I’ve been nerding out on coffee for a couple of years now and I’ve definitely learned a bunch of new things through the book. And it’s absolutely entertainingly written. Definitely recommended if you’re into coffee.</p>
 ]]></content:encoded>
     </item>
     
@@ -307,17 +316,6 @@ enjoyed reading and learned a bunch of things from.</p>
       <description>I didn’t much enjoy the book which might be due to expecting something different.</description>
     <content:encoded><![CDATA[<p>I didn’t much enjoy the book which might be due to expecting something different. I didn’t have strong expectation but I wanted to get some more background on where yoga is coming from and what else is part of it to enhance my own yoga (and maybe meditation) practice. And I’ve definitely learned a couple of things from the book. But those could have been summarized on 10 pages. The rest of the time I’ve felt the book to mostly be repetitive, rambling, almost condescending at times, and even occasionally dangerously wrong (e.g. there’s a section in which it’s said that inverted poses while menstruating can lead to cancer).</p>
 <p>There are definitely good things in there about balance, not seeing yoga practice as a competition, listening to your body, taking time, etc. But as a fairly scientific person it’s hard to read over the parts where the last 100 years of modern medicine are ignored.</p>
-]]></content:encoded>
-    </item>
-    
-    <item>
-      <title>Slack: Getting Past Burnout, Busywork, and the Myth of Total Efficiency</title>
-      <link>https://unwiredcouch.com/reading/slack/</link>
-      <pubDate>Tue, 27 Aug 2019 00:00:00 +0000</pubDate>
-      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
-      <guid>https://unwiredcouch.com/reading/slack/</guid>
-      <description>I really enjoyed this book. As someone who has not been actively part of the dotcom era, and has mostly been told about the bad sides of that time, it’s refreshing to read something coming out of that time full of what are still essentially progressive ideas today.</description>
-    <content:encoded><![CDATA[<p>I really enjoyed this book. As someone who has not been actively part of the dotcom era, and has mostly been told about the bad sides of that time, it’s refreshing to read something coming out of that time full of what are still essentially progressive ideas today. Slack as the part of the work where innovation happens vs the always on, always busy culture is something organizations can still learn heaps from today. Definitely recommend reading it.</p>
 ]]></content:encoded>
     </item>
     
@@ -390,6 +388,39 @@ Monday.</p>
     </item>
     
     <item>
+      <title>The Organized Mind: Thinking Straight in the Age of Information Overload</title>
+      <link>https://unwiredcouch.com/reading/the-organized-mind/</link>
+      <pubDate>Fri, 09 Aug 2019 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/reading/the-organized-mind/</guid>
+      <description>This book blew my mind (pun intended). There was so much neuropsychology in there that explained so many things about the brain.</description>
+    <content:encoded><![CDATA[<p>This book blew my mind (pun intended). There was so much neuropsychology in there that explained so many things about the brain. So many things I always wondered about made so much more sense now. I don’t know if it made me more organized but I have a whole new perspective on attention, memory, sleep, categorization, and so much more. This is one of those “game changer” books for me. I am approaching many things in daily life and even about my inner, emotional life very differently since reading the book. From how remembering and recalling things works (as far as we know currently), to how sleep impacts your brain, how categorization is done by humans (and why you will always end up with a “junk drawer”), and when to not trust your gut. It’s a book I want to read a second time because I don’t feel like I’ve fully taken it in yet.</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>The Bullet Journal Method: Track the Past, Order the Present, Design the Future</title>
+      <link>https://unwiredcouch.com/reading/the-bullet-journal-method/</link>
+      <pubDate>Sat, 19 Jan 2019 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/reading/the-bullet-journal-method/</guid>
+      <description>Very nice and easy read. Made me really think about slowing down for planning and reflection.</description>
+    <content:encoded><![CDATA[<p>Very nice and easy read. Made me really think about slowing down for planning and reflection. I read this book after having switched to a Bullet Journal for daily logging and planning about 9 months prior. And it’s really easy to get sucked into all the pretty and elaborate spreads with bullet journaling and lose focus of what’s really important. The book does a really good job focusing on the fundamentals with bullet journaling and how to think about what to incorporate into your journaling practice.</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>The Miracle Morning Journal</title>
+      <link>https://unwiredcouch.com/reading/the-miracle-morning-journal/</link>
+      <pubDate>Wed, 18 Apr 2018 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/reading/the-miracle-morning-journal/</guid>
+      <description>I wasn’t quite sure what to expect from this book. Morning routine inspiration always intrigues me.</description>
+    <content:encoded><![CDATA[<p>I wasn’t quite sure what to expect from this book. Morning routine inspiration always intrigues me. I’m a terrible early riser but I really enjoy being awake early. However the book was too much romanticism and extremes for me and not a lot I was taking away from reading it.</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
       <title>The Retrospective Handbook: A guide for agile teams</title>
       <link>https://unwiredcouch.com/reading/the-retrospective-handbook/</link>
       <pubDate>Sat, 31 Dec 2016 00:00:00 +0000</pubDate>
@@ -410,6 +441,24 @@ and I would highly recommend the book as inspiration for improving your meetings
       <guid>https://unwiredcouch.com/reading/effective-monitoring-and-alerting/</guid>
       <description>I was really looking forward to this book as I&amp;rsquo;ve heard good things about it and thought it would round up what I already knew about the topic.</description>
     <content:encoded><![CDATA[<p>I was really looking forward to this book as I&rsquo;ve heard good things about it and thought it would round up what I already knew about the topic. However right from the start it felt rather awkward. The author is trying to maintain an abstract high level view on monitoring and alerting and not go into specific implementations. This makes for an awkward combination with it being basically a 101/introductory book on the topic. A lot of the formal descriptions of monitoring and alerting feel forced and don&rsquo;t hold up in the abstract very well and are too high level to be practical. He also talks about operations in an almost romantic hero style way which I didn&rsquo;t enjoy. In addition to that the book also includes some final chapters on outage handling and organizational and cultural setups. The terms human error, root cause analysis, and &ldquo;5 Whys&rdquo; are thrown around a lot with no acknowledgement of it being actually harmful to learning according to modern research in the field of systems safety. Definitely not a book I would recommend.</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Thinking in Systems: A Primer</title>
+      <link>https://unwiredcouch.com/reading/thinking-in-systems/</link>
+      <pubDate>Sun, 03 Jan 2016 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/reading/thinking-in-systems/</guid>
+      <description>This is a really great introduction to systems thinking. Meadows does a great job describing basic system properties, adding examples to illustrate them and then coming back to them later when describing related properties.</description>
+    <content:encoded><![CDATA[<p>This is a really great introduction to systems thinking. Meadows does a great
+job describing basic system properties, adding examples to illustrate them and
+then coming back to them later when describing related properties. A lot of
+the described things - especially at the beginning - almost seem like common
+sense and suddenly you&rsquo;re neck deep in systems thinking. I especially liked
+how she puts systems thinking into relation to being a mindful person. That
+it&rsquo;s always a model and not the real world and that we still have to act as
+morale humans. Highly recommended.</p>
 ]]></content:encoded>
     </item>
     
@@ -700,6 +749,17 @@ it. I definitely enjoyed it. Especially as a man it opens your eyes to a lot of 
     </item>
     
     <item>
+      <title>Field Guide to Understanding Human Error</title>
+      <link>https://unwiredcouch.com/reading/the-field-guide-to-understanding-human-error/</link>
+      <pubDate>Tue, 31 Dec 2013 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/reading/the-field-guide-to-understanding-human-error/</guid>
+      <description>This is a must read book for anyone who’s interested in system resilience and human factors.</description>
+    <content:encoded><![CDATA[<p>This is a must read book for anyone who’s interested in system resilience and human factors. I’d consider this the primer to get started and get a broad but not shallow entry into the world of human factors and resilience engineering.</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
       <title>The Will to Change: Men, Masculinity, and Love</title>
       <link>https://unwiredcouch.com/reading/the-will-to-change/</link>
       <pubDate>Fri, 15 Nov 2013 00:00:00 +0000</pubDate>
@@ -724,6 +784,28 @@ it. I definitely enjoyed it. Especially as a man it opens your eyes to a lot of 
     </item>
     
     <item>
+      <title>Time Management for System Administrators: Stop Working Late and Start Working Smart</title>
+      <link>https://unwiredcouch.com/reading/time-management-for-system-administrators/</link>
+      <pubDate>Sat, 12 Jan 2013 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/reading/time-management-for-system-administrators/</guid>
+      <description>I read this early on in my career switching to a job where I was occupied with running production services (as opposed to writing shipped software).</description>
+    <content:encoded><![CDATA[<p>I read this early on in my career switching to a job where I was occupied with running production services (as opposed to writing shipped software). And I took a lot away from reading this book. Not only about time management but also an understanding of things that are common in the line of systems administration.</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Test-Driven Infrastructure with Chef</title>
+      <link>https://unwiredcouch.com/reading/test-driven-infrastructure-with-chef/</link>
+      <pubDate>Mon, 31 Dec 2012 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/reading/test-driven-infrastructure-with-chef/</guid>
+      <description>I wasn’t quite sure if I agree with using cucumber for integration testing of configuration management.</description>
+    <content:encoded><![CDATA[<p>I wasn’t quite sure if I agree with using cucumber for integration testing of configuration management. And after reading the book I still don’t. It’s hard to draw the line where you just test the implementation of the config management framework versus your own business logic. And I think it’s highly dependent on the level of advanced logic in your config management code. Although I definitely have seen code that would benefit from some testing like that.</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
       <title>The Riak Handbook</title>
       <link>https://unwiredcouch.com/reading/the-riak-handbook/</link>
       <pubDate>Mon, 31 Dec 2012 00:00:00 +0000</pubDate>
@@ -735,6 +817,39 @@ City. It was a staple on my Kindle while exploring the subway system, parks,
 and coffee shops in a new city.</p>
 <p><img src="/images/reading/the-riak-handbook/east-river.jpeg" alt=""></p>
 <p>The Riak handbook is a great overview over one of the most popular and sophisticated NoSQL databases during the early 2010s. The book guides you through a number of easy to follow examples to learn all the basic properties of Riak. It uses JavaScript as an easy accessible language to understand the examples. It shows that Mathias has done deep research into the database and has put a lot of effort into creating an accessible resource to learn Riak.</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Coffee Nerd: How to Have Your Coffee and Drink It Too</title>
+      <link>https://unwiredcouch.com/reading/coffee-nerd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/reading/coffee-nerd/</guid>
+      <description>Really enjoyed the book. I’ve been nerding out on coffee for a couple of years now and I’ve definitely learned a bunch of new things through the book.</description>
+    <content:encoded><![CDATA[<p>Really enjoyed the book. I’ve been nerding out on coffee for a couple of years now and I’ve definitely learned a bunch of new things through the book. And it’s absolutely entertainingly written. Definitely recommended if you’re into coffee.</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Slack: Getting Past Burnout, Busywork, and the Myth of Total Efficiency</title>
+      <link>https://unwiredcouch.com/reading/slack/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/reading/slack/</guid>
+      <description>I really enjoyed this book. As someone who has not been actively part of the dotcom era, and has mostly been told about the bad sides of that time, it’s refreshing to read something coming out of that time full of what are still essentially progressive ideas today.</description>
+    <content:encoded><![CDATA[<p>I really enjoyed this book. As someone who has not been actively part of the dotcom era, and has mostly been told about the bad sides of that time, it’s refreshing to read something coming out of that time full of what are still essentially progressive ideas today. Slack as the part of the work where innovation happens vs the always on, always busy culture is something organizations can still learn heaps from today. Definitely recommend reading it.</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>The Sketchnote Workbook: Advanced Techniques for Taking Visual Notes You Can Use Anywhere</title>
+      <link>https://unwiredcouch.com/reading/the-sketchnote-workbook/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/reading/the-sketchnote-workbook/</guid>
+      <description>This was really fun to read. I didn’t end up picking up sketch noting as a permanent tool in note taking.</description>
+    <content:encoded><![CDATA[<p>This was really fun to read. I didn’t end up picking up sketch noting as a permanent tool in note taking. But I really enjoyed reading it.</p>
 ]]></content:encoded>
     </item>
     
