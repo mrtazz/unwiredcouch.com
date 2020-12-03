@@ -1,0 +1,30 @@
+name: Find missing covers
+on:
+  pull_request:
+    paths-ignore:
+      - 'docs/**'
+    types: [opened, synchronize, labeled]
+
+jobs:
+  find:
+    name: result
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Set up Go
+      uses: actions/setup-go@v2
+      with:
+        stable: 'true'
+
+    - uses: actions/checkout@master
+
+    - name: Env Debugging
+      run: |
+        echo "== PWD === "
+        pwd
+        echo "=== ENV ==="
+        env
+        echo "=== GO ENV ==="
+        go env
+    - name: Find reading posts with missing covers
+      run: go run tools/missing-cover/main.go
