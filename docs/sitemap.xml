@@ -108,6 +108,11 @@
   </url>
   
   <url>
+    <loc>https://unwiredcouch.com/reading/coffee-nerd/</loc>
+    <lastmod>2019-09-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://unwiredcouch.com/reading/calm-technology/</loc>
     <lastmod>2019-09-14T00:00:00+00:00</lastmod>
   </url>
@@ -115,6 +120,11 @@
   <url>
     <loc>https://unwiredcouch.com/reading/the-tree-of-yoga/</loc>
     <lastmod>2019-09-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://unwiredcouch.com/reading/slack/</loc>
+    <lastmod>2019-08-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -379,6 +389,11 @@
   
   <url>
     <loc>https://unwiredcouch.com/reading/quiet/</loc>
+    <lastmod>2014-12-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://unwiredcouch.com/reading/the-sketchnote-workbook/</loc>
     <lastmod>2014-12-31T00:00:00+00:00</lastmod>
   </url>
   
@@ -702,10 +717,6 @@
   </url>
   
   <url>
-    <loc>https://unwiredcouch.com/reading/coffee-nerd/</loc>
-  </url>
-  
-  <url>
     <loc>https://unwiredcouch.com/setup/vim/</loc>
   </url>
   
@@ -730,19 +741,11 @@
   </url>
   
   <url>
-    <loc>https://unwiredcouch.com/reading/slack/</loc>
-  </url>
-  
-  <url>
     <loc>https://unwiredcouch.com/speakerbio/</loc>
   </url>
   
   <url>
     <loc>https://unwiredcouch.com/tags/</loc>
-  </url>
-  
-  <url>
-    <loc>https://unwiredcouch.com/reading/the-sketchnote-workbook/</loc>
   </url>
   
 </urlset>
