@@ -1,0 +1,35 @@
+{{ define "main" }}
+
+{{ $coverurl := "" }}
+{{ $coverurl_jpg := printf "/images/%s/%s/cover.jpg" .Section .File.BaseFileName }}
+{{ $coverurl_png := printf "/images/%s/%s/cover.png" .Section .File.BaseFileName }}
+{{ $coverStaticLocation_jpg := printf "static/%s" $coverurl_jpg }}
+{{ $coverStaticLocation_png := printf "static/%s" $coverurl_png }}
+{{ if (fileExists $coverStaticLocation_jpg) }}
+{{ $coverurl = $coverurl_jpg }}
+{{ end }}
+{{ if (fileExists $coverStaticLocation_png) }}
+{{ $coverurl = $coverurl_png }}
+{{ end }}
+
+<div class="reading-single">
+  <div class="reading-header">
+    <div class="reading-header-text">
+      <ul class="reading-header-text-list">
+        <li class="reading-header-text-list-item reading-single-book-title"> {{ .Title }} </li>
+        <li class="reading-header-text-list-item"> by
+          <span class="reading-single-book-author"> {{ .Params.Author }}
+          </span> </li>
+        <li class="reading-header-text-list-item reading-single-book-date"> Read: {{ .PublishDate.Format "Jan 2, 2006" }} </li>
+    </div>
+
+    {{ if $coverurl -}}
+    <img src="{{ $coverurl }}" alt="{{ .Title }} book cover">
+    {{- end }}
+  </div>
+
+  {{ .Content }}
+
+</div>
+
+{{ end }}

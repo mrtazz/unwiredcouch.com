@@ -8,7 +8,7 @@
     <name>Daniel Schauenberg</name>
 		<email>d@unwiredcouch.com</email>
 	</author>
-  {{range (where .Site.RegularPages "Section" "in" (slice "posts" "bits")).ByPublishDate.Reverse}}
+  {{range (where .Site.RegularPages "Section" "in" (slice "posts" "bits" "reading" "talks")).ByPublishDate.Reverse}}
 	<entry>
     {{ `<title type="html"><![CDATA[` | safeHTML }}{{ .Title }}]]></title>
     <published>{{ .Date.Format "2006-01-02T15:04:05Z" | safeHTML }}</published>
