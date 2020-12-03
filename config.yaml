@@ -28,3 +28,14 @@ outputs:
     - "HTML"
     - "RSS"
     - "Atom"
+
+params:
+  homepageSections:
+    - title: Writing
+      section: posts
+    - title: Bits
+      section: bits
+    - title: Reading
+      section: reading
+    - title: Talks
+      section: talks

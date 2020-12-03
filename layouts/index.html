@@ -2,47 +2,22 @@
 
 <div class="tiles-wrapper">
 
+{{ range .Site.Params.homepageSections }}
   <div class="tile">
-    <h3> Writing </h3>
+    <h3> {{ .title }} </h3>
 <ul class="homepage-postlist">
-{{$posts := ($.Site.GetPage "section" "posts").Pages.ByPublishDate.Reverse}}
+  {{$posts := ($.Site.GetPage "section" .section ).Pages.ByPublishDate.Reverse}}
 {{ range first 5 $posts }}
       <li class="homepage-postlist__item">
         <a class="homepage-posttitle" href="{{ .RelPermalink }}"> {{ .Title }}</a>
         <span class="homepage-postdate hidemobile">{{ .PublishDate.Format "Jan 2, 2006" }} </span>
       </li>
 {{ end }}
-<li> <a href="/posts"> More ... </a> </li>
+<li> <a href="/{{ .section }}"> More ... </a> </li>
 </ul>
+  </div>
 
-
-  </div>
-  <div class="tile">
-    <h3> Bits </h3>
-<ul class="homepage-postlist">
-{{$bits := ($.Site.GetPage "section" "bits").Pages.ByPublishDate.Reverse}}
-{{ range first 5 $bits }}
-      <li class="homepage-postlist__item">
-        <a class="homepage-posttitle" href="{{ .RelPermalink }}"> {{ .Title }}</a>
-        <span class="homepage-postdate hidemobile">{{ .PublishDate.Format "Jan 2, 2006" }} </span>
-      </li>
 {{ end }}
-<li> <a href="/bits"> More ... </a> </li>
-</ul>
-  </div>
-  <div class="tile">
-    <h3> Talks </h3>
-<ul class="homepage-postlist">
-{{$bits := ($.Site.GetPage "section" "talks").Pages.ByPublishDate.Reverse}}
-{{ range first 5 $bits }}
-      <li class="homepage-postlist__item">
-        <a class="homepage-posttitle"  href="{{ .RelPermalink }}"> {{ .Title }}</a>
-        <span class="homepage-postdate hidemobile">{{ .PublishDate.Format "Jan 2, 2006" }} </span>
-      </li>
-{{ end }}
-<li> <a href="/talks"> More ... </a> </li>
-</ul>
-  </div>
 
 
 </div>
