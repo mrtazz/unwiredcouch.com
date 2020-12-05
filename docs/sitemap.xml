@@ -3,17 +3,27 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://unwiredcouch.com/bits/</loc>
+    <lastmod>2020-12-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://unwiredcouch.com/bits/2020/12/05/pr-deploys.html</loc>
+    <lastmod>2020-12-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://unwiredcouch.com/</loc>
+    <lastmod>2020-12-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://unwiredcouch.com/reading/born-a-crime/</loc>
     <lastmod>2020-10-24T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://unwiredcouch.com/reading/</loc>
-    <lastmod>2020-10-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://unwiredcouch.com/</loc>
     <lastmod>2020-10-24T00:00:00+00:00</lastmod>
   </url>
   
@@ -450,11 +460,6 @@
   <url>
     <loc>https://unwiredcouch.com/2014/08/21/bye-bye-fitbit.html</loc>
     <lastmod>2014-08-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://unwiredcouch.com/bits/</loc>
-    <lastmod>2014-08-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
