@@ -15,9 +15,8 @@
       <pubDate>Sat, 05 Dec 2020 00:00:00 +0000</pubDate>
       <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
       <guid>https://unwiredcouch.com/bits/2020/12/05/pr-deploys.html</guid>
-      <description>Branch deploys with GitHub Actions Over the last 18 months or so working for GitHub on the team managing deploys, I’ve gotten very accustomed to branch based deployments (or [GitHub flow] as it’s also known).</description>
-    <content:encoded><![CDATA[<h1 id="branch-deploys-with-github-actions">Branch deploys with GitHub Actions</h1>
-<p>Over the last 18 months or so working for GitHub on the team managing deploys, I’ve gotten very accustomed to branch based deployments (or [GitHub flow] as it’s also known). Even more so I’m very much enjoying it over the usual trunk based deployment setups that are common in CI/CD environments (this however might be a topic for a different post).</p>
+      <description>Over the last 18 months or so working for GitHub on the team managing deploys, I’ve gotten very accustomed to branch based deployments (or [GitHub flow] as it’s also known).</description>
+    <content:encoded><![CDATA[<p>Over the last 18 months or so working for GitHub on the team managing deploys, I’ve gotten very accustomed to branch based deployments (or [GitHub flow] as it’s also known). Even more so I’m very much enjoying it over the usual trunk based deployment setups that are common in CI/CD environments (this however might be a topic for a different post).</p>
 <p>With the official availability of GitHub Actions last year I decided to move some of my CI jobs for my personal infrastructure over from my private Jenkins server to Actions. Both in an effort to clean up the setup a bit, but also to not have to maintain and rely on running Jenkins myself so much anymore.</p>
 <p>My personal infrastructure runs out of a single monolithic repository that contains chef cookbooks, provisioning code, kubernetes resources, terraform code, and also dns configuration (which will serve as the example in this post) in a subdirectory. That is why a lot of the examples I post here are related to having multiple deployment targets in a single repository.</p>
 <h2 id="the-used-to-be-situation">The used to be situation</h2>
@@ -47,7 +46,7 @@
     }
   } 
 </code></pre><p>In case the job that was run on push failed or I just wanted to rerun the deployment, I also have a helpful Slack bot to help out with that:</p>
-<p><img src="/images/bit/pr-deploys/slack-friday.png" alt="slack bot deploy"></p>
+<p><img src="/images/bits/pr-deploys/slack-friday.png" alt="slack bot deploy"></p>
 <p>And this worked really well for a couple of years. I don’t have a ton of changes usually in my personal DNS setup, so whenever a change was needed, this setup was more than enough automation to keep me happy. But at some point I got annoyed by the fact that basically all automation for my infrastructure was dependent on Jenkins being up (and I had to make sure it was).</p>
 <h2 id="hello-actions">Hello Actions</h2>
 <p>Fortunately around that same time I got really annoyed running Jenkins, GitHub Actions went GA with the CI offering which prompted me to look more into how I could use it to maybe replace my Jenkins setup.</p>
