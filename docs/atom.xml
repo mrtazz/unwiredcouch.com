@@ -13,7 +13,7 @@
     <title type="html"><![CDATA[Branch Deploys with GitHub Actions]]></title>
     <published>2020-12-05T00:00:00Z</published>
     <updated>2020-12-05T00:00:00Z</updated>
-    <id>https://unwiredcouch.com/bits/2020-12-05-pr-deploys/</id>
+    <id>https://unwiredcouch.com/bits/2020/12/05/pr-deploys.html</id>
     <content type="html"><![CDATA[<h1 id="branch-deploys-with-github-actions">Branch deploys with GitHub Actions</h1>
 <p>Over the last 18 months or so working for GitHub on the team managing deploys, I’ve gotten very accustomed to branch based deployments (or [GitHub flow] as it’s also known). Even more so I’m very much enjoying it over the usual trunk based deployment setups that are common in CI/CD environments (this however might be a topic for a different post).</p>
 <p>With the official availability of GitHub Actions last year I decided to move some of my CI jobs for my personal infrastructure over from my private Jenkins server to Actions. Both in an effort to clean up the setup a bit, but also to not have to maintain and rely on running Jenkins myself so much anymore.</p>
@@ -95,7 +95,7 @@ And then the at the end of the job there are these two steps that are run on suc
 <h2 id="wrapping-up">Wrapping up</h2>
 <p>This is now a workflow I really enjoy. It’s extremely similar to how we work at GitHub, which is nice because I don’t have to rethink how things are done when I change things in my personal infrastructure. Plus I get all of the testing and feedback on my PR and can act there with changes before merging the code. I also can work on more than one PR at a time, and even have a PR for my chef changes and one for my dns changes and have them be deployed and tested and incorporate feedback before merging. Or do it in the same PR because the pre deployment checks will run as soon as there are changes in the respective subdirectory. And I can add a <code>deploy requested/dns</code> and a <code>deploy requested/chef</code> label to have the automation for both deployments run.</p>
 ]]></content>
-    <link href="https://unwiredcouch.com/bits/2020-12-05-pr-deploys/" rel="alternate"/>
+    <link href="https://unwiredcouch.com/bits/2020/12/05/pr-deploys.html" rel="alternate"/>
 	</entry>
   
 	<entry>
