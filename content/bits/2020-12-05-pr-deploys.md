@@ -1,6 +1,7 @@
 ---
 date: 2020-12-05
 title: "Branch Deploys with GitHub Actions"
+url: /bits/2020/12/05/pr-deploys.html
 ---
 
 # Branch deploys with GitHub Actions
