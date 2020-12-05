@@ -4,7 +4,6 @@ title: "Branch Deploys with GitHub Actions"
 url: /bits/2020/12/05/pr-deploys.html
 ---
 
-# Branch deploys with GitHub Actions
 Over the last 18 months or so working for GitHub on the team managing deploys, I’ve gotten very accustomed to branch based deployments (or [GitHub flow] as it’s also known). Even more so I’m very much enjoying it over the usual trunk based deployment setups that are common in CI/CD environments (this however might be a topic for a different post).
 
 With the official availability of GitHub Actions last year I decided to move some of my CI jobs for my personal infrastructure over from my private Jenkins server to Actions. Both in an effort to clean up the setup a bit, but also to not have to maintain and rely on running Jenkins myself so much anymore.
