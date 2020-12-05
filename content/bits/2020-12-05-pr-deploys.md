@@ -4,7 +4,7 @@ title: "Branch Deploys with GitHub Actions"
 url: /bits/2020/12/05/pr-deploys.html
 ---
 
-Over the last 18 months or so working for GitHub on the team managing deploys, I’ve gotten very accustomed to branch based deployments (or [GitHub flow] as it’s also known). Even more so I’m very much enjoying it over the usual trunk based deployment setups that are common in CI/CD environments (this however might be a topic for a different post).
+Over the last 18 months or so working for GitHub on the team managing deploys, I’ve gotten very accustomed to branch based deployments. Even more so I’m very much enjoying it over the usual trunk based deployment setups that are common in CI/CD environments (this however might be a topic for a different post).
 
 With the official availability of GitHub Actions last year I decided to move some of my CI jobs for my personal infrastructure over from my private Jenkins server to Actions. Both in an effort to clean up the setup a bit, but also to not have to maintain and rely on running Jenkins myself so much anymore.
 
@@ -104,9 +104,11 @@ In order to record deployments and their status changes and run the deployment c
 ```
 - name: start deployment
   run: ruby bin/gh-deployment.rb create
+```
 
 And then the at the end of the job there are these two steps that are run on success and failure of the job respectively:
 
+```
     - name: record deployment failure
       run: ruby bin/gh-deployment.rb failure
       if: failure()
