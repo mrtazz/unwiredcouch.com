@@ -43,7 +43,7 @@ stage('determine subjob to build') {
 
 In case the job that was run on push failed or I just wanted to rerun the deployment, I also have a helpful Slack bot to help out with that:
 
-![slack bot deploy](/images/bit/pr-deploys/slack-friday.png)
+![slack bot deploy](/images/bits/pr-deploys/slack-friday.png)
 
 And this worked really well for a couple of years. I don’t have a ton of changes usually in my personal DNS setup, so whenever a change was needed, this setup was more than enough automation to keep me happy. But at some point I got annoyed by the fact that basically all automation for my infrastructure was dependent on Jenkins being up (and I had to make sure it was).
 
