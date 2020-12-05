@@ -15,8 +15,8 @@
       <pubDate>Sat, 05 Dec 2020 00:00:00 +0000</pubDate>
       <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
       <guid>https://unwiredcouch.com/bits/2020/12/05/pr-deploys.html</guid>
-      <description>Over the last 18 months or so working for GitHub on the team managing deploys, I’ve gotten very accustomed to branch based deployments (or [GitHub flow] as it’s also known).</description>
-    <content:encoded><![CDATA[<p>Over the last 18 months or so working for GitHub on the team managing deploys, I’ve gotten very accustomed to branch based deployments (or [GitHub flow] as it’s also known). Even more so I’m very much enjoying it over the usual trunk based deployment setups that are common in CI/CD environments (this however might be a topic for a different post).</p>
+      <description>Over the last 18 months or so working for GitHub on the team managing deploys, I’ve gotten very accustomed to branch based deployments.</description>
+    <content:encoded><![CDATA[<p>Over the last 18 months or so working for GitHub on the team managing deploys, I’ve gotten very accustomed to branch based deployments. Even more so I’m very much enjoying it over the usual trunk based deployment setups that are common in CI/CD environments (this however might be a topic for a different post).</p>
 <p>With the official availability of GitHub Actions last year I decided to move some of my CI jobs for my personal infrastructure over from my private Jenkins server to Actions. Both in an effort to clean up the setup a bit, but also to not have to maintain and rely on running Jenkins myself so much anymore.</p>
 <p>My personal infrastructure runs out of a single monolithic repository that contains chef cookbooks, provisioning code, kubernetes resources, terraform code, and also dns configuration (which will serve as the example in this post) in a subdirectory. That is why a lot of the examples I post here are related to having multiple deployment targets in a single repository.</p>
 <h2 id="the-used-to-be-situation">The used to be situation</h2>
@@ -82,10 +82,8 @@
 </code></pre><p>In order to record deployments and their status changes and run the deployment creation step right before the deployment logic like so:</p>
 <pre><code>- name: start deployment
   run: ruby bin/gh-deployment.rb create
-
-And then the at the end of the job there are these two steps that are run on success and failure of the job respectively:
-
-    - name: record deployment failure
+</code></pre><p>And then the at the end of the job there are these two steps that are run on success and failure of the job respectively:</p>
+<pre><code>    - name: record deployment failure
       run: ruby bin/gh-deployment.rb failure
       if: failure()
     - name: record deployment success
