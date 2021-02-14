@@ -1,4 +1,3 @@
-@how-to-take-smart-notes
 ---
 title: How to take smart notes
 author: Sören Ahrens
@@ -11,5 +10,3 @@ After finishing the book I took some time to think about how a Zettelkasten styl
 
 
 [1]:	https://en.wikipedia.org/wiki/Zettelkasten "Zettelkasten on Wikipedia"
-
-#draft #ready to ship#
