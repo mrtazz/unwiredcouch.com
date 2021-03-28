@@ -8,7 +8,19 @@
     <language>en</language>
     <managingEditor>d@unwiredcouch.com (Daniel Schauenberg)</managingEditor>
     <webMaster>d@unwiredcouch.com (Daniel Schauenberg)</webMaster>
-    <lastBuildDate>Sat, 05 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://unwiredcouch.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 21 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://unwiredcouch.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How Emotions Are Made: The Secret Life of the Brain</title>
+      <link>https://unwiredcouch.com/reading/how-emotions-are-made/</link>
+      <pubDate>Sun, 21 Mar 2021 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/reading/how-emotions-are-made/</guid>
+      <description>This was an absolutely mind blowing read in the sense that it made me think about a lot of things in a new light.</description>
+    <content:encoded><![CDATA[<p>This was an absolutely mind blowing read in the sense that it made me think about a lot of things in a new light. The book is an introduction into [the theory of constructed emotion] which has been the author’s field of research for many years. The tl;dr kinda being that emotions don’t just exist as objective reality but are constructed by humans as we interpret external and internal sensor input.</p>
+<p>The author makes it very clear how much research has gone into the theory and how it explains many observations that can’t be explained by the classical view on emotions. It’s definitely a theory that’s a lot less intuitive than the classical view, but I’ve still found myself nodding along at some passages, while being very perplexed at others trying to understand concepts like simulation and prediction of the brain. And what it means for my day to day perceptions.</p>
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>Branch Deploys with GitHub Actions</title>
       <link>https://unwiredcouch.com/bits/2020/12/05/pr-deploys.html</link>
