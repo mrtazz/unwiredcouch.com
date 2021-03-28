@@ -1,13 +1,24 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>unwiredcouch.com on unwiredcouch.com</title>
   <id>https://unwiredcouch.com/atom.xml</id>
-  <updated>2020-12-05T00:00:00Z</updated>
+  <updated>2021-03-21T00:00:00Z</updated>
 	<subtitle>thoughts which have made it into written existence</subtitle>
 	<link rel="self" href="https://unwiredcouch.com/atom.xml"/>
 	<author>
     <name>Daniel Schauenberg</name>
 		<email>d@unwiredcouch.com</email>
 	</author>
+  
+	<entry>
+    <title type="html"><![CDATA[How Emotions Are Made: The Secret Life of the Brain]]></title>
+    <published>2021-03-21T00:00:00Z</published>
+    <updated>2021-03-21T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/reading/how-emotions-are-made/</id>
+    <content type="html"><![CDATA[<p>This was an absolutely mind blowing read in the sense that it made me think about a lot of things in a new light. The book is an introduction into [the theory of constructed emotion] which has been the author’s field of research for many years. The tl;dr kinda being that emotions don’t just exist as objective reality but are constructed by humans as we interpret external and internal sensor input.</p>
+<p>The author makes it very clear how much research has gone into the theory and how it explains many observations that can’t be explained by the classical view on emotions. It’s definitely a theory that’s a lot less intuitive than the classical view, but I’ve still found myself nodding along at some passages, while being very perplexed at others trying to understand concepts like simulation and prediction of the brain. And what it means for my day to day perceptions.</p>
+]]></content>
+    <link href="https://unwiredcouch.com/reading/how-emotions-are-made/" rel="alternate"/>
+	</entry>
   
 	<entry>
     <title type="html"><![CDATA[Branch Deploys with GitHub Actions]]></title>
