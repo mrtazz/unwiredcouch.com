@@ -16,8 +16,7 @@ running web services, systems and network administration, on connecting
 chemical plants to IT systems and as an embedded systems networking engineer.
 Things he thoroughly enjoys when not writing code include coffee, breakfast,
 TV shows, reading, and drawing and painting. He maintains a stream of his
-personal opinions on
-[unwiredcouch.com][blog].
+personal opinions on [unwiredcouch.com][blog].
 
 
 [twitter]: https://twitter.com/mrtazz
