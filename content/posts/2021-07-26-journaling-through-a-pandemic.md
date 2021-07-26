@@ -1,7 +1,7 @@
 ---
 date: 2021-07-26
 title: Journaling through a Pandemic
-url: /2021/07/26/jorunaling-through-a-pandemic.html
+url: /2021/07/26/journaling-through-a-pandemic.html
 ---
 
 ![5 journals next to each other viewed from the binder side. Left to right the turquoise "some lines a day" journal, a blue long form journal, a green reading journal, and a yellow and purple bullet journal labeled with number 6, 01/2020 to 07/2020 and number 7, 08/2020 to 12/2020 respectively ](/images/journaling-through-a-pandemic/journal-overview.png "Overview of my paper journals") 
