@@ -4,7 +4,7 @@ title: Journaling through a Pandemic
 url: /2021/07/26/jorunaling-through-a-pandemic.html
 ---
 
-![5 journals next to each other viewed from the binder side. Left to right the turquoise "some lines a day" journal, a blue long form journal, a green reading journal, and a yellow and purple bullet journal labeled with number 6, 01/2020 to 07/2020 and number 7, 08/2020 to 12/2020 respectively ](/images/journaling-through-a-pandemic/journal-overview.jpeg "Overview of my paper journals") 
+![5 journals next to each other viewed from the binder side. Left to right the turquoise "some lines a day" journal, a blue long form journal, a green reading journal, and a yellow and purple bullet journal labeled with number 6, 01/2020 to 07/2020 and number 7, 08/2020 to 12/2020 respectively ](/images/journaling-through-a-pandemic/journal-overview.png "Overview of my paper journals") 
 
 I started 2020 with a very different expectation of the year to come. And I think it’s safe to say that I’m not alone in that one. But fast-forward 3 months and I found myself in the middle of a lockdown and a pandemic. Everyone is at home all the time, it’s working from home all the time, no coffee shops, no meeting friends, and that for the foreseeable future. The days are fairly unstructured and pretty chaotic as we try to make the best of this situation. In which I found myself really embracing journaling into various paper notebooks and it has made a tremendous difference for my mental health.
 
@@ -45,4 +45,4 @@ Towards the end of 2019 I also bought an "Ex Libris" reading journal from Leucht
 
 As difficult and challenging as 2020 was, and the ongoing pandemic continues to be, this process of having notebooks for many different ways to get things out of my head is immensely helpful to me. And as a continuation of leaning more on analog tools that I started in 2018 it keeps me from being completely petrified and procrastinating in the morning on many days. It also provides a way to really think about what thoughts and anxieties are rotating in my brain and have a conversation about it, even if I’m basically just talking to myself. And despite it being slightly inconvenient to carry around 3 or so notebooks sometimes, the benefits I get from having them around vastly outweighs that inconvenience for me. I even got myself a nice new pen to enjoy the process of sitting down and writing even more.
 
-![A black Lamy CP1 fountain pen on a wooden table](/images/journaling-through-a-pandemic/lamy-cp1.jpeg "Lamy CP1 fountain pen")
+![A black Lamy CP1 fountain pen on a wooden table](/images/journaling-through-a-pandemic/lamy-cp1.png "Lamy CP1 fountain pen")
