@@ -1,4 +1,8 @@
-# vim package management in make
+---
+date: 2021-09-02
+title: "vim package management in make"
+url: /bits/2021/09/02/vim-package-managment-make.html
+---
 
 My text editor of choice is vim and has been for many many years at this point. And while it’s a very configurable editor with all its available plugins, I generally tend to use only a small number of them. Partly because I like being able to have a small and simple setup, and not be slowed down too much when I have to use vim on a different machine or don’t have my setup installed.
 
