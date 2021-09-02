@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="cache-control" content="no-cache"/>
+    <meta http-equiv="pragma" content="no-cache"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    
+
+
+
+<link   rel="stylesheet"
+        href="../../../../css/style.min.f5f3c9d6347126baccc4453297765bb958cbeb73d1cef7d8d52d4425153831d6.css"
+        integrity="sha256-9fPJ1jRxJrrMxEUyl3ZbuVjL63PRzvfY1S1EJRU4MdY="
+        type="text/css"
+        media="screen">
+
+<link   rel="stylesheet"
+        href="../../../../css/mobile.min.9d1271f82d33327493aaf7c1818ceac101a822559d694bd14a222d686e28c391.css"
+        integrity="sha256-nRJx&#43;C0zMnSTqvfBgYzqwQGoIlWdaUvRSiItaG4ow5E="
+        type="text/css"
+        media="handheld, only screen and (max-device-width: 960px)">
+
+    <link href="https://unwiredcouch.com/atom.xml" type="application/atom+xml" rel="alternate" title="unwiredcouch.com: All Posts" />
+    
+    
+
+    <title>vim package management in make on unwiredcouch.com</title>
+  </head>
+  <body>
+    <div class="mainwrapper">
+
+    <header class="header">
+  <a class="gravatar hidemobile" href="../../../../">
+    <img
+      src="https://www.gravatar.com/avatar/89e0ad1229121f46047977ac547bd7b4.jpg?s=100"
+      height="50" width="50" class="avatar" alt="gravatar image" />
+  </a>
+  <nav class="menu">
+    <ul>
+      <li><a href="../../../../posts">Writing</a></li>
+      <li><a href="../../../../reading">Reading</a></li>
+      <li><a href="https://instagram.com/mrtazz">Drawing</a></li>
+      <li><a href="../../../../setup">Setup</a></li>
+      <li><a href="../../../../about.html">About</a></li>
+    </ul>
+  </nav>
+</header>
+
+
+    <main>
+    
+
+<div class="postdateheading"> Sep 2, 2021 </div>
+
+      <div class="post">
+        <h2> <a href=""> vim package management in make </a></h2>
+
+        <p>My text editor of choice is vim and has been for many many years at this point. And while it’s a very configurable editor with all its available plugins, I generally tend to use only a small number of them. Partly because I like being able to have a small and simple setup, and not be slowed down too much when I have to use vim on a different machine or don’t have my setup installed.</p>
+<p>Part of this tendency towards simple setups also means that I don’t want to have the management of the few plugins I do use be cumbersome and involving understanding the intricacies of some new tool. And given that vim plugins for the most part also don’t have a ton of dependencies (at least not the ones I use), my needs for managing plugins can be reduced to a small list of requirements:</p>
+<ol>
+<li>Have plugins I want defined in an authoritative list</li>
+<li>Have a single command to update plugins to the newest version</li>
+</ol>
+<h2 id="enter-make">Enter Make</h2>
+<p>So after having gone through various stages of managing my plugins like git submodules and a ruby script that was doing a lot more than it needed, I was wondering if I could just use one of my favorite tools <code>make</code> to do the job for me. After all one of the things it’s really good is, is making sure a defined set of files exists. Which is kinda all that vim plugin management is. And after thinking about this a little bit, I came up with the following things I would need to implement.</p>
+<ol>
+<li>A way to define a list of plugins with name and URL</li>
+<li>A way to download all plugins and put them in the right location</li>
+<li>A way to make sure plugins that don’t exist anymore are removed</li>
+</ol>
+<p>So let’s see how this can be done with <code>make</code>. First we need to define a list of plugins. This can be easily done by just storing them in variables, e.g.:</p>
+<pre><code>plugin_supertab  := https://github.com/ervandew/supertab/tarball/master
+plugin_syntastic := https://github.com/scrooloose/syntastic/tarball/master
+plugin_fzf       := https://github.com/junegunn/fzf/tarball/master
+plugin_fzf.vim   := https://github.com/junegunn/fzf.vim/tarball/master
+</code></pre>
+<p>This was easy and if you’re wondering about the <code>plugin_</code> prefix, you’ve noticed an important part of how to turn this into an easily usable list of plugin definitions. Within
+<code>make</code> there exists a meta variable called <code>.VARIABLES</code> which contains the list of all defined variables in the current <code>Makefile</code>. And since we have chosen a specific prefix for all plugin definitions, we can now get all defined plugins in a programmatic way by filtering all variables with the prefix and then stripping that prefix to get the name we decided to give that plugin via something like:</p>
+<pre><code># this filters out all variables with a plugin_ prefix and regards them 
+# as plugin definitions
+ALL_DEFINED_PLUGINS := $(filter plugin_%, $(.VARIABLES))
+# from the defined variables list we only extract the name
+ALL_PLUGINS := $(subst plugin_,,$(ALL_DEFINED_PLUGINS))
+</code></pre>
+<p>Now we have a list of plugins (by their names) that we can use to construct a target. I want something easy and nice to type, so I went for a target called <code>install-plugins</code>:</p>
+<pre><code>.PHONY: install-plugins
+install-plugins: $(patsubst %, $(PLUGINSDIR)/%, $(ALL_PLUGINS))
+</code></pre>
+<p>The target is <code>PHONY</code> because it doesn’t itself describe a file that gets generated, so it’s always &ldquo;out of date&rdquo;.  But the interesting part of the target is its prerequisites on the right side. There is a path substitution there that defines file targets for all plugins in the plugin directory (I use vim’s built in plugin management, so I have the plugin directory defined as <code>PLUGINSDIR := pack/plugins/start</code>). This now means make knows that it needs to create all the files for the generated plugins paths (e.g. <code>pack/plugins/start/syntastic</code>) in order to fulfill the <code>install-plugins</code> target. However so far there is nothing telling it how to do that and in order to change that, we define a wildcard rule that matches the file path of those plugin definitions:</p>
+<pre><code>$(PLUGINSDIR)/%: $(PLUGINSDIR)
+    @echo &quot;Installing $@ from $(plugin_$*)&quot;
+    @install -d $@
+    @curl -Lfs $(plugin_$*) | tar xz -C $@ --strip-components=1
+</code></pre>
+<p>This rule matches every directory under the plugin path via the wildcard character <code>%</code> . And because this is an implicit rule, make provides an automatic variable named <code>$*</code> that contains the stem of the match, which in our case is the plugin name. From there we can make sure the directory exists via <code>install -d $@</code> (<code>$@</code> is an automatic variable that matches the whole target), get the URL for the plugin by reconstructing the original variable we defined for the plugin from the stem (<code>$(plugin_$*)</code>)  and then run <code>curl</code> and <code>tar</code> to unpack the plugin into the newly created directory. You might have noticed that the rule also has a prerequisite on <code>$(PLUGINSDIR)</code> on the right side. Which is easily satisfied via this rule:</p>
+<pre><code>$(PLUGINSDIR):
+    install -d $@
+</code></pre>
+<p>So now we have all the pieces together to define plugins and install them. However we also want to make sure we don’t keep old plugins around that aren’t defined anymore, or files that were removed from plugins in newer versions. And this is done via deleting the plugins before installing new ones:</p>
+<pre><code>.PHONY: clean-plugins
+clean-plugins:
+    rm -rf ./$(PLUGINSDIR)/*
+</code></pre>
+<p>And then we introduce one more convenience task to update plugins by first removing all of them and then installing the ones we want:</p>
+<pre><code>.PHONY: update-plugins
+update-plugins: clean-plugins install-plugins
+</code></pre>
+<p>And with that I can easily update all my vim plugins and commit the update to my dot file repository via the following command sequence:</p>
+<pre><code>make update-plugins
+git add pack/
+git commit -m &quot;update vim plugins&quot;
+</code></pre>
+<p>And the full example of the <code>Makefile</code> looks like this:</p>
+<pre><code>PLUGINSDIR := pack/plugins/start
+
+# plugin definitions
+plugin_supertab  := https://github.com/ervandew/supertab/tarball/master
+plugin_syntastic := https://github.com/scrooloose/syntastic/tarball/master
+plugin_fzf       := https://github.com/junegunn/fzf/tarball/master
+plugin_fzf.vim   := https://github.com/junegunn/fzf.vim/tarball/master
+
+# this filters out all variables with a plugin_ prefix and regards them as
+# plugin definitions
+ALL_DEFINED_PLUGINS := $(filter plugin_%, $(.VARIABLES))
+# from the defined variables list we only extract the name
+ALL_PLUGINS := $(subst plugin_,,$(ALL_DEFINED_PLUGINS))
+
+# this will install all plugins via the wildcard matching target below
+.PHONY: install-plugins
+install-plugins: $(patsubst %, $(PLUGINSDIR)/%, $(ALL_PLUGINS))
+
+.PHONY: clean-plugins
+clean-plugins:
+    rm -rf ./pack/plugins/start/*
+
+.PHONY: update-plugins
+update-plugins: clean-plugins install-plugins
+
+$(PLUGINSDIR):
+    install -d $@
+
+$(PLUGINSDIR)/%: $(PLUGINSDIR)
+    @echo &quot;Installing $@ from $(plugin_$*)&quot;
+    @install -d $@
+    @curl -Lfs $(plugin_$*) | tar xz -C $@ --strip-components=1
+</code></pre>
+<h2 id="final-words">Final words</h2>
+<p>I’ve been using this way of managing my vim plugins for a while now. And I’m really liking it. It’s small, portable, and easy for me to reason about. I don’t think there will be a need for this to change anytime soon since it’s pretty feature complete for me. From a purely aesthetic perspective it’s not super nice that it removes all plugins every time it runs just to put most of the files back right away. But that doesn’t bother me because it’s fast, reliable, and simple.</p>
+<p>If you’re curious about more of my setup, you can find <a href="https://github.com/mrtazz/dotfiles" title="mrtazz’s dotfiles on github.com">my dotfiles on GitHub</a> where I’ve done much more with <code>make</code> .</p>
+
+
+      </div>
+
+
+    </main>
+
+    <footer class="footer">
+    <ul class="menu-footer">
+      <li><a href="../../../../imprint.html">Imprint</a></li>
+    </ul>
+</footer>
+
+
+    </div>
+  </body>
+</html>
