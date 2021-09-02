@@ -4,7 +4,7 @@ title: "vim package management in make"
 url: /bits/2021/09/02/vim-package-managment-make.html
 ---
 
-My text editor of choice is vim and has been for many many years at this point. And while it’s a very configurable editor with all its available plugins, I generally tend to use only a small number of them. Partly because I like being able to have a small and simple setup, and not be slowed down too much when I have to use vim on a different machine or don’t have my setup installed.
+My [text editor of choice is vim](https://unwiredcouch.com/setup/vim/) and has been for many many years at this point. And while it’s a very configurable editor with all its available plugins, I generally tend to use only a small number of them. Partly because I like being able to have a small and simple setup, and not be slowed down too much when I have to use vim on a different machine or don’t have my setup installed.
 
 Part of this tendency towards simple setups also means that I don’t want to have the management of the few plugins I do use be cumbersome and involving understanding the intricacies of some new tool. And given that vim plugins for the most part also don’t have a ton of dependencies (at least not the ones I use), my needs for managing plugins can be reduced to a small list of requirements:
 
