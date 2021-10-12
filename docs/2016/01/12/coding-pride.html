@@ -10,8 +10,8 @@
 
 
 <link   rel="stylesheet"
-        href="../../../css/style.min.c74a87869e0d51c45d0efc4f4ff6e8a9ee1df40009a1a8eaac5e32cb677babbc.css"
-        integrity="sha256-x0qHhp4NUcRdDvxPT/boqe4d9AAJoajqrF4yy2d7q7w="
+        href="../../../css/style.min.0a7442460ca45a8d1ffa9d4f0a0163976899fc7820ce2bb76f693ba0527afb57.css"
+        integrity="sha256-CnRCRgykWo0f&#43;p1PCgFjl2iZ/Hggziu3b2k7oFJ6&#43;1c="
         type="text/css"
         media="screen">
 
@@ -175,7 +175,7 @@ platforms. <a href="https://github.com/jordansissel/fpm">fpm</a> has made it rid
 And with <a href="https://packagecloud.io/">packagecloud</a> you can host them in an amazingly accessible and
 user friendly way. You can even have your packages built and uploaded from
 your CI system as well with something like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">NAME<span style="color:#f92672">=</span>restclient-cpp
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">NAME<span style="color:#f92672">=</span>restclient-cpp
 VERSION <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</span>shell git describe --tags --always --dirty<span style="color:#66d9ef">)</span>
 BUILDER <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</span>shell echo <span style="color:#e6db74">&#34;`git config user.name` &lt;`git config user.email`&gt;&#34;</span><span style="color:#66d9ef">)</span>
 PKG_RELEASE ?<span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
@@ -207,7 +207,7 @@ point to it. The fact that it&rsquo;s just another branch in your repository mea
 that you can easily automate the deployment of docs alongside your code for
 example from (you probably guessed it by now ) your CI system. Thanks to
 GitHub pages this is as easy as:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># generate docs</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># generate docs</span>
 install -d docs
 echo <span style="color:#e6db74">&#34;projecturl: </span><span style="color:#66d9ef">$(</span>PROJECT_URL<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> &gt;&gt; docs/_config.yml
 echo <span style="color:#e6db74">&#34;basesite: http://www.unwiredcouch.com&#34;</span> &gt;&gt; docs/_config.yml

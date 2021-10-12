@@ -10,8 +10,8 @@
 
 
 <link   rel="stylesheet"
-        href="../../../../css/style.min.c74a87869e0d51c45d0efc4f4ff6e8a9ee1df40009a1a8eaac5e32cb677babbc.css"
-        integrity="sha256-x0qHhp4NUcRdDvxPT/boqe4d9AAJoajqrF4yy2d7q7w="
+        href="../../../../css/style.min.0a7442460ca45a8d1ffa9d4f0a0163976899fc7820ce2bb76f693ba0527afb57.css"
+        integrity="sha256-CnRCRgykWo0f&#43;p1PCgFjl2iZ/Hggziu3b2k7oFJ6&#43;1c="
         type="text/css"
         media="screen">
 
@@ -61,7 +61,7 @@
 <p>My personal infrastructure runs out of a single monolithic repository that contains chef cookbooks, provisioning code, kubernetes resources, terraform code, and also dns configuration (which will serve as the example in this post) in a subdirectory. That is why a lot of the examples I post here are related to having multiple deployment targets in a single repository.</p>
 <h2 id="the-used-to-be-situation">The used to be situation</h2>
 <p>For a couple of years now I’ve been managing my DNS configuration with [octodns]. It’s a really nice tool written by the GitHub engineering team to manage DNS zones across different providers via yaml files. My zones are configured in yaml files in the <code>dns</code> sub directory of my infrastructure repository. There&rsquo;s a small Makefile that has tasks for verifying and deploying configuration. And it usually got deployed via a push to the default branch of the repo and a top level Jenkinsfile that mapped directory paths to Jenkins jobs like this:</p>
-<pre><code>stage('determine subjob to build') {
+<pre tabindex="0"><code>stage('determine subjob to build') {
     try {
       sh &quot;printenv&quot;
       echo &quot;Got params: ${params}&quot;
@@ -92,7 +92,7 @@
 <p>Fortunately around that same time I got really annoyed running Jenkins, GitHub Actions went GA with the CI offering which prompted me to look more into how I could use it to maybe replace my Jenkins setup.</p>
 <p>As a first step here I wanted to change as few things as possible. So Actions would literally just replace Jenkins, running the deployment logic whenever I pushed to the default branch of my infrastructure repository.</p>
 <p>In Actions this was done by restricting the job to changes in the <code>dns</code> subdirectory or changes to the workflow file:</p>
-<pre><code>on:
+<pre tabindex="0"><code>on:
   push:
     paths:
       - 'dns/**'
@@ -105,7 +105,7 @@
 <p>I ran with this setup for a while. And again it worked perfectly fine. However I was also running into situations where the actual deploy failed even though the PR check was fine. Because there is no place like production. And all the tests will never be a full replacement to catch all the things before hitting production. That’s just how it is. But it meant that I would only find out after the merge that something was off. And then I had to open another PR to fix the problems which usually was just a small one line change. And I got annoyed by this. Plus Pull Requests have a really nice integration with the deployments API which I was missing out on.</p>
 <p>So I wanted to have all these nice things as well. The first step to get there was to find another trigger for deployments that signals the automation that this code is fine to deploy. Pull Requests don’t have a ton of ways to interact with them. It basically comes down to comments or labels. And because there is a way to trigger Actions on labels, that’s what I went with.</p>
 <p>In Actions configuration this looks like this. First I had to make sure the job runs when the PR gets <code>labeled</code> (the other 2 <code>opened</code> and <code>synchronized</code> make sure the automation is run on any changes pushed to the PR):</p>
-<pre><code>on:
+<pre tabindex="0"><code>on:
   pull_request:
     paths:
       - 'dns/**'
@@ -113,17 +113,17 @@
     types: [opened, synchronize, labeled]
 </code></pre><p>Then I decided on a label name - in this case <code>deploy requested/dns</code> - and made sure the deployment logic only ran when the PR actually was labeled with that. I did this by making <code>deploy</code> a separate job in the Actions definition and have it be guarded by <code>if: contains(github.event.pull_request.labels.*.name, 'deploy requested/dns')</code> similar to how the guard on default branch worked before.</p>
 <p>Now to have that nice PR timeline integration with the deployments API I wrote a small ruby script which is configured via environment variables in the job.</p>
-<pre><code>env:
+<pre tabindex="0"><code>env:
       DEPLOYMENT_REPO: ${{ github.repository }}
       DEPLOYMENT_ENVIRONMENT: dns
       DEPLOYMENT_DESCRIPTION: dns updated via octodns
       DEPLOYMENT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       DEPLOYMENT_SHA: ${{ github.event.pull_request.head.ref }}
 </code></pre><p>In order to record deployments and their status changes and run the deployment creation step right before the deployment logic like so:</p>
-<pre><code>- name: start deployment
+<pre tabindex="0"><code>- name: start deployment
   run: ruby bin/gh-deployment.rb create
 </code></pre><p>And then the at the end of the job there are these two steps that are run on success and failure of the job respectively:</p>
-<pre><code>    - name: record deployment failure
+<pre tabindex="0"><code>    - name: record deployment failure
       run: ruby bin/gh-deployment.rb failure
       if: failure()
     - name: record deployment success

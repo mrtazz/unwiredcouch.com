@@ -172,7 +172,7 @@ project forward.</p>
 <h3 id="are-you-involved-in-a-local-vim-community">Are you involved in a local Vim community?</h3>
 <p>I&rsquo;m not. For some reason that has never occurred to me.</p>
 <h3 id="share-a-snippet-of-vim-script-youve-written-and-talk-about-what-it-does">Share a snippet of Vim script you&rsquo;ve written and talk about what it does.</h3>
-<pre><code>function! Today()
+<pre tabindex="0"><code>function! Today()
   let today = strftime(&quot;%A %m\/%d\/%Y&quot;)
   exe &quot;normal a&quot;. today
 endfunction
@@ -339,7 +339,7 @@ email client of choice is <a href="http://www.mutt.org/">mutt</a>. Which means t
 hacking to do (as usual). However I found a great <a href="https://github.com/mrtazz/bin/blob/master/mutt-to-omnifocus.py">Python script</a>
 that parses emails and adds them to Omnifocus. I also added this keybinding to
 my mutt configuration:</p>
-<pre><code>macro index,pager \Ca &quot;&lt;enter-command&gt;unset
+<pre tabindex="0"><code>macro index,pager \Ca &quot;&lt;enter-command&gt;unset
 wait_key&lt;enter&gt;&lt;pipe-message&gt;mutt-to-omnifocus.py
 &lt;enter&gt;&lt;save-message&gt;=gtd-needs-reply/&lt;enter&gt;&lt;sync-mailbox&gt;&quot;
 </code></pre><p>Now all I have to do when reading an Email or browsing through the list is hit

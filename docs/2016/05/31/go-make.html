@@ -10,8 +10,8 @@
 
 
 <link   rel="stylesheet"
-        href="../../../css/style.min.c74a87869e0d51c45d0efc4f4ff6e8a9ee1df40009a1a8eaac5e32cb677babbc.css"
-        integrity="sha256-x0qHhp4NUcRdDvxPT/boqe4d9AAJoajqrF4yy2d7q7w="
+        href="../../../css/style.min.0a7442460ca45a8d1ffa9d4f0a0163976899fc7820ce2bb76f693ba0527afb57.css"
+        integrity="sha256-CnRCRgykWo0f&#43;p1PCgFjl2iZ/Hggziu3b2k7oFJ6&#43;1c="
         type="text/css"
         media="screen">
 
@@ -68,7 +68,7 @@ this gives rise to some fun use cases for a nice Makefile.</p>
 <h3 id="the-basics">The Basics</h3>
 <p>Every project I start gets this Makefile with some basic setups and variable
 definitions that I always want.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make"><span style="color:#66d9ef">export </span>GO15VENDOREXPERIMENT <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make"><span style="color:#66d9ef">export </span>GO15VENDOREXPERIMENT <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
 
 <span style="color:#75715e"># variable definitions
 </span><span style="color:#75715e"></span>NAME <span style="color:#f92672">:=</span> coolthings
@@ -95,7 +95,7 @@ have to figure out where a binary comes from.</p>
 <p>I also always have a handful of tasks defined that are helpful for running
 tests and such, especially to have a uniform and documented way how they are
 run locally and on CI.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make"><span style="color:#75715e"># development tasks
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make"><span style="color:#75715e"># development tasks
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">test</span><span style="color:#f92672">:</span>
 	go test $$<span style="color:#f92672">(</span>go list ./... | grep -v /vendor/ | grep -v /cmd/<span style="color:#f92672">)</span>
 
@@ -127,7 +127,7 @@ subfolders for each executable which in turn just contain a <code>main.go</code>
 This is a pretty nice pattern, once you get used to it and is a convention
 that lets you easily create make rules for building those executables via the
 make wildcarding support.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make">CMD_SOURCES <span style="color:#f92672">:=</span> <span style="color:#66d9ef">$(</span>shell find cmd -name main.go<span style="color:#66d9ef">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make">CMD_SOURCES <span style="color:#f92672">:=</span> <span style="color:#66d9ef">$(</span>shell find cmd -name main.go<span style="color:#66d9ef">)</span>
 TARGETS <span style="color:#f92672">:=</span> <span style="color:#66d9ef">$(</span>patsubst cmd/%/main.go,%,<span style="color:#66d9ef">$(</span>CMD_SOURCES<span style="color:#66d9ef">))</span>
 
 <span style="color:#a6e22e">%</span><span style="color:#f92672">:</span> cmd/%/main.go
@@ -139,7 +139,7 @@ to build those targets via a rule that ties them back to the source file via
 wildcarding again and runs <code>go build</code> with the linker flags from before.</p>
 <p>Of course it&rsquo;s good habit to provide man pages for your tools. So we can rig
 up a similar set of rules for building man pages for each executable:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make">MAN_SOURCES <span style="color:#f92672">:=</span> <span style="color:#66d9ef">$(</span>shell find man -name <span style="color:#e6db74">&#34;*.md&#34;</span><span style="color:#66d9ef">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make">MAN_SOURCES <span style="color:#f92672">:=</span> <span style="color:#66d9ef">$(</span>shell find man -name <span style="color:#e6db74">&#34;*.md&#34;</span><span style="color:#66d9ef">)</span>
 MAN_TARGETS <span style="color:#f92672">:=</span> <span style="color:#66d9ef">$(</span>patsubst man/man1/%.md,%,<span style="color:#66d9ef">$(</span>MAN_SOURCES<span style="color:#66d9ef">))</span>
 
 <span style="color:#a6e22e">%.1</span><span style="color:#f92672">:</span> man/man1/%.1.md
@@ -170,7 +170,7 @@ because go builds are fast and produce a static binary doesn&rsquo;t mean it&rsq
 good idea to be able to build packages. Plus you want your man pages to be
 installed with your software as well of course.  So let&rsquo;s write some generic
 install commands:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make">INSTALLED_TARGETS <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</span>addprefix <span style="color:#66d9ef">$(</span>PREFIX<span style="color:#66d9ef">)</span>/bin/, <span style="color:#66d9ef">$(</span>TARGETS<span style="color:#66d9ef">))</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make">INSTALLED_TARGETS <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</span>addprefix <span style="color:#66d9ef">$(</span>PREFIX<span style="color:#66d9ef">)</span>/bin/, <span style="color:#66d9ef">$(</span>TARGETS<span style="color:#66d9ef">))</span>
 INSTALLED_MAN_TARGETS <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</span>addprefix <span style="color:#66d9ef">$(</span>PREFIX<span style="color:#66d9ef">)</span>/share/man/man1/, <span style="color:#66d9ef">$(</span>MAN_TARGETS<span style="color:#66d9ef">))</span>
 
 <span style="color:#75715e"># install tasks
@@ -197,7 +197,7 @@ dependency for building packages later on.</p>
 <p>If you&rsquo;ve spent time with Go and make before, you will maybe have noticed a
 flaw in the building step of the Makefile so far. To revisit, we are building
 binaries from the source in the cmd folder with this implicit rule.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make"><span style="color:#a6e22e">%</span><span style="color:#f92672">:</span> cmd/%/main.go
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make"><span style="color:#a6e22e">%</span><span style="color:#f92672">:</span> cmd/%/main.go
 	go build -ldflags <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>LDFLAGS<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> -o $@ $&lt;
 </code></pre></div><p>However this only tells make about the first level of direct dependencies for
 the binary to the cmd source. Chances are you are using library and vendored
@@ -222,7 +222,7 @@ but also can print out all dependencies of a file. And with its <code>-f</code> 
 it also supports basic templating for printing out the results. Utilizing that
 we only need to do a small amount of post processing to print it in make
 dependency format and we are good to go.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make"><span style="color:#75715e"># source, dependency and build definitions
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make"><span style="color:#75715e"># source, dependency and build definitions
 </span><span style="color:#75715e"></span>DEPDIR <span style="color:#f92672">=</span> .d
 <span style="color:#66d9ef">$(</span>shell install -d <span style="color:#66d9ef">$(</span>DEPDIR<span style="color:#66d9ef">))</span>
 MAKEDEPEND <span style="color:#f92672">=</span> echo <span style="color:#e6db74">&#34;</span>$@<span style="color:#e6db74">: </span>$$<span style="color:#e6db74">(go list -f &#39;{{ join .Deps &#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34; }}&#39; </span>$<span style="color:#e6db74">&lt; | awk &#39;/github/ { gsub(/^github.com\/[a-z]*\/[a-z]*\//, &#34;&#34;); printf </span>$$<span style="color:#e6db74">0&#34;</span>/*.go <span style="color:#e6db74">&#34; }&#39;)&#34;</span> &gt; <span style="color:#66d9ef">$(</span>DEPDIR<span style="color:#66d9ef">)</span>/$@.d
@@ -253,7 +253,7 @@ for building docs and packages, so they can be easily triggered from CI.</p>
 <p>Since it&rsquo;s also always good to make it easy to clean up artifacts and
 generated intermediate and output files, all makefiles also get some clean up
 tasks.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make"><span style="color:#75715e"># clean up tasks
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make"><span style="color:#75715e"># clean up tasks
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">clean-docs</span><span style="color:#f92672">:</span>
 	rm -rf ./docs
 

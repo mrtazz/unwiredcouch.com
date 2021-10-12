@@ -49,18 +49,18 @@ install-plugins: $(patsubst %, $(PLUGINSDIR)/%, $(ALL_PLUGINS))
 </code></pre>
 <p>The target is <code>PHONY</code> because it doesn’t itself describe a file that gets generated, so it’s always &ldquo;out of date&rdquo;.  But the interesting part of the target is its prerequisites on the right side. There is a path substitution there that defines file targets for all plugins in the plugin directory (I use vim’s built in plugin management, so I have the plugin directory defined as <code>PLUGINSDIR := pack/plugins/start</code>). This now means make knows that it needs to create all the files for the generated plugins paths (e.g. <code>pack/plugins/start/syntastic</code>) in order to fulfill the <code>install-plugins</code> target. However so far there is nothing telling it how to do that and in order to change that, we define a wildcard rule that matches the file path of those plugin definitions:</p>
 <pre><code>$(PLUGINSDIR)/%: $(PLUGINSDIR)
-    @echo &quot;Installing $@ from $(plugin_$*)&quot;
-    @install -d $@
-    @curl -Lfs $(plugin_$*) | tar xz -C $@ --strip-components=1
+	@echo &quot;Installing $@ from $(plugin_$*)&quot;
+	@install -d $@
+	@curl -Lfs $(plugin_$*) | tar xz -C $@ --strip-components=1
 </code></pre>
 <p>This rule matches every directory under the plugin path via the wildcard character <code>%</code> . And because this is an implicit rule, make provides an automatic variable named <code>$*</code> that contains the stem of the match, which in our case is the plugin name. From there we can make sure the directory exists via <code>install -d $@</code> (<code>$@</code> is an automatic variable that matches the whole target), get the URL for the plugin by reconstructing the original variable we defined for the plugin from the stem (<code>$(plugin_$*)</code>)  and then run <code>curl</code> and <code>tar</code> to unpack the plugin into the newly created directory. You might have noticed that the rule also has a prerequisite on <code>$(PLUGINSDIR)</code> on the right side. Which is easily satisfied via this rule:</p>
 <pre><code>$(PLUGINSDIR):
-    install -d $@
+	install -d $@
 </code></pre>
 <p>So now we have all the pieces together to define plugins and install them. However we also want to make sure we don’t keep old plugins around that aren’t defined anymore, or files that were removed from plugins in newer versions. And this is done via deleting the plugins before installing new ones:</p>
 <pre><code>.PHONY: clean-plugins
 clean-plugins:
-    rm -rf ./$(PLUGINSDIR)/*
+	rm -rf ./$(PLUGINSDIR)/*
 </code></pre>
 <p>And then we introduce one more convenience task to update plugins by first removing all of them and then installing the ones we want:</p>
 <pre><code>.PHONY: update-plugins
@@ -92,18 +92,18 @@ install-plugins: $(patsubst %, $(PLUGINSDIR)/%, $(ALL_PLUGINS))
 
 .PHONY: clean-plugins
 clean-plugins:
-    rm -rf ./pack/plugins/start/*
+	rm -rf ./pack/plugins/start/*
 
 .PHONY: update-plugins
 update-plugins: clean-plugins install-plugins
 
 $(PLUGINSDIR):
-    install -d $@
+	install -d $@
 
 $(PLUGINSDIR)/%: $(PLUGINSDIR)
-    @echo &quot;Installing $@ from $(plugin_$*)&quot;
-    @install -d $@
-    @curl -Lfs $(plugin_$*) | tar xz -C $@ --strip-components=1
+	@echo &quot;Installing $@ from $(plugin_$*)&quot;
+	@install -d $@
+	@curl -Lfs $(plugin_$*) | tar xz -C $@ --strip-components=1
 </code></pre>
 <h2 id="final-words">Final words</h2>
 <p>I’ve been using this way of managing my vim plugins for a while now. And I’m really liking it. It’s small, portable, and easy for me to reason about. I don’t think there will be a need for this to change anytime soon since it’s pretty feature complete for me. From a purely aesthetic perspective it’s not super nice that it removes all plugins every time it runs just to put most of the files back right away. But that doesn’t bother me because it’s fast, reliable, and simple.</p>
@@ -123,7 +123,7 @@ $(PLUGINSDIR)/%: $(PLUGINSDIR)
 <p>My personal infrastructure runs out of a single monolithic repository that contains chef cookbooks, provisioning code, kubernetes resources, terraform code, and also dns configuration (which will serve as the example in this post) in a subdirectory. That is why a lot of the examples I post here are related to having multiple deployment targets in a single repository.</p>
 <h2 id="the-used-to-be-situation">The used to be situation</h2>
 <p>For a couple of years now I’ve been managing my DNS configuration with [octodns]. It’s a really nice tool written by the GitHub engineering team to manage DNS zones across different providers via yaml files. My zones are configured in yaml files in the <code>dns</code> sub directory of my infrastructure repository. There&rsquo;s a small Makefile that has tasks for verifying and deploying configuration. And it usually got deployed via a push to the default branch of the repo and a top level Jenkinsfile that mapped directory paths to Jenkins jobs like this:</p>
-<pre><code>stage('determine subjob to build') {
+<pre tabindex="0"><code>stage('determine subjob to build') {
     try {
       sh &quot;printenv&quot;
       echo &quot;Got params: ${params}&quot;
@@ -154,7 +154,7 @@ $(PLUGINSDIR)/%: $(PLUGINSDIR)
 <p>Fortunately around that same time I got really annoyed running Jenkins, GitHub Actions went GA with the CI offering which prompted me to look more into how I could use it to maybe replace my Jenkins setup.</p>
 <p>As a first step here I wanted to change as few things as possible. So Actions would literally just replace Jenkins, running the deployment logic whenever I pushed to the default branch of my infrastructure repository.</p>
 <p>In Actions this was done by restricting the job to changes in the <code>dns</code> subdirectory or changes to the workflow file:</p>
-<pre><code>on:
+<pre tabindex="0"><code>on:
   push:
     paths:
       - 'dns/**'
@@ -167,7 +167,7 @@ $(PLUGINSDIR)/%: $(PLUGINSDIR)
 <p>I ran with this setup for a while. And again it worked perfectly fine. However I was also running into situations where the actual deploy failed even though the PR check was fine. Because there is no place like production. And all the tests will never be a full replacement to catch all the things before hitting production. That’s just how it is. But it meant that I would only find out after the merge that something was off. And then I had to open another PR to fix the problems which usually was just a small one line change. And I got annoyed by this. Plus Pull Requests have a really nice integration with the deployments API which I was missing out on.</p>
 <p>So I wanted to have all these nice things as well. The first step to get there was to find another trigger for deployments that signals the automation that this code is fine to deploy. Pull Requests don’t have a ton of ways to interact with them. It basically comes down to comments or labels. And because there is a way to trigger Actions on labels, that’s what I went with.</p>
 <p>In Actions configuration this looks like this. First I had to make sure the job runs when the PR gets <code>labeled</code> (the other 2 <code>opened</code> and <code>synchronized</code> make sure the automation is run on any changes pushed to the PR):</p>
-<pre><code>on:
+<pre tabindex="0"><code>on:
   pull_request:
     paths:
       - 'dns/**'
@@ -175,17 +175,17 @@ $(PLUGINSDIR)/%: $(PLUGINSDIR)
     types: [opened, synchronize, labeled]
 </code></pre><p>Then I decided on a label name - in this case <code>deploy requested/dns</code> - and made sure the deployment logic only ran when the PR actually was labeled with that. I did this by making <code>deploy</code> a separate job in the Actions definition and have it be guarded by <code>if: contains(github.event.pull_request.labels.*.name, 'deploy requested/dns')</code> similar to how the guard on default branch worked before.</p>
 <p>Now to have that nice PR timeline integration with the deployments API I wrote a small ruby script which is configured via environment variables in the job.</p>
-<pre><code>env:
+<pre tabindex="0"><code>env:
       DEPLOYMENT_REPO: ${{ github.repository }}
       DEPLOYMENT_ENVIRONMENT: dns
       DEPLOYMENT_DESCRIPTION: dns updated via octodns
       DEPLOYMENT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       DEPLOYMENT_SHA: ${{ github.event.pull_request.head.ref }}
 </code></pre><p>In order to record deployments and their status changes and run the deployment creation step right before the deployment logic like so:</p>
-<pre><code>- name: start deployment
+<pre tabindex="0"><code>- name: start deployment
   run: ruby bin/gh-deployment.rb create
 </code></pre><p>And then the at the end of the job there are these two steps that are run on success and failure of the job respectively:</p>
-<pre><code>    - name: record deployment failure
+<pre tabindex="0"><code>    - name: record deployment failure
       run: ruby bin/gh-deployment.rb failure
       if: failure()
     - name: record deployment success
@@ -224,11 +224,11 @@ FreeBSD) so I could just cron them up on my backup box.</p>
 <p>First I needed a way to get a list of all my repositories. Thankfully GitHub
 has a <a href="https://developer.github.com/v3/">pretty great API</a> so I can just get a list of all my
 repositories and their git clone URLs:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/sh
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/sh
 </span><span style="color:#75715e"></span>
 <span style="color:#75715e"># Usage:</span>
 <span style="color:#75715e"># github_repo_list.sh mrtazz [34345k34j3k4b2jk3]</span>
-#
+<span style="color:#75715e">#</span>
 <span style="color:#75715e"># get a list of all public repos for a user</span>
 <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -z $1 <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
   echo <span style="color:#e6db74">&#34;Usage:&#34;</span>
@@ -275,7 +275,7 @@ extra curl as this script is not gonna be run very frequently.</p>
 <p>This now gives me a list of all repositories on my account I want to mirror.
 The next step is actually mirroring them. For that I wrote a script that looks
 like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/sh
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/sh
 </span><span style="color:#75715e"></span>
 <span style="color:#75715e"># take a list of git clone urls on STDIN and clone them if they don&#39;t exist.</span>
 
@@ -318,7 +318,7 @@ it into the given directory. The mirroring commands reflect the instructions
 in this <a href="https://help.github.com/articles/duplicating-a-repository">GitHub guide</a>.</p>
 <p>Now to tie those two together I just set up two cron entries to run those two
 commands:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#ae81ff">0</span> <span style="color:#ae81ff">20</span> * * * ~/bin/github_repo_list.sh mrtazz 0f6 &gt; /backup/github/github_repo_list.txt
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#ae81ff">0</span> <span style="color:#ae81ff">20</span> * * * ~/bin/github_repo_list.sh mrtazz 0f6 &gt; /backup/github/github_repo_list.txt
 <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">21</span> * * * ~/bin/github_repo_sync.sh /backup/github &lt; /backup/github/github_repo_list.txt
 </code></pre></div><p>The first cron entry fetches the list of repositories and sticks them into a
 text file. The second one runs an hour later and actually syncs all the
@@ -352,7 +352,7 @@ structure and I use a template to reply to recruiter emails in times where I&rsq
 not looking for a job (a trick I learned from <a href="https://twitter.com/katemats">Kate Matsudaira</a> in
 one of her <a href="http://katemats.com/people-are-lazy/">great blog posts</a> about productivity).</p>
 <p>In the coding world VIM provides a great built-in functionality for that which
-is called <a href="http://vimdoc.sourceforge.net/htmldoc/autocmd.html#skeleton">&ldquo;skeleton files&rsquo;</a>. This is a great way to always have a
+is called <a href="http://vimdoc.sourceforge.net/htmldoc/autocmd.html#skeleton">&ldquo;skeleton files'</a>. This is a great way to always have a
 good to go version of C source or header files, Makefiles or RPM spec files.
 However this is all based on filetypes (or rather file endings) and since I
 write most of my notes and all my blog posts in <a href="http://daringfireball.net/projects/markdown/">Markdown</a> for
@@ -409,14 +409,14 @@ project page with the correct layout is:</p>
 <li>copy the <code>README.md</code> of my project to <code>index.md</code> and add the jekyll
 frontmatter:</li>
 </ul>
-<pre><code>---
+<pre tabindex="0"><code>---
 layout: project
 title: project name
 ---
 </code></pre><ul>
 <li>add a <code>_config.yml</code> and fill out the following values:</li>
 </ul>
-<pre><code>gaugesid: tracking code for the gaug.es gauge
+<pre tabindex="0"><code>gaugesid: tracking code for the gaug.es gauge
 projecturl: github url for the ribbon in the upper right corner
 basesite: base URL to get the CSS from
 markdown: kramdown
@@ -463,7 +463,7 @@ around those ideas. The core of the backup system is ZFS and a separate file
 system for each machine I want to backup. In order to have the ability to go
 back in time I use <a href="http://docs.oracle.com/cd/E19253-01/819-5461/gbcya/index.html">zfs snapshots</a>. Every night the following
 script runs on my backup server and creates a snapshot for the day:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/sh
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/sh
 </span><span style="color:#75715e"></span><span style="color:#75715e"># simple script to snapshot locations on a ZFS backup pool</span>
 
 timestamp<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>date +%Y-%m-%d-%H:%M:%S<span style="color:#e6db74">`</span>
@@ -473,7 +473,7 @@ timestamp<span style="color:#f92672">=</span><span style="color:#e6db74">`</span
 <span style="color:#66d9ef">done</span>
 </code></pre></div><p>And to make sure that I really do have snapshots I have this simple nagios
 script to tell me if the snapshotting worked last night.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/sh
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/sh
 </span><span style="color:#75715e"></span>
 <span style="color:#75715e"># nagios script to check age of backup snapshots</span>
 
@@ -496,7 +496,7 @@ exit <span style="color:#e6db74">${</span>EXITCODE<span style="color:#e6db74">}<
 
 </code></pre></div><p>And this check (which runs on all my servers because I have zpools everywhere)
 to tell me about the disk health of the backup zpool:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/sh
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/sh
 </span><span style="color:#75715e"></span>
 <span style="color:#75715e"># check for zpool health</span>
 ZPOOL<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>which zpool<span style="color:#e6db74">`</span>
@@ -518,10 +518,10 @@ exit $EXITSTATUS
 belongs to that machine and it will get snapshotted every night. And what&rsquo;s an
 awesome tool to copy data? That&rsquo;s right, <a href="http://rsync.samba.org">rsync</a>.</p>
 <p>My backup script runs once every 15 minutes and looks like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/sh
-</span><span style="color:#75715e"></span>#
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/sh
+</span><span style="color:#75715e"></span><span style="color:#75715e">#</span>
 <span style="color:#75715e"># Backup script to pull in changes from remote hosts</span>
-#
+<span style="color:#75715e">#</span>
 <span style="color:#66d9ef">for</span> backup in <span style="color:#66d9ef">$(</span>ls /backup<span style="color:#66d9ef">)</span>; <span style="color:#66d9ef">do</span>
   grep -q <span style="color:#e6db74">${</span>backup<span style="color:#e6db74">}</span> ~/.backupexcludes
   <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $? !<span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
@@ -542,7 +542,7 @@ back it up by running rsync. I want to set the backup server up to also serve
 some of the backup filesystems as Timemachine targets, so I can just use
 Timemachine on my laptop and have it automatically run the backups.</p>
 <p>But in the meantime I can add a new backup with this one weird trick:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">zfs create /backup/newhost <span style="color:#f92672">&amp;&amp;</span> chown -R mrtazz:mrtazz /backup/newhost
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">zfs create /backup/newhost <span style="color:#f92672">&amp;&amp;</span> chown -R mrtazz:mrtazz /backup/newhost
 </code></pre></div>]]></content:encoded>
     </item>
     
@@ -575,14 +575,14 @@ machines this is pushed to a repo on our internal GitHub Enterprise instance
 so I can easily share it between machines. And all my regular dotfiles now
 source those override files at the very end.</p>
 <p>So in my regular <code>.vimrc</code> I have something like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#75715e">&#34; source overrides configs</span><span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#75715e">&#34; source overrides configs</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">if</span> <span style="color:#a6e22e">filereadable</span>($<span style="color:#a6e22e">HOME</span>.<span style="color:#e6db74">&#34;/.dotoverrides/vimrc&#34;</span>)<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>  <span style="color:#a6e22e">exec</span> <span style="color:#e6db74">&#34;:source &#34;</span>. $<span style="color:#a6e22e">HOME</span> . <span style="color:#e6db74">&#34;/.dotoverrides/vimrc&#34;</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">endif</span><span style="color:#960050;background-color:#1e0010">
 </span></code></pre></div><p>In my <code>.zshrc</code> I have this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span> -f  <span style="color:#e6db74">${</span>HOME<span style="color:#e6db74">}</span>/.dotoverrides/zshrc <span style="color:#f92672">]</span> <span style="color:#f92672">&amp;&amp;</span> source <span style="color:#e6db74">${</span>HOME<span style="color:#e6db74">}</span>/.dotoverrides/zshrc
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span> -f  <span style="color:#e6db74">${</span>HOME<span style="color:#e6db74">}</span>/.dotoverrides/zshrc <span style="color:#f92672">]</span> <span style="color:#f92672">&amp;&amp;</span> source <span style="color:#e6db74">${</span>HOME<span style="color:#e6db74">}</span>/.dotoverrides/zshrc
 </code></pre></div><p>And in git (only works if you have at least v1.7.10) I&rsquo;ve added this stanza:</p>
-<pre><code class="language-config" data-lang="config">[include]
+<pre tabindex="0"><code class="language-config" data-lang="config">[include]
   path = ~/.dotoverrides/gitconfig
 </code></pre><p>Now I can easily share and push/pull my regular dotfiles  in public GitHub and
 don&rsquo;t have to pay attention whether or not I&rsquo;m on the correct branch and if
@@ -608,7 +608,7 @@ encryption</a> and build a new ZFS pool. This pool is then used as my home
 directory. In order to simplify this, I have a shell script that takes the
 username and size as input and creates keys and all partitions as well as the
 zpool.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/sh
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/sh
 </span><span style="color:#75715e"></span>
 USERHOME<span style="color:#f92672">=</span>$1
 SIZE<span style="color:#f92672">=</span>$2

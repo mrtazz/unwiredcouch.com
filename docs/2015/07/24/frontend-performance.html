@@ -10,8 +10,8 @@
 
 
 <link   rel="stylesheet"
-        href="../../../css/style.min.c74a87869e0d51c45d0efc4f4ff6e8a9ee1df40009a1a8eaac5e32cb677babbc.css"
-        integrity="sha256-x0qHhp4NUcRdDvxPT/boqe4d9AAJoajqrF4yy2d7q7w="
+        href="../../../css/style.min.0a7442460ca45a8d1ffa9d4f0a0163976899fc7820ce2bb76f693ba0527afb57.css"
+        integrity="sha256-CnRCRgykWo0f&#43;p1PCgFjl2iZ/Hggziu3b2k7oFJ6&#43;1c="
         type="text/css"
         media="screen">
 
@@ -77,7 +77,7 @@ posts. It&rsquo;s mostly text and maybe some inline code snippets. So I decided 
 this was a good representative post for testing my improvements. And the YSlow
 results weren&rsquo;t great. In my current setup loading this simple page resulted
 in the following YSlow result:</p>
-<pre><code>12 HTTP requests and a total weight of 157.2K bytes with empty cache
+<pre tabindex="0"><code>12 HTTP requests and a total weight of 157.2K bytes with empty cache
 </code></pre><p>At least I now had a baseline to compare my changes to. The book has a very
 good chapter on how to cleanup CSS and how it can affect page weight and page
 load times. So I started there. I didn&rsquo;t really have good structure in my CSS
@@ -100,11 +100,11 @@ nothing. So I removed the fonts I wasn&rsquo;t using, cleaned up some other CSS 
 I had found that was unused and combined the 3 style files I had into 1. And
 that already gave me a huge jump in optimization. Just by removing things that
 I didn&rsquo;t need and combining CSS files I went to:</p>
-<pre><code>7 HTTP requests and a total weight of 65.4K bytes with empty cache
+<pre tabindex="0"><code>7 HTTP requests and a total weight of 65.4K bytes with empty cache
 </code></pre><p>I was already amazed and excited and of course now I wanted to do more. So I
 installed a CSS minifier and decided to load only minified CSS. This gave me
 another 15 kB in improvements:</p>
-<pre><code>7 HTTP requests and a total weight of 50.0K bytes with empty cache
+<pre tabindex="0"><code>7 HTTP requests and a total weight of 50.0K bytes with empty cache
 </code></pre><p>Another thing that is mentioned in the book as a common way to improve
 performance is to load images for the size you actually want to display them
 at and not bigger. I didn&rsquo;t want to go through all the images I had in some
@@ -114,7 +114,7 @@ at that and saw that I was requesting the image in size 142x142 (Gravatar
 gives you the handy URL parameter <code>?s=142</code> for that) but was only displaying
 it in 100x100. So I changed the parameter to 100 and squeezed a couple more
 kilobytes out of my site:</p>
-<pre><code>7 HTTP requests and a total weight of 47.7K bytes with empty cache
+<pre tabindex="0"><code>7 HTTP requests and a total weight of 47.7K bytes with empty cache
 </code></pre><p>Now I was kind of at a stopping point. I had collected all the low hanging
 fruit. My page was only a third as big as it was before and I was down 5 HTTP
 requests that didn&rsquo;t have to be done anymore. This was already huge for me.
@@ -126,7 +126,7 @@ it</a> and thought about whether or not I really need or want the
 share buttons on there. Fortunately <a href="https://twitter.com/atmos">Corey</a> responded to my tweet with
 essentially what I was thinking. That I don&rsquo;t really need those buttons for
 anything. So I removed the buttons, bringing my total YSlow results to:</p>
-<pre><code>6 HTTP requests and a total weight of 12.4K bytes with empty cache
+<pre tabindex="0"><code>6 HTTP requests and a total weight of 12.4K bytes with empty cache
 </code></pre><p>And I was blown away when I actually saw the number. Just by following some
 simple advice from the book, I was able to cut the number of HTTP requests in
 half. And slim down my page weight to ~8% of what it was before.</p>
