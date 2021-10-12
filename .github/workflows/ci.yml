@@ -9,14 +9,16 @@ on:
 jobs:
   build:
     name: site build
+    env:
+      HUGO_VERSION: 0.88.1
 
     runs-on: ubuntu-latest
 
     steps:
     - name: install dependencies
       run: |
-        sudo wget https://github.com/gohugoio/hugo/releases/download/v0.74.3/hugo_0.74.3_Linux-64bit.deb
-        sudo dpkg -i hugo_0.74.3_Linux-64bit.deb
+        sudo wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.deb
+        sudo dpkg -i hugo_${HUGO_VERSION}_Linux-64bit.deb
     - name: software versions
       run: |
         hugo version
