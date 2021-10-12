@@ -10,8 +10,8 @@
 
 
 <link   rel="stylesheet"
-        href="../../../../css/style.min.c74a87869e0d51c45d0efc4f4ff6e8a9ee1df40009a1a8eaac5e32cb677babbc.css"
-        integrity="sha256-x0qHhp4NUcRdDvxPT/boqe4d9AAJoajqrF4yy2d7q7w="
+        href="../../../../css/style.min.0a7442460ca45a8d1ffa9d4f0a0163976899fc7820ce2bb76f693ba0527afb57.css"
+        integrity="sha256-CnRCRgykWo0f&#43;p1PCgFjl2iZ/Hggziu3b2k7oFJ6&#43;1c="
         type="text/css"
         media="screen">
 
@@ -89,18 +89,18 @@ install-plugins: $(patsubst %, $(PLUGINSDIR)/%, $(ALL_PLUGINS))
 </code></pre>
 <p>The target is <code>PHONY</code> because it doesn’t itself describe a file that gets generated, so it’s always &ldquo;out of date&rdquo;.  But the interesting part of the target is its prerequisites on the right side. There is a path substitution there that defines file targets for all plugins in the plugin directory (I use vim’s built in plugin management, so I have the plugin directory defined as <code>PLUGINSDIR := pack/plugins/start</code>). This now means make knows that it needs to create all the files for the generated plugins paths (e.g. <code>pack/plugins/start/syntastic</code>) in order to fulfill the <code>install-plugins</code> target. However so far there is nothing telling it how to do that and in order to change that, we define a wildcard rule that matches the file path of those plugin definitions:</p>
 <pre><code>$(PLUGINSDIR)/%: $(PLUGINSDIR)
-    @echo &quot;Installing $@ from $(plugin_$*)&quot;
-    @install -d $@
-    @curl -Lfs $(plugin_$*) | tar xz -C $@ --strip-components=1
+	@echo &quot;Installing $@ from $(plugin_$*)&quot;
+	@install -d $@
+	@curl -Lfs $(plugin_$*) | tar xz -C $@ --strip-components=1
 </code></pre>
 <p>This rule matches every directory under the plugin path via the wildcard character <code>%</code> . And because this is an implicit rule, make provides an automatic variable named <code>$*</code> that contains the stem of the match, which in our case is the plugin name. From there we can make sure the directory exists via <code>install -d $@</code> (<code>$@</code> is an automatic variable that matches the whole target), get the URL for the plugin by reconstructing the original variable we defined for the plugin from the stem (<code>$(plugin_$*)</code>)  and then run <code>curl</code> and <code>tar</code> to unpack the plugin into the newly created directory. You might have noticed that the rule also has a prerequisite on <code>$(PLUGINSDIR)</code> on the right side. Which is easily satisfied via this rule:</p>
 <pre><code>$(PLUGINSDIR):
-    install -d $@
+	install -d $@
 </code></pre>
 <p>So now we have all the pieces together to define plugins and install them. However we also want to make sure we don’t keep old plugins around that aren’t defined anymore, or files that were removed from plugins in newer versions. And this is done via deleting the plugins before installing new ones:</p>
 <pre><code>.PHONY: clean-plugins
 clean-plugins:
-    rm -rf ./$(PLUGINSDIR)/*
+	rm -rf ./$(PLUGINSDIR)/*
 </code></pre>
 <p>And then we introduce one more convenience task to update plugins by first removing all of them and then installing the ones we want:</p>
 <pre><code>.PHONY: update-plugins
@@ -132,18 +132,18 @@ install-plugins: $(patsubst %, $(PLUGINSDIR)/%, $(ALL_PLUGINS))
 
 .PHONY: clean-plugins
 clean-plugins:
-    rm -rf ./pack/plugins/start/*
+	rm -rf ./pack/plugins/start/*
 
 .PHONY: update-plugins
 update-plugins: clean-plugins install-plugins
 
 $(PLUGINSDIR):
-    install -d $@
+	install -d $@
 
 $(PLUGINSDIR)/%: $(PLUGINSDIR)
-    @echo &quot;Installing $@ from $(plugin_$*)&quot;
-    @install -d $@
-    @curl -Lfs $(plugin_$*) | tar xz -C $@ --strip-components=1
+	@echo &quot;Installing $@ from $(plugin_$*)&quot;
+	@install -d $@
+	@curl -Lfs $(plugin_$*) | tar xz -C $@ --strip-components=1
 </code></pre>
 <h2 id="final-words">Final words</h2>
 <p>I’ve been using this way of managing my vim plugins for a while now. And I’m really liking it. It’s small, portable, and easy for me to reason about. I don’t think there will be a need for this to change anytime soon since it’s pretty feature complete for me. From a purely aesthetic perspective it’s not super nice that it removes all plugins every time it runs just to put most of the files back right away. But that doesn’t bother me because it’s fast, reliable, and simple.</p>

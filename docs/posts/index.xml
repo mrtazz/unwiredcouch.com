@@ -449,7 +449,7 @@ this gives rise to some fun use cases for a nice Makefile.</p>
 <h3 id="the-basics">The Basics</h3>
 <p>Every project I start gets this Makefile with some basic setups and variable
 definitions that I always want.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make"><span style="color:#66d9ef">export </span>GO15VENDOREXPERIMENT <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make"><span style="color:#66d9ef">export </span>GO15VENDOREXPERIMENT <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
 
 <span style="color:#75715e"># variable definitions
 </span><span style="color:#75715e"></span>NAME <span style="color:#f92672">:=</span> coolthings
@@ -476,7 +476,7 @@ have to figure out where a binary comes from.</p>
 <p>I also always have a handful of tasks defined that are helpful for running
 tests and such, especially to have a uniform and documented way how they are
 run locally and on CI.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make"><span style="color:#75715e"># development tasks
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make"><span style="color:#75715e"># development tasks
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">test</span><span style="color:#f92672">:</span>
 	go test $$<span style="color:#f92672">(</span>go list ./... | grep -v /vendor/ | grep -v /cmd/<span style="color:#f92672">)</span>
 
@@ -508,7 +508,7 @@ subfolders for each executable which in turn just contain a <code>main.go</code>
 This is a pretty nice pattern, once you get used to it and is a convention
 that lets you easily create make rules for building those executables via the
 make wildcarding support.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make">CMD_SOURCES <span style="color:#f92672">:=</span> <span style="color:#66d9ef">$(</span>shell find cmd -name main.go<span style="color:#66d9ef">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make">CMD_SOURCES <span style="color:#f92672">:=</span> <span style="color:#66d9ef">$(</span>shell find cmd -name main.go<span style="color:#66d9ef">)</span>
 TARGETS <span style="color:#f92672">:=</span> <span style="color:#66d9ef">$(</span>patsubst cmd/%/main.go,%,<span style="color:#66d9ef">$(</span>CMD_SOURCES<span style="color:#66d9ef">))</span>
 
 <span style="color:#a6e22e">%</span><span style="color:#f92672">:</span> cmd/%/main.go
@@ -520,7 +520,7 @@ to build those targets via a rule that ties them back to the source file via
 wildcarding again and runs <code>go build</code> with the linker flags from before.</p>
 <p>Of course it&rsquo;s good habit to provide man pages for your tools. So we can rig
 up a similar set of rules for building man pages for each executable:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make">MAN_SOURCES <span style="color:#f92672">:=</span> <span style="color:#66d9ef">$(</span>shell find man -name <span style="color:#e6db74">&#34;*.md&#34;</span><span style="color:#66d9ef">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make">MAN_SOURCES <span style="color:#f92672">:=</span> <span style="color:#66d9ef">$(</span>shell find man -name <span style="color:#e6db74">&#34;*.md&#34;</span><span style="color:#66d9ef">)</span>
 MAN_TARGETS <span style="color:#f92672">:=</span> <span style="color:#66d9ef">$(</span>patsubst man/man1/%.md,%,<span style="color:#66d9ef">$(</span>MAN_SOURCES<span style="color:#66d9ef">))</span>
 
 <span style="color:#a6e22e">%.1</span><span style="color:#f92672">:</span> man/man1/%.1.md
@@ -551,7 +551,7 @@ because go builds are fast and produce a static binary doesn&rsquo;t mean it&rsq
 good idea to be able to build packages. Plus you want your man pages to be
 installed with your software as well of course.  So let&rsquo;s write some generic
 install commands:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make">INSTALLED_TARGETS <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</span>addprefix <span style="color:#66d9ef">$(</span>PREFIX<span style="color:#66d9ef">)</span>/bin/, <span style="color:#66d9ef">$(</span>TARGETS<span style="color:#66d9ef">))</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make">INSTALLED_TARGETS <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</span>addprefix <span style="color:#66d9ef">$(</span>PREFIX<span style="color:#66d9ef">)</span>/bin/, <span style="color:#66d9ef">$(</span>TARGETS<span style="color:#66d9ef">))</span>
 INSTALLED_MAN_TARGETS <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</span>addprefix <span style="color:#66d9ef">$(</span>PREFIX<span style="color:#66d9ef">)</span>/share/man/man1/, <span style="color:#66d9ef">$(</span>MAN_TARGETS<span style="color:#66d9ef">))</span>
 
 <span style="color:#75715e"># install tasks
@@ -578,7 +578,7 @@ dependency for building packages later on.</p>
 <p>If you&rsquo;ve spent time with Go and make before, you will maybe have noticed a
 flaw in the building step of the Makefile so far. To revisit, we are building
 binaries from the source in the cmd folder with this implicit rule.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make"><span style="color:#a6e22e">%</span><span style="color:#f92672">:</span> cmd/%/main.go
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make"><span style="color:#a6e22e">%</span><span style="color:#f92672">:</span> cmd/%/main.go
 	go build -ldflags <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>LDFLAGS<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> -o $@ $&lt;
 </code></pre></div><p>However this only tells make about the first level of direct dependencies for
 the binary to the cmd source. Chances are you are using library and vendored
@@ -603,7 +603,7 @@ but also can print out all dependencies of a file. And with its <code>-f</code> 
 it also supports basic templating for printing out the results. Utilizing that
 we only need to do a small amount of post processing to print it in make
 dependency format and we are good to go.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make"><span style="color:#75715e"># source, dependency and build definitions
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make"><span style="color:#75715e"># source, dependency and build definitions
 </span><span style="color:#75715e"></span>DEPDIR <span style="color:#f92672">=</span> .d
 <span style="color:#66d9ef">$(</span>shell install -d <span style="color:#66d9ef">$(</span>DEPDIR<span style="color:#66d9ef">))</span>
 MAKEDEPEND <span style="color:#f92672">=</span> echo <span style="color:#e6db74">&#34;</span>$@<span style="color:#e6db74">: </span>$$<span style="color:#e6db74">(go list -f &#39;{{ join .Deps &#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34; }}&#39; </span>$<span style="color:#e6db74">&lt; | awk &#39;/github/ { gsub(/^github.com\/[a-z]*\/[a-z]*\//, &#34;&#34;); printf </span>$$<span style="color:#e6db74">0&#34;</span>/*.go <span style="color:#e6db74">&#34; }&#39;)&#34;</span> &gt; <span style="color:#66d9ef">$(</span>DEPDIR<span style="color:#66d9ef">)</span>/$@.d
@@ -634,7 +634,7 @@ for building docs and packages, so they can be easily triggered from CI.</p>
 <p>Since it&rsquo;s also always good to make it easy to clean up artifacts and
 generated intermediate and output files, all makefiles also get some clean up
 tasks.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make"><span style="color:#75715e"># clean up tasks
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make"><span style="color:#75715e"># clean up tasks
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">clean-docs</span><span style="color:#f92672">:</span>
 	rm -rf ./docs
 
@@ -814,7 +814,7 @@ most of the time. And those are the ones you can unit test. So now let&rsquo;s
 write some functions and tests for them.</p>
 <p>Let&rsquo;s say we want a function to output the number of characters in a string.
 It could look something like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">function</span> num_chars <span style="color:#f92672">{</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">function</span> num_chars <span style="color:#f92672">{</span>
   echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>1<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> | wc -c
 <span style="color:#f92672">}</span>
 </code></pre></div><p>It&rsquo;s a very contrived example and you&rsquo;re basically testing that <code>wc</code> works
@@ -822,7 +822,7 @@ correctly. But it&rsquo;s a useful example here to show some things. Notice how 
 function only acts on variables passed into it and prints the result to
 STDOUT.</p>
 <p>Now let&rsquo;s write a unit test for it.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">function</span> test_num_chars <span style="color:#f92672">{</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">function</span> test_num_chars <span style="color:#f92672">{</span>
   local res<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>num_chars <span style="color:#e6db74">&#34;foo&#34;</span><span style="color:#66d9ef">)</span>
   <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">${</span>res<span style="color:#e6db74">}</span> -ne <span style="color:#ae81ff">3</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
     echo <span style="color:#e6db74">&#34;failed to assert that </span><span style="color:#e6db74">${</span>res<span style="color:#e6db74">}</span><span style="color:#e6db74"> is 3&#34;</span>
@@ -831,7 +831,7 @@ STDOUT.</p>
 </code></pre></div><p>And that&rsquo;s it. That&rsquo;s all you really need to do to write a simple unit test in bash.</p>
 <p>Of course adding more tests now generates a lot of repetitive work. So we can
 write a helper function to do the assertion part of the test.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">function</span> assert <span style="color:#f92672">{</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">function</span> assert <span style="color:#f92672">{</span>
  eval <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>1<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> $? -ne <span style="color:#ae81ff">0</span> <span style="color:#f92672">]]</span>; <span style="color:#66d9ef">then</span>
    echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>FUNCNAME[1]<span style="color:#e6db74">}</span><span style="color:#e6db74">: failed&#34;</span>
@@ -847,7 +847,7 @@ first entry in it is the current function and the next one is the calling
 function. This gives us a nice way to determine which test is being executed
 and make it part of the output message.</p>
 <p>And with this helper function in place, our test now looks like this.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">function</span> test_num_chars <span style="color:#f92672">{</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">function</span> test_num_chars <span style="color:#f92672">{</span>
   local res<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>num_chars <span style="color:#e6db74">&#34;foo&#34;</span><span style="color:#66d9ef">)</span>
   assert <span style="color:#e6db74">&#34;[ </span><span style="color:#e6db74">${</span>res<span style="color:#e6db74">}</span><span style="color:#e6db74"> -ne 3 ]&#34;</span>
 <span style="color:#f92672">}</span>
@@ -855,7 +855,7 @@ and make it part of the output message.</p>
 functions we defined. However that also gets very repetitive fast and you
 always have to remember to actually call the function when you define a new
 test. So let&rsquo;s also write a helper function to do this for us.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">function</span> run_test_suite <span style="color:#f92672">{</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">function</span> run_test_suite <span style="color:#f92672">{</span>
   <span style="color:#66d9ef">for</span> testcase in <span style="color:#66d9ef">$(</span>declare -f | grep -o <span style="color:#e6db74">&#34;^test[a-zA-Z_]*&#34;</span><span style="color:#66d9ef">)</span> ; <span style="color:#66d9ef">do</span>
     <span style="color:#e6db74">${</span>testcase<span style="color:#e6db74">}</span>
   <span style="color:#66d9ef">done</span>
@@ -872,7 +872,7 @@ on the file system. And it&rsquo;s not really feasible to always have everything
 just be variables to be passed in. In this case you can adapt your script by
 setting the base of where the files are you want to interact with. Something
 like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">FILEBASE<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>FILEBASE<span style="color:#66d9ef">:-</span>/usr/local/foo<span style="color:#e6db74">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">FILEBASE<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>FILEBASE<span style="color:#66d9ef">:-</span>/usr/local/foo<span style="color:#e6db74">}</span>
 
 <span style="color:#66d9ef">function</span> list_files_with_a <span style="color:#f92672">{</span>
   ls <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>FILEBASE<span style="color:#e6db74">}</span><span style="color:#e6db74">/a*&#34;</span>
@@ -889,7 +889,7 @@ in a at that would let me completely drive function behavior based solely on
 what I&rsquo;m passing in. And if I have to call an external resource make it so I
 can pass in the expected return value and only if it&rsquo;s not set, call the
 external resource. A simple example could look like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">function</span> get_url <span style="color:#f92672">{</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">function</span> get_url <span style="color:#f92672">{</span>
   local url<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>1<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
   local res<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>2<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
 
@@ -1130,7 +1130,7 @@ platforms. <a href="https://github.com/jordansissel/fpm">fpm</a> has made it rid
 And with <a href="https://packagecloud.io/">packagecloud</a> you can host them in an amazingly accessible and
 user friendly way. You can even have your packages built and uploaded from
 your CI system as well with something like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">NAME<span style="color:#f92672">=</span>restclient-cpp
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">NAME<span style="color:#f92672">=</span>restclient-cpp
 VERSION <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</span>shell git describe --tags --always --dirty<span style="color:#66d9ef">)</span>
 BUILDER <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</span>shell echo <span style="color:#e6db74">&#34;`git config user.name` &lt;`git config user.email`&gt;&#34;</span><span style="color:#66d9ef">)</span>
 PKG_RELEASE ?<span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
@@ -1162,7 +1162,7 @@ point to it. The fact that it&rsquo;s just another branch in your repository mea
 that you can easily automate the deployment of docs alongside your code for
 example from (you probably guessed it by now ) your CI system. Thanks to
 GitHub pages this is as easy as:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># generate docs</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># generate docs</span>
 install -d docs
 echo <span style="color:#e6db74">&#34;projecturl: </span><span style="color:#66d9ef">$(</span>PROJECT_URL<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> &gt;&gt; docs/_config.yml
 echo <span style="color:#e6db74">&#34;basesite: http://www.unwiredcouch.com&#34;</span> &gt;&gt; docs/_config.yml
@@ -1275,7 +1275,7 @@ and read exclusively on my Kindle and iPhone I hadn&rsquo;t bought it yet. So wh
 found out there is a Kindle version now, I immediately bought it. As expected,
 the book is really good and gives a good primer on feminism and the historical
 context from the author&rsquo;s perspective. It reads less extreme to me as Greer
-which is very much in line with Hooks&rsquo; other writing. Definitely highly
+which is very much in line with Hooks' other writing. Definitely highly
 recommended for learning more about feminism.</p>
 <blockquote>
 <p>Feminism is a movement to end sexism, sexist exploitation, and oppression.</p>
@@ -1507,13 +1507,13 @@ to get a new set of metrics, you just have to write a shell script that ends
 up calling <code>gmetric</code> and put it in Chef.  And a couple of minutes later graphs
 for all boxes will magically appear in Ganglia. I did the same for my collectd
 setup via <code>collectdctl</code> and it looks a little bit like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">* * * * * <span style="color:#66d9ef">for</span> SCRIPT in <span style="color:#66d9ef">$(</span>ls /usr/local/collectd/collectd-*<span style="color:#66d9ef">)</span>; <span style="color:#66d9ef">do</span> command <span style="color:#e6db74">${</span>SCRIPT<span style="color:#e6db74">}</span>; <span style="color:#66d9ef">done</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">* * * * * <span style="color:#66d9ef">for</span> SCRIPT in <span style="color:#66d9ef">$(</span>ls /usr/local/collectd/collectd-*<span style="color:#66d9ef">)</span>; <span style="color:#66d9ef">do</span> command <span style="color:#e6db74">${</span>SCRIPT<span style="color:#e6db74">}</span>; <span style="color:#66d9ef">done</span>
 </code></pre></div><p>This means I can now easily add new metrics by dropping a script in there that
 utilizes the collectd CLI tooling. However since collectd has a very specific
 type setup, each script also needs a corresponding configuration in a custom
 types db. I also track this in Chef so it&rsquo;s not too big of a problem. An
 example script to track disk temperature looks like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/sh
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/sh
 </span><span style="color:#75715e"></span>
 PLUGIN_NAME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;disktemp&#34;</span>
 HOSTNAME<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>hostname -f<span style="color:#66d9ef">)</span>
@@ -1536,7 +1536,7 @@ they are generating and how they are supposed to be displayed. This made a lot
 of sense to me as when I&rsquo;m writing the scripts I have the generated metrics in
 my head anyways. And it&rsquo;s easy to just drop them in a node attribute. So for
 tracking disk temperature for example, the recipe looks a bit like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">cookbook_file <span style="color:#e6db74">&#34;/usr/local/collectd/collectd-disk-temp.sh&#34;</span> <span style="color:#66d9ef">do</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">cookbook_file <span style="color:#e6db74">&#34;/usr/local/collectd/collectd-disk-temp.sh&#34;</span> <span style="color:#66d9ef">do</span>
   source <span style="color:#e6db74">&#34;collectd-disk-temp.sh&#34;</span>
   owner <span style="color:#e6db74">&#34;root&#34;</span>
   group <span style="color:#e6db74">&#34;wheel&#34;</span>
@@ -1553,7 +1553,7 @@ magically appearing as soon as both the node to monitor and the dashboard host
 had run Chef. This can take up to 20 minutes worst case (I run Chef every 10
 minutes) which is really not a big deal for me. The Chef search code that does
 this for me looks like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">hosts <span style="color:#f92672">=</span> <span style="color:#f92672">[]</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">hosts <span style="color:#f92672">=</span> <span style="color:#f92672">[]</span>
 nodes <span style="color:#f92672">=</span> search(<span style="color:#e6db74">:node</span>, <span style="color:#e6db74">&#34;domain:*unwiredcouch.com&#34;</span>)
 
 nodes<span style="color:#f92672">.</span>each <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>computer<span style="color:#f92672">|</span>
@@ -1592,7 +1592,7 @@ template <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#{<
 
 </code></pre></div><p>And this is the accompanying erb template that gets rendered into a PHP file
 to serve as the configuration for my dashboards instance.</p>
-<pre><code class="language-erb" data-lang="erb">&lt;?php
+<pre tabindex="0"><code class="language-erb" data-lang="erb">&lt;?php
 
 $CONFIG = array(
     'title' =&gt; &quot;dashboards&quot;,
@@ -1637,7 +1637,7 @@ and hooked it up to <a href="https://codeclimate.com/github/mrtazz/yagd/">Code C
 how I can improve the code quality.</p>
 <p>With this refactor in place it&rsquo;s now fairly easy to get a dashboard page that
 shows the status of all hosts:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
 
 <span style="color:#66d9ef">require</span> <span style="color:#66d9ef">__DIR__</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;/../vendor/autoload.php&#39;</span>;
 
@@ -2160,7 +2160,7 @@ spell checking for Markdown files. In my <code>vimrc</code> I have <code>autocmd
 spell correction automatically. This is especially helpful as I do most of my
 writing not in my first language. So vim tells me immediately when I&rsquo;ve
 written the German spelling for an English word and lets me correct it.</p>
-<p>When I want to focus on writing I also tend to only work on my 11&rdquo; MacBook Air
+<p>When I want to focus on writing I also tend to only work on my 11&quot; MacBook Air
 and not connect it to the Thunderbolt Display. The bigger screen tends to
 distract me more than it helps. However I do have an iTerm profile with a
 bigger font for writing. The default for coding, IRC, email, etc for me is
@@ -2300,7 +2300,7 @@ posts. It&rsquo;s mostly text and maybe some inline code snippets. So I decided 
 this was a good representative post for testing my improvements. And the YSlow
 results weren&rsquo;t great. In my current setup loading this simple page resulted
 in the following YSlow result:</p>
-<pre><code>12 HTTP requests and a total weight of 157.2K bytes with empty cache
+<pre tabindex="0"><code>12 HTTP requests and a total weight of 157.2K bytes with empty cache
 </code></pre><p>At least I now had a baseline to compare my changes to. The book has a very
 good chapter on how to cleanup CSS and how it can affect page weight and page
 load times. So I started there. I didn&rsquo;t really have good structure in my CSS
@@ -2323,11 +2323,11 @@ nothing. So I removed the fonts I wasn&rsquo;t using, cleaned up some other CSS 
 I had found that was unused and combined the 3 style files I had into 1. And
 that already gave me a huge jump in optimization. Just by removing things that
 I didn&rsquo;t need and combining CSS files I went to:</p>
-<pre><code>7 HTTP requests and a total weight of 65.4K bytes with empty cache
+<pre tabindex="0"><code>7 HTTP requests and a total weight of 65.4K bytes with empty cache
 </code></pre><p>I was already amazed and excited and of course now I wanted to do more. So I
 installed a CSS minifier and decided to load only minified CSS. This gave me
 another 15 kB in improvements:</p>
-<pre><code>7 HTTP requests and a total weight of 50.0K bytes with empty cache
+<pre tabindex="0"><code>7 HTTP requests and a total weight of 50.0K bytes with empty cache
 </code></pre><p>Another thing that is mentioned in the book as a common way to improve
 performance is to load images for the size you actually want to display them
 at and not bigger. I didn&rsquo;t want to go through all the images I had in some
@@ -2337,7 +2337,7 @@ at that and saw that I was requesting the image in size 142x142 (Gravatar
 gives you the handy URL parameter <code>?s=142</code> for that) but was only displaying
 it in 100x100. So I changed the parameter to 100 and squeezed a couple more
 kilobytes out of my site:</p>
-<pre><code>7 HTTP requests and a total weight of 47.7K bytes with empty cache
+<pre tabindex="0"><code>7 HTTP requests and a total weight of 47.7K bytes with empty cache
 </code></pre><p>Now I was kind of at a stopping point. I had collected all the low hanging
 fruit. My page was only a third as big as it was before and I was down 5 HTTP
 requests that didn&rsquo;t have to be done anymore. This was already huge for me.
@@ -2349,7 +2349,7 @@ it</a> and thought about whether or not I really need or want the
 share buttons on there. Fortunately <a href="https://twitter.com/atmos">Corey</a> responded to my tweet with
 essentially what I was thinking. That I don&rsquo;t really need those buttons for
 anything. So I removed the buttons, bringing my total YSlow results to:</p>
-<pre><code>6 HTTP requests and a total weight of 12.4K bytes with empty cache
+<pre tabindex="0"><code>6 HTTP requests and a total weight of 12.4K bytes with empty cache
 </code></pre><p>And I was blown away when I actually saw the number. Just by following some
 simple advice from the book, I was able to cut the number of HTTP requests in
 half. And slim down my page weight to ~8% of what it was before.</p>
@@ -2443,7 +2443,7 @@ to regenerate any data at some point or look up something else) and for each
 year since 2013. In those per-year directories I have a file for checking,
 credit card, cash and opening balances. And a top level ledger dat file per
 year that includes the appropriate files.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cassie:accounting<span style="color:#f92672">[</span>master<span style="color:#f92672">]</span>% cat 2015.dat
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cassie:accounting<span style="color:#f92672">[</span>master<span style="color:#f92672">]</span>% cat 2015.dat
 include 2015/opening_balances.dat
 include 2015/checking.dat
 include 2015/credit_card.dat
@@ -2483,13 +2483,13 @@ posting likely belongs to, it makes sense to have a corpus for it to learn
 from which includes all possible accounts. And because I really like
 Makefiles, I have one with a simple task in there to generate a big file which
 contains all of my postings:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make">SOURCES <span style="color:#f92672">:=</span> <span style="color:#66d9ef">$(</span>shell find . -iname <span style="color:#e6db74">&#34;*.dat*&#34;</span> -mindepth 2<span style="color:#66d9ef">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make">SOURCES <span style="color:#f92672">:=</span> <span style="color:#66d9ef">$(</span>shell find . -iname <span style="color:#e6db74">&#34;*.dat*&#34;</span> -mindepth 2<span style="color:#66d9ef">)</span>
 
 <span style="color:#a6e22e">corpus.dat</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">$(</span>SOURCES<span style="color:#66d9ef">)</span>
 	cat <span style="color:#66d9ef">$(</span>SOURCES<span style="color:#66d9ef">)</span> &gt; $@
 
 </code></pre></div><p>Now I run reckon with something like</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">reckon -f raw_data/2015/checking05.csv --contains-header -o 201505_checking.dat -l corpus.dat
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">reckon -f raw_data/2015/checking05.csv --contains-header -o 201505_checking.dat -l corpus.dat
 </code></pre></div><p>in order to parse the CSV file. Usually when I run this, reckon detects almost
 all of my recurrent transactions like rent, gas, electricity, internet, subway
 and ferry fare. I just have to confirm the account by hitting enter. With this
@@ -2506,7 +2506,7 @@ last month. Ledger is versatile enough that I could spend a lot of time on
 explaining all the possibilities. But the simplest way to get started is just
 showing the top level balances which will give you an overview about Income,
 Expenses and Assets (if you have named your accounts like that):</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ledger -f 2015.dat --period-sort <span style="color:#e6db74">&#34;(amount)&#34;</span> balance -M --begin 2015/04/01 --end 2015/05/01 --depth<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ledger -f 2015.dat --period-sort <span style="color:#e6db74">&#34;(amount)&#34;</span> balance -M --begin 2015/04/01 --end 2015/05/01 --depth<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
 </code></pre></div><h3 id="verdict">Verdict</h3>
 <p>I&rsquo;m really happy with this setup so far. It&rsquo;s comparably low tech and low
 investment and I can (for the most part) use the tools I know and I don&rsquo;t have
@@ -3195,14 +3195,14 @@ which we grow.</p>
     <content:encoded><![CDATA[<p>This year I tried again to keep up the flow of reading books. I&rsquo;m an awfully
 slow reader when it comes to books in general (not so much for blog posts
 interestingly) but I managed to read a handful of books and I wanted to share
-my thoughts about it. Mostly because I got inspired by reading <a href="http://www.paperplanes.de/2014/12/30/reading-list-2014.html">Mathias&rsquo;
+my thoughts about it. Mostly because I got inspired by reading <a href="http://www.paperplanes.de/2014/12/30/reading-list-2014.html">Mathias'
 reading list</a> but also because I wanted to have a track record of
 what I read and hopefully inspire myself to read even more next year.</p>
 <p>So without further ado, here is my list:</p>
 <h3 id="germaine-greer---the-female-eunuchfemale_eunuch"><a href="http://www.amazon.com/Female-Eunuch-Germaine-Greer/dp/006157953X">Germaine Greer - The Female Eunuch</a></h3>
 <p>I started the year off with finally finishing Germaine Greer&rsquo;s feminist
 classic from 1970 about the role of women in modern society. I had known about
-the book for a couple of years and after having read <a href="http://www.amazon.com/Will-Change-Men-Masculinity-Love/dp/0743456084">Bell Hooks&rsquo; The Will to
+the book for a couple of years and after having read <a href="http://www.amazon.com/Will-Change-Men-Masculinity-Love/dp/0743456084">Bell Hooks' The Will to
 Change: Men, Masculinity, and Love</a> last year I decided to finally read
 it. I definitely enjoyed it. Especially as a man it opens your eyes to a lot
 of things you never encounter in your daily life. It&rsquo;s very graphic at times
@@ -3246,7 +3246,7 @@ popped up <a href="http://simplicitybliss.com">in one of my RSS feeds</a> I deci
 read. It&rsquo;s definitely not a cheap book and I jumped over the first half as
 it&rsquo;s basically an introduction into OmniFocus which I already know how to use.
 The book isn&rsquo;t a total game changer, but the latter half gives some good food
-for thought on how to make the most of OmniFocus&rsquo; Perspectives and some
+for thought on how to make the most of OmniFocus' Perspectives and some
 unusual use cases for it.</p>
 <h3 id="bonus-jon-cowie---customizing-chefchef"><a href="http://www.amazon.com/Customizing-Chef-Jon-Cowie/dp/149194935X">Bonus: Jon Cowie - Customizing Chef</a></h3>
 <p>I added this as a bonus round, because while I definitely read it, I had the
@@ -3377,7 +3377,7 @@ interruptions all day and get more out of the things I actually want to do on
 my phone.</p>
 <p>There are still some things I want to improve though. I definitely don&rsquo;t spend
 as much time reading as I want to. Something I want to try there is take a
-page from <a href="http://blog.travis-ci.com/2014-09-04-10-things-i-do-to-stay-productive/">my friend Mathias&rsquo; book</a> and get 30 minutes of reading in
+page from <a href="http://blog.travis-ci.com/2014-09-04-10-things-i-do-to-stay-productive/">my friend Mathias' book</a> and get 30 minutes of reading in
 every morning before I head into the office. At the beginning of the year I
 have also started to keep a work journal to jot down things that happened
 during the day and that I worked on. And I would love to expand that to also
@@ -3938,7 +3938,7 @@ email client of choice is <a href="http://www.mutt.org/">mutt</a>. Which means t
 hacking to do (as usual). However I found a great <a href="https://github.com/mrtazz/bin/blob/master/mutt-to-omnifocus.py">Python script</a>
 that parses emails and adds them to Omnifocus. I also added this keybinding to
 my mutt configuration:</p>
-<pre><code>macro index,pager \Ca &quot;&lt;enter-command&gt;unset
+<pre tabindex="0"><code>macro index,pager \Ca &quot;&lt;enter-command&gt;unset
 wait_key&lt;enter&gt;&lt;pipe-message&gt;mutt-to-omnifocus.py
 &lt;enter&gt;&lt;save-message&gt;=gtd-needs-reply/&lt;enter&gt;&lt;sync-mailbox&gt;&quot;
 </code></pre><p>Now all I have to do when reading an Email or browsing through the list is hit
@@ -4215,7 +4215,7 @@ depending on some circumstances. But this isn&rsquo;t even the most error prone
 part. Let&rsquo;s consider you work on a fairly active project with a lot of people.
 You are maybe even doing continuous integration and continuous deployment and
 trunk/master gets commited to all the time. You are working on a feature in a
-branch (btw while we&rsquo;re at it read <a href="http://whilefalse.blogspot.de/2013/02/branching-is-easy-so.html">Camille Fourniers&rsquo; excellent blog
+branch (btw while we&rsquo;re at it read <a href="http://whilefalse.blogspot.de/2013/02/branching-is-easy-so.html">Camille Fourniers' excellent blog
 post</a> to find out why you actually shouldn&rsquo;t do this in a
 continuous deployment setup) and want to pull in changes from master. So you
 merge master as per the instructions. You notice someone else has pushed to
@@ -4288,7 +4288,7 @@ up on GitHub if you want to check them out.</p>
 <p>Let&rsquo;s start with the basics. By default tmux uses <code>ctrl-b</code> as its prefix key
 for commands and escaping. But the years of using screen have ingrained in my
 muscle memory to use <code>ctrl-a</code>, so I switched with this simple setting:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">unbind C-b
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">unbind C-b
 set -g prefix C-a
 </code></pre></div><p>I also added a couple of important baseline settings to make tmux in general
 look nice in colored terminals and work with unicode in the display window as
@@ -4297,7 +4297,7 @@ well as in the status bar. I also wanted to have the window numbering start at
 on the right side of the keyboard and then continue on the left side. And I
 also wanted to have a simple shortcut (<code>ctrl-a r</code>) to reload configuration in
 a live tmux session whenever I change something.</p>
-<pre><code># force a reload of the config file
+<pre tabindex="0"><code># force a reload of the config file
 unbind r
 bind r source-file ~/.tmux.conf
 
@@ -4326,7 +4326,7 @@ colorscheme I use a <a href="https://github.com/seebi/tmux-colors-solarized">sol
 the screenshot:</p>
 <p><img src="/images/tmux-status.png" alt="tmux status bar"></p>
 <p>And the configuration for my status bar looks like this:</p>
-<pre><code># status bar config
+<pre tabindex="0"><code># status bar config
 set -g status-left &quot;#h:[#S]&quot;
 set -g status-left-length 50
 set -g status-right-length 50
@@ -4339,7 +4339,7 @@ set -g bell-action any
 </code></pre><p>This is the base configuration I use for basic project sessions with tmux. I
 have two simple shell aliases to make it easier to re-attach to a session and
 create new ones based on the current directory I&rsquo;m in:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">alias tma<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;tmux attach -d -t&#39;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">alias tma<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;tmux attach -d -t&#39;</span>
 alias git-tmux<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;tmux new -s $(basename $(pwd))&#39;</span>
 </code></pre></div><p>With those I can ran <code>tma &lt;tab&gt;</code> in any shell and get a tab completion list
 for all the current sessions running. Which is handy when logging into a
@@ -4354,7 +4354,7 @@ sessions I have some more important shortcuts I use often. They allow me to
 cycle through panes (vertical or horizontal splits in a window created with
 <code>ctrl-a V</code> and <code>ctrl-a H</code>) with <code>ctrl-a a</code> and to switch between windows with
 <code>ctrl-a &lt;tab&gt;</code>.</p>
-<pre><code># rebind pane tiling
+<pre tabindex="0"><code># rebind pane tiling
 bind V split-window -h
 bind H split-window
 
@@ -4368,7 +4368,7 @@ bind Escape copy-mode
 </code></pre><p>And last but not least in every basic setup - as an avid vim user - movement
 commands live on the home row of course. And different panes can be selected
 with <code>ctrl-a</code> and the corresponding movement command.</p>
-<pre><code># vim movement bindings
+<pre tabindex="0"><code># vim movement bindings
 set-window-option -g mode-keys vi
 bind h select-pane -L
 bind j select-pane -D
@@ -4394,7 +4394,7 @@ connect to a remote host, I often have nested tmux sessions locally since I
 use it basically like terminal tabs. This is very useful but needs one more
 setting in the configuration to work. Since both nested tmux sessions expect
 the same meta command, I have this stanza in my configuration:</p>
-<pre><code>bind-key a  send-prefix
+<pre tabindex="0"><code>bind-key a  send-prefix
 </code></pre><p>This sends the command prefix to the inner tmux session when I hit <code>ctrl-a a</code> thus enabling me to execute commands in nested tmux sessions.</p>
 <p>In order to easily switch between sessions I mainly use to important
 commands. The first one is the tmux built-in <code>ctrl-a s</code> which gives me a
@@ -4403,7 +4403,7 @@ completion gives me) and I can easily switch sessions from within a tmux
 session. However this means finding the session I want in a list that might
 contain 20 or more sessions. And all I really want is to switch to the
 session named &ldquo;chef&rdquo;. This is why I added another extremely useful shortcut:</p>
-<pre><code># bind fast session switching
+<pre tabindex="0"><code># bind fast session switching
 unbind S
 bind S command-prompt &quot;switch -t %1&quot;
 </code></pre><p>Now when I hit <code>ctrl-a S</code> I get a <code>(switch)</code> prompt where I can enter the name
@@ -4418,7 +4418,7 @@ purpose I have a tmux session on a server called &ldquo;jumpsessions&rdquo; in w
 open a new tmux window whenever I ssh into a server. However this got very
 confusing after a while and I had no idea what all those windows were. So I
 added this little bit into my <code>~/.ssh/config</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Host *
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Host *
 PermitLocalCommand yes
 LocalCommand <span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> $TERM <span style="color:#f92672">==</span> screen* <span style="color:#f92672">]]</span>; <span style="color:#66d9ef">then</span> printf <span style="color:#e6db74">&#34;\033k%h\033\\&#34;</span>; <span style="color:#66d9ef">fi</span>
 </code></pre></div><p>This runs a local command on each ssh login on the server I login in. With the
@@ -4643,7 +4643,7 @@ good introduction.</p>
 <p>For the first important step, we need logstash to listen to changes in the
 bouncer&rsquo;s logfiles. This is pretty easy and can be accomplished with the
 following logstash configuration bits:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">input</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">input</span> {
   <span style="color:#a6e22e">file</span> {
     <span style="color:#a6e22e">path</span> =&gt; <span style="color:#e6db74">&#34;/home/username/.znc/users/zncuser/moddata/log/*&#34;</span>
     <span style="color:#a6e22e">type</span> =&gt; <span style="color:#e6db74">&#34;znclog&#34;</span>
@@ -4660,7 +4660,7 @@ night, but there might be a better way to do it.</p>
 <p>The next step is to remove lines which I&rsquo;m never interested in for
 notifications, like my own messages and JOIN/QUIT messages for example. For
 this the logstash <code>grep</code> filter definitions are very useful:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">filter</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">filter</span> {
   <span style="color:#a6e22e">grep</span> {
     <span style="color:#a6e22e">type</span> =&gt; <span style="color:#e6db74">&#34;znclog&#34;</span>
     <span style="color:#a6e22e">match</span> =&gt; [<span style="color:#e6db74">&#34;@message&#34;</span>, <span style="color:#e6db74">&#34;\[[0-9:]{8}\](.+?)&lt;USERNAME&gt;&#34;</span>]
@@ -4678,7 +4678,7 @@ channel names per IRC convention have a <code>#</code> in the name, we can just 
 that logfiles without that sign are for private messages. It is important to
 set <code>drop =&gt; false</code> here since we don&rsquo;t want grep to drop the log line (which
 is default behaviour).</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">grep</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">grep</span> {
   <span style="color:#a6e22e">type</span> =&gt; <span style="color:#e6db74">&#34;znclog&#34;</span>
   <span style="color:#a6e22e">match</span> =&gt; [<span style="color:#e6db74">&#34;@source&#34;</span>, <span style="color:#e6db74">&#34;#&#34;</span>]
   <span style="color:#a6e22e">add_tag</span> =&gt; [<span style="color:#e6db74">&#34;pmnotification&#34;</span>]
@@ -4690,7 +4690,7 @@ from logfiles without a <code>#</code> in the name with <code>&quot;pmnotifcatio
 the actual parsing of log events. Since there are going to be some repeated
 patterns and I wanted to have an easy way to add new ones, I have a &lsquo;pattern
 library file&rsquo; which is included in the configuration.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">NOTIFYME</span> (<span style="color:#a6e22e">pizza</span><span style="color:#f92672">|</span><span style="color:#a6e22e">cupcakes</span><span style="color:#f92672">|</span><span style="color:#a6e22e">fire</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">NOTIFYME</span> (<span style="color:#a6e22e">pizza</span><span style="color:#f92672">|</span><span style="color:#a6e22e">cupcakes</span><span style="color:#f92672">|</span><span style="color:#a6e22e">fire</span>)
 <span style="color:#a6e22e">IRCNOTIFY</span> <span style="color:#f92672">%</span>{<span style="color:#a6e22e">DATA</span>}<span style="color:#f92672">%</span>{<span style="color:#a6e22e">NOTIFYME</span>}<span style="color:#f92672">%</span>{<span style="color:#a6e22e">GREEDYDATA</span>}
 <span style="color:#a6e22e">IRCTIME</span> [<span style="color:#ae81ff">0</span><span style="color:#f92672">-</span><span style="color:#ae81ff">9</span><span style="color:#f92672">:</span>]{<span style="color:#ae81ff">8</span>}
 <span style="color:#a6e22e">IRCCHANNELS</span> (<span style="color:#a6e22e">nunagios</span><span style="color:#f92672">|</span><span style="color:#a6e22e">chef</span><span style="color:#f92672">|</span><span style="color:#a6e22e">food</span>)
@@ -4699,7 +4699,7 @@ ones are <code>NOTIFYME/IRCNOTIFY</code> which are used as a collection of regex
 which I want to show a notification and <code>IRCCHANNELS</code> which are basically the
 channel names for which I want notifications for all messages. In order to get
 those notifications I set up a set of grok filters.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">grok</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">grok</span> {
   <span style="color:#a6e22e">match</span> =&gt; [<span style="color:#e6db74">&#34;@source&#34;</span>, <span style="color:#e6db74">&#34;%{IRCCHANNELS}&#34;</span>]
   <span style="color:#a6e22e">add_tag</span> =&gt; [<span style="color:#e6db74">&#34;channelnotification&#34;</span>]
   <span style="color:#a6e22e">exclude_tags</span> =&gt; [<span style="color:#e6db74">&#34;pmnotification&#34;</span>]
@@ -4708,7 +4708,7 @@ those notifications I set up a set of grok filters.</p>
 </code></pre></div><p>This grok ruleset grabs all events from the channels based on the <code>IRCCHANNELS</code>
 match and tags them with the <code>&quot;channelnotification&quot;</code> tag. PMs are excluded from
 that match because they have already matched.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">grok</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">grok</span> {
   <span style="color:#a6e22e">pattern</span> =&gt; <span style="color:#e6db74">&#34;\[%{IRCTIME:irctime}\](.+?)&lt;%{DATA:ircsender}&gt;%{GREEDYDATA:ircmessage}&#34;</span>
   <span style="color:#a6e22e">tags</span> =&gt; [<span style="color:#e6db74">&#34;channelnotification&#34;</span>]
   <span style="color:#a6e22e">patterns_dir</span> =&gt; <span style="color:#e6db74">&#39;/home/username/logstash-patterns&#39;</span>
@@ -4724,7 +4724,7 @@ have the same ruleset for channel notifications and private messages, because I
 didn&rsquo;t find a way to match any tag (the <code>tags</code> setting requires an event to
 match all given tags) so I couldn&rsquo;t combine them into one rule. Though this
 seems like something that should be fixable.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">grok</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">grok</span> {
   <span style="color:#a6e22e">pattern</span> =&gt; <span style="color:#e6db74">&#34;\[%{IRCTIME:irctime}\](.+?)&lt;%{DATA:ircsender}&gt;%{IRCNOTIFY:ircmessage}&#34;</span>
   <span style="color:#a6e22e">add_tag</span> =&gt; [<span style="color:#e6db74">&#34;notification&#34;</span>]
   <span style="color:#a6e22e">exclude_tags</span> =&gt; [<span style="color:#e6db74">&#34;pmnotification&#34;</span>]
@@ -4740,7 +4740,7 @@ from my laptop over ssh. This worked ok, but I had problems with duplicate
 notifications when restarting the polling script and wasn&rsquo;t really happy with
 this solution. And since I already had Redis running on that host, I thought
 I&rsquo;d give that a try.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">output</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">output</span> {
   <span style="color:#a6e22e">redis</span> {
     <span style="color:#a6e22e">host</span> =&gt; <span style="color:#e6db74">&#39;localhost&#39;</span>
     <span style="color:#a6e22e">data_type</span> =&gt; <span style="color:#e6db74">&#39;list&#39;</span>
@@ -4770,7 +4770,7 @@ the instance running on localhost.</p>
 <p>The last part now is actually getting the notifications into growl on the OSX
 side of things. For this I have Growl setup to forward everything to
 notification center and run the following script on my Mac:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> sys
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> sys
 <span style="color:#f92672">import</span> gntp
 <span style="color:#f92672">import</span> json
 <span style="color:#f92672">import</span> redis
@@ -4788,7 +4788,7 @@ app <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;irc-gr
         log <span style="color:#f92672">=</span> json<span style="color:#f92672">.</span>loads(logline)
     <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> e:
         title <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Failure loading logline: &#34;</span> <span style="color:#f92672">+</span> str(logline)
-        message <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;error({0})&#34;</span><span style="color:#f92672">.</span>format(e)
+        message <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;error(</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">)&#34;</span><span style="color:#f92672">.</span>format(e)
         gntp<span style="color:#f92672">.</span>notifier<span style="color:#f92672">.</span>mini(message, applicationName<span style="color:#f92672">=</span>app, title<span style="color:#f92672">=</span>title)
         <span style="color:#66d9ef">continue</span>
 
@@ -4796,7 +4796,7 @@ app <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;irc-gr
         channel <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;-&#34;</span><span style="color:#f92672">.</span>join(log[<span style="color:#e6db74">&#34;@source&#34;</span>]<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34;/&#34;</span>)[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34;_&#34;</span>)[<span style="color:#ae81ff">1</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>])
     <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> e:
         title <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Failure parsing channel name in: &#34;</span> <span style="color:#f92672">+</span> str(log[<span style="color:#e6db74">&#34;@source&#34;</span>])
-        message <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;error({0})&#34;</span><span style="color:#f92672">.</span>format(e)
+        message <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;error(</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">)&#34;</span><span style="color:#f92672">.</span>format(e)
         gntp<span style="color:#f92672">.</span>notifier<span style="color:#f92672">.</span>mini(message, applicationName<span style="color:#f92672">=</span>app, title<span style="color:#f92672">=</span>title)
         <span style="color:#66d9ef">continue</span>
 
@@ -4805,9 +4805,9 @@ app <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;irc-gr
                   channel<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#34;utf-8&#34;</span>)))
     <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> e:
         title <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Failure parsing ircsender in: &#34;</span> <span style="color:#f92672">+</span> str(log)
-        message <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;error({0})&#34;</span><span style="color:#f92672">.</span>format(e)
-        <span style="color:#66d9ef">print</span> title
-        <span style="color:#66d9ef">print</span> message
+        message <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;error(</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">)&#34;</span><span style="color:#f92672">.</span>format(e)
+        print title
+        print message
         gntp<span style="color:#f92672">.</span>notifier<span style="color:#f92672">.</span>mini(message, applicationName<span style="color:#f92672">=</span>app, title<span style="color:#f92672">=</span>title)
         <span style="color:#66d9ef">continue</span>
 
@@ -4963,7 +4963,7 @@ release</a>.</p>
 <h3 id="setting-up-the-sensu-repository">Setting up the Sensu repository</h3>
 <p>In order to get started and configure your Sensu instance, clone the <a href="https://github.com/mrtazz/sensu-heroku-app">example
 repository</a> from Github.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    git clone https://github.com/mrtazz/sensu-heroku-example
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    git clone https://github.com/mrtazz/sensu-heroku-example
 </code></pre></div><p>The example includes a basic folder layout for running a server or API instance
 on Heroku. All configuration files can be dropped in the <code>config/</code> folder. They
 will be picked up by the process when Sensu starts. The example repo also
@@ -4982,7 +4982,7 @@ add the RabbitMQ and Redis plugins once and can then reuse the settings on the
 second instance.</p>
 <p>So create the first instance on the cedar stack from within the example repo
 and add the plugins:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    heroku create --stack cedar awesome-sensu-server
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    heroku create --stack cedar awesome-sensu-server
     heroku plugins:install redistogo
     heroku plugins:install rabbitmq
     heroku config:add API_PORT<span style="color:#f92672">=</span><span style="color:#ae81ff">80</span>
@@ -4991,18 +4991,18 @@ since otherwise it will assume it&rsquo;s running the API itself and assign the
 instance locale port from the <code>PORT</code> environment variable to use as the API
 port. After that is done, push the code to Heroku and scale up a worker
 process:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    git push heroku master
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    git push heroku master
     heroku ps:scale app<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
 </code></pre></div><p>For the API instance create a new branch in the repo or clone the example repo
 into a new location. Then initialize the API:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    heroku create --stack cedar awesome-sensu-api
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    heroku create --stack cedar awesome-sensu-api
     heroku config:add REDISTOGO_URL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;value from server instance&#34;</span>
     heroku config:add RABBITMQ_URL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;value from server instance&#34;</span>
 </code></pre></div><p>Now change the Procfile to start up the API instead of the Sensu server like
 this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    app: sensu-api -v -c config/config.json -d config/
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    app: sensu-api -v -c config/config.json -d config/
 </code></pre></div><p>Commit the changes and push it to the Heroku app:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    git push heroku-api master
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    git push heroku-api master
     heroku ps:scale app<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
 </code></pre></div><p>Now all you have to do is set up clients and voila, you have Heroku hosted
 monitoring. If you&rsquo;re not yet familiar with setting up clients, I highly
@@ -5037,7 +5037,7 @@ dive into configuration management with <a href="http://opscode.com/chef">Chef</
 configuration I found a lot of things confusing and not so well documented for
 a complete newbie. Thus I wanted to share my experience and maybe provide an
 overview and easier access into the world of Chef. After all once you have your
-setup it is a pretty nice way to keep your workstations&rsquo; configuration in sync
+setup it is a pretty nice way to keep your workstations' configuration in sync
 and have a documented way how you got there.</p>
 <p>The setup I am going to describe is based heavily on Joshua Timberman&rsquo;s
 <a href="http://jtimberman.posterous.com/managing-my-workstations-with-chef">post</a> about managing Mac OS X workstations with Chef. If you
@@ -5103,7 +5103,7 @@ often discussed as a weakness, is the fact that everything really is Ruby or
 json. This means it is source code, which again means we can easily manage it
 with an SCM (I will use git in the examples, but it really applies to your
 favourite SCM, too). So let&rsquo;s start with creating our configuration repository:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    $ mkdir chef-repo ; cd chef-repo
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    $ mkdir chef-repo ; cd chef-repo
     $ git init .
 </code></pre></div><p>Now that we have our repository set up, we can start to add cookbooks.
 There are in general two ways to get cookbooks into your repository.</p>
@@ -5126,7 +5126,7 @@ automate are:</p>
 <li>install our custom <code>.zshrc</code></li>
 </ul>
 <p>So first of all let&rsquo;s create the basic folder structure:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    $ mkdir -p cookbooks/oh-my-zsh/recipes
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    $ mkdir -p cookbooks/oh-my-zsh/recipes
     $ mkdir -p cookbooks/oh-my-zsh/templates/default
     $ touch cookbooks/oh-my-zsh/recipes/default.rb
     $ touch cookbooks/oh-my-zsh/templates/default/dot.zshrc.erb
@@ -5144,7 +5144,7 @@ your projects, don&rsquo;t you?).</p>
 <code>oh-my-zsh/templates/default/dot.zshrc.erb</code>. This makes it available to our
 recipes as a template file. Now we want to configure the actual recipe.
 Therefore enter the following into <code>oh-my-zsh/recipes/default.rb</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    script <span style="color:#e6db74">&#34;oh-my-zsh install from github&#34;</span> <span style="color:#66d9ef">do</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    script <span style="color:#e6db74">&#34;oh-my-zsh install from github&#34;</span> <span style="color:#66d9ef">do</span>
       interpreter <span style="color:#e6db74">&#34;bash&#34;</span>
       url <span style="color:#f92672">=</span> <span style="color:#e6db74">https</span>:<span style="color:#e6db74">//</span>github<span style="color:#f92672">.</span>com<span style="color:#f92672">/</span>robbyrussell<span style="color:#f92672">/</span>oh<span style="color:#f92672">-</span>my<span style="color:#f92672">-</span>zsh<span style="color:#f92672">/</span>raw<span style="color:#f92672">/</span>master<span style="color:#f92672">/</span>tools<span style="color:#f92672">/</span>install<span style="color:#f92672">.</span>sh
       code <span style="color:#e6db74">&lt;&lt;-EOS
@@ -5161,7 +5161,7 @@ the generic <code>.zshrc</code> which is important for the next step. As we want
 install our own config file but don&rsquo;t want to do it everytime, we use the
 following Chef block (written to <code>oh-my-zsh/recipes/default.rb</code> directly after
 the install script):</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    template <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#{</span><span style="color:#66d9ef">ENV</span><span style="color:#f92672">[</span><span style="color:#e6db74">&#39;HOME&#39;</span><span style="color:#f92672">]</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/.zshrc&#34;</span> <span style="color:#66d9ef">do</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    template <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#{</span><span style="color:#66d9ef">ENV</span><span style="color:#f92672">[</span><span style="color:#e6db74">&#39;HOME&#39;</span><span style="color:#f92672">]</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/.zshrc&#34;</span> <span style="color:#66d9ef">do</span>
       mode   <span style="color:#ae81ff">0700</span>
       owner  <span style="color:#66d9ef">ENV</span><span style="color:#f92672">[</span><span style="color:#e6db74">&#39;USER&#39;</span><span style="color:#f92672">]</span>
       group  <span style="color:#66d9ef">Etc</span><span style="color:#f92672">.</span>getgrgid(<span style="color:#66d9ef">Process</span><span style="color:#f92672">.</span>gid)<span style="color:#f92672">.</span>name
@@ -5182,7 +5182,7 @@ activated in the shell config. In order to make sure that they are present in
 every shell the activation step is written into <code>.profile</code>. Therefore we also
 want to source it in our zsh config. The <code>not_if</code> method here also conserves
 the idempotency of the step.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    script <span style="color:#e6db74">&#34;source .profile in .zshrc&#34;</span> <span style="color:#66d9ef">do</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    script <span style="color:#e6db74">&#34;source .profile in .zshrc&#34;</span> <span style="color:#66d9ef">do</span>
       interpreter <span style="color:#e6db74">&#34;bash&#34;</span>
       code <span style="color:#e6db74">&lt;&lt;-EOS
 </span><span style="color:#e6db74"></span>      echo <span style="color:#e6db74">&#34;source </span><span style="color:#e6db74">#{</span><span style="color:#66d9ef">ENV</span><span style="color:#f92672">[</span><span style="color:#e6db74">&#39;HOME&#39;</span><span style="color:#f92672">]</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/.profile&#34;</span> <span style="color:#f92672">&gt;&gt;</span> <span style="color:#75715e">#{ENV[&#39;HOME&#39;]}/.zshrc</span>
@@ -5198,7 +5198,7 @@ this to be a convenient place for all your Chef related configuration, but you
 can of course choose another directory (just make sure that you also adapt
 subsequent steps in this post accordingly). Now we can upload our cookbook
 with:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    knife cookbook upload oh-my-zsh
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    knife cookbook upload oh-my-zsh
 </code></pre></div><p>We have a cookbook on the server now, but no node uses it, yet (we also don&rsquo;t
 have nodes set up at the moment but bear with me here).  In order to match
 nodes to cookbooks Chef employs the concept of &lsquo;run lists&rsquo;.  These are
@@ -5208,18 +5208,18 @@ category, we can set up a role for it in Chef. A role is just a specific set of
 attributes and a run list which is mapped to a name. As there may be multiple
 machines we use as workstations we create a role &lsquo;workstation&rsquo; in the roles
 directory of our Chef repository:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    $ mkdir -p roles
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    $ mkdir -p roles
     $ touch roles/workstation.rb
 </code></pre></div><p>Again this is just Ruby so we add the following information to
 <code>workstation.rb</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    name <span style="color:#e6db74">&#34;workstation&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    name <span style="color:#e6db74">&#34;workstation&#34;</span>
     description <span style="color:#e6db74">&#34;development workstations&#34;</span>
     run_list(
       <span style="color:#e6db74">&#34;recipe[oh-my-zsh]&#34;</span>
     )
 </code></pre></div><p>Now every node which is assigned the &lsquo;workstation&rsquo; role will know that it has
 to install chef <code>oh-my-zsh</code> recipe. Let&rsquo;s upload the role to our server:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    $ knife upload role from file workstation.rb
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    $ knife upload role from file workstation.rb
 </code></pre></div><p>In the management web interface (or via <code>knife</code>) we can now assign the role
 &lsquo;workstation&rsquo; to specific nodes. However we first need a client which is
 allowed to connect to the server API. Clients and nodes are somewhat the same
@@ -5245,7 +5245,7 @@ to do this, you would now have to make the default directories accessible for
 your user. But we can also override the paths used in the client config. I also
 keep my paths in <code>~/.chef</code> (everything in one place, remember?) so a good
 adaption of your <code>client.rb</code> might be:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    base_dir <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#{</span><span style="color:#66d9ef">ENV</span><span style="color:#f92672">[</span><span style="color:#e6db74">&#39;HOME&#39;</span><span style="color:#f92672">]</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/.chef&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    base_dir <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#{</span><span style="color:#66d9ef">ENV</span><span style="color:#f92672">[</span><span style="color:#e6db74">&#39;HOME&#39;</span><span style="color:#f92672">]</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/.chef&#34;</span>
     run_path <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#{</span>base_dir<span style="color:#e6db74">}</span><span style="color:#e6db74">/run&#34;</span>
     checksum_path <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#{</span>base_dir<span style="color:#e6db74">}</span><span style="color:#e6db74">/checksum&#34;</span>
     file_cache_path <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#{</span>base_dir<span style="color:#e6db74">}</span><span style="color:#e6db74">/cache&#34;</span>
@@ -5254,7 +5254,7 @@ adaption of your <code>client.rb</code> might be:</p>
 </code></pre></div><p>This will make sure only subdirectories of <code>~/.chef</code> will be used for
 caching, checksums, etc. After these steps there is only one thing to do.</p>
 <h3 id="sit-back-and-watch">Sit back and watch</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    $ chef-client -c ~/.chef/client.rb -k ~/.chef/client.pem
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    $ chef-client -c ~/.chef/client.rb -k ~/.chef/client.pem
 </code></pre></div><p>The above command will run the Chef client with the specified config and client
 certificate. It will then fetch the cookbooks from the server, determine which
 to execute via the nodes run list and run them. If everything went well you now
@@ -5277,10 +5277,10 @@ possibilities.</p>
     
     <item>
       <title>gtd-couch - GTD as a couchapp</title>
-      <link>https://unwiredcouch.com/2011/01/03/gtd-couchgtd-as-a-couchapp.html</link>
+      <link>https://unwiredcouch.com/2011/01/03/gtd-couch%E2%80%94gtd-as-a-couchapp.html</link>
       <pubDate>Mon, 03 Jan 2011 00:00:00 +0000</pubDate>
       <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
-      <guid>https://unwiredcouch.com/2011/01/03/gtd-couchgtd-as-a-couchapp.html</guid>
+      <guid>https://unwiredcouch.com/2011/01/03/gtd-couch%E2%80%94gtd-as-a-couchapp.html</guid>
       <description>Why another GTD app? Over the last years I have tried a lot of task management applications.</description>
     <content:encoded><![CDATA[<h3 id="why-another-gtd-app">Why another GTD app?</h3>
 <p>Over the last years I have tried a lot of task management applications. I was

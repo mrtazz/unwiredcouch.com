@@ -10,8 +10,8 @@
 
 
 <link   rel="stylesheet"
-        href="../../../css/style.min.c74a87869e0d51c45d0efc4f4ff6e8a9ee1df40009a1a8eaac5e32cb677babbc.css"
-        integrity="sha256-x0qHhp4NUcRdDvxPT/boqe4d9AAJoajqrF4yy2d7q7w="
+        href="../../../css/style.min.0a7442460ca45a8d1ffa9d4f0a0163976899fc7820ce2bb76f693ba0527afb57.css"
+        integrity="sha256-CnRCRgykWo0f&#43;p1PCgFjl2iZ/Hggziu3b2k7oFJ6&#43;1c="
         type="text/css"
         media="screen">
 
@@ -66,7 +66,7 @@ dive into configuration management with <a href="http://opscode.com/chef">Chef</
 configuration I found a lot of things confusing and not so well documented for
 a complete newbie. Thus I wanted to share my experience and maybe provide an
 overview and easier access into the world of Chef. After all once you have your
-setup it is a pretty nice way to keep your workstations&rsquo; configuration in sync
+setup it is a pretty nice way to keep your workstations' configuration in sync
 and have a documented way how you got there.</p>
 <p>The setup I am going to describe is based heavily on Joshua Timberman&rsquo;s
 <a href="http://jtimberman.posterous.com/managing-my-workstations-with-chef">post</a> about managing Mac OS X workstations with Chef. If you
@@ -132,7 +132,7 @@ often discussed as a weakness, is the fact that everything really is Ruby or
 json. This means it is source code, which again means we can easily manage it
 with an SCM (I will use git in the examples, but it really applies to your
 favourite SCM, too). So let&rsquo;s start with creating our configuration repository:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    $ mkdir chef-repo ; cd chef-repo
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    $ mkdir chef-repo ; cd chef-repo
     $ git init .
 </code></pre></div><p>Now that we have our repository set up, we can start to add cookbooks.
 There are in general two ways to get cookbooks into your repository.</p>
@@ -155,7 +155,7 @@ automate are:</p>
 <li>install our custom <code>.zshrc</code></li>
 </ul>
 <p>So first of all let&rsquo;s create the basic folder structure:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    $ mkdir -p cookbooks/oh-my-zsh/recipes
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    $ mkdir -p cookbooks/oh-my-zsh/recipes
     $ mkdir -p cookbooks/oh-my-zsh/templates/default
     $ touch cookbooks/oh-my-zsh/recipes/default.rb
     $ touch cookbooks/oh-my-zsh/templates/default/dot.zshrc.erb
@@ -173,7 +173,7 @@ your projects, don&rsquo;t you?).</p>
 <code>oh-my-zsh/templates/default/dot.zshrc.erb</code>. This makes it available to our
 recipes as a template file. Now we want to configure the actual recipe.
 Therefore enter the following into <code>oh-my-zsh/recipes/default.rb</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    script <span style="color:#e6db74">&#34;oh-my-zsh install from github&#34;</span> <span style="color:#66d9ef">do</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    script <span style="color:#e6db74">&#34;oh-my-zsh install from github&#34;</span> <span style="color:#66d9ef">do</span>
       interpreter <span style="color:#e6db74">&#34;bash&#34;</span>
       url <span style="color:#f92672">=</span> <span style="color:#e6db74">https</span>:<span style="color:#e6db74">//</span>github<span style="color:#f92672">.</span>com<span style="color:#f92672">/</span>robbyrussell<span style="color:#f92672">/</span>oh<span style="color:#f92672">-</span>my<span style="color:#f92672">-</span>zsh<span style="color:#f92672">/</span>raw<span style="color:#f92672">/</span>master<span style="color:#f92672">/</span>tools<span style="color:#f92672">/</span>install<span style="color:#f92672">.</span>sh
       code <span style="color:#e6db74">&lt;&lt;-EOS
@@ -190,7 +190,7 @@ the generic <code>.zshrc</code> which is important for the next step. As we want
 install our own config file but don&rsquo;t want to do it everytime, we use the
 following Chef block (written to <code>oh-my-zsh/recipes/default.rb</code> directly after
 the install script):</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    template <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#{</span><span style="color:#66d9ef">ENV</span><span style="color:#f92672">[</span><span style="color:#e6db74">&#39;HOME&#39;</span><span style="color:#f92672">]</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/.zshrc&#34;</span> <span style="color:#66d9ef">do</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    template <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#{</span><span style="color:#66d9ef">ENV</span><span style="color:#f92672">[</span><span style="color:#e6db74">&#39;HOME&#39;</span><span style="color:#f92672">]</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/.zshrc&#34;</span> <span style="color:#66d9ef">do</span>
       mode   <span style="color:#ae81ff">0700</span>
       owner  <span style="color:#66d9ef">ENV</span><span style="color:#f92672">[</span><span style="color:#e6db74">&#39;USER&#39;</span><span style="color:#f92672">]</span>
       group  <span style="color:#66d9ef">Etc</span><span style="color:#f92672">.</span>getgrgid(<span style="color:#66d9ef">Process</span><span style="color:#f92672">.</span>gid)<span style="color:#f92672">.</span>name
@@ -211,7 +211,7 @@ activated in the shell config. In order to make sure that they are present in
 every shell the activation step is written into <code>.profile</code>. Therefore we also
 want to source it in our zsh config. The <code>not_if</code> method here also conserves
 the idempotency of the step.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    script <span style="color:#e6db74">&#34;source .profile in .zshrc&#34;</span> <span style="color:#66d9ef">do</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    script <span style="color:#e6db74">&#34;source .profile in .zshrc&#34;</span> <span style="color:#66d9ef">do</span>
       interpreter <span style="color:#e6db74">&#34;bash&#34;</span>
       code <span style="color:#e6db74">&lt;&lt;-EOS
 </span><span style="color:#e6db74"></span>      echo <span style="color:#e6db74">&#34;source </span><span style="color:#e6db74">#{</span><span style="color:#66d9ef">ENV</span><span style="color:#f92672">[</span><span style="color:#e6db74">&#39;HOME&#39;</span><span style="color:#f92672">]</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/.profile&#34;</span> <span style="color:#f92672">&gt;&gt;</span> <span style="color:#75715e">#{ENV[&#39;HOME&#39;]}/.zshrc</span>
@@ -227,7 +227,7 @@ this to be a convenient place for all your Chef related configuration, but you
 can of course choose another directory (just make sure that you also adapt
 subsequent steps in this post accordingly). Now we can upload our cookbook
 with:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    knife cookbook upload oh-my-zsh
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    knife cookbook upload oh-my-zsh
 </code></pre></div><p>We have a cookbook on the server now, but no node uses it, yet (we also don&rsquo;t
 have nodes set up at the moment but bear with me here).  In order to match
 nodes to cookbooks Chef employs the concept of &lsquo;run lists&rsquo;.  These are
@@ -237,18 +237,18 @@ category, we can set up a role for it in Chef. A role is just a specific set of
 attributes and a run list which is mapped to a name. As there may be multiple
 machines we use as workstations we create a role &lsquo;workstation&rsquo; in the roles
 directory of our Chef repository:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    $ mkdir -p roles
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    $ mkdir -p roles
     $ touch roles/workstation.rb
 </code></pre></div><p>Again this is just Ruby so we add the following information to
 <code>workstation.rb</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    name <span style="color:#e6db74">&#34;workstation&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    name <span style="color:#e6db74">&#34;workstation&#34;</span>
     description <span style="color:#e6db74">&#34;development workstations&#34;</span>
     run_list(
       <span style="color:#e6db74">&#34;recipe[oh-my-zsh]&#34;</span>
     )
 </code></pre></div><p>Now every node which is assigned the &lsquo;workstation&rsquo; role will know that it has
 to install chef <code>oh-my-zsh</code> recipe. Let&rsquo;s upload the role to our server:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    $ knife upload role from file workstation.rb
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    $ knife upload role from file workstation.rb
 </code></pre></div><p>In the management web interface (or via <code>knife</code>) we can now assign the role
 &lsquo;workstation&rsquo; to specific nodes. However we first need a client which is
 allowed to connect to the server API. Clients and nodes are somewhat the same
@@ -274,7 +274,7 @@ to do this, you would now have to make the default directories accessible for
 your user. But we can also override the paths used in the client config. I also
 keep my paths in <code>~/.chef</code> (everything in one place, remember?) so a good
 adaption of your <code>client.rb</code> might be:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    base_dir <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#{</span><span style="color:#66d9ef">ENV</span><span style="color:#f92672">[</span><span style="color:#e6db74">&#39;HOME&#39;</span><span style="color:#f92672">]</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/.chef&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    base_dir <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#{</span><span style="color:#66d9ef">ENV</span><span style="color:#f92672">[</span><span style="color:#e6db74">&#39;HOME&#39;</span><span style="color:#f92672">]</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/.chef&#34;</span>
     run_path <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#{</span>base_dir<span style="color:#e6db74">}</span><span style="color:#e6db74">/run&#34;</span>
     checksum_path <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#{</span>base_dir<span style="color:#e6db74">}</span><span style="color:#e6db74">/checksum&#34;</span>
     file_cache_path <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#{</span>base_dir<span style="color:#e6db74">}</span><span style="color:#e6db74">/cache&#34;</span>
@@ -283,7 +283,7 @@ adaption of your <code>client.rb</code> might be:</p>
 </code></pre></div><p>This will make sure only subdirectories of <code>~/.chef</code> will be used for
 caching, checksums, etc. After these steps there is only one thing to do.</p>
 <h3 id="sit-back-and-watch">Sit back and watch</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    $ chef-client -c ~/.chef/client.rb -k ~/.chef/client.pem
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    $ chef-client -c ~/.chef/client.rb -k ~/.chef/client.pem
 </code></pre></div><p>The above command will run the Chef client with the specified config and client
 certificate. It will then fetch the cookbooks from the server, determine which
 to execute via the nodes run list and run them. If everything went well you now

@@ -10,8 +10,8 @@
 
 
 <link   rel="stylesheet"
-        href="../../../css/style.min.c74a87869e0d51c45d0efc4f4ff6e8a9ee1df40009a1a8eaac5e32cb677babbc.css"
-        integrity="sha256-x0qHhp4NUcRdDvxPT/boqe4d9AAJoajqrF4yy2d7q7w="
+        href="../../../css/style.min.0a7442460ca45a8d1ffa9d4f0a0163976899fc7820ce2bb76f693ba0527afb57.css"
+        integrity="sha256-CnRCRgykWo0f&#43;p1PCgFjl2iZ/Hggziu3b2k7oFJ6&#43;1c="
         type="text/css"
         media="screen">
 
@@ -110,7 +110,7 @@ most of the time. And those are the ones you can unit test. So now let&rsquo;s
 write some functions and tests for them.</p>
 <p>Let&rsquo;s say we want a function to output the number of characters in a string.
 It could look something like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">function</span> num_chars <span style="color:#f92672">{</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">function</span> num_chars <span style="color:#f92672">{</span>
   echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>1<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> | wc -c
 <span style="color:#f92672">}</span>
 </code></pre></div><p>It&rsquo;s a very contrived example and you&rsquo;re basically testing that <code>wc</code> works
@@ -118,7 +118,7 @@ correctly. But it&rsquo;s a useful example here to show some things. Notice how 
 function only acts on variables passed into it and prints the result to
 STDOUT.</p>
 <p>Now let&rsquo;s write a unit test for it.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">function</span> test_num_chars <span style="color:#f92672">{</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">function</span> test_num_chars <span style="color:#f92672">{</span>
   local res<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>num_chars <span style="color:#e6db74">&#34;foo&#34;</span><span style="color:#66d9ef">)</span>
   <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">${</span>res<span style="color:#e6db74">}</span> -ne <span style="color:#ae81ff">3</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
     echo <span style="color:#e6db74">&#34;failed to assert that </span><span style="color:#e6db74">${</span>res<span style="color:#e6db74">}</span><span style="color:#e6db74"> is 3&#34;</span>
@@ -127,7 +127,7 @@ STDOUT.</p>
 </code></pre></div><p>And that&rsquo;s it. That&rsquo;s all you really need to do to write a simple unit test in bash.</p>
 <p>Of course adding more tests now generates a lot of repetitive work. So we can
 write a helper function to do the assertion part of the test.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">function</span> assert <span style="color:#f92672">{</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">function</span> assert <span style="color:#f92672">{</span>
  eval <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>1<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> $? -ne <span style="color:#ae81ff">0</span> <span style="color:#f92672">]]</span>; <span style="color:#66d9ef">then</span>
    echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>FUNCNAME[1]<span style="color:#e6db74">}</span><span style="color:#e6db74">: failed&#34;</span>
@@ -143,7 +143,7 @@ first entry in it is the current function and the next one is the calling
 function. This gives us a nice way to determine which test is being executed
 and make it part of the output message.</p>
 <p>And with this helper function in place, our test now looks like this.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">function</span> test_num_chars <span style="color:#f92672">{</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">function</span> test_num_chars <span style="color:#f92672">{</span>
   local res<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>num_chars <span style="color:#e6db74">&#34;foo&#34;</span><span style="color:#66d9ef">)</span>
   assert <span style="color:#e6db74">&#34;[ </span><span style="color:#e6db74">${</span>res<span style="color:#e6db74">}</span><span style="color:#e6db74"> -ne 3 ]&#34;</span>
 <span style="color:#f92672">}</span>
@@ -151,7 +151,7 @@ and make it part of the output message.</p>
 functions we defined. However that also gets very repetitive fast and you
 always have to remember to actually call the function when you define a new
 test. So let&rsquo;s also write a helper function to do this for us.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">function</span> run_test_suite <span style="color:#f92672">{</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">function</span> run_test_suite <span style="color:#f92672">{</span>
   <span style="color:#66d9ef">for</span> testcase in <span style="color:#66d9ef">$(</span>declare -f | grep -o <span style="color:#e6db74">&#34;^test[a-zA-Z_]*&#34;</span><span style="color:#66d9ef">)</span> ; <span style="color:#66d9ef">do</span>
     <span style="color:#e6db74">${</span>testcase<span style="color:#e6db74">}</span>
   <span style="color:#66d9ef">done</span>
@@ -168,7 +168,7 @@ on the file system. And it&rsquo;s not really feasible to always have everything
 just be variables to be passed in. In this case you can adapt your script by
 setting the base of where the files are you want to interact with. Something
 like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">FILEBASE<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>FILEBASE<span style="color:#66d9ef">:-</span>/usr/local/foo<span style="color:#e6db74">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">FILEBASE<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>FILEBASE<span style="color:#66d9ef">:-</span>/usr/local/foo<span style="color:#e6db74">}</span>
 
 <span style="color:#66d9ef">function</span> list_files_with_a <span style="color:#f92672">{</span>
   ls <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>FILEBASE<span style="color:#e6db74">}</span><span style="color:#e6db74">/a*&#34;</span>
@@ -185,7 +185,7 @@ in a at that would let me completely drive function behavior based solely on
 what I&rsquo;m passing in. And if I have to call an external resource make it so I
 can pass in the expected return value and only if it&rsquo;s not set, call the
 external resource. A simple example could look like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">function</span> get_url <span style="color:#f92672">{</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">function</span> get_url <span style="color:#f92672">{</span>
   local url<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>1<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
   local res<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>2<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
 
