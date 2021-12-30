@@ -2,14 +2,32 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://unwiredcouch.com/bits/</loc>
-    <lastmod>2021-09-02T00:00:00+00:00</lastmod>
+    <loc>https://unwiredcouch.com/reading/russe-der-birken-liebt/</loc>
+    <lastmod>2021-12-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://unwiredcouch.com/reading/</loc>
+    <lastmod>2021-12-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://unwiredcouch.com/</loc>
+    <lastmod>2021-12-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://unwiredcouch.com/reading/afropean/</loc>
+    <lastmod>2021-12-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://unwiredcouch.com/reading/human-error/</loc>
+    <lastmod>2021-11-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://unwiredcouch.com/reading/social-choice-individual-values/</loc>
+    <lastmod>2021-10-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://unwiredcouch.com/bits/</loc>
     <lastmod>2021-09-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://unwiredcouch.com/bits/2021/09/02/vim-package-managment-make.html</loc>
     <lastmod>2021-09-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://unwiredcouch.com/reading/the-bilingual-brain/</loc>
+    <lastmod>2021-08-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://unwiredcouch.com/2021/07/26/journaling-through-a-pandemic.html</loc>
     <lastmod>2021-07-26T00:00:00+00:00</lastmod>
@@ -17,10 +35,10 @@
     <loc>https://unwiredcouch.com/posts/</loc>
     <lastmod>2021-07-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://unwiredcouch.com/reading/digital-zettelkasten/</loc>
-    <lastmod>2021-06-20T00:00:00+00:00</lastmod>
+    <loc>https://unwiredcouch.com/reading/between-the-world-and-me/</loc>
+    <lastmod>2021-07-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://unwiredcouch.com/reading/</loc>
+    <loc>https://unwiredcouch.com/reading/digital-zettelkasten/</loc>
     <lastmod>2021-06-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://unwiredcouch.com/reading/how-to-do-nothing/</loc>
