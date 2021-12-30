@@ -1,13 +1,56 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>unwiredcouch.com on unwiredcouch.com</title>
   <id>https://unwiredcouch.com/atom.xml</id>
-  <updated>2021-09-02T00:00:00Z</updated>
+  <updated>2021-12-26T00:00:00Z</updated>
 	<subtitle>thoughts which have made it into written existence</subtitle>
 	<link rel="self" href="https://unwiredcouch.com/atom.xml"/>
 	<author>
     <name>Daniel Schauenberg</name>
 		<email>d@unwiredcouch.com</email>
 	</author>
+  
+	<entry>
+    <title type="html"><![CDATA[Der Russe ist einer, der Birken liebt]]></title>
+    <published>2021-12-26T00:00:00Z</published>
+    <updated>2021-12-26T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/reading/russe-der-birken-liebt/</id>
+    <content type="html"><![CDATA[<p>I decided to read this book after I had read [[ref-Grjasnowa-MachtDerMehrsprachigkeit-2021]] earlier this year. I haven&rsquo;t read a lot of German literature (let alone fiction) since I was in school for no real reason. So I was curious about some more contemporary authors. And the book really wasn&rsquo;t an easy read. It&rsquo;s a very emotional and not often happy story and deals with a lot of heavy topics around war, migration, loss, and what it means to be and have a home. Nonetheless I flew through its nearly 300 pages in about 2 days. And I was sad when I was done as I wanted to keep reading.</p>
+]]></content>
+    <link href="https://unwiredcouch.com/reading/russe-der-birken-liebt/" rel="alternate"/>
+	</entry>
+  
+	<entry>
+    <title type="html"><![CDATA[Afropean]]></title>
+    <published>2021-12-25T00:00:00Z</published>
+    <updated>2021-12-25T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/reading/afropean/</id>
+    <content type="html"><![CDATA[<p>This was an absolutely fascinating book to read. For every city that the
+author visits throughout the book and talks to people I&rsquo;ve learned to see them
+(and I&rsquo;ve been to a good chunk of them) in a new light. And made me reflect
+about a lot of things. I can whole-heartedly recommend this book.</p>
+]]></content>
+    <link href="https://unwiredcouch.com/reading/afropean/" rel="alternate"/>
+	</entry>
+  
+	<entry>
+    <title type="html"><![CDATA[Human Error]]></title>
+    <published>2021-11-12T00:00:00Z</published>
+    <updated>2021-11-12T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/reading/human-error/</id>
+    <content type="html"><![CDATA[<p>It took me quite a while to get through this book. I had actually abandoned it before and then came back to it. It&rsquo;s very theoretical and academic (even though it contains some suggestions towards more practical applications of the theory towards the end). There is a lot of interesting thought in there about how to put something more concrete to the notion of errors or mistakes. And even if most of it is now superseded it provides interesting insight into the research of human error during that time.</p>
+]]></content>
+    <link href="https://unwiredcouch.com/reading/human-error/" rel="alternate"/>
+	</entry>
+  
+	<entry>
+    <title type="html"><![CDATA[Social Choice and Invidual Values]]></title>
+    <published>2021-10-14T00:00:00Z</published>
+    <updated>2021-10-14T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/reading/social-choice-individual-values/</id>
+    <content type="html"><![CDATA[<p>Given this book is more or less the printed and published version of Arrow&rsquo;s PhD. thesis, it is not an easy read. It lays the foundation and explanation for his <a href="https://en.m.wikipedia.org/wiki/Arrow%27s_impossibility_theorem">Impossibility Theorem</a> which states limitations of a ranked voting electoral systems when it comes to individual and communal preferences. I can&rsquo;t claim to have understood all of it fully. It was nevertheless very interesting to me, so read something from a field I have hardly any experience or knowledge in. I started reading it earlier in the year and then put it down because I didn&rsquo;t have the brain space to get into the math and proofs of it. And then I picked it back up during the time of the German general election this year. I found it really interesting to read about how these kind of problems are described and reasoned about in political and economical academia. And which kind of definitions and trade offs are being chosen to create a system within these formal proofs can exist.</p>
+]]></content>
+    <link href="https://unwiredcouch.com/reading/social-choice-individual-values/" rel="alternate"/>
+	</entry>
   
 	<entry>
     <title type="html"><![CDATA[vim package management in make]]></title>
@@ -111,6 +154,16 @@ $(PLUGINSDIR)/%: $(PLUGINSDIR)
 	</entry>
   
 	<entry>
+    <title type="html"><![CDATA[The Bilingual Brain]]></title>
+    <published>2021-08-29T00:00:00Z</published>
+    <updated>2021-08-29T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/reading/the-bilingual-brain/</id>
+    <content type="html"><![CDATA[<p>I really enjoyed reading this book. For years at this point I&rsquo;ve felt like a bilingual in German and English, and I&rsquo;ve come across so many situations where I unconsciously chose one language over the other. And then was surprised by it. I&rsquo;ve always wondered how bilingualism or multilingualism is reflected in the brain and how it&rsquo;s different between people and languages. &ldquo;The Bilingual Brain&rdquo; gives a ton of insight into the research field of multilingulism as well as highlighting the approaches, challenges, and limitations of research in this field. There were many situation in the book, when a common pattern for bilinguals was explained, where I was happy to realize it&rsquo;s something I do to.</p>
+]]></content>
+    <link href="https://unwiredcouch.com/reading/the-bilingual-brain/" rel="alternate"/>
+	</entry>
+  
+	<entry>
     <title type="html"><![CDATA[Journaling through a Pandemic]]></title>
     <published>2021-07-26T00:00:00Z</published>
     <updated>2021-07-26T00:00:00Z</updated>
@@ -141,6 +194,16 @@ $(PLUGINSDIR)/%: $(PLUGINSDIR)
 <p><img src="/images/journaling-through-a-pandemic/lamy-cp1.png" alt="A black Lamy CP1 fountain pen on a wooden table" title="Lamy CP1 fountain pen"></p>
 ]]></content>
     <link href="https://unwiredcouch.com/2021/07/26/journaling-through-a-pandemic.html" rel="alternate"/>
+	</entry>
+  
+	<entry>
+    <title type="html"><![CDATA[Between the World and Me]]></title>
+    <published>2021-07-10T00:00:00Z</published>
+    <updated>2021-07-10T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/reading/between-the-world-and-me/</id>
+    <content type="html"><![CDATA[<p>This was an absolutely fantastic, emotional, gut-wrenching, sad,  and happy book to read. I&rsquo;ve come to really like the way it is written, as a conversation between the author and his son, trying to explain the world. There&rsquo;s a lot of mixing of history, current affairs, personal history and memories, which makes for a very personal piece of literature.</p>
+]]></content>
+    <link href="https://unwiredcouch.com/reading/between-the-world-and-me/" rel="alternate"/>
 	</entry>
   
 	<entry>

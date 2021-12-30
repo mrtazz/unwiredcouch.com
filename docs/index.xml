@@ -8,7 +8,54 @@
     <language>en</language>
     <managingEditor>d@unwiredcouch.com (Daniel Schauenberg)</managingEditor>
     <webMaster>d@unwiredcouch.com (Daniel Schauenberg)</webMaster>
-    <lastBuildDate>Thu, 02 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://unwiredcouch.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 26 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://unwiredcouch.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Der Russe ist einer, der Birken liebt</title>
+      <link>https://unwiredcouch.com/reading/russe-der-birken-liebt/</link>
+      <pubDate>Sun, 26 Dec 2021 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/reading/russe-der-birken-liebt/</guid>
+      <description>I decided to read this book after I had read [[ref-Grjasnowa-MachtDerMehrsprachigkeit-2021]] earlier this year.</description>
+    <content:encoded><![CDATA[<p>I decided to read this book after I had read [[ref-Grjasnowa-MachtDerMehrsprachigkeit-2021]] earlier this year. I haven&rsquo;t read a lot of German literature (let alone fiction) since I was in school for no real reason. So I was curious about some more contemporary authors. And the book really wasn&rsquo;t an easy read. It&rsquo;s a very emotional and not often happy story and deals with a lot of heavy topics around war, migration, loss, and what it means to be and have a home. Nonetheless I flew through its nearly 300 pages in about 2 days. And I was sad when I was done as I wanted to keep reading.</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Afropean</title>
+      <link>https://unwiredcouch.com/reading/afropean/</link>
+      <pubDate>Sat, 25 Dec 2021 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/reading/afropean/</guid>
+      <description>This was an absolutely fascinating book to read. For every city that the author visits throughout the book and talks to people I&amp;rsquo;ve learned to see them (and I&amp;rsquo;ve been to a good chunk of them) in a new light.</description>
+    <content:encoded><![CDATA[<p>This was an absolutely fascinating book to read. For every city that the
+author visits throughout the book and talks to people I&rsquo;ve learned to see them
+(and I&rsquo;ve been to a good chunk of them) in a new light. And made me reflect
+about a lot of things. I can whole-heartedly recommend this book.</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Human Error</title>
+      <link>https://unwiredcouch.com/reading/human-error/</link>
+      <pubDate>Fri, 12 Nov 2021 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/reading/human-error/</guid>
+      <description>It took me quite a while to get through this book.</description>
+    <content:encoded><![CDATA[<p>It took me quite a while to get through this book. I had actually abandoned it before and then came back to it. It&rsquo;s very theoretical and academic (even though it contains some suggestions towards more practical applications of the theory towards the end). There is a lot of interesting thought in there about how to put something more concrete to the notion of errors or mistakes. And even if most of it is now superseded it provides interesting insight into the research of human error during that time.</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Social Choice and Invidual Values</title>
+      <link>https://unwiredcouch.com/reading/social-choice-individual-values/</link>
+      <pubDate>Thu, 14 Oct 2021 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/reading/social-choice-individual-values/</guid>
+      <description>Given this book is more or less the printed and published version of Arrow&amp;rsquo;s PhD.</description>
+    <content:encoded><![CDATA[<p>Given this book is more or less the printed and published version of Arrow&rsquo;s PhD. thesis, it is not an easy read. It lays the foundation and explanation for his <a href="https://en.m.wikipedia.org/wiki/Arrow%27s_impossibility_theorem">Impossibility Theorem</a> which states limitations of a ranked voting electoral systems when it comes to individual and communal preferences. I can&rsquo;t claim to have understood all of it fully. It was nevertheless very interesting to me, so read something from a field I have hardly any experience or knowledge in. I started reading it earlier in the year and then put it down because I didn&rsquo;t have the brain space to get into the math and proofs of it. And then I picked it back up during the time of the German general election this year. I found it really interesting to read about how these kind of problems are described and reasoned about in political and economical academia. And which kind of definitions and trade offs are being chosen to create a system within these formal proofs can exist.</p>
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>vim package management in make</title>
       <link>https://unwiredcouch.com/bits/2021/09/02/vim-package-managment-make.html</link>
@@ -112,6 +159,17 @@ $(PLUGINSDIR)/%: $(PLUGINSDIR)
     </item>
     
     <item>
+      <title>The Bilingual Brain</title>
+      <link>https://unwiredcouch.com/reading/the-bilingual-brain/</link>
+      <pubDate>Sun, 29 Aug 2021 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/reading/the-bilingual-brain/</guid>
+      <description>I really enjoyed reading this book. For years at this point I&amp;rsquo;ve felt like a bilingual in German and English, and I&amp;rsquo;ve come across so many situations where I unconsciously chose one language over the other.</description>
+    <content:encoded><![CDATA[<p>I really enjoyed reading this book. For years at this point I&rsquo;ve felt like a bilingual in German and English, and I&rsquo;ve come across so many situations where I unconsciously chose one language over the other. And then was surprised by it. I&rsquo;ve always wondered how bilingualism or multilingualism is reflected in the brain and how it&rsquo;s different between people and languages. &ldquo;The Bilingual Brain&rdquo; gives a ton of insight into the research field of multilingulism as well as highlighting the approaches, challenges, and limitations of research in this field. There were many situation in the book, when a common pattern for bilinguals was explained, where I was happy to realize it&rsquo;s something I do to.</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
       <title>Journaling through a Pandemic</title>
       <link>https://unwiredcouch.com/2021/07/26/journaling-through-a-pandemic.html</link>
       <pubDate>Mon, 26 Jul 2021 00:00:00 +0000</pubDate>
@@ -142,6 +200,17 @@ $(PLUGINSDIR)/%: $(PLUGINSDIR)
 <h2 id="in-closing">In closing</h2>
 <p>As difficult and challenging as 2020 was, and the ongoing pandemic continues to be, this process of having notebooks for many different ways to get things out of my head is immensely helpful to me. And as a continuation of leaning more on analog tools that I started in 2018 it keeps me from being completely petrified and procrastinating in the morning on many days. It also provides a way to really think about what thoughts and anxieties are rotating in my brain and have a conversation about it, even if I’m basically just talking to myself. And despite it being slightly inconvenient to carry around 3 or so notebooks sometimes, the benefits I get from having them around vastly outweighs that inconvenience for me. I even got myself a nice new pen to enjoy the process of sitting down and writing even more.</p>
 <p><img src="/images/journaling-through-a-pandemic/lamy-cp1.png" alt="A black Lamy CP1 fountain pen on a wooden table" title="Lamy CP1 fountain pen"></p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Between the World and Me</title>
+      <link>https://unwiredcouch.com/reading/between-the-world-and-me/</link>
+      <pubDate>Sat, 10 Jul 2021 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/reading/between-the-world-and-me/</guid>
+      <description>This was an absolutely fantastic, emotional, gut-wrenching, sad, and happy book to read.</description>
+    <content:encoded><![CDATA[<p>This was an absolutely fantastic, emotional, gut-wrenching, sad,  and happy book to read. I&rsquo;ve come to really like the way it is written, as a conversation between the author and his son, trying to explain the world. There&rsquo;s a lot of mixing of history, current affairs, personal history and memories, which makes for a very personal piece of literature.</p>
 ]]></content:encoded>
     </item>
     
