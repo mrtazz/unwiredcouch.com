@@ -1,13 +1,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>unwiredcouch.com on unwiredcouch.com</title>
   <id>https://unwiredcouch.com/atom.xml</id>
-  <updated>2021-12-26T00:00:00Z</updated>
+  <updated>2021-12-31T00:00:00Z</updated>
 	<subtitle>thoughts which have made it into written existence</subtitle>
 	<link rel="self" href="https://unwiredcouch.com/atom.xml"/>
 	<author>
     <name>Daniel Schauenberg</name>
 		<email>d@unwiredcouch.com</email>
 	</author>
+  
+	<entry>
+    <title type="html"><![CDATA[The Cancer Journals]]></title>
+    <published>2021-12-31T00:00:00Z</published>
+    <updated>2021-12-31T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/reading/the-cancer-journals/</id>
+    <content type="html"><![CDATA[<p>I found this book while browsing through the local book store. And I found it really intriguing because even though cancer seems to be everywhere and all around us in some ways and I&rsquo;ve had a number of friends and family suffer through and even die of cancer, it&rsquo;s not something I&rsquo;ve personally experienced. Especially not going through a mastectomy as a black, queer woman in the 70s. So I was interested in reading a personal account of something that I will never actually experience myself. And I&rsquo;m very glad I did. Lorde talks very directly and openly about the struggle she went through, the adversaries she faced, as well as the things that helped her through. I can very much recommend reading it.</p>
+]]></content>
+    <link href="https://unwiredcouch.com/reading/the-cancer-journals/" rel="alternate"/>
+	</entry>
   
 	<entry>
     <title type="html"><![CDATA[Der Russe ist einer, der Birken liebt]]></title>
