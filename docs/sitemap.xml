@@ -2,13 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://unwiredcouch.com/bits/</loc>
+    <lastmod>2022-05-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://unwiredcouch.com/bits/2022/05/11/replace-zpool-disk.html</loc>
+    <lastmod>2022-05-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://unwiredcouch.com/</loc>
+    <lastmod>2022-05-11T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://unwiredcouch.com/reading/</loc>
     <lastmod>2021-12-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://unwiredcouch.com/reading/the-cancer-journals/</loc>
-    <lastmod>2021-12-31T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://unwiredcouch.com/</loc>
     <lastmod>2021-12-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://unwiredcouch.com/reading/russe-der-birken-liebt/</loc>
@@ -22,9 +28,6 @@
   </url><url>
     <loc>https://unwiredcouch.com/reading/social-choice-individual-values/</loc>
     <lastmod>2021-10-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://unwiredcouch.com/bits/</loc>
-    <lastmod>2021-09-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://unwiredcouch.com/bits/2021/09/02/vim-package-managment-make.html</loc>
     <lastmod>2021-09-02T00:00:00+00:00</lastmod>
