@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="cache-control" content="no-cache"/>
+    <meta http-equiv="pragma" content="no-cache"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    
+
+
+
+<link   rel="stylesheet"
+        href="../../../../css/style.min.0a7442460ca45a8d1ffa9d4f0a0163976899fc7820ce2bb76f693ba0527afb57.css"
+        integrity="sha256-CnRCRgykWo0f&#43;p1PCgFjl2iZ/Hggziu3b2k7oFJ6&#43;1c="
+        type="text/css"
+        media="screen">
+
+<link   rel="stylesheet"
+        href="../../../../css/mobile.min.9d1271f82d33327493aaf7c1818ceac101a822559d694bd14a222d686e28c391.css"
+        integrity="sha256-nRJx&#43;C0zMnSTqvfBgYzqwQGoIlWdaUvRSiItaG4ow5E="
+        type="text/css"
+        media="handheld, only screen and (max-device-width: 960px)">
+
+    <link href="https://unwiredcouch.com/atom.xml" type="application/atom+xml" rel="alternate" title="unwiredcouch.com: All Posts" />
+    
+    
+
+    <title>replace a disk in a running ZFS zpool on unwiredcouch.com</title>
+  </head>
+  <body>
+    <div class="mainwrapper">
+
+    <header class="header">
+  <a class="gravatar hidemobile" href="../../../../">
+    <img
+      src="https://www.gravatar.com/avatar/89e0ad1229121f46047977ac547bd7b4.jpg?s=100"
+      height="50" width="50" class="avatar" alt="gravatar image" />
+  </a>
+  <nav class="menu">
+    <ul>
+      <li><a href="../../../../posts">Writing</a></li>
+      <li><a href="../../../../reading">Reading</a></li>
+      <li><a href="https://instagram.com/mrtazz">Drawing</a></li>
+      <li><a href="../../../../setup">Setup</a></li>
+      <li><a href="../../../../about.html">About</a></li>
+    </ul>
+  </nav>
+</header>
+
+
+    <main>
+    
+
+<div class="postdateheading"> May 11, 2022 </div>
+
+      <div class="post">
+        <h2> <a href=""> replace a disk in a running ZFS zpool </a></h2>
+
+        <p>I&rsquo;ve recently had to replace all disks in a <code>zroot</code> zpool on <a href="https://unwiredcouch.com/2013/10/30/uncloud-your-life.html">my FreeBSD server</a>.
+And I kept looking up the commands and order in which to run them. So I thought I&rsquo;d put them here to find them again when I need them.</p>
+<p>The following assumptions are being made with this:</p>
+<ol>
+<li>The <code>ada0</code> disk was faulty and already replaced</li>
+<li><code>ada1</code> is running in the zpool and working</li>
+<li>Both <code>ada0</code> and <code>ada1</code> are the same size and have the same layout</li>
+</ol>
+<h2 id="replace-the-disk-itself">Replace the disk itself</h2>
+<ol>
+<li>First up we restore the disk layout from <code>ada1</code> onto <code>ada0</code> and verify:</li>
+</ol>
+<pre tabindex="0"><code># gpart backup ada1 | gpart restore -F ada0
+# gpart show ada0
+</code></pre><ol start="2">
+<li>Given this is a <code>zroot</code> pool to boot from, we need a bootcode</li>
+</ol>
+<pre tabindex="0"><code># gpart bootcode -b /boot/pmbr -p /boot/gptzfsboot -i 1 ada0
+</code></pre><ol start="3">
+<li>Now we just replace the (missing) disk in the zpool with its replacement:</li>
+</ol>
+<pre tabindex="0"><code># zpool replace zroot ada0p3 /dev/ada0p3
+# zpool status zroot
+</code></pre><p>At this point the zpool is being resilvered to make sure all data is on the new disk. Depending on the amount of data
+this can take a while. And while it&rsquo;s running <code>zpool status zroot</code> shows something like:</p>
+<pre tabindex="0"><code># zpool status zroot
+  pool: zroot
+ state: DEGRADED
+status: One or more devices is currently being resilvered.  The pool will
+        continue to function, possibly in a degraded state.
+action: Wait for the resilver to complete.
+  scan: resilver in progress since Tue May 10 07:15:33 2022
+        416G scanned at 144M/s, 382G issued at 133M/s, 417G total
+        384G resilvered, 91.66% done, 00:04:28 to go
+config:
+
+        NAME              STATE     READ WRITE CKSUM
+        zroot             DEGRADED     0     0     0
+          mirror-0        DEGRADED     0     0     0
+            replacing-0   DEGRADED     0     0     0
+              ada0p3/old  REMOVED      0     0     0
+              ada0p3      ONLINE       0     0     0  (resilvering)
+            ada1p3        ONLINE       0     0     0
+
+errors: No known data errors
+</code></pre><h2 id="configure-encrypted-swap">Configure encrypted swap</h2>
+<p>The zroot setup from the baseinstall also comes with encrypted swap. So this also needs to be
+configured on the new disk:</p>
+<ol>
+<li>Check setup and options from the existing swap partition</li>
+</ol>
+<pre tabindex="0"><code># geli list ada1p2.eli
+Geom name: ada1p2.eli
+State: ACTIVE
+EncryptionAlgorithm: AES-XTS
+KeyLength: 128
+Crypto: accelerated software
+Version: 7
+Flags: ONETIME, W-DETACH, W-OPEN, AUTORESIZE
+KeysAllocated: 1
+KeysTotal: 1
+Providers:
+1. Name: ada1p2.eli
+   Mediasize: 2147483648 (2.0G)
+   Sectorsize: 4096
+   Mode: r1w1e0
+Consumers:
+1. Name: ada1p2
+   Mediasize: 2147483648 (2.0G)
+   Sectorsize: 512
+   Stripesize: 0
+   Stripeoffset: 1048576
+   Mode: r1w1e1
+</code></pre><ol start="2">
+<li>Set up the new swap partition with the same options</li>
+</ol>
+<pre tabindex="0"><code># geli onetime -d -e AES-XTS -l 128 -s 4096 /dev/ada0p2
+</code></pre><ol start="3">
+<li>Turn new swap partition on</li>
+</ol>
+<pre tabindex="0"><code>% swapon -a
+</code></pre><p><strong>Notice:</strong>
+When running <code>swapinfo</code> the old swap partition still shows up as a kinda ghost partition. I haven&rsquo;t
+experienced any problems with that and it usually goes away on the next reboot.</p>
+<pre tabindex="0"><code># swapinfo
+Device          1K-blocks     Used    Avail Capacity
+/dev/#C:0x86      2097152        0  2097152     0%
+/dev/ada1p2.eli   2097152        0  2097152     0%
+/dev/ada0p2.eli   2097152        0  2097152     0%
+Total             6291456        0  6291456     0%
+</code></pre>
+
+      </div>
+
+
+    </main>
+
+    <footer class="footer">
+    <ul class="menu-footer">
+      <li><a href="../../../../imprint.html">Imprint</a></li>
+    </ul>
+</footer>
+
+
+    </div>
+  </body>
+</html>
