@@ -1,13 +1,33 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>unwiredcouch.com on unwiredcouch.com</title>
   <id>https://unwiredcouch.com/atom.xml</id>
-  <updated>2022-05-11T00:00:00Z</updated>
+  <updated>2022-05-22T00:00:00Z</updated>
 	<subtitle>thoughts which have made it into written existence</subtitle>
 	<link rel="self" href="https://unwiredcouch.com/atom.xml"/>
 	<author>
     <name>Daniel Schauenberg</name>
 		<email>d@unwiredcouch.com</email>
 	</author>
+  
+	<entry>
+    <title type="html"><![CDATA[The Order of Time]]></title>
+    <published>2022-05-22T00:00:00Z</published>
+    <updated>2022-05-22T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/reading/the-order-of-time/</id>
+    <content type="html"><![CDATA[<p>I went into this book expecting much more physics than what was actually in there. There was definitely a lot of explanation of concepts on a high level. But overall the book felt much more on the philosophy side of things. Which - after realizing and getting used to it - I really liked. The thing I struggled with was the fact that so much is explained via entropy in the book. And entropy has always been a hard topic for me to wrap my brain around. Even in university. So there were some parts that left me more confused than I would have liked. Due to no fault of the author.</p>
+]]></content>
+    <link href="https://unwiredcouch.com/reading/the-order-of-time/" rel="alternate"/>
+	</entry>
+  
+	<entry>
+    <title type="html"><![CDATA[The End of Everything]]></title>
+    <published>2022-05-14T00:00:00Z</published>
+    <updated>2022-05-14T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/reading/the-end-of-everything/</id>
+    <content type="html"><![CDATA[<p>This was an absolutely wonderful and mind blowing book to read. I had to think a lot of “Dark Matter and the Dinosaurs” while reading it. I feared at first that it would be too depressing. But the author has an absolutely enjoyable writing style and it made the whole topic fun and interesting rather than loom and doom.</p>
+]]></content>
+    <link href="https://unwiredcouch.com/reading/the-end-of-everything/" rel="alternate"/>
+	</entry>
   
 	<entry>
     <title type="html"><![CDATA[replace a disk in a running ZFS zpool]]></title>
@@ -106,6 +126,26 @@ Device          1K-blocks     Used    Avail Capacity
 Total             6291456        0  6291456     0%
 </code></pre>]]></content>
     <link href="https://unwiredcouch.com/bits/2022/05/11/replace-zpool-disk.html" rel="alternate"/>
+	</entry>
+  
+	<entry>
+    <title type="html"><![CDATA[The Art of Statistics: How to learn from Data]]></title>
+    <published>2022-04-18T00:00:00Z</published>
+    <updated>2022-04-18T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/reading/the-art-of-statistics/</id>
+    <content type="html"><![CDATA[<p>It took me a while to get through this book which had less to do with the book itself and more with how I was able to make time to read. So the first couple of chapters were spread out for me over a couple of weeks and thus I had a hard time getting into it. But once I managed to make proper time to read continuously I really enjoyed the flow of the book. It’s much less mathematical than I assumed beforehand. But it’s really well written and does a good job explaining statistical concepts in plain English. And I really appreciated the strong focus on the fact that (good) statistics is more than just applying some formulas but also a hard look at whether the data and the conclusions make sense for the questions that need to be answered.</p>
+]]></content>
+    <link href="https://unwiredcouch.com/reading/the-art-of-statistics/" rel="alternate"/>
+	</entry>
+  
+	<entry>
+    <title type="html"><![CDATA[Four Thousand Weeks: Time Management for Mortals]]></title>
+    <published>2022-01-08T00:00:00Z</published>
+    <updated>2022-01-08T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/reading/four-thousand-weeks/</id>
+    <content type="html"><![CDATA[<p>I read this book after I had one friend really enjoy it and another one finding the audio book pretty insufferable. Which is an interesting combination to say the least. Overall I did enjoy the book a lot. Even though I could definitely see the preachy and more annoying parts of it. The general message of the books is that we don’t actually have that many weeks, so it’s worth it to think about how to spend them. What kind of things actually are enjoyable (of the things that we do voluntarily) and which things we can more or less do away with.</p>
+]]></content>
+    <link href="https://unwiredcouch.com/reading/four-thousand-weeks/" rel="alternate"/>
 	</entry>
   
 	<entry>
