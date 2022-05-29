@@ -1,6 +1,6 @@
 ---
-author: “David Spiegelhalter”
-title: “The Art of Statistics: How to learn from Data”
+author: David Spiegelhalter
+title: "The Art of Statistics: How to learn from Data"
 date: 2022-04-18
 ---
   
