@@ -1,7 +1,7 @@
 ## Speaker Bio
 
 <div style="text-align:left" markdown="1">
-<img src="http://www.gravatar.com/avatar/89e0ad1229121f46047977ac547bd7b4.jpg?s=150" />
+<img src="/images/gravatar.jpg" />
 </div>
 
 </br>
