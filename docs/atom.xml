@@ -1,13 +1,53 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>unwiredcouch.com on unwiredcouch.com</title>
   <id>https://unwiredcouch.com/atom.xml</id>
-  <updated>2022-05-22T00:00:00Z</updated>
+  <updated>2022-12-25T00:00:00Z</updated>
 	<subtitle>thoughts which have made it into written existence</subtitle>
 	<link rel="self" href="https://unwiredcouch.com/atom.xml"/>
 	<author>
     <name>Daniel Schauenberg</name>
 		<email>d@unwiredcouch.com</email>
 	</author>
+  
+	<entry>
+    <title type="html"><![CDATA[Black Hole Survival Guide]]></title>
+    <published>2022-12-25T00:00:00Z</published>
+    <updated>2022-12-25T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/reading/black-hole-survival-guide/</id>
+    <content type="html"><![CDATA[<p>I absolutely enjoyed this book and devoured it in 2 days or so. Janna Levin has a fantastically fun and entertaining way to talk about the most fascinating things. And black holes sure are fascinating. There were a lot of parts in the book where I was sure I&rsquo;m not getting quite the importance of the implications she explained. Or even the science on the highest of levels. But I enjoy thinking about space. And the book did exactly that.</p>
+]]></content>
+    <link href="https://unwiredcouch.com/reading/black-hole-survival-guide/" rel="alternate"/>
+	</entry>
+  
+	<entry>
+    <title type="html"><![CDATA[It&#39;s not about the Burqa]]></title>
+    <published>2022-12-23T00:00:00Z</published>
+    <updated>2022-12-23T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/reading/not-about-the-burqa/</id>
+    <content type="html"><![CDATA[<p>I really enjoyed this book. Mostly because I rarely have read any texts, let alone feminist ones from a Muslim women perspective. There&rsquo;s a lot of things I learned having previously had close to no knowledge of Islam, its traditions, or which are practiced. The book is very UK centric as most of the essay authors live there. So I&rsquo;m curious to also read more from authors from other places.</p>
+]]></content>
+    <link href="https://unwiredcouch.com/reading/not-about-the-burqa/" rel="alternate"/>
+	</entry>
+  
+	<entry>
+    <title type="html"><![CDATA[Thinking, Fast and Slow]]></title>
+    <published>2022-12-17T00:00:00Z</published>
+    <updated>2022-12-17T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/reading/thinking-fast-and-slow/</id>
+    <content type="html"><![CDATA[<p>I had originally started reading this on my Kindle in 2016 but quickly abandoned it. I then thought it was because I didn&rsquo;t find the book too interesting but I found out some time later that I just didn&rsquo;t enjoy reading on the Kindle much. So having moved to reading exclusively on paper over the last couple of years, I gave the book another try this year and absolutely enjoyed it. There&rsquo;s a lot of fascinating facts and insights into research in there. And a lot of examples to try out yourself to realize that your own brain works the same way. I took a lot of notes for this one and can definitely recommend it.</p>
+]]></content>
+    <link href="https://unwiredcouch.com/reading/thinking-fast-and-slow/" rel="alternate"/>
+	</entry>
+  
+	<entry>
+    <title type="html"><![CDATA[Seven Brief Lessons on Physics]]></title>
+    <published>2022-12-07T00:00:00Z</published>
+    <updated>2022-12-07T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/reading/seven-brief-lessons-on-physics/</id>
+    <content type="html"><![CDATA[<p>I really liked the book. It was short and digestible but interesting and fun to read nonetheless. I think I probably have read about most of the seven things somewhere else before (which doesn&rsquo;t mean I understood or have a good grasp on them). So it wasn&rsquo;t mind blowing new things I was reading. But Rovelli has a very philosophical style how he talks about these things which makes it really enjoyable.</p>
+]]></content>
+    <link href="https://unwiredcouch.com/reading/seven-brief-lessons-on-physics/" rel="alternate"/>
+	</entry>
   
 	<entry>
     <title type="html"><![CDATA[The Order of Time]]></title>
