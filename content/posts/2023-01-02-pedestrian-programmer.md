@@ -1,7 +1,7 @@
 ---
 date: 2023-01-02
 title: The Pedestrian Programmer
-url: /2021/07/26/journaling-through-a-pandemic.html
+url: /2023/01/02/pedestrian-programmer.html
 ---
 
 ## Endless fiddling
