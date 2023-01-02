@@ -1,105 +1,54 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-  <head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="cache-control" content="no-cache"/>
-    <meta http-equiv="pragma" content="no-cache"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    
+---
+date: 2023-01-02
+title: The Pedestrian Programmer
+url: /2021/07/26/journaling-through-a-pandemic.html
+---
 
-
-
-<link   rel="stylesheet"
-        href="../../../css/style.min.0a7442460ca45a8d1ffa9d4f0a0163976899fc7820ce2bb76f693ba0527afb57.css"
-        integrity="sha256-CnRCRgykWo0f&#43;p1PCgFjl2iZ/Hggziu3b2k7oFJ6&#43;1c="
-        type="text/css"
-        media="screen">
-
-<link   rel="stylesheet"
-        href="../../../css/mobile.min.9d1271f82d33327493aaf7c1818ceac101a822559d694bd14a222d686e28c391.css"
-        integrity="sha256-nRJx&#43;C0zMnSTqvfBgYzqwQGoIlWdaUvRSiItaG4ow5E="
-        type="text/css"
-        media="handheld, only screen and (max-device-width: 960px)">
-
-    <link href="https://unwiredcouch.com/atom.xml" type="application/atom+xml" rel="alternate" title="unwiredcouch.com: All Posts" />
-    
-    
-
-    <title>The Pedestrian Programmer on unwiredcouch.com</title>
-  </head>
-  <body>
-    <div class="mainwrapper">
-
-    <header class="header">
-  <a class="gravatar hidemobile" href="../../../">
-    <img
-      src="../../../images/gravatar.jpg"
-      height="50" width="50" class="avatar" alt="gravatar image" />
-  </a>
-  <nav class="menu">
-    <ul>
-      <li><a href="../../../posts">Writing</a></li>
-      <li><a href="../../../reading">Reading</a></li>
-      <li><a href="../../../setup">Setup</a></li>
-      <li><a href="../../../about.html">About</a></li>
-      <li><a href="https://instagram.com/mrtazz">Drawing</a></li>
-      <li><a rel="me" href="https://chaos.social/@mrtazz">Mastodon</a></li>
-    </ul>
-  </nav>
-</header>
-
-
-    <main>
-    
-
-<div class="postdateheading"> Jan 2, 2023 </div>
-
-      <div class="post">
-        <h2> <a href=""> The Pedestrian Programmer </a></h2>
-
-        <h2 id="endless-fiddling">Endless fiddling</h2>
-<p>In the field of software engineering there is a common theme of fiddling with
+## Endless fiddling
+In the field of software engineering there is a common theme of fiddling with
 your tools and setup until they are juuuuust right, and only then can the work
 of writing code commence. Or the next level of productivity be unlocked. I
 don’t think this is something particularly special to software engineering.
 It’s probably just a different form of cleaning up your desk before writing,
 sorting all of the paperwork before doing your taxes, or re-organizing the
 kitchen before cooking. Basically procrastination. And the hope that what’s
-missing for productivity and &ldquo;getting in the zone&rdquo; is just this one weird trick
-to improve the setup.</p>
-<p>I&rsquo;ve done this a lot as well especially early in my career, where I&rsquo;ve had
+missing for productivity and "getting in the zone" is just this one weird trick
+to improve the setup.
+
+I've done this a lot as well especially early in my career, where I've had
 convoluted setups that were very intricate and fine tuned to what I thought
 made me the most productive. Be it
-<a href="https://unwiredcouch.com/2013/11/15/my-tmux-setup.html" title="My Tmux setup on
-unwiredcouch.com">tmux</a>, or <a href="https://unwiredcouch.com/2012/11/03/irc-notifications-with-logstash.html" title="IRC notifications on unwiredcouch.com ">IRC
-notifications</a>, or of course <a href="https://unwiredcouch.com/setup/omnifocus/" title="Omnifocus setup on
-unwiredcouch.com">my way of managing
-tasks</a>. But the downside was always that the setups became more and
+[tmux](https://unwiredcouch.com/2013/11/15/my-tmux-setup.html "My Tmux setup on
+unwiredcouch.com"), or [IRC
+notifications](https://unwiredcouch.com/2012/11/03/irc-notifications-with-logstash.html
+"IRC notifications on unwiredcouch.com "), or of course [my way of managing
+tasks](https://unwiredcouch.com/setup/omnifocus/ "Omnifocus setup on
+unwiredcouch.com"). But the downside was always that the setups became more and
 more brittle with everything that was added. A plugin would break behavior when
-updated, a tool doesn&rsquo;t work or isn&rsquo;t available on macOS or Linux, an
+updated, a tool doesn't work or isn't available on macOS or Linux, an
 integration breaks through an API change. And over time the upkeep of the setup
 starts to become a bigger and bigger chore. And I noticed that at some point I
-stopped bothering with it. My setup slowly &ldquo;deteriorated&rdquo; to the minimal
-working state that kept me productive. I didn&rsquo;t use my fancy integrations
+stopped bothering with it. My setup slowly "deteriorated" to the minimal
+working state that kept me productive. I didn't use my fancy integrations
 anymore. I could hardly remember why I installed some of the editor plugins.
 And I actually was as productive if not more. And so the state I arrived at is
 that I write all code in terminal vim in tmux now and that basically any Apple
-laptop with even a small screen will do (my forever favorite being the 11&quot;
+laptop with even a small screen will do (my forever favorite being the 11"
 MacBook Air and I absolutely can’t stand having more than one display) and I
-can be set up within about 20 minutes by basically just configuring:</p>
-<ul>
-<li>low key repeat delay and quick type rate</li>
-<li>caps lock remapped to control</li>
-<li>git clone <a href="https://github.com/mrtazz/dotfiles">https://github.com/mrtazz/dotfiles</a> &amp;&amp; make install</li>
-</ul>
-<p>And not much more. My dotfiles configure vim, zsh, some git aliases, and
+can be set up within about 20 minutes by basically just configuring:
+
+- low key repeat delay and quick type rate
+- caps lock remapped to control
+- git clone https://github.com/mrtazz/dotfiles && make install
+
+And not much more. My dotfiles configure vim, zsh, some git aliases, and
 install some useful tools (via homebrew/linuxbrew) that I could do without but
-sometime enjoy using like <code>fzf</code>  and <code>ripgrep</code>.  They also get installed on
-every <a href="https://github.com/features/codespaces" title="GitHub Codespaces">codespace</a> I
+sometime enjoy using like `fzf`  and `ripgrep`.  They also get installed on
+every [codespace](https://github.com/features/codespaces "GitHub Codespaces") I
 create (at GitHub that is my main development environment) so when I ssh into
 it, the terminal is set up in the same way. On macOS they install some apps I
 use like iTerm2, 1Password, Alfred, and the Phoenix window manager with configs
-that I haven&rsquo;t really changed in years. They are also mostly niceties that I
+that I haven't really changed in years. They are also mostly niceties that I
 can probably more or less do without (except 1Password). E.g. for months when
 codespaces was new and only available through VSCode I wrote code in a
 fullscreen VSCode terminal window running vim within it. And I was basically as
@@ -107,20 +56,22 @@ productive as ever (maybe even a bit more given I had access to quick and
 disposable codespaces). Even with browsers I don’t really use any extensions or
 anything and change them without even thinking about it. I had some work
 specific configuration in Safari break a while ago. And instead of spending
-ages debugging it, I just switched to Firefox and moved on with my work.</p>
-<p>And that is more or less the pretty barebones setup I use to write code and
-which I describe as a &ldquo;pedestrian programmer&rdquo; programmer style when I get asked
-about it.</p>
-<h2 id="programming">Programming</h2>
-<p>But this notion doesn’t stop at the setup for me. It’s also how I write code.
+ages debugging it, I just switched to Firefox and moved on with my work.
+
+And that is more or less the pretty barebones setup I use to write code and
+which I describe as a "pedestrian programmer" programmer style when I get asked
+about it.
+
+## Programming
+But this notion doesn’t stop at the setup for me. It’s also how I write code.
 As I’ve mostly worked in infrastructure engineering over the last decade (even
-though I&rsquo;ve switched to a product platform team at the beginning of 2022), I’ve
+though I've switched to a product platform team at the beginning of 2022), I’ve
 had to jump between many different languages in the same day. It’s usually some
 mix of ruby, python, shell, golang, javascript, PHP, and various config
 formats. And I use that same setup for all of it. Furthermore, I also write
 very similar code in all of these languages. I’ve mostly come to utilize the
 common denominator of syntax and code structure to implement things regardless
-of language (they are all C-style languages anyways so they aren&rsquo;t vastly
+of language (they are all C-style languages anyways so they aren't vastly
 different). And only really start using language specific constructs where
 needed. So my python classes look like my ruby classes, look like my PHP
 classes. If I can help it I don’t use concepts like python’s decorators, or
@@ -134,13 +85,14 @@ maintenance problem, it can still be changed to use more specialized constructs
 and concepts later on. And maybe even more easily because the original
 structure is fairly simple. But for as long as possible I try to keep code as
 “pedestrian” as possible so it’s easy to read, follow along, reason about, and
-change.</p>
-<p>Similarly I don’t really use design patterns a lot when I write code. I
+change.
+
+Similarly I don’t really use design patterns a lot when I write code. I
 remember the days in university when design patterns were all the rage. And
 books about them the most important text one could ever read about programming.
-I also remember trying really hard to force the <a href="https://en.wikipedia.org/wiki/Singleton_pattern" title="The Singleton
-Pattern">Singleton
-pattern</a> into every university programming project because it’s what
+I also remember trying really hard to force the [Singleton
+pattern](https://en.wikipedia.org/wiki/Singleton_pattern "The Singleton
+Pattern") into every university programming project because it’s what
 professors wanted to see. Nowadays I will try and solve the problem with as
 simple of an architecture as I can. And then only change to a more intricate
 pattern if it serves understanding or maintenance. I most of the time don’t
@@ -148,9 +100,10 @@ recall what a design pattern does when I hear the name. Not that I don’t
 understand what they do or how they are useful. Or that I don’t end up
 implementing them along the way. But I’ve found it to be more confusing than
 helpful to throw design pattern names as jargon around instead of writing code
-in a form that solves the problem and comment it along the way.</p>
-<h2 id="take-away">Take away</h2>
-<p>My main point in all of this is not that it’s bad to have a very intricate
+in a form that solves the problem and comment it along the way.
+
+## Take away
+My main point in all of this is not that it’s bad to have a very intricate
 setup, or that you shouldn’t take joy in fiddling with it. But it’s important
 to recognise when the hunt for the mythical “zero-friction” state gets in the
 way of getting things done (and sometimes a little friction is not a bad
@@ -168,28 +121,12 @@ regardless of how complicated they are because there might be something in
 there I’d love to try. And when I work in a team where we decide on design
 patterns and a more complicated architecture or code style as a trade off for
 some other problems, I’m happy to go along with it. It’s just not my first
-choice.</p>
-<p>Because in the end a setup doesn’t make you productive and code isn’t “the
+choice.
+
+Because in the end a setup doesn’t make you productive and code isn’t “the
 better solution” because it’s complicated. You are productive with it because
 it fits the way you (and the people on your team when it comes to shared code)
 think and approach problems. There are no unreal programmers, if you write code
 with whatever tools you like and in whatever shape you prefer, you’re still a
 programmer as much as everyone else.  Even if you are - like me - a proud
-pedestrian programmer.</p>
-
-
-      </div>
-
-
-    </main>
-
-    <footer class="footer">
-    <ul class="menu-footer">
-      <li><a href="../../../imprint.html">Imprint</a></li>
-    </ul>
-</footer>
-
-
-    </div>
-  </body>
-</html>
+pedestrian programmer.
