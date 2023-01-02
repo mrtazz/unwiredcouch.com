@@ -25,7 +25,7 @@
     
     
 
-    <title>The Pedestrian Programmer on unwiredcouch.com</title>
+    <title>Journaling through a Pandemic on unwiredcouch.com</title>
   </head>
   <body>
     <div class="mainwrapper">
@@ -52,130 +52,35 @@
     <main>
     
 
-<div class="postdateheading"> Jan 2, 2023 </div>
+<div class="postdateheading"> Jul 26, 2021 </div>
 
       <div class="post">
-        <h2> <a href=""> The Pedestrian Programmer </a></h2>
+        <h2> <a href=""> Journaling through a Pandemic </a></h2>
 
-        <h2 id="endless-fiddling">Endless fiddling</h2>
-<p>In the field of software engineering there is a common theme of fiddling with
-your tools and setup until they are juuuuust right, and only then can the work
-of writing code commence. Or the next level of productivity be unlocked. I
-don’t think this is something particularly special to software engineering.
-It’s probably just a different form of cleaning up your desk before writing,
-sorting all of the paperwork before doing your taxes, or re-organizing the
-kitchen before cooking. Basically procrastination. And the hope that what’s
-missing for productivity and &ldquo;getting in the zone&rdquo; is just this one weird trick
-to improve the setup.</p>
-<p>I&rsquo;ve done this a lot as well especially early in my career, where I&rsquo;ve had
-convoluted setups that were very intricate and fine tuned to what I thought
-made me the most productive. Be it
-<a href="https://unwiredcouch.com/2013/11/15/my-tmux-setup.html" title="My Tmux setup on
-unwiredcouch.com">tmux</a>, or <a href="https://unwiredcouch.com/2012/11/03/irc-notifications-with-logstash.html" title="IRC notifications on unwiredcouch.com ">IRC
-notifications</a>, or of course <a href="https://unwiredcouch.com/setup/omnifocus/" title="Omnifocus setup on
-unwiredcouch.com">my way of managing
-tasks</a>. But the downside was always that the setups became more and
-more brittle with everything that was added. A plugin would break behavior when
-updated, a tool doesn&rsquo;t work or isn&rsquo;t available on macOS or Linux, an
-integration breaks through an API change. And over time the upkeep of the setup
-starts to become a bigger and bigger chore. And I noticed that at some point I
-stopped bothering with it. My setup slowly &ldquo;deteriorated&rdquo; to the minimal
-working state that kept me productive. I didn&rsquo;t use my fancy integrations
-anymore. I could hardly remember why I installed some of the editor plugins.
-And I actually was as productive if not more. And so the state I arrived at is
-that I write all code in terminal vim in tmux now and that basically any Apple
-laptop with even a small screen will do (my forever favorite being the 11&quot;
-MacBook Air and I absolutely can’t stand having more than one display) and I
-can be set up within about 20 minutes by basically just configuring:</p>
-<ul>
-<li>low key repeat delay and quick type rate</li>
-<li>caps lock remapped to control</li>
-<li>git clone <a href="https://github.com/mrtazz/dotfiles">https://github.com/mrtazz/dotfiles</a> &amp;&amp; make install</li>
-</ul>
-<p>And not much more. My dotfiles configure vim, zsh, some git aliases, and
-install some useful tools (via homebrew/linuxbrew) that I could do without but
-sometime enjoy using like <code>fzf</code>  and <code>ripgrep</code>.  They also get installed on
-every <a href="https://github.com/features/codespaces" title="GitHub Codespaces">codespace</a> I
-create (at GitHub that is my main development environment) so when I ssh into
-it, the terminal is set up in the same way. On macOS they install some apps I
-use like iTerm2, 1Password, Alfred, and the Phoenix window manager with configs
-that I haven&rsquo;t really changed in years. They are also mostly niceties that I
-can probably more or less do without (except 1Password). E.g. for months when
-codespaces was new and only available through VSCode I wrote code in a
-fullscreen VSCode terminal window running vim within it. And I was basically as
-productive as ever (maybe even a bit more given I had access to quick and
-disposable codespaces). Even with browsers I don’t really use any extensions or
-anything and change them without even thinking about it. I had some work
-specific configuration in Safari break a while ago. And instead of spending
-ages debugging it, I just switched to Firefox and moved on with my work.</p>
-<p>And that is more or less the pretty barebones setup I use to write code and
-which I describe as a &ldquo;pedestrian programmer&rdquo; programmer style when I get asked
-about it.</p>
-<h2 id="programming">Programming</h2>
-<p>But this notion doesn’t stop at the setup for me. It’s also how I write code.
-As I’ve mostly worked in infrastructure engineering over the last decade (even
-though I&rsquo;ve switched to a product platform team at the beginning of 2022), I’ve
-had to jump between many different languages in the same day. It’s usually some
-mix of ruby, python, shell, golang, javascript, PHP, and various config
-formats. And I use that same setup for all of it. Furthermore, I also write
-very similar code in all of these languages. I’ve mostly come to utilize the
-common denominator of syntax and code structure to implement things regardless
-of language (they are all C-style languages anyways so they aren&rsquo;t vastly
-different). And only really start using language specific constructs where
-needed. So my python classes look like my ruby classes, look like my PHP
-classes. If I can help it I don’t use concepts like python’s decorators, or
-ruby blocks (or even heavy use of higher order functions that most languages
-support at this point) in code I define and control. In my mind, trying to
-convey the solution that is implemented in code in as simple constructs as
-possible makes it a lot more accessible and friendly to get started with. I
-hope that even if someone comes from having written python their whole career,
-my ruby and PHP still is very accessible. If it becomes a performance or
-maintenance problem, it can still be changed to use more specialized constructs
-and concepts later on. And maybe even more easily because the original
-structure is fairly simple. But for as long as possible I try to keep code as
-“pedestrian” as possible so it’s easy to read, follow along, reason about, and
-change.</p>
-<p>Similarly I don’t really use design patterns a lot when I write code. I
-remember the days in university when design patterns were all the rage. And
-books about them the most important text one could ever read about programming.
-I also remember trying really hard to force the <a href="https://en.wikipedia.org/wiki/Singleton_pattern" title="The Singleton
-Pattern">Singleton
-pattern</a> into every university programming project because it’s what
-professors wanted to see. Nowadays I will try and solve the problem with as
-simple of an architecture as I can. And then only change to a more intricate
-pattern if it serves understanding or maintenance. I most of the time don’t
-recall what a design pattern does when I hear the name. Not that I don’t
-understand what they do or how they are useful. Or that I don’t end up
-implementing them along the way. But I’ve found it to be more confusing than
-helpful to throw design pattern names as jargon around instead of writing code
-in a form that solves the problem and comment it along the way.</p>
-<h2 id="take-away">Take away</h2>
-<p>My main point in all of this is not that it’s bad to have a very intricate
-setup, or that you shouldn’t take joy in fiddling with it. But it’s important
-to recognise when the hunt for the mythical “zero-friction” state gets in the
-way of getting things done (and sometimes a little friction is not a bad
-thing). On the other hand it also doesn’t mean that the most elite and true way
-to write code is just using vim and the most barebones setup there is. Neither
-would I advocate to never use design patterns or take time to build a
-sophisticated architecture. The point I’m trying to bring across with the
-description of my approach is that it doesn’t take intricate setups and complex
-architectures to write production code that solves problems. Everyone is
-different and different approaches result in the same useful code. There is no
-rule of “the better the programmer, the more sophisticated the setup”. I’ve
-worked with programmers I respect immensely that wrote code in Notepad.exe or
-used the default 8 line vim config. I also enjoy reading about other’s setups
-regardless of how complicated they are because there might be something in
-there I’d love to try. And when I work in a team where we decide on design
-patterns and a more complicated architecture or code style as a trade off for
-some other problems, I’m happy to go along with it. It’s just not my first
-choice.</p>
-<p>Because in the end a setup doesn’t make you productive and code isn’t “the
-better solution” because it’s complicated. You are productive with it because
-it fits the way you (and the people on your team when it comes to shared code)
-think and approach problems. There are no unreal programmers, if you write code
-with whatever tools you like and in whatever shape you prefer, you’re still a
-programmer as much as everyone else.  Even if you are - like me - a proud
-pedestrian programmer.</p>
+        <p><img src="../../../images/journaling-through-a-pandemic/journal-overview.png" alt="5 journals next to each other viewed from the binder side. Left to right the turquoise &ldquo;some lines a day&rdquo; journal, a blue long form journal, a green reading journal, and a yellow and purple bullet journal labeled with number 6, 01/2020 to 07/2020 and number 7, 08/2020 to 12/2020 respectively " title="Overview of my paper journals"></p>
+<p>I started 2020 with a very different expectation of the year to come. And I think it’s safe to say that I’m not alone in that one. But fast-forward 3 months and I found myself in the middle of a lockdown and a pandemic. Everyone is at home all the time, it’s working from home all the time, no coffee shops, no meeting friends, and that for the foreseeable future. The days are fairly unstructured and pretty chaotic as we try to make the best of this situation. In which I found myself really embracing journaling into various paper notebooks and it has made a tremendous difference for my mental health.</p>
+<h2 id="some-lines-a-day">Some lines a day</h2>
+<p>Towards the end of 2019 I had bought a &ldquo;Some lines a day&rdquo; journal from Leuchtturm1917. And while at the beginning of the year, I wasn’t too sure what to put it in there, and lots of entries were just of the &ldquo;had coffee today and got some stuff done&rdquo; variety. I now really appreciate having this low-pressure prompt to get my thoughts out of my brain every morning.</p>
+<p>The way the journal is designed is that it has 365 pages, one page per day. The pages are then divided into 5 parts so that the book can be used for 5 years. Once you’re through with the first year, you can see what you wrote in the year(s) before when getting to subsequent entries. It’s basically an analog version of the &ldquo;On this day&rdquo; feature you can find in every photo and journaling app these days.</p>
+<p>The really nice part about this is that there isn’t really a ton of space for each day. So, it’s very low pressure. If you want, you can write a single sentence, and it feels like you did all there was to do. Or you can write fairly small and get a couple of good thoughts on paper before the space fills up. This means that for me, I can sit down in the morning and put whatever is on my mind onto paper, without a goal or a requirement. A literal brain dump.</p>
+<h2 id="long-form-journal">Long Form Journal</h2>
+<p>A month into the first lockdown, I wanted to have a place to continue these thoughts from the &ldquo;Some lines a day&rdquo; brain dumps. So I ordered a simple soft cover, lined, A5 notebook from Leuchtturm1917 again. And once it arrived, I just poured my thoughts and anxieties into it. Every morning when I could see that some lines wouldn’t be enough, I continued whatever thoughts I had in this new journal. It felt a bit awkward at first because I wasn’t sure how to deal with which things go in there. It was different from only writing some lines because filtering felt like a built-in thing with so little space each day. But in the long form journal there was no limitation. It took me a while to get used to the journal and be ok with writing whatever crossed my mind with no judgement or self censoring. But it was (and still is) incredibly helpful to calm myself down in the morning and try to make sense of all the thoughts in my brain.</p>
+<p>Again, I try not to force any requirements or expectations on me with this journal, either. If I thought there was more to write but I am done after 2 sentences, that’s fine and I’ll close the journal for the day. Or pick it up again in the afternoon to continue some thoughts or add new ones. I allow myself to have days (or weeks) where I don&rsquo;t have the patience and calm to write in there. Or write multiple pages a day. The purpose of it is to make sure I don’t keep things rotating in my brain that make me distracted and anxious, but dump them onto paper. Even if I ran out of &ldquo;some lines&rdquo; that day.</p>
+<h2 id="bullet-journals">Bullet journals</h2>
+<p>Which then brings the third notebook into focus, which is my Bullet Journal. I wrote <a href="https://unwiredcouch.com/2019/07/05/pen-and-paper.html" title="Pen &amp; Paper on unwiredcouch.com ">about this before</a>, and it has seen a couple of different implementations since writing the original post.</p>
+<p>In the Bullet Journal, which is a dotted A5 Leuchtturm1917 notebook for me, I describe &ldquo;the runway&rdquo; of my responsibilities. Meaning that I plan out what the months, weeks, and days (often with explicit time blocks) should ideally be. Which of course never actually ends up being what reality looks like.</p>
+<blockquote>
+<p>Make the plan. Execute the plan. Expect the plan to go off the rails. Throw away the plan. - Leonard Snart</p>
+</blockquote>
+<p>But that’s ok. It’s the map, not the territory. And sometimes even just a compass. The important thing for me is that it’s a place where I put structure into the day and don’t just let it happen. I’ve learned about myself over the years that while I sometimes feel like it would be nice to just not have any plans or to-dos for a day, these unstructured days quickly turn into dissatisfaction for me. And I feel like I’ve not done anything. This is why I try to be intentional about my days. At least during the week. Weekends are still mostly unstructured in the sense that I don’t plan out the whole day but maybe only one or two things.</p>
+<p>A very major thing the Bullet Journal is instrumental in for me is what I call &ldquo;Inbox anxiety&rdquo;. Depending on how much and what kind of things I have going on, I find myself in periods of dreading opening E-Mail (especially in the morning) because of the additional and new responsibilities I will find in there. And to some extent this also goes for physical mail. So the way I tackle that is that I open the Bullet Journal and the mail client on my phone. And for everything I see in there that needs follow-up - or any other action from my side - I write a to-do item into the journal. Including some potential context, or related to-dos, and so on. And I’ve found that this helps me feel grounded and not overwhelmed in times when there is more incoming responsibilities through my inboxes than I’d like to.</p>
+<p>As the kind of complement to that, I also try to log even seemingly mundane things I do throughout the day. Especially on days that don’t go as planned, or are super stressful and I end up not feeling super great about them, it’s helpful to take a break and realize where all the time went that day. And what kind of things I actually <em>did</em> get done. And even if it still means I didn’t get much done, I have a record of the day and it doesn’t feel that lost. Especially throughout this pandemic, where every day has a tendency to feel the same, it’s useful to have something that shows me that this isn’t quite true. And all the days are indeed different, if only in subtle ways.</p>
+<p>What I don’t really put into the Bullet Journal anymore are backlogs (or &ldquo;someday&rdquo; lists in GTD parlance). I realized that with 2 notebooks a year for bullet journaling, there are a bunch of things that often get migrated over and over again because I want to get to them eventually, but there is no time pressure. And it was tedious to rewrite them all the time. It just made me feel like the collections I had those items in weren’t useful and actually demotivating to me. So I moved those into digital tools to keep the Bullet journal the place for front-of-mind things.</p>
+<h2 id="reading-journal">Reading journal</h2>
+<p>Towards the end of 2019 I also bought an &ldquo;Ex Libris&rdquo; reading journal from Leuchtturm1917. This is the least used one of my regular journals. But while I don’t use it consistently, it’s been an absolutely fun addition. It mostly came about through me realizing that I don’t super enjoy Goodreads for more than tracking <em>when</em> I’m reading and finishing a book. I don’t like the review interface, and the app is generally pretty slow. And it never really intrigues me to go back and browse through the books I read and what I thought about them the way a paper journal does.</p>
+<h2 id="in-closing">In closing</h2>
+<p>As difficult and challenging as 2020 was, and the ongoing pandemic continues to be, this process of having notebooks for many different ways to get things out of my head is immensely helpful to me. And as a continuation of leaning more on analog tools that I started in 2018 it keeps me from being completely petrified and procrastinating in the morning on many days. It also provides a way to really think about what thoughts and anxieties are rotating in my brain and have a conversation about it, even if I’m basically just talking to myself. And despite it being slightly inconvenient to carry around 3 or so notebooks sometimes, the benefits I get from having them around vastly outweighs that inconvenience for me. I even got myself a nice new pen to enjoy the process of sitting down and writing even more.</p>
+<p><img src="../../../images/journaling-through-a-pandemic/lamy-cp1.png" alt="A black Lamy CP1 fountain pen on a wooden table" title="Lamy CP1 fountain pen"></p>
 
 
       </div>
