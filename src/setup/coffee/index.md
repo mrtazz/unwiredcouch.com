@@ -10,7 +10,7 @@ to drink bad coffee anymore. So I started to look into the basics of how to
 make good coffee. I started with a [hand grinder][skerton] and a [French
 Press][french_press]. I quickly realized that I don't like the oily taste and
 got an [Aeropress][aeropress]. By the time I had moved to NYC with only my
-Aeropress and grinder, my friend [Mathias][roidrage] had published his ["The
+Aeropress and grinder, my friend [Mathias][mathias] had published his ["The
 Beginner’s Shopping Guide to Filter Coffee Gear"][holgarific] which I used to
 restock my kitchen. Since then I've switched out some things and settled on
 some others and this page is the place where I write down my current setup.
@@ -112,7 +112,7 @@ Culture][counterculture].
 [squaremile]: http://shop.squaremilecoffee.com/
 [kettle]: http://www.amazon.com/Hario-Buono-Coffee-Drip-Kettle/dp/B000IGOXLS
 [french_press]: https://en.wikipedia.org/wiki/French_press
-[mathias]: https://twitter.com/roidrage
+[mathias]: https://paperplanes.de
 [scale]: http://www.amazon.com/gp/product/B002UG4UM6
 [coldbrew]: https://github.com/roidrage/coffee/pull/2
 [iced_aeropress]: https://instagram.com/p/5pQa5ONp22/
