@@ -84,6 +84,12 @@ whole crew was singing along to a Good Charlotte song on the radio.
 Another one close to the Etsy office that I've gotten a ton of lunches in. The
 slices are great, but so are the (veggie) burgers.
 
+#### [Shake Shack Burgers](https://shakeshack.com/#/)
+
+Shake Shack was the burger place I definitely tried to not go to too much.
+They were also close to the office which made it really hard. And having a
+milkshake and a shack stack was just a really tempting offer for lunch.
+
 
 ### Parks and Outdoor Spaces
 
