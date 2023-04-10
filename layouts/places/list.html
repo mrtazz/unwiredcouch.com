@@ -1,0 +1,9 @@
+{{ define "main" }}
+    <ul class="places-list">
+    {{ range .Pages }}
+      <li class="places-entry">
+          <a class="places-entry-title" href="{{ .RelPermalink }}"> {{ .Params.city }}</a>
+      </li>
+    {{ end }}
+    </ul>
+{{ end }}
