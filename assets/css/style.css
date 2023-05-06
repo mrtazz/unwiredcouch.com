@@ -7,7 +7,10 @@
 body {
     background-color: white;
     color: #051822;
-    font: 300 1.1em/1.6em  "latoregular", "Arial", sans-serif;
+    /*font-weight: 300;*/
+    font-size: 1.1em;
+    line-height: 1.6em;
+    font-family: source sans pro, sans-serif;
 }
 
 main {
@@ -159,6 +162,11 @@ h1 {
     font-size:34px;
     margin-bottom: 15px;
 }
+
+h1.posttitle {
+    margin-bottom: 35px;
+}
+
 h2 {
     color: #184468;
     font-size: 30px;
@@ -229,7 +237,7 @@ div.menu a.avatar {
 }
 
 ul{
-  margin-left: 30px;,
+  margin-left: 30px;
   margin-bottom: 15px;
 }
 
