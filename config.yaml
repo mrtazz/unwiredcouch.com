@@ -4,7 +4,7 @@ DefaultContentLanguage: "en"
 title: "unwiredcouch.com"
 summarylength: 10
 enableEmoji: false
-enableRobotsTXT: true
+enableRobotsTXT: false
 Author:
   Name: Daniel Schauenberg
   Email: d@unwiredcouch.com
