@@ -2,13 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://unwiredcouch.com/bits/</loc>
+    <lastmod>2023-07-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://unwiredcouch.com/bits/2023/07/02/static-url-shortening-nginx-maps.html</loc>
+    <lastmod>2023-07-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://unwiredcouch.com/</loc>
+    <lastmod>2023-07-02T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://unwiredcouch.com/posts/</loc>
     <lastmod>2023-06-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://unwiredcouch.com/2023/06/27/senior-rotations.html</loc>
-    <lastmod>2023-06-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://unwiredcouch.com/</loc>
     <lastmod>2023-06-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://unwiredcouch.com/2023/06/07/incidents-tickets-standardized-learning.html</loc>
@@ -46,9 +52,6 @@
   </url><url>
     <loc>https://unwiredcouch.com/reading/the-end-of-everything/</loc>
     <lastmod>2022-05-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://unwiredcouch.com/bits/</loc>
-    <lastmod>2022-05-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://unwiredcouch.com/bits/2022/05/11/replace-zpool-disk.html</loc>
     <lastmod>2022-05-11T00:00:00+00:00</lastmod>

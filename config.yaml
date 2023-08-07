@@ -3,8 +3,8 @@ languageCode: "en"
 DefaultContentLanguage: "en"
 title: "unwiredcouch.com"
 summarylength: 10
-enableEmoji: true
-enableRobotsTXT: true
+enableEmoji: false
+enableRobotsTXT: false
 Author:
   Name: Daniel Schauenberg
   Email: d@unwiredcouch.com
