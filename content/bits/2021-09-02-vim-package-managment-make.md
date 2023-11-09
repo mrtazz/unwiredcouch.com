@@ -108,3 +108,34 @@ And the full example of the `Makefile` looks like this:
 I’ve been using this way of managing my vim plugins for a while now. And I’m really liking it. It’s small, portable, and easy for me to reason about. I don’t think there will be a need for this to change anytime soon since it’s pretty feature complete for me. From a purely aesthetic perspective it’s not super nice that it removes all plugins every time it runs just to put most of the files back right away. But that doesn’t bother me because it’s fast, reliable, and simple. 
 
 If you’re curious about more of my setup, you can find [my dotfiles on GitHub](https://github.com/mrtazz/dotfiles "mrtazz’s dotfiles on github.com") where I’ve done much more with `make` .
+
+## Bonus update 11-2023: automated plugin updates
+
+Since writing this I've also incorporated an Action in my dotfiles repo that updates all my plugins once a week. So the next time I pull my dotfiles (or create a new codespace) I have an updated version of my vim plugins. The Action definition for this looks like this:
+
+```
+name: vim-plugin-update
+
+on:
+  workflow_dispatch:
+  schedule:
+    # run once a week on Wednesday
+    - cron: '30 3 * * 3'
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: update vim plugins
+        run: cd vim && make update-plugins
+
+      - name: commit and push changes
+        run: |
+          git config user.name Github Actions
+          git config user.email actions@noreply.github.com
+          git add vim/pack
+          git commit --allow-empty -m "update vim plugins"
+          git push
+```
