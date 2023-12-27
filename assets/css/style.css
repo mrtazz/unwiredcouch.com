@@ -246,6 +246,11 @@ ul{
   margin-bottom: 15px;
 }
 
+.reading-single ol{
+  margin-left: 30px;
+  margin-bottom: 15px;
+}
+
 
 .post img {
   display:block;
@@ -323,13 +328,25 @@ div.archive ul li{
   display: block;
 }
 
+.reading-entry-category {
+  flex: 0 0 auto;
+  margin-right: 10px;
+}
+
 .reading-entry-date {
-  flex: 1 0 auto;
+  flex: 0 0 auto;
   white-space: nowrap;
   text-align: right;
 }
 
-.reading-single p img {
+.reading-single p img{
+  display:block;
+  margin:auto;
+  max-width:75%;
+  height:auto;
+}
+
+.reading-single-cover-image {
   display:block;
   margin:auto;
   max-width:25%;
@@ -357,14 +374,14 @@ div.archive ul li{
 
 .reading-single-book-title {
     color: #184468;
-    font-size: 30px;
+    font-size: 34px;
     margin-bottom: 20px;
     line-height: normal;
 }
 
 .reading-single-book-author {
     color: #184468;
-    font-size:24px;
+    font-size:20px;
     margin-left: 3px;
     margin-bottom: 20px;
 }

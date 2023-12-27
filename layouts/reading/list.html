@@ -1,15 +1,22 @@
 {{ define "main" }}
+
+
 <div class="reading-page">
   {{ range .Pages.GroupByPublishDate "2006" }}
   <h2 class="reading-list-year">{{ .Key }}</h2>
     <ul class="reading-list">
     {{ range .Pages }}
       {{ if ne .Type "standalonepage" }}
+      {{ $category := "📚" }}
+      {{ if eq .Params.category "paper" }}
+      {{ $category = "📄" }}
+      {{ end }}
       <li class="reading-entry">
         <span class="reading-entry-container">
           <a class="reading-entry-title" href="{{ .RelPermalink }}"> {{ .Title }}</a>
           <span class="reading-entry-author">by {{ .Params.author }}</span>
         </span>
+        <span class="reading-entry-category"> {{ $category }} </span>
         <span class="reading-entry-date hidemobile">{{ .PublishDate.Format "Jan 2, 2006" }} </span>
       </li>
       {{ end }}

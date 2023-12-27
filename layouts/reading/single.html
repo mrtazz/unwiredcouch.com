@@ -12,19 +12,27 @@
 {{ $coverurl = $coverurl_png }}
 {{ end }}
 
+{{ $category := "📚" }}
+{{ if eq .Params.category "paper" }}
+{{ $category = "📄" }}
+{{ end }}
+
 <div class="reading-single">
   <div class="reading-header">
     <div class="reading-header-text">
       <ul class="reading-header-text-list">
-        <li class="reading-header-text-list-item reading-single-book-title"> {{ .Title }} </li>
+        <li class="reading-header-text-list-item reading-single-book-title"> {{ .Title }} {{ $category }} </li>
         <li class="reading-header-text-list-item"> by
           <span class="reading-single-book-author"> {{ .Params.Author }}
           </span> </li>
         <li class="reading-header-text-list-item reading-single-book-date"> Read: {{ .PublishDate.Format "Jan 2, 2006" }} </li>
+        {{ if .Params.origin_url -}}
+        <li class="reading-header-text-list-item reading-single-origin-link"> <a href="{{ .Params.origin_url }}"> Link </a></li>
+        {{- end }}
     </div>
 
     {{ if $coverurl -}}
-    <img src="{{ $coverurl }}" alt="{{ .Title }} book cover">
+    <img class="reading-single-cover-image" src="{{ $coverurl }}" alt="{{ .Title }} book cover">
     {{- end }}
   </div>
 
