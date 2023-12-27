@@ -8,7 +8,101 @@
     <language>en</language>
     <managingEditor>d@unwiredcouch.com (Daniel Schauenberg)</managingEditor>
     <webMaster>d@unwiredcouch.com (Daniel Schauenberg)</webMaster>
-    <lastBuildDate>Thu, 24 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://unwiredcouch.com/reading/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 17 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://unwiredcouch.com/reading/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Resolving the Command–Adapt Paradox: Guided Adaptability to Cope with Complexity</title>
+      <link>https://unwiredcouch.com/reading/paper-command-adapt-paradox/</link>
+      <pubDate>Sun, 17 Dec 2023 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/reading/paper-command-adapt-paradox/</guid>
+      <description>Key takeaways The paper discusses the apparent paradox of “plan and conform” (aka centralised control) and “plan and revise” (aka guided adaptability) perspectives in safety management.</description>
+    <content:encoded><![CDATA[<h2 id="key-takeaways">Key takeaways</h2>
+<p>The paper discusses the apparent paradox of “plan and conform” (aka centralised control) and “plan and revise” (aka guided adaptability) perspectives in safety management. As the paper discusses, this paradox is only apparent as both are needed in conjunction to navigate an ever faster changing world full of brittleness.</p>
+<h2 id="detailed-discussion">Detailed discussion</h2>
+<p>The paper starts of with an introduction to failure as a result of brittle systems:</p>
+<blockquote>
+<p>“Failure is due to brittle systems, not erratic components, subsystems, or human beings.” (Woods, 2023, p. 2)</p>
+</blockquote>
+<p>Which sets the theme for failure (and success for that matter) being an emergent property of a system that can’t be explained by looking at the individual components alone. This is a very common view on failure in complex systems (see e.g. “Engineering a safer world”) and very important as well later on when discussing the limits of the “plan and conform” perspective.</p>
+<p>Brittleness as a core emergent property of systems is subsequently defined as:</p>
+<blockquote>
+<p>“Descriptively, brittleness is how rapidly a system’s performance declines when it nears and reaches its boundary.” (Woods, 2023, p. 3)</p>
+</blockquote>
+<p>Following from the definition of brittleness the central challenge of operating highly complex systems with emergent behaviour is then stated as:</p>
+<blockquote>
+<p>“Because competence envelopes are bounded, a core question for all systems is—how does the system perform when events push it near or beyond the edge of its envelope?” (Woods, 2023, p. 3)</p>
+</blockquote>
+<p>And this is very interesting I think because it’s not just the core question for all systems from an engineering and design standpoint. But also the core question for safety management. With the general task of safety management being to keep the system within its operating boundaries (setting aside the problem of knowing what those boundaries are) it is also core to safety management.</p>
+<p>Next up the apparent paradox “Command-Adapt” is described in a contrasting description of upper-echelons view of the work and units-of-action view of the work (essentially the blunt-end/sharp-end contrasted view on work). And with that view of the work also comes a view on incidents and failures. For the blunt end:</p>
+<blockquote>
+<p>“Incidents and failures generally are diagnosed as failures of operational personnel to work-to-rule/role/plan which then leads to new pressures to conform. This is the systems architecture that underlies an emphasis on rule compliance in safety management.” (Woods, 2023, p. 4)</p>
+</blockquote>
+<p>And  for the sharp end as the other side of the apparent paradox:</p>
+<blockquote>
+<p>“The central theme of the guided adaptability perspective is “plan and revise”—being poised to adapt. This perspective recognizes that disrupting events will challenge plans-in-progress, requiring adaptations, reprioritization, and reconfiguration in order to meet key goals given the effects of disturbances and changes.” (Woods, 2023, p. 4)</p>
+</blockquote>
+<p>And with these two perspectives (“follow the plan as it describes the safe boundaries of system operations” vs “things aren’t gonna go as planned and we need to change things around”)  defined, the apparent paradox that you have to choose one or the other for how safety management is done is outlined. And then immediately uncovered as a wrong contrasting of approaches:</p>
+<blockquote>
+<p>“Empirical studies, experience, and science all reveal that the paradox is only apparent: “good” systems embedded in this universe need to plan and revise—to do both. And the necessity of both is evident in the need to manage the risk of brittleness while coping with the side effects of growth and change” (Woods, 2023, p. 5)</p>
+</blockquote>
+<p>And to me this is really the core of the paper. That this strict splitting up of two perspectives on safety management that we often see (plan-and-follow vs adapt-and-improvise, blunt-end vs sharp-end, Safety I vs. Safety II, etc) is largely the wrong question. Because we need to understand that both have their place and there needs to be an understanding of the trade-offs of when one is being employed rather than the other. And the problems arise when this isn’t recognised:</p>
+<blockquote>
+<p>“The paradox dissolves, in part, when one realizes guided adaptability depends in part on plans. The difficulty arises when organizations over-rely on plans [7]. Over-reliance undermines adaptive capacity when beyond-plan challenges arise. Beyond-plan challenges occur regularly for complex systems. The catch is: pressure to comply focuses only on the first and degrades the second.” (Woods, 2023, p. 5)</p>
+</blockquote>
+<p>In order to underline the fact that plans eventually fall short 2 classical assumptions about plans are discussed:</p>
+<ol>
+<li>Plans can completely specify actions</li>
+<li>Rationalisations about why findings about shortcomings of plans only apply to other areas and not one’s own</li>
+</ol>
+<p>From the belief that the first assumption is true, it is usually derived why work-to-rule should be a guiding principle of safety management:</p>
+<blockquote>
+<p>“If plans can fully specify actions, or nearly so, then work-to-rule/role/ plan is sufficient for productive and safe systems.” (Woods, 2023, p. 5)</p>
+</blockquote>
+<p>This is the very common and alluring perspective that work is much more algorithmic rather than heuristic. This assumption that it’s possible to fully specify work also underlies for example the frequent over-eager and over-optimistic assumption of how much work can be (easily) automated (e.g. by a script or so-called “AI”).</p>
+<p>Related to that assumption (and illusion) of control then rationalisations are produced of why one is in a special case and the ample findings of short comings of plans don’t apply.</p>
+<blockquote>
+<p>“The usual response from organizations to these classic findings is simple: my world is stable and not like space operations, military operations, and emergency or critical care medicine. In my world variability can be blocked or suppressed, minimizing the need for adaptation since work-to-plan/role/rule will reliably produce desired outcomes.” (Woods, 2023, p. 7)</p>
+</blockquote>
+<p>This rationalisation according to the paper is based on several erroneous assumptions:</p>
+<ul>
+<li>Surprises occur rarely</li>
+<li>It’s easy to know when a plan needs to be modified</li>
+<li>It’s quick to put modified plans in action</li>
+<li>Interdependencies are easy to limit and be analysed and modelled a-priori</li>
+<li>Effects of surprise can be easily compartmentalised and contained away from interdependencies</li>
+</ul>
+<p>Some of these might be true for a moment but aren’t overall true throughout operation and especially lifecycle (design, growth, adaptations) of a system. And while these assumptions have been shown to be true and rediscovered over and over through research as well as experience they still  serve as a kind of feedback loop to statement 1 and the call for compliance.</p>
+<p>In order then to reconcile the two apparent-paradoxical perspectives is a reconceptualisation of plans through the lens of adaptability through 4 parts:</p>
+<ol>
+<li>Plans are resources for action</li>
+<li>Plans are necessary to recognise anomalies</li>
+<li>Plans (and Automata) are competent but brittle</li>
+<li>People (with the right help) provide the extra adaptive capacity to mitigate brittleness</li>
+</ol>
+<p>This is to recognise that plans are useful as a starting off point and a resource to grab from when action is needed, but not as a strict specification. And one very important point is that improvisation and adaptability at the sharp-end requires the pre-requisite step of detecting anomalies and deviations. This is a lot harder without a baseline of “normal” which plans can provide. In terms of automation it needs to be recognised that automation (which includes various forms of AI in their respective hype cycles as well) is competent but brittle. And that there is a persistent believe that it just needs a new push of the technology to overcome this.</p>
+<blockquote>
+<p>“Studies looking at joint systems of people and AI or operators and advanced automation revealed the fundamental brittleness of automata regardless of the underlying technology [13].” (Woods, 2023, p. 8)</p>
+</blockquote>
+<p>And getting to the people part (which is the source of adaptive capacity) it’s very important to recognise that challenges and near-misses happen much more often than expected. And that created control systems like automation are subject to the same pressures as the systems they are supposed to control. And thus the same risk for brittleness:</p>
+<blockquote>
+<p>“All systems are developed and operate with finite resources and live in a changing environment. As a result, plans, procedures, automation, agents, and roles are inherently limited and unable to completely cover the complexity of activities, events, and demands.” (Woods, 2023, p. 9)</p>
+</blockquote>
+<p>And so the paper concludes on a way to perform work and safety management which is dubbed “Plan and revise: Guided Adaptability”. Which still means that there should be plans for the work to be done that are intended to be followed until it doesn’t make sense any more. The complement then is to learn from how they don’t make sense anymore and include that in the revision of plans for the future based on the best source there is for adaptations: humans.</p>
+<blockquote>
+<p>“The irony is you can only monitor how well plans fit the world by understanding how people have to adapt to fill the gaps and holes that inevitably arise as variability in the world exceeds the capability of plans and the competencies built into any system [12].” (Woods, 2023, p. 11)</p>
+</blockquote>
+<p>And to make it clear that adaptation itself is also subject to adaptation and not some perfect state of behaviour, the following quote towards the end of the paper is extremely apt in my opinion:</p>
+<blockquote>
+<p>“You will have to establish the continuous feedback/learning loop in order to adapt how you adapt.” (Woods, 2023, p. 13)</p>
+</blockquote>
+<h2 id="personal-thoughts">Personal thoughts</h2>
+<p>I really liked the paper and the way it made the trade-offs of both perspectives on safety management very clear. It’s way too often the case in my opinion that a silver bullet solution is sought and once something is assumed as such, all the rest gets discarded. When in reality trade-offs and “best of both worlds” approaches to real world problems are much more likely to yield much better results. The different levels of views on the work in terms of high level planning and low level implementation also reminded me a lot of the waterfall vs agile and scheduled release vs continuous deployment discussions that are happening in technology where often one is seen as the superior approach over the other. But in reality even agile processes need longer term planning to fit into the bigger picture. And even continuous deployment means you <em>are able</em> to deploy whenever not that you have to. And sometimes planning a deploy to match the larger circumstances (outside of another teams test, maybe not on a Friday 😬, or even it can wait till the next morning) makes much more sense rather than deploying something as soon as you got the code review approved. As the famous mature engineering proverb goes</p>
+<blockquote>
+<p>It’s trade-offs all the way down</p>
+</blockquote>
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>Building a Second Brain</title>
       <link>https://unwiredcouch.com/reading/building-a-second-brain/</link>
@@ -917,6 +1011,61 @@ Monday.</p>
       <guid>https://unwiredcouch.com/reading/the-bullet-journal-method/</guid>
       <description>Very nice and easy read. Made me really think about slowing down for planning and reflection.</description>
     <content:encoded><![CDATA[<p>Very nice and easy read. Made me really think about slowing down for planning and reflection. I read this book after having switched to a Bullet Journal for daily logging and planning about 9 months prior. And it’s really easy to get sucked into all the pretty and elaborate spreads with bullet journaling and lose focus of what’s really important. The book does a really good job focusing on the fundamentals with bullet journaling and how to think about what to incorporate into your journaling practice.</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Maglev: Fast Software Load Balancer</title>
+      <link>https://unwiredcouch.com/reading/maglev/</link>
+      <pubDate>Tue, 29 May 2018 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/reading/maglev/</guid>
+      <description>Google&amp;rsquo;s network load balancer distributed system on commodity servers no physical deployment horizontally scalable load distribution via ECMP by network routers consistent hashing and connection tracking serving Google since 2008 Downside of hardware LB  limited vertical scale only 1+1 redundancy lack of flexibility + programmability expensive to upgrade     larger clusters have hardware encapsulators between maglev and router so they don&amp;rsquo;t need to be in the same L2 domain Linux kernel is circumvented for fast packet processing steering module consistent hashes between rx queues with packet rewrites threads rewrites checks for VIP match, connection table 5 tuple host over round robin for stability of connections (rr is fallback) 813 kpps for 1500 bytes IP packets processing speed of 9.</description>
+    <content:encoded><![CDATA[<ul>
+<li>Google&rsquo;s network load balancer</li>
+<li>distributed system on commodity servers</li>
+<li>no physical deployment</li>
+<li>horizontally scalable</li>
+<li>load distribution via ECMP by network routers</li>
+<li>consistent hashing and connection tracking</li>
+<li>serving Google since 2008</li>
+<li>Downside of hardware LB
+<ul>
+<li>limited vertical scale</li>
+<li>only 1+1 redundancy</li>
+<li>lack of flexibility + programmability</li>
+<li>expensive to upgrade</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/reading/maglev/sketch.png" alt="maglev architecture overview"></p>
+<ul>
+<li>larger clusters have hardware encapsulators between maglev and router so they don&rsquo;t need to be in the same L2 domain</li>
+<li>Linux kernel is circumvented for fast packet processing</li>
+<li>steering module consistent hashes between rx queues with packet rewrites threads</li>
+<li>rewrites checks for VIP match, connection table</li>
+<li>5 tuple host over round robin for stability of connections (rr is fallback)</li>
+<li>813 kpps for 1500 bytes IP packets</li>
+<li>processing speed of 9.06 Mpps for smaller packets</li>
+</ul>
+<h2 id="fast-packet-processing">Fast Packet Processing</h2>
+<ul>
+<li>userspace app circumventing kernel</li>
+<li>shared packet pool with NIC</li>
+<li>ring queue of pointers pointing to packets in pool</li>
+<li>NIC and forwarder advance pointers in ring (no copying)</li>
+<li>backend selection consistency across Maglev machines is accomplished by consistent hashing based on backend names (<strong>simplified algorithm!!</strong>)</li>
+<li>kernel bypass 5x performance</li>
+<li>handling fragments via special backend pool containing all Maglevs</li>
+<li>special packet tracer packets that trigger Maglev to send debug info to SRC</li>
+<li>steering module bottleneck before moving to 40Gbps</li>
+<li>5 packet threads saturate 10Gbps NIC</li>
+</ul>
+<h2 id="questions">Questions</h2>
+<ul>
+<li><input disabled="" type="checkbox"> read up on ECMP</li>
+<li><input disabled="" type="checkbox"> study Maglev hashing details</li>
+</ul>
 ]]></content:encoded>
     </item>
     
