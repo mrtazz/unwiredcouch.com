@@ -22,9 +22,10 @@
     <div class="reading-header-text">
       <ul class="reading-header-text-list">
         <li class="reading-header-text-list-item reading-single-book-title"> {{ .Title }} {{ $category }} </li>
-        <li class="reading-header-text-list-item"> by
-          <span class="reading-single-book-author"> {{ .Params.Author }}
-          </span> </li>
+        <li class="reading-header-text-list-item"> by <span class="reading-single-book-author"> {{ .Params.Author }} </span> </li>
+        {{ if .Params.publication_date -}}
+        <li class="reading-header-text-list-item reading-single-publication-date"> Publication date: {{ .Params.publication_date }}</li>
+        {{- end }}
         <li class="reading-header-text-list-item reading-single-book-date"> Read: {{ .PublishDate.Format "Jan 2, 2006" }} </li>
         {{ if .Params.origin_url -}}
         <li class="reading-header-text-list-item reading-single-origin-link"> <a href="{{ .Params.origin_url }}"> Link </a></li>
