@@ -1,6 +1,6 @@
 ---
-title: “Six Easy Pieces”
-author: “Richard P. Feynman”
+title: "Six Easy Pieces"
+author: "Richard P. Feynman"
 date: 2023-12-31
 ---
 
