@@ -1,13 +1,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>unwiredcouch.com on unwiredcouch.com</title>
   <id>https://unwiredcouch.com/atom.xml</id>
-  <updated>2023-12-29T00:00:00Z</updated>
+  <updated>2023-12-31T00:00:00Z</updated>
 	<subtitle>thoughts which have made it into written existence</subtitle>
 	<link rel="self" href="https://unwiredcouch.com/atom.xml"/>
 	<author>
     <name>Daniel Schauenberg</name>
 		<email>d@unwiredcouch.com</email>
 	</author>
+  
+	<entry>
+    <title type="html"><![CDATA[“Six Easy Pieces”]]></title>
+    <published>2023-12-31T00:00:00Z</published>
+    <updated>2023-12-31T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/reading/six-easy-pieces/</id>
+    <content type="html"><![CDATA[<p>This book was a very fun read. I&rsquo;ve read a bunch of physics related books in the last couple of years. And while I don&rsquo;t claim to deeply understand any of it, the topic still keeps being interesting to me. The way the book is structured and the lectures are delivered is also very engaging. One of my favourite parts being the relation of physics to other sciences which is outlined as relationship of building on each others knowledge and feeding back information that can be useful to further progress. Rather than what&rsquo;s often communicated as physics being &ldquo;the most fundamental science&rdquo;. It was refreshing to hear that from such a renowned physicists like Feynman.</p>
+]]></content>
+    <link href="https://unwiredcouch.com/reading/six-easy-pieces/" rel="alternate"/>
+	</entry>
   
 	<entry>
     <title type="html"><![CDATA[Engineering a Safer World: Systems Thinking Applied to Safety]]></title>
