@@ -326,6 +326,9 @@ div.archive ul li{
 
 .reading-entry-author {
   display: block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .reading-entry-category {
