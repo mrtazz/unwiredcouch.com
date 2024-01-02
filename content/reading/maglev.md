@@ -3,6 +3,7 @@ title: "Maglev: Fast Software Load Balancer"
 author: "Danielle E. Eisenbud, Cheng Yi, Carlo Contavalli, Cody Smith, Ardas Cilingiroglu, Bin Cheyney, Wentao Shang, Jinnah Dylan Hosein, Roman Kononov, Eric Mann-Hielscher"
 date: 2018-05-29
 category: paper
+publication_date: 2016
 origin_url: "https://research.google/pubs/maglev-a-fast-and-reliable-software-network-load-balancer/"
 ---
 
