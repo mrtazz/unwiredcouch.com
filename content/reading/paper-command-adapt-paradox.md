@@ -3,6 +3,7 @@ title: "Resolving the Command–Adapt Paradox: Guided Adaptability to Cope with 
 author: David Woods
 date: 2023-12-17
 category: paper
+publication_date: 2023
 origin_url: https://www.researchgate.net/publication/376410144_Resolving_the_Command-Adapt_Paradox_Guided_Adaptability_to_Cope_with_Complexity
 ---
 
