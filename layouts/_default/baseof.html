@@ -14,6 +14,10 @@
     {{ end }}
 
     <title>{{ .Title }} on unwiredcouch.com</title>
+    {{ block "extra_headers" . }}
+    <!-- extra headers set by different layouts -->
+    {{ end }}
+
   </head>
   <body>
     <div class="mainwrapper">

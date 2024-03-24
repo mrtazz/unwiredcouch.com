@@ -2,13 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://unwiredcouch.com/art/</loc>
+    <lastmod>2024-03-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://unwiredcouch.com/art/hot-chocolate-03-2024/</loc>
+    <lastmod>2024-03-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://unwiredcouch.com/</loc>
+    <lastmod>2024-03-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://unwiredcouch.com/art/rachel-summers-03-2024/</loc>
+    <lastmod>2024-03-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://unwiredcouch.com/art/domino-03-2024/</loc>
+    <lastmod>2024-03-02T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://unwiredcouch.com/reading/how-infrastructure-works/</loc>
     <lastmod>2024-02-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://unwiredcouch.com/reading/</loc>
-    <lastmod>2024-02-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://unwiredcouch.com/</loc>
     <lastmod>2024-02-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://unwiredcouch.com/reading/six-easy-pieces/</loc>
@@ -20,14 +32,23 @@
     <loc>https://unwiredcouch.com/reading/paper-command-adapt-paradox/</loc>
     <lastmod>2023-12-17T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://unwiredcouch.com/art/ramona-flowers-11-2023/</loc>
+    <lastmod>2023-11-26T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://unwiredcouch.com/reading/paper-strategic-agility-gap/</loc>
     <lastmod>2023-11-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://unwiredcouch.com/reading/paper-safety-after-neoliberalism/</loc>
     <lastmod>2023-11-07T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://unwiredcouch.com/art/hercule-poirot-11-2023/</loc>
+    <lastmod>2023-11-04T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://unwiredcouch.com/reading/kunstwerk-zeitalter-reproduzierbarkeit/</loc>
     <lastmod>2023-09-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://unwiredcouch.com/art/nick-fury-09-2023/</loc>
+    <lastmod>2023-09-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://unwiredcouch.com/reading/sources-of-power/</loc>
     <lastmod>2023-09-24T00:00:00+00:00</lastmod>
@@ -91,6 +112,9 @@
   </url><url>
     <loc>https://unwiredcouch.com/reading/seven-brief-lessons-on-physics/</loc>
     <lastmod>2022-12-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://unwiredcouch.com/art/mf-doom-11-2022/</loc>
+    <lastmod>2022-11-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://unwiredcouch.com/reading/the-order-of-time/</loc>
     <lastmod>2022-05-22T00:00:00+00:00</lastmod>
