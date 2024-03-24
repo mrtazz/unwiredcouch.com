@@ -1,0 +1,21 @@
+{{ define "main" }}
+
+{{ $imglink_jpg := printf "/images/%s/%s/large.jpeg" .Section .File.BaseFileName }}
+
+<div class="art-single">
+  <div class="art-header">
+    <div class="art-header-text">
+      <ul class="art-header-text-list">
+        <li class="art-header-text-list-item art-single-title">{{ .Title }}</li>
+        <li class="art-header-text-list-item art-single-date"> {{ .PublishDate.Format "Jan 2, 2006" }} </li>
+    </div>
+
+  </div>
+
+  <img class="art-single-image" src="{{ $imglink_jpg }}" alt="{{ .Params.alt_text }}">
+
+  {{ .Content }}
+
+</div>
+
+{{ end }}
