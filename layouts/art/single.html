@@ -1,0 +1,49 @@
+
+{{ define "extra_headers" }}
+{{ $imglink_jpg := printf "%simages/%s/%s/large.jpeg" .Site.BaseURL .Section .File.BaseFileName }}
+
+{{ $imgfile := printf "images/%s/%s/large.jpeg" .Section .File.BaseFileName  }}
+{{ $img := resources.Get $imgfile  }}
+
+<meta content="unwiredcouch.com" property="og:site_name">
+<meta content="article" property="og:type">
+<meta content="{{ .Title }}" property="og:title">
+<meta content="{{ .Permalink }}" property="og:url">
+<meta content="{{ .PublishDate.Format "2006-01-02T15:04:05Z" }}" property="og:published_time">
+<meta content='Attached: 1 image
+
+{{ .Content }}' name='description'>
+<meta content="Attached: 1 image
+
+{{ .Content }}" property="og:description">
+
+<meta content="{{ $imglink_jpg }}" property="og:image">
+<meta content="image/jpeg" property="og:image:type">
+<meta content="{{ $img.Width }}" property="og:image:width">
+<meta content="{{ $img.Height }}" property="og:image:height">
+<meta content="{{ .Content }}" property="og:image:alt">
+<meta content="summary_large_image" property="twitter:card">
+
+{{ end }}
+
+{{ define "main" }}
+{{ $imglink_jpg := printf "/images/%s/%s/large.jpeg" .Section .File.BaseFileName }}
+
+
+<div class="art-single">
+  <div class="art-header">
+    <div class="art-header-text">
+      <ul class="art-header-text-list">
+        <li class="art-header-text-list-item art-single-title">{{ .Title }}</li>
+        <li class="art-header-text-list-item art-single-date"> {{ .PublishDate.Format "Jan 2, 2006" }} </li>
+    </div>
+
+  </div>
+
+  <img class="art-single-image" src="{{ $imglink_jpg }}" alt="{{ .Params.alt_text }}">
+
+  {{ .Content }}
+
+</div>
+
+{{ end }}
