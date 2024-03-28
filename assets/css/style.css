@@ -230,12 +230,6 @@ div.menu a.avatar {
    margin-bottom: 10px;
 }
 
-.reading-single,
-.post p{
-  line-height: 1.6;
-  text-rendering: optimizeLegibility;
-}
-
 ul{
   margin-left: 30px;
   margin-bottom: 15px;
@@ -245,12 +239,6 @@ ul{
   margin-left: 30px;
   margin-bottom: 15px;
 }
-
-.reading-single ol{
-  margin-left: 30px;
-  margin-bottom: 15px;
-}
-
 
 .post img {
   display:block;
@@ -285,6 +273,19 @@ div.archive ul li{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+
+
+/**** READING LIST THINGS ****/
+.reading-single,
+.post p{
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+}
+
+.reading-single ol{
+  margin-left: 30px;
+  margin-bottom: 15px;
 }
 
 .reading-page {
@@ -449,6 +450,127 @@ div.talksection .center {
 span.talkbyline {
     font-size: 17px;
 }
+
+/**** ART THINGS ****/
+.art-single,
+.post p{
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+}
+
+.art-single ol{
+  margin-left: 30px;
+  margin-bottom: 15px;
+}
+
+.art-page {
+  width: 75%;
+  font-size: 15pt;
+  margin: 0 auto;
+}
+
+.art-list {
+  margin-left: 0px;
+  margin-bottom: 25px;
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 250px);
+}
+
+.art-list-year {
+  margin-bottom: 10px;
+}
+
+.art-entry {
+  position: relative;
+  margin: 5px;
+  overflow: hidden;
+}
+
+.art-entry-container {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(255,255,255,0.9);
+  width: 100%;
+  padding: 3px;
+}
+
+.art-entry-title {
+  display: block;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.art-entry-image {
+  display:block;
+  margin:auto;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.art-entry-date {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.art-single-image-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 400px);
+  justify-content: center;
+}
+
+.art-single-image {
+  padding: 10px;
+  margin: 10px;
+  max-width: 400px;
+}
+
+.art-header {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0 -10px;
+  justify-content: space-around;
+  align-items: flex-start;
+  margin-bottom: 30px;
+  padding-right: 30px;
+}
+
+.art-header-text {
+  margin: 0 10px;
+  flex: 3 3 300px;
+}
+
+.art-header-text-list {
+  list-style-type: none;
+}
+
+.art-single-title {
+    color: #184468;
+    font-size: 34px;
+    margin-bottom: 20px;
+    line-height: normal;
+}
+
+.art-single-date {
+    font-size:18px;
+}
+
+.art-header img {
+  width: 150px;
+  height: auto;
+}
+
+@media screen and (max-width: 734px) {
+  .art-header img {
+    display: none;
+  }
+
+}
+
 
 /** fonts */
 
