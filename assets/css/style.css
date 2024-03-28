@@ -491,7 +491,7 @@ span.talkbyline {
   position: absolute;
   left: 0;
   bottom: 0;
-  background-color: rgba(255,255,255,0.7);
+  background-color: rgba(255,255,255,0.9);
   width: 100%;
   padding: 3px;
 }
@@ -517,19 +517,16 @@ span.talkbyline {
   text-align: right;
 }
 
-.art-single p img{
-  display:block;
-  margin:auto;
-  max-width:75%;
-  height:auto;
+.art-single-image-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 400px);
+  justify-content: center;
 }
 
 .art-single-image {
-  display:block;
-  margin:auto;
-  margin-bottom: 30px;
-  max-width:50%;
-  height:auto;
+  padding: 10px;
+  margin: 10px;
+  max-width: 400px;
 }
 
 .art-header {

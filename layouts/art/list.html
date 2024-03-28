@@ -7,9 +7,10 @@
   <h2 class="art-list-year">{{ .Key }}</h2>
     <ul class="art-list">
     {{ range .Pages }}
-      {{ $imglink_jpg := printf "/images/%s/%s/thumbnail.jpeg" .Section .File.BaseFileName }}
+      {{ $imgfile := printf "images/%s/%s/thumbnail.jpeg" .Section .File.BaseFileName  }}
+      {{ $img := resources.Get $imgfile  }}
       <li class="art-entry">
-        <img class="art-entry-image" src="{{ $imglink_jpg }}" alt="{{ .Params.alt_text }}">
+        <img class="art-entry-image" src="{{ $img.RelPermalink }}" alt="{{ .Params.alt_text }}">
         <span class="art-entry-container">
           <a class="art-entry-title" href="{{ .RelPermalink }}"> {{ .Title }}</a>
           <span class="art-entry-date">{{ .PublishDate.Format "Jan 2, 2006" }} </span>

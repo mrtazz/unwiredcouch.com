@@ -1,7 +1,5 @@
 
 {{ define "extra_headers" }}
-{{ $imglink_jpg := printf "%simages/%s/%s/large.jpeg" .Site.BaseURL .Section .File.BaseFileName }}
-
 {{ $imgfile := printf "images/%s/%s/large.jpeg" .Section .File.BaseFileName  }}
 {{ $img := resources.Get $imgfile  }}
 
@@ -17,7 +15,7 @@
 
 {{ .Content }}" property="og:description">
 
-<meta content="{{ $imglink_jpg }}" property="og:image">
+<meta content="{{ $img.RelPermalink }}" property="og:image">
 <meta content="image/jpeg" property="og:image:type">
 <meta content="{{ $img.Width }}" property="og:image:width">
 <meta content="{{ $img.Height }}" property="og:image:height">
@@ -27,7 +25,9 @@
 {{ end }}
 
 {{ define "main" }}
-{{ $imglink_jpg := printf "/images/%s/%s/large.jpeg" .Section .File.BaseFileName }}
+{{ $base_image_path := printf "images/%s/%s" .Section .File.BaseFileName  }}
+{{ $imgfile := printf "%s/large.jpeg" $base_image_path  }}
+{{ $img := resources.Get $imgfile  }}
 
 
 <div class="art-single">
@@ -40,7 +40,17 @@
 
   </div>
 
-  <img class="art-single-image" src="{{ $imglink_jpg }}" alt="{{ .Params.alt_text }}">
+  <div class="art-single-image-container">
+    <img class="art-single-image" src="{{ $img.RelPermalink }}" title="{{
+    .Params.alt_text }}" alt="{{ .Params.alt_text }}">
+    {{ if .Params.additional_images }}
+      {{ range .Params.additional_images }}
+        {{ $imgfile := printf "%s/%s" $base_image_path .file  }}
+        {{ $img := resources.Get $imgfile  }}
+        <img class="art-single-image" src="{{ $img.RelPermalink }}" title="{{ .alt_text }}" alt="{{ .alt_text }}">
+      {{ end }}
+    {{ end }}
+  </div>
 
   {{ .Content }}
 
