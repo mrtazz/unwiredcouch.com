@@ -27,7 +27,9 @@
 {{ define "main" }}
 {{ $base_image_path := printf "images/%s/%s" .Section .File.BaseFileName  }}
 {{ $imgfile := printf "%s/large.jpeg" $base_image_path  }}
+{{ $imgfile_original := printf "%s/original.jpeg" $base_image_path  }}
 {{ $img := resources.Get $imgfile  }}
+{{ $img_original := resources.Get $imgfile_original  }}
 
 
 <div class="art-single">
@@ -41,8 +43,9 @@
   </div>
 
   <div class="art-single-image-container">
-    <img class="art-single-image" src="{{ $img.RelPermalink }}" title="{{
-    .Params.alt_text }}" alt="{{ .Params.alt_text }}">
+    <a href="{{ $img_original.RelPermalink}}">
+    <img class="art-single-image" src="{{ $img.RelPermalink }}" title="{{ .Params.alt_text }}" alt="{{ .Params.alt_text }}">
+    </a>
     {{ if .Params.additional_images }}
       {{ range .Params.additional_images }}
         {{ $imgfile := printf "%s/%s" $base_image_path .file  }}
