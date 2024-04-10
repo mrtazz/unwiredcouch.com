@@ -2,8 +2,6 @@ name: CI
 
 on:
   pull_request:
-    paths-ignore:
-      - 'docs/**'
     types: [opened, synchronize, labeled]
 
 jobs:
@@ -19,19 +17,27 @@ jobs:
       run: |
         sudo wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.deb
         sudo dpkg -i hugo_${HUGO_VERSION}_Linux-64bit.deb
+        sudo apt-get update && sudo apt-get install -y imagemagick
+        
     - name: software versions
       run: |
         hugo version
     - uses: actions/checkout@v1
+
+    - name: resize images
+      run: |
+        make images
+        
     - name: Build site into the docs/ folder
       run: |
         hugo --destination docs
+        
     - name: commit
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add docs/
-        git commit -m "update site build" --allow-empty
+        git add docs/ assets/ 
+        git commit -m "[skip ci] update site build" --allow-empty
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
