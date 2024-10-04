@@ -33,8 +33,8 @@ params:
   homepageSections:
     - title: Writing
       section: posts
-    - title: Bits
-      section: bits
+    - title: Art
+      section: art
     - title: Reading
       section: reading
     - title: Talks
