@@ -42,6 +42,116 @@
     </item>
     
     <item>
+      <title>Static URL shortening with nginx maps</title>
+      <link>https://unwiredcouch.com/bits/2023/07/02/static-url-shortening-nginx-maps.html</link>
+      <pubDate>Sun, 02 Jul 2023 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/bits/2023/07/02/static-url-shortening-nginx-maps.html</guid>
+      <description>In 2012 when it was hip and cool to do so, I also had my own URL shortener.</description>
+    <content:encoded><![CDATA[<p>In 2012 when it was hip and cool to do so, I also had my own URL shortener. It
+was based on what I called <a href="https://github.com/mrtazz/katana">&ldquo;katana&rdquo;</a>, a
+convenience ruby wrapper around
+<a href="https://github.com/technoweenie/guillotine/">&ldquo;guillotine&rdquo;</a> that made it easy
+to run it on Heroku backed by Redis. Back then Heroku still had a free tier and
+RedisToGo was available as a free add-on for databases up to 5MB or so. It was
+really fun to run, it had <a href="https://github.com/mrtazz/katana/blob/master/app.rb#L28-L39">its own endpoint to support Tweetbot&rsquo;s custom URL
+shortening
+integration</a> and
+the free tier was more than good enough for the occasional shortening.</p>
+<p>Over the years however I used it less and less, mostly because Twitter had
+started forcing its own URL shortening with auto-expansion when viewing a tweet
+on everything. And the experience of using a custom shortener was not on par
+with that. I&rsquo;ve also almost lost the database of the shortener a couple of
+times because free tiers don&rsquo;t usually come with backups. So I rigged up a
+quick GitHub Action that ran once a day,
+<a href="https://github.com/jeremyfa/node-redis-dump" title="node-redis-dump"><code>redis-dump</code>-ed</a> all the contents to plain text and committed them to a git
+repo as a low budget backup job. At this point I wasn&rsquo;t really shortening
+anything anymore but wanted to keep the existing URLs functional. I had moved
+to Heroku&rsquo;s own Redis service at that point and there was no real work involved
+to keep it running.</p>
+<p>Fast forward to 2022 Heroku <a href="https://blog.heroku.com/next-chapter" title="Heroku’s Next Chapter">announced</a> the end of the free tiers. And while I&rsquo;m generally
+happy to pay for things I wasn&rsquo;t convinced that just maintaining what was
+essentially by now a barely used URL lookup app  was worth the $7/month for me.
+So I shut it down and thought about alternatives. I could run the app on my
+server that I use for a couple of things. But I really don&rsquo;t want to run a ruby
+app + redis in my free time. I thought about implementing the shortener logic
+in Go and back it by something like sqlite or even just a yaml file. But again
+that felt like a lot of effort for not actually shortening anything.</p>
+<p>And then I thought &ldquo;this is just hosting 301 redirects, surely something nginx
+is good at&rdquo;. And sure enough, after a quick internet search I found <a href="https://stackoverflow.com/questions/29354142/nginx-how-to-mass-permanent-redirect-from-a-given-list">a
+stackoverflow
+post</a>
+that provided a good example for managing a lookup map in a handful of lines of
+code. The core of it is basically:</p>
+<pre tabindex="0"><code># head -n 5 /usr/local/etc/nginx/mrtz_cc_redirect_map.conf
+/-KmaJA 'http://lusis.github.com/blog/2014/04/13/omnibus-redux/';
+/-vvREg 'http://hannahmontana.sourceforge.net/';
+/-yW3mQ 'http://s3itch.unwiredcouch.com/1._tmux-20140719-180429.jpg';
+/09nQKA 'http://s3itch.unwiredcouch.com/Projects-20141130-133209.jpg';
+/0YK2gg 'https://speakerdeck.com/mrtazz/statsd-workshop-monitorama-2013';
+
+# wc -l /usr/local/etc/nginx/mrtz_cc_redirect_map.conf
+424 /usr/local/etc/nginx/mrtz_cc_redirect_map.conf
+
+
+# cat /usr/local/etc/nginx/sites/redirect
+map_hash_bucket_size 256; # see http://nginx.org/en/docs/hash.html
+
+map $request_uri $new_uri {
+    include /usr/local/etc/nginx/mrtz_cc_redirect_map.conf;
+}
+
+server {
+  listen 94.130.5.59:443 ssl;
+  server_name mrtz.cc;
+
+  if ($new_uri) {
+    return 301 $new_uri;
+  }
+
+  ...
+}
+
+</code></pre><p>So all I had to do was convert the plain text backup of my redis instance into
+the nginx map format, which was easy enough with this <code>awk</code> one-liner:</p>
+<pre tabindex="0"><code>% head -n 5 backups/mrtz.cc/mrtz.cc.dump
+SET     guillotine:hash:-KmaJA 'http://lusis.github.com/blog/2014/04/13/omnibus-redux/'
+SET     guillotine:hash:-vvREg 'http://hannahmontana.sourceforge.net/'
+SET     guillotine:hash:-yW3mQ 'http://s3itch.unwiredcouch.com/1._tmux-20140719-180429.jpg'
+SET     guillotine:hash:09nQKA 'http://s3itch.unwiredcouch.com/Projects-20141130-133209.jpg'
+SET     guillotine:hash:0YK2gg 'https://speakerdeck.com/mrtazz/statsd-workshop-monitorama-2013'
+
+% awk '/guillotine:hash/ { split($2,a,/:/); print &quot;/&quot;a[3]&quot; &quot;$3&quot;;&quot;}' &lt; backups/mrtz.cc/mrtz.cc.dump | head -n 5
+/-KmaJA 'http://lusis.github.com/blog/2014/04/13/omnibus-redux/';
+/-vvREg 'http://hannahmontana.sourceforge.net/';
+/-yW3mQ 'http://s3itch.unwiredcouch.com/1._tmux-20140719-180429.jpg';
+/09nQKA 'http://s3itch.unwiredcouch.com/Projects-20141130-133209.jpg';
+/0YK2gg 'https://speakerdeck.com/mrtazz/statsd-workshop-monitorama-2013';
+</code></pre><p>And then chef out the nginx config and Let&rsquo;s Encrypt setup for the domain to my
+server, change the DNS records to the server instead of Heroku<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. And
+voila:</p>
+<pre tabindex="0"><code>% curl -sv https://mrtz.cc/-vvREg 2&gt;&amp;1 | grep Location
+&lt; Location: http://hannahmontana.sourceforge.net/
+</code></pre><p>I really like this setup because running nginx is pretty straight forward for
+the small scale I use it at. And I care about keeping URLs working. So this
+makes me happy. I might at some point maybe want to start using it and adding
+URLs again. At which point I have to figure something out. But I don&rsquo;t expect
+that to be any time soon (if at all).</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>There were actually some hiccups in the middle where I still had the
+DNS configure in dnsimple but had apparently let the domain lapse 😅. But
+re-registering it with dnsimple was super fast and I just had to wait a bit
+then for the registration to propagate.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+]]></content:encoded>
+    </item>
+    
+    <item>
       <title>Senior Rotations</title>
       <link>https://unwiredcouch.com/2023/06/27/senior-rotations.html</link>
       <pubDate>Tue, 27 Jun 2023 00:00:00 +0000</pubDate>
@@ -438,6 +548,234 @@ pedestrian programmer.</p>
     </item>
     
     <item>
+      <title>replace a disk in a running ZFS zpool</title>
+      <link>https://unwiredcouch.com/bits/2022/05/11/replace-zpool-disk.html</link>
+      <pubDate>Wed, 11 May 2022 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/bits/2022/05/11/replace-zpool-disk.html</guid>
+      <description>I&amp;rsquo;ve recently had to replace all disks in a zroot zpool on my FreeBSD server.</description>
+    <content:encoded><![CDATA[<p>I&rsquo;ve recently had to replace all disks in a <code>zroot</code> zpool on <a href="https://unwiredcouch.com/2013/10/30/uncloud-your-life.html">my FreeBSD server</a>.
+And I kept looking up the commands and order in which to run them. So I thought I&rsquo;d put them here to find them again when I need them.</p>
+<p>The following assumptions are being made with this:</p>
+<ol>
+<li>The <code>ada0</code> disk was faulty and already replaced</li>
+<li><code>ada1</code> is running in the zpool and working</li>
+<li>Both <code>ada0</code> and <code>ada1</code> are the same size and have the same layout</li>
+</ol>
+<h2 id="replace-the-disk-itself">Replace the disk itself</h2>
+<ol>
+<li>First up we restore the disk layout from <code>ada1</code> onto <code>ada0</code> and verify:</li>
+</ol>
+<pre tabindex="0"><code># gpart backup ada1 | gpart restore -F ada0
+# gpart show ada0
+</code></pre><ol start="2">
+<li>Given this is a <code>zroot</code> pool to boot from, we need a bootcode</li>
+</ol>
+<pre tabindex="0"><code># gpart bootcode -b /boot/pmbr -p /boot/gptzfsboot -i 1 ada0
+</code></pre><ol start="3">
+<li>Now we just replace the (missing) disk in the zpool with its replacement:</li>
+</ol>
+<pre tabindex="0"><code># zpool replace zroot ada0p3 /dev/ada0p3
+# zpool status zroot
+</code></pre><p>At this point the zpool is being resilvered to make sure all data is on the new disk. Depending on the amount of data
+this can take a while. And while it&rsquo;s running <code>zpool status zroot</code> shows something like:</p>
+<pre tabindex="0"><code># zpool status zroot
+  pool: zroot
+ state: DEGRADED
+status: One or more devices is currently being resilvered.  The pool will
+        continue to function, possibly in a degraded state.
+action: Wait for the resilver to complete.
+  scan: resilver in progress since Tue May 10 07:15:33 2022
+        416G scanned at 144M/s, 382G issued at 133M/s, 417G total
+        384G resilvered, 91.66% done, 00:04:28 to go
+config:
+
+        NAME              STATE     READ WRITE CKSUM
+        zroot             DEGRADED     0     0     0
+          mirror-0        DEGRADED     0     0     0
+            replacing-0   DEGRADED     0     0     0
+              ada0p3/old  REMOVED      0     0     0
+              ada0p3      ONLINE       0     0     0  (resilvering)
+            ada1p3        ONLINE       0     0     0
+
+errors: No known data errors
+</code></pre><h2 id="configure-encrypted-swap">Configure encrypted swap</h2>
+<p>The zroot setup from the baseinstall also comes with encrypted swap. So this also needs to be
+configured on the new disk:</p>
+<ol>
+<li>Check setup and options from the existing swap partition</li>
+</ol>
+<pre tabindex="0"><code># geli list ada1p2.eli
+Geom name: ada1p2.eli
+State: ACTIVE
+EncryptionAlgorithm: AES-XTS
+KeyLength: 128
+Crypto: accelerated software
+Version: 7
+Flags: ONETIME, W-DETACH, W-OPEN, AUTORESIZE
+KeysAllocated: 1
+KeysTotal: 1
+Providers:
+1. Name: ada1p2.eli
+   Mediasize: 2147483648 (2.0G)
+   Sectorsize: 4096
+   Mode: r1w1e0
+Consumers:
+1. Name: ada1p2
+   Mediasize: 2147483648 (2.0G)
+   Sectorsize: 512
+   Stripesize: 0
+   Stripeoffset: 1048576
+   Mode: r1w1e1
+</code></pre><ol start="2">
+<li>Set up the new swap partition with the same options</li>
+</ol>
+<pre tabindex="0"><code># geli onetime -d -e AES-XTS -l 128 -s 4096 /dev/ada0p2
+</code></pre><ol start="3">
+<li>Turn new swap partition on</li>
+</ol>
+<pre tabindex="0"><code>% swapon -a
+</code></pre><p><strong>Notice:</strong>
+When running <code>swapinfo</code> the old swap partition still shows up as a kinda ghost partition. I haven&rsquo;t
+experienced any problems with that and it usually goes away on the next reboot.</p>
+<pre tabindex="0"><code># swapinfo
+Device          1K-blocks     Used    Avail Capacity
+/dev/#C:0x86      2097152        0  2097152     0%
+/dev/ada1p2.eli   2097152        0  2097152     0%
+/dev/ada0p2.eli   2097152        0  2097152     0%
+Total             6291456        0  6291456     0%
+</code></pre>]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>vim package management in make</title>
+      <link>https://unwiredcouch.com/bits/2021/09/02/vim-package-managment-make.html</link>
+      <pubDate>Thu, 02 Sep 2021 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/bits/2021/09/02/vim-package-managment-make.html</guid>
+      <description>My text editor of choice is vim and has been for many many years at this point.</description>
+    <content:encoded><![CDATA[<p>My <a href="https://unwiredcouch.com/setup/vim/">text editor of choice is vim</a> and has been for many many years at this point. And while it’s a very configurable editor with all its available plugins, I generally tend to use only a small number of them. Partly because I like being able to have a small and simple setup, and not be slowed down too much when I have to use vim on a different machine or don’t have my setup installed.</p>
+<p>Part of this tendency towards simple setups also means that I don’t want to have the management of the few plugins I do use be cumbersome and involving understanding the intricacies of some new tool. And given that vim plugins for the most part also don’t have a ton of dependencies (at least not the ones I use), my needs for managing plugins can be reduced to a small list of requirements:</p>
+<ol>
+<li>Have plugins I want defined in an authoritative list</li>
+<li>Have a single command to update plugins to the newest version</li>
+</ol>
+<h2 id="enter-make">Enter Make</h2>
+<p>So after having gone through various stages of managing my plugins like git submodules and a ruby script that was doing a lot more than it needed, I was wondering if I could just use one of my favorite tools <code>make</code> to do the job for me. After all one of the things it’s really good is, is making sure a defined set of files exists. Which is kinda all that vim plugin management is. And after thinking about this a little bit, I came up with the following things I would need to implement.</p>
+<ol>
+<li>A way to define a list of plugins with name and URL</li>
+<li>A way to download all plugins and put them in the right location</li>
+<li>A way to make sure plugins that don’t exist anymore are removed</li>
+</ol>
+<p>So let’s see how this can be done with <code>make</code>. First we need to define a list of plugins. This can be easily done by just storing them in variables, e.g.:</p>
+<pre><code>plugin_supertab  := https://github.com/ervandew/supertab/tarball/master
+plugin_syntastic := https://github.com/scrooloose/syntastic/tarball/master
+plugin_fzf       := https://github.com/junegunn/fzf/tarball/master
+plugin_fzf.vim   := https://github.com/junegunn/fzf.vim/tarball/master
+</code></pre>
+<p>This was easy and if you’re wondering about the <code>plugin_</code> prefix, you’ve noticed an important part of how to turn this into an easily usable list of plugin definitions. Within
+<code>make</code> there exists a meta variable called <code>.VARIABLES</code> which contains the list of all defined variables in the current <code>Makefile</code>. And since we have chosen a specific prefix for all plugin definitions, we can now get all defined plugins in a programmatic way by filtering all variables with the prefix and then stripping that prefix to get the name we decided to give that plugin via something like:</p>
+<pre><code># this filters out all variables with a plugin_ prefix and regards them 
+# as plugin definitions
+ALL_DEFINED_PLUGINS := $(filter plugin_%, $(.VARIABLES))
+# from the defined variables list we only extract the name
+ALL_PLUGINS := $(subst plugin_,,$(ALL_DEFINED_PLUGINS))
+</code></pre>
+<p>Now we have a list of plugins (by their names) that we can use to construct a target. I want something easy and nice to type, so I went for a target called <code>install-plugins</code>:</p>
+<pre><code>.PHONY: install-plugins
+install-plugins: $(patsubst %, $(PLUGINSDIR)/%, $(ALL_PLUGINS))
+</code></pre>
+<p>The target is <code>PHONY</code> because it doesn’t itself describe a file that gets generated, so it’s always &ldquo;out of date&rdquo;.  But the interesting part of the target is its prerequisites on the right side. There is a path substitution there that defines file targets for all plugins in the plugin directory (I use vim’s built in plugin management, so I have the plugin directory defined as <code>PLUGINSDIR := pack/plugins/start</code>). This now means make knows that it needs to create all the files for the generated plugins paths (e.g. <code>pack/plugins/start/syntastic</code>) in order to fulfill the <code>install-plugins</code> target. However so far there is nothing telling it how to do that and in order to change that, we define a wildcard rule that matches the file path of those plugin definitions:</p>
+<pre><code>$(PLUGINSDIR)/%: $(PLUGINSDIR)
+	@echo &quot;Installing $@ from $(plugin_$*)&quot;
+	@install -d $@
+	@curl -Lfs $(plugin_$*) | tar xz -C $@ --strip-components=1
+</code></pre>
+<p>This rule matches every directory under the plugin path via the wildcard character <code>%</code> . And because this is an implicit rule, make provides an automatic variable named <code>$*</code> that contains the stem of the match, which in our case is the plugin name. From there we can make sure the directory exists via <code>install -d $@</code> (<code>$@</code> is an automatic variable that matches the whole target), get the URL for the plugin by reconstructing the original variable we defined for the plugin from the stem (<code>$(plugin_$*)</code>)  and then run <code>curl</code> and <code>tar</code> to unpack the plugin into the newly created directory. You might have noticed that the rule also has a prerequisite on <code>$(PLUGINSDIR)</code> on the right side. Which is easily satisfied via this rule:</p>
+<pre><code>$(PLUGINSDIR):
+	install -d $@
+</code></pre>
+<p>So now we have all the pieces together to define plugins and install them. However we also want to make sure we don’t keep old plugins around that aren’t defined anymore, or files that were removed from plugins in newer versions. And this is done via deleting the plugins before installing new ones:</p>
+<pre><code>.PHONY: clean-plugins
+clean-plugins:
+	rm -rf ./$(PLUGINSDIR)/*
+</code></pre>
+<p>And then we introduce one more convenience task to update plugins by first removing all of them and then installing the ones we want:</p>
+<pre><code>.PHONY: update-plugins
+update-plugins: clean-plugins install-plugins
+</code></pre>
+<p>And with that I can easily update all my vim plugins and commit the update to my dot file repository via the following command sequence:</p>
+<pre><code>make update-plugins
+git add pack/
+git commit -m &quot;update vim plugins&quot;
+</code></pre>
+<p>And the full example of the <code>Makefile</code> looks like this:</p>
+<pre><code>PLUGINSDIR := pack/plugins/start
+
+# plugin definitions
+plugin_supertab  := https://github.com/ervandew/supertab/tarball/master
+plugin_syntastic := https://github.com/scrooloose/syntastic/tarball/master
+plugin_fzf       := https://github.com/junegunn/fzf/tarball/master
+plugin_fzf.vim   := https://github.com/junegunn/fzf.vim/tarball/master
+
+# this filters out all variables with a plugin_ prefix and regards them as
+# plugin definitions
+ALL_DEFINED_PLUGINS := $(filter plugin_%, $(.VARIABLES))
+# from the defined variables list we only extract the name
+ALL_PLUGINS := $(subst plugin_,,$(ALL_DEFINED_PLUGINS))
+
+# this will install all plugins via the wildcard matching target below
+.PHONY: install-plugins
+install-plugins: $(patsubst %, $(PLUGINSDIR)/%, $(ALL_PLUGINS))
+
+.PHONY: clean-plugins
+clean-plugins:
+	rm -rf ./pack/plugins/start/*
+
+.PHONY: update-plugins
+update-plugins: clean-plugins install-plugins
+
+$(PLUGINSDIR):
+	install -d $@
+
+$(PLUGINSDIR)/%: $(PLUGINSDIR)
+	@echo &quot;Installing $@ from $(plugin_$*)&quot;
+	@install -d $@
+	@curl -Lfs $(plugin_$*) | tar xz -C $@ --strip-components=1
+</code></pre>
+<h2 id="final-words">Final words</h2>
+<p>I’ve been using this way of managing my vim plugins for a while now. And I’m really liking it. It’s small, portable, and easy for me to reason about. I don’t think there will be a need for this to change anytime soon since it’s pretty feature complete for me. From a purely aesthetic perspective it’s not super nice that it removes all plugins every time it runs just to put most of the files back right away. But that doesn’t bother me because it’s fast, reliable, and simple.</p>
+<p>If you’re curious about more of my setup, you can find <a href="https://github.com/mrtazz/dotfiles" title="mrtazz’s dotfiles on github.com">my dotfiles on GitHub</a> where I’ve done much more with <code>make</code> .</p>
+<h2 id="bonus-update-11-2023-automated-plugin-updates">Bonus update 11-2023: automated plugin updates</h2>
+<p>Since writing this I&rsquo;ve also incorporated an Action in my dotfiles repo that updates all my plugins once a week. So the next time I pull my dotfiles (or create a new codespace) I have an updated version of my vim plugins. The Action definition for this looks like this:</p>
+<pre tabindex="0"><code>name: vim-plugin-update
+
+on:
+  workflow_dispatch:
+  schedule:
+    # run once a week on Wednesday
+    - cron: '30 3 * * 3'
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: update vim plugins
+        run: cd vim &amp;&amp; make update-plugins
+
+      - name: commit and push changes
+        run: |
+          git config user.name Github Actions
+          git config user.email actions@noreply.github.com
+          git add vim/pack
+          git commit --allow-empty -m &quot;update vim plugins&quot;
+          git push
+</code></pre>]]></content:encoded>
+    </item>
+    
+    <item>
       <title>Journaling through a Pandemic</title>
       <link>https://unwiredcouch.com/2021/07/26/journaling-through-a-pandemic.html</link>
       <pubDate>Mon, 26 Jul 2021 00:00:00 +0000</pubDate>
@@ -468,6 +806,93 @@ pedestrian programmer.</p>
 <h2 id="in-closing">In closing</h2>
 <p>As difficult and challenging as 2020 was, and the ongoing pandemic continues to be, this process of having notebooks for many different ways to get things out of my head is immensely helpful to me. And as a continuation of leaning more on analog tools that I started in 2018 it keeps me from being completely petrified and procrastinating in the morning on many days. It also provides a way to really think about what thoughts and anxieties are rotating in my brain and have a conversation about it, even if I’m basically just talking to myself. And despite it being slightly inconvenient to carry around 3 or so notebooks sometimes, the benefits I get from having them around vastly outweighs that inconvenience for me. I even got myself a nice new pen to enjoy the process of sitting down and writing even more.</p>
 <p><img src="/images/journaling-through-a-pandemic/lamy-cp1.png" alt="A black Lamy CP1 fountain pen on a wooden table" title="Lamy CP1 fountain pen"></p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Branch Deploys with GitHub Actions</title>
+      <link>https://unwiredcouch.com/bits/2020/12/05/pr-deploys.html</link>
+      <pubDate>Sat, 05 Dec 2020 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/bits/2020/12/05/pr-deploys.html</guid>
+      <description>Over the last 18 months or so working for GitHub on the team managing deploys, I’ve gotten very accustomed to branch based deployments.</description>
+    <content:encoded><![CDATA[<p>Over the last 18 months or so working for GitHub on the team managing deploys, I’ve gotten very accustomed to branch based deployments. Even more so I’m very much enjoying it over the usual trunk based deployment setups that are common in CI/CD environments (this however might be a topic for a different post).</p>
+<p>With the official availability of GitHub Actions last year I decided to move some of my CI jobs for my personal infrastructure over from my private Jenkins server to Actions. Both in an effort to clean up the setup a bit, but also to not have to maintain and rely on running Jenkins myself so much anymore.</p>
+<p>My personal infrastructure runs out of a single monolithic repository that contains chef cookbooks, provisioning code, kubernetes resources, terraform code, and also dns configuration (which will serve as the example in this post) in a subdirectory. That is why a lot of the examples I post here are related to having multiple deployment targets in a single repository.</p>
+<h2 id="the-used-to-be-situation">The used to be situation</h2>
+<p>For a couple of years now I’ve been managing my DNS configuration with [octodns]. It’s a really nice tool written by the GitHub engineering team to manage DNS zones across different providers via yaml files. My zones are configured in yaml files in the <code>dns</code> sub directory of my infrastructure repository. There&rsquo;s a small Makefile that has tasks for verifying and deploying configuration. And it usually got deployed via a push to the default branch of the repo and a top level Jenkinsfile that mapped directory paths to Jenkins jobs like this:</p>
+<pre tabindex="0"><code>stage('determine subjob to build') {
+    try {
+      sh &quot;printenv&quot;
+      echo &quot;Got params: ${params}&quot;
+      foundJob = false
+      changedFiles = sh(script: &quot;git diff --name-only ${params.prevSHA} HEAD&quot;, returnStdout: true).trim()
+      if (changedFiles =~ /^jobs/){
+        build job: 'create-jobs', wait: false
+        foundJob = true
+      }
+      if (changedFiles =~ /^dns/){
+        build job: 'dns', wait: false
+        foundJob = true
+      }
+      if (!foundJob) {
+        echo &quot;No subjobs to build for &quot; + changedFiles
+      }
+      sh &quot;/usr/local/bin/ci-notify --job=${env.JOB_NAME} --build=${env.BUILD_NUMBER} --success&quot;
+    }
+    catch (err) {
+      sh &quot;/usr/local/bin/ci-notify --job=${env.JOB_NAME} --build=${env.BUILD_NUMBER} --failure&quot;
+      throw err
+    }
+  } 
+</code></pre><p>In case the job that was run on push failed or I just wanted to rerun the deployment, I also have a helpful Slack bot to help out with that:</p>
+<p><img src="/images/bits/pr-deploys/slack-friday.png" alt="slack bot deploy"></p>
+<p>And this worked really well for a couple of years. I don’t have a ton of changes usually in my personal DNS setup, so whenever a change was needed, this setup was more than enough automation to keep me happy. But at some point I got annoyed by the fact that basically all automation for my infrastructure was dependent on Jenkins being up (and I had to make sure it was).</p>
+<h2 id="hello-actions">Hello Actions</h2>
+<p>Fortunately around that same time I got really annoyed running Jenkins, GitHub Actions went GA with the CI offering which prompted me to look more into how I could use it to maybe replace my Jenkins setup.</p>
+<p>As a first step here I wanted to change as few things as possible. So Actions would literally just replace Jenkins, running the deployment logic whenever I pushed to the default branch of my infrastructure repository.</p>
+<p>In Actions this was done by restricting the job to changes in the <code>dns</code> subdirectory or changes to the workflow file:</p>
+<pre tabindex="0"><code>on:
+  push:
+    paths:
+      - 'dns/**'
+      - '.github/workflows/dns.yml'
+</code></pre><p>The job itself would then run the same sequence of <code>make check</code> to do a dry run of the changes, and then <code>make update</code> to deploy the changes.</p>
+<h2 id="pull-request-ci-integration">Pull Request CI integration</h2>
+<p>This was already great and a perfect replacement of the setup I had before. But it wasn’t using the power of Actions to their full extent. The most obvious one being that this wouldn’t really work with pull requests. Sure the job would run, but every change pushed to a PR would automatically be deployed. Which also can be a nice workflow, but wasn’t what I wanted. I wanted to have more control over deploys, essentially a human 👍🏻 that the changes are actually good to go. And as the signal for this I decided on the merge button. So once I was happy with the changes and wanted to see it deployed, I just had to merge the PR and make sure the automation keeps deploying on the default branch.</p>
+<p>In order to do that, all I had to do was add <code>if: github.ref == 'refs/heads/master' </code> to the step that was running the <code>make update</code> deployment. And voila, the <code>make check</code> dry run is run on any PR now with nice and proper GitHub checks integration and any merge to master triggers a deploy now and makes sure the changes go out.</p>
+<h2 id="branch-based-deploys">Branch based deploys</h2>
+<p>I ran with this setup for a while. And again it worked perfectly fine. However I was also running into situations where the actual deploy failed even though the PR check was fine. Because there is no place like production. And all the tests will never be a full replacement to catch all the things before hitting production. That’s just how it is. But it meant that I would only find out after the merge that something was off. And then I had to open another PR to fix the problems which usually was just a small one line change. And I got annoyed by this. Plus Pull Requests have a really nice integration with the deployments API which I was missing out on.</p>
+<p>So I wanted to have all these nice things as well. The first step to get there was to find another trigger for deployments that signals the automation that this code is fine to deploy. Pull Requests don’t have a ton of ways to interact with them. It basically comes down to comments or labels. And because there is a way to trigger Actions on labels, that’s what I went with.</p>
+<p>In Actions configuration this looks like this. First I had to make sure the job runs when the PR gets <code>labeled</code> (the other 2 <code>opened</code> and <code>synchronized</code> make sure the automation is run on any changes pushed to the PR):</p>
+<pre tabindex="0"><code>on:
+  pull_request:
+    paths:
+      - 'dns/**'
+      - '.github/workflows/dns.yml'
+    types: [opened, synchronize, labeled]
+</code></pre><p>Then I decided on a label name - in this case <code>deploy requested/dns</code> - and made sure the deployment logic only ran when the PR actually was labeled with that. I did this by making <code>deploy</code> a separate job in the Actions definition and have it be guarded by <code>if: contains(github.event.pull_request.labels.*.name, 'deploy requested/dns')</code> similar to how the guard on default branch worked before.</p>
+<p>Now to have that nice PR timeline integration with the deployments API I wrote a small ruby script which is configured via environment variables in the job.</p>
+<pre tabindex="0"><code>env:
+      DEPLOYMENT_REPO: ${{ github.repository }}
+      DEPLOYMENT_ENVIRONMENT: dns
+      DEPLOYMENT_DESCRIPTION: dns updated via octodns
+      DEPLOYMENT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      DEPLOYMENT_SHA: ${{ github.event.pull_request.head.ref }}
+</code></pre><p>In order to record deployments and their status changes and run the deployment creation step right before the deployment logic like so:</p>
+<pre tabindex="0"><code>- name: start deployment
+  run: ruby bin/gh-deployment.rb create
+</code></pre><p>And then the at the end of the job there are these two steps that are run on success and failure of the job respectively:</p>
+<pre tabindex="0"><code>    - name: record deployment failure
+      run: ruby bin/gh-deployment.rb failure
+      if: failure()
+    - name: record deployment success
+      run: ruby bin/gh-deployment.rb success
+      if: success()
+</code></pre><p>Which makes sure the deployment status is properly reflected in the Pull Request timeline:</p>
+<p><img src="/images/bits/pr-deploys/pr-deploy-timeline.png" alt="pull request deploy timeline"></p>
+<h2 id="wrapping-up">Wrapping up</h2>
+<p>This is now a workflow I really enjoy. It’s extremely similar to how we work at GitHub, which is nice because I don’t have to rethink how things are done when I change things in my personal infrastructure. Plus I get all of the testing and feedback on my PR and can act there with changes before merging the code. I also can work on more than one PR at a time, and even have a PR for my chef changes and one for my dns changes and have them be deployed and tested and incorporate feedback before merging. Or do it in the same PR because the pre deployment checks will run as soon as there are changes in the respective subdirectory. And I can add a <code>deploy requested/dns</code> and a <code>deploy requested/chef</code> label to have the automation for both deployments run.</p>
 ]]></content:encoded>
     </item>
     
@@ -4076,6 +4501,143 @@ I can install on my own servers I would happily try it again. But for now it&rsq
     </item>
     
     <item>
+      <title>Mirror GitHub repositories in pure shell</title>
+      <link>https://unwiredcouch.com/bits/2014/08/16/github-mirror-shell.html</link>
+      <pubDate>Sat, 16 Aug 2014 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/bits/2014/08/16/github-mirror-shell.html</guid>
+      <description>As I have written before I have slowly started to move my data out of cloud services where applicable.</description>
+    <content:encoded><![CDATA[<p>As I have <a href="http://www.unwiredcouch.com/2013/10/30/uncloud-your-life.html">written before</a> I have slowly started to move my data out
+of cloud services where applicable. One part of that was setting up my own
+backup server at home based on <a href="http://www.unwiredcouch.com/bits/2014/03/18/zfs-rsync-backups.html">FreeBSD, zfs and rsync</a>. One part I
+consider important data but didn&rsquo;t have on there was my (Open Source) code I
+host on GitHub. This also wasn&rsquo;t ever a priority as the code is public anyways
+so it wasn&rsquo;t a privacy issue for me, and I also trust GitHub to run backups so
+I wasn&rsquo;t overly concerned about my data vanishing. Still I wanted to have my
+own backup of things.</p>
+<p>So I started to look into how people mirror their repositories for backups,
+speed, availability and other things. There exist quite a lot of solutions out
+there which are mostly written in Ruby or Python. While this is fine and I
+would encourage you to look into those, I didn&rsquo;t want to deal with installing
+pip to install some Python script or installing yet another gem just for
+something that can be accomplished with a couple of lines of shell. So I wrote
+my own set of scripts in Bourne shell (one of the default installed shells in
+FreeBSD) so I could just cron them up on my backup box.</p>
+<p>First I needed a way to get a list of all my repositories. Thankfully GitHub
+has a <a href="https://developer.github.com/v3/">pretty great API</a> so I can just get a list of all my
+repositories and their git clone URLs:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/sh
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e"># Usage:</span>
+<span style="color:#75715e"># github_repo_list.sh mrtazz [34345k34j3k4b2jk3]</span>
+<span style="color:#75715e">#</span>
+<span style="color:#75715e"># get a list of all public repos for a user</span>
+<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -z $1 <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+  echo <span style="color:#e6db74">&#34;Usage:&#34;</span>
+  echo <span style="color:#e6db74">&#34;github_repo_list.sh USERNAME [TOKEN]&#34;</span>
+  exit <span style="color:#ae81ff">1</span>
+<span style="color:#66d9ef">fi</span>
+
+<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> ! -z $2 <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+  TOKEN<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&amp;access_token=</span><span style="color:#e6db74">${</span>2<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#66d9ef">fi</span>
+
+CURL<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>which curl<span style="color:#66d9ef">)</span>
+<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -z <span style="color:#e6db74">${</span>CURL<span style="color:#e6db74">}</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+  <span style="color:#75715e"># fall back to /usr/local/bin/curl</span>
+  CURL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/usr/local/bin/curl&#34;</span>
+<span style="color:#66d9ef">fi</span>
+
+BASEURL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://api.github.com/users/</span><span style="color:#e6db74">${</span>1<span style="color:#e6db74">}</span><span style="color:#e6db74">/repos?type=owner</span><span style="color:#e6db74">${</span>TOKEN<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+count<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+
+<span style="color:#66d9ef">while</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">${</span>count<span style="color:#e6db74">}</span> -gt <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">do</span>
+
+  lines<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span><span style="color:#e6db74">${</span>CURL<span style="color:#e6db74">}</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>BASEURL<span style="color:#e6db74">}</span><span style="color:#e6db74">&amp;page=</span><span style="color:#e6db74">${</span>count<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> -s | grep git_url | cut -d<span style="color:#e6db74">&#34; &#34;</span> -f6 | sed -e <span style="color:#e6db74">&#34;s/[\&#34;,]//g&#34;</span><span style="color:#66d9ef">)</span>
+
+  <span style="color:#75715e"># stop if we don&#39;t get any more content. A bit hacky but I don&#39;t want to</span>
+  <span style="color:#75715e"># parse HTTP header data to figure out the last page</span>
+  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>lines<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+    count<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+  <span style="color:#66d9ef">else</span>
+    <span style="color:#66d9ef">for</span> line in <span style="color:#e6db74">${</span>lines<span style="color:#e6db74">}</span>; <span style="color:#66d9ef">do</span> echo <span style="color:#e6db74">${</span>line<span style="color:#e6db74">}</span> ; <span style="color:#66d9ef">done</span>
+    count<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>expr $count + 1<span style="color:#e6db74">`</span>
+  <span style="color:#66d9ef">fi</span>
+
+<span style="color:#66d9ef">done</span>
+</code></pre></div><p>This script takes a username and an optional access token and retrieves the
+public list of repositories for that user. It then outputs the git clone URLs
+one per line so it&rsquo;s easily stored in a text file or fed into other scripts.
+There are some minor inefficiencies and missing features in there as it curls
+one more time than needed to the GitHub API to figure out if there are more
+results and it also only supports public repositories as I don&rsquo;t have private
+ones at the moment. However changing the URL to call if I ever want to mirror
+private repositories is relatively easy and I don&rsquo;t care that much about the
+extra curl as this script is not gonna be run very frequently.</p>
+<p>This now gives me a list of all repositories on my account I want to mirror.
+The next step is actually mirroring them. For that I wrote a script that looks
+like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/sh
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e"># take a list of git clone urls on STDIN and clone them if they don&#39;t exist.</span>
+
+<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -z $1 <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+  echo <span style="color:#e6db74">&#34;Usage:&#34;</span>
+  echo <span style="color:#e6db74">&#34;github_repo_sync.sh directory&#34;</span>
+  exit <span style="color:#ae81ff">1</span>
+<span style="color:#66d9ef">fi</span>
+
+GIT<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>which git<span style="color:#66d9ef">)</span>
+
+<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -z <span style="color:#e6db74">${</span>GIT<span style="color:#e6db74">}</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+  <span style="color:#75715e"># if git is not in path fall back to /usr/local</span>
+  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -f /usr/local/bin/git <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+    GIT<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/usr/local/bin/git&#34;</span>
+  <span style="color:#66d9ef">else</span>
+    echo <span style="color:#e6db74">&#34;You need to have git installed.&#34;</span>
+    exit <span style="color:#ae81ff">1</span>
+  <span style="color:#66d9ef">fi</span>
+<span style="color:#66d9ef">fi</span>
+
+<span style="color:#75715e"># switch to archive directory</span>
+cd $1
+
+<span style="color:#66d9ef">while</span> read line; <span style="color:#66d9ef">do</span>
+  directory<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>line<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> | cut -d <span style="color:#e6db74">&#34;/&#34;</span> -f 5<span style="color:#66d9ef">)</span>
+
+  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> ! -d <span style="color:#e6db74">${</span>directory<span style="color:#e6db74">}</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+    <span style="color:#e6db74">${</span>GIT<span style="color:#e6db74">}</span> clone --mirror <span style="color:#e6db74">${</span>line<span style="color:#e6db74">}</span>
+  <span style="color:#66d9ef">else</span>
+    cd <span style="color:#e6db74">${</span>directory<span style="color:#e6db74">}</span>
+    <span style="color:#e6db74">${</span>GIT<span style="color:#e6db74">}</span> fetch -p origin
+    cd ..
+  <span style="color:#66d9ef">fi</span>
+
+<span style="color:#66d9ef">done</span>
+</code></pre></div><p>This script checks for each entry in a list of git clone URLs passed in via
+STDIN and if the directory already exists it fetches changes and if not clones
+it into the given directory. The mirroring commands reflect the instructions
+in this <a href="https://help.github.com/articles/duplicating-a-repository">GitHub guide</a>.</p>
+<p>Now to tie those two together I just set up two cron entries to run those two
+commands:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#ae81ff">0</span> <span style="color:#ae81ff">20</span> * * * ~/bin/github_repo_list.sh mrtazz 0f6 &gt; /backup/github/github_repo_list.txt
+<span style="color:#ae81ff">0</span> <span style="color:#ae81ff">21</span> * * * ~/bin/github_repo_sync.sh /backup/github &lt; /backup/github/github_repo_list.txt
+</code></pre></div><p>The first cron entry fetches the list of repositories and sticks them into a
+text file. The second one runs an hour later and actually syncs all the
+changes. I set it up to sync into the zfs pool that gets snapshotted every
+night anyways (as described <a href="http://www.unwiredcouch.com/bits/2014/03/18/zfs-rsync-backups.html">here</a>) so I get that for free. I&rsquo;m not
+super happy with running this on a cron as there could be a smarter solution
+that checks for changes via the API and marks repositories as dirty, but this
+is the simplest thing that could work and way less work than interacting more
+with the API. In addition I would love to exclude forks from the backup since
+I don&rsquo;t really care about backing those up. But I&rsquo;ll leave this for iteration
+2.</p>
+<p>I track changes to the script in my <a href="https://github.com/mrtazz/bin">bin folder repository on GitHub</a>, so
+if you&rsquo;re interested in tracking changes to this setup, follow it there.</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
       <title>Human Error and Getting off the Hook</title>
       <link>https://unwiredcouch.com/2014/08/04/human-error-getting-off-the-hook.html</link>
       <pubDate>Mon, 04 Aug 2014 00:00:00 +0000</pubDate>
@@ -4220,6 +4782,104 @@ forward.</p>
 also recently published a set of resources on the <a href="http://codeascraft.com/2014/07/18/just-culture-resources/">Etsy Engineering
 blog</a> to get started with the topic of System Safety, Human Error
 and Just Culture.</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Productive VIM with templates</title>
+      <link>https://unwiredcouch.com/bits/2014/07/22/productive-vim-with-templates.html</link>
+      <pubDate>Tue, 22 Jul 2014 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/bits/2014/07/22/productive-vim-with-templates.html</guid>
+      <description>I basically exist inside of vim all day. I write code in there, I write emails in VIM via mutt, I take notes with it and I write all my blog posts in VIM.</description>
+    <content:encoded><![CDATA[<p>I basically exist inside of vim all day. I write code in there, I write emails
+in VIM via <a href="http://www.mutt.org">mutt</a>, I take notes with it and I write all my blog posts in
+VIM. I think it&rsquo;s clear that improving the way I work with VIM helps in a
+variety of scenarios. Over time I also noticed that I often start out with the
+same basic file structure and then fill it with content. For example jekyll
+blog posts always have the same header, meeting notes always have the same
+structure and I use a template to reply to recruiter emails in times where I&rsquo;m
+not looking for a job (a trick I learned from <a href="https://twitter.com/katemats">Kate Matsudaira</a> in
+one of her <a href="http://katemats.com/people-are-lazy/">great blog posts</a> about productivity).</p>
+<p>In the coding world VIM provides a great built-in functionality for that which
+is called <a href="http://vimdoc.sourceforge.net/htmldoc/autocmd.html#skeleton">&ldquo;skeleton files'</a>. This is a great way to always have a
+good to go version of C source or header files, Makefiles or RPM spec files.
+However this is all based on filetypes (or rather file endings) and since I
+write most of my notes and all my blog posts in <a href="http://daringfireball.net/projects/markdown/">Markdown</a> for
+example and they all have the same file ending this doesn&rsquo;t help me much for
+having different templates. So I started to look around for VIM functionality
+or plugins that would just let me load templates from a specific location and
+maybe expand some variables (as I for example like to have the date auto
+inserted into meeting notes). I didn&rsquo;t want a full fledged templating engine,
+although I could certainly have installed and wrapped the <a href="https://github.com/tobyS/vmustache">Mustache
+implementation written in VimL</a> to do that for me. But I wanted to
+keep it simple and apparently that solution didn&rsquo;t exist yet.</p>
+<p>This is why I wrote a VIM plugin called <a href="https://github.com/mrtazz/vim-stencil">vim-stencil</a>. It&rsquo;s a
+handful of lines of VimL and it does exactly 2 things:</p>
+<ul>
+<li>Load a template from a specified location</li>
+<li>Expand some variables (currently even only one: the date)</li>
+</ul>
+<p>So now with a simple call to <code>:Stencil</code> in VIM I can choose a template for the
+type of file I&rsquo;m editing (yes it supports tab completion) and load that into
+my buffer. I even get the current date for free in templates where I choose to
+have it. No fuzz, no complicated setup. But a small thing that increases my
+productivity a lot.</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Shared layout for project pages in Jekyll</title>
+      <link>https://unwiredcouch.com/bits/2014/06/14/jekyll-shared-project-layouts.html</link>
+      <pubDate>Sat, 14 Jun 2014 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/bits/2014/06/14/jekyll-shared-project-layouts.html</guid>
+      <description>I use Jekyll a lot, especially for my website. And I quite like it a lot.</description>
+    <content:encoded><![CDATA[<p>I use <a href="http://jekyllrb.com/">Jekyll</a> a lot, especially for <a href="http://unwiredcouch.com">my website</a>. And I
+quite like it a lot. I also write and open source the occasional software
+every now and then, which usually happens on <a href="https://github.com/mrtazz">my GitHub profile</a>. And
+thankfully GitHub makes it <a href="https://pages.github.com/">dead easy</a> to generate a nice looking page
+for your project. I&rsquo;ve used this feature for a long time now and have used a
+bunch of their awesome provided themes. However since I also host my site on
+GitHub Pages and thus all my projects are automatically available under a sub
+path there named after the project name.</p>
+<p>However last week I decided that I wanted to have them all be in a layout
+similar to my website so the whole page doesn&rsquo;t change just because you click
+on a link on my <a href="http://www.unwiredcouch.com/projects.html">projects page</a>. But I also wanted to keep the code
+for the pages in the respective repo so it&rsquo;s all in one place while at the
+same time I didn&rsquo;t want to copy the layout into each repository.</p>
+<p>Thankfully there is trick you can use with GitHub Pages. If you add git
+submodules to your repository they are gettiing <a href="https://help.github.com/articles/using-submodules-with-pages">pulled in</a>
+automatically on page build. So I created a <a href="https://github.com/mrtazz/jekyll-layouts">shared repository</a> to
+hold the template I wanted for my projects. And now all I have to do to get a
+project page with the correct layout is:</p>
+<ul>
+<li><code>git checkout gh-pages</code></li>
+<li><code>git submodule add https://github.com/mrtazz/jekyll-layouts.git _layouts</code></li>
+<li>copy the <code>README.md</code> of my project to <code>index.md</code> and add the jekyll
+frontmatter:</li>
+</ul>
+<pre tabindex="0"><code>---
+layout: project
+title: project name
+---
+</code></pre><ul>
+<li>add a <code>_config.yml</code> and fill out the following values:</li>
+</ul>
+<pre tabindex="0"><code>gaugesid: tracking code for the gaug.es gauge
+projecturl: github url for the ribbon in the upper right corner
+basesite: base URL to get the CSS from
+markdown: kramdown
+</code></pre><ul>
+<li><code>git push</code></li>
+</ul>
+<p>The only dependency now is that the CSS comes from my main website. Which I&rsquo;m
+fine with and is actually a feature because if I ever change something there I
+want the project pages to reflect that change also. The other downside is that
+if I change the project layout repository I will have to update the reference
+in all the project repositories. Which should be fairly straightforward with
+some automation and is at least better than copying files around and
+committing them to each repository.</p>
 ]]></content:encoded>
     </item>
     
@@ -4578,6 +5238,119 @@ And I probably wouldn&rsquo;t be where I am now without it.</p>
     </item>
     
     <item>
+      <title>Backups with rsync and zfs</title>
+      <link>https://unwiredcouch.com/bits/2014/03/18/zfs-rsync-backups.html</link>
+      <pubDate>Tue, 18 Mar 2014 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/bits/2014/03/18/zfs-rsync-backups.html</guid>
+      <description>As I mentioned before I&amp;rsquo;m running my own backup on a server that is running in my apartment.</description>
+    <content:encoded><![CDATA[<p>As I <a href="http://www.unwiredcouch.com/2013/10/30/uncloud-your-life.html">mentioned before</a> I&rsquo;m running my own backup on a server that is
+running in my apartment. I didn&rsquo;t really talk a lot about how this works,
+other than it is running on a HP Microserver with an encrypted ZFS RAID. So I
+wanted to also quickly jot down how the backup works. This is only set up for
+a single user right now because I&rsquo;m the only one using it.</p>
+<p>For me a backup has two important parts:</p>
+<ul>
+<li>Have data in a different location</li>
+<li>Be able to restore data from the past</li>
+</ul>
+<p>The time sensitivity of those two properties are pretty different for me. For
+example I have chosen for myself that I&rsquo;m happy with only being able to
+restore deleted data from the last day. So if I create something and delete it
+5 hours later, I&rsquo;m ok with not being able to recover it. On the other hand I&rsquo;m
+very aware of the fact that my mailserver can disappear at any given time:</p>
+<blockquote class="twitter-tweet" lang="en"><p>that moment when you want to make dinner and your mailserver disappears</p>&mdash; Daniel Schauenberg (@mrtazz) <a href="https://twitter.com/mrtazz/statuses/411689583370592256">December 14, 2013</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>This is why I want to copy data to a remote location as often as possible
+(which for me means about every 15 minutes). And my setup is heavily based
+around those ideas. The core of the backup system is ZFS and a separate file
+system for each machine I want to backup. In order to have the ability to go
+back in time I use <a href="http://docs.oracle.com/cd/E19253-01/819-5461/gbcya/index.html">zfs snapshots</a>. Every night the following
+script runs on my backup server and creates a snapshot for the day:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/sh
+</span><span style="color:#75715e"></span><span style="color:#75715e"># simple script to snapshot locations on a ZFS backup pool</span>
+
+timestamp<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>date +%Y-%m-%d-%H:%M:%S<span style="color:#e6db74">`</span>
+<span style="color:#66d9ef">for</span> volume in <span style="color:#66d9ef">$(</span>ls /backup<span style="color:#66d9ef">)</span>; <span style="color:#66d9ef">do</span>
+  echo <span style="color:#e6db74">&#34;Creating snapshot for </span><span style="color:#e6db74">${</span>volume<span style="color:#e6db74">}</span><span style="color:#e6db74"> at date </span><span style="color:#e6db74">${</span>timestamp<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+  /sbin/zfs snapshot backup/<span style="color:#e6db74">${</span>volume<span style="color:#e6db74">}</span>@<span style="color:#e6db74">${</span>timestamp<span style="color:#e6db74">}</span>
+<span style="color:#66d9ef">done</span>
+</code></pre></div><p>And to make sure that I really do have snapshots I have this simple nagios
+script to tell me if the snapshotting worked last night.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/sh
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e"># nagios script to check age of backup snapshots</span>
+
+YESTERDAY<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>date -v-1d +%Y-%m-%d<span style="color:#e6db74">`</span>
+EXITCODE<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+
+<span style="color:#66d9ef">for</span> backup in <span style="color:#66d9ef">$(</span>ls /backup<span style="color:#66d9ef">)</span>; <span style="color:#66d9ef">do</span>
+  zfs list -t snapshot | grep <span style="color:#e6db74">${</span>backup<span style="color:#e6db74">}</span> | grep -q <span style="color:#e6db74">${</span>YESTERDAY<span style="color:#e6db74">}</span>
+  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $? !<span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+    echo <span style="color:#e6db74">&#34;Snapshot of </span><span style="color:#e6db74">${</span>backup<span style="color:#e6db74">}</span><span style="color:#e6db74"> missing for </span><span style="color:#e6db74">${</span>YESTERDAY<span style="color:#e6db74">}</span><span style="color:#e6db74">.&#34;</span>
+    EXITCODE<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>
+  <span style="color:#66d9ef">fi</span>
+<span style="color:#66d9ef">done</span>
+
+<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">${</span>EXITCODE<span style="color:#e6db74">}</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+  echo <span style="color:#e6db74">&#34;All backup volumes were snapshotted on </span><span style="color:#e6db74">${</span>YESTERDAY<span style="color:#e6db74">}</span><span style="color:#e6db74">.&#34;</span>
+<span style="color:#66d9ef">fi</span>
+
+exit <span style="color:#e6db74">${</span>EXITCODE<span style="color:#e6db74">}</span>
+
+</code></pre></div><p>And this check (which runs on all my servers because I have zpools everywhere)
+to tell me about the disk health of the backup zpool:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/sh
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e"># check for zpool health</span>
+ZPOOL<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>which zpool<span style="color:#e6db74">`</span>
+EXITSTATUS<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+IFS<span style="color:#f92672">=</span><span style="color:#e6db74">$&#39;\n&#39;</span>
+
+<span style="color:#66d9ef">for</span> line in <span style="color:#66d9ef">$(</span><span style="color:#e6db74">${</span>ZPOOL<span style="color:#e6db74">}</span> list -o name,health | grep -v NAME | grep -v ONLINE<span style="color:#66d9ef">)</span>
+<span style="color:#66d9ef">do</span>
+  echo $line
+  EXITSTATUS<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>
+<span style="color:#66d9ef">done</span>
+
+<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $EXITSTATUS <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+  echo <span style="color:#e6db74">&#34;All pools are healthy.&#34;</span>
+<span style="color:#66d9ef">fi</span>
+
+exit $EXITSTATUS
+</code></pre></div><p>With this setup in place I can simply copy files into the file system that
+belongs to that machine and it will get snapshotted every night. And what&rsquo;s an
+awesome tool to copy data? That&rsquo;s right, <a href="http://rsync.samba.org">rsync</a>.</p>
+<p>My backup script runs once every 15 minutes and looks like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/sh
+</span><span style="color:#75715e"></span><span style="color:#75715e">#</span>
+<span style="color:#75715e"># Backup script to pull in changes from remote hosts</span>
+<span style="color:#75715e">#</span>
+<span style="color:#66d9ef">for</span> backup in <span style="color:#66d9ef">$(</span>ls /backup<span style="color:#66d9ef">)</span>; <span style="color:#66d9ef">do</span>
+  grep -q <span style="color:#e6db74">${</span>backup<span style="color:#e6db74">}</span> ~/.backupexcludes
+  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $? !<span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+    /usr/local/bin/rsync -e <span style="color:#e6db74">&#39;ssh -o BatchMode=yes -o ConnectTimeout=10&#39;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--archive --delete --timeout<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span> <span style="color:#e6db74">${</span>backup<span style="color:#e6db74">}</span>:. /backup/<span style="color:#e6db74">${</span>backup<span style="color:#e6db74">}</span>/
+  <span style="color:#66d9ef">fi</span>
+<span style="color:#66d9ef">done</span>
+</code></pre></div><p>This allows me to have machines that I used to backup but are no longer online
+in an excludes list. That way rsync (and ssh) doesn&rsquo;t hang or error for
+something that doesn&rsquo;t need to be backed up anymore anyways. And in case a
+machine is unavailable or disappears the timeout settings in that script make
+sure it just gets skipped and retried on the next run.</p>
+<p>I&rsquo;m pretty happy with the setup, my backup server pulls in data from all my
+servers on the internet and stores it (forever?). It is chef&rsquo;d for the most
+part (though there is always more to automate) and is pretty simple in my
+opinion. The backup situation for my laptop is not ideal yet, as I manually
+back it up by running rsync. I want to set the backup server up to also serve
+some of the backup filesystems as Timemachine targets, so I can just use
+Timemachine on my laptop and have it automatically run the backups.</p>
+<p>But in the meantime I can add a new backup with this one weird trick:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">zfs create /backup/newhost <span style="color:#f92672">&amp;&amp;</span> chown -R mrtazz:mrtazz /backup/newhost
+</code></pre></div>]]></content:encoded>
+    </item>
+    
+    <item>
       <title>Git - Put the stupid back in stupid content tracker</title>
       <link>https://unwiredcouch.com/2014/02/17/git-stupid.html</link>
       <pubDate>Mon, 17 Feb 2014 00:00:00 +0000</pubDate>
@@ -4695,6 +5468,100 @@ you be more productive and removes confusion in your team. And I sure hope you
 know how it works and what you&rsquo;re getting yourself into. Because it can be
 what you end up with but it shouldn&rsquo;t be where you start. Keep it stupid
 simple.</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Context specific dotfiles</title>
+      <link>https://unwiredcouch.com/bits/2014/02/03/dotoverride.html</link>
+      <pubDate>Mon, 03 Feb 2014 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/bits/2014/02/03/dotoverride.html</guid>
+      <description>I have a collection of various dotfiles which I use to configure the most important tools I use everyday.</description>
+    <content:encoded><![CDATA[<p>I have a <a href="https://github.com/mrtazz/muttfiles">collection</a> <a href="https://github.com/mrtazz/vimfiles">of</a> <a href="https://github.com/mrtazz/zshfiles">various</a>
+<a href="https://github.com/mrtazz/dotfiles">dotfiles</a> which I use to configure the most important tools I use
+everyday. Naturally all those are kept in git and shared between all the
+machines I work on. The problem is that there might be things I don&rsquo;t want to
+store publicly. This might include shell aliases to hostnames, git user emails
+I only use at work, etc. I used to manage this by having a different branch
+checked out on machines at work and would just merge in master whenever
+something changes. However this was super tedious as I had to remember to
+switch to the right branch depending on whether I wanted to make public or
+private changes. And after changing something I had to remember to switch back
+to the correct branch and not accidentally push the private branch to public
+GitHub. What it effectively ended up being was a whole bunch of dirty repos on
+different machines that were never in sync and partly had duplicate changes
+and partly only worked on that box anyways. And whenever I wanted to bring
+them back in sync it was a huge pain.  So I decided to adopt a new strategy
+for managing context specific dotfiles.</p>
+<p>I added a git repo <code>~/.dotoverrides</code> to all the machines I work on (or at
+least most of them) which contains a <code>vimrc</code>, a <code>zshrc</code> and so on.  On my work
+machines this is pushed to a repo on our internal GitHub Enterprise instance
+so I can easily share it between machines. And all my regular dotfiles now
+source those override files at the very end.</p>
+<p>So in my regular <code>.vimrc</code> I have something like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#75715e">&#34; source overrides configs</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">if</span> <span style="color:#a6e22e">filereadable</span>($<span style="color:#a6e22e">HOME</span>.<span style="color:#e6db74">&#34;/.dotoverrides/vimrc&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>  <span style="color:#a6e22e">exec</span> <span style="color:#e6db74">&#34;:source &#34;</span>. $<span style="color:#a6e22e">HOME</span> . <span style="color:#e6db74">&#34;/.dotoverrides/vimrc&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">endif</span><span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>In my <code>.zshrc</code> I have this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span> -f  <span style="color:#e6db74">${</span>HOME<span style="color:#e6db74">}</span>/.dotoverrides/zshrc <span style="color:#f92672">]</span> <span style="color:#f92672">&amp;&amp;</span> source <span style="color:#e6db74">${</span>HOME<span style="color:#e6db74">}</span>/.dotoverrides/zshrc
+</code></pre></div><p>And in git (only works if you have at least v1.7.10) I&rsquo;ve added this stanza:</p>
+<pre tabindex="0"><code class="language-config" data-lang="config">[include]
+  path = ~/.dotoverrides/gitconfig
+</code></pre><p>Now I can easily share and push/pull my regular dotfiles  in public GitHub and
+don&rsquo;t have to pay attention whether or not I&rsquo;m on the correct branch and if
+I&rsquo;m not accidentally pushing to the wrong remote. Whenever I need to use
+different settings on a work machine I just make sure to add it to the
+overrides file and have it ready as soon as I open a new shell, run a git
+command or open vim again.</p>
+<p>So much easier!</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Creating Encrypted Home Directories in FreeBSD</title>
+      <link>https://unwiredcouch.com/bits/2013/12/28/encrypted-homedirs.html</link>
+      <pubDate>Sat, 28 Dec 2013 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/bits/2013/12/28/encrypted-homedirs.html</guid>
+      <description>I run FreeBSD with ZFS on all my servers and I generally want to have my home directories encrypted.</description>
+    <content:encoded><![CDATA[<p>I run FreeBSD with ZFS on all my servers and I generally want to have my home
+directories encrypted. Since ZFS native encryption is not yet in FreeBSD, I
+create two ZFS filesystems, which are then encrypted with <a href="http://www.freebsd.org/doc/handbook/disks-encrypting.html">GELI
+encryption</a> and build a new ZFS pool. This pool is then used as my home
+directory. In order to simplify this, I have a shell script that takes the
+username and size as input and creates keys and all partitions as well as the
+zpool.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/sh
+</span><span style="color:#75715e"></span>
+USERHOME<span style="color:#f92672">=</span>$1
+SIZE<span style="color:#f92672">=</span>$2
+
+zfs create -omountpoint<span style="color:#f92672">=</span>/encrypted tank/encrypted
+zfs create tank/encrypted/keys
+zfs create -omountpoint<span style="color:#f92672">=</span>none tank/encrypted/zvols
+zfs create -ocompression<span style="color:#f92672">=</span>on tank/encrypted/zvols/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>
+zfs create -V <span style="color:#e6db74">${</span>SIZE<span style="color:#e6db74">}</span>G tank/encrypted/zvols/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>/disk0
+zfs create -V <span style="color:#e6db74">${</span>SIZE<span style="color:#e6db74">}</span>G tank/encrypted/zvols/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>/disk1
+
+zfs create tank/encrypted/keys/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>
+dd <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>/dev/random of<span style="color:#f92672">=</span>/encrypted/keys/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>/disk0 bs<span style="color:#f92672">=</span><span style="color:#ae81ff">64</span> count<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+dd <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>/dev/random of<span style="color:#f92672">=</span>/encrypted/keys/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>/disk1 bs<span style="color:#f92672">=</span><span style="color:#ae81ff">64</span> count<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+geli init -s <span style="color:#ae81ff">4096</span> -K /encrypted/keys/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>/disk0 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>/dev/zvol/tank/encrypted/zvols/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>/disk0
+geli init -s <span style="color:#ae81ff">4096</span> -K /encrypted/keys/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>/disk1 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>/dev/zvol/tank/encrypted/zvols/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>/disk1
+
+geli attach -k /encrypted/keys/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>/disk0 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>/dev/zvol/tank/encrypted/zvols/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>/disk0
+geli attach -k /encrypted/keys/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>/disk1 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>/dev/zvol/tank/encrypted/zvols/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>/disk1
+
+zpool create <span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>-home raidz <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>/dev/zvol/tank/encrypted/zvols/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>/disk0.eli <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>/dev/zvol/tank/encrypted/zvols/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>/disk1.eli
+</code></pre></div><p>I try to keep the script updated on <a href="https://github.com/mrtazz/bin/blob/master/create_encrypted_zfs_home.sh">GitHub</a>.</p>
 ]]></content:encoded>
     </item>
     
