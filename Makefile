@@ -33,9 +33,6 @@ POSTS_IMAGES_FOLDER     := static/images/posts
 POSTS_IMAGES_ORIGINALS  := $(shell find $(POSTS_IMAGES_FOLDER) -name "*original.jpeg")
 POSTS_IMAGES_LARGE_ONES := $(patsubst $(POSTS_IMAGES_FOLDER)/%original.jpeg,$(POSTS_IMAGES_FOLDER)/%large.jpeg,$(POSTS_IMAGES_ORIGINALS))
 
-$(info    POSTS_IMAGES_ORIGINALS is $(POSTS_IMAGES_ORIGINALS))
-$(info    POSTS_IMAGES_LARGE_ONES is $(POSTS_IMAGES_LARGE_ONES))
-
 $(POSTS_IMAGES_FOLDER)/%large.jpeg: $(POSTS_IMAGES_FOLDER)/%original.jpeg
 	convert $< -resize 500x500^ $@
 
