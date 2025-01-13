@@ -1,13 +1,26 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>unwiredcouch.com on unwiredcouch.com</title>
   <id>https://unwiredcouch.com/atom.xml</id>
-  <updated>2024-11-15T00:00:00Z</updated>
+  <updated>2025-01-13T00:00:00Z</updated>
 	<subtitle>thoughts which have made it into written existence</subtitle>
 	<link rel="self" href="https://unwiredcouch.com/atom.xml"/>
 	<author>
     <name>Daniel Schauenberg</name>
 		<email>d@unwiredcouch.com</email>
 	</author>
+  
+	<entry>
+    <title type="html"><![CDATA[Vacation Factor]]></title>
+    <published>2025-01-13T00:00:00Z</published>
+    <updated>2025-01-13T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/2025/01/13/vacation-factor.html</id>
+    <content type="html"><![CDATA[<p>One of the phrases that are fairly heavily used in tech (as well as many other industries I&rsquo;m sure) is <a href="https://en.m.wikipedia.org/wiki/Bus_factor">&ldquo;bus factor&rdquo;</a>. It basically describes the risk of information, knowledge, and other capabilities not shared amongst team members and therefore would be lost if the only person possessing those things would be &ldquo;hit by a bus&rdquo;.</p>
+<p>I think that&rsquo;s an absolutely awful thought and extremely cruel way to talk and think about other humans. So many years ago (I don&rsquo;t remember when exactly but probably somewhere around 2014) I started to instead use the phrase &ldquo;vacation factor&rdquo; at work. With the definition of &ldquo;what&rsquo;s the risk of information, knowledge, or skills being inaccessible when a team member suddenly decides to go on vacation&rdquo;. As a European, vacation to me means it&rsquo;s impossible to contact them because they don&rsquo;t have their laptop with them, don&rsquo;t check slack or email, and otherwise don&rsquo;t answer work calls. As it should be. So the person needs to be assumed completely inaccessible.</p>
+<p>This way of thinking about it sounds a lot nicer to me. And it - in addition - normalizes taking frequent vacations as it also should be. It also helps team members think of the fact that coworkers go on vacation and plan for it. Hopefully making the &ldquo;guilt of taking vacation&rdquo; that definitely exists for some people also grow smaller.</p>
+<p>I&rsquo;m sure I&rsquo;m not the first person to think of this. But I like the phrase and think it should be used more often.</p>
+]]></content>
+    <link href="https://unwiredcouch.com/2025/01/13/vacation-factor.html" rel="alternate"/>
+	</entry>
   
 	<entry>
     <title type="html"><![CDATA[Africa Is Not A Country]]></title>

@@ -8,7 +8,21 @@
     <language>en</language>
     <managingEditor>d@unwiredcouch.com (Daniel Schauenberg)</managingEditor>
     <webMaster>d@unwiredcouch.com (Daniel Schauenberg)</webMaster>
-    <lastBuildDate>Tue, 11 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://unwiredcouch.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 13 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://unwiredcouch.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vacation Factor</title>
+      <link>https://unwiredcouch.com/2025/01/13/vacation-factor.html</link>
+      <pubDate>Mon, 13 Jan 2025 00:00:00 +0000</pubDate>
+      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      <guid>https://unwiredcouch.com/2025/01/13/vacation-factor.html</guid>
+      <description>One of the phrases that are fairly heavily used in tech (as well as many other industries I&amp;rsquo;m sure) is &amp;ldquo;bus factor&amp;rdquo;.</description>
+    <content:encoded><![CDATA[<p>One of the phrases that are fairly heavily used in tech (as well as many other industries I&rsquo;m sure) is <a href="https://en.m.wikipedia.org/wiki/Bus_factor">&ldquo;bus factor&rdquo;</a>. It basically describes the risk of information, knowledge, and other capabilities not shared amongst team members and therefore would be lost if the only person possessing those things would be &ldquo;hit by a bus&rdquo;.</p>
+<p>I think that&rsquo;s an absolutely awful thought and extremely cruel way to talk and think about other humans. So many years ago (I don&rsquo;t remember when exactly but probably somewhere around 2014) I started to instead use the phrase &ldquo;vacation factor&rdquo; at work. With the definition of &ldquo;what&rsquo;s the risk of information, knowledge, or skills being inaccessible when a team member suddenly decides to go on vacation&rdquo;. As a European, vacation to me means it&rsquo;s impossible to contact them because they don&rsquo;t have their laptop with them, don&rsquo;t check slack or email, and otherwise don&rsquo;t answer work calls. As it should be. So the person needs to be assumed completely inaccessible.</p>
+<p>This way of thinking about it sounds a lot nicer to me. And it - in addition - normalizes taking frequent vacations as it also should be. It also helps team members think of the fact that coworkers go on vacation and plan for it. Hopefully making the &ldquo;guilt of taking vacation&rdquo; that definitely exists for some people also grow smaller.</p>
+<p>I&rsquo;m sure I&rsquo;m not the first person to think of this. But I like the phrase and think it should be used more often.</p>
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>Meditation timer with Apple Shortcuts</title>
       <link>https://unwiredcouch.com/2024/06/11/meditation-timer.html</link>
