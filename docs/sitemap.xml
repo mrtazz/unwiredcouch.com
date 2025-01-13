@@ -2,13 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://unwiredcouch.com/posts/</loc>
+    <lastmod>2025-01-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://unwiredcouch.com/</loc>
+    <lastmod>2025-01-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://unwiredcouch.com/2025/01/13/vacation-factor.html</loc>
+    <lastmod>2025-01-13T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://unwiredcouch.com/reading/africa-is-not-a-country/</loc>
     <lastmod>2024-11-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://unwiredcouch.com/reading/</loc>
-    <lastmod>2024-11-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://unwiredcouch.com/</loc>
     <lastmod>2024-11-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://unwiredcouch.com/reading/metal-gear-solid/</loc>
@@ -33,9 +39,6 @@
     <lastmod>2024-06-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://unwiredcouch.com/2024/06/11/meditation-timer.html</loc>
-    <lastmod>2024-06-11T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://unwiredcouch.com/posts/</loc>
     <lastmod>2024-06-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://unwiredcouch.com/reading/brain-food/</loc>
