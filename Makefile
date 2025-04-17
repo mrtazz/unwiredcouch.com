@@ -11,7 +11,6 @@ $(info    HUGO_VERSION is $(HUGO_VERSION))
 $(info    INSTALLED_HUGO_VERSION is $(INSTALLED_HUGO_VERSION))
 $(info    OS is $(OS))
 
-.DEFAULT_GOAL := build
 ifeq ($(OS),Darwin)
 # on macOS the dependency are installed via brew
 build: images
@@ -25,11 +24,12 @@ build:
 	echo "Unsupported OS: $(OS)"
 	exit 1
 endif
+.DEFAULT_GOAL := build
 .PHONY: build
 
 .PHONY: linux-deps
 linux-deps:
-	sudo wget https://github.com/gohugoio/hugo/releases/download/v$(HUGO_VERSION)/hugo_$(HUGO_VERSION)_Linux-64bit.deb
+	sudo wget https://github.com/gohugoio/hugo/releases/download/v$(HUGO_VERSION)/hugo_$(HUGO_VERSION)_linux-amd64.deb
 	sudo dpkg -i hugo_$(HUGO_VERSION)_Linux-64bit.deb
 	sudo apt-get update && sudo apt-get install -y imagemagick
 	$(info    HUGO is now $(HUGO))
