@@ -72,9 +72,9 @@ up on GitHub if you want to check them out.</p>
 <p>Let&rsquo;s start with the basics. By default tmux uses <code>ctrl-b</code> as its prefix key
 for commands and escaping. But the years of using screen have ingrained in my
 muscle memory to use <code>ctrl-a</code>, so I switched with this simple setting:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">unbind C-b
-set -g prefix C-a
-</code></pre></div><p>I also added a couple of important baseline settings to make tmux in general
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>unbind C-b
+</span></span><span style="display:flex;"><span>set -g prefix C-a
+</span></span></code></pre></div><p>I also added a couple of important baseline settings to make tmux in general
 look nice in colored terminals and work with unicode in the display window as
 well as in the status bar. I also wanted to have the window numbering start at
 1, since it doesn&rsquo;t make sense to me for accessing succesive windows to start
@@ -89,7 +89,7 @@ bind r source-file ~/.tmux.conf
 set -g base-index 1
 
 # colors
-set -g default-terminal &quot;screen-256color&quot;
+set -g default-terminal &#34;screen-256color&#34;
 
 # unicode
 setw -g utf8 on
@@ -111,11 +111,11 @@ the screenshot:</p>
 <p><img src="../../../images/tmux-status.png" alt="tmux status bar"></p>
 <p>And the configuration for my status bar looks like this:</p>
 <pre tabindex="0"><code># status bar config
-set -g status-left &quot;#h:[#S]&quot;
+set -g status-left &#34;#h:[#S]&#34;
 set -g status-left-length 50
 set -g status-right-length 50
-set -g status-right &quot;⚡ #(~/bin/tmux-battery) [✉#(~/bin/imap_check.py)] %H:%M %d-%h-%Y&quot;
-setw -g window-status-current-format &quot;|#I:#W|&quot;
+set -g status-right &#34;⚡ #(~/bin/tmux-battery) [✉#(~/bin/imap_check.py)] %H:%M %d-%h-%Y&#34;
+setw -g window-status-current-format &#34;|#I:#W|&#34;
 set-window-option -g automatic-rename off
 
 # listen to alerts from all windows
@@ -123,9 +123,9 @@ set -g bell-action any
 </code></pre><p>This is the base configuration I use for basic project sessions with tmux. I
 have two simple shell aliases to make it easier to re-attach to a session and
 create new ones based on the current directory I&rsquo;m in:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">alias tma<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;tmux attach -d -t&#39;</span>
-alias git-tmux<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;tmux new -s $(basename $(pwd))&#39;</span>
-</code></pre></div><p>With those I can ran <code>tma &lt;tab&gt;</code> in any shell and get a tab completion list
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>alias tma<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;tmux attach -d -t&#39;</span>
+</span></span><span style="display:flex;"><span>alias git-tmux<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;tmux new -s $(basename $(pwd))&#39;</span>
+</span></span></code></pre></div><p>With those I can ran <code>tma &lt;tab&gt;</code> in any shell and get a tab completion list
 for all the current sessions running. Which is handy when logging into a
 machine or generally working in a new shell. The second one I usually use when
 I checked something in a local project (which are usually in git hence the
@@ -189,7 +189,7 @@ contain 20 or more sessions. And all I really want is to switch to the
 session named &ldquo;chef&rdquo;. This is why I added another extremely useful shortcut:</p>
 <pre tabindex="0"><code># bind fast session switching
 unbind S
-bind S command-prompt &quot;switch -t %1&quot;
+bind S command-prompt &#34;switch -t %1&#34;
 </code></pre><p>Now when I hit <code>ctrl-a S</code> I get a <code>(switch)</code> prompt where I can enter the name
 of the session I want (or just the prefix as long as it is unique) and switch
 to that session when hitting <code>Return</code>. This is super helpful since I have most
@@ -202,10 +202,10 @@ purpose I have a tmux session on a server called &ldquo;jumpsessions&rdquo; in w
 open a new tmux window whenever I ssh into a server. However this got very
 confusing after a while and I had no idea what all those windows were. So I
 added this little bit into my <code>~/.ssh/config</code>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Host *
-PermitLocalCommand yes
-LocalCommand <span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> $TERM <span style="color:#f92672">==</span> screen* <span style="color:#f92672">]]</span>; <span style="color:#66d9ef">then</span> printf <span style="color:#e6db74">&#34;\033k%h\033\\&#34;</span>; <span style="color:#66d9ef">fi</span>
-</code></pre></div><p>This runs a local command on each ssh login on the server I login in. With the
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Host *
+</span></span><span style="display:flex;"><span>PermitLocalCommand yes
+</span></span><span style="display:flex;"><span>LocalCommand <span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> $TERM <span style="color:#f92672">==</span> screen* <span style="color:#f92672">]]</span>; <span style="color:#66d9ef">then</span> printf <span style="color:#e6db74">&#34;\033k%h\033\\&#34;</span>; <span style="color:#66d9ef">fi</span>
+</span></span></code></pre></div><p>This runs a local command on each ssh login on the server I login in. With the
 effect that it prints the local hostname with an escape sequence that triggers
 tmux to set the window title to that hostname. This means if I now open the
 list of windows (<code>ctrl-a w</code>) I can see to which server each window is

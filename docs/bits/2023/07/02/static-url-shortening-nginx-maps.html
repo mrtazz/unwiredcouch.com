@@ -97,11 +97,11 @@ post</a>
 that provided a good example for managing a lookup map in a handful of lines of
 code. The core of it is basically:</p>
 <pre tabindex="0"><code># head -n 5 /usr/local/etc/nginx/mrtz_cc_redirect_map.conf
-/-KmaJA 'http://lusis.github.com/blog/2014/04/13/omnibus-redux/';
-/-vvREg 'http://hannahmontana.sourceforge.net/';
-/-yW3mQ 'http://s3itch.unwiredcouch.com/1._tmux-20140719-180429.jpg';
-/09nQKA 'http://s3itch.unwiredcouch.com/Projects-20141130-133209.jpg';
-/0YK2gg 'https://speakerdeck.com/mrtazz/statsd-workshop-monitorama-2013';
+/-KmaJA &#39;http://lusis.github.com/blog/2014/04/13/omnibus-redux/&#39;;
+/-vvREg &#39;http://hannahmontana.sourceforge.net/&#39;;
+/-yW3mQ &#39;http://s3itch.unwiredcouch.com/1._tmux-20140719-180429.jpg&#39;;
+/09nQKA &#39;http://s3itch.unwiredcouch.com/Projects-20141130-133209.jpg&#39;;
+/0YK2gg &#39;https://speakerdeck.com/mrtazz/statsd-workshop-monitorama-2013&#39;;
 
 # wc -l /usr/local/etc/nginx/mrtz_cc_redirect_map.conf
 424 /usr/local/etc/nginx/mrtz_cc_redirect_map.conf
@@ -124,22 +124,21 @@ server {
 
   ...
 }
-
 </code></pre><p>So all I had to do was convert the plain text backup of my redis instance into
 the nginx map format, which was easy enough with this <code>awk</code> one-liner:</p>
 <pre tabindex="0"><code>% head -n 5 backups/mrtz.cc/mrtz.cc.dump
-SET     guillotine:hash:-KmaJA 'http://lusis.github.com/blog/2014/04/13/omnibus-redux/'
-SET     guillotine:hash:-vvREg 'http://hannahmontana.sourceforge.net/'
-SET     guillotine:hash:-yW3mQ 'http://s3itch.unwiredcouch.com/1._tmux-20140719-180429.jpg'
-SET     guillotine:hash:09nQKA 'http://s3itch.unwiredcouch.com/Projects-20141130-133209.jpg'
-SET     guillotine:hash:0YK2gg 'https://speakerdeck.com/mrtazz/statsd-workshop-monitorama-2013'
+SET     guillotine:hash:-KmaJA &#39;http://lusis.github.com/blog/2014/04/13/omnibus-redux/&#39;
+SET     guillotine:hash:-vvREg &#39;http://hannahmontana.sourceforge.net/&#39;
+SET     guillotine:hash:-yW3mQ &#39;http://s3itch.unwiredcouch.com/1._tmux-20140719-180429.jpg&#39;
+SET     guillotine:hash:09nQKA &#39;http://s3itch.unwiredcouch.com/Projects-20141130-133209.jpg&#39;
+SET     guillotine:hash:0YK2gg &#39;https://speakerdeck.com/mrtazz/statsd-workshop-monitorama-2013&#39;
 
-% awk '/guillotine:hash/ { split($2,a,/:/); print &quot;/&quot;a[3]&quot; &quot;$3&quot;;&quot;}' &lt; backups/mrtz.cc/mrtz.cc.dump | head -n 5
-/-KmaJA 'http://lusis.github.com/blog/2014/04/13/omnibus-redux/';
-/-vvREg 'http://hannahmontana.sourceforge.net/';
-/-yW3mQ 'http://s3itch.unwiredcouch.com/1._tmux-20140719-180429.jpg';
-/09nQKA 'http://s3itch.unwiredcouch.com/Projects-20141130-133209.jpg';
-/0YK2gg 'https://speakerdeck.com/mrtazz/statsd-workshop-monitorama-2013';
+% awk &#39;/guillotine:hash/ { split($2,a,/:/); print &#34;/&#34;a[3]&#34; &#34;$3&#34;;&#34;}&#39; &lt; backups/mrtz.cc/mrtz.cc.dump | head -n 5
+/-KmaJA &#39;http://lusis.github.com/blog/2014/04/13/omnibus-redux/&#39;;
+/-vvREg &#39;http://hannahmontana.sourceforge.net/&#39;;
+/-yW3mQ &#39;http://s3itch.unwiredcouch.com/1._tmux-20140719-180429.jpg&#39;;
+/09nQKA &#39;http://s3itch.unwiredcouch.com/Projects-20141130-133209.jpg&#39;;
+/0YK2gg &#39;https://speakerdeck.com/mrtazz/statsd-workshop-monitorama-2013&#39;;
 </code></pre><p>And then chef out the nginx config and Let&rsquo;s Encrypt setup for the domain to my
 server, change the DNS records to the server instead of Heroku<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. And
 voila:</p>
@@ -150,17 +149,17 @@ the small scale I use it at. And I care about keeping URLs working. So this
 makes me happy. I might at some point maybe want to start using it and adding
 URLs again. At which point I have to figure something out. But I don&rsquo;t expect
 that to be any time soon (if at all).</p>
-<section class="footnotes" role="doc-endnotes">
+<div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn:1" role="doc-endnote">
+<li id="fn:1">
 <p>There were actually some hiccups in the middle where I still had the
 DNS configure in dnsimple but had apparently let the domain lapse 😅. But
 re-registering it with dnsimple was super fast and I just had to wait a bit
 then for the registration to propagate.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
-</section>
+</div>
 
 
       </div>

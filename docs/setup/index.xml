@@ -5,16 +5,15 @@
     <link>https://unwiredcouch.com/setup/</link>
     <description>Recent content in My Setups on unwiredcouch.com</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <managingEditor>d@unwiredcouch.com (Daniel Schauenberg)</managingEditor>
-    <webMaster>d@unwiredcouch.com (Daniel Schauenberg)</webMaster><atom:link href="https://unwiredcouch.com/setup/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language><atom:link href="https://unwiredcouch.com/setup/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How I vim</title>
       <link>https://unwiredcouch.com/setup/vim/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      
       <guid>https://unwiredcouch.com/setup/vim/</guid>
-      <description>This is an interview I did for &amp;ldquo;How I vim&amp;rdquo; and was originally published here.</description>
+      <description>&lt;p&gt;This is an interview I did for &amp;ldquo;How I vim&amp;rdquo; and was originally published
+&lt;a href=&#34;http://howivim.com/2016/daniel-schauenberg/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;</description>
     <content:encoded><![CDATA[<p>This is an interview I did for &ldquo;How I vim&rdquo; and was originally published
 <a href="http://howivim.com/2016/daniel-schauenberg/">here</a>.</p>
 <h3 id="who-are-you-and-what-do-you-use-vim-for">Who are you and what do you use Vim for?</h3>
@@ -173,8 +172,8 @@ project forward.</p>
 <p>I&rsquo;m not. For some reason that has never occurred to me.</p>
 <h3 id="share-a-snippet-of-vim-script-youve-written-and-talk-about-what-it-does">Share a snippet of Vim script you&rsquo;ve written and talk about what it does.</h3>
 <pre tabindex="0"><code>function! Today()
-  let today = strftime(&quot;%A %m\/%d\/%Y&quot;)
-  exe &quot;normal a&quot;. today
+  let today = strftime(&#34;%A %m\/%d\/%Y&#34;)
+  exe &#34;normal a&#34;. today
 endfunction
 command! Today :call Today()
 </code></pre><p>This is the snippet I talked about earlier that inserts the current date after
@@ -194,9 +193,17 @@ update documentation and write emails.</p>
       <title>My Coffee Setup</title>
       <link>https://unwiredcouch.com/setup/coffee/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      
       <guid>https://unwiredcouch.com/setup/coffee/</guid>
-      <description>In early 2011 I had finished university (again) and decided that I didn&amp;rsquo;t want to drink bad coffee anymore.</description>
+      <description>&lt;p&gt;In early 2011 I had finished university (again) and decided that I didn&amp;rsquo;t want
+to drink bad coffee anymore. So I started to look into the basics of how to
+make good coffee. I started with a &lt;a href=&#34;http://www.amazon.com/Hario-Ceramic-Skerton-Storage-Capacity/dp/B001802PIQ&#34;&gt;hand grinder&lt;/a&gt; and a &lt;a href=&#34;https://en.wikipedia.org/wiki/French_press&#34;&gt;French
+Press&lt;/a&gt;. I quickly realized that I don&amp;rsquo;t like the oily taste and
+got an &lt;a href=&#34;http://www.aeropress.com/&#34;&gt;Aeropress&lt;/a&gt;. By the time I had moved to NYC with only my
+Aeropress and grinder, my friend [Mathias][roidrage] had published his &lt;a href=&#34;http://holgarific.net/2011/12/05/the-beginners-shopping-guide-to-filter-coffee-gear/&#34;&gt;&amp;ldquo;The
+Beginner’s Shopping Guide to Filter Coffee Gear&amp;rdquo;&lt;/a&gt; which I used to
+restock my kitchen. Since then I&amp;rsquo;ve switched out some things and settled on
+some others and this page is the place where I write down my current setup.&lt;/p&gt;</description>
     <content:encoded><![CDATA[<p>In early 2011 I had finished university (again) and decided that I didn&rsquo;t want
 to drink bad coffee anymore. So I started to look into the basics of how to
 make good coffee. I started with a <a href="http://www.amazon.com/Hario-Ceramic-Skerton-Storage-Capacity/dp/B001802PIQ">hand grinder</a> and a <a href="https://en.wikipedia.org/wiki/French_press">French
@@ -281,9 +288,23 @@ Culture</a>.</p>
       <title>My Omnifocus Setup</title>
       <link>https://unwiredcouch.com/setup/omnifocus/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>d@unwiredcouch.com (Daniel Schauenberg)</author>
+      
       <guid>https://unwiredcouch.com/setup/omnifocus/</guid>
-      <description>At this point it&amp;rsquo;s pretty fair to say that OmniFocus rules my life.</description>
+      <description>&lt;p&gt;At this point it&amp;rsquo;s pretty fair to say that &lt;a href=&#34;http://www.omnigroup.com/omnifocus&#34;&gt;OmniFocus&lt;/a&gt; rules my life. I&amp;rsquo;ve
+started to really take GTD seriously around 2012. I had tried a lot of
+different task managers before of course. I loved &lt;a href=&#34;https://culturedcode.com/things/&#34;&gt;Things&lt;/a&gt; when it
+originally came out as a beta and of course I had started to write &lt;a href=&#34;https://github.com/mrtazz/gtd-couch&#34;&gt;my own
+todo tracker&lt;/a&gt; like everybody else. But I had never actually read
+&lt;a href=&#34;http://www.amazon.com/Getting-Things-Done-Stress-Free-Productivity/dp/0142000280&#34;&gt;the book&lt;/a&gt; before because I thought I didn&amp;rsquo;t need such a
+sophisticated todo tracker. That changed when I started a new job and moved to
+a different country. Suddenly there were so much more things to keep track of
+and do. So I read the book, pulled out Things again and tried to implement my
+version of GTD. However it became apparent to me very quickly that the way I
+want to use it (collect everything and have a lot of different ways to
+retrieve/view data) wouldn&amp;rsquo;t work with Things. So I shelled out a lot of money
+and bought OmniFocus. And I have tried a couple of times to use a different
+tool again but nothing worked for me as good as OF does. Mainly because I have
+arrived at a setup that is very well integrated with my daily workflow.&lt;/p&gt;</description>
     <content:encoded><![CDATA[<p>At this point it&rsquo;s pretty fair to say that <a href="http://www.omnigroup.com/omnifocus">OmniFocus</a> rules my life. I&rsquo;ve
 started to really take GTD seriously around 2012. I had tried a lot of
 different task managers before of course. I loved <a href="https://culturedcode.com/things/">Things</a> when it
@@ -339,9 +360,9 @@ email client of choice is <a href="http://www.mutt.org/">mutt</a>. Which means t
 hacking to do (as usual). However I found a great <a href="https://github.com/mrtazz/bin/blob/master/mutt-to-omnifocus.py">Python script</a>
 that parses emails and adds them to Omnifocus. I also added this keybinding to
 my mutt configuration:</p>
-<pre tabindex="0"><code>macro index,pager \Ca &quot;&lt;enter-command&gt;unset
+<pre tabindex="0"><code>macro index,pager \Ca &#34;&lt;enter-command&gt;unset
 wait_key&lt;enter&gt;&lt;pipe-message&gt;mutt-to-omnifocus.py
-&lt;enter&gt;&lt;save-message&gt;=gtd-needs-reply/&lt;enter&gt;&lt;sync-mailbox&gt;&quot;
+&lt;enter&gt;&lt;save-message&gt;=gtd-needs-reply/&lt;enter&gt;&lt;sync-mailbox&gt;&#34;
 </code></pre><p>Now all I have to do when reading an Email or browsing through the list is hit
 <code>Ctrl-a</code> and mutt automatically creates a task in my Omnifocus inbox and moves
 the email out of my inbox into a folder I creatively called <em>gtd-needs-reply</em>

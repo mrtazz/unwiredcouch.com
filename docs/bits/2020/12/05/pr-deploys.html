@@ -66,27 +66,27 @@
 <p>My personal infrastructure runs out of a single monolithic repository that contains chef cookbooks, provisioning code, kubernetes resources, terraform code, and also dns configuration (which will serve as the example in this post) in a subdirectory. That is why a lot of the examples I post here are related to having multiple deployment targets in a single repository.</p>
 <h2 id="the-used-to-be-situation">The used to be situation</h2>
 <p>For a couple of years now I’ve been managing my DNS configuration with [octodns]. It’s a really nice tool written by the GitHub engineering team to manage DNS zones across different providers via yaml files. My zones are configured in yaml files in the <code>dns</code> sub directory of my infrastructure repository. There&rsquo;s a small Makefile that has tasks for verifying and deploying configuration. And it usually got deployed via a push to the default branch of the repo and a top level Jenkinsfile that mapped directory paths to Jenkins jobs like this:</p>
-<pre tabindex="0"><code>stage('determine subjob to build') {
+<pre tabindex="0"><code>stage(&#39;determine subjob to build&#39;) {
     try {
-      sh &quot;printenv&quot;
-      echo &quot;Got params: ${params}&quot;
+      sh &#34;printenv&#34;
+      echo &#34;Got params: ${params}&#34;
       foundJob = false
-      changedFiles = sh(script: &quot;git diff --name-only ${params.prevSHA} HEAD&quot;, returnStdout: true).trim()
+      changedFiles = sh(script: &#34;git diff --name-only ${params.prevSHA} HEAD&#34;, returnStdout: true).trim()
       if (changedFiles =~ /^jobs/){
-        build job: 'create-jobs', wait: false
+        build job: &#39;create-jobs&#39;, wait: false
         foundJob = true
       }
       if (changedFiles =~ /^dns/){
-        build job: 'dns', wait: false
+        build job: &#39;dns&#39;, wait: false
         foundJob = true
       }
       if (!foundJob) {
-        echo &quot;No subjobs to build for &quot; + changedFiles
+        echo &#34;No subjobs to build for &#34; + changedFiles
       }
-      sh &quot;/usr/local/bin/ci-notify --job=${env.JOB_NAME} --build=${env.BUILD_NUMBER} --success&quot;
+      sh &#34;/usr/local/bin/ci-notify --job=${env.JOB_NAME} --build=${env.BUILD_NUMBER} --success&#34;
     }
     catch (err) {
-      sh &quot;/usr/local/bin/ci-notify --job=${env.JOB_NAME} --build=${env.BUILD_NUMBER} --failure&quot;
+      sh &#34;/usr/local/bin/ci-notify --job=${env.JOB_NAME} --build=${env.BUILD_NUMBER} --failure&#34;
       throw err
     }
   } 
@@ -100,8 +100,8 @@
 <pre tabindex="0"><code>on:
   push:
     paths:
-      - 'dns/**'
-      - '.github/workflows/dns.yml'
+      - &#39;dns/**&#39;
+      - &#39;.github/workflows/dns.yml&#39;
 </code></pre><p>The job itself would then run the same sequence of <code>make check</code> to do a dry run of the changes, and then <code>make update</code> to deploy the changes.</p>
 <h2 id="pull-request-ci-integration">Pull Request CI integration</h2>
 <p>This was already great and a perfect replacement of the setup I had before. But it wasn’t using the power of Actions to their full extent. The most obvious one being that this wouldn’t really work with pull requests. Sure the job would run, but every change pushed to a PR would automatically be deployed. Which also can be a nice workflow, but wasn’t what I wanted. I wanted to have more control over deploys, essentially a human 👍🏻 that the changes are actually good to go. And as the signal for this I decided on the merge button. So once I was happy with the changes and wanted to see it deployed, I just had to merge the PR and make sure the automation keeps deploying on the default branch.</p>
@@ -113,8 +113,8 @@
 <pre tabindex="0"><code>on:
   pull_request:
     paths:
-      - 'dns/**'
-      - '.github/workflows/dns.yml'
+      - &#39;dns/**&#39;
+      - &#39;.github/workflows/dns.yml&#39;
     types: [opened, synchronize, labeled]
 </code></pre><p>Then I decided on a label name - in this case <code>deploy requested/dns</code> - and made sure the deployment logic only ran when the PR actually was labeled with that. I did this by making <code>deploy</code> a separate job in the Actions definition and have it be guarded by <code>if: contains(github.event.pull_request.labels.*.name, 'deploy requested/dns')</code> similar to how the guard on default branch worked before.</p>
 <p>Now to have that nice PR timeline integration with the deployments API I wrote a small ruby script which is configured via environment variables in the job.</p>
