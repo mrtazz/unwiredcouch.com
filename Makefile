@@ -30,7 +30,7 @@ endif
 .PHONY: linux-deps
 linux-deps:
 	sudo wget https://github.com/gohugoio/hugo/releases/download/v$(HUGO_VERSION)/hugo_$(HUGO_VERSION)_linux-amd64.deb
-	sudo dpkg -i hugo_$(HUGO_VERSION)_Linux-64bit.deb
+	sudo dpkg -i hugo_$(HUGO_VERSION)_linux-amd64.deb
 	sudo apt-get update && sudo apt-get install -y imagemagick
 	$(info    HUGO is now $(HUGO))
 	$(info    HUGO_VERSION is now $(HUGO_VERSION))
