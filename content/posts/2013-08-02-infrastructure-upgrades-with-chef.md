@@ -1,7 +1,6 @@
 ---
 date: 2013-08-02
 layout: post
-published: true
 title: Infrastructure upgrades with Chef
 url: /2013/08/02/infrastructure-upgrades-with-chef.html
 ---

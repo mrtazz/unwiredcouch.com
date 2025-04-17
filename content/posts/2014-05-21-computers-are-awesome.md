@@ -1,7 +1,6 @@
 ---
 date: 2014-05-21
 layout: post
-published: true
 title: Computer Positivity
 url: /2014/05/21/computers-are-awesome.html
 ---

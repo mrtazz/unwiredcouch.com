@@ -2,7 +2,6 @@
 date: 2009-12-24
 layout: post
 title: Almost Endless Screen Real Estate
-published: true
 url: /2009/12/24/first-weekend-with-endless-screen-real-estate.html
 ---
 

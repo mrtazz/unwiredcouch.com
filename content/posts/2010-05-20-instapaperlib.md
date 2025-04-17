@@ -2,7 +2,6 @@
 date: 2010-05-20
 layout: post
 title: instapaperlib
-published: true
 url: /2010/05/20/instapaperlib.html
 ---
 

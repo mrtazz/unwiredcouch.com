@@ -1,7 +1,6 @@
 ---
 date: 2015-01-28
 layout: post
-published: true
 title: You're building a Plant
 url: /2015/01/28/building-a-plant.html
 ---

@@ -1,7 +1,6 @@
 ---
 date: 2015-02-23
 layout: post
-published: true
 title: Deployment is Unix
 url: /2015/02/23/deployment-is-unix.html
 ---

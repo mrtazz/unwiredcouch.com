@@ -2,7 +2,6 @@
 date: 2010-09-19
 layout: post
 title: "Introducing Ramrod Command Center"
-published: true
 url: /2010/09/19/introducing-ramrod-command-center.html
 ---
 

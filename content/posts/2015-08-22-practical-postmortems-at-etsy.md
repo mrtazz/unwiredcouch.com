@@ -1,7 +1,6 @@
 ---
 date: 2015-08-22
 layout: post
-published: true
 title: Practical Postmortems at Etsy
 url: /2015/08/22/practical-postmortems-at-etsy.html
 ---
