@@ -161,7 +161,7 @@ on:
   workflow_dispatch:
   schedule:
     # run once a week on Wednesday
-    - cron: '30 3 * * 3'
+    - cron: &#39;30 3 * * 3&#39;
 
 jobs:
   update:
@@ -177,7 +177,7 @@ jobs:
           git config user.name Github Actions
           git config user.email actions@noreply.github.com
           git add vim/pack
-          git commit --allow-empty -m &quot;update vim plugins&quot;
+          git commit --allow-empty -m &#34;update vim plugins&#34;
           git push
 </code></pre>
 

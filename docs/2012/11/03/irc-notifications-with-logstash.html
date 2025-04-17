@@ -86,13 +86,13 @@ good introduction.</p>
 <p>For the first important step, we need logstash to listen to changes in the
 bouncer&rsquo;s logfiles. This is pretty easy and can be accomplished with the
 following logstash configuration bits:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">input</span> {
-  <span style="color:#a6e22e">file</span> {
-    <span style="color:#a6e22e">path</span> =&gt; <span style="color:#e6db74">&#34;/home/username/.znc/users/zncuser/moddata/log/*&#34;</span>
-    <span style="color:#a6e22e">type</span> =&gt; <span style="color:#e6db74">&#34;znclog&#34;</span>
-  }
-}
-</code></pre></div><p>Per default the log module puts all log files under
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">input</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">file</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">path</span> =&gt; <span style="color:#e6db74">&#34;/home/username/.znc/users/zncuser/moddata/log/*&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">type</span> =&gt; <span style="color:#e6db74">&#34;znclog&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Per default the log module puts all log files under
 <code>users/youruser/moddata/log/</code> and creates a logfile per day which is named
 after the channel name and date. The logstash input just reads all files that
 are in there and adds a type to the captured logs to be able to better identify
@@ -103,77 +103,77 @@ night, but there might be a better way to do it.</p>
 <p>The next step is to remove lines which I&rsquo;m never interested in for
 notifications, like my own messages and JOIN/QUIT messages for example. For
 this the logstash <code>grep</code> filter definitions are very useful:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">filter</span> {
-  <span style="color:#a6e22e">grep</span> {
-    <span style="color:#a6e22e">type</span> =&gt; <span style="color:#e6db74">&#34;znclog&#34;</span>
-    <span style="color:#a6e22e">match</span> =&gt; [<span style="color:#e6db74">&#34;@message&#34;</span>, <span style="color:#e6db74">&#34;\[[0-9:]{8}\](.+?)&lt;USERNAME&gt;&#34;</span>]
-    <span style="color:#a6e22e">negate</span> =&gt; <span style="color:#66d9ef">true</span>
-  }
-  <span style="color:#a6e22e">grep</span> {
-    <span style="color:#a6e22e">type</span> =&gt; <span style="color:#e6db74">&#34;znclog&#34;</span>
-    <span style="color:#a6e22e">match</span> =&gt; [<span style="color:#e6db74">&#34;@message&#34;</span>, <span style="color:#e6db74">&#34;\*\*\* (Quits|Joins|Parts|.+ sets mode: |.+ is now known as)&#34;</span>]
-    <span style="color:#a6e22e">negate</span> =&gt; <span style="color:#66d9ef">true</span>
-  }
-}
-</code></pre></div><p>The grep filter is also very useful for another criterion on which I want
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">filter</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">grep</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">type</span> =&gt; <span style="color:#e6db74">&#34;znclog&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">match</span> =&gt; [<span style="color:#e6db74">&#34;@message&#34;</span>, <span style="color:#e6db74">&#34;\[[0-9:]{8}\](.+?)&lt;USERNAME&gt;&#34;</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">negate</span> =&gt; <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">grep</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">type</span> =&gt; <span style="color:#e6db74">&#34;znclog&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">match</span> =&gt; [<span style="color:#e6db74">&#34;@message&#34;</span>, <span style="color:#e6db74">&#34;\*\*\* (Quits|Joins|Parts|.+ sets mode: |.+ is now known as)&#34;</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">negate</span> =&gt; <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The grep filter is also very useful for another criterion on which I want
 notifications, namely for all of my private messages. Since all
 channel names per IRC convention have a <code>#</code> in the name, we can just assume
 that logfiles without that sign are for private messages. It is important to
 set <code>drop =&gt; false</code> here since we don&rsquo;t want grep to drop the log line (which
 is default behaviour).</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">grep</span> {
-  <span style="color:#a6e22e">type</span> =&gt; <span style="color:#e6db74">&#34;znclog&#34;</span>
-  <span style="color:#a6e22e">match</span> =&gt; [<span style="color:#e6db74">&#34;@source&#34;</span>, <span style="color:#e6db74">&#34;#&#34;</span>]
-  <span style="color:#a6e22e">add_tag</span> =&gt; [<span style="color:#e6db74">&#34;pmnotification&#34;</span>]
-  <span style="color:#a6e22e">negate</span> =&gt; <span style="color:#66d9ef">true</span>
-  <span style="color:#a6e22e">drop</span> =&gt; <span style="color:#66d9ef">false</span>
-}
-</code></pre></div><p>This also needs to be added to the filter section and tags all messages coming
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">grep</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">type</span> =&gt; <span style="color:#e6db74">&#34;znclog&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">match</span> =&gt; [<span style="color:#e6db74">&#34;@source&#34;</span>, <span style="color:#e6db74">&#34;#&#34;</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">add_tag</span> =&gt; [<span style="color:#e6db74">&#34;pmnotification&#34;</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">negate</span> =&gt; <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">drop</span> =&gt; <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This also needs to be added to the filter section and tags all messages coming
 from logfiles without a <code>#</code> in the name with <code>&quot;pmnotifcation&quot;</code>. Now let&rsquo;s go to
 the actual parsing of log events. Since there are going to be some repeated
 patterns and I wanted to have an easy way to add new ones, I have a &lsquo;pattern
 library file&rsquo; which is included in the configuration.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">NOTIFYME</span> (<span style="color:#a6e22e">pizza</span><span style="color:#f92672">|</span><span style="color:#a6e22e">cupcakes</span><span style="color:#f92672">|</span><span style="color:#a6e22e">fire</span>)
-<span style="color:#a6e22e">IRCNOTIFY</span> <span style="color:#f92672">%</span>{<span style="color:#a6e22e">DATA</span>}<span style="color:#f92672">%</span>{<span style="color:#a6e22e">NOTIFYME</span>}<span style="color:#f92672">%</span>{<span style="color:#a6e22e">GREEDYDATA</span>}
-<span style="color:#a6e22e">IRCTIME</span> [<span style="color:#ae81ff">0</span><span style="color:#f92672">-</span><span style="color:#ae81ff">9</span><span style="color:#f92672">:</span>]{<span style="color:#ae81ff">8</span>}
-<span style="color:#a6e22e">IRCCHANNELS</span> (<span style="color:#a6e22e">nunagios</span><span style="color:#f92672">|</span><span style="color:#a6e22e">chef</span><span style="color:#f92672">|</span><span style="color:#a6e22e">food</span>)
-</code></pre></div><p>The terms in capital letters can be used as regex placeholders. The interesting
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">NOTIFYME</span> (<span style="color:#a6e22e">pizza</span><span style="color:#f92672">|</span><span style="color:#a6e22e">cupcakes</span><span style="color:#f92672">|</span><span style="color:#a6e22e">fire</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">IRCNOTIFY</span> <span style="color:#f92672">%</span>{<span style="color:#a6e22e">DATA</span>}<span style="color:#f92672">%</span>{<span style="color:#a6e22e">NOTIFYME</span>}<span style="color:#f92672">%</span>{<span style="color:#a6e22e">GREEDYDATA</span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">IRCTIME</span> [<span style="color:#ae81ff">0</span><span style="color:#f92672">-</span><span style="color:#ae81ff">9</span><span style="color:#f92672">:</span>]{<span style="color:#ae81ff">8</span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">IRCCHANNELS</span> (<span style="color:#a6e22e">nunagios</span><span style="color:#f92672">|</span><span style="color:#a6e22e">chef</span><span style="color:#f92672">|</span><span style="color:#a6e22e">food</span>)
+</span></span></code></pre></div><p>The terms in capital letters can be used as regex placeholders. The interesting
 ones are <code>NOTIFYME/IRCNOTIFY</code> which are used as a collection of regexes on
 which I want to show a notification and <code>IRCCHANNELS</code> which are basically the
 channel names for which I want notifications for all messages. In order to get
 those notifications I set up a set of grok filters.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">grok</span> {
-  <span style="color:#a6e22e">match</span> =&gt; [<span style="color:#e6db74">&#34;@source&#34;</span>, <span style="color:#e6db74">&#34;%{IRCCHANNELS}&#34;</span>]
-  <span style="color:#a6e22e">add_tag</span> =&gt; [<span style="color:#e6db74">&#34;channelnotification&#34;</span>]
-  <span style="color:#a6e22e">exclude_tags</span> =&gt; [<span style="color:#e6db74">&#34;pmnotification&#34;</span>]
-  <span style="color:#a6e22e">patterns_dir</span> =&gt; <span style="color:#e6db74">&#39;/home/username/logstash-patterns&#39;</span>
-}
-</code></pre></div><p>This grok ruleset grabs all events from the channels based on the <code>IRCCHANNELS</code>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">grok</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">match</span> =&gt; [<span style="color:#e6db74">&#34;@source&#34;</span>, <span style="color:#e6db74">&#34;%{IRCCHANNELS}&#34;</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">add_tag</span> =&gt; [<span style="color:#e6db74">&#34;channelnotification&#34;</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">exclude_tags</span> =&gt; [<span style="color:#e6db74">&#34;pmnotification&#34;</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">patterns_dir</span> =&gt; <span style="color:#e6db74">&#39;/home/username/logstash-patterns&#39;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This grok ruleset grabs all events from the channels based on the <code>IRCCHANNELS</code>
 match and tags them with the <code>&quot;channelnotification&quot;</code> tag. PMs are excluded from
 that match because they have already matched.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">grok</span> {
-  <span style="color:#a6e22e">pattern</span> =&gt; <span style="color:#e6db74">&#34;\[%{IRCTIME:irctime}\](.+?)&lt;%{DATA:ircsender}&gt;%{GREEDYDATA:ircmessage}&#34;</span>
-  <span style="color:#a6e22e">tags</span> =&gt; [<span style="color:#e6db74">&#34;channelnotification&#34;</span>]
-  <span style="color:#a6e22e">patterns_dir</span> =&gt; <span style="color:#e6db74">&#39;/home/username/logstash-patterns&#39;</span>
-}
-<span style="color:#a6e22e">grok</span> {
-  <span style="color:#a6e22e">pattern</span> =&gt; <span style="color:#e6db74">&#34;\[%{IRCTIME:irctime}\](.+?)&lt;%{DATA:ircsender}&gt;%{GREEDYDATA:ircmessage}&#34;</span>
-  <span style="color:#a6e22e">tags</span> =&gt; [<span style="color:#e6db74">&#34;pmnotification&#34;</span>]
-  <span style="color:#a6e22e">patterns_dir</span> =&gt; <span style="color:#e6db74">&#39;/home/username/logstash-patterns&#39;</span>
-}
-</code></pre></div><p>These rulesets extract the timestamp, sender and message data for the
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">grok</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">pattern</span> =&gt; <span style="color:#e6db74">&#34;\[%{IRCTIME:irctime}\](.+?)&lt;%{DATA:ircsender}&gt;%{GREEDYDATA:ircmessage}&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">tags</span> =&gt; [<span style="color:#e6db74">&#34;channelnotification&#34;</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">patterns_dir</span> =&gt; <span style="color:#e6db74">&#39;/home/username/logstash-patterns&#39;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">grok</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">pattern</span> =&gt; <span style="color:#e6db74">&#34;\[%{IRCTIME:irctime}\](.+?)&lt;%{DATA:ircsender}&gt;%{GREEDYDATA:ircmessage}&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">tags</span> =&gt; [<span style="color:#e6db74">&#34;pmnotification&#34;</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">patterns_dir</span> =&gt; <span style="color:#e6db74">&#39;/home/username/logstash-patterns&#39;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>These rulesets extract the timestamp, sender and message data for the
 notifications into separate fields so they are easily accessible later on. I
 have the same ruleset for channel notifications and private messages, because I
 didn&rsquo;t find a way to match any tag (the <code>tags</code> setting requires an event to
 match all given tags) so I couldn&rsquo;t combine them into one rule. Though this
 seems like something that should be fixable.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">grok</span> {
-  <span style="color:#a6e22e">pattern</span> =&gt; <span style="color:#e6db74">&#34;\[%{IRCTIME:irctime}\](.+?)&lt;%{DATA:ircsender}&gt;%{IRCNOTIFY:ircmessage}&#34;</span>
-  <span style="color:#a6e22e">add_tag</span> =&gt; [<span style="color:#e6db74">&#34;notification&#34;</span>]
-  <span style="color:#a6e22e">exclude_tags</span> =&gt; [<span style="color:#e6db74">&#34;pmnotification&#34;</span>]
-  <span style="color:#a6e22e">patterns_dir</span> =&gt; <span style="color:#e6db74">&#39;/home/username/logstash-patterns&#39;</span>
-}
-</code></pre></div><p>And finally the last pattern ruleset matches the regexes that are defined for all
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">grok</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">pattern</span> =&gt; <span style="color:#e6db74">&#34;\[%{IRCTIME:irctime}\](.+?)&lt;%{DATA:ircsender}&gt;%{IRCNOTIFY:ircmessage}&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">add_tag</span> =&gt; [<span style="color:#e6db74">&#34;notification&#34;</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">exclude_tags</span> =&gt; [<span style="color:#e6db74">&#34;pmnotification&#34;</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">patterns_dir</span> =&gt; <span style="color:#e6db74">&#39;/home/username/logstash-patterns&#39;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>And finally the last pattern ruleset matches the regexes that are defined for all
 events and parses them into the fields mentioned before. Notice that all
 rulesets include a <code>patterns_dir</code> section which points to the folder with the
 regex defintions file described above.</p>
@@ -183,80 +183,80 @@ from my laptop over ssh. This worked ok, but I had problems with duplicate
 notifications when restarting the polling script and wasn&rsquo;t really happy with
 this solution. And since I already had Redis running on that host, I thought
 I&rsquo;d give that a try.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">output</span> {
-  <span style="color:#a6e22e">redis</span> {
-    <span style="color:#a6e22e">host</span> =&gt; <span style="color:#e6db74">&#39;localhost&#39;</span>
-    <span style="color:#a6e22e">data_type</span> =&gt; <span style="color:#e6db74">&#39;list&#39;</span>
-    <span style="color:#a6e22e">key</span> =&gt; <span style="color:#e6db74">&#39;notifications&#39;</span>
-    <span style="color:#a6e22e">tags</span> =&gt; [<span style="color:#e6db74">&#34;pmnotification&#34;</span>]
-    <span style="color:#a6e22e">password</span> =&gt; <span style="color:#e6db74">&#39;secret&#39;</span>
-  }
-  <span style="color:#a6e22e">redis</span> {
-    <span style="color:#a6e22e">host</span> =&gt; <span style="color:#e6db74">&#39;localhost&#39;</span>
-    <span style="color:#a6e22e">data_type</span> =&gt; <span style="color:#e6db74">&#39;list&#39;</span>
-    <span style="color:#a6e22e">key</span> =&gt; <span style="color:#e6db74">&#39;notifications&#39;</span>
-    <span style="color:#a6e22e">tags</span> =&gt; [<span style="color:#e6db74">&#34;channelnotification&#34;</span>]
-    <span style="color:#a6e22e">password</span> =&gt; <span style="color:#e6db74">&#39;secret&#39;</span>
-  }
-  <span style="color:#a6e22e">redis</span> {
-    <span style="color:#a6e22e">host</span> =&gt; <span style="color:#e6db74">&#39;localhost&#39;</span>
-    <span style="color:#a6e22e">data_type</span> =&gt; <span style="color:#e6db74">&#39;list&#39;</span>
-    <span style="color:#a6e22e">key</span> =&gt; <span style="color:#e6db74">&#39;notifications&#39;</span>
-    <span style="color:#a6e22e">tags</span> =&gt; [<span style="color:#e6db74">&#34;notification&#34;</span>]
-    <span style="color:#a6e22e">password</span> =&gt; <span style="color:#e6db74">&#39;secret&#39;</span>
-  }
-}
-</code></pre></div><p>The output config basically just says the for every type of notification log
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">output</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">redis</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">host</span> =&gt; <span style="color:#e6db74">&#39;localhost&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">data_type</span> =&gt; <span style="color:#e6db74">&#39;list&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">key</span> =&gt; <span style="color:#e6db74">&#39;notifications&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tags</span> =&gt; [<span style="color:#e6db74">&#34;pmnotification&#34;</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">password</span> =&gt; <span style="color:#e6db74">&#39;secret&#39;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">redis</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">host</span> =&gt; <span style="color:#e6db74">&#39;localhost&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">data_type</span> =&gt; <span style="color:#e6db74">&#39;list&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">key</span> =&gt; <span style="color:#e6db74">&#39;notifications&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tags</span> =&gt; [<span style="color:#e6db74">&#34;channelnotification&#34;</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">password</span> =&gt; <span style="color:#e6db74">&#39;secret&#39;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">redis</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">host</span> =&gt; <span style="color:#e6db74">&#39;localhost&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">data_type</span> =&gt; <span style="color:#e6db74">&#39;list&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">key</span> =&gt; <span style="color:#e6db74">&#39;notifications&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tags</span> =&gt; [<span style="color:#e6db74">&#34;notification&#34;</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">password</span> =&gt; <span style="color:#e6db74">&#39;secret&#39;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The output config basically just says the for every type of notification log
 event, append it to a Redis list with the name <code>'notifications'</code> on
 the instance running on localhost.</p>
 <h3 id="the-client-side">The client side</h3>
 <p>The last part now is actually getting the notifications into growl on the OSX
 side of things. For this I have Growl setup to forward everything to
 notification center and run the following script on my Mac:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> sys
-<span style="color:#f92672">import</span> gntp
-<span style="color:#f92672">import</span> json
-<span style="color:#f92672">import</span> redis
-<span style="color:#f92672">import</span> gntp.notifier
-
-r <span style="color:#f92672">=</span> redis<span style="color:#f92672">.</span>StrictRedis(host<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;ircserver&#39;</span>,
-                      port<span style="color:#f92672">=</span><span style="color:#ae81ff">6379</span>, db<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>,
-                      password<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;secret&#34;</span>
-)
-app <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;irc-growl&#34;</span>
-
-<span style="color:#66d9ef">while</span> <span style="color:#ae81ff">1</span>:
-    key, logline <span style="color:#f92672">=</span> r<span style="color:#f92672">.</span>blpop(<span style="color:#e6db74">&#34;notifications&#34;</span>)
-    <span style="color:#66d9ef">try</span>:
-        log <span style="color:#f92672">=</span> json<span style="color:#f92672">.</span>loads(logline)
-    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> e:
-        title <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Failure loading logline: &#34;</span> <span style="color:#f92672">+</span> str(logline)
-        message <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;error(</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">)&#34;</span><span style="color:#f92672">.</span>format(e)
-        gntp<span style="color:#f92672">.</span>notifier<span style="color:#f92672">.</span>mini(message, applicationName<span style="color:#f92672">=</span>app, title<span style="color:#f92672">=</span>title)
-        <span style="color:#66d9ef">continue</span>
-
-    <span style="color:#66d9ef">try</span>:
-        channel <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;-&#34;</span><span style="color:#f92672">.</span>join(log[<span style="color:#e6db74">&#34;@source&#34;</span>]<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34;/&#34;</span>)[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34;_&#34;</span>)[<span style="color:#ae81ff">1</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>])
-    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> e:
-        title <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Failure parsing channel name in: &#34;</span> <span style="color:#f92672">+</span> str(log[<span style="color:#e6db74">&#34;@source&#34;</span>])
-        message <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;error(</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">)&#34;</span><span style="color:#f92672">.</span>format(e)
-        gntp<span style="color:#f92672">.</span>notifier<span style="color:#f92672">.</span>mini(message, applicationName<span style="color:#f92672">=</span>app, title<span style="color:#f92672">=</span>title)
-        <span style="color:#66d9ef">continue</span>
-
-    <span style="color:#66d9ef">try</span>:
-        title <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%s</span><span style="color:#e6db74"> in </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span> (log[<span style="color:#e6db74">&#34;@fields&#34;</span>][<span style="color:#e6db74">&#34;ircsender&#34;</span>][<span style="color:#ae81ff">0</span>],
-                  channel<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#34;utf-8&#34;</span>)))
-    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> e:
-        title <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Failure parsing ircsender in: &#34;</span> <span style="color:#f92672">+</span> str(log)
-        message <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;error(</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">)&#34;</span><span style="color:#f92672">.</span>format(e)
-        print title
-        print message
-        gntp<span style="color:#f92672">.</span>notifier<span style="color:#f92672">.</span>mini(message, applicationName<span style="color:#f92672">=</span>app, title<span style="color:#f92672">=</span>title)
-        <span style="color:#66d9ef">continue</span>
-
-    message <span style="color:#f92672">=</span> (log[<span style="color:#e6db74">&#34;@fields&#34;</span>][<span style="color:#e6db74">&#34;ircmessage&#34;</span>][<span style="color:#ae81ff">0</span>])<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#34;utf-8&#34;</span>)
-    gntp<span style="color:#f92672">.</span>notifier<span style="color:#f92672">.</span>mini(message, applicationName<span style="color:#f92672">=</span>app, title<span style="color:#f92672">=</span>title)
-</code></pre></div><p>This uses the python gntp library to talk to Growl and the redis client to talk
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> sys
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> gntp
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> json
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> redis
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> gntp.notifier
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>r <span style="color:#f92672">=</span> redis<span style="color:#f92672">.</span>StrictRedis(host<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;ircserver&#39;</span>,
+</span></span><span style="display:flex;"><span>                      port<span style="color:#f92672">=</span><span style="color:#ae81ff">6379</span>, db<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>                      password<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;secret&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>app <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;irc-growl&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>    key, logline <span style="color:#f92672">=</span> r<span style="color:#f92672">.</span>blpop(<span style="color:#e6db74">&#34;notifications&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>        log <span style="color:#f92672">=</span> json<span style="color:#f92672">.</span>loads(logline)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> e:
+</span></span><span style="display:flex;"><span>        title <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Failure loading logline: &#34;</span> <span style="color:#f92672">+</span> str(logline)
+</span></span><span style="display:flex;"><span>        message <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;error(</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">)&#34;</span><span style="color:#f92672">.</span>format(e)
+</span></span><span style="display:flex;"><span>        gntp<span style="color:#f92672">.</span>notifier<span style="color:#f92672">.</span>mini(message, applicationName<span style="color:#f92672">=</span>app, title<span style="color:#f92672">=</span>title)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>        channel <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;-&#34;</span><span style="color:#f92672">.</span>join(log[<span style="color:#e6db74">&#34;@source&#34;</span>]<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34;/&#34;</span>)[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34;_&#34;</span>)[<span style="color:#ae81ff">1</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>])
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> e:
+</span></span><span style="display:flex;"><span>        title <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Failure parsing channel name in: &#34;</span> <span style="color:#f92672">+</span> str(log[<span style="color:#e6db74">&#34;@source&#34;</span>])
+</span></span><span style="display:flex;"><span>        message <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;error(</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">)&#34;</span><span style="color:#f92672">.</span>format(e)
+</span></span><span style="display:flex;"><span>        gntp<span style="color:#f92672">.</span>notifier<span style="color:#f92672">.</span>mini(message, applicationName<span style="color:#f92672">=</span>app, title<span style="color:#f92672">=</span>title)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>        title <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%s</span><span style="color:#e6db74"> in </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span> (log[<span style="color:#e6db74">&#34;@fields&#34;</span>][<span style="color:#e6db74">&#34;ircsender&#34;</span>][<span style="color:#ae81ff">0</span>],
+</span></span><span style="display:flex;"><span>                  channel<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#34;utf-8&#34;</span>)))
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> e:
+</span></span><span style="display:flex;"><span>        title <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Failure parsing ircsender in: &#34;</span> <span style="color:#f92672">+</span> str(log)
+</span></span><span style="display:flex;"><span>        message <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;error(</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">)&#34;</span><span style="color:#f92672">.</span>format(e)
+</span></span><span style="display:flex;"><span>        print title
+</span></span><span style="display:flex;"><span>        print message
+</span></span><span style="display:flex;"><span>        gntp<span style="color:#f92672">.</span>notifier<span style="color:#f92672">.</span>mini(message, applicationName<span style="color:#f92672">=</span>app, title<span style="color:#f92672">=</span>title)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    message <span style="color:#f92672">=</span> (log[<span style="color:#e6db74">&#34;@fields&#34;</span>][<span style="color:#e6db74">&#34;ircmessage&#34;</span>][<span style="color:#ae81ff">0</span>])<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#34;utf-8&#34;</span>)
+</span></span><span style="display:flex;"><span>    gntp<span style="color:#f92672">.</span>notifier<span style="color:#f92672">.</span>mini(message, applicationName<span style="color:#f92672">=</span>app, title<span style="color:#f92672">=</span>title)
+</span></span></code></pre></div><p>This uses the python gntp library to talk to Growl and the redis client to talk
 to Redis. Specifically for the Redis connection I use <code>blpop</code>, which pops an
 element (in our case a notification) from the list and if there is none waits
 for the next one to come in. For every notification it parses out the

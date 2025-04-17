@@ -1,7 +1,6 @@
 ---
 date: 2015-07-24
 layout: post
-published: true
 title: Adventures in Frontend Performance
 url: /2015/07/24/frontend-performance.html
 ---

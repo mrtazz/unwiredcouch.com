@@ -219,8 +219,8 @@ project forward.</p>
 <p>I&rsquo;m not. For some reason that has never occurred to me.</p>
 <h3 id="share-a-snippet-of-vim-script-youve-written-and-talk-about-what-it-does">Share a snippet of Vim script you&rsquo;ve written and talk about what it does.</h3>
 <pre tabindex="0"><code>function! Today()
-  let today = strftime(&quot;%A %m\/%d\/%Y&quot;)
-  exe &quot;normal a&quot;. today
+  let today = strftime(&#34;%A %m\/%d\/%Y&#34;)
+  exe &#34;normal a&#34;. today
 endfunction
 command! Today :call Today()
 </code></pre><p>This is the snippet I talked about earlier that inserts the current date after

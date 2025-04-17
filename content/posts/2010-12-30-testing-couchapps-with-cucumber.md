@@ -2,7 +2,6 @@
 date: 2010-12-30
 layout: post
 title: "Testing couchapps with cucumber"
-published: true
 url: /2010/12/30/testing-couchapps-with-cucumber.html
 ---
 

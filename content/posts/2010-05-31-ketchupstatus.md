@@ -2,7 +2,6 @@
 date: 2010-05-31
 layout: post
 title: Where's ma ketchup?
-published: true
 url: /2010/05/31/ketchupstatus.html
 ---
 

@@ -68,35 +68,35 @@ encryption</a> and build a new ZFS pool. This pool is then used as my home
 directory. In order to simplify this, I have a shell script that takes the
 username and size as input and creates keys and all partitions as well as the
 zpool.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/sh
-</span><span style="color:#75715e"></span>
-USERHOME<span style="color:#f92672">=</span>$1
-SIZE<span style="color:#f92672">=</span>$2
-
-zfs create -omountpoint<span style="color:#f92672">=</span>/encrypted tank/encrypted
-zfs create tank/encrypted/keys
-zfs create -omountpoint<span style="color:#f92672">=</span>none tank/encrypted/zvols
-zfs create -ocompression<span style="color:#f92672">=</span>on tank/encrypted/zvols/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>
-zfs create -V <span style="color:#e6db74">${</span>SIZE<span style="color:#e6db74">}</span>G tank/encrypted/zvols/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>/disk0
-zfs create -V <span style="color:#e6db74">${</span>SIZE<span style="color:#e6db74">}</span>G tank/encrypted/zvols/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>/disk1
-
-zfs create tank/encrypted/keys/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>
-dd <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>/dev/random of<span style="color:#f92672">=</span>/encrypted/keys/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>/disk0 bs<span style="color:#f92672">=</span><span style="color:#ae81ff">64</span> count<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
-dd <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>/dev/random of<span style="color:#f92672">=</span>/encrypted/keys/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>/disk1 bs<span style="color:#f92672">=</span><span style="color:#ae81ff">64</span> count<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
-geli init -s <span style="color:#ae81ff">4096</span> -K /encrypted/keys/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>/disk0 <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>/dev/zvol/tank/encrypted/zvols/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>/disk0
-geli init -s <span style="color:#ae81ff">4096</span> -K /encrypted/keys/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>/disk1 <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>/dev/zvol/tank/encrypted/zvols/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>/disk1
-
-geli attach -k /encrypted/keys/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>/disk0 <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>/dev/zvol/tank/encrypted/zvols/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>/disk0
-geli attach -k /encrypted/keys/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>/disk1 <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>/dev/zvol/tank/encrypted/zvols/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>/disk1
-
-zpool create <span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>-home raidz <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>/dev/zvol/tank/encrypted/zvols/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>/disk0.eli <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>/dev/zvol/tank/encrypted/zvols/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>/disk1.eli
-</code></pre></div><p>I try to keep the script updated on <a href="https://github.com/mrtazz/bin/blob/master/create_encrypted_zfs_home.sh">GitHub</a>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/sh
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>USERHOME<span style="color:#f92672">=</span>$1
+</span></span><span style="display:flex;"><span>SIZE<span style="color:#f92672">=</span>$2
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>zfs create -omountpoint<span style="color:#f92672">=</span>/encrypted tank/encrypted
+</span></span><span style="display:flex;"><span>zfs create tank/encrypted/keys
+</span></span><span style="display:flex;"><span>zfs create -omountpoint<span style="color:#f92672">=</span>none tank/encrypted/zvols
+</span></span><span style="display:flex;"><span>zfs create -ocompression<span style="color:#f92672">=</span>on tank/encrypted/zvols/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>zfs create -V <span style="color:#e6db74">${</span>SIZE<span style="color:#e6db74">}</span>G tank/encrypted/zvols/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>/disk0
+</span></span><span style="display:flex;"><span>zfs create -V <span style="color:#e6db74">${</span>SIZE<span style="color:#e6db74">}</span>G tank/encrypted/zvols/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>/disk1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>zfs create tank/encrypted/keys/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>dd <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>/dev/random of<span style="color:#f92672">=</span>/encrypted/keys/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>/disk0 bs<span style="color:#f92672">=</span><span style="color:#ae81ff">64</span> count<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>dd <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>/dev/random of<span style="color:#f92672">=</span>/encrypted/keys/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>/disk1 bs<span style="color:#f92672">=</span><span style="color:#ae81ff">64</span> count<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>geli init -s <span style="color:#ae81ff">4096</span> -K /encrypted/keys/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>/disk0 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>/dev/zvol/tank/encrypted/zvols/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>/disk0
+</span></span><span style="display:flex;"><span>geli init -s <span style="color:#ae81ff">4096</span> -K /encrypted/keys/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>/disk1 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>/dev/zvol/tank/encrypted/zvols/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>/disk1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>geli attach -k /encrypted/keys/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>/disk0 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>/dev/zvol/tank/encrypted/zvols/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>/disk0
+</span></span><span style="display:flex;"><span>geli attach -k /encrypted/keys/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>/disk1 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>/dev/zvol/tank/encrypted/zvols/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>/disk1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>zpool create <span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>-home raidz <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>/dev/zvol/tank/encrypted/zvols/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>/disk0.eli <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>/dev/zvol/tank/encrypted/zvols/<span style="color:#e6db74">${</span>USERHOME<span style="color:#e6db74">}</span>/disk1.eli
+</span></span></code></pre></div><p>I try to keep the script updated on <a href="https://github.com/mrtazz/bin/blob/master/create_encrypted_zfs_home.sh">GitHub</a>.</p>
 
 
       </div>

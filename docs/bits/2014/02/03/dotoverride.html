@@ -83,13 +83,13 @@ machines this is pushed to a repo on our internal GitHub Enterprise instance
 so I can easily share it between machines. And all my regular dotfiles now
 source those override files at the very end.</p>
 <p>So in my regular <code>.vimrc</code> I have something like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#75715e">&#34; source overrides configs</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">if</span> <span style="color:#a6e22e">filereadable</span>($<span style="color:#a6e22e">HOME</span>.<span style="color:#e6db74">&#34;/.dotoverrides/vimrc&#34;</span>)<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>  <span style="color:#a6e22e">exec</span> <span style="color:#e6db74">&#34;:source &#34;</span>. $<span style="color:#a6e22e">HOME</span> . <span style="color:#e6db74">&#34;/.dotoverrides/vimrc&#34;</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">endif</span><span style="color:#960050;background-color:#1e0010">
-</span></code></pre></div><p>In my <code>.zshrc</code> I have this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span> -f  <span style="color:#e6db74">${</span>HOME<span style="color:#e6db74">}</span>/.dotoverrides/zshrc <span style="color:#f92672">]</span> <span style="color:#f92672">&amp;&amp;</span> source <span style="color:#e6db74">${</span>HOME<span style="color:#e6db74">}</span>/.dotoverrides/zshrc
-</code></pre></div><p>And in git (only works if you have at least v1.7.10) I&rsquo;ve added this stanza:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span><span style="color:#75715e">&#34; source overrides configs</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#a6e22e">filereadable</span>($<span style="color:#a6e22e">HOME</span>.<span style="color:#e6db74">&#34;/.dotoverrides/vimrc&#34;</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">exec</span> <span style="color:#e6db74">&#34;:source &#34;</span>. $<span style="color:#a6e22e">HOME</span> . <span style="color:#e6db74">&#34;/.dotoverrides/vimrc&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">endif</span>
+</span></span></code></pre></div><p>In my <code>.zshrc</code> I have this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span> -f  <span style="color:#e6db74">${</span>HOME<span style="color:#e6db74">}</span>/.dotoverrides/zshrc <span style="color:#f92672">]</span> <span style="color:#f92672">&amp;&amp;</span> source <span style="color:#e6db74">${</span>HOME<span style="color:#e6db74">}</span>/.dotoverrides/zshrc
+</span></span></code></pre></div><p>And in git (only works if you have at least v1.7.10) I&rsquo;ve added this stanza:</p>
 <pre tabindex="0"><code class="language-config" data-lang="config">[include]
   path = ~/.dotoverrides/gitconfig
 </code></pre><p>Now I can easily share and push/pull my regular dotfiles  in public GitHub and

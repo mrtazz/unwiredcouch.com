@@ -2,7 +2,6 @@
 date: 2011-08-25
 layout: post
 title: "Setting up workstations with Chef (Newbie Edition)"
-published: true
 url: /2011/08/25/setting-up-workstations-with-chef-newbie-edition.html
 ---
 

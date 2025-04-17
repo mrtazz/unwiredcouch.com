@@ -1,7 +1,6 @@
 ---
 date: 2014-10-21
 layout: post
-published: true
 title: Code Reviews Considered Awesome
 url: /2014/10/21/code-review.html
 ---

@@ -1,7 +1,6 @@
 ---
 date: 2015-07-09
 layout: post
-published: true
 title: Open Source Spring Cleaning
 url: /2015/07/09/oss-spring-cleaning.html
 ---

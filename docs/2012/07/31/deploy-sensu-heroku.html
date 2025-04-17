@@ -78,8 +78,8 @@ release</a>.</p>
 <h3 id="setting-up-the-sensu-repository">Setting up the Sensu repository</h3>
 <p>In order to get started and configure your Sensu instance, clone the <a href="https://github.com/mrtazz/sensu-heroku-app">example
 repository</a> from Github.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    git clone https://github.com/mrtazz/sensu-heroku-example
-</code></pre></div><p>The example includes a basic folder layout for running a server or API instance
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>    git clone https://github.com/mrtazz/sensu-heroku-example
+</span></span></code></pre></div><p>The example includes a basic folder layout for running a server or API instance
 on Heroku. All configuration files can be dropped in the <code>config/</code> folder. They
 will be picked up by the process when Sensu starts. The example repo also
 includes a basic handler (<code>bin/showme.rb</code>), which prints event data to STDOUT.
@@ -97,29 +97,29 @@ add the RabbitMQ and Redis plugins once and can then reuse the settings on the
 second instance.</p>
 <p>So create the first instance on the cedar stack from within the example repo
 and add the plugins:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    heroku create --stack cedar awesome-sensu-server
-    heroku plugins:install redistogo
-    heroku plugins:install rabbitmq
-    heroku config:add API_PORT<span style="color:#f92672">=</span><span style="color:#ae81ff">80</span>
-</code></pre></div><p>You have to add the <code>API_PORT</code> environment variable to the server instance,
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>    heroku create --stack cedar awesome-sensu-server
+</span></span><span style="display:flex;"><span>    heroku plugins:install redistogo
+</span></span><span style="display:flex;"><span>    heroku plugins:install rabbitmq
+</span></span><span style="display:flex;"><span>    heroku config:add API_PORT<span style="color:#f92672">=</span><span style="color:#ae81ff">80</span>
+</span></span></code></pre></div><p>You have to add the <code>API_PORT</code> environment variable to the server instance,
 since otherwise it will assume it&rsquo;s running the API itself and assign the
 instance locale port from the <code>PORT</code> environment variable to use as the API
 port. After that is done, push the code to Heroku and scale up a worker
 process:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    git push heroku master
-    heroku ps:scale app<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
-</code></pre></div><p>For the API instance create a new branch in the repo or clone the example repo
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>    git push heroku master
+</span></span><span style="display:flex;"><span>    heroku ps:scale app<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><p>For the API instance create a new branch in the repo or clone the example repo
 into a new location. Then initialize the API:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    heroku create --stack cedar awesome-sensu-api
-    heroku config:add REDISTOGO_URL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;value from server instance&#34;</span>
-    heroku config:add RABBITMQ_URL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;value from server instance&#34;</span>
-</code></pre></div><p>Now change the Procfile to start up the API instead of the Sensu server like
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>    heroku create --stack cedar awesome-sensu-api
+</span></span><span style="display:flex;"><span>    heroku config:add REDISTOGO_URL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;value from server instance&#34;</span>
+</span></span><span style="display:flex;"><span>    heroku config:add RABBITMQ_URL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;value from server instance&#34;</span>
+</span></span></code></pre></div><p>Now change the Procfile to start up the API instead of the Sensu server like
 this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    app: sensu-api -v -c config/config.json -d config/
-</code></pre></div><p>Commit the changes and push it to the Heroku app:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    git push heroku-api master
-    heroku ps:scale app<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
-</code></pre></div><p>Now all you have to do is set up clients and voila, you have Heroku hosted
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>    app: sensu-api -v -c config/config.json -d config/
+</span></span></code></pre></div><p>Commit the changes and push it to the Heroku app:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>    git push heroku-api master
+</span></span><span style="display:flex;"><span>    heroku ps:scale app<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><p>Now all you have to do is set up clients and voila, you have Heroku hosted
 monitoring. If you&rsquo;re not yet familiar with setting up clients, I highly
 recommend Joe Miller&rsquo;s <a href="http://joemiller.me">blog</a> again. He&rsquo;s a strong contributor to Sensu and
 has written an abundance of blog posts and tutorials about it. And of course

@@ -2,7 +2,6 @@
 date: 2012-09-15
 layout: post
 title: "Getting started with monitoring on the cheap and easy"
-published: true
 url: /2012/09/15/getting-started-with-monitoring.html
 ---
 

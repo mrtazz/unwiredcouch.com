@@ -116,9 +116,9 @@ email client of choice is <a href="http://www.mutt.org/">mutt</a>. Which means t
 hacking to do (as usual). However I found a great <a href="https://github.com/mrtazz/bin/blob/master/mutt-to-omnifocus.py">Python script</a>
 that parses emails and adds them to Omnifocus. I also added this keybinding to
 my mutt configuration:</p>
-<pre tabindex="0"><code>macro index,pager \Ca &quot;&lt;enter-command&gt;unset
+<pre tabindex="0"><code>macro index,pager \Ca &#34;&lt;enter-command&gt;unset
 wait_key&lt;enter&gt;&lt;pipe-message&gt;mutt-to-omnifocus.py
-&lt;enter&gt;&lt;save-message&gt;=gtd-needs-reply/&lt;enter&gt;&lt;sync-mailbox&gt;&quot;
+&lt;enter&gt;&lt;save-message&gt;=gtd-needs-reply/&lt;enter&gt;&lt;sync-mailbox&gt;&#34;
 </code></pre><p>Now all I have to do when reading an Email or browsing through the list is hit
 <code>Ctrl-a</code> and mutt automatically creates a task in my Omnifocus inbox and moves
 the email out of my inbox into a folder I creatively called <em>gtd-needs-reply</em>

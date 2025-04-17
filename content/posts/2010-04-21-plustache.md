@@ -2,7 +2,6 @@
 date: 2010-04-21
 layout: post
 title: plustache
-published: true
 url: /2010/04/21/plustache.html
 ---
 

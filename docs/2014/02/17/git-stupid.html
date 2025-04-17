@@ -105,8 +105,7 @@ make sense for you.</p>
 <p>git merge &ndash;no-ff feature to ship a feature</p>
 <p>However if “feature” contains only 1 commit, avoid the merge commit:</p>
 <p>(on “master”)</p>
-<p>git cherry-pick feature</p>
-</blockquote>
+<p>git cherry-pick feature</p></blockquote>
 <p>It doesn&rsquo;t matter where this is from because I don&rsquo;t want to disrespect the
 author or their ability to choose a workflow that works for them. It just is a
 good example (of which you can find hundreds that are similar on the web) of
@@ -120,7 +119,7 @@ depending on some circumstances. But this isn&rsquo;t even the most error prone
 part. Let&rsquo;s consider you work on a fairly active project with a lot of people.
 You are maybe even doing continuous integration and continuous deployment and
 trunk/master gets commited to all the time. You are working on a feature in a
-branch (btw while we&rsquo;re at it read <a href="http://whilefalse.blogspot.de/2013/02/branching-is-easy-so.html">Camille Fourniers' excellent blog
+branch (btw while we&rsquo;re at it read <a href="http://whilefalse.blogspot.de/2013/02/branching-is-easy-so.html">Camille Fourniers&rsquo; excellent blog
 post</a> to find out why you actually shouldn&rsquo;t do this in a
 continuous deployment setup) and want to pull in changes from master. So you
 merge master as per the instructions. You notice someone else has pushed to

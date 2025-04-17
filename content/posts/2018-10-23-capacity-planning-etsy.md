@@ -1,7 +1,6 @@
 ---
 date: 2018-10-23
 layout: post
-published: true
 title: Capacity planning for Etsy’s web and API clusters
 url: /2018/10/23/capacity-planning-etsy.html
 ---
