@@ -1,10 +1,26 @@
-SITEDIR ?=_site
-HUGO=$(shell which hugo)
+SITEDIR                 ?= docs
+HUGO                    := $(shell which hugo)
+HUGO_VERSION            := 0.146.5
+INSTALLED_HUGO_VERSION  := $(shell hugo version)
+OS   										:= $(shell uname -s)
 
 .DEFAULT_GOAL := build
-.PHONY: build
+ifeq ($(OS),Darwin)
+# on macOS the dependency are installed via brew
 build: images
-	$(HUGO)
+	$(HUGO) --destination $(SITEDIR)
+else ifeq ($(OS),Linux)
+# install dependencies first on linux hosts (i.e. Actions runners)
+build: linux-deps images
+	$(HUGO) --destination $(SITEDIR)
+endif
+.PHONY: build
+
+.PHONY: linux-deps
+linux-deps:
+	sudo wget https://github.com/gohugoio/hugo/releases/download/v$(HUGO_VERSION)/hugo_$(HUGO_VERSION)_Linux-64bit.deb
+	sudo dpkg -i hugo_$(HUGO_VERSION)_Linux-64bit.deb
+	sudo apt-get update && sudo apt-get install -y imagemagick
 
 serve:
 	$(HUGO) server
