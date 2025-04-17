@@ -20,6 +20,10 @@ else ifeq ($(OS),Linux)
 # install dependencies first on linux hosts (i.e. Actions runners)
 build: linux-deps images
 	$(HUGO) --destination $(SITEDIR)
+else
+build:
+	echo "Unsupported OS: $(OS)"
+	exit 1
 endif
 .PHONY: build
 
