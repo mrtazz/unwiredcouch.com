@@ -1,13 +1,136 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>unwiredcouch.com on unwiredcouch.com</title>
   <id>https://unwiredcouch.com/atom.xml</id>
-  <updated>2025-01-13T00:00:00Z</updated>
+  <updated>2025-04-13T00:00:00Z</updated>
 	<subtitle>thoughts which have made it into written existence</subtitle>
 	<link rel="self" href="https://unwiredcouch.com/atom.xml"/>
 	<author>
     <name>Daniel Schauenberg</name>
 		<email>d@unwiredcouch.com</email>
 	</author>
+  
+	<entry>
+    <title type="html"><![CDATA[The Bear and The Nightingale]]></title>
+    <published>2025-04-13T00:00:00Z</published>
+    <updated>2025-04-13T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/reading/bear-and-nightingale/</id>
+    <content type="html"><![CDATA[<p>I got this recommend by a friend as I had just finished [[ref-Cassandra
+Clare-City of Bones-2017-11-20]] and wanted something similar in some regards.
+And the fact that it was set on the backdrop on some old Russian folk stories
+was kinda interesting. And overall the book really held up. The first 100 pages
+were really slow, mostly depressing, and I wasn&rsquo;t able to really keep track of
+the characters. But after that I was really drawn into the story, to the point
+where some parts I found creepy enough that I stopped reading it before going
+to bed and read it in daylight instead 😅. I finished the final 150 pages or so
+in one setting because I really wanted to know how it ends. And then
+immediately ordered the two follow up books in the series.</p>
+]]></content>
+    <link href="https://unwiredcouch.com/reading/bear-and-nightingale/" rel="alternate"/>
+	</entry>
+  
+	<entry>
+    <title type="html"><![CDATA[The Ordinal Society]]></title>
+    <published>2025-04-12T00:00:00Z</published>
+    <updated>2025-04-12T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/reading/ordinal-society/</id>
+    <content type="html"><![CDATA[<p>I was really curious about this book as I&rsquo;ve been thinking a lot lately about
+my use of technology, the amount of data that is tracked on devices, and just
+the general state of software (and hardware) where a lot things seem to be
+getting developed more for the purpose of keeping people hooked and
+participating in a closed platform rather than mostly offering a useful service
+or a solution to an actual problem. The book overall is definitely a
+challenging read at times as it&rsquo;s often written in fairly academic language
+(the disclaimer here being that English isn&rsquo;t my first language and I don&rsquo;t
+have a degree in the humanities, so ymmv) which made me re-read some sentences
+occasionally to get to the gist of it. But overall it was a really interesting
+book that gave me a lot of new ideas and avenues to think about my relationship
+with technology.</p>
+]]></content>
+    <link href="https://unwiredcouch.com/reading/ordinal-society/" rel="alternate"/>
+	</entry>
+  
+	<entry>
+    <title type="html"><![CDATA[Notes on Complexity]]></title>
+    <published>2025-03-16T00:00:00Z</published>
+    <updated>2025-03-16T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/reading/notes-on-complexity/</id>
+    <content type="html"><![CDATA[<p>I found this at the local book store and wasn&rsquo;t really sure what to make of it
+but found it interesting enough to buy. I&rsquo;ve dabbled in complexity theory
+topics over the years but haven&rsquo;t really dug deep into it so far.  I overall
+really enjoyed the book. It does a good job introducing the basics of
+complexity in my opinion and guiding through a lot of historical developments
+in math and related fields in relation to the study of complexity. Which also
+makes up the majority of the book. The part when the author actually gets to
+consciousness is rather short and is more a starting point than a real outline
+of their research in my mind. So while I can&rsquo;t say I have a more interesting
+insight into consciousness after reading the back, I still took a lot away from
+reading it.</p>
+]]></content>
+    <link href="https://unwiredcouch.com/reading/notes-on-complexity/" rel="alternate"/>
+	</entry>
+  
+	<entry>
+    <title type="html"><![CDATA[The Notebook]]></title>
+    <published>2025-03-07T00:00:00Z</published>
+    <updated>2025-03-07T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/reading/the-notebook/</id>
+    <content type="html"><![CDATA[<p>I honestly devoured and thoroughly enjoyed this book. I&rsquo;ve recently been going
+back to leaning on my notebooks a lot more for a lot of my tasks including
+planning and todos (both at work and personal). So the book just came at the
+right time. I gives a wonderful overview over how paper (and notebooks) were
+used throughout the centuries by different people of various professions. It
+was really interesting to compare how much of these ways of journaling and
+taking notes is still in use today and how the question of organization of
+notes kinda still has so many approaches. If you like writing on paper, I can
+absolutely recommend this book.</p>
+]]></content>
+    <link href="https://unwiredcouch.com/reading/the-notebook/" rel="alternate"/>
+	</entry>
+  
+	<entry>
+    <title type="html"><![CDATA[City of Bones]]></title>
+    <published>2025-02-09T00:00:00Z</published>
+    <updated>2025-02-09T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/reading/city-of-bones/</id>
+    <content type="html"><![CDATA[<p>I started this book many years ago after I had finished watching the Netflix show and really was kinda bummed it ended. So I wanted to continue spending time in that phantasy universe. Initially however I didn&rsquo;t super enjoy the differences between the book and the show (as I really wanted to have it make the show keep going for me) and I had the book on my nightstand for a long time without actually reading it. But then I decided to pick it back up - with some good distance from the Netflix show - and just read it as its own. And I thoroughly enjoyed it and finished it pretty quickly. I also got the follow up book already, so I&rsquo;m intending to keep going. If you like young adult stories set within a universe of vampires, demons, werewolves, and other fantastical creatures, I can recommend the book.</p>
+]]></content>
+    <link href="https://unwiredcouch.com/reading/city-of-bones/" rel="alternate"/>
+	</entry>
+  
+	<entry>
+    <title type="html"><![CDATA[The Creative Act]]></title>
+    <published>2025-02-01T00:00:00Z</published>
+    <updated>2025-02-01T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/reading/the-creative-act/</id>
+    <content type="html"><![CDATA[<p>As a long time fan of a lot of the music that Rick Rubin has produced I was
+really curious about his take on creativity and the pursuit of making art. And
+there were a lot of interesting bits in there. I found his views on the
+pressure to make something that will be popular and how to approach
+experimentation really interesting. And also the contrast of emphasizing the
+more structured parts like note taking and practicing was very interesting.
+Overall I think the book could&rsquo;ve been a lot shorter as some parts felt
+repetitive in some ways. And of course it mostly leaves out the challenges of
+making a living with art. But I still overall enjoyed the book.</p>
+]]></content>
+    <link href="https://unwiredcouch.com/reading/the-creative-act/" rel="alternate"/>
+	</entry>
+  
+	<entry>
+    <title type="html"><![CDATA[Rebel Girl]]></title>
+    <published>2025-01-14T00:00:00Z</published>
+    <updated>2025-01-14T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/reading/rebel-girl/</id>
+    <content type="html"><![CDATA[<p>I stumbled upon this in a bookshop and while I knew about Bikini Kill, I can&rsquo;t
+say I had listened to a lot of their music before. So I was really curious
+what their lead singer&rsquo;s memoir would be like. And even though it has a lot of
+hard to read and sad passages I really liked this book. There is so much raw
+realness in there and so many interesting passages about their first gigs, the
+struggle to keep the band and the zines and all the stuff around it going,
+their history with Kurt Cobain, and a lot of sweet details from their
+relationship with Ad-Rock from the Beastie Boys. I really enjoyed the book.</p>
+]]></content>
+    <link href="https://unwiredcouch.com/reading/rebel-girl/" rel="alternate"/>
+	</entry>
   
 	<entry>
     <title type="html"><![CDATA[Vacation Factor]]></title>
@@ -20,6 +143,58 @@
 <p>I&rsquo;m sure I&rsquo;m not the first person to think of this. But I like the phrase and think it should be used more often.</p>
 ]]></content>
     <link href="https://unwiredcouch.com/2025/01/13/vacation-factor.html" rel="alternate"/>
+	</entry>
+  
+	<entry>
+    <title type="html"><![CDATA[Gott ist nicht schüchtern]]></title>
+    <published>2025-01-03T00:00:00Z</published>
+    <updated>2025-01-03T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/reading/gott-ist-nicht-schuechtern/</id>
+    <content type="html"><![CDATA[<p>I had read books by Olga Grjasnowa before and really liked her style and view
+on the topics like migration and multi-lingualism. So I started reading this
+book on winter break and I wasn&rsquo;t really prepared for the how real and rough
+this story is. It details a lot of the cruelties that happen to the
+protagonists during mid-2010s Syria and their route to flee the country. It
+took me some struggling to get through it but also gave me a lot of additional
+perspective on the realities of living in a country that often struggles with
+the question of whether and how many refugees to take in. It&rsquo;s not an easy
+read but I can recommend it.</p>
+]]></content>
+    <link href="https://unwiredcouch.com/reading/gott-ist-nicht-schuechtern/" rel="alternate"/>
+	</entry>
+  
+	<entry>
+    <title type="html"><![CDATA[Letters to My Palestinian Neighbor]]></title>
+    <published>2024-12-25T00:00:00Z</published>
+    <updated>2024-12-25T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/reading/letters-palestinian-neighbor/</id>
+    <content type="html"><![CDATA[<p>I&rsquo;ve not really concerned myself in depth with the Israel-Palestine conflict
+much before. But with all the recent events I wanted to educate myself a bit
+more and got this book to read from some people that live there. And I found
+the book to be very interesting. Especially the contrast between the letters
+written by the author and then the reply letters by Palestinians that are
+added in this edition give a good idea about the contrasting (and sometimes
+similar) views on the various topics of this situation.</p>
+]]></content>
+    <link href="https://unwiredcouch.com/reading/letters-palestinian-neighbor/" rel="alternate"/>
+	</entry>
+  
+	<entry>
+    <title type="html"><![CDATA[Mapmatics]]></title>
+    <published>2024-12-18T00:00:00Z</published>
+    <updated>2024-12-18T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/reading/mapmatics/</id>
+    <content type="html"><![CDATA[<p>I was super curious about this book. The combination of maths and maps
+immediately captured my attention, having been interested in both for a long
+time. And I absolutely loved the book. It expectedly goes into detail of the
+mathematics to make projections of 3D territory on a 2D plane works and what
+the trade-offs are there. But then goes so much wider into (often no well
+known) pioneers of map making and how drawing maps can help people but also
+have impact on politics in other areas as we essentially draw arbitrary lines
+around territories to categorize them. If you like maps and maths I can highly
+recommend the book.</p>
+]]></content>
+    <link href="https://unwiredcouch.com/reading/mapmatics/" rel="alternate"/>
 	</entry>
   
 	<entry>

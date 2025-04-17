@@ -2,19 +2,49 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://unwiredcouch.com/posts/</loc>
-    <lastmod>2025-01-13T00:00:00+00:00</lastmod>
+    <loc>https://unwiredcouch.com/reading/</loc>
+    <lastmod>2025-04-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://unwiredcouch.com/reading/bear-and-nightingale/</loc>
+    <lastmod>2025-04-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://unwiredcouch.com/</loc>
+    <lastmod>2025-04-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://unwiredcouch.com/reading/ordinal-society/</loc>
+    <lastmod>2025-04-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://unwiredcouch.com/reading/notes-on-complexity/</loc>
+    <lastmod>2025-03-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://unwiredcouch.com/reading/the-notebook/</loc>
+    <lastmod>2025-03-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://unwiredcouch.com/reading/city-of-bones/</loc>
+    <lastmod>2025-02-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://unwiredcouch.com/reading/the-creative-act/</loc>
+    <lastmod>2025-02-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://unwiredcouch.com/reading/rebel-girl/</loc>
+    <lastmod>2025-01-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://unwiredcouch.com/posts/</loc>
     <lastmod>2025-01-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://unwiredcouch.com/2025/01/13/vacation-factor.html</loc>
     <lastmod>2025-01-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://unwiredcouch.com/reading/africa-is-not-a-country/</loc>
-    <lastmod>2024-11-15T00:00:00+00:00</lastmod>
+    <loc>https://unwiredcouch.com/reading/gott-ist-nicht-schuechtern/</loc>
+    <lastmod>2025-01-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://unwiredcouch.com/reading/</loc>
+    <loc>https://unwiredcouch.com/reading/letters-palestinian-neighbor/</loc>
+    <lastmod>2024-12-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://unwiredcouch.com/reading/mapmatics/</loc>
+    <lastmod>2024-12-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://unwiredcouch.com/reading/africa-is-not-a-country/</loc>
     <lastmod>2024-11-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://unwiredcouch.com/reading/metal-gear-solid/</loc>
