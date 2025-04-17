@@ -1,8 +1,15 @@
 SITEDIR                 ?= docs
-HUGO                    := $(shell which hugo)
+HUGO                    = $(shell which hugo)
 HUGO_VERSION            := 0.146.5
-INSTALLED_HUGO_VERSION  := $(shell hugo version)
+INSTALLED_HUGO_VERSION  = $(shell hugo version)
 OS   										:= $(shell uname -s)
+
+
+$(info    SITEDIR is $(SITEDIR))
+$(info    HUGO is $(HUGO))
+$(info    HUGO_VERSION is $(HUGO_VERSION))
+$(info    INSTALLED_HUGO_VERSION is $(INSTALLED_HUGO_VERSION))
+$(info    OS is $(OS))
 
 .DEFAULT_GOAL := build
 ifeq ($(OS),Darwin)
@@ -21,6 +28,9 @@ linux-deps:
 	sudo wget https://github.com/gohugoio/hugo/releases/download/v$(HUGO_VERSION)/hugo_$(HUGO_VERSION)_Linux-64bit.deb
 	sudo dpkg -i hugo_$(HUGO_VERSION)_Linux-64bit.deb
 	sudo apt-get update && sudo apt-get install -y imagemagick
+	$(info    HUGO is now $(HUGO))
+	$(info    HUGO_VERSION is now $(HUGO_VERSION))
+	$(info    INSTALLED_HUGO_VERSION is now $(INSTALLED_HUGO_VERSION))
 
 serve:
 	$(HUGO) server

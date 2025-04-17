@@ -13,8 +13,7 @@ jobs:
     steps:
     - name: build all the things
       run: |
-        set -x
-        make -d build
+        make build
 
     - name: commit
       run: |
