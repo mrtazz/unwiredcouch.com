@@ -1,7 +1,6 @@
 ---
 date: 2014-12-31
 layout: post
-published: true
 title: 2014 Reading List
 url: /2014/12/31/reading-list.html
 ---

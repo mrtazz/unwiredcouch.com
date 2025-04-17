@@ -2,7 +2,6 @@
 date: 2015-05-04
 layout: post
 title: There's No Such Thing as No Project Management
-published: true
 url: /2015/05/04/project-management.html
 ---
 

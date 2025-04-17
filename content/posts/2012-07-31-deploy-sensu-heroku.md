@@ -2,7 +2,6 @@
 date: 2012-07-31
 layout: post
 title: "Deploying Sensu monitoring on Heroku"
-published: true
 url: /2012/07/31/deploy-sensu-heroku.html
 ---
 

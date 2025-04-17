@@ -1,7 +1,6 @@
 ---
 date: 2014-05-13
 layout: post
-published: true
 title: How OmniFocus controls my life
 url: /2014/05/13/omnifocus.html
 ---
