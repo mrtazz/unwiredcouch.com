@@ -1,6 +1,6 @@
 SITEDIR                 ?= docs
 HUGO                    = $(shell which hugo)
-HUGO_VERSION            := 0.146.5
+HUGO_VERSION            := 0.151.0
 INSTALLED_HUGO_VERSION  = $(shell hugo version)
 OS   										:= $(shell uname -s)
 
@@ -37,8 +37,7 @@ linux-deps:
 	$(info    INSTALLED_HUGO_VERSION is now $(INSTALLED_HUGO_VERSION))
 
 serve:
-	$(HUGO) server
-
+	$(HUGO) server --disableFastRender
 
 ###
 # image conversion tasks for art posts
