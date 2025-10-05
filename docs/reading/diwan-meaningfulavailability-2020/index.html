@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="cache-control" content="no-cache"/>
+    <meta http-equiv="pragma" content="no-cache"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    
+
+
+
+<link   rel="stylesheet"
+        href="../../css/style.min.d007196be0a488024a8ff3950c1d24d7cc642808b82bcd9db9c486384e1434d3.css"
+        integrity="sha256-0AcZa&#43;CkiAJKj/OVDB0k18xkKAi4K82ducSGOE4UNNM="
+        type="text/css"
+        media="screen">
+
+<link   rel="stylesheet"
+        href="../../css/mobile.min.9d1271f82d33327493aaf7c1818ceac101a822559d694bd14a222d686e28c391.css"
+        integrity="sha256-nRJx&#43;C0zMnSTqvfBgYzqwQGoIlWdaUvRSiItaG4ow5E="
+        type="text/css"
+        media="handheld, only screen and (max-device-width: 960px)">
+
+    <link href="https://unwiredcouch.com/atom.xml" type="application/atom+xml" rel="alternate" title="unwiredcouch.com: All Posts" />
+    
+    
+
+    <title>Meaningful Availability on unwiredcouch.com</title>
+    
+    
+    
+
+  </head>
+  <body>
+    <div class="mainwrapper">
+
+    <header class="header">
+  <a class="gravatar hidemobile" href="../../">
+    <img
+      src="../../images/gravatar.jpg"
+      height="50" width="50" class="avatar" alt="gravatar image" />
+  </a>
+  <nav class="menu">
+    <ul>
+      <li><a href="../../posts">Writing</a></li>
+      <li><a href="../../reading">Reading</a></li>
+      <li><a href="../../art">Art</a></li>
+      <li><a href="../../setup">Setup</a></li>
+      <li><a href="../../about.html">About</a></li>
+      <li><a rel="me" href="https://chaos.social/@mrtazz">Mastodon</a></li>
+    </ul>
+  </nav>
+</header>
+
+
+    <main>
+    
+
+
+
+
+
+
+
+
+
+<div class="reading-single">
+  <div class="reading-header">
+    <div class="reading-header-text">
+      <ul class="reading-header-text-list">
+        <li class="reading-header-text-list-item reading-single-book-title"> Meaningful Availability 📄 </li>
+        <li class="reading-header-text-list-item"> by <span class="reading-single-book-author"> Amer Diwan, Dan Ardelean, John Lunney, Philipp Hoffmann, Tamás Hauer </span> </li>
+        <li class="reading-header-text-list-item reading-single-publication-date"> Publication date: 2020</li>
+        <li class="reading-header-text-list-item reading-single-book-date"> Read: Nov 1, 2023 </li>
+        <li class="reading-header-text-list-item reading-single-origin-link"> <a href="https://www.usenix.org/conference/nsdi20/presentation/hauer"> Link </a></li>
+    </div>
+
+    <img class="reading-single-cover-image" src="../../images/reading/diwan-meaningfulavailability-2020.jpg" alt="Meaningful Availability book cover">
+  </div>
+
+  <p>SLOs the way they are usually constructed heavily bias towards the most active
+user. This isn&rsquo;t necessarily a good representation of the overall customer
+impact of an incident. In order to address that, a mechanism called &ldquo;windowed
+user-uptime&rdquo; is introduced to make the measure of user impact more
+representative.</p>
+<h2 id="detailed-discussion">Detailed discussion</h2>
+<p>The paper starts with an introduction of the usual approach for SLOs:</p>
+<blockquote>
+<p>“Success- ratio is the fraction of the number of successful requests to total requests over a period of time (usually a month or a quarter) [” (Diwan et al., 2020, p. 1)</p></blockquote>
+<p>This plain calculation has the advantage that it&rsquo;s very easy to calculate but comes with the bias of skewing towards most active users as they will represent more requests (successful as well as unsuccessful) in the overall ratio.</p>
+<p>The general form of availability metrics are defined as</p>
+<pre tabindex="0"><code>availability = good service / total demanded service
+</code></pre><p>And the way service is measured here generally falls in one of two buckets. Either time based which means the time between failures is uptime and the time recovering from a failure is downtime. Which leads to a metric defined as</p>
+<pre tabindex="0"><code>availability = uptime / (uptime + downtime)
+</code></pre><p>This measure strongly relies on the definition and precise meaning of &ldquo;failure&rdquo; and &ldquo;recovery&rdquo;. Especially given situations of partial failure, the definition on whether failure means for all users or at least one user or something in between becomes important for the result of what it means for measuring availability. Here percentage thresholds are often introduced for the definition, to be able to say something like &ldquo;failure means at least 5% of users encounter errors&rdquo;. Which still comes with the problem of an arbitrary threshold. Within this definition a system with 5% error rate is treated the same as one with 0.0001% error rate given the chosen threshold as the delineation line. And the general downsides of this measure are:</p>
+<ul>
+<li>it&rsquo;s not proportional to the severity of the system&rsquo;s unavailability</li>
+<li>not proportional to users affected</li>
+<li>not actionable with not insight into source of failures</li>
+<li>not meaningful as they rely on arbitrary thresholds and/or manual judgements</li>
+</ul>
+<p>For the other approach of <em>count based</em> availability which is much more rare and is based on the similar definition of</p>
+<pre tabindex="0"><code>availability = successful requests / total requests
+</code></pre><p>There is some popularity to this approach as it is easy to implement. However users ultimately care about time they were able to use a service and not the number of requests they were able to do. So this approach also comes with the downsides of:</p>
+<ul>
+<li>not meaningful as it&rsquo;s not based on time</li>
+<li>being biased towards highly active users</li>
+<li>being biased due to different client behaviour during outages
+There is a quick discussion of synthetic probes for measuring system availability but this isn&rsquo;t really discussed deeply as it comes with the downsides of not being representative of user activity and not proportional to what users experience. So for the goals of meaningful measure of uptime it&rsquo;s not a good fit.</li>
+</ul>
+<p>In order to improve on these</p>
+
+
+</div>
+
+
+    </main>
+
+    <footer class="footer">
+    <ul class="menu-footer">
+      <li><a href="../../imprint.html">Imprint</a></li>
+    </ul>
+</footer>
+
+
+    </div>
+  </body>
+</html>
