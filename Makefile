@@ -1,6 +1,6 @@
 SITEDIR                 ?= docs
 HUGO                    = $(shell which hugo)
-HUGO_VERSION            := v0.151.0
+HUGO_VERSION            := 0.151.0
 INSTALLED_HUGO_VERSION  = $(shell hugo version)
 OS   										:= $(shell uname -s)
 
