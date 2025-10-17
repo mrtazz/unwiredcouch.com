@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Githubs on unwiredcouch.com</title>
+    <link>https://unwiredcouch.com/github/</link>
+    <description>Recent content in Githubs on unwiredcouch.com</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language><atom:link href="https://unwiredcouch.com/github/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>https://unwiredcouch.com/github/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://unwiredcouch.com/github/readme/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://gifs.unwiredcouch.com/gilmore-girls/i-love-coffee.gif&#34; alt=&#34;I love coffee&#34;&gt;&lt;/p&gt;
+&lt;p&gt;I sometimes write words 📠 &lt;a href=&#34;https://unwiredcouch.com&#34;&gt;https://unwiredcouch.com&lt;/a&gt;. &lt;/br&gt;
+I enjoy reading paper books 📚https://unwiredcouch.com/reading/. &lt;/br&gt;
+And try to make time for drawing and painting 🎨: &lt;a href=&#34;https://unwiredcouch.com/art&#34;&gt;https://unwiredcouch.com/art&lt;/a&gt;. &lt;/br&gt;
+Sometimes I post on Mastodon 🦣: &lt;a href=&#34;https://chaos.social/@mrtazz&#34;&gt;https://chaos.social/@mrtazz&lt;/a&gt; &lt;/br&gt;&lt;/p&gt;</description>
+    <content:encoded><![CDATA[<p><img src="http://gifs.unwiredcouch.com/gilmore-girls/i-love-coffee.gif" alt="I love coffee"></p>
+<p>I sometimes write words 📠 <a href="https://unwiredcouch.com">https://unwiredcouch.com</a>. </br>
+I enjoy reading paper books 📚https://unwiredcouch.com/reading/. </br>
+And try to make time for drawing and painting 🎨: <a href="https://unwiredcouch.com/art">https://unwiredcouch.com/art</a>. </br>
+Sometimes I post on Mastodon 🦣: <a href="https://chaos.social/@mrtazz">https://chaos.social/@mrtazz</a> </br></p>
+]]></content:encoded>
+    </item>
+    
+  </channel>
+</rss>
