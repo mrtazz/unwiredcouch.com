@@ -1,6 +1,5 @@
 SITEDIR                 ?= docs
 HUGO_VERSION            := 0.151.0
-INSTALLED_HUGO_VERSION  = $(shell hugo version)
 OS   										:= $(shell uname -s)
 DEPS_DIR                := .deps
 GOOS                    ?= $(shell go env GOOS)
@@ -11,12 +10,11 @@ HUGO                    ?= $(DEPS_DIR)/hugo
 $(info    SITEDIR is $(SITEDIR))
 $(info    HUGO is $(HUGO))
 $(info    HUGO_VERSION is $(HUGO_VERSION))
-$(info    INSTALLED_HUGO_VERSION is $(INSTALLED_HUGO_VERSION))
 $(info    OS is $(OS))
 
 ifeq ($(OS),Darwin)
 # on macOS the dependency are installed via brew
-build: images
+build: macos-deps images
 	$(HUGO) --destination $(SITEDIR)
 else ifeq ($(OS),Linux)
 # install dependencies first on linux hosts (i.e. Actions runners)
@@ -34,22 +32,23 @@ endif
 .DEFAULT_GOAL := build
 .PHONY: build
 
-.PHONY: freebsd-deps
-freebsd-deps:
+.PHONY: install-hugo
+install-hugo:
 	install -d $(DEPS_DIR)
 	curl -Lsf https://github.com/gohugoio/hugo/releases/download/v$(HUGO_VERSION)/hugo_$(HUGO_VERSION)_$(GOOS)-$(GOARCH).tar.gz \
 		-o $(DEPS_DIR)/hugo_$(HUGO_VERSION)_$(GOOS)-$(GOARCH).tar.gz
 	tar xvfz $(DEPS_DIR)/hugo_$(HUGO_VERSION)_$(GOOS)-$(GOARCH).tar.gz -C $(DEPS_DIR)
 
+.PHONY: freebsd-deps
+freebsd-deps: install-hugo
 
 .PHONY: linux-deps
-linux-deps:
-	sudo wget https://github.com/gohugoio/hugo/releases/download/v$(HUGO_VERSION)/hugo_$(HUGO_VERSION)_linux-amd64.deb
-	sudo dpkg -i hugo_$(HUGO_VERSION)_linux-amd64.deb
+linux-deps: install-hugo
 	sudo apt-get update && sudo apt-get install -y imagemagick
-	$(info    HUGO is now $(HUGO))
-	$(info    HUGO_VERSION is now $(HUGO_VERSION))
-	$(info    INSTALLED_HUGO_VERSION is now $(INSTALLED_HUGO_VERSION))
+
+.PHONY: macos-deps
+macos-deps: install-hugo
+	brew install imagemagick
 
 serve:
 	$(HUGO) server --bind "0.0.0.0" --disableFastRender
