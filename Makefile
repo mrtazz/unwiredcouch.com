@@ -1,8 +1,11 @@
 SITEDIR                 ?= docs
-HUGO                    = $(shell which hugo)
 HUGO_VERSION            := 0.151.0
 INSTALLED_HUGO_VERSION  = $(shell hugo version)
 OS   										:= $(shell uname -s)
+DEPS_DIR                := .deps
+GOOS                    ?= $(shell go env GOOS)
+GOARCH                  ?= $(shell go env GOARCH)
+HUGO                    ?= $(DEPS_DIR)/hugo
 
 
 $(info    SITEDIR is $(SITEDIR))
@@ -19,6 +22,10 @@ else ifeq ($(OS),Linux)
 # install dependencies first on linux hosts (i.e. Actions runners)
 build: linux-deps images
 	$(HUGO) --destination $(SITEDIR)
+else ifeq ($(OS),FreeBSD)
+# install dependencies first on linux hosts (i.e. Actions runners)
+build: freebsd-deps
+	$(HUGO) --destination $(SITEDIR)
 else
 build:
 	echo "Unsupported OS: $(OS)"
@@ -26,6 +33,14 @@ build:
 endif
 .DEFAULT_GOAL := build
 .PHONY: build
+
+.PHONY: freebsd-deps
+freebsd-deps:
+	install -d $(DEPS_DIR)
+	curl -Lsf https://github.com/gohugoio/hugo/releases/download/v$(HUGO_VERSION)/hugo_$(HUGO_VERSION)_$(GOOS)-$(GOARCH).tar.gz \
+		-o $(DEPS_DIR)/hugo_$(HUGO_VERSION)_$(GOOS)-$(GOARCH).tar.gz
+	tar xvfz $(DEPS_DIR)/hugo_$(HUGO_VERSION)_$(GOOS)-$(GOARCH).tar.gz -C $(DEPS_DIR)
+
 
 .PHONY: linux-deps
 linux-deps:
@@ -37,7 +52,7 @@ linux-deps:
 	$(info    INSTALLED_HUGO_VERSION is now $(INSTALLED_HUGO_VERSION))
 
 serve:
-	$(HUGO) server --disableFastRender
+	$(HUGO) server --bind "0.0.0.0" --disableFastRender
 
 ###
 # image conversion tasks for art posts
