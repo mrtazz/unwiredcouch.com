@@ -14,6 +14,8 @@ $(info    OS is $(OS))
 
 ifeq ($(OS),Darwin)
 # on macOS the dependency are installed via brew
+# also the hugo builds are 'universal' and not different by arch
+GOARCH=universal
 build: macos-deps images
 	$(HUGO) --destination $(SITEDIR)
 else ifeq ($(OS),Linux)
