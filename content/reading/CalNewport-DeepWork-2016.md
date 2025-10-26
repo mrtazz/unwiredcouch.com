@@ -20,4 +20,7 @@ I read this book during a fairly busy time of my life (both personally and
 professionally) and it provided a very welcome perspective on slowing down,
 dialing down distractions, and focusing on what Newport calls "deep work".
 Which is basically the engaged, deep, focus on the work that really matters
-(to oneself, one's career, and goals).
+(to oneself, one's career, and goals). And even though that not every work day
+in a busy job can accommodate lots of deep work every day, the book made me
+sensitive to the topic and seek out more of these opportunities even in
+smaller ways.
