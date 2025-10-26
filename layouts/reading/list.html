@@ -8,7 +8,7 @@
     {{ range .Pages }}
       {{ if ne .Type "standalonepage" }}
       {{ $category := "📚" }}
-      {{ if eq .Params.category "paper" }}
+      {{ if eq .Params.media_type "paper" }}
       {{ $category = "📄" }}
       {{ end }}
       <li class="reading-entry">
