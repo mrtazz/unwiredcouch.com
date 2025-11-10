@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="cache-control" content="no-cache"/>
+    <meta http-equiv="pragma" content="no-cache"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    
+
+
+
+<link   rel="stylesheet"
+        href="../../../css/style.min.d007196be0a488024a8ff3950c1d24d7cc642808b82bcd9db9c486384e1434d3.css"
+        integrity="sha256-0AcZa&#43;CkiAJKj/OVDB0k18xkKAi4K82ducSGOE4UNNM="
+        type="text/css"
+        media="screen">
+
+<link   rel="stylesheet"
+        href="../../../css/mobile.min.9d1271f82d33327493aaf7c1818ceac101a822559d694bd14a222d686e28c391.css"
+        integrity="sha256-nRJx&#43;C0zMnSTqvfBgYzqwQGoIlWdaUvRSiItaG4ow5E="
+        type="text/css"
+        media="handheld, only screen and (max-device-width: 960px)">
+
+    <link href="https://unwiredcouch.com/atom.xml" type="application/atom+xml" rel="alternate" title="unwiredcouch.com: All Posts" />
+    
+    
+
+    <title>Newsletter feeds with procmail and Feedbin on unwiredcouch.com</title>
+    
+    
+    
+
+  </head>
+  <body>
+    <div class="mainwrapper">
+
+    <header class="header">
+  <a class="gravatar hidemobile" href="../../../">
+    <img
+      src="../../../images/gravatar.jpg"
+      height="50" width="50" class="avatar" alt="gravatar image" />
+  </a>
+  <nav class="menu">
+    <ul>
+      <li><a href="../../../posts">Writing</a></li>
+      <li><a href="../../../reading">Reading</a></li>
+      <li><a href="../../../art">Art</a></li>
+      <li><a href="../../../setup">Setup</a></li>
+      <li><a href="../../../about.html">About</a></li>
+      <li><a rel="me" href="https://chaos.social/@mrtazz">Mastodon</a></li>
+    </ul>
+  </nav>
+</header>
+
+
+    <main>
+    
+
+<div class="postdateheading"> Nov 10, 2025 </div>
+
+      <div class="post">
+        <h1 class="posttitle"> <a href=""> Newsletter feeds with procmail and Feedbin </a></h1>
+
+        <p>I&rsquo;m a huge fan of <a href="https://en.wikipedia.org/wiki/Web_feed">web feeds</a> to keep up with content that interests
+me. I&rsquo;ve been using them since the fairly early days of <a href="https://en.wikipedia.org/wiki/Google_Reader">Google
+Reader</a> and yes I was also sad and disappointed when the service got
+shut down. However in my opinion the landscape of web feeds today is vastly
+better than what we had 15 years ago even though it&rsquo;s a well loved cliché to
+still bemoan the demise of Reader. I still read web feeds daily today. This
+includes blogs and news pages and also YouTube channels (I found out about
+this not that long ago at a time I had almost abandoned following YouTube
+channels because I found the experience of following channels so
+insufferable). For many years now I&rsquo;m a happy paying customer of
+<a href="https://feedbin.com/home">Feedbin</a> to have my feeds available on all my devices but read it
+99% of the time through <a href="https://www.reeder.app/classic/">Reeder Classic</a> on my iPhone. I really like
+the service and also use one of their features heavily, which is the ability
+to configure email addresses to subscribe to newsletters and have them show up
+as feeds as well. I&rsquo;ve been using that fairly heavily and switched a bunch of
+my subscriptions over to it. This however came with two inconveniences for me:</p>
+<ol>
+<li>The effort of unsubscribing and re-subscribing to existing newsletters</li>
+<li>Sometimes newsletters aren&rsquo;t easily separated from the address I use for
+generally using a service (like a shop I buy from but also get newsletters)</li>
+<li>My newsletters are linked to an email address that is not mine</li>
+</ol>
+<p>So I wanted an easier way to benefit from the service with less hassle and
+also make it easier to decide to stop reading newsletters through the service
+without doing another unsubscribe and re-subscribe cycle. Luckily for me I
+still run my own IMAP server that runs <a href="https://en.wikipedia.org/wiki/Procmail">procmail</a> for filtering my emails. I
+mostly use it to filter out some spam and move messages from mailing lists I
+am subscribed to into their own folders.</p>
+<p>In order to take advantage from the setup for getting my newsletters into
+feedbin more easily I first created a new email address in Feedbin as a kind
+of catch all for newsletters. Next up I configured a procmail rule for each
+email address I get newsletters from with the following form:</p>
+<pre tabindex="0"><code>:0
+* ^From.*news@coolwebpage.de
+* ^List-Unsubscribe.*
+{
+  :0 c
+  ! cool.address.333@feedb.in
+  :0:
+  $HOME/Mails/newsletters/
+}
+</code></pre><p>This matches any email sent from the configured address that has a
+<code>List-Unsubscribe</code> header as well. While this isn&rsquo;t a perfect fit it&rsquo;s a
+requirement for newsletters being treated properly by major mail providers and
+not marked as spam. Having both rules in there also makes sure that emails
+that aren&rsquo;t newsletters from that same address (say purchase receipts from a
+shop) don&rsquo;t get matched. Then there is a rule body that first forwards the
+mail to Feedbin to turn into a feed item. And then also files it into a
+<code>newsletter</code> folder. That second part is mostly a backup for me so I have the
+messages handy still if something gets lost somewhere.</p>
+<p>So now if I notice a newsletter in my inbox, I can just add the sender address
+to a list and my configuration management system on my IMAP server generates a
+new procmail rule to filter it and send it to Feedbin from now on. And while
+procmail definitely doesn&rsquo;t have the easiest syntax to understand and get
+going with, I really enjoy this workflow it enables for me. And many mail
+providers also allow this sort of things with their rule system.</p>
+<p>Happy feed reading!</p>
+
+
+      </div>
+
+
+    </main>
+
+    <footer class="footer">
+    <ul class="menu-footer">
+      <li><a href="../../../imprint.html">Imprint</a></li>
+    </ul>
+</footer>
+
+
+    </div>
+  </body>
+</html>
