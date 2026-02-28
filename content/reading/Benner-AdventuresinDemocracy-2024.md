@@ -6,7 +6,7 @@ date: "2025-11-27"
 publication_date: "2024-02-08"
 origin_url: https://
 status: read
-type: book
+media_type: book
 category: "[Political Science]"
 publisher: "Random House"
 total: "212"

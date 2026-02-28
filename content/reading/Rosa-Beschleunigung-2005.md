@@ -6,7 +6,7 @@ date: "2026-02-28"
 publication_date: "2005"
 origin_url: https://
 status: read
-type: book
+media_type: book
 category: "[History]"
 publisher: ""
 total: "556"
