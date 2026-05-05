@@ -1,13 +1,33 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>unwiredcouch.com on unwiredcouch.com</title>
   <id>https://unwiredcouch.com/atom.xml</id>
-  <updated>2026-04-07T00:00:00Z</updated>
+  <updated>2026-05-04T00:00:00Z</updated>
 	<subtitle>thoughts which have made it into written existence</subtitle>
 	<link rel="self" href="https://unwiredcouch.com/atom.xml"/>
 	<author>
     <name>Daniel Schauenberg</name>
 		<email>d@unwiredcouch.com</email>
 	</author>
+  
+	<entry>
+    <title type="html"><![CDATA[Han Solo]]></title>
+    <published>2026-05-04T00:00:00Z</published>
+    <updated>2026-05-04T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/art/han-solo-05-2026/</id>
+    <content type="html"><![CDATA[<p>For Star Wars day 2026 I drew this sketch while watching TV. I&rsquo;ve lately been doing almost all of my drawing with ballpoint pen - inspired by Rembert Montald&rsquo;s art - to stress less about erasing and &ldquo;perfection&rdquo; and work more with my mistakes and leaning into them.</p>
+]]></content>
+    <link href="https://unwiredcouch.com/art/han-solo-05-2026/" rel="alternate"/>
+	</entry>
+  
+	<entry>
+    <title type="html"><![CDATA[No Straight Road Takes You There]]></title>
+    <published>2026-04-20T00:00:00Z</published>
+    <updated>2026-04-20T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/reading/solnit-nostraightroadtakesyouthere-2025/</id>
+    <content type="html"><![CDATA[<p>I really enjoyed this book even though it&rsquo;s fundamentally about not super fun topics. But Solnit manages in her writing to instill a feeling of optimism and connectedness in me while still being very real about the terrible things that are happening. I don&rsquo;t know if I would say I took anything actionable away from it but it did make me feel less alone in a world that&rsquo;s on fire and filled with stupidity in a lot of directions you can look.</p>
+]]></content>
+    <link href="https://unwiredcouch.com/reading/solnit-nostraightroadtakesyouthere-2025/" rel="alternate"/>
+	</entry>
   
 	<entry>
     <title type="html"><![CDATA[Monsters]]></title>
@@ -470,24 +490,6 @@ insight into consciousness after reading the back, I still took a lot away
 from reading it.</p>
 ]]></content>
     <link href="https://unwiredcouch.com/reading/theise-notesoncomplexity-2024/" rel="alternate"/>
-	</entry>
-  
-	<entry>
-    <title type="html"><![CDATA[The Notebook]]></title>
-    <published>2025-03-07T00:00:00Z</published>
-    <updated>2025-03-07T00:00:00Z</updated>
-    <id>https://unwiredcouch.com/reading/rolandallen-thenotebook-2023/</id>
-    <content type="html"><![CDATA[<p>I honestly devoured and thoroughly enjoyed this book. I&rsquo;ve recently been going
-back to leaning on my notebooks a lot more for a lot of my tasks including
-planning and todos (both at work and personal). So the book just came at the
-right time. I gives a wonderful overview over how paper (and notebooks) were
-used throughout the centuries by different people of various professions. It
-was really interesting to compare how much of these ways of journaling and
-taking notes is still in use today and how the question of organization of
-notes kinda still has so many approaches. If you like writing on paper, I can
-absolutely recommend this book.</p>
-]]></content>
-    <link href="https://unwiredcouch.com/reading/rolandallen-thenotebook-2023/" rel="alternate"/>
 	</entry>
   
 	<entry>
