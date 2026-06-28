@@ -3,7 +3,7 @@ title: City of Bones
 subtitle: Shadowhunters
 author: Cassandra Clare
 date: 2025-02-09
-publication_date: 2017-11-20
+publication_date: 2007-11-20
 origin_url: https://
 status: read
 media_type: book
