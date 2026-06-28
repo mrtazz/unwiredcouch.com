@@ -1,13 +1,85 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>unwiredcouch.com on unwiredcouch.com</title>
   <id>https://unwiredcouch.com/atom.xml</id>
-  <updated>2026-05-04T00:00:00Z</updated>
+  <updated>2026-06-27T00:00:00Z</updated>
 	<subtitle>thoughts which have made it into written existence</subtitle>
 	<link rel="self" href="https://unwiredcouch.com/atom.xml"/>
 	<author>
     <name>Daniel Schauenberg</name>
 		<email>d@unwiredcouch.com</email>
 	</author>
+  
+	<entry>
+    <title type="html"><![CDATA[Why Machines Learn]]></title>
+    <published>2026-06-27T00:00:00Z</published>
+    <updated>2026-06-27T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/reading/ananthaswamy-whymachineslearn-2025/</id>
+    <content type="html"><![CDATA[<p>I saw this at the bookstore and was intrigued by having a book that walks
+through the math of neural nets and machine learning. I have a very conflicted
+relationship with modern AI to say the least. But ever since reading
+<a href="/reading/mitchell-artificialintelligence-2019">&ldquo;Artificial Intelligence&rdquo;</a> I
+do have an appreciation for the math and theory behind it all. And so I wanted
+to deepen my knowledge in this area. The book does a really good job with it.
+I initially struggled a bit with the choices for notation. But after the first
+chapter got used to it and it overall didn&rsquo;t detract from me enjoying the
+book. It&rsquo;s written in a way where it allows to go deeper into the math side of
+things for the topics if desired but you can also stay fairly high level and
+read through the book with a lot of takeaways. Overall I can highly recommend
+it.</p>
+]]></content>
+    <link href="https://unwiredcouch.com/reading/ananthaswamy-whymachineslearn-2025/" rel="alternate"/>
+	</entry>
+  
+	<entry>
+    <title type="html"><![CDATA[Game Theory]]></title>
+    <published>2026-05-17T00:00:00Z</published>
+    <updated>2026-05-17T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/reading/clegg-gametheory-2022/</id>
+    <content type="html"><![CDATA[<p>I didn&rsquo;t really know what to make of this book when I bought it other than
+that I wanted to get a refresher on game theory and maybe see what a more
+modern perspective on it could look like. And I think the book definitely
+delivered on that. A lot of the basics weren&rsquo;t new to me but fairly good
+refreshers. And the book brings in more modern topics like the auction of
+mobile bandwidths spectrums to illustrate how game theory can be utilised to
+guide the process to have certain constraints. It&rsquo;s a quick read and I can
+really recommend it if you aren&rsquo;t already super familiar with game theory.</p>
+]]></content>
+    <link href="https://unwiredcouch.com/reading/clegg-gametheory-2022/" rel="alternate"/>
+	</entry>
+  
+	<entry>
+    <title type="html"><![CDATA[City of Ashes]]></title>
+    <published>2026-05-17T00:00:00Z</published>
+    <updated>2026-05-17T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/reading/clare-cityofashes-2008/</id>
+    <content type="html"><![CDATA[<p>After having read <a href="/reading/clare-cityofbones-2017">City of Bones</a> I
+immediately ordered this next installment in the series. And I have to say
+after I initially wanted it to be even more close to the TV show I&rsquo;ve come to
+really enjoy the book and its differences from the show. And this second one
+was no different. Even though I know most of the story already from the show
+it was a super fun and light read and I enjoyed trying to remember which parts
+I remember from the show and which parts are different. As far as YA novels go
+I can very much recommend the second book in the series as well.</p>
+]]></content>
+    <link href="https://unwiredcouch.com/reading/clare-cityofashes-2008/" rel="alternate"/>
+	</entry>
+  
+	<entry>
+    <title type="html"><![CDATA[Deficit]]></title>
+    <published>2026-05-08T00:00:00Z</published>
+    <updated>2026-05-08T00:00:00Z</updated>
+    <id>https://unwiredcouch.com/reading/holten-deficit-2026/</id>
+    <content type="html"><![CDATA[<p>I was really curious about this book as the topic of care work has been
+interesting to me for most of my adult life. There are many situations in
+which I&rsquo;ve realized in the past how important and yet undervalued care work is
+in everything. The book does a great job walking through different ways of how
+&ldquo;value&rdquo; by various measures is defined and how it historically came to be. And
+also how much of reality was brushed aside by many of the well known thinkers
+in economics to make their theories work. If care work is something that is
+interesting to you I can very much recommend the book.</p>
+]]></content>
+    <link href="https://unwiredcouch.com/reading/holten-deficit-2026/" rel="alternate"/>
+	</entry>
   
 	<entry>
     <title type="html"><![CDATA[Han Solo]]></title>
@@ -514,7 +586,7 @@ absolutely recommend this book.</p>
     <title type="html"><![CDATA[City of Bones]]></title>
     <published>2025-02-09T00:00:00Z</published>
     <updated>2025-02-09T00:00:00Z</updated>
-    <id>https://unwiredcouch.com/reading/clare-cityofbones-2017/</id>
+    <id>https://unwiredcouch.com/reading/clare-cityofbones-2007/</id>
     <content type="html"><![CDATA[<p>I started this book many years ago after I had finished watching the Netflix
 show and really was kinda bummed it ended. So I wanted to continue spending
 time in that phantasy universe. Initially however I didn&rsquo;t super enjoy the
@@ -527,7 +599,7 @@ book already, so I&rsquo;m intending to keep going. If you like young adult stor
 set within a universe of vampires, demons, werewolves, and other fantastical
 creatures, I can recommend the book.</p>
 ]]></content>
-    <link href="https://unwiredcouch.com/reading/clare-cityofbones-2017/" rel="alternate"/>
+    <link href="https://unwiredcouch.com/reading/clare-cityofbones-2007/" rel="alternate"/>
 	</entry>
   
 	<entry>
